@@ -1,0 +1,24 @@
+dist: xenial
+language: python
+
+python: "3.7"
+
+addons:
+  postgresql: "11"
+
+cache:
+  pip: true
+  directories:
+    - "$HOME/.npm"
+    - "$HOME/.cache/pipenv"
+
+matrix:
+  include:
+    - name: Python tests
+      install: skip
+      script:
+        - echo "python tests"
+    - name: Node tests
+      install: skip
+      script:
+        - echo "node tests"
