@@ -1,0 +1,16 @@
+{
+  "name": "donate-wagtail",
+  "description": "Donate platform",
+  "repository": "https://github.com/mozilla/donate-wagtail",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
