@@ -1,0 +1,5 @@
+FROM node:8-stretch-slim
+
+WORKDIR /app/
+
+# TODO install dependencies
