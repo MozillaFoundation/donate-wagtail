@@ -1,0 +1,42 @@
+# TODO update commands
+version: '3'
+
+services:
+  # Run the wagtail app
+  backend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.python
+    environment:
+      # Prevents pipenv from loading env files (python dotenv and docker-compose compatibility issue).
+      - PIPENV_DONT_LOAD_ENV=1
+    command: echo "I'M A WAGTAIL APP!"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app:delegated
+    depends_on:
+      - postgres
+      - watch-static-files
+
+  # Database
+  postgres:
+    image: postgres:11
+    ports:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/:delegated
+
+  # Rebuild static files automatically
+  watch-static-files:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.node
+    command: echo "I'M A NODE APP"
+    volumes:
+      - .:/app:delegated
+      - node_dependencies:/app/node_modules/:delegated
+
+volumes:
+  postgres_data:
+  node_dependencies:

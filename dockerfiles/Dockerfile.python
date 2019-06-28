@@ -1,0 +1,15 @@
+FROM python:3.7-slim-stretch
+
+# We want output
+ENV PYTHONUNBUFFERED 1
+# We don't want *.pyc
+ENV PYTHONDONTWRITEBYTECODE 1
+
+# Install pipenv
+RUN pip install pipenv
+
+# Copy Pipfiles in the container
+COPY Pipfile Pipfile.lock ./
+
+# Install app deps
+RUN pipenv install -d
