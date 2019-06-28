@@ -1,0 +1,167 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+
+/* ============================================
+    Media queries
+*/
+@mixin media-query($queries...) {
+    @each $query in $queries {
+        @each $breakpoint in $breakpoints {
+            $name:        nth($breakpoint, 1);
+            $declaration: nth($breakpoint, 2);
+
+            @if $query == $name and $declaration {
+                @media only screen and #{$declaration} {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+
+/* ============================================
+  Placeholder text
+*/
+@mixin placeholder-text() {
+    // sass-lint:disable no-vendor-prefixes
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+    // sass-lint:enddisable
+}
+
+
+/* ============================================
+  Hide text
+*/
+@mixin hidden() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+
+/* ============================================
+  iOS Native vertical scroll
+*/
+@mixin native-vertical-scroll() {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-misspelled-properties
+}
+
+
+/* ============================================
+    Output a rem and px fallback value for the given property
+*/
+@mixin rem($property, $values) {
+
+    $px:  ();
+    $rem: ();
+
+    @each $value in $values {
+        @if $value == 0 or $value == auto or $value == inherit {
+            $px:  append($px, $value);
+            $rem: append($rem, $value);
+        } @else {
+            $px:  append($px, $value);
+            $rem: append($rem, rem(strip-unit($value)));
+        }
+    }
+    // sass-lint:disable no-duplicate-properties
+    #{$property}: $px;
+    #{$property}: $rem;
+    // sass-lint:enddisable
+}
+
+
+/* ============================================
+    Output a `font-size: [x]rem;` declaration for the given px value
+*/
+@mixin rem-font-size($font-size) {
+    @include rem(font-size, $font-size);
+}
+
+
+/* ============================================
+    Font sizes
+*/
+@mixin font-size($keyword) {
+    $size: map-get($font-sizes, $keyword);
+
+    @if $size == null {
+        @warn 'Font size ‘#{$keyword}’ does not exist';
+    } @else {
+        @include rem-font-size($size);
+    }
+}
+
+/* ============================================
+   Gutter spacing
+
+   description: Add dynamic padding values based on set gutter and breakpoint variables (_variables.scss)
+
+   usage: .moo { @include gutter(1, 0, 0, 1); }
+   output:
+
+   .moo {
+     padding: 20px 0px 0px 20px;
+   }
+
+   @media only screen and (min-width: 1024px) {
+     .moo {
+       padding: 25px 0px 0px 25px;
+     }
+   }
+
+   @media only screen and (min-width: 2556px) {
+     .moo {
+       padding: 30px 0px 0px 30px;
+     }
+   }
+
+   additional info:
+   Dependent on media queries and grid varibles (_variables.scss). If (grid) default is set to 20px, it'll output padding: 20px 0 0 20px, up until first breakpoint. If the first breakpoint is also set to (grid), it'll continue looking through breakpoints until the grid value is different. For example if tablet-landscape (grid) value is set to (grid * 2), you'll get padding: 20px 0 0 20px, until tablet-landscape which will then override with padding: 40px 0 0 40px;
+
+   If you need to zero the padding on a breakpoint that's further up the loop, you'll need to add @include gutter(0, 0, 0, 0, true); This stops previously set padding values with an important.
+*/
+
+
+@mixin gutter($top: 0.5, $right: 0.5, $bottom: 0.5, $left: 0.5, $reset: false) {
+
+    $p-top: map-get($gutters, 'default') * $top;
+    $p-right: map-get($gutters, 'default') * $right;
+    $p-bottom: map-get($gutters, 'default') * $bottom;
+    $p-left: map-get($gutters, 'default') * $left;
+
+    $default-pad: $p-top $p-right $p-bottom $p-left;
+
+    padding: $default-pad;
+
+    $last-pad: $default-pad;
+
+    @each $point, $value in $breakpoints {
+
+        $p-top: map-get($gutters, $point) * $top;
+        $p-right: map-get($gutters, $point) * $right;
+        $p-bottom: map-get($gutters, $point) * $bottom;
+        $p-left: map-get($gutters, $point) * $left;
+
+        $new-pad: $p-top $p-right $p-bottom $p-left;
+
+        @if( $new-pad != $last-pad ){
+            @include media-query($point) {
+                padding: $new-pad stomp($reset);
+            }
+        }
+
+        $last-pad: $new-pad;
+    }
+}

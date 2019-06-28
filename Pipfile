@@ -4,9 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+"flake8" = "*"
 
 [packages]
 django = "*"
+wagtail = "==2.5.1"
+dj-database-url = "*"
+whitenoise = "*"
+"psycopg2-binary" = ">=2.8,<2.9"
 
 [requires]
 python_version = "3.7"

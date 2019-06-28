@@ -1,0 +1,86 @@
+.cookie {
+    @include gutter(0, 0.5, 0.5, 0.5);
+    $root: &;
+    position: fixed;
+    right: auto;
+    bottom: 0;
+    left: auto;
+    z-index: 13;
+    display: none; // Doesn't display unless there isn't a cookie
+    width: 100%;
+    pointer-events: none;
+    transition: transform $transition 0s;
+
+    // Applied if cookie just added
+    &.inactive {
+        display: block;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    &.active {
+        display: block;
+        transform: translate3d(0, 0, 0);
+    }
+
+    &__container {
+        @include font-size(xs);
+        @include gutter(0.25, 0.5, 0.25, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: ($grid * 35);
+        margin: 0 auto;
+        line-height: 1.4;
+        color: $color--black;
+        background-color: $color--white;
+        border: 1px solid $color--border;
+        border-radius: 5px;
+
+        @include media-query(tablet-landscape) {
+            @include font-size(s);
+        }
+
+    }
+
+    &__message {
+
+        p {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &__link {
+        color: $color--primary;
+        pointer-events: auto;
+
+        &:hover {
+            color: $color--black;
+        }
+
+    }
+
+    &__btn {
+        @include font-size(s);
+        display: block;
+        width: 24px;
+        height: 24px;
+        pointer-events: auto;
+        cursor: pointer;
+
+        &:hover {
+
+            #{$root}__btn-icon {
+                fill: $color--secondary;
+            }
+
+        }
+
+    }
+
+    &__btn-icon {
+        transition: fill $transition 0s;
+        fill: $color--black;
+    }
+
+}
