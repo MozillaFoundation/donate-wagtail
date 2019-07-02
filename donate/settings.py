@@ -6,7 +6,7 @@ import environ
 import logging.config
 import dj_database_url
 
-app = environ.Path(__file__) - 1
+app = environ.Path(__file__)
 root = app - 1
 
 # We set defaults for values that aren't security related
