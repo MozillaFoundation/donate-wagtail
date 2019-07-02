@@ -6,7 +6,7 @@ import environ
 import logging.config
 import dj_database_url
 
-app = environ.Path(__file__)
+app = environ.Path(__file__) - 1
 root = app - 1
 
 # We set defaults for values that aren't security related
@@ -34,8 +34,8 @@ env = environ.Env(
 )
 
 # Read in the environment
-if os.path.exists(f'{root - 1}/.env') is True:
-    environ.Env.read_env(f'{root - 1}/.env')
+if os.path.exists(f'{root}/.env') is True:
+    environ.Env.read_env(f'{root}/.env')
 else:
     environ.Env.read_env()
 

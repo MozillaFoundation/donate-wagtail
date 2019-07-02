@@ -10,7 +10,7 @@ services:
     environment:
       # Prevents pipenv from loading env files (python dotenv and docker-compose compatibility issue).
       - PIPENV_DONT_LOAD_ENV=1
-    command: pipenv run python donate/manage.py runserver 0.0.0.0:8000
+    command: pipenv run python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:

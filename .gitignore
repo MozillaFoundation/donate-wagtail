@@ -83,16 +83,16 @@ ENV/
 **/.DS_Store
 
 # Static files from python manage.py collectstatic
-donate/staticfiles/
+/static/
 
 # Storage for user generated files
-donate/media/
+/media/
 
 # SQLite3 databases for local development
 **/*.sqlite3
 
 # Compiled Frontend
-donate/donate/frontend/*
+donate/frontend/*
 /.vscode
 
 # PyCharm
