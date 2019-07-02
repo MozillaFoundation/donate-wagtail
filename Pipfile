@@ -15,6 +15,7 @@ whitenoise = "*"
 "psycopg2-binary" = ">=2.8,<2.9"
 django-environ = "*"
 django-storages = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
