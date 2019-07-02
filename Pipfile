@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 "flake8" = "*"
+python-coveralls = "*"
 
 [packages]
 django = ">=2.2,<2.3"
