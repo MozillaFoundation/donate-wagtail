@@ -7,11 +7,13 @@ verify_ssl = true
 "flake8" = "*"
 
 [packages]
-django = "*"
+django = ">=2.2,<2.3"
 wagtail = "==2.5.1"
 dj-database-url = "*"
 whitenoise = "*"
 "psycopg2-binary" = ">=2.8,<2.9"
+django-environ = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.7"

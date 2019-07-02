@@ -1,12 +1,8 @@
-FROM node:8-alpine
+FROM node:8-stretch-slim
 
 WORKDIR /app/
 
 # Copy package files in the container
 COPY package.json package-lock.json ./
-
-RUN apk add --no-cache \
-    zlib-dev \
-    build-base
 
 RUN npm install

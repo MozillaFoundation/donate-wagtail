@@ -1,6 +1,6 @@
 # donate-wagtail
 
-[![Build Status](https://travis-ci.org/mozilla/donate-wagtail.svg?branch=master)
+[![Build Status](https://travis-ci.org/mozilla/donate-wagtail?branch=master)](https://travis-ci.org/mozilla/donate-wagtail)
 
 ## Notes on Docker
 
