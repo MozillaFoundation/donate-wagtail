@@ -29,7 +29,6 @@ env = environ.Env(
     USE_S3=(bool, True),
     USE_X_FORWARDED_HOST=(bool, False),
     XSS_PROTECTION=bool,
-    GITHUB_TOKEN=(str, ''),
     REDIS_URL=(str, ''),
 )
 

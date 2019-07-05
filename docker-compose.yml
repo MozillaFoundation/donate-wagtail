@@ -7,6 +7,8 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.python
+    env_file:
+      - ".docker.env"
     environment:
       # Prevents pipenv from loading env files (python dotenv and docker-compose compatibility issue).
       - PIPENV_DONT_LOAD_ENV=1
@@ -32,6 +34,11 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.node
+    environment:
+      # Need to specify the SHELL env var for chokidar
+      - SHELL=/bin/sh
+      # Force polling because inotify doesn't work on Docker Windows
+      - CHOKIDAR_USEPOLLING=1
     command: npm run watch
     volumes:
       - .:/app:delegated
