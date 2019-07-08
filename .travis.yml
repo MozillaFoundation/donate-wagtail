@@ -4,7 +4,22 @@ language: python
 python: "3.7"
 
 addons:
-  postgresql: "11"
+  postgresql: "10"
+
+env:
+  global:
+    - ALLOWED_HOSTS=localhost
+    - CONTENT_TYPE_NO_SNIFF=True
+    - CORS_WHITELIST="*"
+    - DATABASE_URL=postgres://postgres@localhost:5432/donate
+    - DEBUG=False
+    - DJANGO_SECRET_KEY=secret
+    - SET_HSTS=False
+    - SSL_REDIRECT=False
+    - USE_S3=False
+    - X_FRAME_OPTIONS=DENY
+    - XSS_PROTECTION=True
+    - PIPENV_VERBOSITY=-1
 
 cache:
   pip: true
@@ -15,10 +30,11 @@ cache:
 matrix:
   include:
     - name: Python tests
-      install: skip
+      install: "./travis-scripts/python-install.sh"
+      before_script:
+        - psql -c 'create database donate;' -U postgres
       script:
-        - echo "python tests"
-    - name: Node tests
-      install: skip
-      script:
-        - echo "node tests"
+        - pipenv run flake8 donate/
+        - pipenv run coverage run --source './donate' ./manage.py test
+      after_success:
+        - coveralls

@@ -1,0 +1,36 @@
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+
+    &.open {
+        display: block;
+    }
+
+    &__container {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 90%;
+        margin: 0 auto;
+
+        @include media-query(tablet-portrait) {
+            width: 56%;
+            max-width: 800px;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        display: inline-block;
+        top: $grid;
+        right: $grid;
+        z-index: 2;
+    }
+}

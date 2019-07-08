@@ -1,2 +1,2 @@
-release: echo "release steps (migrations, etc)"
-web: echo "django app"
+release: ./release-steps.sh
+web: cd donate && gunicorn donate.wsgi:application

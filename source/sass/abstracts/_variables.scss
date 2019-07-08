@@ -1,0 +1,86 @@
+// --------------------------------- Colors -------------------------------------
+$color--primary:        #6a737c;
+$color--secondary:      #eaeaea;
+$color--tertiary:       #f9f9f9;
+
+$color--white:          #fff;
+$color--black:          #141414;
+$color--border:         rgba($color--black, 0.2);
+
+$color--white:          #fff;
+$color--black:          #141414;
+
+$color--default:        $color--black;
+
+// Button colours
+$button-colours: (
+    primary:    (bg: $color--primary, color: #fff),
+    secondary:  (bg: $color--secondary, color: #000),
+    tertiary:   (bg: $color--tertiary, color: #000),
+);
+
+// --------------------------------- Fonts --------------------------------------
+
+$font--primary:         Sans-Serif;
+$font--secondary:       Sans-Serif;
+
+// Font weights
+$weight--bold:          700;
+$weight--semibold:      600;
+$weight--medium:        500;
+$weight--normal:        400;
+$weight--light:         200;
+
+// Font sizes
+$base-font-size: 16px;
+$base-line-height: 25px;
+$font-sizes: (
+    default:    $base-font-size,
+    xxl:        36px,
+    xl:         28px,
+    l:          21px,
+    m:          18px,
+    s:          15px,
+    xs:         14px,
+    xxs:        12px
+);
+
+
+
+// --------------------------------- Breakpoints --------------------------------------
+// Ensure that all breakpoints are duplicated in the gutters array
+
+$breakpoints: (
+    'mob-portrait'      '(min-width: 320px)',
+    'mob-landscape'     '(min-width: 480px)',
+    'tablet-portrait'   '(min-width: 768px)',
+    'tablet-landscape'  '(min-width: 1024px)',
+    'desktop'           '(min-width: 1280px)',
+    'desktop-wide'      '(min-width: 2556px)'
+);
+
+// --------------------------------- Grid Dimensions --------------------------------------
+
+// Wrappers
+$site-width:            1280px;
+$wrapper--small:        790px;
+
+// Grid setup
+$grid:                  20px;
+
+// These should match the breakpoints array
+$gutters: (
+    'default':              ($grid),
+    'mob-portrait':         ($grid),
+    'mob-landscape':        ($grid),
+    'tablet-portrait':      ($grid),
+    'tablet-landscape':     ($grid * 1.25),
+    'desktop':              ($grid * 1.25),
+    'desktop-wide':         ($grid * 1.5)
+)
+    !default;
+
+
+// --------------------------------- Transitions --------------------------------------
+
+$transition:            0.25s ease-out;

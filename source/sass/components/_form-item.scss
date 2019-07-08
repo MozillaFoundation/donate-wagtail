@@ -1,0 +1,97 @@
+.form-item {
+    $root: &;
+    margin-bottom: 20px;
+
+    // sass-lint:disable class-name-format
+    &--errors {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px dotted red;
+    }
+
+    &--checkbox_input {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        label {
+            order: 2;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        input {
+            order: 1;
+        }
+
+        #{$root}__help {
+            flex-basis: 100%;
+            order: 3;
+        }
+
+    }
+
+    &--radio_select {
+
+        input:not([type='checkbox']) {
+            display: inline-block;
+            // sass-lint:disable no-important
+            width: auto !important;
+            // sass-lint:enddisable
+            margin-right: 5px;
+        }
+
+    }
+
+    &--hidden_input {
+        display: none;
+    }
+
+    &--re_captcha {
+
+        .required {
+            display: none;
+        }
+
+    }
+
+    &__required {
+        color: red;
+    }
+
+    &__label {
+        @include font-size(m);
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    &__errors {
+        @include font-size(s);
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: red;
+    }
+
+    &__help {
+        @include font-size(s);
+        margin-top: 5px;
+        color: rgba($color--default, 0.6);
+    }
+
+    input:not([type='checkbox']),
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $color--default;
+    }
+
+    input[type='checkbox'] {
+        margin-right: 10px;
+    }
+    // sass-lint:enddisable
+
+}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load navigation_tags %}
+
+{% block meta_tags %}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ page.title }}" />
+
+    {# facebook opengraph tags #}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ page.url }}" />
+    <meta property="og:title" content="{{ page.title }}" />
+{% endblock meta_tags %}
+
+
+{% block body_top %}
+{% endblock body_top %}
+
+
+{% block header %}
+    <header class="header">
+        <div class="header__inner wrapper wrapper--large">
+            <a href="/">
+                <img class="header__logo" src="/_images/mozilla.svg" alt="Logo for donate">
+            </a>
+
+            <div class="header__menu-toggle">
+                <span>Menu</span>
+                <button class="button button-menu-toggle" data-mobile-menu-toggle aria-haspopup="true" aria-label="Mobile menu toggle">
+                    <span class="button-menu-toggle__line"></span>
+                    <span class="button-menu-toggle__line"></span>
+                    <span class="button-menu-toggle__line"></span>
+                    <span class="button-menu-toggle__line"></span>
+                </button>
+            </div>
+
+            <section class="header__menus header__menus--desktop">
+                {% primarynav %}
+            </section>
+
+            <section class="header__menus header__menus--mobile" data-mobile-menu>
+                {% primarynav %}
+            </section>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block footer %}
+    <footer class="footer">
+        <div class="footer__inner wrapper wrapper--large">
+            <div class="footer__nav-container">
+
+            </div>
+
+            <div class="footer__credit" role="contentinfo">
+                <p>Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a href="https://mozilla.org">mozilla.org</a>.</p>
+            </div>
+        </div>
+    </footer>
+{% endblock footer %}

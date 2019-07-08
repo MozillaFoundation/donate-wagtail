@@ -7,10 +7,12 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.python
+    env_file:
+      - ".docker.env"
     environment:
       # Prevents pipenv from loading env files (python dotenv and docker-compose compatibility issue).
       - PIPENV_DONT_LOAD_ENV=1
-    command: echo "I'M A WAGTAIL APP!"
+    command: pipenv run python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:
@@ -32,7 +34,12 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.node
-    command: echo "I'M A NODE APP"
+    environment:
+      # Need to specify the SHELL env var for chokidar
+      - SHELL=/bin/sh
+      # Force polling because inotify doesn't work on Docker Windows
+      - CHOKIDAR_USEPOLLING=1
+    command: npm run watch
     volumes:
       - .:/app:delegated
       - node_dependencies:/app/node_modules/:delegated

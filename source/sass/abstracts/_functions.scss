@@ -1,0 +1,14 @@
+// Strip the unit from the given value and return the value
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+// Return an em unit based on the pixel value and context
+@function rem($px, $context: $base-font-size) {
+    @return #{strip-unit($px / strip-unit($context))}rem;
+}
+
+// Reset padding on gutter when needed (used in gutter mixin)
+@function stomp($value) {
+    @return if($value, !important, null); // sass-lint:disable-line no-important
+}

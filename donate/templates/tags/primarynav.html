@@ -1,0 +1,23 @@
+{% load wagtailcore_tags %}
+<nav role="navigation" aria-label="Primary">
+    <ul class="nav nav--primary" role="menubar">
+        {% for link in primarynav %}
+            {% with children=link.value.page.get_children.live.public.in_menu %}
+                <li class="nav__item nav__item--primary {% if children.exists %}nav__item--is-parent{% endif %}" role="presentation">
+                    {% include_block link with has_children=children.exists %}
+                    {% if children.exists %}
+                        <ul class="nav nav--subnav" role="menu">
+                            <li class="nav__item nav__item--back" data-subnav-back>&lsaquo; Back</li>
+                            <li class="nav__item" role="presentation">{% include_block link %}</li>
+                            {% for child in children.all %}
+                                <li class="nav__item nav__item--secondary" role="presentation">
+                                    {% include "fragments/menu_item.html" with page=child %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+</nav>

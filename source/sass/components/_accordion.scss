@@ -1,0 +1,47 @@
+.accordion {
+    $root: &;
+
+    &:active,
+    &:hover {
+        cursor: pointer;
+
+        #{$root}__icon {
+            fill: $color--black;
+        }
+
+        #{$root}__title {
+            color: $color--black;
+        }
+    }
+
+    &.is-open {
+        #{$root}__icon {
+            transform: rotate(90deg);
+        }
+
+        #{$root}__content {
+            display: block;
+        }
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        font-weight: $weight--bold;
+        color: $color--primary;
+        transition: color 0.2s ease;
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+        transition: transform, fill, 0.2s ease;
+        fill: $color--primary;
+    }
+
+    &__content {
+        display: none;
+        margin-left: 40px;
+    }
+}

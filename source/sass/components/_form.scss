@@ -1,0 +1,16 @@
+.form {
+    $root: &;
+
+    &__container {
+        margin-bottom: 20px;
+    }
+
+    &__errors {
+        @include font-size(s);
+        padding: 20px;
+        margin-bottom: 15px;
+        color: $color--white;
+        background-color: $color--tertiary;
+    }
+
+}

@@ -2,4 +2,7 @@ FROM node:8-stretch-slim
 
 WORKDIR /app/
 
-# TODO install dependencies
+# Copy package files in the container
+COPY package.json package-lock.json ./
+
+RUN npm install
