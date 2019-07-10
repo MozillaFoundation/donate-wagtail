@@ -17,80 +17,30 @@
             max-width: $site-width--default;
         }
 
-        .footer-links {
-            text-align: center;
+    }
 
-            a {
-                @include font-size(s);
-                font-weight: $weight--bold;
-                color: $color--grey-40;
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: $site-width--small;
+        width: 100%;
+        margin: 0 auto;
 
-                &:hover {
-                    color: $color--white;
-                }
-
-            }
-
-            ul {
-                margin: 0;
-
-                li {
-                    display: inline-block;
-                    margin: 0 16px 16px;
-                }
-
-            }
-
+        @include media-query(tablet-portrait) {
+            flex-direction: row;
         }
 
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: $site-width--small;
-            width: 100%;
+    }
 
-            @media screen and (max-width: 619px) {
-                text-align: center;
-            }
+    &__logo {
+        min-width: 100px;
+        width: 100px;
+        margin-right: $gutter;
+    }
 
-            @media screen and (min-width: 620px) {
-                flex-direction: row;
-
-                p {
-                    padding: 0;
-                }
-
-                .footer-break {
-                    margin: 0 24px;
-                    width: 1px;
-                    height: 50px;
-                }
-
-            }
-
-            a {
-                color: $color--white;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-
-            }
-
-            .footer-break {
-                margin: 24px 0;
-                height: 1px;
-                width: 50px;
-            }
-
-            .footer-logo {
-                min-width: 100px;
-                width: 100px;
-            }
-
-        }
-
+    &__logo-image {
+        background-color: $color--white;
     }
 
 }
