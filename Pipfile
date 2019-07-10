@@ -16,6 +16,7 @@ whitenoise = "*"
 django-environ = "*"
 django-storages = "*"
 gunicorn = "*"
+django-redis = "*"
 
 [requires]
 python_version = "3.7"
