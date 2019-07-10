@@ -12,7 +12,7 @@ $color--grey-80:        #333;
 
 $color--light-red:      #ffe6e8;
 $color--red:            #ff4f5e;
-$color--dark-red:       #cc0011;
+$color--dark-red:       #c01;
 $color--light-blue:     #b7b9fa;
 $color--blue:           #595cf3;
 $color--dark-blue:      #0d10bf;
@@ -80,6 +80,7 @@ $breakpoints: (
 // --------------------------------- Grid Dimensions --------------------------------------
 
 // Max widths
+$site-width--small:     560px;
 $site-width--default:   1100px;
 $site-width--large:     1200px;
 
