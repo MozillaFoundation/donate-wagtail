@@ -17,6 +17,8 @@ django-environ = "*"
 django-storages = "*"
 gunicorn = "*"
 django-redis = "*"
+wagtail-factories = "*"
+factory-boy = "<2.12"   # Pinned until https://github.com/mvantellingen/wagtail-factories/pull/18 is fixed
 
 [requires]
 python_version = "3.7"
