@@ -9,20 +9,31 @@
 
         {% block meta_tags %}{% endblock %}
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:600,400,300,700,300italic|Zilla+Slab:300,700">
         <link rel="stylesheet" href="/_css/main.compiled.css">
+        
     </head>
 
-    <body class="{% block body_class %}template-{{ page.get_verbose_name|slugify }}{% endblock %}">
+    <body>
         {% block body_top %}{% endblock %}
 
-        {% block header %}{% endblock %}
+        <div class="app {% block template_name %}template-{{ page.get_verbose_name|slugify }}{% endblock %}">
+            <div class="app__container">
 
-        <main class="wrapper wrapper--large wrapper--main">
-            {% block content %}
-            {% endblock %}
-        </main>
+                <header class="app__header">
+                    {% block header %}{% endblock %}
+                </header>
 
-        {% block footer %}{% endblock %}
+                <main class="app__content">
+                    {% block content %}{% endblock %}
+                </main>
+
+                <footer class="app__footer">
+                    {% block footer %}{% endblock %}
+                </footer>
+
+            </div>
+        </div>
 
         {% block script_bundle %}
         <script src="/_js/main.compiled.js"></script>
