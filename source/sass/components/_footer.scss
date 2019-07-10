@@ -19,6 +19,10 @@
 
     }
 
+    &__nav {
+        margin-bottom: ($gutter);
+    }
+
     &__info {
         display: flex;
         flex-direction: column;
