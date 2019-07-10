@@ -9,8 +9,11 @@
 // Base
 @import 'base/base';
 @import 'base/typography';
+@import 'base/layout';
 
 // Components
+@import 'components/header';
+@import 'components/footer';
 @import 'components/button';
 @import 'components/blockquote';
 @import 'components/card';
@@ -24,10 +27,3 @@
 @import 'components/section';
 @import 'components/wrapper';
 @import 'components/burger';
-
-// Layout
-@import 'layout/footer';
-@import 'layout/header';
-@import 'layout/sidebar';
-
-// Pages
