@@ -1,16 +1,33 @@
 // --------------------------------- Colors -------------------------------------
-$color--primary:        #6a737c;
+// From https://foundation.mozilla.org/en/style-guide/
+
+$color--white:          #fff;
+$color--black:          #141414;
+
+$color--grey-05:        #f2f2f2;
+$color--grey-20:        #ccc;
+$color--grey-40:        #999;
+$color--grey-60:        #666;
+$color--grey-80:        #333;
+
+$color--light-red:      #ffe6e8;
+$color--red:            #ff4f5e;
+$color--dark-red:       #cc0011;
+$color--light-blue:     #b7b9fa;
+$color--blue:           #595cf3;
+$color--dark-blue:      #0d10bf;
+
+$color--primary:        $color--blue;
 $color--secondary:      #eaeaea;
 $color--tertiary:       #f9f9f9;
 
 $color--white:          #fff;
 $color--black:          #141414;
-$color--border:         rgba($color--black, 0.2);
+$color--border:         $color--grey-20;
 
-$color--white:          #fff;
-$color--black:          #141414;
-
-$color--default:        $color--black;
+$color--default:        $color--grey-80;
+$color--link:           $color--blue;
+$color--link-hover:     darken($color--blue, 10%);
 
 // Button colours
 $button-colours: (
@@ -21,8 +38,8 @@ $button-colours: (
 
 // --------------------------------- Fonts --------------------------------------
 
-$font--primary:         Sans-Serif;
-$font--secondary:       Sans-Serif;
+$font--primary:         'Zilla Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font--secondary:       'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 // Font weights
 $weight--bold:          700;
@@ -33,7 +50,8 @@ $weight--light:         200;
 
 // Font sizes
 $base-font-size: 16px;
-$base-line-height: 25px;
+$base-line-height: 1.6;
+
 $font-sizes: (
     default:    $base-font-size,
     xxl:        36px,
@@ -61,25 +79,13 @@ $breakpoints: (
 
 // --------------------------------- Grid Dimensions --------------------------------------
 
-// Wrappers
-$site-width:            1280px;
-$wrapper--small:        790px;
+// Max widths
+$site-width--default:   1100px;
+$site-width--large:     1200px;
 
 // Grid setup
 $grid:                  20px;
-
-// These should match the breakpoints array
-$gutters: (
-    'default':              ($grid),
-    'mob-portrait':         ($grid),
-    'mob-landscape':        ($grid),
-    'tablet-portrait':      ($grid),
-    'tablet-landscape':     ($grid * 1.25),
-    'desktop':              ($grid * 1.25),
-    'desktop-wide':         ($grid * 1.5)
-)
-    !default;
-
+$gutter:                $grid;
 
 // --------------------------------- Transitions --------------------------------------
 
