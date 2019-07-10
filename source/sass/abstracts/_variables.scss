@@ -24,6 +24,7 @@ $color--tertiary:       #f9f9f9;
 $color--white:          #fff;
 $color--black:          #141414;
 $color--border:         $color--grey-20;
+$color--background:     $color--grey-05;
 
 $color--default:        $color--grey-80;
 $color--link:           $color--blue;
@@ -90,4 +91,4 @@ $gutter:                $grid;
 
 // --------------------------------- Transitions --------------------------------------
 
-$transition:            0.25s ease-out;
+$transition:            0.25s ease-out 0s;
