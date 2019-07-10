@@ -11,7 +11,7 @@
     position: relative;
     z-index: 1;
 
-    &--bar {
+    &__bar {
         position: absolute;
         background: $color--black;
         height: 3px;
@@ -34,7 +34,7 @@
 
     }
 
-    &.menu-open {
+    &.is-open {
 
         #{$root}__bar {
             transition: top 0.1s, width 0.1s, transform 0.1s linear 0.1s;

@@ -11,6 +11,11 @@
     }
 
     &__container {
+        margin: 0 auto;
+
+        @include media-query(tablet-landscape) {
+            max-width: $site-width--default;
+        }
 
         .footer-links {
             text-align: center;
