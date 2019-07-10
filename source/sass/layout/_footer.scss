@@ -1,59 +1,93 @@
 .footer {
-    padding: 20px 10px;
-    color: $color--secondary;
-    background-color: $color--primary;
+    margin-top: 40px;
+    background: $color--black;
+    padding: 50px 0;
+    line-height: 24px;
+    color: $color--grey-40;
 
-    &__inner {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        @include media-query(tablet-portrait) {
-            align-items: flex-end;
-            flex-direction: row;
-            justify-content: space-between;
-        }
+    p {
+        margin: 0;
+        padding: 0 15px;
     }
 
-    &__nav-container {
-        width: 100%;
+    &__container {
 
-        @include media-query(tablet-landscape) {
-            flex: 1;
-            width: auto;
+        .footer-links {
+            text-align: center;
+
+            a {
+                @include font-size(s);
+                font-weight: $weight--bold;
+                color: $color--grey-40;
+
+                &:hover {
+                    color: $color--white;
+                }
+
+            }
+
+            ul {
+                margin: 0;
+
+                li {
+                    display: inline-block;
+                    margin: 0 16px 16px 16px;
+                }
+
+            }
+
         }
-    }
 
-    &__social-links {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-
-        @include media-query(tablet-portrait) {
+        .footer-info {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            margin-bottom: 20px;
+            max-width: $site-width--default;
+            margin: 0 auto;
+            width: 100%;
+
+            @media screen and (max-width: 619px) {
+                text-align: center;
+            }
+
+            @media screen and (min-width: 620px) {
+                flex-direction: row;
+                p {
+                    padding: 0;
+                }
+                .footer-break {
+                    margin: 0 24px;
+                    width: 1px;
+                    height: 50px;
+                }
+            }
+
+            width: 100%;
+            margin: 0 auto;
+            max-width: 560px;
+
+            a {
+                color: $color--white;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+            }
+
+            .footer-break {
+                margin: 24px 0;
+                height: 1px;
+                width: 50px;
+            }
+
+            .footer-logo {
+                min-width: 100px;
+                width: 100px;
+            }
+
         }
+
     }
 
-    &__heading {
-        display: none;
-
-        @include media-query(tablet-portrait) {
-            display: block;
-            margin: 0 20px 0 0;
-        }
-    }
-
-    &__credit {
-        margin-top: 10px;
-
-        @include media-query(tablet-portrait) {
-            margin-top: 0;
-        }
-
-        a {
-            color: $color--secondary;
-        }
-    }
 }
