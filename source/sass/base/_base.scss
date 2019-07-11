@@ -16,15 +16,18 @@ html {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: $color--black; // match footer bg colour
 }
+// sass-lint:enddisable
 
 body {
     overflow-x: hidden;
-    background-color: $color--tertiary;
+    background-color: $color--background;
 
     &.no-scroll {
         overflow-y: hidden;
 	}
+
 }
 
 // Prevent empty space below images appearing
@@ -46,14 +49,15 @@ button, input, select, textarea {
 // sass-lint:enddisable
 
 a {
-    color: $color--primary;
+    color: $color--link;
     text-decoration: none;
     transition: color $transition;
 
     &:hover {
-        color: darken($color--primary, 20%);
+        color: $color--link-hover;
         cursor: pointer;
-  }
+    }
+
 }
 
 ul,

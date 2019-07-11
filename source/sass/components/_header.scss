@@ -1,9 +1,28 @@
 .header {
-    padding: 10px;
-    background-color: $color--primary;
+    $logo-width-desktop: 97px;
+    $logo-height-desktop: 28px;
+    background-color: $color--white;
 
-    @include media-query(tablet-portrait) {
-        padding: 20px;
+    &__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        max-width: $site-width--default;
+        padding: 24px 0;
+        margin: 0 auto;
+    }
+
+    &__logo-link {
+        display: block;
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+    }
+
+    &__logo {
+        display: block;
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+        background-color: $color--black;
     }
 
     &__inner {
@@ -56,27 +75,8 @@
         }
     }
 
-    &__logo {
-        max-width: 100px;
-
-        @include media-query(tablet-portrait) {
-            max-width: 100%;
-        }
+    &__menu-label {
+        @include hidden();
     }
 
-    &__menu-toggle {
-        @include font-size(xs);
-        z-index: 10;
-        display: flex;
-        align-items: flex-end;
-        flex-direction: column;
-        width: 100%;
-        font-weight: $weight--bold;
-        color: $color--secondary;
-        text-transform: uppercase;
-
-        @include media-query(tablet-portrait) {
-            display: none;
-        }
-    }
 }

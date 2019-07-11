@@ -2,7 +2,6 @@ let path = require(`path`);
 let frontendPath = path.resolve(
   __dirname,
   `donate`,
-  `donate`,
   `frontend`,
   `_js`
 );
