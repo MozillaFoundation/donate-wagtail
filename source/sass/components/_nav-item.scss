@@ -16,7 +16,9 @@
                 color: $color--black;
             }
 
-            &:hover {
+            &:hover,
+            &:active,
+            &:focus {
                 text-decoration: underline;
             }
 
