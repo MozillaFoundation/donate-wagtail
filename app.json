@@ -31,6 +31,7 @@
     "XSS_PROTECTION": "True"
   },
   "scripts": {
-    "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin"
+    "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin",
+    "pr-predestroy": "python manage.py clear_fake_data"
   }
 }
