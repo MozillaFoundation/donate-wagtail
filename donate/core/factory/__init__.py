@@ -1,7 +1,7 @@
-from . import landing_page
+from . import core_pages
 
 __all__ = ['generate']
 
 
 def generate(seed):
-    landing_page.generate(seed)
+    core_pages.generate(seed)
