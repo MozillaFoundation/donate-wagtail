@@ -2,6 +2,7 @@ import 'babel-polyfill';
 
 import MobileMenu from './components/mobile-menu';
 import MobileSubMenu from './components/mobile-sub-menu';
+import Tabs from './components/tabs';
 
 // Open the mobile menu callback
 function openMobileMenu() {
@@ -30,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
         subnavBack.addEventListener('click', () => {
             subnavBack.parentNode.classList.remove('is-visible');
         });
+    }
+
+    for (const tabs of document.querySelectorAll(Tabs.selector())) {
+        new Tabs(tabs);
     }
 
 });
