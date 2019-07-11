@@ -34,7 +34,7 @@
     },
     "AWS_STORAGE_BUCKET_NAME": {
       "required": true
-},
+    },
     "CONTENT_TYPE_NO_SNIFF": "True",
     "CORS_WHITELIST": "*",
     "DEBUG": "False",
