@@ -32,10 +32,10 @@
                     </header>
                     <div class="donate-form__content">
                         <div class="donate-form__tabs tabs js-tabs">
-                            <div class="donate-form__tab-options">
-                                <div class="tab-option">
+                            <div class="donate-form__tab-options tabs__container">
+                                <div class="tabs__option">
                                     <a
-                                        class="tabs__tab tabs__tab--selected js-tab-item"
+                                        class="tabs__item tabs__item--selected js-tab-item"
                                         href="#tab-panel-1"
                                         role="tab"
                                         aria-controls="tab-panel-1"
@@ -45,9 +45,9 @@
                                         One time
                                     </a>
                                 </div>
-                                <div class="tab-option">
+                                <div class="tabs__option">
                                     <a
-                                        class="tabs__tab js-tab-item"
+                                        class="tabs__item js-tab-item"
                                         href="#tab-panel-2"
                                         role="tab"
                                         aria-controls="tab-panel-2"
@@ -58,7 +58,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <form class="tab-content tab-content--one-off tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
+                            <form class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
                                 <div class="donate-form__fields">
                                     <div class="donation-amount">
                                         <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="one-time-amount-1" autocomplete="off">
@@ -66,15 +66,15 @@
                                     </div>
                                     <div class="donation-amount">
                                         <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="one-time-amount-2" autocomplete="off">
-                                        <label for="one-time-amount-2" class="donation-amount__label">$50</label>
+                                        <label for="one-time-amount-2" class="donation-amount__label">$25</label>
                                     </div>
                                     <div class="donation-amount">
                                         <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="one-time-amount-3" autocomplete="off">
-                                        <label for="one-time-amount-3" class="donation-amount__label">$50</label>
+                                        <label for="one-time-amount-3" class="donation-amount__label">$10</label>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="one-time-amount-4" autocomplete="off">
-                                        <label for="one-time-amount-4" class="donation-amount__label">$50</label>
+                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="3" id="one-time-amount-4" autocomplete="off">
+                                        <label for="one-time-amount-4" class="donation-amount__label">$3</label>
                                     </div>
                                 </div>
                                 <div class="donate-form__actions">
@@ -82,7 +82,7 @@
                                     <button class="button button--primary">Paypal donate</button>
                                 </div>
                             </form>
-                            <form class="tab-content tab-content--monthly js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
+                            <form class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
                                 <div class="donate-form__fields">
                                     <div class="donation-amount">
                                         <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-1" autocomplete="off">

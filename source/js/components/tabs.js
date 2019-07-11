@@ -18,7 +18,7 @@ class Tabs {
             e.preventDefault();
 
             for (let tab of this.allTabs) {
-                tab.classList.remove('tabs__tab--selected');
+                tab.classList.remove('tabs__item--selected');
                 tab.setAttribute('aria-selected', 'false');
             }
 
@@ -26,7 +26,7 @@ class Tabs {
                 tabPanel.classList.add('tabs__panel--hidden');
             }
 
-            this.tab.classList.add('tabs__tab--selected');
+            this.tab.classList.add('tabs__item--selected');
             this.tab.setAttribute('aria-selected', 'true');
             this.tabPanel.classList.remove('tabs__panel--hidden');
         });
