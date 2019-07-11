@@ -7,6 +7,17 @@
     &:hover {
         cursor: pointer;
     }
+
+    &--primary {
+        background-color: $color--primary;
+        color: $color--white;
+        transition: background-color $transition;
+
+        &:hover {
+            background-color: darken($color--primary, 5%);
+        }
+
+    }
 }
 
 .button-menu-toggle {

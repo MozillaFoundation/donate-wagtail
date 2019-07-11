@@ -27,13 +27,6 @@ $color--default:        $color--grey-80;
 $color--link:           $color--blue;
 $color--link-hover:     darken($color--blue, 10%);
 
-// Button colours
-$button-colours: (
-    primary:    (bg: $color--primary, color: #fff),
-    secondary:  (bg: $color--secondary, color: #000),
-    tertiary:   (bg: $color--tertiary, color: #000),
-);
-
 // --------------------------------- Fonts --------------------------------------
 
 $font--primary:         'Zilla Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;

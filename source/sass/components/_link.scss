@@ -1,8 +1,12 @@
 .link {
-    color: $color--link;
 
-    &:hover {
-        color: $color--link-hover;
+    &--light-bg {
+        color: $color--link;
+
+        &:hover {
+            color: $color--link-hover;
+        }
+
     }
 
     &--dark-bg {
