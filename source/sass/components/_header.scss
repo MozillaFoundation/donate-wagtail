@@ -1,6 +1,8 @@
 .header {
+    @include z-index(header);
     $logo-width-desktop: 97px;
     $logo-height-desktop: 28px;
+    position: relative;
     background-color: $color--white;
 
     &__container {
@@ -8,9 +10,13 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        max-width: $site-width--default;
-        padding: 24px 0;
+        padding: 24px;
         margin: 0 auto;
+
+        @include media-query(desktop) {
+            max-width: $site-width--default;
+        }
+
     }
 
     &__logo-link {
@@ -40,10 +46,11 @@
     &__menu-toggle {
         width: 28px;
         height: 28px;
+        margin-right: ($gutter);
 
-        @include media-query(tablet-landscape) {
+        @include media-query(desktop) {
             position: absolute;
-            left: -50px;
+            left: -28px;
         }
 
     }

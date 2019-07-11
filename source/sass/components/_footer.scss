@@ -12,6 +12,7 @@
 
     &__container {
         margin: 0 auto;
+        padding: ($gutter);
 
         @include media-query(tablet-landscape) {
             max-width: $site-width--default;
@@ -20,7 +21,7 @@
     }
 
     &__nav {
-        margin-bottom: ($gutter);
+        margin-bottom: ($gutter / 2);
     }
 
     &__info {
@@ -31,7 +32,7 @@
         width: 100%;
         margin: 0 auto;
 
-        @include media-query(tablet-portrait) {
+        @include media-query(tablet-landscape) {
             flex-direction: row;
         }
 
@@ -40,11 +41,26 @@
     &__logo {
         min-width: 100px;
         width: 100px;
-        margin-right: $gutter;
+        margin-bottom: ($gutter);
+
+        @include media-query(tablet-landscape) {
+            margin-right: $gutter;
+            margin-bottom: 0;
+        }
+
     }
 
     &__logo-image {
         background-color: $color--white;
+    }
+
+    &__legal {
+        text-align: center;
+
+        @include media-query(tablet-landscape) {
+            text-align: left;
+        }
+
     }
 
 }

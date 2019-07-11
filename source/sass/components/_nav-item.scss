@@ -4,10 +4,17 @@
     &--primary {
         @include font-size(m);
         font-weight: $weight--bold;
-        padding-right: ($grid);
+
+        @include media-query(tablet-landscape) {
+            padding-right: ($grid);
+        }
 
         #{$root}__link {
-            color: $color--black;
+            color: $color--white;
+
+            @include media-query(tablet-landscape) {
+                color: $color--black;
+            }
 
             &:hover {
                 text-decoration: underline;
