@@ -1,0 +1,20 @@
+.nav-item {
+    $root: &;
+
+    &--primary {
+        @include font-size(m);
+        font-weight: $weight--bold;
+        padding-right: ($grid);
+
+        #{$root}__link {
+            color: $color--black;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+        }
+
+    }
+
+}

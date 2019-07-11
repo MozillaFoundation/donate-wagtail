@@ -1,0 +1,33 @@
+.primary-nav {
+    $root: &;
+    position: relative;
+    max-width: $site-width--large;
+    margin: 0 auto;
+
+    &__container {
+        position: absolute;
+        top: 28px;
+        left:  190px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        transform: translateY(8px);
+        opacity: 0;
+        transition: opacity 0.15s, transform 0.15s, visibility 0s linear 0.15s;
+
+        @include media-query(tablet-landscape) {
+            flex-direction: row;
+        }
+
+    }
+
+    &.is-visible {
+
+        #{$root}__container {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+    }
+
+}
