@@ -1,6 +1,6 @@
 class MenuToggle {
     static selector() {
-        return '[data-primary-nav-toggle]';
+        return '[data-menu-toggle]';
     }
 
     constructor(node, openCb = () => {}, closeCb = () => {}) {
