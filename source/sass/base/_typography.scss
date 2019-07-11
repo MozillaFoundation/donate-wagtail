@@ -7,7 +7,7 @@
 */
 html {
     font-size: ($base-font-size / 16px) * 100%;
-    line-height: $base-line-height / $base-font-size;
+    line-height: $base-line-height;
     color: $color--default;
 }
 
@@ -23,7 +23,7 @@ html {
 }
 
 @mixin body-text() {
-    font-family: $font--primary;
+    font-family: $font--secondary;
     font-style: inherit;
     font-weight: inherit;
     text-transform: inherit;

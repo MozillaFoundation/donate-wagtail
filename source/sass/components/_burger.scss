@@ -1,0 +1,62 @@
+.burger {
+    $root: &;
+    cursor: pointer;
+    margin-right: 24px;
+    margin-left: -52px;
+    border: 0;
+    background: transparent;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+
+    &__bar {
+        position: absolute;
+        background: $color--black;
+        height: 3px;
+        width: 28px;
+        transition: top 0.1s linear 0.1s, width 0.1s linear 0.1s, transform 0.1s;
+
+        &--top {
+            top: 3px;
+            width: 16px;
+        }
+
+        &--middle {
+            top: 12.5px;
+        }
+
+        &--bottom {
+            top: 22px;
+            width: 23px;
+        }
+
+    }
+
+    &.is-open {
+
+        #{$root}__bar {
+            transition: top 0.1s, width 0.1s, transform 0.1s linear 0.1s;
+
+            &--top {
+                top: 12.5px;
+                width: 28px;
+                transform: rotate(135deg);
+            }
+
+            &--middle {
+                transform: rotate(135deg);
+            }
+
+            &--bottom {
+                top: 12.5px;
+                width: 28px;
+                transform: rotate(45deg);
+            }
+
+        }
+
+    }
+
+}
