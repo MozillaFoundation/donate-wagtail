@@ -1,0 +1,8 @@
+{% extends "pages/base_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    {% image page.hero_image original %}
+    <p>{{ page.lead_text }}</p>
+{% endblock %}
