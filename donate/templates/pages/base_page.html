@@ -16,9 +16,22 @@
 {% endblock body_top %}
 
 {% block navigation %}
-    <div class="header__menus header__menus--mobile" data-mobile-menu>
-        {% primarynav %}
-    </div>
+    <nav class="primary-nav" role="navigation" aria-label="Primary" data-primary-nav>
+        <ul class="primary-nav__container" role="menubar">
+            <li class="nav-item nav-item--primary" role="presentation">
+                <a class="nav-item__link" href="https://foundation.mozilla.org/initiatives">Initiatives</a>
+            </li>
+            <li class="nav-item nav-item--primary" role="presentation">
+                <a class="nav-item__link" href="https://foundation.mozilla.org/participate">Participate</a>
+            </li>
+            <li class="nav-item nav-item--primary" role="presentation">
+                <a class="nav-item__link" href="https://foundation.mozilla.org/internet-health">Internet&nbsp;Health</a>
+            </li>
+            <li class="nav-item nav-item--primary" role="presentation">
+                <a class="nav-item__link" href="https://foundation.mozilla.org/about">About&nbsp;Us</a>
+            </li>
+        </ul>
+    </nav>
 {% endblock navigation %}
 
 {% block header %}
@@ -27,7 +40,7 @@
 
             <div class="header__menu-toggle">
                 <span class="header__menu-label">Menu</span>
-                <button class="burger button-menu-toggle" data-mobile-menu-toggle  aria-haspopup="true" aria-label="Mobile menu toggle">
+                <button class="burger" data-menu-toggle aria-haspopup="true" aria-label="Mobile menu toggle">
                     <div class="burger__bar burger__bar--top"></div>
                     <div class="burger__bar burger__bar--middle"></div>
                     <div class="burger__bar burger__bar--bottom"></div>
