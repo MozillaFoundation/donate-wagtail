@@ -5,6 +5,7 @@
     margin: 0 auto;
 
     &__container {
+        @include z-index(navigation);
         position: absolute;
         top: 28px;
         left:  190px;

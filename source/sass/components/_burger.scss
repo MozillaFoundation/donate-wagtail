@@ -1,8 +1,6 @@
 .burger {
     $root: &;
     cursor: pointer;
-    margin-right: 24px;
-    margin-left: -52px;
     border: 0;
     background: transparent;
     width: 28px;
@@ -10,10 +8,20 @@
     padding: 0;
     position: relative;
     z-index: 1;
+    outline: 0;
+    transition: background-color $transition;
+
+    &:focus {
+
+        #{$root}__bar {
+            background-color: $color--grey-60;
+        }
+
+    }
 
     &__bar {
         position: absolute;
-        background: $color--black;
+        background-color: $color--black;
         height: 3px;
         width: 28px;
         transition: top 0.1s linear 0.1s, width 0.1s linear 0.1s, transform 0.1s;
