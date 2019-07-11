@@ -30,6 +30,7 @@ env = environ.Env(
     USE_X_FORWARDED_HOST=(bool, False),
     XSS_PROTECTION=bool,
     REDIS_URL=(str, ''),
+    RANDOM_SEED=(int, None),
 )
 
 # Read in the environment
@@ -53,9 +54,10 @@ if HEROKU_APP_NAME:
     ALLOWED_HOSTS.append(HEROKU_APP_NAME + '.herokuapp.com')
 
 INSTALLED_APPS = [
-    'donate.home',
+    'donate.home',      # Unused - drop once migrations to remove this model have been applied
     'donate.navigation',
     'donate.users',
+    'donate.core',
 
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -312,6 +314,8 @@ X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
 REFERRER_POLICY = 'no-referrer-when-downgrade'
 
 AUTH_USER_MODEL = 'users.User'
+
+RANDOM_SEED = env('RANDOM_SEED')
 
 # Wagtail settings
 

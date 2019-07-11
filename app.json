@@ -44,5 +44,8 @@
     "SSL_REDIRECT": "True",
     "X_FRAME_OPTIONS": "DENY",
     "XSS_PROTECTION": "True"
+  },
+  "scripts": {
+    "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin"
   }
 }
