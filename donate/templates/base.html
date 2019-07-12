@@ -29,13 +29,13 @@
         <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %}">
             <div class="app__container">
 
-                <div class="app__navigation">
-                    {% block navigation %}{% endblock %}
-                </div>
-
                 <header class="app__header">
                     {% block header %}{% endblock %}
                 </header>
+
+                <div class="app__navigation">
+                    {% block navigation %}{% endblock %}
+                </div>
 
                 <main class="app__content">
                     {% block content %}{% endblock %}
