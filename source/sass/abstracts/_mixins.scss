@@ -102,3 +102,11 @@
         @include rem-font-size($size);
     }
 }
+
+/* ============================================
+    z-index
+*/
+
+@mixin z-index($key) {
+    z-index: z-index($key);
+}

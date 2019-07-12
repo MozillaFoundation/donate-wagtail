@@ -1,6 +1,6 @@
-class MobileMenu {
+class MenuToggle {
     static selector() {
-        return '[data-mobile-menu-toggle]';
+        return '[data-menu-toggle]';
     }
 
     constructor(node, openCb = () => {}, closeCb = () => {}) {
@@ -42,4 +42,4 @@ class MobileMenu {
     }
 }
 
-export default MobileMenu;
+export default MenuToggle;
