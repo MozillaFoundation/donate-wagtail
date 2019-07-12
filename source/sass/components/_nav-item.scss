@@ -26,4 +26,20 @@
 
     }
 
+    .primary-nav & {
+
+        #{$root}__link {
+            pointer-events: none;
+        }
+
+    }
+
+    .primary-nav.is-visible & {
+
+        #{$root}__link {
+            pointer-events: auto;
+        }
+
+    }
+
 }
