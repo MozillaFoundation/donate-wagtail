@@ -38,13 +38,6 @@ html {
 
 // sass-lint:disable single-line-per-selector
 h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 1rem;
-}
-// sass-lint:enddisable
-
-// sass-lint:disable single-line-per-selector
-h1, h2, h3, h4, h5, h6,
-.heading-text {
     @include heading-text();
 }
 // sass-lint:enddisable

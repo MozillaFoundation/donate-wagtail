@@ -4,7 +4,22 @@
     border: 0;
     box-shadow: none;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         cursor: pointer;
+    }
+
+    &--primary {
+        background-color: $color--primary;
+        color: $color--white;
+        transition: background-color $transition;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($color--primary, 5%);
+        }
+
     }
 }
