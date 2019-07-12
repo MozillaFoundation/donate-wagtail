@@ -22,4 +22,42 @@ When the Django server is running, you can start the Django shell with:
 
     docker-compose exec backend pipenv run python manage.py shell
 
-(TODO: wrap this with invoke to make it less cumbersome).
+## Invoke tasks
+
+Invoke is a python tasks runner that creates shortcuts for commands we frequently use. For example, instead of `docker-compose run --rm backend pipenv manage.py migrate`, you can use `inv docker-migrate`. It can also be used to run management commands: `inv docker-manage load-fake-data`. If you need to add multiple args to an invoke commands, use quotes. ex: `invoke docker-npm "install moment"`
+
+Installation instructions: https://www.pyinvoke.org/installing.html
+
+### With Docker
+
+### Invoke tasks available:
+
+- `inv -l`: list available tasks,
+- `inv docker-catch-up (docker-catchup)`: Rebuild images and apply migrations
+- `inv docker-makemigrations`: Creates new migration(s)
+- `inv docker-manage`: Shorthand to manage.py. ex: `inv docker-manage "[COMMAND] [ARG]"`
+- `inv docker-migrate`: Updates database schema
+- `inv docker-npm`: Shorthand to npm. ex: `inv docker-npm "[COMMAND] [ARG]"`
+- `inv docker-nuke-db`: Delete your database and create a new one with fake data
+- `inv docker-pipenv`: Shorthand to pipenv. ex: `inv docker-pipenv "[COMMAND] [ARG]"`
+- `inv docker-setup`: Prepare your dev environment after a fresh git clone
+- `inv docker-test-python`: Run python tests
+
+Use `docker-compose up/down` to start or shutdown the dev server.
+
+**note**: use `inv docker-setup` when you've just cloned the repo. If you did a `git pull` on master and want to install the latest dependencies and apply migrations, use `inv docker-catchup` instead.
+
+### Without Docker
+
+### Invoke tasks available:
+
+- `inv -l`: list available tasks,
+- `inv catch-up (catchup)`: Install dependencies and apply migrations
+- `inv makemigrations`: Creates new migration(s)
+- `inv manage`: Shorthand to manage.py. ex: `inv manage "[COMMAND] [ARG]"`
+- `inv migrate`: Updates database schema
+- `inv setup`: Prepare your dev environment after a fresh git clone
+- `inv test`: Run python tests
+- `inv runserver`: Start a web server
+
+**note**: use `inv setup` when you've just cloned the repo. If you did a `git pull` on master and want to install the latest dependencies and apply migrations, use `inv catchup` instead.
