@@ -51,6 +51,10 @@ blockquote {
     @include quote-text();
 }
 
+p {
+    margin: 0 0 ($gutter * 0.75);
+}
+
 // Default sizes
 h1 { @include font-size(xl); }
 h2 { @include font-size(l); }

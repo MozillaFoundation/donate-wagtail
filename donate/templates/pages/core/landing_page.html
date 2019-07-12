@@ -8,7 +8,7 @@
             <div class="layout__secondary-col">
                 <div class="image-feature column-spacing">
                     <div class="image-feature__container">
-                        {% image page.featured_image original %}
+                        {% image page.featured_image original class="image-feature__image" %}
                     </div>
                 </div>
                 <div class="introduction column-spacing">
@@ -27,13 +27,65 @@
                     <header class="donate-form__header">
                         <h1 class="heading heading--primary heading--bottom-margin">{{ page.title }}</h1>
                         <div class="donate-form__currency">
-                            <select autocomplete="off" class="donate-form__currency-dropdown" data-reactid="49"><option selected="" value="usd" data-reactid="50">USD &nbsp; $</option><option value="aed" data-reactid="51">AED &nbsp; د.إ.‏</option><option value="all" data-reactid="52">ALL &nbsp; L</option><option value="aud" data-reactid="53">AUD &nbsp; $</option><option value="ars" data-reactid="54">ARS &nbsp; $</option><option value="azn" data-reactid="55">AZN &nbsp; ₼</option><option value="bam" data-reactid="56">BAM &nbsp; KM</option><option value="bdt" data-reactid="57">BDT &nbsp; ৳</option><option value="brl" data-reactid="58">BRL &nbsp; R$</option><option value="cad" data-reactid="59">CAD &nbsp; $</option><option value="chf" data-reactid="60">CHF &nbsp; Fr.</option><option value="clp" data-reactid="61">CLP &nbsp; $</option><option value="cny" data-reactid="62">CNY &nbsp; ¥</option><option value="czk" data-reactid="63">CZK &nbsp; Kč</option><option value="dkk" data-reactid="64">DKK &nbsp; kr</option><option value="dzd" data-reactid="65">DZD &nbsp; د.ج.‏</option><option value="egp" data-reactid="66">EGP &nbsp; ج.م.‏</option><option value="eur" data-reactid="67">EUR &nbsp; €</option><option value="gbp" data-reactid="68">GBP &nbsp; £</option><option value="gel" data-reactid="69">GEL &nbsp; ₾</option><option value="gtq" data-reactid="70">GTQ &nbsp; Q</option><option value="hkd" data-reactid="71">HKD &nbsp; $</option><option value="hrk" data-reactid="72">HRK &nbsp; kn</option><option value="huf" data-reactid="73">HUF &nbsp; Ft</option><option value="idr" data-reactid="74">IDR &nbsp; Rp</option><option value="ils" data-reactid="75">ILS &nbsp; ₪</option><option value="inr" data-reactid="76">INR &nbsp; ₹</option><option value="jpy" data-reactid="77">JPY &nbsp; ¥</option><option value="krw" data-reactid="78">KRW &nbsp; ₩</option><option value="lak" data-reactid="79">LAK &nbsp; ₭</option><option value="lbp" data-reactid="80">LBP &nbsp; ل.ل.‎</option><option value="mad" data-reactid="81">MAD &nbsp; MAD</option><option value="myr" data-reactid="82">MYR &nbsp; RM</option><option value="mxn" data-reactid="83">MXN &nbsp; $</option><option value="nok" data-reactid="84">NOK &nbsp; kr</option><option value="nzd" data-reactid="85">NZD &nbsp; $</option><option value="php" data-reactid="86">PHP &nbsp; ₱</option><option value="pln" data-reactid="87">PLN &nbsp; zł</option><option value="qar" data-reactid="88">QAR &nbsp; ر.ق.‏</option><option value="ron" data-reactid="89">RON &nbsp; lei</option><option value="rub" data-reactid="90">RUB &nbsp; ₽</option><option value="sar" data-reactid="91">SAR &nbsp; ر.س.‏</option><option value="sek" data-reactid="92">SEK &nbsp; kr</option><option value="sgd" data-reactid="93">SGD &nbsp; $SG</option><option value="thb" data-reactid="94">THB &nbsp; ฿</option><option value="try" data-reactid="95">TRY &nbsp; ₺</option><option value="twd" data-reactid="96">TWD &nbsp; NT$</option><option value="uah" data-reactid="97">UAH &nbsp; ₴</option><option value="yer" data-reactid="98">YER &nbsp; ر.ي.‏</option><option value="zar" data-reactid="99">ZAR &nbsp; R</option></select>
+                            <label for="currency-select" class="donate-form__currency-label">Currency</label>
+                            <select autocomplete="off" class="donate-form__currency-dropdown" id="currency-select">
+                                <option selected="" value="usd">USD &nbsp; $</option>
+                                <option value="aed">AED &nbsp; د.إ.‏</option>
+                                <option value="all">ALL &nbsp; L</option>
+                                <option value="aud">AUD &nbsp; $</option>
+                                <option value="ars">ARS &nbsp; $</option>
+                                <option value="azn">AZN &nbsp; ₼</option>
+                                <option value="bam">BAM &nbsp; KM</option>
+                                <option value="bdt">BDT &nbsp; ৳</option>
+                                <option value="brl">BRL &nbsp; R$</option>
+                                <option value="cad">CAD &nbsp; $</option>
+                                <option value="chf">CHF &nbsp; Fr.</option>
+                                <option value="clp">CLP &nbsp; $</option>
+                                <option value="cny">CNY &nbsp; ¥</option>
+                                <option value="czk">CZK &nbsp; Kč</option>
+                                <option value="dkk">DKK &nbsp; kr</option>
+                                <option value="dzd">DZD &nbsp; د.ج.‏</option>
+                                <option value="egp">EGP &nbsp; ج.م.‏</option>
+                                <option value="eur">EUR &nbsp; €</option>
+                                <option value="gbp">GBP &nbsp; £</option>
+                                <option value="gel">GEL &nbsp; ₾</option>
+                                <option value="gtq">GTQ &nbsp; Q</option>
+                                <option value="hkd">HKD &nbsp; $</option>
+                                <option value="hrk">HRK &nbsp; kn</option>
+                                <option value="huf">HUF &nbsp; Ft</option>
+                                <option value="idr">IDR &nbsp; Rp</option>
+                                <option value="ils">ILS &nbsp; ₪</option>
+                                <option value="inr">INR &nbsp; ₹</option>
+                                <option value="jpy">JPY &nbsp; ¥</option>
+                                <option value="krw">KRW &nbsp; ₩</option>
+                                <option value="lak">LAK &nbsp; ₭</option>
+                                <option value="lbp">LBP &nbsp; ل.ل.‎</option>
+                                <option value="mad">MAD &nbsp; MAD</option>
+                                <option value="myr">MYR &nbsp; RM</option>
+                                <option value="mxn">MXN &nbsp; $</option>
+                                <option value="nok">NOK &nbsp; kr</option>
+                                <option value="nzd">NZD &nbsp; $</option>
+                                <option value="php">PHP &nbsp; ₱</option>
+                                <option value="pln">PLN &nbsp; zł</option>
+                                <option value="qar">QAR &nbsp; ر.ق.‏</option>
+                                <option value="ron">RON &nbsp; lei</option>
+                                <option value="rub">RUB &nbsp; ₽</option>
+                                <option value="sar">SAR &nbsp; ر.س.‏</option>
+                                <option value="sek">SEK &nbsp; kr</option>
+                                <option value="sgd">SGD &nbsp; $SG</option>
+                                <option value="thb">THB &nbsp; ฿</option>
+                                <option value="try">TRY &nbsp; ₺</option>
+                                <option value="twd">TWD &nbsp; NT$</option>
+                                <option value="uah">UAH &nbsp; ₴</option>
+                                <option value="yer">YER &nbsp; ر.ي.‏</option>
+                                <option value="zar">ZAR &nbsp; R</option>
+                            </select>
                         </div>
                     </header>
                     <div class="donate-form__content">
                         <div class="donate-form__tabs tabs js-tabs">
-                            <div class="donate-form__tab-options tabs__container">
-                                <div class="tabs__option">
+                            <div class="donate-form__tab-options tabs__container" role="tablist">
+                                <div class="tabs__option" role="presentation">
                                     <a
                                         class="tabs__item tabs__item--selected js-tab-item"
                                         href="#tab-panel-1"
@@ -45,7 +97,7 @@
                                         One time
                                     </a>
                                 </div>
-                                <div class="tabs__option">
+                                <div class="tabs__option" role="presentation">
                                     <a
                                         class="tabs__item js-tab-item"
                                         href="#tab-panel-2"
