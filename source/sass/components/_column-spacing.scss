@@ -2,14 +2,22 @@
 .column-spacing {
 
     .layout__secondary-col & {
-        padding-right: ($gutter);
+
+        @include media-query(tablet-landscape) {
+            padding-right: ($gutter);
+        }
+
     }
 
     // Move padding to opposite side for RTL languages
     // sass-lint:disable force-element-nesting
     .app--rtl .layout__secondary-col & {
-        padding-right: 0;
-        padding-left: ($gutter);
+
+        @include media-query(tablet-landscape) {
+            padding-right: 0;
+            padding-left: ($gutter);
+        }
+
     }
     // sass-lint:enddisable
 

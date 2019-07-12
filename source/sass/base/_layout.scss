@@ -4,10 +4,11 @@
         display: flex;
         flex-direction: column;
         max-width: $site-width--default;
-        margin: 0 auto;
+        margin: 0 $gutter;
 
         @include media-query(tablet-landscape) {
             flex-direction: row;
+            margin: 0 auto;
         }
 
     }
