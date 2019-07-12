@@ -1,0 +1,25 @@
+.link {
+
+    &--light-bg {
+        color: $color--link;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $color--link-hover;
+        }
+
+    }
+
+    &--dark-bg {
+        color: $color--grey-20;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $color--white;
+        }
+
+    }
+
+}

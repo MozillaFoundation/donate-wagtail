@@ -7,7 +7,7 @@
 */
 html {
     font-size: ($base-font-size / 16px) * 100%;
-    line-height: $base-line-height / $base-font-size;
+    line-height: $base-line-height;
     color: $color--default;
 }
 
@@ -23,7 +23,7 @@ html {
 }
 
 @mixin body-text() {
-    font-family: $font--primary;
+    font-family: $font--secondary;
     font-style: inherit;
     font-weight: inherit;
     text-transform: inherit;
@@ -38,13 +38,6 @@ html {
 
 // sass-lint:disable single-line-per-selector
 h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 1rem;
-}
-// sass-lint:enddisable
-
-// sass-lint:disable single-line-per-selector
-h1, h2, h3, h4, h5, h6,
-.heading-text {
     @include heading-text();
 }
 // sass-lint:enddisable
@@ -56,6 +49,10 @@ html,
 
 blockquote {
     @include quote-text();
+}
+
+p {
+    margin: 0 0 ($gutter * 0.75);
 }
 
 // Default sizes

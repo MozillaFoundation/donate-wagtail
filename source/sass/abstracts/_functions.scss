@@ -8,7 +8,7 @@
     @return #{strip-unit($px / strip-unit($context))}rem;
 }
 
-// Reset padding on gutter when needed (used in gutter mixin)
-@function stomp($value) {
-    @return if($value, !important, null); // sass-lint:disable-line no-important
+// Map z-index keys
+@function z-index($key) {
+    @return map-get($z-index, $key);
 }
