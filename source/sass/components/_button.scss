@@ -4,7 +4,9 @@
     border: 0;
     box-shadow: none;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         cursor: pointer;
     }
 
@@ -13,7 +15,9 @@
         color: $color--white;
         transition: background-color $transition;
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
             background-color: darken($color--primary, 5%);
         }
 

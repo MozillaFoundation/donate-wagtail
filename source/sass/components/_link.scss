@@ -3,7 +3,9 @@
     &--light-bg {
         color: $color--link;
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
             color: $color--link-hover;
         }
 
@@ -12,7 +14,9 @@
     &--dark-bg {
         color: $color--grey-20;
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:focus {
             color: $color--white;
         }
 
