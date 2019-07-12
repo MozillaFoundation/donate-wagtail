@@ -2,7 +2,30 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    {% image page.hero_image original %}
-    <p>{{ page.lead_text }}</p>
+
+    {% image page.hero_image width-1200 as image %}
+
+    <div class="layout">
+        <div class="layoyt__container">
+            <div class="layout__full">
+                <div class="hero" {% if image %}style="background-image: url('{{ image.url }}')"{% endif %}>
+                    <div class="hero__container">
+                        <div class="hero__content">
+                            <h1 class="heading heading--primary hero__heading">{{ page.title }}</h1>
+                            <p class="hero__description">{{ page.lead_text }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout__container">
+            <div class="layout__secondary-col">
+                Content TBC
+            </div>
+            <div class="layout__primary-col">
+                {% include "partials/donate-form.html" with title=false %}
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
