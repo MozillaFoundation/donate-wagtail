@@ -23,3 +23,9 @@ When the Django server is running, you can start the Django shell with:
     docker-compose exec backend pipenv run python manage.py shell
 
 (TODO: wrap this with invoke to make it less cumbersome).
+
+### Running tests
+
+Run the back-end test suite with:
+
+    docker-compose exec backend pipenv run python manage.py test --settings=donate.settings_test

@@ -11,11 +11,14 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.utils.urlpatterns import decorate_urlpatterns
 
+from donate.payments import urls as payments_urls
+
 # Private URLs are not meant to be cached.
 private_urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('pay/', include(payments_urls)),
 ]
 
 
