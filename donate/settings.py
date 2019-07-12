@@ -54,8 +54,6 @@ if HEROKU_APP_NAME:
     ALLOWED_HOSTS.append(HEROKU_APP_NAME + '.herokuapp.com')
 
 INSTALLED_APPS = [
-    'donate.home',      # Unused - drop once migrations to remove this model have been applied
-    'donate.navigation',
     'donate.users',
     'donate.core',
 
