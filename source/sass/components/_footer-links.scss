@@ -1,16 +1,14 @@
 .footer-links {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-    &__container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    &__item {
-        @include body-text();
-        margin: 0 ($gutter / 2) ($gutter / 2);
-        font-weight: $weight--bold;
-    }
-
+  &__item {
+    @include body-text();
+    margin: 0 ($gutter / 2) ($gutter / 2);
+    font-weight: $weight--bold;
+  }
 }

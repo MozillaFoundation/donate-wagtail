@@ -1,10 +1,5 @@
 let path = require(`path`);
-let frontendPath = path.resolve(
-  __dirname,
-  `donate`,
-  `frontend`,
-  `_js`
-);
+let frontendPath = path.resolve(__dirname, `donate`, `frontend`, `_js`);
 
 let rules = [
   {

@@ -137,12 +137,12 @@ def docker_test_python(ctx):
     print("Running tests")
     docker_manage(ctx, "test --settings=donate.settings_test")
 
-# To uncomment when npm tests are ready
-# @task
-# def docker_test_node(ctx):
-#     """Run node tests"""
-#     print("Running tests")
-#     ctx.run("docker-compose run --rm watch-static-files npm run test", **PLATFORM_ARG)
+    
+@task
+def docker_test_node(ctx):
+    """Run node tests"""
+    print("Running tests")
+    ctx.run("docker-compose run --rm watch-static-files npm run test", **PLATFORM_ARG)
 
 
 @task

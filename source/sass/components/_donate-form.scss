@@ -1,7 +1,5 @@
 .donate-form {
-
-    &__currency-label {
-        @include hidden();
-    }
-    
+  &__currency-label {
+    @include hidden();
+  }
 }
