@@ -3,14 +3,25 @@ import 'babel-polyfill';
 import Tabs from './components/tabs';
 import MenuToggle from './components/menu-toggle';
 
+// Manage tab index for primary nav
+function tabIndexer() {
+    document.querySelectorAll('[data-nav-tab-index]').forEach(navLink => {
+        navLink.tabIndex = "-1";
+    })
+}
+
 // Open the mobile menu callback
 function openMenu() {
     document.querySelector('[data-primary-nav]').classList.add('is-visible');
+    document.querySelectorAll('[data-nav-tab-index]').forEach(navLink => {
+        navLink.removeAttribute("tabindex");
+    })
 }
 
-// Close the mobile menu callback.
+// Close the mobile menu callback
 function closeMenu() {
     document.querySelector('[data-primary-nav]').classList.remove('is-visible');
+    tabIndexer();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -23,4 +34,5 @@ document.addEventListener('DOMContentLoaded', function() {
         new Tabs(tabs);
     }
 
+    tabIndexer();
 });

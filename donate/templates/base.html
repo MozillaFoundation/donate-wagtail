@@ -6,8 +6,17 @@
         <title>{% block title_prefix %}{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{{ request.site.site_name }} | {% endif %}{% endblock %}{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}{% block title_suffix %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {{ request.site.site_name }}{% endif %}{% endblock %}</title>
         <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% endif %}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         {% block meta_tags %}{% endblock %}
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/_images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/_images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/_images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/_images/favicon/site.webmanifest">
+        <link rel="mask-icon" href="/_images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/_images/favicon/favicon.ico">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-config" content="/_images/favicon/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:600,400,300,700,300italic|Zilla+Slab:300,700">
         <link rel="stylesheet" href="/_css/main.compiled.css">
@@ -20,13 +29,13 @@
         <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %}">
             <div class="app__container">
 
-                <div class="app__navigation">
-                    {% block navigation %}{% endblock %}
-                </div>
-
                 <header class="app__header">
                     {% block header %}{% endblock %}
                 </header>
+
+                <div class="app__navigation">
+                    {% block navigation %}{% endblock %}
+                </div>
 
                 <main class="app__content">
                     {% block content %}{% endblock %}

@@ -24,7 +24,7 @@
 
         @include media-query(tablet-landscape) {
             @include z-index(nav-desktop);
-            top: 28px;
+            top: -50px;
             left:  190px;
             flex-direction: row;
             padding-top: 0;
