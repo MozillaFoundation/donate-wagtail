@@ -137,7 +137,7 @@ def docker_test_python(ctx):
     print("Running tests")
     docker_manage(ctx, "test --settings=donate.settings_test")
 
-
+    
 @task
 def docker_test_node(ctx):
     """Run node tests"""
