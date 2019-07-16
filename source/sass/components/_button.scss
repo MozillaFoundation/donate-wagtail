@@ -1,25 +1,24 @@
 .button {
-    background-color: transparent;
-    background-image: none;
-    border: 0;
-    box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  border: 0;
+  box-shadow: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    cursor: pointer;
+  }
+
+  &--primary {
+    background-color: $color--primary;
+    color: $color--white;
+    transition: background-color $transition;
 
     &:hover,
     &:active,
     &:focus {
-        cursor: pointer;
+      background-color: darken($color--primary, 5%);
     }
-
-    &--primary {
-        background-color: $color--primary;
-        color: $color--white;
-        transition: background-color $transition;
-
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: darken($color--primary, 5%);
-        }
-
-    }
+  }
 }

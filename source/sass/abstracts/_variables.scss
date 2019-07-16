@@ -1,71 +1,69 @@
 // --------------------------------- Colors -------------------------------------
 // From https://foundation.mozilla.org/en/style-guide/
 
-$color--grey-05:        #f2f2f2;
-$color--grey-20:        #ccc;
-$color--grey-40:        #999;
-$color--grey-60:        #666;
-$color--grey-80:        #333;
+$color--grey-05: #f2f2f2;
+$color--grey-20: #cccccc;
+$color--grey-40: #999999;
+$color--grey-60: #666666;
+$color--grey-80: #333333;
 
-$color--light-red:      #ffe6e8;
-$color--red:            #ff4f5e;
-$color--dark-red:       #c01;
-$color--light-blue:     #b7b9fa;
-$color--blue:           #595cf3;
-$color--dark-blue:      #0d10bf;
+$color--light-red: #ffe6e8;
+$color--red: #ff4f5e;
+$color--dark-red: #cc0011;
+$color--light-blue: #b7b9fa;
+$color--blue: #595cf3;
+$color--dark-blue: #0d10bf;
 
-$color--primary:        $color--blue;
-$color--secondary:      #eaeaea;
-$color--tertiary:       #f9f9f9;
+$color--primary: $color--blue;
+$color--secondary: #eaeaea;
+$color--tertiary: #f9f9f9;
 
-$color--white:          #fff;
-$color--black:          #141414;
-$color--border:         $color--grey-20;
-$color--background:     $color--grey-05;
+$color--white: #ffffff;
+$color--black: #141414;
+$color--border: $color--grey-20;
+$color--background: $color--grey-05;
 
-$color--default:        $color--grey-80;
-$color--link:           $color--blue;
-$color--link-hover:     darken($color--blue, 10%);
+$color--default: $color--grey-80;
+$color--link: $color--blue;
+$color--link-hover: darken($color--blue, 10%);
 
 // --------------------------------- Fonts --------------------------------------
 
-$font--primary:         'Zilla Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font--secondary:       'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font--primary: "Zilla Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font--secondary: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 // Font weights
-$weight--bold:          700;
-$weight--semibold:      600;
-$weight--medium:        500;
-$weight--normal:        400;
-$weight--light:         200;
+$weight--bold: 700;
+$weight--semibold: 600;
+$weight--medium: 500;
+$weight--normal: 400;
+$weight--light: 200;
 
 // Font sizes
 $base-font-size: 16px;
 $base-line-height: 1.6;
 
 $font-sizes: (
-    default:    $base-font-size,
-    xxl:        36px,
-    xl:         28px,
-    l:          21px,
-    m:          18px,
-    s:          15px,
-    xs:         14px,
-    xxs:        12px
+  default: $base-font-size,
+  xxl: 36px,
+  xl: 28px,
+  l: 21px,
+  m: 18px,
+  s: 15px,
+  xs: 14px,
+  xxs: 12px
 );
-
-
 
 // --------------------------------- Breakpoints --------------------------------------
 // Ensure that all breakpoints are duplicated in the gutters array
 
 $breakpoints: (
-    'mob-portrait'      '(min-width: 320px)',
-    'mob-landscape'     '(min-width: 480px)',
-    'tablet-portrait'   '(min-width: 768px)',
-    'tablet-landscape'  '(min-width: 1024px)',
-    'desktop'           '(min-width: 1280px)',
-    'desktop-wide'      '(min-width: 2556px)'
+  "mob-portrait" "(min-width: 320px)",
+  "mob-landscape" "(min-width: 480px)",
+  "tablet-portrait" "(min-width: 768px)",
+  "tablet-landscape" "(min-width: 1024px)",
+  "desktop" "(min-width: 1280px)",
+  "desktop-wide" "(min-width: 2556px)"
 );
 
 /* ============================================
@@ -73,29 +71,29 @@ $breakpoints: (
 */
 
 $z-index: (
-    1:              10,
-    to-do:          20,
-    search:         30,
-    nav:            40,
-    header:         50,
-    nav-desktop:    60,
-    ui-overlay:     70,
-    8:              80,
-    9:              90,
-    modal:          100
+  1: 10,
+  to-do: 20,
+  search: 30,
+  nav: 40,
+  header: 50,
+  nav-desktop: 60,
+  ui-overlay: 70,
+  8: 80,
+  9: 90,
+  modal: 100
 );
 
 // --------------------------------- Grid Dimensions --------------------------------------
 
 // Max widths
-$site-width--small:     560px;
-$site-width--default:   1100px;
-$site-width--large:     1200px;
+$site-width--small: 560px;
+$site-width--default: 1100px;
+$site-width--large: 1200px;
 
 // Grid setup
-$grid:                  20px;
-$gutter:                $grid;
+$grid: 20px;
+$gutter: $grid;
 
 // --------------------------------- Transitions --------------------------------------
 
-$transition:            0.25s ease-out 0s;
+$transition: 0.25s ease-out 0s;

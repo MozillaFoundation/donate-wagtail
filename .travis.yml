@@ -38,3 +38,9 @@ matrix:
         - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings_test
       after_success:
         - coveralls
+    - name: npm tests
+      before_install:
+        - nvm install --lts=carbon
+        - nvm use --lts=carbon
+      install: "./travis-scripts/npm-install.sh"
+      script: npm run test
