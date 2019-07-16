@@ -1,10 +1,9 @@
 .image-feature {
-    margin-bottom: $gutter;
+  margin-bottom: $gutter;
 
-    &__image {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
