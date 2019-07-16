@@ -12,17 +12,26 @@
 @import 'base/layout';
 
 // Components
+// Ordered alphabetically
+@import 'components/app';
 @import 'components/burger';
 @import 'components/button';
 @import 'components/card';
+@import 'components/column-spacing';
+@import 'components/donate-form';
 @import 'components/footer';
 @import 'components/footer-links';
 @import 'components/form';
 @import 'components/form-item';
 @import 'components/header';
+@import 'components/heading';
 @import 'components/icon';
+@import 'components/image-feature';
+@import 'components/introduction';
 @import 'components/link';
+@import 'components/logo-showcase';
 @import 'components/nav-item';
+@import 'components/payments';
 @import 'components/primary-nav';
 @import 'components/rich-text';
-@import 'components/section';
+@import 'components/tabs';

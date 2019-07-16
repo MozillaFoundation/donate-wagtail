@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block meta_tags %}
     <meta name="twitter:card" content="summary" />
@@ -17,16 +18,16 @@
     <nav class="primary-nav" role="navigation" aria-label="Primary" data-primary-nav>
         <ul class="primary-nav__container" role="menubar">
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/initiatives">Initiatives</a>
+                <a class="nav-item__link" href="https://foundation.mozilla.org/initiatives" data-nav-tab-index>{% trans "Initiatives" %}</a>
             </li>
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/participate">Participate</a>
+                <a class="nav-item__link" href="https://foundation.mozilla.org/participate" data-nav-tab-index>{% trans "Participate" %}</a>
             </li>
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/internet-health">Internet&nbsp;Health</a>
+                <a class="nav-item__link" href="https://foundation.mozilla.org/internet-health" data-nav-tab-index>{% trans "Internet&nbsp;Health" %}</a>
             </li>
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/about">About&nbsp;Us</a>
+                <a class="nav-item__link" href="https://foundation.mozilla.org/about" data-nav-tab-index>{% trans "About&nbsp;Us" %}</a>
             </li>
         </ul>
     </nav>
@@ -37,8 +38,8 @@
         <div class="header__container">
 
             <div class="header__menu-toggle">
-                <span class="header__menu-label">Menu</span>
-                <button class="burger" data-menu-toggle aria-haspopup="true" aria-label="Mobile menu toggle">
+                <span class="header__menu-label">{% trans "Menu" %}</span>
+                <button class="burger" data-menu-toggle aria-haspopup="true" aria-label="Menu toggle">
                     <div class="burger__bar burger__bar--top"></div>
                     <div class="burger__bar burger__bar--middle"></div>
                     <div class="burger__bar burger__bar--bottom"></div>
@@ -59,29 +60,29 @@
         <div class="footer__nav footer-links">
             <ul class="footer-links__container">
                 <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">Twitter</a>
+                    <a class="link link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">{% trans "Twitter" %}</a>
                 </li>
                 <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.facebook.com/mozilla" target="_blank" rel="noopener">Facebook</a>
+                    <a class="link link--dark-bg" href="https://www.facebook.com/mozilla" target="_blank" rel="noopener">{% trans "Facebook" %}</a>
                 </li>
                 <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">License</a>
+                    <a class="link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">{% trans "License" %}</a>
                 </li>
                 <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">Participation Guidelines</a>
+                    <a class="link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
                 </li>
                 <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">Legal Notices</a>
+                    <a class="link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">{% trans "Legal Notices" %}</a>
                 </li>
                 <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">Privacy Policy</a>
+                    <a class="link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy Policy" %}</a>
                 </li>
             </ul>
         </div>
         <div class="footer__info">
             <div class="footer__logo">
                 <a class="footer__logo-link" href="https://foundation.mozilla.org">
-                    <img class="footer__logo-image" src="/_images/mozilla-logo-black.svg">
+                    <img class="footer__logo-image" src="/_images/mozilla-logo-black.svg" alt="Mozilla">
                 </a>
             </div>
             <div class="footer__legal">

@@ -1,4 +1,5 @@
 .header {
+    $root: &;
     @include z-index(header);
     $logo-width-desktop: 97px;
     $logo-height-desktop: 28px;
@@ -32,16 +33,6 @@
         background-color: $color--black;
     }
 
-    &__inner {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__inner--top {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
 
     &__menu-toggle {
         width: 28px;
@@ -57,6 +48,14 @@
 
     &__menu-label {
         @include hidden();
+    }
+
+    .app--no-menu & {
+
+        #{$root}__menu-toggle {
+            display: none;
+        }
+
     }
 
 }
