@@ -1,0 +1,201 @@
+from sys import platform
+from shutil import copy
+
+from invoke import task
+
+# Workaround for homebrew installation of Python (https://bugs.python.org/issue22490)
+import os
+os.environ.pop('__PYVENV_LAUNCHER__', None)
+
+ROOT = os.path.dirname(os.path.realpath(__file__))
+
+# Python commands's outputs are not rendering properly. Setting pty for *Nix system and
+# "PYTHONUNBUFFERED" env var for Windows at True.
+if platform == 'win32':
+    PLATFORM_ARG = dict(env={'PYTHONUNBUFFERED': 'True'})
+else:
+    PLATFORM_ARG = dict(pty=True)
+
+
+# Tasks without Docker
+
+@task(optional=['option', 'flag'])
+def manage(ctx, command, option=None, flag=None):
+    """Shorthand to manage.py. inv manage \"[COMMAND] [ARG]\". ex: inv manage \"runserver 3000\""""
+    with ctx.cd(ROOT):
+        ctx.run(f"pipenv run python manage.py {command}", **PLATFORM_ARG)
+
+
+@task
+def runserver(ctx):
+    """Start a web server"""
+    manage(ctx, "runserver 0.0.0.0:8000")
+
+
+@task
+def migrate(ctx):
+    """Updates database schema"""
+    manage(ctx, "migrate", flag="noinput")
+
+
+@task
+def makemigrations(ctx):
+    """Creates new migration(s) for apps"""
+    manage(ctx, "makemigrations")
+
+
+@task
+def test(ctx):
+    """Run tests"""
+    print("Running flake8")
+    ctx.run(f"pipenv run flake8 tasks.py donate/", **PLATFORM_ARG)
+    print("Running tests")
+    manage(ctx, "test --settings=donate.settings_test")
+
+
+@task
+def setup(ctx):
+    """Prepare your dev environment after a fresh git clone"""
+    with ctx.cd(ROOT):
+        print("Setting default environment variables.")
+        if os.path.isfile(".env"):
+            print("Keeping your existing .env")
+        else:
+            print("Creating a new .env")
+            copy("env.default", ".env")
+        print("Installing npm dependencies and build.")
+        ctx.run("npm install && npm run build")
+        print("Installing Python dependencies.")
+        ctx.run("pipenv install --dev")
+        print("Applying database migrations.")
+        migrate(ctx)
+        print("Creating fake data")
+        manage(ctx, "load_fake_data")
+
+        # Windows doesn't support pty, skipping this step
+        if platform == 'win32':
+            print("All done!\n"
+                  "To create an admin user: pipenv run python manage.py createsuperuser\n"
+                  "To start your dev server: inv runserver")
+        else:
+            print("Creating superuser.")
+            ctx.run("pipenv run python manage.py createsuperuser", pty=True)
+            print("All done! To start your dev server, run the following:\n inv runserver")
+
+
+@task(aliases=["catchup"])
+def catch_up(ctx):
+    """Install dependencies and apply migrations"""
+    print("Installing npm dependencies and build.")
+    ctx.run("npm install && npm run build")
+    print("Installing Python dependencies.")
+    ctx.run("pipenv install --dev")
+    print("Applying database migrations.")
+    migrate(ctx)
+
+
+# Tasks with Docker
+
+@task
+def docker_manage(ctx, command):
+    """Shorthand to manage.py. inv docker-manage \"[COMMAND] [ARG]\""""
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose run --rm backend pipenv run python manage.py {command}", **PLATFORM_ARG)
+
+
+@task
+def docker_pipenv(ctx, command):
+    """Shorthand to pipenv. inv docker-pipenv \"[COMMAND] [ARG]\""""
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose run --rm backend pipenv {command}")
+
+
+@task
+def docker_npm(ctx, command):
+    """Shorthand to npm. inv docker-npm \"[COMMAND] [ARG]\""""
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose run --rm watch-static-files npm {command}")
+
+
+@task
+def docker_migrate(ctx):
+    """Updates database schema"""
+    docker_manage(ctx, "migrate --no-input")
+
+
+@task
+def docker_makemigrations(ctx):
+    """Creates new migration(s) for apps"""
+    docker_manage(ctx, "makemigrations")
+
+
+@task
+def docker_test_python(ctx):
+    """Run python tests"""
+    print("Running flake8")
+    ctx.run("docker-compose run --rm backend pipenv run flake8 tasks.py donate/", **PLATFORM_ARG)
+    print("Running tests")
+    docker_manage(ctx, "test --settings=donate.settings_test")
+
+    
+@task
+def docker_test_node(ctx):
+    """Run node tests"""
+    print("Running tests")
+    ctx.run("docker-compose run --rm watch-static-files npm run test", **PLATFORM_ARG)
+
+
+@task
+def docker_nuke_db(ctx):
+    """Delete your database and create a new one with fake data"""
+    print("Stopping services first")
+    ctx.run("docker-compose down")
+    print("Deleting database")
+    ctx.run("docker volume rm donate-wagtail_postgres_data")
+    print("Applying database migrations.")
+    docker_migrate(ctx)
+    print("Creating fake data")
+    docker_manage(ctx, "load_fake_data")
+
+
+@task(aliases=["docker-catchup"])
+def docker_catch_up(ctx):
+    """Rebuild images and apply migrations"""
+    print("Stopping services first")
+    ctx.run("docker-compose down")
+    print("Rebuilding images and install dependencies")
+    ctx.run("docker-compose build")
+    print("Applying database migrations.")
+    docker_migrate(ctx)
+
+
+@task
+def docker_setup(ctx):
+    """Prepare your dev environment after a fresh git clone"""
+    with ctx.cd(ROOT):
+        print("Setting default environment variables.")
+        if os.path.isfile(".env"):
+            print("Keeping your existing .env")
+        else:
+            print("Creating a new .env")
+            copy("env.default", ".env")
+        print("Building Docker images")
+        ctx.run("docker-compose build", **PLATFORM_ARG)
+        print("Applying database migrations.")
+        docker_migrate(ctx)
+        docker_manage(ctx, "load_fake_data")
+
+        # Windows doesn't support pty, skipping this step
+        if platform == 'win32':
+            print("All done!\n"
+                  "To create an admin user:\n"
+                  "docker-compose run --rm backend pipenv run python manage.py createsuperuser\n"
+                  "To start your dev server:\n"
+                  "docker-compose up")
+        else:
+            print("Creating superuser.")
+            ctx.run(
+                "docker-compose run --rm backend pipenv run python manage.py createsuperuser",
+                pty=True
+            )
+            print("All done! To start your dev server, run the following:\n docker-compose up")
