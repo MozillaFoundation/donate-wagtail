@@ -31,4 +31,15 @@ let main = {
   }
 };
 
-module.exports = [main];
+let payments = {
+  entry: `./source/js/payments.js`,
+  output: {
+    path: frontendPath,
+    filename: `payments.compiled.js`
+  },
+  module: {
+    rules
+  }
+};
+
+module.exports = [main, payments];

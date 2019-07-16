@@ -1,0 +1,24 @@
+.payments {
+    &__braintree-error {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: $color--light-red;
+        color: $color--white;
+    }
+
+    &__braintree-hosted-field {
+        height: 52px;
+        background-color: $color--grey-05;
+        padding: 10px;
+        border: 1px solid $color--grey-40;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 370px;
+    }
+}
+
+
+// Vendor-generated classes
+.braintree-hosted-fields-invalid {
+    border: 1px solid $color--red;
+}

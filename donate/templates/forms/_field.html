@@ -1,0 +1,9 @@
+<div class="form-item__wrapper">
+
+    {{ field }}
+
+    {% if widget_type == 'checkbox_input' %}
+        {% include "forms/_label.html" %}
+    {% endif %}
+
+</div>
