@@ -7,7 +7,7 @@
 {% block content %}
 <div id="payments__payment-wrapper">
 
-    <h1 class="wrapper--small-width">{% blocktrans with amount=payment_amount|floatformat:"-2" %}You're making a single donation of ${{ amount }}{% endblocktrans %}</h1>
+    <h1 class="wrapper--small-width">{% blocktrans with amount=payment_amount|floatformat:"-2" %}You're donating ${{ amount }}{% endblocktrans %}</h1>
 
     <form class="form" id="payments__braintree-form" method="post" data-token="{{ braintree_tokenization_key }}" data-amount="{{ payment_amount|floatformat }}">
         {% csrf_token %}

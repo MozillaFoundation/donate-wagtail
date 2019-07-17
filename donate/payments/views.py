@@ -19,7 +19,7 @@ from .utils import freeze_personal_details_for_session
 logger = logging.getLogger(__name__)
 
 
-class BraintreePaymentView(FormView):
+class BraintreePaymentMixin:
     """
     Mixin for processing Braintree payments.
 
@@ -45,18 +45,58 @@ class BraintreePaymentView(FormView):
         self.request.session['gateway_address_errors'] = errors
         return HttpResponseRedirect(self.get_personal_details_url())
 
+    def dispatch(self, *args, **kwargs):
+        self.personal_details = self.request.session.get('personal_details')
+        # If we don't have personal_details in the session, the user
+        # hasn't completed the previous step, so send them to it.
+        if not self.personal_details:
+            return HttpResponseRedirect(self.get_personal_details_url())
+        return super().dispatch(*args, **kwargs)
+
     def post(self, *args, **kwargs):
         # Clear any existing address errors from the session
         self.request.session['gateway_address_errors'] = None
         return super().post(*args, **kwargs)
 
-    def form_valid(self, form):
-        if self.personal_details is None:
-            raise ValueError('personal_details instance variable has not been set.')
+    def process_braintree_error_result(self, result, form):
+        """
+        Parse an error result object from Braintree, and look for errors
+        that we can report back to the user. If we find any, add these to the
+        form.
+        """
+        if form.cleaned_data['payment_mode'] == 'card':
+            default_error_message = _('Sorry there was an error processing your payment. '
+                                      'Please try again later or use a different card.')
 
-        personal_details = self.personal_details
-        custom_fields = self.get_custom_fields(form)
+            if result.errors.deep_errors:
+                # Validation errors exist - check if they are meaningful to the user
+                try:
+                    self.check_for_address_errors(result)
+                except InvalidAddress as e:
+                    return self.report_invalid_address(e.errors)
 
+                errors_to_report = self.filter_user_card_errors(result)
+                if errors_to_report:
+                    for error_msg in errors_to_report:
+                        form.add_error(None, error_msg)
+                else:
+                    form.add_error(None, default_error_message)
+            else:
+                # Processor decline or some other exception
+                form.add_error(None, default_error_message)
+        else:
+            # Any Paypal validation errors would arise in the gateway modal,
+            # so if it fails after that, there's not much we can usefully report.
+            default_error_message = _('Sorry there was an error processing your payment. '
+                                      'Please try again.')
+            form.add_error(None, default_error_message)
+
+        return self.form_invalid(form)
+
+    def get_custom_fields(self, form):
+        return {}
+
+    def get_address_info(self, personal_details):
         address_info = {
             'street_address': personal_details['address_line_1'],
             'locality': personal_details['town'],
@@ -67,59 +107,7 @@ class BraintreePaymentView(FormView):
         if personal_details.get('region'):
             address_info['region'] = personal_details['region']
 
-        result = gateway.transaction.sale({
-            'amount': floatformat(personal_details['amount'], 2),
-            'billing': address_info,
-            'customer': {
-                'email': personal_details['email'],
-            },
-            # Custom fields need to be set up in Braintree before they will be accepted.
-            'custom_fields': custom_fields,
-            'payment_method_nonce': form.cleaned_data['braintree_nonce'],
-            'options': {
-                'submit_for_settlement': True
-            }
-        })
-
-        if result.is_success:
-            return self.success(result, form)
-        else:
-            logger.error(
-                'Failed Braintree transaction: {}'.format(result.message),
-                extra={'result': result}
-            )
-
-            if form.cleaned_data['payment_mode'] == 'card':
-                default_error_message = _('Sorry there was an error processing your payment. '
-                                          'Please try again later or use a different card.')
-
-                if result.errors.deep_errors:
-                    # Validation errors exist - check if they are meaningful to the user
-                    try:
-                        self.check_for_address_errors(result)
-                    except InvalidAddress as e:
-                        return self.report_invalid_address(e.errors)
-
-                    errors_to_report = self.filter_user_card_errors(result)
-                    if errors_to_report:
-                        for error_msg in errors_to_report:
-                            form.add_error(None, error_msg)
-                    else:
-                        form.add_error(None, default_error_message)
-                else:
-                    # Processor decline or some other exception
-                    form.add_error(None, default_error_message)
-            else:
-                # Any Paypal validation errors would arise in the gateway modal,
-                # so if it fails after that, there's not much we can usefully report.
-                default_error_message = _('Sorry there was an error processing your payment. '
-                                          'Please try again.')
-                form.add_error(None, default_error_message)
-
-            return self.form_invalid(form)
-
-    def get_custom_fields(self, form):
-        return {}
+        return address_info
 
     def get_merchant_account_id(self):
         return settings.BRAINTREE_MERCHANT_ID
@@ -148,7 +136,14 @@ class BraintreePaymentView(FormView):
                 # back to the personal details view so that the use can try to correct them.
                 raise InvalidAddress(errors=[errors[error.code]])
 
+    def get_transaction_details_for_session(self, result, form):
+        raise NotImplementedError()
+
     def success(self, result, form):
+        # Move personal details and transaction ID to a new session variable
+        details = self.get_transaction_details_for_session(result, form)
+        self.request.session['completed_transaction_details'] = freeze_personal_details_for_session(details)
+        del self.request.session['personal_details']
         return HttpResponseRedirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
@@ -165,6 +160,7 @@ class BraintreePaymentView(FormView):
 
 class PersonalDetailsView(FormView):
     form_class = PersonalDetailsForm
+    is_monthly = False
     template_name = 'payment/personal_details.html'
 
     def get(self, request, *args, **kwargs):
@@ -199,19 +195,14 @@ class PersonalDetailsView(FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('payments:card_single')
+        if self.is_monthly:
+            return reverse('payments:card_monthly')
+        else:
+            return reverse('payments:card_single')
 
 
-class SingleCardPaymentView(BraintreePaymentView):
-    template_name = 'payment/card_single_payment.html'
-
-    def dispatch(self, *args, **kwargs):
-        self.personal_details = self.request.session.get('personal_details')
-        # If we don't have personal_details in the session, the user
-        # hasn't completed the previous step, so send them to it.
-        if not self.personal_details:
-            return HttpResponseRedirect(reverse('payments:personal_details'))
-        return super().dispatch(*args, **kwargs)
+class SingleCardPaymentView(BraintreePaymentMixin, FormView):
+    template_name = 'payment/card_details.html'
 
     def get_personal_details_url(self):
         params = {
@@ -221,19 +212,103 @@ class SingleCardPaymentView(BraintreePaymentView):
         params = urllib.parse.urlencode(params)
         return reverse('payments:personal_details') + '?' + params
 
-    def get_custom_fields(self, form):
-        return {}
+    def form_valid(self, form):
+        if self.personal_details is None:
+            raise ValueError('personal_details instance variable has not been set.')
 
-    def success(self, result, form):
-        # Move personal details and transaction ID to a new session variable
+        result = gateway.transaction.sale({
+            'amount': floatformat(self.personal_details['amount'], 2),
+            'billing': self.get_address_info(self.personal_details),
+            'customer': {
+                'email': self.personal_details['email'],
+            },
+            # Custom fields need to be set up in Braintree before they will be accepted.
+            'custom_fields': self.get_custom_fields(form),
+            'payment_method_nonce': form.cleaned_data['braintree_nonce'],
+            'options': {
+                'submit_for_settlement': True
+            }
+        })
+
+        if result.is_success:
+            return self.success(result, form)
+        else:
+            logger.error(
+                'Failed Braintree transaction: {}'.format(result.message),
+                extra={'result': result}
+            )
+            return self.process_braintree_error_result(result, form)
+
+    def get_transaction_details_for_session(self, result, form):
         details = self.personal_details.copy()
         details.update({
             'transaction_id': result.transaction.id,
             'payment_method': form.cleaned_data['payment_mode'],
         })
-        self.request.session['completed_transaction_details'] = freeze_personal_details_for_session(details)
-        del self.request.session['personal_details']
-        return super().success(result, form)
+        return details
+
+    def get_success_url(self):
+        return reverse('payments:completed')
+
+
+class MonthlyCardPaymentView(BraintreePaymentMixin, FormView):
+    template_name = 'payment/card_details.html'
+
+    def get_personal_details_url(self):
+        params = {
+            'amount': self.personal_details['amount'],
+        }
+
+        params = urllib.parse.urlencode(params)
+        return reverse('payments:personal_details_monthly') + '?' + params
+
+    def form_valid(self, form):
+        if self.personal_details is None:
+            raise ValueError('personal_details instance variable has not been set.')
+
+        # Create a customer and payment method for this customsr
+        result = gateway.customer.create({
+            'email': self.personal_details['email'],
+            'payment_method_nonce': form.cleaned_data['braintree_nonce'],
+            'custom_fields': self.get_custom_fields(form),
+            'credit_card': {
+                'billing_address': self.get_address_info(self.personal_details)
+            }
+        })
+
+        if result.is_success:
+            payment_method = result.customer.payment_methods[0]
+        else:
+            logger.error(
+                'Failed to create Braintree customer: {}'.format(result.message),
+                extra={'result': result}
+            )
+            self.process_braintree_error_result(result, form)
+            return self.form_invalid(form)
+
+        # Create a subcription against the payment method
+        result = gateway.subscription.create({
+            'plan_id': 'usd',   # TODO we need to map this to per-currency plans in Braintree
+            'payment_method_token': payment_method.token,
+            'price': floatformat(self.personal_details['amount'], 2),
+        })
+
+        if result.is_success:
+            return self.success(result, form)
+        else:
+            logger.error(
+                'Failed to create Braintree subscription: {}'.format(result.message),
+                extra={'result': result}
+            )
+            return self.process_braintree_error_result(result, form)
+
+    def get_transaction_details_for_session(self, result, form):
+        details = self.personal_details.copy()
+        details.update({
+            'transaction_id': result.subscription.id,
+            'payment_method': form.cleaned_data['payment_mode'],
+        })
+        return details
 
     def get_success_url(self):
         return reverse('payments:completed')
