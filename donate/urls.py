@@ -18,7 +18,7 @@ private_urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('pay/', include(payments_urls)),
+    path('', include(payments_urls)),
 ]
 
 

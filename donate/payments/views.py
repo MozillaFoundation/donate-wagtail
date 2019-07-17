@@ -3,7 +3,7 @@ import logging
 import urllib
 
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.template.defaultfilters import floatformat
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -11,7 +11,7 @@ from django.views.generic import FormView, TemplateView
 
 from braintree import ErrorCodes
 
-from . import gateway
+from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import BraintreePaymentForm, PersonalDetailsForm
 from .utils import freeze_personal_details_for_session
@@ -64,31 +64,24 @@ class BraintreePaymentMixin:
         that we can report back to the user. If we find any, add these to the
         form.
         """
-        if form.cleaned_data['payment_mode'] == 'card':
-            default_error_message = _('Sorry there was an error processing your payment. '
-                                      'Please try again later or use a different card.')
+        default_error_message = _('Sorry there was an error processing your payment. '
+                                  'Please try again later or use a different payment method.')
 
-            if result.errors.deep_errors:
-                # Validation errors exist - check if they are meaningful to the user
-                try:
-                    self.check_for_address_errors(result)
-                except InvalidAddress as e:
-                    return self.report_invalid_address(e.errors)
+        if result.errors.deep_errors:
+            # Validation errors exist - check if they are meaningful to the user
+            try:
+                self.check_for_address_errors(result)
+            except InvalidAddress as e:
+                return self.report_invalid_address(e.errors)
 
-                errors_to_report = self.filter_user_card_errors(result)
-                if errors_to_report:
-                    for error_msg in errors_to_report:
-                        form.add_error(None, error_msg)
-                else:
-                    form.add_error(None, default_error_message)
+            errors_to_report = self.filter_user_card_errors(result)
+            if errors_to_report:
+                for error_msg in errors_to_report:
+                    form.add_error(None, error_msg)
             else:
-                # Processor decline or some other exception
                 form.add_error(None, default_error_message)
         else:
-            # Any Paypal validation errors would arise in the gateway modal,
-            # so if it fails after that, there's not much we can usefully report.
-            default_error_message = _('Sorry there was an error processing your payment. '
-                                      'Please try again.')
+            # Processor decline or some other exception
             form.add_error(None, default_error_message)
 
         return self.form_invalid(form)
@@ -146,22 +139,31 @@ class BraintreePaymentMixin:
         del self.request.session['personal_details']
         return HttpResponseRedirect(self.get_success_url())
 
+    def get_braintree_params(self):
+        return {
+            'use_sandbox': settings.BRAINTREE_USE_SANDBOX
+        }
+
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx.update({
             'braintree_tokenization_key': settings.BRAINTREE_TOKENIZATION_KEY,
             'payment_amount': self.personal_details['amount'],
-            'braintree_params': {
-                'use_sandbox': settings.BRAINTREE_USE_SANDBOX,
-            }
+            'braintree_params': self.get_braintree_params(),
         })
         return ctx
 
 
 class PersonalDetailsView(FormView):
     form_class = PersonalDetailsForm
-    is_monthly = False
     template_name = 'payment/personal_details.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not (kwargs['frequency'] in constants.FREQUENCIES and kwargs['method'] in constants.METHODS):
+            raise Http404()
+        self.payment_method = kwargs['method']
+        self.payment_frequency = kwargs['frequency']
+        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         # Ensure that the donation amount is a valid currency decimal
@@ -177,8 +179,7 @@ class PersonalDetailsView(FormView):
         # If we have personal details in the session, then repopulate them into the form
         # excepting values that should be fetched from GET params
         initial = self.request.session.get('personal_details', {})
-        for key in ['amount', 'frequency']:
-            initial.pop(key, None)
+        initial.pop('amount', None)
 
         amount = self.request.GET.get('amount', 50)
         try:
@@ -195,22 +196,27 @@ class PersonalDetailsView(FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        if self.is_monthly:
-            return reverse('payments:card_monthly')
+        return reverse(f'payments:{self.payment_method}_{self.payment_frequency}')
+
+
+class SinglePaymentView(BraintreePaymentMixin, FormView):
+    method = None
+
+    def get_template_names(self):
+        if self.method == constants.METHOD_CARD:
+            return ['payment/card_details.html']
         else:
-            return reverse('payments:card_single')
-
-
-class SingleCardPaymentView(BraintreePaymentMixin, FormView):
-    template_name = 'payment/card_details.html'
+            return ['payment/paypal.html']
 
     def get_personal_details_url(self):
-        params = {
-            'amount': self.personal_details['amount'],
-        }
-
+        params = {}
+        if hasattr(self, 'personal_details'):
+            params['amount'] = self.personal_details['amount']
         params = urllib.parse.urlencode(params)
-        return reverse('payments:personal_details') + '?' + params
+        return reverse(
+            'payments:personal_details',
+            kwargs={'method': self.method, 'frequency': constants.FREQUENCY_SINGLE}
+        ) + '?' + params
 
     def form_valid(self, form):
         if self.personal_details is None:
@@ -243,24 +249,38 @@ class SingleCardPaymentView(BraintreePaymentMixin, FormView):
         details = self.personal_details.copy()
         details.update({
             'transaction_id': result.transaction.id,
-            'payment_method': form.cleaned_data['payment_mode'],
+            'payment_method': self.method,
         })
         return details
+
+    def get_braintree_params(self):
+        params = super().get_braintree_params()
+        if self.method == constants.METHOD_PAYPAL:
+            params['flow'] = 'checkout'
+        return params
 
     def get_success_url(self):
         return reverse('payments:completed')
 
 
-class MonthlyCardPaymentView(BraintreePaymentMixin, FormView):
-    template_name = 'payment/card_details.html'
+class MonthlyPaymentView(BraintreePaymentMixin, FormView):
+    method = None
+
+    def get_template_names(self):
+        if self.method == constants.METHOD_CARD:
+            return ['payment/card_details.html']
+        else:
+            return ['payment/paypal.html']
 
     def get_personal_details_url(self):
-        params = {
-            'amount': self.personal_details['amount'],
-        }
-
+        params = {}
+        if hasattr(self, 'personal_details'):
+            params['amount'] = self.personal_details['amount']
         params = urllib.parse.urlencode(params)
-        return reverse('payments:personal_details_monthly') + '?' + params
+        return reverse(
+            'payments:personal_details',
+            kwargs={'method': self.method, 'frequency': constants.FREQUENCY_MONTHLY}
+        ) + '?' + params
 
     def form_valid(self, form):
         if self.personal_details is None:
@@ -306,9 +326,15 @@ class MonthlyCardPaymentView(BraintreePaymentMixin, FormView):
         details = self.personal_details.copy()
         details.update({
             'transaction_id': result.subscription.id,
-            'payment_method': form.cleaned_data['payment_mode'],
+            'payment_method': self.method,
         })
         return details
+
+    def get_braintree_params(self):
+        params = super().get_braintree_params()
+        if self.method == constants.METHOD_PAYPAL:
+            params['flow'] = 'vault'
+        return params
 
     def get_success_url(self):
         return reverse('payments:completed')

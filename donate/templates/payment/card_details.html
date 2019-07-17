@@ -13,7 +13,6 @@
         {% csrf_token %}
 
         {% render_form_field form.braintree_nonce %}
-        {% render_form_field form.payment_mode %}
     </form>
 
     <div id="payments__braintree-errors-card" hidden></div>
@@ -47,5 +46,5 @@
 
 {% block extra_js %}
     {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="/_js/payments.compiled.js"></script>
+    <script src="/_js/payments-card.compiled.js"></script>
 {% endblock %}

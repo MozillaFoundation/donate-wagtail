@@ -26,15 +26,26 @@ let main = {
   }
 };
 
-let payments = {
-  entry: `./source/js/payments.js`,
+let paymentsCard = {
+  entry: `./source/js/payments-card.js`,
   output: {
     path: frontendPath,
-    filename: `payments.compiled.js`
+    filename: `payments-card.compiled.js`
   },
   module: {
     rules
   }
 };
 
-module.exports = [main, payments];
+let paymentsPaypal = {
+  entry: `./source/js/payments-paypal.js`,
+  output: {
+    path: frontendPath,
+    filename: `payments-paypal.compiled.js`
+  },
+  module: {
+    rules
+  }
+};
+
+module.exports = [main, paymentsCard, paymentsPaypal];

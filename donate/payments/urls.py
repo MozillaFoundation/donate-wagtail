@@ -1,14 +1,40 @@
 from django.urls import path
 
-from . import views
+from . import constants, views
+
 
 app_name = 'payments'
 
 
 urlpatterns = [
-    path('', views.PersonalDetailsView.as_view(), name='personal_details'),
-    path('monthly/', views.PersonalDetailsView.as_view(is_monthly=True), name='personal_details_monthly'),
-    path('card/', views.SingleCardPaymentView.as_view(), name='card_single'),
-    path('monthly/card/', views.MonthlyCardPaymentView.as_view(), name='card_monthly'),
-    path('thank-you/', views.ThankYouView.as_view(), name='completed'),
+    path(
+        '<str:method>/<str:frequency>/',
+        views.PersonalDetailsView.as_view(),
+        name='personal_details'
+    ),
+    path(
+        'card/single/pay/',
+        views.SinglePaymentView.as_view(method=constants.METHOD_CARD),
+        name='card_single'
+    ),
+    path(
+        'card/monthly/pay/',
+        views.MonthlyPaymentView.as_view(method=constants.METHOD_CARD),
+        name='card_monthly'
+    ),
+    path(
+        'paypal/single/pay/',
+        views.SinglePaymentView.as_view(method=constants.METHOD_PAYPAL),
+        name='paypal_single'
+    ),
+    path(
+        'paypal/monthly/pay/',
+        views.MonthlyPaymentView.as_view(method=constants.METHOD_PAYPAL),
+        name='paypal_monthly'
+    ),
+    path(
+        'thank-you/',
+        views.ThankYouView.as_view(),
+        name='completed'
+    ),
 ]
