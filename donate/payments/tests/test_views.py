@@ -257,4 +257,4 @@ class SingleCardPaymentViewTestCase(TestCase):
 
     def test_get_personal_details_url(self):
         url = self.view.get_personal_details_url()
-        self.assertEqual(url, '/pay/?amount=50')
+        self.assertEqual(url, '/en/pay/?amount=50')
