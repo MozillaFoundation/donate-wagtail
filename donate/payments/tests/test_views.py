@@ -77,7 +77,7 @@ class PersonalDetailsViewTestCase(TestCase):
         view = PersonalDetailsView()
         view.payment_method = 'card'
         view.payment_frequency = 'monthly'
-        self.assertEqual(view.get_success_url(), '/card/monthly/pay/')
+        self.assertEqual(view.get_success_url(), '/en/card/monthly/pay/')
 
 
 class BraintreePaymentMixinTestCase(TestCase):
@@ -312,7 +312,7 @@ class SinglePaymentViewTestCase(TestCase):
 
     def test_get_personal_details_url(self):
         url = self.view.get_personal_details_url()
-        self.assertEqual(url, '/card/single/?amount=50')
+        self.assertEqual(url, '/en/card/single/?amount=50')
 
     def test_get_braintree_params_paypal(self):
         self.view.method = 'paypal'
@@ -395,7 +395,7 @@ class MonthlyPaymentViewTestCase(TestCase):
 
     def test_get_personal_details_url(self):
         url = self.view.get_personal_details_url()
-        self.assertEqual(url, '/card/monthly/?amount=50')
+        self.assertEqual(url, '/en/card/monthly/?amount=50')
 
     def test_get_braintree_params_paypal(self):
         self.view.method = 'paypal'
