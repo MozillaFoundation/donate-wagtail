@@ -4,7 +4,6 @@ import hostedFields from "braintree-web/hosted-fields";
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
-    paymentModeInput = document.getElementById("id_payment_mode"),
     submitButton = document.getElementById("payments__payment-submit"),
     token = paymentForm.getAttribute("data-token"),
     loadingErrorMsg =
@@ -105,7 +104,6 @@ function setupBraintree() {
               }
 
               nonceInput.value = payload.nonce;
-              paymentModeInput.value = "card";
               paymentForm.submit();
             });
           } else {
