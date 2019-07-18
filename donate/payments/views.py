@@ -226,6 +226,8 @@ class SinglePaymentView(BraintreePaymentMixin, FormView):
             'amount': floatformat(self.personal_details['amount'], 2),
             'billing': self.get_address_info(self.personal_details),
             'customer': {
+                'first_name': self.personal_details['first_name'],
+                'last_name': self.personal_details['last_name'],
                 'email': self.personal_details['email'],
             },
             # Custom fields need to be set up in Braintree before they will be accepted.
@@ -288,6 +290,8 @@ class MonthlyPaymentView(BraintreePaymentMixin, FormView):
 
         # Create a customer and payment method for this customsr
         result = gateway.customer.create({
+            'first_name': self.personal_details['first_name'],
+            'last_name': self.personal_details['last_name'],
             'email': self.personal_details['email'],
             'payment_method_nonce': form.cleaned_data['braintree_nonce'],
             'custom_fields': self.get_custom_fields(form),

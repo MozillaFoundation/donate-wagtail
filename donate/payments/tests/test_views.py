@@ -84,7 +84,8 @@ class BraintreePaymentMixinTestCase(TestCase):
 
     def setUp(self):
         self.details = {
-            'name': 'Alice',
+            'first_name': 'Alice',
+            'last_name': 'Bob',
             'email': 'alice@example.com',
             'phone_number': '+442088611222',
             'address_line_1': '1 Oak Tree Hill',
@@ -254,7 +255,8 @@ class SinglePaymentViewTestCase(TestCase):
 
     def setUp(self):
         self.details = {
-            'name': 'Alice',
+            'first_name': 'Alice',
+            'last_name': 'Bob',
             'email': 'alice@example.com',
             'address_line_1': '1 Oak Tree Hill',
             'town': 'New York',
@@ -288,6 +290,8 @@ class SinglePaymentViewTestCase(TestCase):
                 'country_code_alpha2': self.details['country'],
             },
             'customer': {
+                'first_name': self.details['first_name'],
+                'last_name': self.details['last_name'],
                 'email': self.details['email'],
             },
             'custom_fields': {},
@@ -324,7 +328,8 @@ class MonthlyPaymentViewTestCase(TestCase):
 
     def setUp(self):
         self.details = {
-            'name': 'Alice',
+            'first_name': 'Alice',
+            'last_name': 'Bob',
             'email': 'alice@example.com',
             'address_line_1': '1 Oak Tree Hill',
             'town': 'New York',
@@ -351,6 +356,8 @@ class MonthlyPaymentViewTestCase(TestCase):
             self.view.form_valid(form)
 
         mock_gateway.customer.create.assert_called_once_with({
+            'first_name': self.details['first_name'],
+            'last_name': self.details['last_name'],
             'email': self.details['email'],
             'payment_method_nonce': 'hello-braintree',
             'custom_fields': {},
