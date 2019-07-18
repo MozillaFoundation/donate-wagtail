@@ -6,7 +6,8 @@ from django_countries.fields import CountryField
 
 class PersonalDetailsForm(forms.Form):
     # max_length on all the fields here is to comply with Braintree validation requirements.
-    name = forms.CharField(label=_('Name'), max_length=255)
+    first_name = forms.CharField(label=_('First name'), max_length=255)
+    last_name = forms.CharField(label=_('Last name'), max_length=255)
     email = forms.EmailField(label=_('Email'), max_length=255)
     address_line_1 = forms.CharField(label=_('Street'), max_length=255)
     town = forms.CharField(label=_('Town'), max_length=255)
@@ -16,10 +17,4 @@ class PersonalDetailsForm(forms.Form):
 
 
 class BraintreePaymentForm(forms.Form):
-    PAYMENT_MODES = (
-        ('card', 'Credit Card'),
-        ('paypal', 'Paypal'),
-    )
-
     braintree_nonce = forms.CharField(widget=forms.HiddenInput)
-    payment_mode = forms.ChoiceField(widget=forms.HiddenInput, choices=PAYMENT_MODES)
