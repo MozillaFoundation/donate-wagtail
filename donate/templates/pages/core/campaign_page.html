@@ -6,3 +6,7 @@
     {% image page.hero_image original %}
     <p>{{ page.lead_text }}</p>
 {% endblock %}
+
+{% block extra_js %}
+    {{ currencies|json_script:"currencies" }}
+{% endblock %}

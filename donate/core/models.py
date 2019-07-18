@@ -1,4 +1,7 @@
+from decimal import Decimal
+
 from django.db import models
+from django.utils.functional import cached_property
 
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.core.blocks import DecimalBlock, StreamBlock
@@ -11,7 +14,24 @@ from modelcluster.fields import ParentalKey
 from . import constants
 
 
-class LandingPage(Page):
+class DonationPage(Page):
+
+    @cached_property
+    def currencies(self):
+        return constants.CURRENCIES.copy()
+
+    def get_context(self, request):
+        ctx = super().get_context(request)
+        ctx.update({
+            'currencies': self.currencies
+        })
+        return ctx
+
+    class Meta:
+        abstract = True
+
+
+class LandingPage(DonationPage):
     template = 'pages/core/landing_page.html'
 
     # Only allow creating landing pages at the root level
@@ -31,7 +51,7 @@ class LandingPage(Page):
     ]
 
 
-class CampaignPage(Page):
+class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
     parent_page_types = ['core.LandingPage']
 
@@ -47,6 +67,25 @@ class CampaignPage(Page):
         FieldPanel('lead_text'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
     ]
+
+    @classmethod
+    def amount_stream_to_list(cls, stream):
+        return [Decimal(child.value) for child in stream]
+
+    @classmethod
+    def get_presets(cls, override):
+        return {
+            'single': cls.amount_stream_to_list(override.single_options),
+            'monthly': cls.amount_stream_to_list(override.monthly_options),
+        }
+
+    @cached_property
+    def currencies(self):
+        currencies = super().currencies
+        # Apply overrides for preset options
+        for override in self.donation_amounts.all():
+            currencies[override.currency]['presets'] = self.get_presets(override)
+        return currencies
 
 
 class AmountBlock(StreamBlock):
