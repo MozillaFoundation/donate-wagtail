@@ -1,11 +1,5 @@
 let path = require(`path`);
-let frontendPath = path.resolve(
-  __dirname,
-  `donate`,
-  `donate`,
-  `frontend`,
-  `_js`
-);
+let frontendPath = path.resolve(__dirname, `donate`, `frontend`, `_js`);
 
 let rules = [
   {
@@ -32,4 +26,15 @@ let main = {
   }
 };
 
-module.exports = [main];
+let payments = {
+  entry: `./source/js/payments.js`,
+  output: {
+    path: frontendPath,
+    filename: `payments.compiled.js`
+  },
+  module: {
+    rules
+  }
+};
+
+module.exports = [main, payments];

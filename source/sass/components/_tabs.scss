@@ -1,0 +1,27 @@
+.tabs {
+  &__item {
+    @include font-size(xxs);
+    display: block;
+    padding: 18px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.86px;
+    line-height: 28px;
+    text-transform: uppercase;
+
+    &--selected {
+      background-color: $color--primary;
+      color: $color--white;
+
+      &:hover {
+        color: $color--white;
+      }
+    }
+  }
+
+  &__panel {
+    &--hidden {
+      display: none;
+    }
+  }
+}

@@ -31,6 +31,12 @@ env = environ.Env(
     XSS_PROTECTION=bool,
     REDIS_URL=(str, ''),
     RANDOM_SEED=(int, None),
+    # Braintree
+    BRAINTREE_USE_SANDBOX=(bool, True),
+    BRAINTREE_MERCHANT_ID=(str, ''),
+    BRAINTREE_PUBLIC_KEY=(str, ''),
+    BRAINTREE_PRIVATE_KEY=(str, ''),
+    BRAINTREE_TOKENIZATION_KEY=(str, ''),
 )
 
 # Read in the environment
@@ -54,10 +60,9 @@ if HEROKU_APP_NAME:
     ALLOWED_HOSTS.append(HEROKU_APP_NAME + '.herokuapp.com')
 
 INSTALLED_APPS = [
-    'donate.home',      # Unused - drop once migrations to remove this model have been applied
-    'donate.navigation',
     'donate.users',
     'donate.core',
+    'donate.payments',
 
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -316,6 +321,13 @@ REFERRER_POLICY = 'no-referrer-when-downgrade'
 AUTH_USER_MODEL = 'users.User'
 
 RANDOM_SEED = env('RANDOM_SEED')
+
+# Braintree
+BRAINTREE_USE_SANDBOX = env('BRAINTREE_USE_SANDBOX')
+BRAINTREE_MERCHANT_ID = env('BRAINTREE_MERCHANT_ID')
+BRAINTREE_PUBLIC_KEY = env('BRAINTREE_PUBLIC_KEY')
+BRAINTREE_PRIVATE_KEY = env('BRAINTREE_PRIVATE_KEY')
+BRAINTREE_TOKENIZATION_KEY = env('BRAINTREE_TOKENIZATION_KEY')
 
 # Wagtail settings
 

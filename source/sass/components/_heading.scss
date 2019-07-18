@@ -1,0 +1,21 @@
+.heading {
+  @include heading-text();
+  font-weight: $weight--bold;
+  margin-bottom: 0;
+
+  &--primary {
+    @include font-size(xl);
+  }
+
+  &--secondary {
+    @include font-size(l);
+  }
+
+  &--tertiary {
+    @include font-size(m);
+  }
+
+  &--bottom-margin {
+    margin-bottom: ($gutter / 2);
+  }
+}

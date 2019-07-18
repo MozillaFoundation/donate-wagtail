@@ -20,17 +20,46 @@
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
     },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_LOCATION": {
+      "required": true
+    },
+    "AWS_S3_CUSTOM_DOMAIN": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_STORAGE_BUCKET_NAME": {
+      "required": true
+    },
+    "BRAINTREE_MERCHANT_ID": {
+      "required": true
+    },
+    "BRAINTREE_TOKENIZATION_KEY": {
+      "required": true
+    },
+    "BRAINTREE_PUBLIC_KEY": {
+      "required": true
+    },
+    "BRAINTREE_PRIVATE_KEY": {
+      "required": true
+    },
+    "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
     "CORS_WHITELIST": "*",
     "DEBUG": "False",
     "NPM_CONFIG_PRODUCTION": "true",
-    "USE_S3": "False",
+    "USE_S3": "True",
     "SET_HSTS": "True",
     "SSL_REDIRECT": "True",
     "X_FRAME_OPTIONS": "DENY",
     "XSS_PROTECTION": "True"
   },
   "scripts": {
-    "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin"
+    "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin",
+    "pr-predestroy": "python manage.py clear_fake_data"
   }
 }

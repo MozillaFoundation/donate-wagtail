@@ -1,23 +1,23 @@
 .icon {
-    width: 20px;
-    height: 20px;
-    transition: fill $transition;
-    fill: $color--white;
+  width: 20px;
+  height: 20px;
+  transition: fill $transition;
+  fill: $color--white;
 
-    &:hover {
-        fill: darken($color--white, 20%);
-    }
-
-    &--home {
-        width: 15px;
-        height: 15px;
-        margin-right: 5px;
-        fill: $color--primary;
+  &:hover {
+    fill: darken($color--white, 20%);
   }
 
-    &--footer-social {
-        @include media-query(tablet-portrait) {
-            margin-right: 10px;
-        }
-	}
+  &--home {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    fill: $color--primary;
+  }
+
+  &--footer-social {
+    @include media-query(tablet-portrait) {
+      margin-right: 10px;
+    }
+  }
 }

@@ -1,0 +1,38 @@
+.nav-item {
+  $root: &;
+
+  &--primary {
+    @include font-size(m);
+    font-weight: $weight--bold;
+
+    @include media-query(tablet-landscape) {
+      padding-right: ($grid);
+    }
+
+    #{$root}__link {
+      color: $color--white;
+
+      @include media-query(tablet-landscape) {
+        color: $color--black;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .primary-nav & {
+    #{$root}__link {
+      pointer-events: none;
+    }
+  }
+
+  .primary-nav.is-visible & {
+    #{$root}__link {
+      pointer-events: auto;
+    }
+  }
+}
