@@ -19,7 +19,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('pay/', include(payments_urls)),
+    path('', include(payments_urls)),
 )
 
 if settings.DEBUG:
