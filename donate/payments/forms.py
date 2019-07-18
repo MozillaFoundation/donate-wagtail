@@ -16,10 +16,4 @@ class PersonalDetailsForm(forms.Form):
 
 
 class BraintreePaymentForm(forms.Form):
-    PAYMENT_MODES = (
-        ('card', 'Credit Card'),
-        ('paypal', 'Paypal'),
-    )
-
     braintree_nonce = forms.CharField(widget=forms.HiddenInput)
-    payment_mode = forms.ChoiceField(widget=forms.HiddenInput, choices=PAYMENT_MODES)

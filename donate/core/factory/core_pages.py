@@ -3,7 +3,7 @@ from factory import Faker, SubFactory
 from wagtail_factories import ImageFactory, PageFactory
 from wagtail.core.models import Page, Site
 
-from donate.core.models import LandingPage
+from donate.core.models import CampaignPage, LandingPage
 from donate.utility.faker.helpers import reseed
 
 
@@ -21,6 +21,15 @@ class LandingPageFactory(PageFactory):
     featured_image = SubFactory(ImageFactory)
 
 
+class CampaignPageFactory(PageFactory):
+    class Meta:
+        model = CampaignPage
+
+    title = Faker('text', max_nb_chars=140)
+    lead_text = Faker('paragraph', nb_sentences=5, variable_nb_sentences=True)
+    hero_image = SubFactory(ImageFactory)
+
+
 def generate(seed):
     reseed(seed)
 
@@ -34,6 +43,19 @@ def generate(seed):
             parent=site_root,
             title='Donate today',
             slug='landing',
+        )
+
+    reseed(seed)
+
+    try:
+        CampaignPage.objects.get()
+        print('Campaign page already exists')
+    except CampaignPage.DoesNotExist:
+        print('Generating a campaign page')
+        CampaignPageFactory.create(
+            parent=landing_page,
+            title='It\'s Pi Day!',
+            slug='campaign',
         )
 
     reseed(seed)
