@@ -27,51 +27,51 @@
                 </a>
             </div>
         </div>
-        <form class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
+        <form method="GET" class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
             <div class="donate-form__fields">
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="one-time-amount-1" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="50" id="one-time-amount-1" autocomplete="off">
                     <label for="one-time-amount-1" class="donation-amount__label">$50</label>
                 </div>
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="one-time-amount-2" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="25" id="one-time-amount-2" autocomplete="off">
                     <label for="one-time-amount-2" class="donation-amount__label">$25</label>
                 </div>
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="one-time-amount-3" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="10" id="one-time-amount-3" autocomplete="off">
                     <label for="one-time-amount-3" class="donation-amount__label">$10</label>
                 </div>
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="3" id="one-time-amount-4" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off">
                     <label for="one-time-amount-4" class="donation-amount__label">$3</label>
                 </div>
             </div>
             <div class="donate-form__actions">
-                <button class="button button--primary">{% trans "Donate" %}</button>
+                <button class="button button--primary" type="submit" formaction="{% url 'payments:personal_details' method='card' frequency='single' %}">{% trans "Donate" %}</button>
                 <button class="button button--primary">{% trans "Donate with Paypal" %}</button>
             </div>
         </form>
-        <form class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
+        <form method="GET" class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
             <div class="donate-form__fields">
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-1" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off">
                     <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
                 </div>
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="monthly-amount-2" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="5" id="monthly-amount-2" autocomplete="off">
                     <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
                 </div>
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="monthly-amount-3" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="3" id="monthly-amount-3" autocomplete="off">
                     <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
                 </div>
                 <div class="donation-amount">
-                    <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-4" autocomplete="off">
+                    <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
                     <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
                 </div>
             </div>
             <div class="donate-form__actions">
-                <button class="button button--primary">{% trans "Donate" %}</button>
+                <button class="button button--primary" type="submit" formaction="{% url 'payments:personal_details' method='card' frequency='monthly' %}">{% trans "Donate" %}</button>
                 <button class="button button--primary">{% trans "Donate with Paypal" %}</button>
             </div>
         </form>
