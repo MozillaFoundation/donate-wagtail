@@ -25,3 +25,7 @@ class BraintreePaymentForm(forms.Form):
 
 class BraintreePaypalPaymentForm(BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
+
+
+class CurrencyForm(forms.Form):
+    currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
