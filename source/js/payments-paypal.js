@@ -4,11 +4,10 @@ import { create as paypalCreate } from "braintree-web/paypal-checkout";
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
-    submitButton = document.getElementById("payments__payment-submit"),
-    token = paymentForm.getAttribute("data-token"),
+    amountInput = document.getElementById("id_amount"),
+    frequencyInput = document.getElementById("id_frequency"),
     loadingErrorMsg =
       "An error occurred. Please reload the page or try again later.",
-    paymentAmount = paymentForm.getAttribute("data-amount"),
     paymentCurrency = "USD",
     errorDiv = document.getElementById("payments__braintree-errors-paypal"),
     braintreeParams = JSON.parse(
@@ -25,16 +24,12 @@ function setupBraintree() {
     errorDiv.innerHTML = "";
   }
 
-  function showFieldError(container) {
-    container.classList.add(braintreeErrorClass);
-  }
-
-  function clearFieldError(container) {
-    container.classList.remove(braintreeErrorClass);
-  }
-
-  function initPaypal() {
-    client.create({ authorization: token }, function(
+  function initPaypal(frequency, flow, buttonId) {
+    var donateForm = document.getElementById("donate-form--" + frequency);
+    var getAmount = function() {
+      return donateForm.querySelector('input[name="amount"]:checked').value;
+    };
+    client.create({ authorization: braintreeParams.token }, function(
       clientErr,
       clientInstance
     ) {
@@ -57,11 +52,18 @@ function setupBraintree() {
           {
             env: braintreeParams.use_sandbox ? "sandbox" : "production",
             commit: true,
+            style: {
+              size: "medium",
+              color: "gold",
+              shape: "pill",
+              label: "paypal",
+              tagline: "false"
+            },
 
             payment: function() {
               return paypalCheckoutInstance.createPayment({
-                flow: braintreeParams.flow,
-                amount: paymentAmount,
+                flow: flow,
+                amount: getAmount(),
                 currency: paymentCurrency,
                 enableShippingAddress: false
               });
@@ -80,6 +82,8 @@ function setupBraintree() {
                 }
 
                 nonceInput.value = payload.nonce;
+                amountInput.value = getAmount();
+                frequencyInput.value = frequency;
                 paymentForm.submit();
               });
             },
@@ -88,23 +92,26 @@ function setupBraintree() {
               showErrorMessage("Payment cancelled");
             },
 
-            onError: function() {
+            onError: function(err) {
+              // TODO - we will end up here if no amount is selected, and should report
+              // that meaningfully to the user.
               showErrorMessage(
                 "There was an error processing your payment. Please try again."
               );
             }
           },
-          "#payments__paypal-button"
+          buttonId
         ).then(function() {
           // The PayPal button will be rendered in an html element with the id
-          // `paypal-button`. This function will be called when the PayPal button
+          // specified in buttonId. This function will be called when the PayPal button
           // is set up and ready to be used.
         });
       });
     });
   }
 
-  initPaypal();
+  initPaypal("single", "checkout", "#payments__paypal-button--single");
+  initPaypal("monthly", "vault", "#payments__paypal-button--monthly");
 }
 
 document.addEventListener("DOMContentLoaded", function() {

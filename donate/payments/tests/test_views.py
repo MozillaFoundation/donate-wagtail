@@ -1,15 +1,15 @@
 from unittest import mock
 
-from django.conf import settings
 from django.http import Http404
 from django.test import RequestFactory, TestCase
 from django.views.generic import FormView
 
 from braintree import ErrorCodes, ErrorResult
 
-from ..forms import BraintreePaymentForm
+from ..forms import BraintreePaymentForm, BraintreePaypalPaymentForm
 from ..views import (
-    BraintreePaymentMixin, SinglePaymentView, PersonalDetailsView, MonthlyPaymentView
+    BraintreePaymentMixin, CardPaymentView, SingleCardPaymentView,
+    PaypalPaymentView, PersonalDetailsView, MonthlyCardPaymentView
 )
 from ..exceptions import InvalidAddress
 
@@ -42,9 +42,7 @@ class MockBraintreeSubscriptionResult:
     subscription = MockBraintreeSubscription()
 
 
-class BraintreePaymentTestView(BraintreePaymentMixin, FormView):
-    template_name = 'payment/card_single_payment.html'
-    success_url = '/'
+class BraintreeMixinTestView(BraintreePaymentMixin, FormView):
 
     def get_transaction_details_for_session(self, result, form):
         return {
@@ -52,35 +50,48 @@ class BraintreePaymentTestView(BraintreePaymentMixin, FormView):
             'some': 'data'
         }
 
-    def get_personal_details_url(self):
-        return '/'
+
+class BraintreeMixinTestCase(TestCase):
+
+    def test_success_stores_transaction_details_to_session(self):
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        assert form.is_valid()
+
+        view = BraintreeMixinTestView()
+        view.request = RequestFactory().get('/')
+        view.request.session = {}
+        view.success(MockBraintreeResult(), form)
+
+        self.assertEqual(view.request.session['completed_transaction_details'], {
+            'amount': '50',
+            'some': 'data',
+        })
 
 
 class PersonalDetailsViewTestCase(TestCase):
 
-    def test_404_for_invalid_kwargs(self):
+    def test_404_for_invalid_frequency(self):
         request = RequestFactory().get('/')
         view = PersonalDetailsView()
         view.request = request
         with self.assertRaises(Http404):
-            view.dispatch(request, method='badmethod', frequency='yearly')
+            view.dispatch(request, frequency='yearly')
 
     def test_bad_amount_redirects(self):
         request = RequestFactory().get('/?amount=foo')
         view = PersonalDetailsView()
         view.request = request
-        response = view.dispatch(request, method='card', frequency='monthly')
+        response = view.dispatch(request, frequency='monthly')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], '/')
 
     def test_get_success_url(self):
         view = PersonalDetailsView()
-        view.payment_method = 'card'
         view.payment_frequency = 'monthly'
         self.assertEqual(view.get_success_url(), '/en/card/monthly/pay/')
 
 
-class BraintreePaymentMixinTestCase(TestCase):
+class CardPaymentViewTestCase(TestCase):
 
     def setUp(self):
         self.details = {
@@ -98,8 +109,8 @@ class BraintreePaymentMixinTestCase(TestCase):
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
         self.request.session['personal_details'] = self.details
-        self.view = BraintreePaymentTestView()
-        self.view.method = 'card'
+        self.view = CardPaymentView()
+        self.view.frequency = 'single'
         self.view.personal_details = self.details
         self.view.request = self.request
 
@@ -122,12 +133,12 @@ class BraintreePaymentMixinTestCase(TestCase):
         })
 
     def test_filter_user_card_errors(self):
-        filtered = BraintreePaymentTestView().filter_user_card_errors(self.fake_error_result)
+        filtered = CardPaymentView().filter_user_card_errors(self.fake_error_result)
         self.assertEqual(len(filtered), 1)
         self.assertEqual(filtered[0], 'The type of card you used is not accepted.')
 
     def test_filtered_errors_returned_as_form_errors(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
 
         self.view.process_braintree_error_result(self.fake_error_result, form)
@@ -137,7 +148,7 @@ class BraintreePaymentMixinTestCase(TestCase):
         )
 
     def test_generic_error_message_if_no_reportable_errors(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
 
         self.view.process_braintree_error_result(ErrorResult("gateway", {
@@ -150,10 +161,6 @@ class BraintreePaymentMixinTestCase(TestCase):
             {'__all__': ['Sorry there was an error processing your payment. '
                          'Please try again later or use a different payment method.']}
         )
-
-    def test_view_context_on_get(self):
-        ctx = self.view.get_context_data()
-        self.assertEqual(ctx['braintree_tokenization_key'], settings.BRAINTREE_TOKENIZATION_KEY)
 
     def test_check_for_address_errors_with_no_address_related_errors(self):
         result = ErrorResult("gateway", {
@@ -173,7 +180,7 @@ class BraintreePaymentMixinTestCase(TestCase):
                 }
             }
         })
-        view = BraintreePaymentTestView()
+        view = CardPaymentView()
         self.assertIsNone(view.check_for_address_errors(result))
 
     def test_check_for_address_errors_with_address_related_errors(self):
@@ -190,12 +197,12 @@ class BraintreePaymentMixinTestCase(TestCase):
                 }
             }
         })
-        view = BraintreePaymentTestView()
+        view = CardPaymentView()
         with self.assertRaises(InvalidAddress):
             view.check_for_address_errors(result)
 
     def test_gateway_address_errors_triggers_report_invalid_address(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
 
         result = ErrorResult("gateway", {
@@ -218,28 +225,16 @@ class BraintreePaymentMixinTestCase(TestCase):
         self.assertEqual(mock_invalid_address.call_count, 1)
 
     def test_get_custom_fields(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
         custom_fields = self.view.get_custom_fields(form)
         self.assertEqual(custom_fields, {})
-
-    def test_sucess_stores_transaction_details_to_session(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
-        assert form.is_valid()
-
-        self.view.success(MockBraintreeResult(), form)
-
-        self.assertEqual(self.request.session['completed_transaction_details'], {
-            'amount': '50',
-            'some': 'data',
-        })
-        self.assertIsNone(self.request.session.get('personal_details'))
 
     def test_missing_personal_details_redirects(self):
         del self.request.session['personal_details']
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], '/')
+        self.assertEqual(response['Location'], '/en/card/single/?')
 
     def test_get_address_info(self):
         info = self.view.get_address_info(self.view.personal_details)
@@ -251,7 +246,7 @@ class BraintreePaymentMixinTestCase(TestCase):
         })
 
 
-class SinglePaymentViewTestCase(TestCase):
+class SingleCardPaymentViewTestCase(TestCase):
 
     def setUp(self):
         self.details = {
@@ -262,19 +257,18 @@ class SinglePaymentViewTestCase(TestCase):
             'town': 'New York',
             'post_code': '10022',
             'country': 'US',
-            'amount': 50,
+            'amount': 10,
         }
 
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
         self.request.session['personal_details'] = self.details
-        self.view = SinglePaymentView()
-        self.view.method = 'card'
+        self.view = SingleCardPaymentView()
         self.view.personal_details = self.details
         self.view.request = self.request
 
     def test_transaction_data_submitted_to_braintree(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
@@ -282,7 +276,7 @@ class SinglePaymentViewTestCase(TestCase):
             self.view.form_valid(form)
 
         mock_gateway.transaction.sale.assert_called_once_with({
-            'amount': '50.00',
+            'amount': 10,
             'billing': {
                 'street_address': self.details['address_line_1'],
                 'locality': self.details['town'],
@@ -299,32 +293,14 @@ class SinglePaymentViewTestCase(TestCase):
             'options': {'submit_for_settlement': True}
         })
 
-    def test_get_transaction_details_for_session(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
-        assert form.is_valid()
-
-        details = self.view.get_transaction_details_for_session(MockBraintreeResult(), form)
-
+    def test_get_transaction_id(self):
         self.assertEqual(
-            details['transaction_id'],
+            self.view.get_transaction_id(MockBraintreeResult()),
             'transaction-id-1'
         )
 
-    def test_view_context_on_get(self):
-        ctx = self.view.get_context_data()
-        self.assertEqual(ctx['payment_amount'], self.details['amount'])
 
-    def test_get_personal_details_url(self):
-        url = self.view.get_personal_details_url()
-        self.assertEqual(url, '/en/card/single/?amount=50')
-
-    def test_get_braintree_params_paypal(self):
-        self.view.method = 'paypal'
-        params = self.view.get_braintree_params()
-        self.assertEqual(params['flow'], 'checkout')
-
-
-class MonthlyPaymentViewTestCase(TestCase):
+class MonthlyCardPaymentViewTestCase(TestCase):
 
     def setUp(self):
         self.details = {
@@ -335,19 +311,18 @@ class MonthlyPaymentViewTestCase(TestCase):
             'town': 'New York',
             'post_code': '10022',
             'country': 'US',
-            'amount': 50,
+            'amount': 10,
         }
 
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
         self.request.session['personal_details'] = self.details
-        self.view = MonthlyPaymentView()
-        self.view.method = 'card'
+        self.view = MonthlyCardPaymentView()
         self.view.personal_details = self.details
         self.view.request = self.request
 
     def test_subscription_data_submitted_to_braintree(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
@@ -374,11 +349,11 @@ class MonthlyPaymentViewTestCase(TestCase):
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd',
             'payment_method_token': 'payment-method-1',
-            'price': '50.00',
+            'price': 10,
         })
 
     def test_failed_customer_creation_calls_error_processor(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
@@ -388,23 +363,83 @@ class MonthlyPaymentViewTestCase(TestCase):
         self.assertFalse(form.is_valid())
         self.assertTrue(response.status_code, 200)
 
-    def test_get_transaction_details_for_session(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree'})
+    def test_get_transaction_id(self):
+        self.assertEqual(
+            self.view.get_transaction_id(MockBraintreeSubscriptionResult()),
+            'subscription-id-1'
+        )
+
+
+class PaypalPaymentViewTestCase(TestCase):
+
+    def setUp(self):
+        self.request = RequestFactory().get('/')
+        self.request.session = self.client.session
+        self.view = PaypalPaymentView()
+        self.view.request = self.request
+
+    def test_transaction_data_submitted_to_braintree(self):
+        form = BraintreePaypalPaymentForm(
+            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'single'}
+        )
         assert form.is_valid()
 
-        details = self.view.get_transaction_details_for_session(MockBraintreeSubscriptionResult(), form)
+        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            mock_gateway.transaction.sale.return_value = MockBraintreeResult()
+            self.view.form_valid(form)
 
-        self.assertEqual(details['transaction_id'], 'subscription-id-1')
+        mock_gateway.transaction.sale.assert_called_once_with({
+            'amount': 10,
+            'custom_fields': {},
+            'payment_method_nonce': 'hello-braintree',
+            'options': {'submit_for_settlement': True}
+        })
 
-    def test_view_context_on_get(self):
-        ctx = self.view.get_context_data()
-        self.assertEqual(ctx['payment_amount'], self.details['amount'])
+    def test_subscription_data_submitted_to_braintree(self):
+        form = BraintreePaypalPaymentForm(
+            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'monthly'}
+        )
+        assert form.is_valid()
 
-    def test_get_personal_details_url(self):
-        url = self.view.get_personal_details_url()
-        self.assertEqual(url, '/en/card/monthly/?amount=50')
+        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            mock_gateway.customer.create.return_value.is_success = True
+            mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
+            self.view.form_valid(form)
 
-    def test_get_braintree_params_paypal(self):
-        self.view.method = 'paypal'
-        params = self.view.get_braintree_params()
-        self.assertEqual(params['flow'], 'vault')
+        mock_gateway.customer.create.assert_called_once_with({
+            'payment_method_nonce': 'hello-braintree',
+            'custom_fields': {},
+        })
+
+        mock_gateway.subscription.create.assert_called_once_with({
+            'plan_id': 'usd',
+            'payment_method_token': 'payment-method-1',
+            'price': 10,
+        })
+
+    def test_failed_customer_creation_calls_error_processor(self):
+        form = BraintreePaypalPaymentForm(
+            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'monthly'}
+        )
+        assert form.is_valid()
+
+        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            mock_gateway.customer.create.return_value.is_success = False
+            response = self.view.form_valid(form)
+
+        self.assertTrue(response.status_code, 200)
+
+    def test_get_transaction_details_for_session(self):
+        form = BraintreePaypalPaymentForm(
+            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'monthly'}
+        )
+        assert form.is_valid()
+        self.view.frequency = 'monthly'
+        self.assertEqual(
+            self.view.get_transaction_details_for_session(MockBraintreeSubscriptionResult(), form),
+            {
+                'amount': 10,
+                'transaction_id': 'subscription-id-1',
+                'payment_method': 'paypal',
+            }
+        )
