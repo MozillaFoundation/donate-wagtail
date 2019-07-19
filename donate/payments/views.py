@@ -1,4 +1,3 @@
-from decimal import Decimal, InvalidOperation
 import logging
 import urllib
 
@@ -12,8 +11,8 @@ from braintree import ErrorCodes
 
 from . import constants, gateway
 from .exceptions import InvalidAddress
-from .forms import BraintreePaymentForm, BraintreePaypalPaymentForm, PersonalDetailsForm
-from .utils import freeze_personal_details_for_session
+from .forms import BraintreePaymentForm, BraintreePaypalPaymentForm, PersonalDetailsForm, StartCardPaymentForm
+from .utils import get_currency_info, freeze_personal_details_for_session
 
 logger = logging.getLogger(__name__)
 
@@ -23,8 +22,8 @@ class BraintreePaymentMixin:
     def get_custom_fields(self, form):
         return {}
 
-    def get_merchant_account_id(self):
-        return settings.BRAINTREE_MERCHANT_ID
+    def get_merchant_account_id(self, currency):
+        return settings.BRAINTREE_MERCHANT_ACCOUNTS[currency]
 
     def get_transaction_details_for_session(self, result, form):
         raise NotImplementedError()
@@ -50,40 +49,37 @@ class PersonalDetailsView(FormView):
         if kwargs['frequency'] not in constants.FREQUENCIES:
             raise Http404()
         self.payment_frequency = kwargs['frequency']
-        return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, *args, **kwargs):
-        # Ensure that the donation amount is a valid currency decimal
-        try:
-            Decimal(self.request.GET.get('amount'))
-        except (TypeError, InvalidOperation):
-            # This will redirect to the campaign/landing page later
+        # Ensure that the donation amount and currency are legit
+        start_form = StartCardPaymentForm(request.GET)
+        if not start_form.is_valid():
             return HttpResponseRedirect('/')
 
-        return super().get(request, *args, **kwargs)
+        self.amount = start_form.cleaned_data['amount']
+        self.currency = start_form.cleaned_data['currency']
+        return super().dispatch(request, *args, **kwargs)
 
     def get_initial(self):
         # If we have personal details in the session, then repopulate them into the form
         # excepting values that should be fetched from GET params
         initial = self.request.session.get('personal_details', {})
-        initial.pop('amount', None)
-
-        amount = self.request.GET.get('amount', 50)
-        try:
-            initial['amount'] = Decimal(amount)
-        except InvalidOperation:
-            pass
-
+        initial['amount'] = self.amount
         return initial
 
     def form_valid(self, form):
-        form_data = form.cleaned_data.copy()
-        form_data['amount'] = str(form_data['amount'])
-        self.request.session['personal_details'] = form_data
+        details = form.cleaned_data.copy()
+        details['currency'] = self.currency
+        details['amount'] = str(details['amount'])
+        self.request.session['personal_details'] = details
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse(f'payments:card_details_{self.payment_frequency}')
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['currency_info'] = get_currency_info(self.currency)
+        return ctx
 
 
 class CardPaymentView(BraintreePaymentMixin, FormView):
@@ -116,10 +112,14 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'amount': self.personal_details['amount'],
         }
 
+    def get_plan_id(self, currency):
+        return settings.BRAINTREE_PLANS[currency]
+
     def get_personal_details_url(self):
         params = {}
         if getattr(self, 'personal_details'):
             params['amount'] = self.personal_details['amount']
+            params['currency'] = self.personal_details['currency']
         params = urllib.parse.urlencode(params)
         return reverse(
             'payments:card_personal_details', kwargs={'frequency': self.frequency}
@@ -217,6 +217,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx.update({
+            'currency_info': get_currency_info(self.personal_details['currency']),
             'braintree_params': settings.BRAINTREE_PARAMS,
         })
         return ctx
@@ -228,6 +229,7 @@ class SingleCardPaymentView(CardPaymentView):
     def form_valid(self, form):
         result = gateway.transaction.sale({
             'amount': form.cleaned_data['amount'],
+            'merchant_account_id': self.get_merchant_account_id(self.personal_details['currency']),
             'billing': self.get_address_info(self.personal_details),
             'customer': {
                 'first_name': self.personal_details['first_name'],
@@ -282,7 +284,8 @@ class MonthlyCardPaymentView(CardPaymentView):
 
         # Create a subcription against the payment method
         result = gateway.subscription.create({
-            'plan_id': 'usd',   # TODO we need to map this to per-currency plans in Braintree
+            'plan_id': self.get_plan_id(self.personal_details['currency']),
+            'merchant_account_id': self.get_merchant_account_id(self.personal_details['currency']),
             'payment_method_token': payment_method.token,
             'price': form.cleaned_data['amount'],
         })

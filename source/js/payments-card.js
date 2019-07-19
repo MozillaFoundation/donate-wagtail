@@ -7,8 +7,6 @@ function setupBraintree() {
     submitButton = document.getElementById("payments__payment-submit"),
     loadingErrorMsg =
       "An error occurred. Please reload the page or try again later.",
-    paymentAmount = paymentForm.getAttribute("data-amount"),
-    paymentCurrency = "USD",
     errorDiv = document.getElementById("payments__braintree-errors-card"),
     braintreeErrorClass = "braintree-hosted-fields-invalid",
     braintreeParams = JSON.parse(

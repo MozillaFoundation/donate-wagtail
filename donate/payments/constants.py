@@ -670,6 +670,6 @@ CURRENCIES = {
     }
 }
 
-CURRENCY_CHOICES = (
+CURRENCY_CHOICES = tuple([
     (key, '{}   {}'.format(key.upper(), data['symbol'])) for key, data in CURRENCIES.items()
-)
+])

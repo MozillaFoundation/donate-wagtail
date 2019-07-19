@@ -6,6 +6,11 @@ from django_countries.fields import CountryField
 from . import constants
 
 
+class StartCardPaymentForm(forms.Form):
+    amount = forms.DecimalField(min_value=0.01, decimal_places=2)
+    currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
+
+
 class PersonalDetailsForm(forms.Form):
     # max_length on all the fields here is to comply with Braintree validation requirements.
     first_name = forms.CharField(label=_('First name'), max_length=255)

@@ -104,6 +104,7 @@ class CardPaymentViewTestCase(TestCase):
             'post_code': '10022',
             'country': 'US',
             'amount': 50,
+            'currency': 'usd',
         }
 
         self.request = RequestFactory().get('/')
@@ -258,6 +259,7 @@ class SingleCardPaymentViewTestCase(TestCase):
             'post_code': '10022',
             'country': 'US',
             'amount': 10,
+            'currency': 'usd',
         }
 
         self.request = RequestFactory().get('/')
@@ -277,6 +279,7 @@ class SingleCardPaymentViewTestCase(TestCase):
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'amount': 10,
+            'merchant_account_id': 'usd-ac',
             'billing': {
                 'street_address': self.details['address_line_1'],
                 'locality': self.details['town'],
@@ -312,6 +315,7 @@ class MonthlyCardPaymentViewTestCase(TestCase):
             'post_code': '10022',
             'country': 'US',
             'amount': 10,
+            'currency': 'usd',
         }
 
         self.request = RequestFactory().get('/')
@@ -347,7 +351,8 @@ class MonthlyCardPaymentViewTestCase(TestCase):
         })
 
         mock_gateway.subscription.create.assert_called_once_with({
-            'plan_id': 'usd',
+            'plan_id': 'usd-plan',
+            'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
             'price': 10,
         })

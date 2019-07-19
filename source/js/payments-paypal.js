@@ -8,7 +8,7 @@ function setupBraintree() {
     frequencyInput = document.getElementById("id_frequency"),
     loadingErrorMsg =
       "An error occurred. Please reload the page or try again later.",
-    paymentCurrency = "USD",
+    currencySelect = document.getElementById("id_currency"),
     errorDiv = document.getElementById("payments__braintree-errors-paypal"),
     braintreeParams = JSON.parse(
       document.getElementById("payments__braintree-params").textContent
@@ -64,7 +64,7 @@ function setupBraintree() {
               return paypalCheckoutInstance.createPayment({
                 flow: flow,
                 amount: getAmount(),
-                currency: paymentCurrency,
+                currency: currencySelect.value.toUpperCase(),
                 enableShippingAddress: false
               });
             },
