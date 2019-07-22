@@ -1,21 +1,22 @@
 .heading {
-  @include heading-text();
-  font-weight: $weight--bold;
-  margin-bottom: 0;
+    @include heading-text();
+    font-weight: $weight--medium;
+    margin-bottom: 0;
+    margin-top: 0;
 
-  &--primary {
-    @include font-size(xl);
-  }
+    &--primary {
+        @include font-size(xxl);
+    }
 
-  &--secondary {
-    @include font-size(l);
-  }
+    &--secondary {
+        @include font-size(l);
+    }
 
-  &--tertiary {
-    @include font-size(m);
-  }
+    &--tertiary {
+        @include font-size(m);
+    }
 
-  &--bottom-margin {
-    margin-bottom: ($gutter / 2);
-  }
+    &--bottom-margin {
+        margin-bottom: ($gutter / 2);
+    }
 }

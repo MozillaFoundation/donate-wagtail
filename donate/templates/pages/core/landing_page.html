@@ -25,7 +25,7 @@
             <div class="layout__primary-col">
                 <div class="donate-form">
                     <header class="donate-form__header">
-                        <h1 class="heading heading--primary heading--bottom-margin">{{ page.title }}</h1>
+                        <h1 class="donate-form__heading heading heading--primary">{{ page.title }}</h1>
                         <div class="donate-form__currency">
                             <label for="currency-select" class="donate-form__currency-label">Currency</label>
                             <select autocomplete="off" class="donate-form__currency-dropdown" id="currency-select">
@@ -84,52 +84,71 @@
                     </header>
                     <div class="donate-form__content">
                         <div class="donate-form__tabs tabs js-tabs">
-                            <div class="donate-form__tab-options tabs__container" role="tablist">
+                            <form class="donate-form__tab-options tabs__container" role="tablist">
                                 <div class="tabs__option" role="presentation">
-                                    <a
+                                    <div
                                         class="tabs__item tabs__item--selected js-tab-item"
-                                        href="#tab-panel-1"
                                         role="tab"
                                         aria-controls="tab-panel-1"
                                         aria-selected="true"
                                         id="tab-1"
                                     >
-                                        One time
-                                    </a>
+                                        <input type="radio" name="donation_frequency" id="one-time" value="one-time" checked>
+                                        <label for="one-time">One time</label>
+                                    </div>
                                 </div>
                                 <div class="tabs__option" role="presentation">
-                                    <a
+                                    <div
                                         class="tabs__item js-tab-item"
-                                        href="#tab-panel-2"
                                         role="tab"
                                         aria-controls="tab-panel-2"
                                         aria-selected="true"
                                         id="tab-1"
                                     >
-                                        Monthly
-                                    </a>
+                                        <input type="radio" name="donation_frequency" id="monthly" value="monthly">
+                                        <label for="monthly">Monthly</label>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                             <form class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
                                 <div class="donate-form__fields">
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="one-time-amount-1" autocomplete="off">
-                                        <label for="one-time-amount-1" class="donation-amount__label">$50</label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="one-time-amount-1" autocomplete="off">
+                                            <label for="one-time-amount-1" class="donation-amount__label">$50</label>
+                                        </div>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="one-time-amount-2" autocomplete="off">
-                                        <label for="one-time-amount-2" class="donation-amount__label">$25</label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="one-time-amount-2" autocomplete="off">
+                                            <label for="one-time-amount-2" class="donation-amount__label">$25</label>
+                                        </div>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="one-time-amount-3" autocomplete="off">
-                                        <label for="one-time-amount-3" class="donation-amount__label">$10</label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="one-time-amount-3" autocomplete="off">
+                                            <label for="one-time-amount-3" class="donation-amount__label">$10</label>
+                                        </div>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="3" id="one-time-amount-4" autocomplete="off">
-                                        <label for="one-time-amount-4" class="donation-amount__label">$3</label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
+                                            <label for="one-time-amount-4" class="donation-amount__label">$3</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="donate-form__actions">
+                                    <header class="donate-form__action-header">
+                                        <h2 class="donate-form__action-heading">Choose Payment</h2>
+                                        <div class="donate-form__secure">
+                                            <svg class="donate-form__secure-icon" width="24" height="24">
+                                                <use xlink:href="#padlock"></use>
+                                            </svg>
+                                            <div class="donate-form__secure-label">
+                                                Secure
+                                            </div>
+                                        </div>
+                                    </header>
                                     <button class="button button--primary">Donate</button>
                                     <button class="button button--primary">Paypal donate</button>
                                 </div>
@@ -137,23 +156,42 @@
                             <form class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
                                 <div class="donate-form__fields">
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-1" autocomplete="off">
-                                        <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-1" autocomplete="off">
+                                            <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
+                                        </div>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="monthly-amount-2" autocomplete="off">
-                                        <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="monthly-amount-2" autocomplete="off">
+                                            <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
+                                        </div>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="monthly-amount-3" autocomplete="off">
-                                        <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="monthly-amount-3" autocomplete="off">
+                                            <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
+                                        </div>
                                     </div>
                                     <div class="donation-amount">
-                                        <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-4" autocomplete="off">
-                                        <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
+                                        <div class="donation-amount__container">
+                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-4" autocomplete="off">
+                                            <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="donate-form__actions">
+                                    <header class="donate-form__action-header">
+                                        <h2 class="donate-form__action-heading">Choose Payment</h2>
+                                        <div class="donate-form__secure">
+                                            <svg class="donate-form__secure-icon" width="24" height="24">
+                                                <use xlink:href="#padlock"></use>
+                                            </svg>
+                                            <div class="donate-form__secure-label">
+                                                Secure
+                                            </div>
+                                        </div>
+                                    </header>
                                     <button class="button button--primary">Donate</button>
                                     <button class="button button--primary">Paypal donate</button>
                                 </div>

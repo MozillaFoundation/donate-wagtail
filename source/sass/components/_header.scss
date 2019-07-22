@@ -1,55 +1,56 @@
 .header {
-  $root: &;
-  @include z-index(header);
-  $logo-width-desktop: 97px;
-  $logo-height-desktop: 28px;
-  position: relative;
-  background-color: $color--white;
-
-  &__container {
+    $root: &;
+    @include z-index(header);
+    $logo-width-desktop: 97px;
+    $logo-height-desktop: 28px;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 24px;
-    margin: 0 auto;
+    background-color: $color--white;
+    border-bottom: 1px solid $color--border;
 
-    @include media-query(desktop) {
-      max-width: $site-width--default;
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 24px;
+        margin: 0 auto;
+
+        @include media-query(desktop) {
+            max-width: $site-width--default;
+        }
     }
-  }
 
-  &__logo-link {
-    display: block;
-    width: $logo-width-desktop;
-    height: $logo-height-desktop;
-  }
-
-  &__logo {
-    display: block;
-    width: $logo-width-desktop;
-    height: $logo-height-desktop;
-    background-color: $color--black;
-  }
-
-  &__menu-toggle {
-    width: 28px;
-    height: 28px;
-    margin-right: ($gutter);
-
-    @include media-query(desktop) {
-      position: absolute;
-      left: -28px;
+    &__logo-link {
+        display: block;
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
     }
-  }
 
-  &__menu-label {
-    @include hidden();
-  }
-
-  .app--no-menu & {
-    #{$root}__menu-toggle {
-      display: none;
+    &__logo {
+        display: block;
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+        background-color: $color--black;
     }
-  }
+
+    &__menu-toggle {
+        width: 28px;
+        height: 28px;
+        margin-right: ($gutter);
+
+        @include media-query(desktop) {
+            position: absolute;
+            left: -28px;
+        }
+    }
+
+    &__menu-label {
+        @include hidden();
+    }
+
+    .app--no-menu & {
+        #{$root}__menu-toggle {
+            display: none;
+        }
+    }
 }
