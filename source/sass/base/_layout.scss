@@ -7,10 +7,13 @@
 
     @include media-query(tablet-landscape) {
       flex-direction: row;
-      margin: 0 auto;
     }
-  }
 
+    @include media-query(desktop) {
+        margin: 0 auto;
+    }
+
+  }
   &__primary-col {
     flex-basis: 100%;
     max-width: 100%;
@@ -22,7 +25,6 @@
       max-width: 70%;
     }
   }
-
   &__secondary-col {
     flex-basis: 100%;
     max-width: 100%;
