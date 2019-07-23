@@ -22,6 +22,9 @@ $color--white: #ffffff;
 $color--black: #111111;
 $color--border: $color--grey-20;
 $color--background: $color--grey-05;
+$color--neutral: $color--grey-05;
+$color--warning: $color--red;
+$color--positive: $color--blue;
 
 $color--default: $color--grey-80;
 $color--link: $color--blue;
@@ -86,7 +89,7 @@ $z-index: (
 // --------------------------------- Grid Dimensions --------------------------------------
 
 // Max widths
-$site-width--small: 560px;
+$site-width--small: 630px;
 $site-width--default: 1100px;
 $site-width--large: 1200px;
 

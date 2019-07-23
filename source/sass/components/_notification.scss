@@ -1,0 +1,25 @@
+.notification {
+  padding: ($gutter / 2) $gutter;
+
+  &--neutral {
+    background-color: $color--neutral;
+  }
+
+  &--warning {
+    background-color: $color--warning;
+  }
+
+  &--positive {
+    background-color: $color--positive;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  &__action {
+    margin-left: $gutter;
+  }
+}
