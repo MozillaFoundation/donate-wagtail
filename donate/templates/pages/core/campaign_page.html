@@ -1,4 +1,4 @@
-{% extends "pages/base_page.html" %}
+{% extends "pages/landing_page.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
@@ -22,12 +22,8 @@
                 Content TBC
             </div>
             <div class="layout__primary-col">
-                {% include "partials/donate-form.html" with title=false %}
+                {% include "fragments/donate-form.html" %}
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block extra_js %}
-    {{ currencies|json_script:"currencies" }}
 {% endblock %}

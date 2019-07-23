@@ -5,11 +5,8 @@ function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
     submitButton = document.getElementById("payments__payment-submit"),
-    token = paymentForm.getAttribute("data-token"),
     loadingErrorMsg =
       "An error occurred. Please reload the page or try again later.",
-    paymentAmount = paymentForm.getAttribute("data-amount"),
-    paymentCurrency = "USD",
     errorDiv = document.getElementById("payments__braintree-errors-card"),
     braintreeErrorClass = "braintree-hosted-fields-invalid",
     braintreeParams = JSON.parse(
@@ -35,7 +32,7 @@ function setupBraintree() {
   }
 
   function initHostedFields() {
-    client.create({ authorization: token }, function(
+    client.create({ authorization: braintreeParams.token }, function(
       clientErr,
       clientInstance
     ) {

@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load form_tags wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -23,7 +23,16 @@
                 </div>
             </div>
             <div class="layout__primary-col">
-                {% include "partials/donate-form.html" with title=page.title %}
+                <div class="donate-form">
+                    <header class="donate-form__header">
+                        <h1 class="heading heading--primary heading--bottom-margin">{{ page.title }}</h1>
+
+                        <div class="donate-form__currency">
+                            {% render_form_field currency_form.currency %}
+                        </div>
+                    </header>
+                    {% include "fragments/donate_form.html" %}
+                </div>
             </div>
         </div>
     </div>
@@ -32,4 +41,7 @@
 
 {% block extra_js %}
     {{ currencies|json_script:"currencies" }}
+    {{ braintree_params|json_script:"payments__braintree-params" }}
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="/_js/payments-paypal.compiled.js"></script>
 {% endblock %}

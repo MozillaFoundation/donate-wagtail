@@ -7,12 +7,19 @@
 {% block content %}
 <div id="payments__payment-wrapper">
 
-    <h1 class="wrapper--small-width">{% blocktrans with amount=payment_amount|floatformat:"-2" %}You're donating ${{ amount }}{% endblocktrans %}</h1>
+    <h1 class="wrapper--small-width">{% blocktrans with symbol=currency_info.symbol amount=form.amount.value|floatformat:"-2" %}You're donating {{ symbol }}&nbsp;{{ amount }}{% endblocktrans %}</h1>
 
-    <form class="form" id="payments__braintree-form" method="post" data-token="{{ braintree_tokenization_key }}" data-amount="{{ payment_amount|floatformat }}">
+    <form class="form" id="payments__braintree-form" method="post">
         {% csrf_token %}
 
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <div class="form__errors">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+
         {% render_form_field form.braintree_nonce %}
+        {% render_form_field form.amount %}
     </form>
 
     <div id="payments__braintree-errors-card" hidden></div>
@@ -37,7 +44,7 @@
     <button class="button button--large button--donate-pay js-form-state__button" type="submit" id="payments__payment-submit" disabled>
         <div class="button__shadow"></div>
         <div class="button__inner js-button__inner">
-            {% blocktrans with amount=payment_amount|floatformat:"-2" %}Donate ${{ amount }}{% endblocktrans %}
+            {% blocktrans with symbol=currency_info.symbol amount=form.amount.value|floatformat:"-2" %}Donate {{ symbol }} {{ amount }}{% endblocktrans %}
         </div>
     </button>
 </div>
