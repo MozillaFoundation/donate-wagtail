@@ -1,28 +1,8 @@
 {% extends "pages/base_page.html" %}
-{% load i18n form_tags static wagtailimages_tags %}
+{% load i18n %}
 
 {% block title %}{% trans "Pay with Paypal" %}{% endblock %}
 
-
 {% block content %}
-<div id="payments__payment-wrapper">
-
-    <h1 class="wrapper--small-width">{% blocktrans with amount=payment_amount|floatformat:"-2" %}You're donating ${{ amount }}{% endblocktrans %}</h1>
-
-    <form class="form" id="payments__braintree-form" method="post" data-token="{{ braintree_tokenization_key }}" data-amount="{{ payment_amount|floatformat }}">
-        {% csrf_token %}
-
-        {% render_form_field form.braintree_nonce %}
-    </form>
-
-    <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
-    <div id="payments__paypal-button" class="payments__paypal-button"></div>
-</div>
-{% endblock %}
-
-
-{% block extra_js %}
-    {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
-    <script src="/_js/payments-paypal.compiled.js"></script>
+<p>{% trans "Sorry, something went wrong! Please try again later." %}</p>
 {% endblock %}
