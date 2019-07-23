@@ -11,7 +11,7 @@
 
     <div class="donate__bar">
         <div class="donate__bar-info">
-            <p id="donate__heading--single">{% trans "You are donating" %} $<span id="donate__amount__display">{{ form.amount.value }}</span></p>
+            <p id="donate__heading--single">{% trans "You are donating" %} {{ currency_info.symbol }}&nbsp;<span id="donate__amount__display">{{ form.amount.value|floatformat:"-2" }}</span></p>
         </div>
 
         <div class="donate__amount" id="donate__amount">
@@ -19,7 +19,7 @@
         </div>
 
         <div class="donate__bar-edit" id="donate__amount-edit" hidden>
-            <span class="form__input__prefix">$</span> <input type="number" value="{{ form.amount.value }}" step="1" min="1">
+            <span class="form__input__prefix">{{ currency_info.symbol }}</span> <input type="number" value="{{ form.amount.value }}" step="1" min="1">
             <button class="button" id="donate__amount__save">{% trans 'Confirm' %}</button>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     {% for error in form.non_field_errors %}
                     <div class="form__errors">{{ error }}</div>
                     {% endfor %}
-                {% elif form.errors%}
+                {% elif form.errors %}
                     <div class="form__errors">
                         {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
                     </div>

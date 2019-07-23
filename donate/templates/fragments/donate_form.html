@@ -1,0 +1,106 @@
+{% load i18n form_tags %}
+<div class="donate-form__content">
+    <div class="donate-form__tabs tabs js-tabs">
+        <div class="donate-form__tab-options tabs__container" role="tablist">
+            <div class="tabs__option" role="presentation">
+                <a
+                    class="tabs__item tabs__item--selected js-tab-item"
+                    href="#tab-panel-1"
+                    role="tab"
+                    aria-controls="tab-panel-1"
+                    aria-selected="true"
+                    id="tab-1"
+                >
+                    {% trans "One time" %}
+                </a>
+            </div>
+            <div class="tabs__option" role="presentation">
+                <a
+                    class="tabs__item js-tab-item"
+                    href="#tab-panel-2"
+                    role="tab"
+                    aria-controls="tab-panel-2"
+                    aria-selected="true"
+                    id="tab-1"
+                >
+                    {% trans "Monthly" %}
+                </a>
+            </div>
+        </div>
+        <div class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
+            <form method="GET" id="donate-form--single">
+                <input type="hidden" name="currency" value="usd">
+
+                <div class="donate-form__fields">
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="50" id="one-time-amount-1" autocomplete="off">
+                        <label for="one-time-amount-1" class="donation-amount__label">$50</label>
+                    </div>
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="25" id="one-time-amount-2" autocomplete="off">
+                        <label for="one-time-amount-2" class="donation-amount__label">$25</label>
+                    </div>
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="one-time-amount-3" autocomplete="off">
+                        <label for="one-time-amount-3" class="donation-amount__label">$10</label>
+                    </div>
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off">
+                        <label for="one-time-amount-4" class="donation-amount__label">$3</label>
+                    </div>
+                </div>
+                <div class="donate-form__actions">
+                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card_personal_details' frequency='single' %}">{% trans "Donate" %}</button>
+
+                    <div id="payments__paypal-button--single" class="payments__paypal-button"></div>
+                </div>
+            </form>
+        </div>
+        <div class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
+            <form method="GET" id="donate-form--monthly">
+                <input type="hidden" name="currency" value="usd">
+
+                <div class="donate-form__fields">
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off">
+                        <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
+                    </div>
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="5" id="monthly-amount-2" autocomplete="off">
+                        <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
+                    </div>
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="monthly-amount-3" autocomplete="off">
+                        <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
+                    </div>
+                    <div class="donation-amount">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
+                        <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
+                    </div>
+                </div>
+                <div class="donate-form__actions">
+                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card_personal_details' frequency='monthly' %}">{% trans "Donate" %}</button>
+
+                    <div id="payments__paypal-button--monthly" class="payments__paypal-button"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {# Form for submitting payment from Paypal only #}
+    <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
+    <form id="payments__braintree-form" method="post" action="{% url 'payments:paypal' %}" hidden>
+        {% csrf_token %}
+        {% render_form_field braintree_form.braintree_nonce %}
+        {% render_form_field braintree_form.amount %}
+        {% render_form_field braintree_form.frequency %}
+    </form>
+
+    <footer class="donate-form__footer">
+        <p>{% blocktrans with braintree_url='https://www.braintreepayments.com/legal/braintree-privacy-policy' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' email='donate@mozilla.org' wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}
+            Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a> (for credit/debit cards) or <a href="{{ paypal_url }}">Paypal</a>, and a record of your donation will be stored by Mozilla. Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href="mailto:{{ email }}">{{ email }}</a>. We are able to provide refunds up to one year after a donation is processed. Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a>
+        {% endblocktrans %}</p>
+        <p>{% blocktrans with faq_url='/faq' email='donate@mozilla.org' %}Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}</p>
+    </footer>
+</div>

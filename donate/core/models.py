@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+from django.conf import settings
 from django.db import models
 from django.utils.functional import cached_property
 
@@ -11,7 +12,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.fields import ParentalKey
 
-from . import constants
+from donate.payments import constants
+from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
 
 
 class DonationPage(Page):
@@ -23,7 +25,10 @@ class DonationPage(Page):
     def get_context(self, request):
         ctx = super().get_context(request)
         ctx.update({
-            'currencies': self.currencies
+            'currencies': self.currencies,
+            'braintree_params': settings.BRAINTREE_PARAMS,
+            'braintree_form': BraintreePaypalPaymentForm(),
+            'currency_form': CurrencyForm(),
         })
         return ctx
 
