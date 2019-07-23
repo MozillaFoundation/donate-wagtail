@@ -2,6 +2,7 @@ import "babel-polyfill";
 
 import Tabs from "./components/tabs";
 import MenuToggle from "./components/menu-toggle";
+import AmountToggle from "./components/donation-amount-toggle";
 
 // Manage tab index for primary nav
 function tabIndexer() {
@@ -29,9 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
     new MenuToggle(menutoggle, openMenu, closeMenu);
   }
 
+  for (const donatetoggle of document.querySelectorAll(
+    AmountToggle.selector()
+  )) {
+    new AmountToggle(donatetoggle);
+  }
+
   for (const tabs of document.querySelectorAll(Tabs.selector())) {
     new Tabs(tabs);
   }
-
-  tabIndexer();
 });
