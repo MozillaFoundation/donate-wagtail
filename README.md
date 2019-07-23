@@ -79,7 +79,7 @@ Run the back-end test suite with:
 
 ## Basket
 
-[Basket](https://github.com/mozmeao/basket) is a tool run by MoCo to manage newsletter subscriptions and donations. 
+[Basket](https://github.com/mozmeao/basket) is a tool run by MoCo to manage newsletter subscriptions and donations. It's listening for messages (JSON) sent to a SQS queue.
 
 ### Basket donations queue:
 
