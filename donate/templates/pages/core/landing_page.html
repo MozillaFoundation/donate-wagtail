@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load form_tags wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -27,182 +27,10 @@
                     <header class="donate-form__header">
                         <h1 class="donate-form__heading heading heading--primary">{{ page.title }}</h1>
                         <div class="donate-form__currency">
-                            <label for="currency-select" class="donate-form__currency-label">Currency</label>
-                            <select autocomplete="off" class="donate-form__currency-dropdown" id="currency-select">
-                                <option selected="" value="usd">USD &nbsp; $</option>
-                                <option value="aed">AED &nbsp; د.إ.‏</option>
-                                <option value="all">ALL &nbsp; L</option>
-                                <option value="aud">AUD &nbsp; $</option>
-                                <option value="ars">ARS &nbsp; $</option>
-                                <option value="azn">AZN &nbsp; ₼</option>
-                                <option value="bam">BAM &nbsp; KM</option>
-                                <option value="bdt">BDT &nbsp; ৳</option>
-                                <option value="brl">BRL &nbsp; R$</option>
-                                <option value="cad">CAD &nbsp; $</option>
-                                <option value="chf">CHF &nbsp; Fr.</option>
-                                <option value="clp">CLP &nbsp; $</option>
-                                <option value="cny">CNY &nbsp; ¥</option>
-                                <option value="czk">CZK &nbsp; Kč</option>
-                                <option value="dkk">DKK &nbsp; kr</option>
-                                <option value="dzd">DZD &nbsp; د.ج.‏</option>
-                                <option value="egp">EGP &nbsp; ج.م.‏</option>
-                                <option value="eur">EUR &nbsp; €</option>
-                                <option value="gbp">GBP &nbsp; £</option>
-                                <option value="gel">GEL &nbsp; ₾</option>
-                                <option value="gtq">GTQ &nbsp; Q</option>
-                                <option value="hkd">HKD &nbsp; $</option>
-                                <option value="hrk">HRK &nbsp; kn</option>
-                                <option value="huf">HUF &nbsp; Ft</option>
-                                <option value="idr">IDR &nbsp; Rp</option>
-                                <option value="ils">ILS &nbsp; ₪</option>
-                                <option value="inr">INR &nbsp; ₹</option>
-                                <option value="jpy">JPY &nbsp; ¥</option>
-                                <option value="krw">KRW &nbsp; ₩</option>
-                                <option value="lak">LAK &nbsp; ₭</option>
-                                <option value="lbp">LBP &nbsp; ل.ل.‎</option>
-                                <option value="mad">MAD &nbsp; MAD</option>
-                                <option value="myr">MYR &nbsp; RM</option>
-                                <option value="mxn">MXN &nbsp; $</option>
-                                <option value="nok">NOK &nbsp; kr</option>
-                                <option value="nzd">NZD &nbsp; $</option>
-                                <option value="php">PHP &nbsp; ₱</option>
-                                <option value="pln">PLN &nbsp; zł</option>
-                                <option value="qar">QAR &nbsp; ر.ق.‏</option>
-                                <option value="ron">RON &nbsp; lei</option>
-                                <option value="rub">RUB &nbsp; ₽</option>
-                                <option value="sar">SAR &nbsp; ر.س.‏</option>
-                                <option value="sek">SEK &nbsp; kr</option>
-                                <option value="sgd">SGD &nbsp; $SG</option>
-                                <option value="thb">THB &nbsp; ฿</option>
-                                <option value="try">TRY &nbsp; ₺</option>
-                                <option value="twd">TWD &nbsp; NT$</option>
-                                <option value="uah">UAH &nbsp; ₴</option>
-                                <option value="yer">YER &nbsp; ر.ي.‏</option>
-                                <option value="zar">ZAR &nbsp; R</option>
-                            </select>
+                            {% render_form_field currency_form.currency %}
                         </div>
                     </header>
-                    <div class="donate-form__content">
-                        <div class="donate-form__tabs tabs js-tabs">
-                            <form class="donate-form__tab-options tabs__container" role="tablist">
-                                <div class="tabs__option" role="presentation">
-                                    <div
-                                        class="tabs__item tabs__item--selected js-tab-item"
-                                        role="tab"
-                                        aria-controls="tab-panel-1"
-                                        aria-selected="true"
-                                        id="tab-1"
-                                    >
-                                        <input type="radio" name="donation_frequency" id="one-time" value="one-time" checked>
-                                        <label for="one-time">One time</label>
-                                    </div>
-                                </div>
-                                <div class="tabs__option" role="presentation">
-                                    <div
-                                        class="tabs__item js-tab-item"
-                                        role="tab"
-                                        aria-controls="tab-panel-2"
-                                        aria-selected="true"
-                                        id="tab-1"
-                                    >
-                                        <input type="radio" name="donation_frequency" id="monthly" value="monthly">
-                                        <label for="monthly">Monthly</label>
-                                    </div>
-                                </div>
-                            </form>
-                            <form class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
-                                <div class="donate-form__fields">
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="one-time-amount-1" autocomplete="off">
-                                            <label for="one-time-amount-1" class="donation-amount__label">$50</label>
-                                        </div>
-                                    </div>
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="one-time-amount-2" autocomplete="off">
-                                            <label for="one-time-amount-2" class="donation-amount__label">$25</label>
-                                        </div>
-                                    </div>
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="one-time-amount-3" autocomplete="off">
-                                            <label for="one-time-amount-3" class="donation-amount__label">$10</label>
-                                        </div>
-                                    </div>
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
-                                            <label for="one-time-amount-4" class="donation-amount__label">$3</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="donate-form__actions">
-                                    <header class="donate-form__action-header">
-                                        <h2 class="donate-form__action-heading">Choose Payment</h2>
-                                        <div class="donate-form__secure">
-                                            <svg class="donate-form__secure-icon" width="24" height="24">
-                                                <use xlink:href="#padlock"></use>
-                                            </svg>
-                                            <div class="donate-form__secure-label">
-                                                Secure
-                                            </div>
-                                        </div>
-                                    </header>
-                                    <button class="button button--primary">Donate</button>
-                                    <button class="button button--primary">Paypal donate</button>
-                                </div>
-                            </form>
-                            <form class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
-                                <div class="donate-form__fields">
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-1" autocomplete="off">
-                                            <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
-                                        </div>
-                                    </div>
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="25" id="monthly-amount-2" autocomplete="off">
-                                            <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
-                                        </div>
-                                    </div>
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="10" id="monthly-amount-3" autocomplete="off">
-                                            <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
-                                        </div>
-                                    </div>
-                                    <div class="donation-amount">
-                                        <div class="donation-amount__container">
-                                            <input type="radio" class="donation-amount__radio" name="donation_amount" value="50" id="monthly-amount-4" autocomplete="off">
-                                            <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="donate-form__actions">
-                                    <header class="donate-form__action-header">
-                                        <h2 class="donate-form__action-heading">Choose Payment</h2>
-                                        <div class="donate-form__secure">
-                                            <svg class="donate-form__secure-icon" width="24" height="24">
-                                                <use xlink:href="#padlock"></use>
-                                            </svg>
-                                            <div class="donate-form__secure-label">
-                                                Secure
-                                            </div>
-                                        </div>
-                                    </header>
-                                    <button class="button button--primary">Donate</button>
-                                    <button class="button button--primary">Paypal donate</button>
-                                </div>
-                            </form>
-                        </div>
-                        <footer class="donate-form__footer">
-                            <p>Your payment details will be processed by Stripe (for credit/debit cards) or Paypal, and a record of your donation will be stored by Mozilla. Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at donate@mozilla.org. We are able to provide refunds up to one year after a donation is processed. Other ways to give: Wire Transfer or SEPA | Check</p>
-                            <p>Problems donating? Visit our FAQ for answers to most common questions. Still have problems? Send us an email.</p>
-                            <p>Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.</p>
-                        </footer>
-                    </div>
+                    {% include "fragments/donate_form.html" %}
                 </div>
             </div>
         </div>
@@ -212,4 +40,7 @@
 
 {% block extra_js %}
     {{ currencies|json_script:"currencies" }}
+    {{ braintree_params|json_script:"payments__braintree-params" }}
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="/_js/payments-paypal.compiled.js"></script>
 {% endblock %}
