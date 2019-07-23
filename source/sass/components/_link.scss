@@ -1,4 +1,6 @@
 .link {
+  $root: &;
+
   &--light-bg {
     color: $color--link;
 
@@ -6,6 +8,10 @@
     &:active,
     &:focus {
       color: $color--link-hover;
+    }
+
+    #{$root}--icon {
+      fill: $color--black;
     }
   }
 
@@ -16,6 +22,10 @@
     &:active,
     &:focus {
       color: $color--white;
+    }
+
+    &#{$root}--icon {
+      fill: $color--white;
     }
   }
 }

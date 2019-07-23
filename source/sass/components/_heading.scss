@@ -2,6 +2,7 @@
   @include heading-text();
   font-weight: $weight--bold;
   margin-bottom: 0;
+  margin-top: 0;
 
   &--primary {
     @include font-size(xl);
@@ -9,6 +10,7 @@
 
   &--secondary {
     @include font-size(l);
+    font-weight: $weight--bold;
   }
 
   &--tertiary {
@@ -17,5 +19,9 @@
 
   &--bottom-margin {
     margin-bottom: ($gutter / 2);
+  }
+
+  &--dark-bg {
+    color: $color--white;
   }
 }
