@@ -57,7 +57,7 @@
   }
 
   &__label {
-    @include font-size(m);
+    @include font-size(default);
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -81,7 +81,13 @@
   select {
     width: 100%;
     padding: 10px;
-    border: 1px solid $color--default;
+    border: 1px solid $color--border;
+    transition: border-color $transition;
+
+    &:active,
+    &:focus {
+      border-color: $color--primary;
+    }
   }
 
   input[type="checkbox"] {

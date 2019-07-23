@@ -1,5 +1,5 @@
 .notification {
-  padding: ($gutter / 2) $gutter;
+  margin-bottom: $gutter;
 
   &--neutral {
     background-color: $color--neutral;
@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    padding: ($gutter * 0.75) $gutter;
   }
 
   &__action {
