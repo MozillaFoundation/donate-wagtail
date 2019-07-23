@@ -4,6 +4,10 @@
   &--narrow {
     #{$root}__container {
       max-width: $site-width--small;
+
+      @include media-query(tablet-portrait) {
+        margin: 0 auto;
+      }
     }
   }
   &__container {

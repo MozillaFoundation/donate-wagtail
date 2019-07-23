@@ -12,4 +12,10 @@
     color: $color--white;
     background-color: $color--tertiary;
   }
+
+  &__section {
+    &--actions {
+      margin-bottom: ($gutter * 2);
+    }
+  }
 }

@@ -15,12 +15,18 @@
 
   &__container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     padding: ($gutter * 0.75) $gutter;
+
+    @include media-query(tablet-portrait) {
+      flex-direction: row;
+    }
   }
 
   &__action {
-    margin-left: $gutter;
+    @include media-query(tablet-portrait) {
+      margin-left: $gutter;
+    }
   }
 }
