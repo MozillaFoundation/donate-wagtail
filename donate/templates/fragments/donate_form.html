@@ -1,9 +1,9 @@
 {% load i18n form_tags %}
 <div class="donate-form__content">
     <div class="donate-form__tabs tabs js-tabs">
-        <div class="donate-form__tab-options tabs__container" role="tablist">
+        <form class="donate-form__tab-options tabs__container" role="tablist">
             <div class="tabs__option" role="presentation">
-                <a
+                <div
                     class="tabs__item tabs__item--selected js-tab-item"
                     href="#tab-panel-1"
                     role="tab"
@@ -11,11 +11,12 @@
                     aria-selected="true"
                     id="tab-1"
                 >
-                    {% trans "One time" %}
-                </a>
+                <input type="radio" name="donation_frequency" id="one-time" value="one-time" checked>
+                <label for="one-time">{% trans "One time" %}</label>
+                </div>
             </div>
             <div class="tabs__option" role="presentation">
-                <a
+                <div
                     class="tabs__item js-tab-item"
                     href="#tab-panel-2"
                     role="tab"
@@ -23,10 +24,11 @@
                     aria-selected="true"
                     id="tab-1"
                 >
-                    {% trans "Monthly" %}
-                </a>
+                    <input type="radio" name="donation_frequency" id="monthly" value="monthly">
+                    <label for="monthly">{% trans "Monthly" %}</label>
+                </div>
             </div>
-        </div>
+        </form>
         <div class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
             <form method="GET" id="donate-form--single">
                 <input type="hidden" name="currency" value="usd">
@@ -45,7 +47,7 @@
                         <label for="one-time-amount-3" class="donation-amount__label">$10</label>
                     </div>
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
                         <label for="one-time-amount-4" class="donation-amount__label">$3</label>
                     </div>
                 </div>
@@ -62,7 +64,7 @@
 
                 <div class="donate-form__fields">
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off" checked>
                         <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
                     </div>
                     <div class="donation-amount">
