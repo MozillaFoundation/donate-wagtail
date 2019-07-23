@@ -1,7 +1,11 @@
-from django.db import models
+from decimal import Decimal
 
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, InlinePanel
-from wagtail.core.fields import RichTextField
+from django.db import models
+from django.utils.functional import cached_property
+
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.core.blocks import DecimalBlock, StreamBlock
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
@@ -10,7 +14,24 @@ from modelcluster.fields import ParentalKey
 from . import constants
 
 
-class LandingPage(Page):
+class DonationPage(Page):
+
+    @cached_property
+    def currencies(self):
+        return constants.CURRENCIES.copy()
+
+    def get_context(self, request):
+        ctx = super().get_context(request)
+        ctx.update({
+            'currencies': self.currencies
+        })
+        return ctx
+
+    class Meta:
+        abstract = True
+
+
+class LandingPage(DonationPage):
     template = 'pages/core/landing_page.html'
 
     # Only allow creating landing pages at the root level
@@ -30,7 +51,7 @@ class LandingPage(Page):
     ]
 
 
-class CampaignPage(Page):
+class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
     parent_page_types = ['core.LandingPage']
 
@@ -47,6 +68,33 @@ class CampaignPage(Page):
         InlinePanel('donation_amounts', label='Donation amount overrides'),
     ]
 
+    @classmethod
+    def amount_stream_to_list(cls, stream):
+        return [Decimal(child.value) for child in stream]
+
+    @classmethod
+    def get_presets(cls, override):
+        return {
+            'single': cls.amount_stream_to_list(override.single_options),
+            'monthly': cls.amount_stream_to_list(override.monthly_options),
+        }
+
+    @cached_property
+    def currencies(self):
+        currencies = super().currencies
+        # Apply overrides for preset options
+        for override in self.donation_amounts.all():
+            currencies[override.currency]['presets'] = self.get_presets(override)
+        return currencies
+
+
+class AmountBlock(StreamBlock):
+    amount = DecimalBlock(min_value=0, max_digits=7, decimal_places=2)
+
+    class Meta:
+        icon = 'cogs'
+        max_num = 6
+
 
 class CampaignPageDonationAmount(models.Model):
     campaign = ParentalKey(
@@ -61,35 +109,13 @@ class CampaignPageDonationAmount(models.Model):
         db_index=True,
     )
 
-    # Define 4 fields each for single and monthly preset amounts
-    preset_kwargs = {'max_digits': 7, 'decimal_places': 2}
-    single_1 = models.DecimalField(**preset_kwargs)
-    single_2 = models.DecimalField(**preset_kwargs)
-    single_3 = models.DecimalField(**preset_kwargs)
-    single_4 = models.DecimalField(**preset_kwargs)
-    monthly_1 = models.DecimalField(**preset_kwargs)
-    monthly_2 = models.DecimalField(**preset_kwargs)
-    monthly_3 = models.DecimalField(**preset_kwargs)
-    monthly_4 = models.DecimalField(**preset_kwargs)
+    single_options = StreamField(AmountBlock())
+    monthly_options = StreamField(AmountBlock())
 
     panels = [
         FieldPanel('currency'),
-        FieldRowPanel([
-            FieldPanel('single_1'),
-            FieldPanel('single_2'),
-        ]),
-        FieldRowPanel([
-            FieldPanel('single_3'),
-            FieldPanel('single_4'),
-        ]),
-        FieldRowPanel([
-            FieldPanel('monthly_1'),
-            FieldPanel('monthly_2'),
-        ]),
-        FieldRowPanel([
-            FieldPanel('monthly_3'),
-            FieldPanel('monthly_4'),
-        ]),
+        StreamFieldPanel('single_options'),
+        StreamFieldPanel('monthly_options'),
     ]
 
     class Meta:

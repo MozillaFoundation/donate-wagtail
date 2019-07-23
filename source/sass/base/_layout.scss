@@ -1,48 +1,43 @@
 .layout {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    max-width: $site-width--default;
+    margin: 0 $gutter;
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        max-width: $site-width--default;
-        margin: 0 $gutter;
-
-        @include media-query(tablet-landscape) {
-            flex-direction: row;
-            margin: 0 auto;
-        }
-
+    @include media-query(tablet-landscape) {
+      flex-direction: row;
+      margin: 0 auto;
     }
+  }
 
-    &__full {
-        flex-basis: 100%;
-        max-width: 100%;
-        min-width: 100%;
+  &__full {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  &__primary-col {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 70%;
+      min-width: 70%;
+      max-width: 70%;
     }
+  }
 
-    &__primary-col {
-        flex-basis: 100%;
-        max-width: 100%;
-        min-width: 100%;
+  &__secondary-col {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
 
-        @include media-query(tablet-landscape) {
-            flex-basis: 70%;
-            min-width: 70%;
-            max-width: 70%;
-        }
-
+    @include media-query(tablet-landscape) {
+      flex-basis: 30%;
+      min-width: 30%;
+      max-width: 30%;
     }
-
-    &__secondary-col {
-        flex-basis: 100%;
-        max-width: 100%;
-        min-width: 100%;
-
-        @include media-query(tablet-landscape) {
-            flex-basis: 30%;
-            min-width: 30%;
-            max-width: 30%;
-        }
-
-    }
-
+  }
 }

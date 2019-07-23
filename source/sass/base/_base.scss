@@ -6,63 +6,64 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 // Prevent text size change on orientation change.
 // sass-lint:disable no-vendor-prefixes
 html {
-    font-family: $font--primary;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: $color--black; // match footer bg colour
+  font-family: $font--primary;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $color--black; // match footer bg colour
 }
 // sass-lint:enddisable
 
 body {
-    overflow-x: hidden;
-    background-color: $color--background;
+  overflow-x: hidden;
+  background-color: $color--background;
 
-    &.no-scroll {
-        overflow-y: hidden;
-	}
-
+  &.no-scroll {
+    overflow-y: hidden;
+  }
 }
 
 // Prevent empty space below images appearing
 img,
 svg {
-    vertical-align: top;
+  vertical-align: top;
 }
 
 // Responsive images
 img {
-    height: auto;
-    max-width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 // sass-lint:disable single-line-per-selector
-button, input, select, textarea {
-    font-family: inherit;
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 // sass-lint:enddisable
 
 a {
-    color: $color--link;
-    text-decoration: none;
-    transition: color $transition;
+  color: $color--link;
+  text-decoration: none;
+  transition: color $transition;
 
-    &:hover {
-        color: $color--link-hover;
-        cursor: pointer;
-    }
-
+  &:hover {
+    color: $color--link-hover;
+    cursor: pointer;
+  }
 }
 
 ul,
 ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }

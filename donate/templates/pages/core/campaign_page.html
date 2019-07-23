@@ -2,7 +2,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-
     {% image page.hero_image width-1200 as image %}
 
     <div class="layout">
@@ -27,5 +26,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
+{% block extra_js %}
+    {{ currencies|json_script:"currencies" }}
 {% endblock %}
