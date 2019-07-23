@@ -1,14 +1,63 @@
 .footer-links {
   &__container {
     display: flex;
+    flex-direction: column;
+    @include media-query(tablet-landscape) {
+      flex-direction: row;
+    }
+  }
+  &__header {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin-bottom: ($gutter * 2);
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 33.333%;
+      max-width: 33.333%;
+      min-width: 33.333%;
+      margin-bottom: $gutter;
+    }
+  }
+  &__group {
+    display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin-bottom: ($gutter * 2);
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 66.666%;
+      max-width: 66.666%;
+      min-width: 66.666%;
+    }
   }
 
   &__item {
     @include body-text();
-    margin: 0 ($gutter / 2) ($gutter / 2);
-    font-weight: $weight--bold;
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0 0 ($gutter / 2);
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 50%;
+      min-width: 50%;
+      max-width: 50%;
+    }
+  }
+
+  &__social-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: ($gutter / 2);
+    transition: fill $transition;
+
+    &:hover {
+      fill: $color--link-hover;
+    }
   }
 }
