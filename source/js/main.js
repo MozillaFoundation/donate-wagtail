@@ -39,4 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
   for (const tabs of document.querySelectorAll(Tabs.selector())) {
     new Tabs(tabs);
   }
+
+  tabIndexer();
 });

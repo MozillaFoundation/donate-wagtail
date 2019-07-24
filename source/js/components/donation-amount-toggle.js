@@ -3,8 +3,8 @@ class AmountToggle {
     return "[data-amount-toggle]";
   }
 
-  constructor() {
-    this.toggleButton = document.querySelector("[data-amount-toggle]");
+  constructor(node) {
+    this.toggleButton = node;
     this.actionsContainer = document.querySelector("[data-amount-actions]");
     this.activeClass = "active";
 
