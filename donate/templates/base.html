@@ -30,6 +30,8 @@
         <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %}">
             <div class="app__container">
 
+                {% include "fragments/svg-sprites.html" %}
+
                 <header class="app__header">
                     {% block header %}{% endblock %}
                 </header>
