@@ -13,6 +13,12 @@
     }
   }
 
+  &__full {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
   &__primary-col {
     flex-basis: 100%;
     max-width: 100%;
