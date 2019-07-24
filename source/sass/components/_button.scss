@@ -21,4 +21,19 @@
       background-color: darken($color--primary, 5%);
     }
   }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--large {
+    @include font-size(m);
+    padding: $gutter;
+    font-weight: $weight--semibold;
+  }
+
+  &__icon {
+    fill: $color--white;
+    margin-right: ($gutter / 4);
+  }
 }

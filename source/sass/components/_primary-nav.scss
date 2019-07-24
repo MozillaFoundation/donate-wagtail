@@ -9,6 +9,7 @@
 
   &__container {
     @include z-index(nav);
+    pointer-events: none;
     position: absolute;
     top: 0;
     width: 100%;
@@ -36,6 +37,7 @@
 
   &.is-visible {
     #{$root}__container {
+      pointer-events: auto;
       transform: translateY(0);
       opacity: 1;
     }

@@ -57,10 +57,11 @@
   }
 
   &__label {
-    @include font-size(m);
+    @include font-size(default);
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: $color--black;
   }
 
   &__errors {
@@ -80,8 +81,14 @@
   textarea,
   select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid $color--default;
+    padding: ($gutter * 0.75) ($gutter);
+    border: 1px solid $color--border;
+    transition: border-color $transition;
+
+    &:active,
+    &:focus {
+      border-color: $color--primary;
+    }
   }
 
   input[type="checkbox"] {

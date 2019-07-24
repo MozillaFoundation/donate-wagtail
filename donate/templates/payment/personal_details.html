@@ -3,76 +3,98 @@
 
 {% block title %}{% trans "Your information" %}{% endblock %}
 
+{% block template_name %}app--details{% endblock %}
+
 {% block content %}
 
-<div class="payments donate" id="donate__personal-details-wrapper">
+<div class="layout layout--narrow">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <div class="payments donate" id="donate__personal-details-wrapper">
 
-    <h1>{% trans "Your details" %}</h1>
+                <div class="notification notification--neutral">
+                    <div class="notification__container">
+                        <div class="notification__message">
+                            {% trans "You are donating" %} {{ currency_info.symbol }} {{ form.amount.value|floatformat:"-2" }}
+                        </div>
+                        <div class="notification__action">
+                            <a href="#donate__amount-edit" data-amount-toggle>{% trans "Change amount" %}</a>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="donate__bar">
-        <div class="donate__bar-info">
-            <p id="donate__heading--single">{% trans "You are donating" %} {{ currency_info.symbol }}&nbsp;<span id="donate__amount__display">{{ form.amount.value|floatformat:"-2" }}</span></p>
-        </div>
+                <div class="donation-update" data-amount-actions>
+                    <div class="donation-update__container">
+                        <div class="form-item">
+                            <label for="donation-update">{{ currency_info.symbol }}</label>
+                            <input type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="1">
+                        </div>
+                        <div class="form-item">
+                            <button class="button button--primary">{% trans 'Confirm' %}</button>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="donate__amount" id="donate__amount">
-            <a id="donate__change-amount" href="#donate__amount-edit">Change amount</a>
-        </div>
+                <h1 class="heading heading--primary">{% trans "Your details" %}</h1>
 
-        <div class="donate__bar-edit" id="donate__amount-edit" hidden>
-            <span class="form__input__prefix">{{ currency_info.symbol }}</span> <input type="number" value="{{ form.amount.value }}" step="1" min="1">
-            <button class="button" id="donate__amount__save">{% trans 'Confirm' %}</button>
+            </div>
+
+            <div class="donate__form-wrapper">
+                <form method="post" class="form">
+                    <div class="form__container form__container--flex">
+                        <div class="form__section form__section--main-column">
+                            {% csrf_token %}
+
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                <div class="form__errors">{{ error }}</div>
+                                {% endfor %}
+                            {% elif form.errors %}
+                                <div class="form__errors">
+                                    {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
+                                </div>
+                            {% elif request.session.gateway_address_errors %}
+                                <div class="form__errors">
+                                    <p>{% trans "We were unable to take payment because the payment processor reported an error with your address information:" %}</p>
+                                    {% for error in request.session.gateway_address_errors %}
+                                    <p><strong>{{ error }}</strong></p>
+                                    {% endfor %}
+                                    {% trans "Please correct these errors and try again." %}
+                                </div>
+                            {% endif %}
+
+                            {% render_form_field form.amount %}
+                            {% render_form_field form.first_name %}
+                            {% render_form_field form.last_name %}
+                            {% render_form_field form.email %}
+                            {% render_form_field form.address_line_1 %}
+                            {% render_form_field form.town %}
+                            {% render_form_field form.post_code %}
+                            {% render_form_field form.country %}
+
+                        </div>
+
+                        <div class="form__section form__section--actions">
+
+                            <button value="{% trans 'Continue to payment' %}" class="button button--large button--full button--primary button--icon" type="submit">
+                                <svg class="button__icon" width="24" height="24">
+                                    <use xlink:href="#padlock"></use>
+                                </svg>
+                                {% trans 'Continue to payment' %}
+                            </button>
+
+                        </div>
+
+                        <footer class="donate__footer">
+                            {% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}
+                            LOGOS TBD
+                        </footer>
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="donate__form-wrapper">
-    <form method="post" class="form">
-        <div class="form__container form__container--flex">
-            <div class="form__section form__section--main-column">
-                {% csrf_token %}
-
-                {% if form.non_field_errors %}
-                    {% for error in form.non_field_errors %}
-                    <div class="form__errors">{{ error }}</div>
-                    {% endfor %}
-                {% elif form.errors %}
-                    <div class="form__errors">
-                        {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
-                    </div>
-                {% elif request.session.gateway_address_errors %}
-                    <div class="form__errors">
-                        <p>{% trans "We were unable to take payment because the payment processor reported an error with your address information:" %}</p>
-                        {% for error in request.session.gateway_address_errors %}
-                        <p><strong>{{ error }}</strong></p>
-                        {% endfor %}
-                        {% trans "Please correct these errors and try again." %}
-                    </div>
-                {% endif %}
-
-                {% render_form_field form.amount %}
-                {% render_form_field form.first_name %}
-                {% render_form_field form.last_name %}
-                {% render_form_field form.email %}
-                {% render_form_field form.address_line_1 %}
-                {% render_form_field form.town %}
-                {% render_form_field form.post_code %}
-                {% render_form_field form.country %}
-
-            </div>
-
-            <div class="form__section form__section--full-width">
-
-                <button value="{% trans 'Continue to payment' %}" class="button button--large button--secondary" type="submit">
-                    <div class="button__shadow"></div>
-                    <div class="button__inner">
-                        {% trans 'Continue to payment' %}
-                    </div>
-                </button>
-
-            </div>
-
-        </div>
-    </form>
 </div>
 
 {% endblock %}
