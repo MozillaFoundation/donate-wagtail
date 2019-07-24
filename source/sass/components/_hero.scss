@@ -1,13 +1,12 @@
 .hero {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
-    &__container {
-        position: relative;
-        min-height: 300px;
-        max-width: $site-width--default;
-        margin: 0 auto;
-    }
-
+  &__container {
+    position: relative;
+    min-height: 300px;
+    max-width: $site-width--default;
+    margin: 0 auto;
+  }
 }
