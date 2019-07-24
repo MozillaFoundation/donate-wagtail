@@ -1,5 +1,5 @@
 {% extends "pages/core/landing_page.html" %}
-{% load wagtailcore_tags wagtailimages_tags form_tags i18n %}
+{% load static wagtailcore_tags wagtailimages_tags form_tags i18n %}
 
 {% block content %}
     {% image page.hero_image width-1200 as image %}
@@ -21,11 +21,13 @@
             <div class="layout__secondary-col">
                 <div class="logo-showcase column-spacing">
                     <div class="logo-showcase__container">
-                        <div class="logo-showcase__item logo-item">
-                            <img class="logo-item__image" src="/_images/seal-charity-navigator-4-star.png" alt="Seal of Charity Navigator 4-Star">
-                        </div>
-                        <div class="logo-showcase__item logo-item">
-                            <img class="logo-item__image" src="/_images/seal-guidestar-gold-2019.png" alt="Seal of GuideStar Gold 2019">
+                        <div class="logo-showcase__container">
+                            <div class="logo-showcase__item logo-item">
+                                <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
+                            </div>
+                            <div class="logo-showcase__item logo-item">
+                                <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
+                            </div>
                         </div>
                     </div>
                 </div>
