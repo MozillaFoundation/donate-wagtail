@@ -1,5 +1,6 @@
 {% extends "pages/base_page.html" %}
-{% load form_tags wagtailcore_tags wagtailimages_tags i18n %}
+{% load form_tags static wagtailcore_tags wagtailimages_tags i18n %}
+
 {% block content %}
 
 <div class="layout">
@@ -18,10 +19,10 @@
             <div class="logo-showcase column-spacing">
                 <div class="logo-showcase__container">
                     <div class="logo-showcase__item logo-item">
-                        <img class="logo-item__image" src="/_images/seal-charity-navigator-4-star.png" alt="Seal of Charity Navigator 4-Star">
+                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
                     </div>
                     <div class="logo-showcase__item logo-item">
-                        <img class="logo-item__image" src="/_images/seal-guidestar-gold-2019.png" alt="Seal of GuideStar Gold 2019">
+                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
                     </div>
                 </div>
             </div>
@@ -43,8 +44,8 @@
 {% endblock %}
 
 {% block extra_js %}
-{{ currencies|json_script:"currencies" }}
-{{ braintree_params|json_script:"payments__braintree-params" }}
-<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
-<script src="/_js/payments-paypal.compiled.js"></script>
+    {{ currencies|json_script:"currencies" }}
+    {{ braintree_params|json_script:"payments__braintree-params" }}
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="{% static '_js/payments-paypal.compiled.js' %}"></script>
 {% endblock %}
