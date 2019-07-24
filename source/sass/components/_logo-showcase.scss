@@ -1,2 +1,11 @@
 .logo-showcase {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    margin-right: $gutter;
+  }
 }
