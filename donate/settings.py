@@ -187,9 +187,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_ROOT = app('frontend')
-WHITENOISE_INDEX_FILE = True
-
+STATICFILES_DIRS = [app('frontend')]
 STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
 

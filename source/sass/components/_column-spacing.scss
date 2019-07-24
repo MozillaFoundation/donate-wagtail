@@ -2,7 +2,7 @@
 .column-spacing {
   .layout__secondary-col & {
     @include media-query(tablet-landscape) {
-      padding-right: ($gutter);
+      padding-right: ($gutter * 3);
     }
   }
 
@@ -11,7 +11,7 @@
   .app--rtl .layout__secondary-col & {
     @include media-query(tablet-landscape) {
       padding-right: 0;
-      padding-left: ($gutter);
+      padding-left: ($gutter * 3);
     }
   }
   // sass-lint:enddisable
