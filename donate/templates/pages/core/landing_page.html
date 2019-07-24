@@ -1,47 +1,53 @@
 {% extends "pages/base_page.html" %}
-{% load form_tags wagtailcore_tags wagtailimages_tags %}
-
+{% load form_tags wagtailcore_tags wagtailimages_tags i18n %}
 {% block content %}
 
-    <div class="layout">
-        <div class="layout__container">
-            <div class="layout__secondary-col">
-                <div class="image-feature column-spacing">
-                    <div class="image-feature__container">
-                        {% image page.featured_image original class="image-feature__image" %}
-                    </div>
-                </div>
-                <div class="introduction column-spacing">
-                    <div class="introduction__container">
-                        {{ page.intro|richtext }}
-                    </div>
-                </div>
-                <div class="logo-showcase column-spacing">
-                    <div class="logo-showcase__container">
-                        LOGOS TBD
-                    </div>
+<div class="layout">
+    <div class="layout__container">
+        <div class="layout__secondary-col">
+            <div class="image-feature column-spacing">
+                <div class="image-feature__container">
+                    {% image page.featured_image original class="image-feature__image" %}
                 </div>
             </div>
-            <div class="layout__primary-col">
-                <div class="donate-form">
-                    <header class="donate-form__header">
-                        <h1 class="heading heading--primary heading--bottom-margin">{{ page.title }}</h1>
-
-                        <div class="donate-form__currency">
-                            {% render_form_field currency_form.currency %}
-                        </div>
-                    </header>
-                    {% include "fragments/donate_form.html" %}
+            <div class="introduction column-spacing">
+                <div class="introduction__container">
+                    {{ page.intro|richtext }}
+                </div>
+            </div>
+            <div class="logo-showcase column-spacing">
+                <div class="logo-showcase__container">
+                    <div class="logo-showcase__item logo-item">
+                        <img class="logo-item__image" src="/_images/seal-charity-navigator-4-star.png" alt="Seal of Charity Navigator 4-Star">
+                    </div>
+                    <div class="logo-showcase__item logo-item">
+                        <img class="logo-item__image" src="/_images/seal-guidestar-gold-2019.png" alt="Seal of GuideStar Gold 2019">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="layout__primary-col">
+            <div class="donate-form">
+                <header class="donate-form__header">
+                    <h1 class="heading heading--primary heading--bottom-margin">
+                        {% trans "Donate now" %}
+                    </h1>
+
+                    <div class="donate-form__currency">
+                        {% render_form_field currency_form.currency %}
+                    </div>
+                </header>
+                {% include "fragments/donate_form.html" %}
+            </div>
+        </div>
     </div>
+</div>
 
 {% endblock %}
 
 {% block extra_js %}
-    {{ currencies|json_script:"currencies" }}
-    {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
-    <script src="/_js/payments-paypal.compiled.js"></script>
+{{ currencies|json_script:"currencies" }}
+{{ braintree_params|json_script:"payments__braintree-params" }}
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+<script src="/_js/payments-paypal.compiled.js"></script>
 {% endblock %}
