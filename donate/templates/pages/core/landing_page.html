@@ -30,10 +30,7 @@
         <div class="layout__primary-col">
             <div class="donate-form">
                 <header class="donate-form__header">
-                    <h1 class="heading heading--primary heading--bottom-margin">
-                        {% trans "Donate now" %}
-                    </h1>
-
+                    <h1 class="donate-form__heading heading heading--primary">{{ page.title }}</h1>
                     <div class="donate-form__currency">
                         {% render_form_field currency_form.currency %}
                     </div>
