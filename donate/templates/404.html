@@ -3,8 +3,12 @@
 
 {% block title %}Page not found{% endblock %}
 
-{% block template_name %}template-404{% endblock %}
+{% block template_name %}app--404{% endblock %}
 
 {% block content %}
-    <h1>Page not found</h1>
+<div class="layout">
+    <div class="layout__container">
+        <h1 class="heading heading--primary">Page not found</h1>
+    </div>
+</div>
 {% endblock %}
