@@ -1,5 +1,54 @@
 .donate-form {
-  &__currency label {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__heading {
+    margin-bottom: 0;
+  }
+
+  &__tab-options {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: ($gutter);
+  }
+
+  &__fields {
+    @include media-query(tablet-landscape) {
+      display: grid;
+      grid-gap: ($gutter);
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__action-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: ($gutter);
+  }
+
+  &__action-heading {
+    margin-right: ($gutter);
+  }
+
+  &__secure {
+    @include font-size(xs);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  &__secure-icon {
+    margin-right: ($gutter / 4);
+  }
+
+  &__currency-label {
     @include hidden();
   }
 }
