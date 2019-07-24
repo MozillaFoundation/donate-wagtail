@@ -1,50 +1,47 @@
 .layout {
-    $landing-page-top-space: ($gutter * 2);
+  $landing-page-top-space: ($gutter * 2);
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        max-width: $site-width--default;
-        margin: 0 $gutter;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    max-width: $site-width--default;
+    margin: 0 $gutter;
 
-        @include media-query(tablet-landscape) {
-            flex-direction: row;
-            margin: 0 auto;
-        }
+    @include media-query(tablet-landscape) {
+      flex-direction: row;
+      margin: 0 auto;
+    }
+  }
 
+  &__primary-col {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 65%;
+      min-width: 65%;
+      max-width: 65%;
     }
 
-    &__primary-col {
-        flex-basis: 100%;
-        max-width: 100%;
-        min-width: 100%;
+    .app--landing-page & {
+      margin-top: $landing-page-top-space;
+    }
+  }
 
-        @include media-query(tablet-landscape) {
-            flex-basis: 65%;
-            min-width: 65%;
-            max-width: 65%;
-        }
+  &__secondary-col {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
 
-        .app--landing-page & {
-            margin-top: $landing-page-top-space;
-        }
-
+    @include media-query(tablet-landscape) {
+      flex-basis: 35%;
+      min-width: 35%;
+      max-width: 35%;
     }
 
-    &__secondary-col {
-        flex-basis: 100%;
-        max-width: 100%;
-        min-width: 100%;
-
-        @include media-query(tablet-landscape) {
-            flex-basis: 35%;
-            min-width: 35%;
-            max-width: 35%;
-        }
-
-        .app--landing-page & {
-            margin-top: $landing-page-top-space;
-        }
-
+    .app--landing-page & {
+      margin-top: $landing-page-top-space;
     }
+  }
 }

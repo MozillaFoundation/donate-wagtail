@@ -1,18 +1,18 @@
 // Component to add spacing to flex based layout elements without causing them to go over 100% total width
 .column-spacing {
-    .layout__secondary-col & {
-        @include media-query(tablet-landscape) {
-            padding-right: ($gutter * 3);
-        }
+  .layout__secondary-col & {
+    @include media-query(tablet-landscape) {
+      padding-right: ($gutter * 3);
     }
+  }
 
-    // Move padding to opposite side for RTL languages
-    // sass-lint:disable force-element-nesting
-    .app--rtl .layout__secondary-col & {
-        @include media-query(tablet-landscape) {
-            padding-right: 0;
-            padding-left: ($gutter * 3);
-        }
+  // Move padding to opposite side for RTL languages
+  // sass-lint:disable force-element-nesting
+  .app--rtl .layout__secondary-col & {
+    @include media-query(tablet-landscape) {
+      padding-right: 0;
+      padding-left: ($gutter * 3);
     }
-    // sass-lint:enddisable
+  }
+  // sass-lint:enddisable
 }
