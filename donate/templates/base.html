@@ -9,18 +9,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {% block meta_tags %}{% endblock %}
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/_images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/_images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/_images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="/_images/favicon/site.webmanifest">
-        <link rel="mask-icon" href="/_images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="/_images/favicon/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static '_images/favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static '_images/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static '_images/favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static '_images/favicon/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static '_images/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+        <link rel="shortcut icon" href="{% static '_images/favicon/favicon.ico' %}">
         <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-config" content="/_images/favicon/browserconfig.xml">
+        <meta name="msapplication-config" content="{% static '_images/favicon/browserconfig.xml' %}">
         <meta name="theme-color" content="#ffffff">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:600,400,300,700,300italic|Zilla+Slab:300,700">
-        <link rel="stylesheet" href="/_css/main.compiled.css">
+        <link rel="stylesheet" href="{% static '_css/main.compiled.css' %}">
 
     </head>
 
@@ -52,7 +52,7 @@
         </div>
 
         {% block script_bundle %}
-        <script src="/_js/main.compiled.js"></script>
+        <script src="{% static '_js/main.compiled.js' %}"></script>
         {% endblock %}
         {% block extra_js %}{% endblock %}
     </body>
