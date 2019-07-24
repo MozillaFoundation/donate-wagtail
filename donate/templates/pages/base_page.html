@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block meta_tags %}
     <meta name="twitter:card" content="summary" />
@@ -47,7 +47,7 @@
             </div>
 
             <a class="header__logo-link" href="/">
-                <img class="header__logo" src="/_images/mozilla-logo-white.svg" alt="Mozilla">
+                <img class="header__logo" src="{% static '_images/mozilla-logo-white.svg' %}" alt="Mozilla">
             </a>
 
         </div>

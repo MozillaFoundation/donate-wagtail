@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load form_tags wagtailcore_tags wagtailimages_tags %}
+{% load form_tags static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -43,5 +43,5 @@
     {{ currencies|json_script:"currencies" }}
     {{ braintree_params|json_script:"payments__braintree-params" }}
     <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
-    <script src="/_js/payments-paypal.compiled.js"></script>
+    <script src="{% static '_js/payments-paypal.compiled.js' %}"></script>
 {% endblock %}
