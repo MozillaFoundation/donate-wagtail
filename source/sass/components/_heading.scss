@@ -10,6 +10,7 @@
 
   &--secondary {
     @include font-size(l);
+    font-weight: $weight--bold;
   }
 
   &--tertiary {
@@ -18,5 +19,9 @@
 
   &--bottom-margin {
     margin-bottom: ($gutter / 2);
+  }
+
+  &--dark-bg {
+    color: $color--white;
   }
 }

@@ -9,7 +9,21 @@
 
     @include media-query(tablet-landscape) {
       flex-direction: row;
+    }
+
+    @include media-query(desktop) {
       margin: 0 auto;
+    }
+  }
+  &__half-col {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 50%;
+      min-width: 50%;
+      max-width: 50%;
     }
   }
 
@@ -34,7 +48,6 @@
       margin-top: $landing-page-top-space;
     }
   }
-
   &__secondary-col {
     flex-basis: 100%;
     max-width: 100%;
