@@ -74,4 +74,13 @@
       @include hidden();
     }
   }
+
+  .app--campaign-page & {
+    @include media-query(tablet-landscape) {
+      position: relative;
+      top: -100px;
+      background-color: $color--white;
+      padding: $gutter ($gutter * 2);
+    }
+  }
 }

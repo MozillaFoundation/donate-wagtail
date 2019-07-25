@@ -26,6 +26,11 @@
     @include media-query(desktop) {
       margin: 0 auto;
     }
+
+    &--full {
+      margin: 0;
+      max-width: 100%;
+    }
   }
   &__full-col {
     flex-basis: 100%;

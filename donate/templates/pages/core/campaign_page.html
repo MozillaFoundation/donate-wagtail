@@ -5,8 +5,8 @@
     {% image page.hero_image width-1200 as image %}
 
     <div class="layout">
-        <div class="layout__container">
-            <div class="layout__full">
+        <div class="layout__container layout__container--full">
+            <div class="layout__full-col">
                 <div class="hero" {% if image %}style="background-image: url('{{ image.url }}')"{% endif %}>
                     <div class="hero__container">
                         <div class="hero__content">

@@ -1,12 +1,38 @@
 .hero {
+  $mobile-image-height: 180px;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: 100% $mobile-image-height;
+  background-position: top center;
+
+  @include media-query(tablet-portrait) {
+    background-size: cover;
+    background-position: center;
+  }
 
   &__container {
     position: relative;
-    min-height: 300px;
     max-width: $site-width--default;
-    margin: 0 auto;
+    margin: 0 auto $gutter;
+    border-bottom: 1px solid $color--border;
+
+    @include media-query(tablet-portrait) {
+      min-height: 464px;
+      border-bottom: 0;
+    }
+  }
+
+  &__content {
+    padding-top: ($mobile-image-height + $gutter);
+    padding-left: $gutter;
+    padding-right: $gutter;
+
+    @include media-query(tablet-portrait) {
+      padding-top: ($gutter * 5);
+    }
+
+    @include media-query(desktop-wide) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
