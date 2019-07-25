@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load i18n form_tags %}
+{% load i18n form_tags static %}
 
 {% block title %}{% trans "Your information" %}{% endblock %}
 
@@ -40,7 +40,7 @@
             </div>
 
             <div class="donate__form-wrapper">
-                <form method="post" class="form">
+                <form method="post" class="form" id="payments__braintree-form">
                     <div class="form__container form__container--flex">
                         <div class="form__section form__section--main-column">
                             {% csrf_token %}
@@ -53,10 +53,10 @@
                                 <div class="form__errors">
                                     {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
                                 </div>
-                            {% elif request.session.gateway_address_errors %}
+                            {% elif gateway_address_errors %}
                                 <div class="form__errors">
                                     <p>{% trans "We were unable to take payment because the payment processor reported an error with your address information:" %}</p>
-                                    {% for error in request.session.gateway_address_errors %}
+                                    {% for error in gateway_address_errors %}
                                     <p><strong>{{ error }}</strong></p>
                                     {% endfor %}
                                     {% trans "Please correct these errors and try again." %}
@@ -72,15 +72,36 @@
                             {% render_form_field form.post_code %}
                             {% render_form_field form.country %}
 
+                            {% render_form_field form.braintree_nonce %}
+
+                        </div>
+
+                        <div id="payments__braintree-errors-card" hidden></div>
+
+                        <div class="form-item">
+                            <label for="card-number">Card number</label>
+                            <div class="form-item__wrapper payments__braintree-hosted-field" id="card-number"></div>
+                        </div>
+
+                        <div class="form-item">
+                            <label for="cvv">Card security code</label>
+                            <div class="form-item__tooltip-wrapper">
+                                <div class="form-item__wrapper payments__braintree-hosted-field" id="cvv"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-item">
+                            <label for="expiration-date">Expiration date</label>
+                            <div class="form-item__wrapper payments__braintree-hosted-field" id="expiration-date"></div>
                         </div>
 
                         <div class="form__section form__section--actions">
 
-                            <button value="{% trans 'Continue to payment' %}" class="button button--large button--full button--primary button--icon" type="submit">
+                            <button value="donate" class="button button--large button--full button--primary button--icon" id="payments__payment-submit" disabled>
                                 <svg class="button__icon" width="24" height="24">
                                     <use xlink:href="#padlock"></use>
                                 </svg>
-                                {% trans 'Continue to payment' %}
+                                {% blocktrans with symbol=currency_info.symbol amount=form.amount.value|floatformat:"-2" %}Donate {{ symbol }} {{ amount }}{% endblocktrans %}
                             </button>
 
                         </div>
@@ -97,4 +118,10 @@
     </div>
 </div>
 
+{% endblock %}
+
+
+{% block extra_js %}
+    {{ braintree_params|json_script:"payments__braintree-params" }}
+    <script src="{% static '_js/payments-card.compiled.js' %}"></script>
 {% endblock %}

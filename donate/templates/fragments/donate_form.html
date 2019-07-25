@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="donate-form__actions">
-                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card_personal_details' frequency='single' %}">{% trans "Donate" %}</button>
+                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card' frequency='single' %}">{% trans "Donate" %}</button>
 
                     <div id="payments__paypal-button--single" class="payments__paypal-button"></div>
                 </div>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="donate-form__actions">
-                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card_personal_details' frequency='monthly' %}">{% trans "Donate" %}</button>
+                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card' frequency='monthly' %}">{% trans "Donate" %}</button>
 
                     <div id="payments__paypal-button--monthly" class="payments__paypal-button"></div>
                 </div>
