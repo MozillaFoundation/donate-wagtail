@@ -33,3 +33,7 @@ class BraintreePaypalPaymentForm(BraintreePaymentForm):
 
 class CurrencyForm(forms.Form):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
+
+
+class UpsellForm(forms.Form):
+    amount = forms.DecimalField(min_value=0.01, decimal_places=2)

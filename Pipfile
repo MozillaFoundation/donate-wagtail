@@ -22,6 +22,7 @@ factory-boy = "*"
 boto3 = "*"
 braintree = "*"
 django-countries = "*"
+freezegun = "*"
 
 [requires]
 python_version = "3.7"
