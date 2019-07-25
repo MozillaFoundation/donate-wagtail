@@ -3,30 +3,16 @@
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container" role="tablist">
             <div class="tabs__option" role="presentation">
-                <div
-                    class="tabs__item tabs__item--selected js-tab-item"
-                    href="#tab-panel-1"
-                    role="tab"
-                    aria-controls="tab-panel-1"
-                    aria-selected="true"
-                    id="tab-1"
-                >
-                <input type="radio" name="donation_frequency" id="one-time" value="one-time" checked>
-                <label for="one-time">{% trans "One time" %}</label>
-                </div>
+                <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" role="tab" aria-controls="tab-panel-1" aria-selected="true" id="tab-1">
+                    <input type="radio" class="tabs__radio-option" name="donation_frequency" id="one-time" value="one-time" checked>
+                    <span class="tabs__label-text">{% trans "One time" %}</span>
+                </label>
             </div>
             <div class="tabs__option" role="presentation">
-                <div
-                    class="tabs__item js-tab-item"
-                    href="#tab-panel-2"
-                    role="tab"
-                    aria-controls="tab-panel-2"
-                    aria-selected="true"
-                    id="tab-1"
-                >
-                    <input type="radio" name="donation_frequency" id="monthly" value="monthly">
-                    <label for="monthly">{% trans "Monthly" %}</label>
-                </div>
+                <label for="monthly" class="tabs__label js-tab-item" role="tab" aria-controls="tab-panel-2" id="tab-2">
+                    <input type="radio" class="tabs__radio-option" name="donation_frequency" id="monthly" value="monthly">
+                    <span class="tabs__label-text">{% trans "Monthly" %}</span>
+                </label>
             </div>
         </form>
         <div class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
