@@ -52,9 +52,37 @@
                     </div>
                 </div>
                 <div class="donate-form__actions">
-                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card' frequency='single' %}">{% trans "Donate" %}</button>
-
-                    <div id="payments__paypal-button--single" class="payments__paypal-button"></div>
+                    <header class="donate-form__actions-header">
+                        <h2 class="donate-form__actions-heading heading heading--secondary">{% trans "Choose Payment" %}</h2>
+                        <div class="donate-form__secure">
+                            <svg class="donate-form__secure-icon" width="24" height="24">
+                                <use xlink:href="#padlock"></use>
+                            </svg>
+                            <div class="donate-form__label">
+                                {% trans "Secure" %}
+                            </div>
+                        </div>
+                    </header>
+                    <div class="donate-form__actions-buttons">
+                        <button class="button button--primary button--large button--rounded button--multiple-icons button--no-label" type="submit" formaction="{% url 'payments:card' frequency='single' %}">
+                            <div class="button__label">{% trans "Donate" %}</div>
+                            <div class="button__icons">
+                                <svg class="button__icon-item" width="27" height="13">
+                                    <use xlink:href="#card-discover"></use>
+                                </svg>
+                                <svg class="button__icon-item" width="20" height="18">
+                                    <use xlink:href="#card-amex"></use>
+                                </svg>
+                                <svg class="button__icon-item" width="32" height="18">
+                                    <use xlink:href="#card-mastercard"></use>
+                                </svg>
+                                <svg class="button__icon-item" width="35" height="12">
+                                    <use xlink:href="#card-visa"></use>
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="payments__paypal-button--single" class="payments__paypal-button"></div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -65,25 +93,37 @@
                 <div class="donate-form__fields">
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off" checked>
-                        <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
+                        <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">{% trans "per month" %}</span></label>
                     </div>
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="5" id="monthly-amount-2" autocomplete="off">
-                        <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
+                        <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">{% trans "per month" %}</span></label>
                     </div>
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="3" id="monthly-amount-3" autocomplete="off">
-                        <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
+                        <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">{% trans "per month" %}</span></label>
                     </div>
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
-                        <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
+                        <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">{% trans "per month" %}</span></label>
                     </div>
                 </div>
                 <div class="donate-form__actions">
-                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card' frequency='monthly' %}">{% trans "Donate" %}</button>
-
-                    <div id="payments__paypal-button--monthly" class="payments__paypal-button"></div>
+                    <header class="donate-form__actions-header">
+                        <h2 class="donate-form__actions-heading heading heading--secondary">{% trans "Choose Payment" %}</h2>
+                        <div class="donate-form__secure">
+                            <svg class="donate-form__secure-icon" width="18" height="18">
+                                <use xlink:href="#padlock"></use>
+                            </svg>
+                            <div class="donate-form__label">
+                                {% trans "Secure" %}
+                            </div>
+                        </div>
+                    </header>
+                    <div class="donate-form__actions-buttons">
+                        <button class="button button--primary button--rounded" type="submit" formaction="{% url 'payments:card' frequency='monthly' %}">{% trans "Donate" %}</button>
+                        <div id="payments__paypal-button--monthly" class="payments__paypal-button"></div>
+                    </div>
                 </div>
             </form>
         </div>
