@@ -1,6 +1,6 @@
 .layout {
   $root: &;
-  $landing-page-top-space: ($gutter * 2);
+  $top-space: ($gutter * 2);
 
   &--narrow {
     #{$root}__container {
@@ -26,11 +26,18 @@
       margin: 0 auto;
     }
   }
+
   &__full-col {
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
+    margin-top: $top-space;
+
+    .app--campaign-page & {
+      margin-top: 0;
+    }
   }
+
   &__half-col {
     flex-basis: 100%;
     max-width: 100%;
@@ -43,16 +50,11 @@
     }
   }
 
-  &__full {
-    flex-basis: 100%;
-    max-width: 100%;
-    min-width: 100%;
-  }
-
   &__primary-col {
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
+    margin-top: $top-space;
 
     @include media-query(tablet-landscape) {
       flex-basis: 65%;
@@ -60,14 +62,15 @@
       max-width: 65%;
     }
 
-    .app--landing-page & {
-      margin-top: $landing-page-top-space;
+    .app--campaign-page & {
+      margin-top: 0;
     }
   }
   &__secondary-col {
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
+    margin-top: $top-space;
 
     @include media-query(tablet-landscape) {
       flex-basis: 35%;
@@ -75,8 +78,8 @@
       max-width: 35%;
     }
 
-    .app--landing-page & {
-      margin-top: $landing-page-top-space;
+    .app--campaign-page & {
+      margin-top: 0;
     }
   }
 }
