@@ -78,8 +78,7 @@
   }
 
   input:not([type="checkbox"]),
-  textarea,
-  select {
+  textarea {
     width: 100%;
     padding: ($gutter * 0.75) ($gutter);
     border: 1px solid $color--border;
@@ -95,4 +94,9 @@
     margin-right: 10px;
   }
   // sass-lint:enddisable
+
+  .donate-form__currency & {
+    // override as can't apply modifier class due to form being added
+    margin-bottom: 0;
+  }
 }

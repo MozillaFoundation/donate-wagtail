@@ -1,6 +1,6 @@
 .tabs {
-  &__item {
-    @include font-size(xs);
+  &__label {
+    @include font-size(default);
     display: block;
     padding: 18px 0;
     text-align: center;
@@ -10,6 +10,16 @@
     text-transform: uppercase;
     color: $color--black;
     margin-right: ($gutter);
+    cursor: pointer;
+  }
+
+  &__label-text {
+    position: relative;
+    top: 2px;
+  }
+
+  &__radio-option {
+    margin-right: ($gutter / 4);
   }
 
   &__panel {
