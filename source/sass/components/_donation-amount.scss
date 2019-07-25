@@ -1,0 +1,36 @@
+.donation-amount {
+  $root: &;
+
+  &--two-col {
+    @include media-query(tablet-landscape) {
+      grid-column-end: span 2;
+    }
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__label {
+    position: relative;
+    z-index: 1;
+    display: block;
+    border: 1px solid $color--border;
+    padding: 20px 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: color $transition, border-color $transition,
+      background-color $transition;
+  }
+
+  &__radio {
+    position: absolute;
+    z-index: -1;
+
+    &:checked + #{$root}__label {
+      background-color: $color--primary;
+      border-color: $color--primary;
+      color: $color--white;
+    }
+  }
+}

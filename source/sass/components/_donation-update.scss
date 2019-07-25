@@ -1,0 +1,7 @@
+.donation-update {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
