@@ -24,7 +24,7 @@
     }
   }
 
-  &__action-header {
+  &__actions-header {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -32,20 +32,30 @@
     margin-bottom: ($gutter);
   }
 
-  &__action-heading {
+  &__actions-heading {
     margin-right: ($gutter);
   }
 
   &__secure {
-    @include font-size(xs);
+    @include font-size(xxs);
     display: flex;
     flex-direction: row;
     align-items: center;
     text-transform: uppercase;
+    line-height: 1;
   }
 
   &__secure-icon {
     margin-right: ($gutter / 4);
+    fill: $color--default;
+    height: 18px;
+    width: 18px;
+  }
+
+  &__actions-buttons {
+    display: grid;
+    grid-gap: $gutter;
+    grid-template-columns: 1fr 1fr;
   }
 
   &__currency-label {
