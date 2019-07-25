@@ -43,7 +43,7 @@ $select-height: 37px;
     width: $select-height;
     height: $select-height;
     pointer-events: none;
-    background-color: #fff;
+    background-color: $color--white;
   }
 
   select {
