@@ -48,7 +48,6 @@ $select-height: 37px;
 
   select {
     @include font-size(xs);
-    -webkit-appearance: none;
     position: relative;
     width: 100%;
     height: $select-height;
