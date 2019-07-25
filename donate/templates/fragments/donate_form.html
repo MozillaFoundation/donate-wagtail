@@ -36,6 +36,12 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
                         <label for="one-time-amount-4" class="donation-amount__label">$3</label>
                     </div>
+                    <div class="donation-amount donation-amount--two-col donation-amount--other">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off">
+                        <label for="one-time-amount-other" class="donation-amount__label">$</label>
+                        <input type="text" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}">
+                    </div>
+                    <input type="hidden" class="one-time-amount__total">
                 </div>
                 <div class="donate-form__actions">
                     <header class="donate-form__actions-header">
@@ -93,6 +99,12 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
                         <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">{% trans "per month" %}</span></label>
                     </div>
+                    <div class="donation-amount donation-amount--two-col donation-amount--other">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off">
+                        <label for="monthly-amount-other" class="donation-amount__label">$</label>
+                        <input type="text" class="donation-amount__input" id="monthly-amount-other-input" placeholder="{% trans 'Other amount' %}">
+                    </div>
+                    <input type="hidden" class="monthly-amount__total">
                 </div>
                 <div class="donate-form__actions">
                     <header class="donate-form__actions-header">
