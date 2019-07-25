@@ -1,3 +1,4 @@
+from decimal import Decimal
 from unittest import mock
 
 from django.http import Http404
@@ -6,10 +7,9 @@ from django.views.generic import FormView
 
 from braintree import ErrorCodes, ErrorResult
 
-from ..forms import BraintreePaymentForm, BraintreePaypalPaymentForm
+from ..forms import BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm
 from ..views import (
-    BraintreePaymentMixin, CardPaymentView, SingleCardPaymentView,
-    PaypalPaymentView, PersonalDetailsView, MonthlyCardPaymentView
+    BraintreePaymentMixin, CardPaymentView, PaypalPaymentView
 )
 from ..exceptions import InvalidAddress
 
@@ -68,33 +68,10 @@ class BraintreeMixinTestCase(TestCase):
         })
 
 
-class PersonalDetailsViewTestCase(TestCase):
-
-    def test_404_for_invalid_frequency(self):
-        request = RequestFactory().get('/')
-        view = PersonalDetailsView()
-        view.request = request
-        with self.assertRaises(Http404):
-            view.dispatch(request, frequency='yearly')
-
-    def test_bad_amount_redirects(self):
-        request = RequestFactory().get('/?amount=foo')
-        view = PersonalDetailsView()
-        view.request = request
-        response = view.dispatch(request, frequency='monthly')
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], '/')
-
-    def test_get_success_url(self):
-        view = PersonalDetailsView()
-        view.payment_frequency = 'monthly'
-        self.assertEqual(view.get_success_url(), '/en/card/monthly/pay/')
-
-
 class CardPaymentViewTestCase(TestCase):
 
     def setUp(self):
-        self.details = {
+        self.form_data = {
             'first_name': 'Alice',
             'last_name': 'Bob',
             'email': 'alice@example.com',
@@ -104,15 +81,14 @@ class CardPaymentViewTestCase(TestCase):
             'post_code': '10022',
             'country': 'US',
             'amount': 50,
-            'currency': 'usd',
+            'braintree_nonce': 'hello-braintree',
         }
 
         self.request = RequestFactory().get('/')
-        self.request.session = self.client.session
-        self.request.session['personal_details'] = self.details
+        self.request.session = {}
         self.view = CardPaymentView()
-        self.view.frequency = 'single'
-        self.view.personal_details = self.details
+        self.view.payment_frequency = 'single'
+        self.view.currency = 'usd'
         self.view.request = self.request
 
         self.fake_error_result = ErrorResult("gateway", {
@@ -133,13 +109,28 @@ class CardPaymentViewTestCase(TestCase):
             }
         })
 
+    def test_404_for_invalid_frequency(self):
+        request = RequestFactory().get('/')
+        view = CardPaymentView()
+        view.request = request
+        with self.assertRaises(Http404):
+            view.dispatch(request, frequency='yearly')
+
+    def test_bad_amount_redirects(self):
+        request = RequestFactory().get('/?amount=foo')
+        view = CardPaymentView()
+        view.request = request
+        response = view.dispatch(request, frequency='monthly')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], '/')
+
     def test_filter_user_card_errors(self):
         filtered = CardPaymentView().filter_user_card_errors(self.fake_error_result)
         self.assertEqual(len(filtered), 1)
         self.assertEqual(filtered[0], 'The type of card you used is not accepted.')
 
     def test_filtered_errors_returned_as_form_errors(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
         self.view.process_braintree_error_result(self.fake_error_result, form)
@@ -149,7 +140,7 @@ class CardPaymentViewTestCase(TestCase):
         )
 
     def test_generic_error_message_if_no_reportable_errors(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
         self.view.process_braintree_error_result(ErrorResult("gateway", {
@@ -203,7 +194,7 @@ class CardPaymentViewTestCase(TestCase):
             view.check_for_address_errors(result)
 
     def test_gateway_address_errors_triggers_report_invalid_address(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
         result = ErrorResult("gateway", {
@@ -220,57 +211,33 @@ class CardPaymentViewTestCase(TestCase):
             }
         })
 
-        with mock.patch.object(self.view, 'report_invalid_address') as mock_invalid_address:
-            self.view.process_braintree_error_result(result, form)
-
-        self.assertEqual(mock_invalid_address.call_count, 1)
+        self.view.process_braintree_error_result(result, form)
+        self.assertEqual(len(self.view.gateway_address_errors), 1)
 
     def test_get_custom_fields(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
         custom_fields = self.view.get_custom_fields(form)
         self.assertEqual(custom_fields, {})
 
-    def test_missing_personal_details_redirects(self):
-        del self.request.session['personal_details']
-        response = self.view.dispatch(self.request)
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], '/en/card/single/?')
-
     def test_get_address_info(self):
-        info = self.view.get_address_info(self.view.personal_details)
+        info = self.view.get_address_info(self.form_data)
         self.assertEqual(info, {
-            'street_address': self.view.personal_details['address_line_1'],
-            'locality': self.view.personal_details['town'],
-            'postal_code': self.view.personal_details['post_code'],
-            'country_code_alpha2': self.view.personal_details['country'],
+            'street_address': self.form_data['address_line_1'],
+            'locality': self.form_data['town'],
+            'postal_code': self.form_data['post_code'],
+            'country_code_alpha2': self.form_data['country'],
         })
 
 
-class SingleCardPaymentViewTestCase(TestCase):
+class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
 
     def setUp(self):
-        self.details = {
-            'first_name': 'Alice',
-            'last_name': 'Bob',
-            'email': 'alice@example.com',
-            'address_line_1': '1 Oak Tree Hill',
-            'town': 'New York',
-            'post_code': '10022',
-            'country': 'US',
-            'amount': 10,
-            'currency': 'usd',
-        }
-
-        self.request = RequestFactory().get('/')
-        self.request.session = self.client.session
-        self.request.session['personal_details'] = self.details
-        self.view = SingleCardPaymentView()
-        self.view.personal_details = self.details
-        self.view.request = self.request
+        super().setUp()
+        self.view.payment_frequency = 'single'
 
     def test_transaction_data_submitted_to_braintree(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
@@ -278,18 +245,18 @@ class SingleCardPaymentViewTestCase(TestCase):
             self.view.form_valid(form)
 
         mock_gateway.transaction.sale.assert_called_once_with({
-            'amount': 10,
+            'amount': Decimal(50),
             'merchant_account_id': 'usd-ac',
             'billing': {
-                'street_address': self.details['address_line_1'],
-                'locality': self.details['town'],
-                'postal_code': self.details['post_code'],
-                'country_code_alpha2': self.details['country'],
+                'street_address': self.form_data['address_line_1'],
+                'locality': self.form_data['town'],
+                'postal_code': self.form_data['post_code'],
+                'country_code_alpha2': self.form_data['country'],
             },
             'customer': {
-                'first_name': self.details['first_name'],
-                'last_name': self.details['last_name'],
-                'email': self.details['email'],
+                'first_name': self.form_data['first_name'],
+                'last_name': self.form_data['last_name'],
+                'email': self.form_data['email'],
             },
             'custom_fields': {},
             'payment_method_nonce': 'hello-braintree',
@@ -303,30 +270,14 @@ class SingleCardPaymentViewTestCase(TestCase):
         )
 
 
-class MonthlyCardPaymentViewTestCase(TestCase):
+class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
 
     def setUp(self):
-        self.details = {
-            'first_name': 'Alice',
-            'last_name': 'Bob',
-            'email': 'alice@example.com',
-            'address_line_1': '1 Oak Tree Hill',
-            'town': 'New York',
-            'post_code': '10022',
-            'country': 'US',
-            'amount': 10,
-            'currency': 'usd',
-        }
-
-        self.request = RequestFactory().get('/')
-        self.request.session = self.client.session
-        self.request.session['personal_details'] = self.details
-        self.view = MonthlyCardPaymentView()
-        self.view.personal_details = self.details
-        self.view.request = self.request
+        super().setUp()
+        self.view.payment_frequency = 'monthly'
 
     def test_subscription_data_submitted_to_braintree(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
@@ -335,17 +286,17 @@ class MonthlyCardPaymentViewTestCase(TestCase):
             self.view.form_valid(form)
 
         mock_gateway.customer.create.assert_called_once_with({
-            'first_name': self.details['first_name'],
-            'last_name': self.details['last_name'],
-            'email': self.details['email'],
+            'first_name': self.form_data['first_name'],
+            'last_name': self.form_data['last_name'],
+            'email': self.form_data['email'],
             'payment_method_nonce': 'hello-braintree',
             'custom_fields': {},
             'credit_card': {
                 'billing_address': {
-                    'street_address': self.details['address_line_1'],
-                    'locality': self.details['town'],
-                    'postal_code': self.details['post_code'],
-                    'country_code_alpha2': self.details['country'],
+                    'street_address': self.form_data['address_line_1'],
+                    'locality': self.form_data['town'],
+                    'postal_code': self.form_data['post_code'],
+                    'country_code_alpha2': self.form_data['country'],
                 }
             }
         })
@@ -354,11 +305,11 @@ class MonthlyCardPaymentViewTestCase(TestCase):
             'plan_id': 'usd-plan',
             'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
-            'price': 10,
+            'price': 50,
         })
 
     def test_failed_customer_creation_calls_error_processor(self):
-        form = BraintreePaymentForm({'braintree_nonce': 'hello-braintree', 'amount': 10})
+        form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
