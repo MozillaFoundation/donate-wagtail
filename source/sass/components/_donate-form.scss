@@ -81,6 +81,7 @@
       top: -100px;
       background-color: $color--white;
       padding: $gutter ($gutter * 2);
+      margin-bottom: -100px; // make up for top minus value
     }
   }
 }

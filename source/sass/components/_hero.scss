@@ -35,4 +35,28 @@
       padding-right: 0;
     }
   }
+
+  &__heading {
+    @include font-size(xxl);
+    color: $color--black;
+    font-weight: $weight--medium;
+
+    @include media-query(tablet-portrait) {
+      color: $color--white;
+    }
+
+    @include media-query(tablet-landscape) {
+      @include rem-font-size(56px); // one off font size
+    }
+  }
+
+  &__description {
+    @include font-size(m);
+    font-weight: $weight--light;
+    color: $color--black;
+
+    @include media-query(tablet-portrait) {
+      color: $color--white;
+    }
+  }
 }
