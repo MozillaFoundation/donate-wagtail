@@ -56,7 +56,11 @@
 
   &__icon-item {
     margin: 0 ($gutter / 4);
-    height: 18px;
+    height: 13px;
     width: auto;
+
+    @include media-query(tablet-portrait) {
+      height: 18px;
+    }
   }
 }

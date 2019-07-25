@@ -1,6 +1,7 @@
 .layout {
   $root: &;
-  $landing-page-top-space: ($gutter * 2);
+  $landing-page-top-space-mobile: $gutter;
+  $landing-page-top-space-tablet-plus: ($gutter * 2);
 
   &--narrow {
     #{$root}__container {
@@ -61,7 +62,10 @@
     }
 
     .app--landing-page & {
-      margin-top: $landing-page-top-space;
+      margin-top: $landing-page-top-space-mobile;
+      @include media-query(tablet-portrait) {
+        margin-top: $landing-page-top-space-tablet-plus;
+      }
     }
   }
   &__secondary-col {
@@ -76,7 +80,10 @@
     }
 
     .app--landing-page & {
-      margin-top: $landing-page-top-space;
+      margin-top: $landing-page-top-space-mobile;
+      @include media-query(tablet-portrait) {
+        margin-top: $landing-page-top-space-tablet-plus;
+      }
     }
   }
 }
