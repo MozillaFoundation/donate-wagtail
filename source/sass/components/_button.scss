@@ -23,8 +23,19 @@
     }
   }
 
+  &--secondary {
+    @include font-size(default);
+    border: 2px solid $color--black;
+    font-weight: $weight--bold;
+    text-align: center;
+  }
+
   &--full {
     width: 100%;
+  }
+
+  &--medium {
+    padding: ($gutter / 2) ($gutter * 0.75);
   }
 
   &--large {
