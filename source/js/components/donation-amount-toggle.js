@@ -7,14 +7,15 @@ class AmountToggle {
     this.toggleButton = node;
     this.updateButton = document.querySelector("#js-update-button");
     this.actionsContainer = document.querySelector("[data-amount-actions]");
-    this.hiddenInput = document.querySelector("#js-donation-value");
+    this.hiddenInput = document.querySelector("#id_amount");
     this.activeClass = "active";
     this.selectedClass = "selected";
 
     this.bindEvents();
   }
 
-  UpdateHiddenInputFromInput() {
+  UpdateHiddenInputFromInput(event) {
+    event.preventDefault();
     let input = document.querySelector("#js-update-donation-value");
     this.hiddenInput.value = input.value;
     // Hide form after updating hidden input
