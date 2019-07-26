@@ -19,9 +19,13 @@ $color--secondary: #eaeaea;
 $color--tertiary: #f9f9f9;
 
 $color--white: #ffffff;
-$color--black: #141414;
+$color--black: #111111;
 $color--border: $color--grey-20;
 $color--background: $color--white;
+
+$color--neutral: $color--grey-05;
+$color--warning: $color--red;
+$color--positive: $color--blue;
 
 $color--default: $color--grey-80;
 $color--link: $color--blue;
@@ -47,7 +51,7 @@ $font-sizes: (
   default: $base-font-size,
   xxl: 36px,
   xl: 28px,
-  l: 21px,
+  l: 22px,
   m: 18px,
   s: 15px,
   xs: 14px,
@@ -86,7 +90,7 @@ $z-index: (
 // --------------------------------- Grid Dimensions --------------------------------------
 
 // Max widths
-$site-width--small: 560px;
+$site-width--small: 728px;
 $site-width--default: 1100px;
 $site-width--large: 1200px;
 

@@ -47,7 +47,8 @@
             </div>
 
             <a class="header__logo-link" href="/">
-                <img class="header__logo" src="{% static '_images/mozilla-logo-white.svg' %}" alt="Mozilla">
+                <img class="header__logo header__logo--mobile" src="{% static '_images/mozilla-logo-m.svg' %}" alt="Mozilla">
+                <img class="header__logo header__logo--desktop" src="{% static '_images/mozilla-logo-white.svg' %}" alt="Mozilla">
             </a>
 
         </div>
@@ -56,37 +57,84 @@
 
 {% block footer %}
 <div class="footer">
-    <div class="footer__container">
-        <div class="footer__nav footer-links">
-            <ul class="footer-links__container">
-                <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">{% trans "Twitter" %}</a>
-                </li>
-                <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.facebook.com/mozilla" target="_blank" rel="noopener">{% trans "Facebook" %}</a>
-                </li>
-                <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">{% trans "License" %}</a>
-                </li>
-                <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
-                </li>
-                <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">{% trans "Legal Notices" %}</a>
-                </li>
-                <li class="footer-links__item">
-                    <a class="link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy Policy" %}</a>
-                </li>
-            </ul>
+    <div class="footer__container layout">
+        <div class="footer__primary-content layout__container">
+            <div class="footer__newsletter newsletter-signup layout__half-col">
+                <div class="newsletter-signup__container">
+                    <header class="newsletter-signup__header">
+                        <h2 class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</h2>
+                    </header>
+                    <form class="newsletter-signup__form">
+                        <div class="form-group form-group--two-col">
+                            <div class="form-item">
+                                <label for="email-newsletter">{% trans "Join our email list to take action and stay updated!" %}</label>
+                                <input type="text" name="email-newsletter" placeholder="Enter email address">
+                            </div>
+                            <div class="form-item">
+                                <button class="button button--primary">{% trans "Sign up" %}</button>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <input type="checkbox"><label>{% trans "I'm okay with Mozilla handling my info as explained in this <a href='#'>Privacy Notice</a>" %}</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__nav footer-links layout__half-col">
+                <div class="footer__logo footer__logo--mobile layout__half-col">
+                    <a class="footer__logo-link" href="https://foundation.mozilla.org">
+                        <img class="footer__logo-image" src="{% static '_images/mozilla-logo-black.svg' %}" alt="Mozilla">
+                    </a>
+                </div>
+                <div class="footer-links__container">
+                    <header class="footer-links__header">
+                        <h2 class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">More about us</h2>
+                        <div class="footer-links__social">
+                            <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
+                                <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
+                                    <use xlink:href="#twitter"></use>
+                                </svg>
+                            </a>
+                            <a class="link link--icon link--dark-bg" href="https://www.instagram.com/mozilla/" target="_blank" rel="noopener">
+                                <svg class="footer-links__social-icon footer-links__social-icon--instagram" width="24" height="24">
+                                    <use xlink:href="#instagram"></use>
+                                </svg>
+                            </a>
+                            <a class="link link--icon link--dark-bg" href="https://github.com/mozilla" target="_blank" rel="noopener">
+                                <svg class="footer-links__social-icon footer-links__social-icon--github" width="24" height="24">
+                                    <use xlink:href="#github"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </header>
+                    <ul class="footer-links__group">
+                        <li class="footer-links__item">
+                            <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
+                        </li>
+                        <li class="footer-links__item">
+                            <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
+                        </li>
+                        <li class="footer-links__item">
+                            <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">{% trans "Legal" %}</a>
+                        </li>
+                        <li class="footer-links__item">
+                            <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
+                        </li>
+                        <li class="footer-links__item">
+                            <a class="footer-links__link link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">{% trans "License" %}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="footer__info">
-            <div class="footer__logo">
+        <div class="footer__info layout__container">
+            <div class="footer__logo footer__logo--desktop layout__half-col">
                 <a class="footer__logo-link" href="https://foundation.mozilla.org">
                     <img class="footer__logo-image" src="{% static '_images/mozilla-logo-black.svg' %}" alt="Mozilla">
                 </a>
             </div>
-            <div class="footer__legal">
-                <p class="license">Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a class="link link--dark-bg" href="https://www.mozilla.org/">mozilla.org</a>.</p>
+            <div class="footer__legal layout__half-col">
+                <p class="footer__legal-license">{% trans "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at" %} <a class="link link--dark-bg" href="https://www.mozilla.org/">mozilla.org</a>.</p>
             </div>
         </div>
     </div>

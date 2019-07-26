@@ -1,4 +1,5 @@
 .button {
+  $root: &;
   background-color: transparent;
   background-image: none;
   border: 0;
@@ -19,6 +20,47 @@
     &:active,
     &:focus {
       background-color: darken($color--primary, 5%);
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--large {
+    @include font-size(m);
+    padding: ($gutter * 0.75);
+    font-weight: $weight--semibold;
+  }
+
+  &__icon {
+    fill: $color--white;
+    margin-right: ($gutter / 4);
+  }
+
+  &--rounded {
+    border-radius: 3px;
+  }
+
+  &--no-label {
+    #{$root}__label {
+      @include hidden();
+    }
+  }
+
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__icon-item {
+    margin: 0 ($gutter / 4);
+    height: 13px;
+    width: auto;
+
+    @include media-query(tablet-portrait) {
+      height: 18px;
     }
   }
 }

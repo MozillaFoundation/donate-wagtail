@@ -1,0 +1,32 @@
+.notification {
+  margin-bottom: $gutter;
+
+  &--neutral {
+    background-color: $color--neutral;
+  }
+
+  &--warning {
+    background-color: $color--warning;
+  }
+
+  &--positive {
+    background-color: $color--positive;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: ($gutter * 0.75) $gutter;
+
+    @include media-query(tablet-portrait) {
+      flex-direction: row;
+    }
+  }
+
+  &__action {
+    @include media-query(tablet-portrait) {
+      margin-left: $gutter;
+    }
+  }
+}

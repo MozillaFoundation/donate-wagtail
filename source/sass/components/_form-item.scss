@@ -57,10 +57,11 @@
   }
 
   &__label {
-    @include font-size(m);
+    @include font-size(default);
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: $color--black;
   }
 
   &__errors {
@@ -77,15 +78,25 @@
   }
 
   input:not([type="checkbox"]),
-  textarea,
-  select {
+  textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid $color--default;
+    padding: ($gutter * 0.75) ($gutter);
+    border: 1px solid $color--border;
+    transition: border-color $transition;
+
+    &:active,
+    &:focus {
+      border-color: $color--primary;
+    }
   }
 
   input[type="checkbox"] {
     margin-right: 10px;
   }
   // sass-lint:enddisable
+
+  .donate-form__currency & {
+    // override as can't apply modifier class due to form being added
+    margin-bottom: 0;
+  }
 }

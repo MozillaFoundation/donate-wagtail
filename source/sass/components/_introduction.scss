@@ -1,5 +1,9 @@
 .introduction {
-  @include font-size(l);
+  @include font-size(m);
   line-height: 1.4;
   margin-bottom: ($gutter);
+
+  @include media-query(tablet-portrait) {
+    @include rem-font-size(20); // one off size
+  }
 }

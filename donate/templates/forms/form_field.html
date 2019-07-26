@@ -5,6 +5,7 @@
 <div class="
 form-item
 {% if field_type %}form-item--{{ field_type }}{% endif %}
+{% if widget_type == 'select' %}form-custom-select{% endif %}
 {% if widget_type %}form-item--{{ widget_type }}{% endif %}
 {% if field.errors %}form-item--errors{% endif %}
 ">

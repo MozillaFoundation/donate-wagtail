@@ -1,4 +1,7 @@
 .footer {
+  $tablet-landscape-footer-gutter: (
+    $gutter * 1.5
+  ); // Applied to both columns on tablet-landscape and above, so half total value
   margin-top: 40px;
   background: $color--black;
   padding: 50px 0;
@@ -7,7 +10,6 @@
 
   p {
     margin: 0;
-    padding: 0 15px;
   }
 
   &__container {
@@ -15,47 +17,69 @@
     padding: ($gutter);
 
     @include media-query(tablet-landscape) {
-      max-width: $site-width--default;
+      max-width: ($site-width--default + ($gutter * 2));
     }
   }
 
   &__nav {
     margin-bottom: ($gutter / 2);
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: $site-width--small;
-    width: 100%;
-    margin: 0 auto;
-
     @include media-query(tablet-landscape) {
-      flex-direction: row;
+      padding-left: $tablet-landscape-footer-gutter;
     }
   }
 
+  &__newsletter {
+    margin-bottom: ($gutter * 2);
+    @include media-query(tablet-landscape) {
+      padding-right: $tablet-landscape-footer-gutter;
+    }
+  }
+
+  &__info {
+    align-items: center;
+  }
+
   &__logo {
-    min-width: 100px;
-    width: 100px;
-    margin-bottom: ($gutter);
+    margin-bottom: ($gutter * 2);
 
     @include media-query(tablet-landscape) {
-      margin-right: $gutter;
+      padding-right: $tablet-landscape-footer-gutter;
       margin-bottom: 0;
+    }
+
+    &--desktop {
+      display: none;
+
+      @include media-query(tablet-landscape) {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      display: block;
+
+      @include media-query(tablet-landscape) {
+        display: none;
+      }
     }
   }
 
   &__logo-image {
+    min-width: 100px;
+    width: 100px;
     background-color: $color--white;
   }
 
   &__legal {
-    text-align: center;
-
     @include media-query(tablet-landscape) {
-      text-align: left;
+      padding-left: $tablet-landscape-footer-gutter;
     }
+  }
+
+  &__legal-license {
+    @include font-size(xxs);
+    line-height: 1.5;
+    border-top: 1px solid $color--white;
+    padding-top: $gutter;
   }
 }
