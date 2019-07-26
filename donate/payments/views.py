@@ -16,7 +16,7 @@ from .forms import (
     BraintreeCardPaymentForm, BraintreePaypalPaymentForm, StartCardPaymentForm,
     UpsellForm
 )
-from .utils import get_currency_info, freeze_transaction_details_for_session
+from .utils import get_currency_info, get_suggested_monthly_upgrade, freeze_transaction_details_for_session
 
 logger = logging.getLogger(__name__)
 
@@ -341,6 +341,12 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
             return HttpResponseRedirect(self.get_success_url())
 
         return super().get(request, *args, **kwargs)
+
+    def get_initial(self):
+        last_transaction = self.request.session['completed_transaction_details']
+        return {
+            'amount': get_suggested_monthly_upgrade(last_transaction['currency'], last_transaction['amount'])
+        }
 
     def form_valid(self, form):
         payment_method_token = self.request.session['completed_transaction_details']['payment_method_token']
