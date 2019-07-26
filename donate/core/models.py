@@ -66,6 +66,7 @@ class CampaignPage(DonationPage):
         related_name='+',
     )
     lead_text = models.CharField(max_length=800)
+    intro = RichTextField()
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('hero_image'),
