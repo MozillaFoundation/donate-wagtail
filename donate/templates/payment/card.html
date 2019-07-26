@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <h1 class="heading heading--primary">{% trans "Your details" %}</h1>
+                <h1 class="heading heading--primary heading--bottom-margin">{% trans "Your Details" %}</h1>
 
             </div>
 
@@ -64,36 +64,59 @@
                             {% endif %}
 
                             {% render_form_field form.amount %}
+                            {% render_form_field form.email %}
                             {% render_form_field form.first_name %}
                             {% render_form_field form.last_name %}
-                            {% render_form_field form.email %}
                             {% render_form_field form.address_line_1 %}
-                            {% render_form_field form.town %}
-                            {% render_form_field form.post_code %}
+                            <div class="form__group form__group--town-post">
+                                {% render_form_field form.post_code %}
+                                {% render_form_field form.town %}
+                            </div>
+
+
                             {% render_form_field form.country %}
 
-                            {% render_form_field form.braintree_nonce %}
+                            <div class="donate-form">
+                                <header class="donate-form__actions-header donate-form__actions-header--baseline">
+                                    <h2 class="donate-form__actions-heading heading heading--primary">{% trans "Payment" %}</h2>
+                                    <div class="donate-form__secure">
+                                        <svg class="donate-form__secure-icon" width="24" height="24">
+                                            <use xlink:href="#padlock"></use>
+                                        </svg>
+                                        <div class="donate-form__label">
+                                            {% trans "Secure" %}
+                                        </div>
+                                    </div>
+                                </header>
+                                {% render_form_field form.braintree_nonce %}
+                            </div>
 
                         </div>
 
                         <div id="payments__braintree-errors-card" hidden></div>
 
                         <div class="form-item">
-                            <label for="card-number">Card number</label>
-                            <div class="form-item__wrapper payments__braintree-hosted-field" id="card-number"></div>
+                            <label class="form-item__label" for="card-number">Card number</label>
+                            <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="card-number"></div>
                         </div>
 
-                        <div class="form-item">
-                            <label for="cvv">Card security code</label>
-                            <div class="form-item__tooltip-wrapper">
-                                <div class="form-item__wrapper payments__braintree-hosted-field" id="cvv"></div>
+                        <div class="form__group form__group--two-col form__group--gutter">
+                            <div class="form-item">
+                                <label class="form-item__label" for="expiration-date">Expiration date</label>
+                                <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="expiration-date"></div>
+                            </div>
+
+                            <div class="form-item">
+                                <label class="form-item__label" for="cvv">CVV</label>
+                                <div class="form-item__tooltip-wrapper">
+                                    <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="cvv"></div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-item">
-                            <label for="expiration-date">Expiration date</label>
-                            <div class="form-item__wrapper payments__braintree-hosted-field" id="expiration-date"></div>
-                        </div>
+                        <footer class="donate-form__footer">
+                            <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel." %}</p>
+                        </footer>
 
                         <div class="form__section form__section--actions">
 
@@ -107,8 +130,17 @@
                         </div>
 
                         <footer class="donate__footer">
-                            {% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}
-                            LOGOS TBD
+                            <p>{% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}</p>
+                            <div class="logo-showcase">
+                                <div class="logo-showcase__container">
+                                    <div class="logo-showcase__item logo-item">
+                                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
+                                    </div>
+                                    <div class="logo-showcase__item logo-item">
+                                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
+                                    </div>
+                                </div>
+                            </div>
                         </footer>
 
                     </div>
