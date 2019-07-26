@@ -15,6 +15,7 @@ def get_currency_info(currency):
     return CURRENCIES[currency].copy()
 
 
+@lru_cache(maxsize=1000)
 def get_suggested_monthly_upgrade(currency, single_amount):
     info = get_currency_info(currency)
 

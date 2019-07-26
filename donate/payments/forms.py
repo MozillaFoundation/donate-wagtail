@@ -29,14 +29,21 @@ class BraintreeCardPaymentForm(BraintreePaymentForm):
 
 class BraintreePaypalPaymentForm(BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
+    currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
 
 
 class CurrencyForm(forms.Form):
+    prefix = 'currency-switcher'
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
 
 
 class UpsellForm(forms.Form):
     amount = forms.DecimalField(min_value=0.01, decimal_places=2)
+
+
+class BraintreePaypalUpsellForm(BraintreePaymentForm):
+    currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
+    amount = forms.DecimalField(min_value=0.01, decimal_places=2, widget=forms.NumberInput)
 
 
 class NewsletterSignupForm(forms.Form):
