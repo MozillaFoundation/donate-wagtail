@@ -40,6 +40,10 @@
     justify-content: flex-start;
     align-items: center;
     margin-bottom: $gutter;
+
+    &--baseline {
+      align-items: baseline;
+    }
   }
 
   &__actions-heading {

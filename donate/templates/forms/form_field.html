@@ -5,22 +5,21 @@
 <div class="
 form-item
 {% if field_type %}form-item--{{ field_type }}{% endif %}
-{% if widget_type == 'select' %}form-custom-select{% endif %}
 {% if widget_type %}form-item--{{ widget_type }}{% endif %}
 {% if field.errors %}form-item--errors{% endif %}
 ">
-
-    {% if field.errors %}
-        <div class="form-item__errors">
-            {{ field.errors }}
-        </div>
-    {% endif %}
 
     {% if not widget_type == "checkbox_input" %}
         {% include "forms/_label.html" %}
     {% endif %}
 
     {% include "forms/_field.html" %}
+
+    {% if field.errors %}
+        <div class="form-item__errors">
+            {{ field.errors }}
+        </div>
+    {% endif %}
 
 </div>
 
