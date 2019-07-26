@@ -71,6 +71,7 @@ class CampaignPage(DonationPage):
     content_panels = Page.content_panels + [
         ImageChooserPanel('hero_image'),
         FieldPanel('lead_text'),
+        FieldPanel('intro'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
     ]
 
