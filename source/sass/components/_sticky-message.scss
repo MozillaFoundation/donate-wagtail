@@ -1,0 +1,30 @@
+.sticky-message {
+  @include z-index(sticky-message);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: opacity $transition;
+
+  @include media-query(tablet-portrait) {
+    display: none;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__container {
+    padding: $gutter;
+    border-top: 1px solid $color--border;
+    background-color: $color--white;
+  }
+
+  &__action {
+    display: block;
+    width: 100%;
+    font-weight: $weight--bold;
+    text-align: center;
+    scroll-behavior: smooth;
+  }
+}
