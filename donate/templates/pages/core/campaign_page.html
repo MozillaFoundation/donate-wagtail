@@ -7,14 +7,33 @@
     <div class="layout">
         <div class="layout__container layout__container--full">
             <div class="layout__full-col">
-                <div class="hero" {% if image %}style="background-image: url('{{ image.url }}')"{% endif %}>
+                <div class="hero">
                     <div class="hero__container">
+                        <div class="hero__image">
+                            {% image page.hero_image width-420 as imageMobile %}
+                            {% image page.hero_image fill-768x433 as imageTablet %}
+                            {% image page.hero_image width-1200 as imageDesktop %}
+                            <img srcset="{{ imageMobile.url }} 290w,
+                                         {{ imageTablet.url }} 690w,
+                                         {{ imageDesktop.url }} 350w"
+                                 sizes="(max-width: 399px) 290px,
+                                        (max-width: 1023px) and (min-width: 400px) 690px,
+                                        (min-width: 1024px) 350px"
+                                 src="{{ imageDesktop.url }}"
+                                 alt="{{ image.alt }}"
+                                 class="hero__image-item">
+                        </div>
                         <div class="hero__content">
                             <h1 class="heading heading--primary hero__heading">{{ page.title }}</h1>
                             <p class="hero__description">{{ page.lead_text }}</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="sticky-message">
+            <div class="sticky-message__container">
+                <a href="#anchor-donate" class="sticky-message__action">Donate now</a>
             </div>
         </div>
         <div class="layout__container">
@@ -37,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="layout__primary-col">
+            <div class="layout__primary-col" id="anchor-donate">
                 <div class="donate-form">
                     <header class="donate-form__header">
                         <h1 class="heading heading--primary heading--bottom-margin">
