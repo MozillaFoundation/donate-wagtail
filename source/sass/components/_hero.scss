@@ -13,11 +13,11 @@
   }
 
   &__content {
-    padding-left: $gutter;
-    padding-right: $gutter;
+    padding: ($gutter / 2) $gutter;
 
     @include media-query(tablet-portrait) {
       padding-top: ($gutter * 5);
+      padding-bottom: 0;
     }
 
     @include media-query(desktop-wide) {
