@@ -1,15 +1,10 @@
-$select-height: 37px;
+$select-height: 57px;
+$select-height--small: 37px;
 
 .form-custom-select {
   position: relative;
   width: 100%;
-  min-width: 225px;
   background-color: $color--white;
-  border: 1px solid $color--border;
-
-  @include media-query(tablet-portrait) {
-    max-width: 400px;
-  }
 
   &:active,
   &:focus {
@@ -36,33 +31,51 @@ $select-height: 37px;
   &::before {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1px;
+    right: 1px;
     z-index: 1;
     display: block;
     width: $select-height;
-    height: $select-height;
+    height: ($select-height - 2px);
     pointer-events: none;
     background-color: $color--white;
   }
 
   select {
-    @include font-size(xs);
+    @include font-size(m);
     position: relative;
     width: 100%;
     height: $select-height;
     margin: 0;
-    color: $color--black;
+    color: $color--default;
     cursor: pointer;
     background-color: $color--white;
-    border: 0;
+    border: 1px solid $color--border;
     outline: none;
     font-weight: 600;
     text-indent: 13px;
+    appearance: none;
+    border-radius: 0;
+
+    &:active,
+    &:focus {
+      border-color: $color--primary;
+    }
   }
 
   .donate-form__currency & {
     max-width: 120px;
     min-width: 120px;
+
+    &:before {
+      width: $select-height--small;
+      height: ($select-height--small - 2px);
+    }
+
+    select {
+      @include font-size(xs);
+      color: $color--black;
+      height: $select-height--small;
+    }
   }
 }
