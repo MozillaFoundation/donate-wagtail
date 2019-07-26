@@ -53,7 +53,7 @@ function setupBraintree() {
             env: braintreeParams.use_sandbox ? "sandbox" : "production",
             commit: true,
             style: {
-              size: "large",
+              size: "responsive",
               color: "blue",
               shape: "rect",
               label: "paypal",
