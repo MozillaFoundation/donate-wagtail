@@ -87,7 +87,7 @@
   .app--campaign-page & {
     @include media-query(tablet-landscape) {
       position: relative;
-      top: -100px;
+      top: -110px;
       background-color: $color--white;
       padding: $gutter ($gutter * 2);
       margin-bottom: -100px; // make up for top minus value
