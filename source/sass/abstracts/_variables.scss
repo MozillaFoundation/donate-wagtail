@@ -38,7 +38,7 @@ $font--secondary: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 // Font weights
 $weight--bold: 700;
-$weight--semibold: 600;
+$weight--semibold: m 600;
 $weight--medium: 500;
 $weight--normal: 400;
 $weight--light: 200;
@@ -82,7 +82,7 @@ $z-index: (
   header: 50,
   nav-desktop: 60,
   ui-overlay: 70,
-  8: 80,
+  sticky-message: 80,
   9: 90,
   modal: 100
 );

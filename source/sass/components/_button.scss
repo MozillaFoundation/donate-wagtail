@@ -33,6 +33,10 @@
     font-weight: $weight--semibold;
   }
 
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
   &__icon {
     fill: $color--white;
     margin-right: ($gutter / 4);
