@@ -32,7 +32,11 @@
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
-    margin-top: $top-space;
+    margin-top: $top-space-mobile;
+
+    @include media-query(tablet-landscape) {
+      margin-top: $top-space;
+    }
 
     .app--campaign-page & {
       margin-top: 0;
