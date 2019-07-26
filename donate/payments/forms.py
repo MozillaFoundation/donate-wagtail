@@ -33,3 +33,8 @@ class BraintreePaypalPaymentForm(BraintreePaymentForm):
 
 class CurrencyForm(forms.Form):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
+
+
+class NewsletterSignupForm(forms.Form):
+    email = forms.EmailField()
+    privacy = forms.BooleanField()

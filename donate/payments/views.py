@@ -2,7 +2,7 @@ import logging
 
 from django.conf import settings
 from django.http import Http404, HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
 
@@ -10,13 +10,17 @@ from braintree import ErrorCodes
 
 from . import constants, gateway
 from .exceptions import InvalidAddress
-from .forms import BraintreeCardPaymentForm, BraintreePaypalPaymentForm, StartCardPaymentForm
+from .forms import (
+    BraintreeCardPaymentForm, BraintreePaypalPaymentForm, StartCardPaymentForm,
+    NewsletterSignupForm
+)
 from .utils import get_currency_info, freeze_transaction_details_for_session
 
 logger = logging.getLogger(__name__)
 
 
 class BraintreePaymentMixin:
+    success_url = reverse_lazy('payments:newsletter_signup')
 
     def get_custom_fields(self, form):
         return {}
@@ -35,9 +39,6 @@ class BraintreePaymentMixin:
         details = self.get_transaction_details_for_session(result, form)
         self.request.session['completed_transaction_details'] = freeze_transaction_details_for_session(details)
         return HttpResponseRedirect(self.get_success_url())
-
-    def get_success_url(self):
-        return reverse('payments:completed')
 
 
 class CardPaymentView(BraintreePaymentMixin, FormView):
@@ -290,6 +291,12 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
             'transaction_id': transaction_id,
             'payment_method': constants.METHOD_PAYPAL,
         }
+
+
+class NewsletterSignupView(FormView):
+    form_class = NewsletterSignupForm
+    success_url = reverse_lazy('payments:completed')
+    template_name = 'payment/newsletter_signup.html'
 
 
 class ThankYouView(TemplateView):
