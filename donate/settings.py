@@ -180,11 +180,71 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+LANGUAGES = [
+    ('ach', 'Acholi'),
+    ('ar', 'Arabic'),
+    ('ast', 'Asturian'),
+    ('az', 'Azerbaijani'),
+    ('bn', 'Bengali'),
+    ('bs', 'Bosnian'),
+    ('ca', 'Catalan'),
+    ('cs', 'Czech'),
+    ('da', 'Danish'),
+    ('de', 'German'),
+    ('dsb', 'Sorbian, Lower'),
+    ('el', 'Greek'),
+    ('en-us', 'English (US)'),
+    ('en-ca', 'English (Canada)'),
+    ('en-gb', 'English (Great Britain)'),
+    ('es', 'Spanish'),
+    ('et', 'Estonian'),
+    ('fr', 'French'),
+    ('fy-nl', 'Frisian'),
+    ('gu-in', 'Gujarati'),
+    ('he', 'Hebrew'),
+    ('hi-in', 'Hindi'),
+    ('hr', 'Croatian'),
+    ('hsb', 'Sorbian, Upper'),
+    ('hu', 'Hungarian'),
+    ('id', 'Indonesian'),
+    ('it', 'Italian'),
+    ('ja', 'Japanese'),
+    ('ka', 'Georgian'),
+    ('kab', 'Kabyle'),
+    ('ko', 'Korean'),
+    ('lo', 'Lao'),
+    ('lv', 'Latvian'),
+    ('lg', 'Luganda'),
+    ('ms', 'Malay'),
+    ('ml', 'Malayalam'),
+    ('mr', 'Marathi'),
+    ('nb-no', 'Norwegian Bokmål'),
+    ('nl', 'Dutch'),
+    ('nn-no', 'Norwegian Nynorsk'),
+    ('pl', 'Polish'),
+    ('pt-br', 'Portuguese (Brazil)'),
+    ('pt-pt', 'Portuguese (Portugal)'),
+    ('pa-in', 'Punjabi'),
+    ('ro', 'Romanian'),
+    ('ru', 'Russian'),
+    ('sk', 'Slovak'),
+    ('sl', 'Slovenian'),
+    ('sq', 'Albanian'),
+    ('sv-se', 'Swedish'),
+    ('ta', 'Tamil'),
+    ('te', 'Telugu'),
+    ('th', 'Thai'),
+    ('tr', 'Turkish'),
+    ('uz', 'Uzbek'),
+    ('zh-cn', 'Chinese (China)'),
+    ('zh-tw', 'Chinese (Taiwan)'),
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [app('frontend')]
