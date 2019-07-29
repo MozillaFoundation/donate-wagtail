@@ -7,8 +7,6 @@ class CurrencySelect {
     this.selectMenu = node;
     this.formContainer = document.getElementById("js-donate-form");
     this.data = JSON.parse(document.getElementById("currencies").innerHTML);
-
-    // this.selectValue = this.selectMenu[this.selectMenu.selectedIndex].value;
     this.oneOffContainer = document.getElementById("js-donate-form-single");
     this.monthlyContainer = document.getElementById("js-donate-form-monthly");
 
