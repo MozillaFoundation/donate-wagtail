@@ -8,6 +8,8 @@ class AmountToggle {
     this.updateButton = document.querySelector("#js-update-button");
     this.actionsContainer = document.querySelector("[data-amount-actions]");
     this.hiddenInput = document.querySelector("#id_amount");
+    this.updateForm = document.querySelector("#js-update-donation-amount-form");
+    this.inputForm = document.querySelector("#js-update-donation-value");
     this.activeClass = "active";
     this.selectedClass = "selected";
 
@@ -15,9 +17,7 @@ class AmountToggle {
   }
 
   UpdateHiddenInputFromInput(event) {
-    event.preventDefault();
-    let input = document.querySelector("#js-update-donation-value");
-    this.hiddenInput.value = input.value;
+    this.hiddenInput.value = this.inputForm.value;
     // Hide form after updating hidden input
     this.toggleOptions(event);
     // Change values that exist on the page
@@ -36,6 +36,27 @@ class AmountToggle {
     this.actionsContainer.classList.toggle(this.activeClass);
   }
 
+  validateForm(event) {
+    const value = this.inputForm.value;
+
+    if (!value) {
+      this.inputForm.dataset.state = "invalid";
+      this.inputForm.classList.add("form-item__standalone-error");
+      this.updateButton.setAttribute("disabled", "disabled");
+      console.log("disable");
+      return;
+    }
+
+    const trimmed = value.trim();
+
+    if (trimmed) {
+      this.inputForm.dataset.state = "valid";
+      this.updateButton.removeAttribute("disabled");
+      this.inputForm.classList.remove("form-item__standalone-error");
+      console.log("enable");
+    }
+  }
+
   bindEvents() {
     if (!this.toggleButton) {
       return;
@@ -46,8 +67,15 @@ class AmountToggle {
     );
 
     this.updateButton.addEventListener("click", event =>
-      this.UpdateHiddenInputFromInput()
+      this.UpdateHiddenInputFromInput(event)
     );
+
+    this.updateForm.addEventListener("input", evt => {
+      this.validateForm(event);
+    });
+
+    // Don't submit the form
+    this.updateForm.addEventListener("submit", event => event.preventDefault());
   }
 }
 
