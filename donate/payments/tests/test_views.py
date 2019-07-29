@@ -12,11 +12,11 @@ from freezegun.api import FakeDate
 
 from ..forms import (
     BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm,
-    UpsellForm
+    BraintreePaypalUpsellForm, UpsellForm
 )
 from ..views import (
     BraintreePaymentMixin, CardPaymentView, CardUpsellView, PaypalPaymentView,
-    TransactionRequiredMixin
+    PaypalUpsellView, TransactionRequiredMixin
 )
 from ..exceptions import InvalidAddress
 
@@ -352,11 +352,15 @@ class PaypalPaymentViewTestCase(TestCase):
         self.request.session = self.client.session
         self.view = PaypalPaymentView()
         self.view.request = self.request
+        self.form_data = {
+            'braintree_nonce': 'hello-braintree',
+            'amount': Decimal(10),
+            'currency': 'usd',
+            'frequency': 'single'
+        }
 
     def test_transaction_data_submitted_to_braintree(self):
-        form = BraintreePaypalPaymentForm(
-            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'single'}
-        )
+        form = BraintreePaypalPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
@@ -367,13 +371,13 @@ class PaypalPaymentViewTestCase(TestCase):
             'amount': 10,
             'custom_fields': {},
             'payment_method_nonce': 'hello-braintree',
+            'merchant_account_id': 'usd-ac',
             'options': {'submit_for_settlement': True}
         })
 
     def test_subscription_data_submitted_to_braintree(self):
-        form = BraintreePaypalPaymentForm(
-            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'monthly'}
-        )
+        self.form_data['frequency'] = 'monthly'
+        form = BraintreePaypalPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
@@ -387,15 +391,15 @@ class PaypalPaymentViewTestCase(TestCase):
         })
 
         mock_gateway.subscription.create.assert_called_once_with({
-            'plan_id': 'usd',
+            'plan_id': 'usd-plan',
+            'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
-            'price': 10,
+            'price': Decimal(10),
         })
 
     def test_failed_customer_creation_calls_error_processor(self):
-        form = BraintreePaypalPaymentForm(
-            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'monthly'}
-        )
+        self.form_data['frequency'] = 'monthly'
+        form = BraintreePaypalPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
@@ -405,18 +409,34 @@ class PaypalPaymentViewTestCase(TestCase):
         self.assertTrue(response.status_code, 200)
 
     def test_get_transaction_details_for_session(self):
-        form = BraintreePaypalPaymentForm(
-            {'braintree_nonce': 'hello-braintree', 'amount': 10, 'frequency': 'monthly'}
-        )
+        self.form_data['frequency'] = 'monthly'
+        form = BraintreePaypalPaymentForm(self.form_data)
         assert form.is_valid()
-        self.view.frequency = 'monthly'
+        self.view.payment_frequency = 'monthly'
+        self.view.currency = 'usd'
         self.assertEqual(
             self.view.get_transaction_details_for_session(MockBraintreeSubscriptionResult(), form),
             {
-                'amount': 10,
+                'amount': Decimal(10),
                 'transaction_id': 'subscription-id-1',
                 'payment_method': 'paypal',
+                'payment_frequency': 'monthly',
+                'currency': 'usd',
             }
+        )
+
+    def test_get_success_url_single(self):
+        self.view.payment_frequency = 'single'
+        self.assertEqual(
+            self.view.get_success_url(),
+            reverse('payments:paypal_upsell')
+        )
+
+    def test_get_success_url_monthly(self):
+        self.view.payment_frequency = 'monthly'
+        self.assertEqual(
+            self.view.get_success_url(),
+            reverse('payments:newsletter_signup')
         )
 
 
@@ -505,6 +525,89 @@ class CardUpsellViewTestCase(TestCase):
                 'amount': Decimal(17),
                 'transaction_id': 'subscription-id-1',
                 'payment_method': 'card',
+                'currency': 'usd',
+                'payment_frequency': 'monthly',
+            }
+        )
+
+
+class PaypalUpsellViewTestCase(TestCase):
+
+    def setUp(self):
+        self.request = RequestFactory().get('/')
+        self.request.session = {
+            'completed_transaction_details': {
+                'amount': 50,
+                'currency': 'usd',
+                'payment_frequency': 'single',
+                'payment_method': 'paypal',
+                'payment_method_token': 'payment-method-1',
+            }
+        }
+        self.view = PaypalUpsellView()
+        self.view.request = self.request
+
+    def test_skips_if_previous_transaction_was_not_paypal(self):
+        self.request.session['completed_transaction_details']['payment_method'] = 'card'
+        response = self.view.get(self.request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], reverse('payments:completed'))
+
+    def test_skips_if_previous_transaction_was_not_single(self):
+        self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
+        response = self.view.get(self.request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], reverse('payments:completed'))
+
+    @freeze_time('2019-07-26')
+    def test_subscription_data_submitted_to_braintree(self):
+        form = BraintreePaypalUpsellForm({
+            'amount': Decimal(15), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
+        })
+        assert form.is_valid()
+
+        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            mock_gateway.customer.create.return_value.is_success = True
+            mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
+            self.view.form_valid(form)
+
+        mock_gateway.subscription.create.assert_called_once_with({
+            'plan_id': 'usd-plan',
+            'merchant_account_id': 'usd-ac',
+            'payment_method_token': 'payment-method-1',
+            'price': Decimal(15),
+            'first_billing_date': FakeDate(2019, 8, 26)
+        })
+
+    def test_failed_customer_creation_calls_error_processor(self):
+        form = BraintreePaypalUpsellForm({
+            'amount': Decimal(15), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
+        })
+        assert form.is_valid()
+
+        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            mock_gateway.subscription.create.return_value.is_success = False
+            response = self.view.form_valid(form)
+
+        self.assertFalse(form.is_valid())
+        self.assertTrue(response.status_code, 200)
+
+    def test_get_transaction_details_for_session(self):
+        form = BraintreePaypalUpsellForm({
+            'amount': Decimal(17), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
+        })
+        assert form.is_valid()
+
+        self.view.currency = 'usd'
+        self.view.payment_frequency = 'monthly'
+        mock_result = MockBraintreeSubscriptionResult()
+        self.assertEqual(
+            self.view.get_transaction_details_for_session(mock_result, form, currency='usd'),
+            {
+                'amount': Decimal(17),
+                'transaction_id': 'subscription-id-1',
+                'braintree_nonce': 'hello-braintree',
+                'payment_method': 'paypal',
                 'currency': 'usd',
                 'payment_frequency': 'monthly',
             }
