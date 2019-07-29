@@ -18,10 +18,7 @@ class CurrencySelect {
   // Get correct currency data from json
   getSelectValue() {
     var value = this.selectMenu[this.selectMenu.selectedIndex].value;
-    // console.log(value);
     var selectedData = this.data[value];
-    // console.log(selectedData);
-    // console.log(selectedData.disabled + " disabled");
 
     // Create arrays for monthly and one off based on data
     var oneOffValues = selectedData.presets.single;
