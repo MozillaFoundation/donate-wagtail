@@ -23,11 +23,6 @@ class CurrencySelect {
     var monthlyValue = selectedData.presets.monthly;
     var currency = selectedData.symbol;
 
-    // Update currency symbol
-    document.querySelectorAll("[data-currency]").forEach(currencyitem => {
-      currencyitem.innerHTML = currency;
-    });
-
     // Check if papal is needed
     this.checkPaypal(selectedData);
 
@@ -44,6 +39,8 @@ class CurrencySelect {
       currency,
       this.monthlyContainer
     );
+
+    this.updateCurrency(currency);
   }
 
   // Output donation form buttons
@@ -58,6 +55,18 @@ class CurrencySelect {
                 </div>`;
       })
       .join("");
+
+    container.insertAdjacentHTML(
+      "beforeend",
+      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off'><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='text' class='donation-amount__input' id='${type}-other-input' placeholder='Other amount'></div>`
+    );
+  }
+
+  updateCurrency(currency) {
+    // Update currency symbol
+    document.querySelectorAll("[data-currency]").forEach(currencyitem => {
+      currencyitem.innerHTML = currency;
+    });
   }
 
   // Add class to container if paypal should be disabled
