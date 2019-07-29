@@ -21,6 +21,11 @@
     &:focus {
       background-color: darken($color--primary, 5%);
     }
+
+    &[disabled] {
+      opacity: 0.5;
+      background-color: $color--disabled;
+    }
   }
 
   &--secondary {
