@@ -24,11 +24,12 @@ CURRENCIES = {
             'micro': 0.05
         },
         'monthlyUpgrade': [
-            {'min': 250, 'value': 30},
-            {'min': 120, 'value': 20},
-            {'min': 60, 'value': 15},
-            {'min': 35, 'value': 10},
-            {'min': 15, 'value': 5}
+            {'min': 300, 'value': 30},
+            {'min': 200, 'value': 20},
+            {'min': 100, 'value': 10},
+            {'min': 70, 'value': 7},
+            {'min': 35, 'value': 5},
+            {'min': 15, 'value': 3},
         ],
         'presets': {
             'single': [50, 25, 10, 3],
@@ -64,11 +65,12 @@ CURRENCIES = {
             'micro': 0.05
         },
         'monthlyUpgrade': [
-            {'min': 250, 'value': 30},
-            {'min': 150, 'value': 25},
-            {'min': 80, 'value': 20},
-            {'min': 45, 'value': 12},
-            {'min': 20, 'value': 6}
+            {'min': 432, 'value': 40},
+            {'min': 288, 'value': 30},
+            {'min': 144, 'value': 15},
+            {'min': 99, 'value': 10},
+            {'min': 50, 'value': 7},
+            {'min': 22, 'value': 4},
         ],
         'presets': {
             'single': [30, 15, 7, 4],
@@ -123,6 +125,14 @@ CURRENCIES = {
             'macro': 0.60,
             'micro': 0.10
         },
+        'monthlyUpgrade': [
+            {'min': 1137, 'value': 100},
+            {'min': 758, 'value': 75},
+            {'min': 379, 'value': 35},
+            {'min': 265, 'value': 25},
+            {'min': 133, 'value': 20},
+            {'min': 57, 'value': 10},
+        ],
         'presets': {
             'single': [80, 40, 20, 10],
             'monthly': [40, 20, 10, 8]
@@ -137,11 +147,12 @@ CURRENCIES = {
             'micro': 0.05
         },
         'monthlyUpgrade': [
-            {'min': 250, 'value': 30},
-            {'min': 150, 'value': 25},
-            {'min': 80, 'value': 20},
-            {'min': 45, 'value': 12},
-            {'min': 20, 'value': 6}
+            {'min': 393, 'value': 40},
+            {'min': 262, 'value': 25},
+            {'min': 131, 'value': 12},
+            {'min': 92, 'value': 9},
+            {'min': 46, 'value': 6},
+            {'min': 20, 'value': 4},
         ],
         'presets': {
             'single': [65, 30, 15, 4],
@@ -157,11 +168,12 @@ CURRENCIES = {
             'micro': 0.09
         },
         'monthlyUpgrade': [
-            {'min': 250, 'value': 30},
-            {'min': 120, 'value': 20},
-            {'min': 60, 'value': 15},
-            {'min': 35, 'value': 10},
-            {'min': 15, 'value': 5}
+            {'min': 297, 'value': 30},
+            {'min': 198, 'value': 20},
+            {'min': 99, 'value': 10},
+            {'min': 69, 'value': 7},
+            {'min': 35, 'value': 5},
+            {'min': 15, 'value': 3},
         ],
         'presets': {
             'single': [20, 10, 5, 3],
@@ -196,6 +208,14 @@ CURRENCIES = {
             'macro': 10.00,
             'micro': 1.67
         },
+        'monthlyUpgrade': [
+            {'min': 6870, 'value': 700},
+            {'min': 4580, 'value': 450},
+            {'min': 2290, 'value': 225},
+            {'min': 1603, 'value': 150},
+            {'min': 802, 'value': 100},
+            {'min': 344, 'value': 65},
+        ],
         'presets': {
             'single': [450, 220, 110, 70],
             'monthly': [220, 110, 70, 45]
@@ -209,6 +229,14 @@ CURRENCIES = {
             'macro': 2.60,
             'micro': 0.43
         },
+        'monthlyUpgrade': [
+            {'min': 2007, 'value': 200},
+            {'min': 1338, 'value': 125},
+            {'min': 669, 'value': 60},
+            {'min': 468, 'value': 45},
+            {'min': 234, 'value': 30},
+            {'min': 100, 'value': 20},
+        ],
         'presets': {
             'single': [130, 60, 30, 20],
             'monthly': [60, 30, 20, 15]
@@ -243,11 +271,11 @@ CURRENCIES = {
             'micro': 0.05
         },
         'monthlyUpgrade': [
-            {'min': 250, 'value': 30},
-            {'min': 120, 'value': 20},
-            {'min': 60, 'value': 15},
-            {'min': 35, 'value': 10},
-            {'min': 15, 'value': 5}
+            {'min': 270, 'value': 25},
+            {'min': 180, 'value': 20},
+            {'min': 90, 'value': 10},
+            {'min': 63, 'value': 6},
+            {'min': 32, 'value': 5},
         ],
         'presets': {
             'single': [50, 25, 10, 3],
@@ -263,11 +291,12 @@ CURRENCIES = {
             'micro': 0.05
         },
         'monthlyUpgrade': [
-            {'min': 200, 'value': 30},
-            {'min': 100, 'value': 20},
-            {'min': 50, 'value': 15},
-            {'min': 25, 'value': 10},
-            {'min': 10, 'value': 4}
+            {'min': 240, 'value': 25},
+            {'min': 160, 'value': 15},
+            {'min': 80, 'value': 10},
+            {'min': 56, 'value': 5},
+            {'min': 28, 'value': 4},
+            {'min': 12, 'value': 3},
         ],
         'presets': {
             'single': [20, 10, 5, 3],
@@ -302,6 +331,14 @@ CURRENCIES = {
             'macro': 2.35,
             'micro': 0.39
         },
+        'monthlyUpgrade': [
+            {'min': 2343, 'value': 200},
+            {'min': 1562, 'value': 150},
+            {'min': 781, 'value': 75},
+            {'min': 547, 'value': 50},
+            {'min': 273, 'value': 40},
+            {'min': 117, 'value': 25},
+        ],
         'presets': {
             'single': [100, 50, 25, 18],
             'monthly': [70, 30, 20, 15]
@@ -325,6 +362,14 @@ CURRENCIES = {
             'macro': 90,
             'micro': 15
         },
+        'monthlyUpgrade': [
+            {'min': 87600, 'value': 8000},
+            {'min': 58400, 'value': 5000},
+            {'min': 29200, 'value': 3000},
+            {'min': 20400, 'value': 2000},
+            {'min': 10200, 'value': 1500},
+            {'min': 4380, 'value': 900},
+        ],
         'zeroDecimal': 'paypal',
         'presets': {
             'single': [5600, 2800, 1400, 850],
@@ -349,6 +394,14 @@ CURRENCIES = {
             'macro': 1.20,
             'micro': 0.20
         },
+        'monthlyUpgrade': [
+            {'min': 1056, 'value': 100},
+            {'min': 704, 'value': 70},
+            {'min': 352, 'value': 35},
+            {'min': 246, 'value': 25},
+            {'min': 123, 'value': 15},
+            {'min': 53, 'value': 10},
+        ],
         'presets': {
             'single': [60, 30, 15, 9],
             'monthly': [50, 20, 10, 8]
@@ -359,6 +412,14 @@ CURRENCIES = {
         'minAmount': 145,
         'symbol': '₹',
         'disabled': 'paypal',
+        'monthlyUpgrade': [
+            {'min': 20700, 'value': 2000},
+            {'min': 13800, 'value': 1000},
+            {'min': 6900, 'value': 700},
+            {'min': 4830, 'value': 500},
+            {'min': 2415, 'value': 350},
+            {'min': 1035, 'value': 200},
+        ],
         'presets': {
             'single': [1000, 500, 350, 200],
             'monthly': [650, 350, 200, 130]
@@ -374,11 +435,12 @@ CURRENCIES = {
         },
         'zeroDecimal': 'paypal',
         'monthlyUpgrade': [
-            {'min': 28000, 'value': 3300},
-            {'min': 13000, 'value': 2200},
-            {'min': 6700, 'value': 1700},
-            {'min': 4000, 'value': 1100},
-            {'min': 1600, 'value': 500}
+            {'min': 32580, 'value': 3000},
+            {'min': 21720, 'value': 2000},
+            {'min': 10860, 'value': 1000},
+            {'min': 7602, 'value': 750},
+            {'min': 3801, 'value': 500},
+            {'min': 1629, 'value': 300},
         ],
         'presets': {
             'single': [2240, 1120, 560, 340],
@@ -437,6 +499,14 @@ CURRENCIES = {
         'minAmount': 9,
         'symbol': 'RM',
         'disabled': 'paypal',
+        'monthlyUpgrade': [
+            {'min': 1236, 'value': 120},
+            {'min': 824, 'value': 80},
+            {'min': 412, 'value': 40},
+            {'min': 288, 'value': 25},
+            {'min': 144, 'value': 20},
+            {'min': 62, 'value': 12},
+        ],
         'presets': {
             'single': [85, 42, 21, 13],
             'monthly': [42, 21, 13, 9]
@@ -451,11 +521,12 @@ CURRENCIES = {
             'micro': 0.55
         },
         'monthlyUpgrade': [
-            {'min': 4600, 'value': 550},
-            {'min': 2200, 'value': 400},
-            {'min': 1100, 'value': 300},
-            {'min': 500, 'value': 200},
-            {'min': 200, 'value': 100}
+            {'min': 5700, 'value': 500},
+            {'min': 3800, 'value': 350},
+            {'min': 1900, 'value': 200},
+            {'min': 1330, 'value': 125},
+            {'min': 665, 'value': 100},
+            {'min': 285, 'value': 50},
         ],
         'presets': {
             'single': [400, 200, 100, 60],
@@ -470,6 +541,14 @@ CURRENCIES = {
             'macro': 2.80,
             'micro': 0.47
         },
+        'monthlyUpgrade': [
+            {'min': 2598, 'value': 250},
+            {'min': 1732, 'value': 175},
+            {'min': 866, 'value': 80},
+            {'min': 606, 'value': 60},
+            {'min': 303, 'value': 40},
+            {'min': 130, 'value': 25},
+        ],
         'presets': {
             'single': [160, 80, 40, 20],
             'monthly': [100, 60, 30, 20]
@@ -483,6 +562,14 @@ CURRENCIES = {
             'macro': 0.45,
             'micro': 0.08
         },
+        'monthlyUpgrade': [
+            {'min': 450, 'value': 45},
+            {'min': 300, 'value': 30},
+            {'min': 150, 'value': 15},
+            {'min': 105, 'value': 10},
+            {'min': 52, 'value': 7},
+            {'min': 23, 'value': 4},
+        ],
         'presets': {
             'single': [40, 20, 10, 4],
             'monthly': [20, 10, 8, 3]
@@ -496,6 +583,14 @@ CURRENCIES = {
             'macro': 15.00,
             'micro': 2.50
         },
+        'monthlyUpgrade': [
+            {'min': 15360, 'value': 1500},
+            {'min': 10240, 'value': 1000},
+            {'min': 5120, 'value': 500},
+            {'min': 3584, 'value': 350},
+            {'min': 1792, 'value': 250},
+            {'min': 768, 'value': 150},
+        ],
         'presets': {
             'single': [1000, 520, 260, 150],
             'monthly': [520, 260, 150, 90]
@@ -510,11 +605,12 @@ CURRENCIES = {
             'micro': 0.23
         },
         'monthlyUpgrade': [
-            {'min': 900, 'value': 100},
-            {'min': 425, 'value': 70},
-            {'min': 200, 'value': 50},
-            {'min': 125, 'value': 35},
-            {'min': 50, 'value': 15}
+            {'min': 1146, 'value': 100},
+            {'min': 764, 'value': 75},
+            {'min': 382, 'value': 35},
+            {'min': 267, 'value': 25},
+            {'min': 134, 'value': 20},
+            {'min': 57, 'value': 10},
         ],
         'presets': {
             'single': [80, 40, 20, 10],
@@ -550,11 +646,12 @@ CURRENCIES = {
             'micro': 2
         },
         'monthlyUpgrade': [
-            {'min': 15000, 'value': 1800},
-            {'min': 7000, 'value': 1100},
-            {'min': 3500, 'value': 900},
-            {'min': 2000, 'value': 600},
-            {'min': 900, 'value': 300}
+            {'min': 18960, 'value': 2000},
+            {'min': 12640, 'value': 1200},
+            {'min': 6320, 'value': 600},
+            {'min': 4424, 'value': 400},
+            {'min': 2212, 'value': 300},
+            {'min': 948, 'value': 200},
         ],
         'presets': {
             'single': [1300, 800, 500, 200],
@@ -579,6 +676,14 @@ CURRENCIES = {
             'macro': 3.25,
             'micro': 0.54
         },
+        'monthlyUpgrade': [
+            {'min': 2832, 'value': 250},
+            {'min': 1888, 'value': 175},
+            {'min': 944, 'value': 90},
+            {'min': 661, 'value': 65},
+            {'min': 330, 'value': 50},
+            {'min': 142, 'value': 25},
+        ],
         'presets': {
             'single': [180, 90, 45, 30],
             'monthly': [90, 45, 30, 18]
@@ -589,6 +694,14 @@ CURRENCIES = {
         'minAmount': 3,
         'symbol': '$SG',
         'disabled': 'paypal',
+        'monthlyUpgrade': [
+            {'min': 411, 'value': 40},
+            {'min': 274, 'value': 25},
+            {'min': 137, 'value': 15},
+            {'min': 96, 'value': 10},
+            {'min': 48, 'value': 7},
+            {'min': 21, 'value': 4},
+        ],
         'presets': {
             'single': [20, 14, 7, 4],
             'monthly': [14, 7, 4, 3]
@@ -602,6 +715,14 @@ CURRENCIES = {
             'macro': 11.00,
             'micro': 1.80
         },
+        'monthlyUpgrade': [
+            {'min': 9300, 'value': 900},
+            {'min': 6200, 'value': 600},
+            {'min': 3100, 'value': 300},
+            {'min': 2170, 'value': 200},
+            {'min': 1085, 'value': 150},
+            {'min': 465, 'value': 100},
+        ],
         'presets': {
             'single': [500, 250, 125, 75],
             'monthly': [300, 200, 100, 70]
@@ -627,11 +748,12 @@ CURRENCIES = {
         },
         'zeroDecimal': 'paypal',
         'monthlyUpgrade': [
-            {'min': 7500, 'value': 900},
-            {'min': 3600, 'value': 600},
-            {'min': 1800, 'value': 450},
-            {'min': 1000, 'value': 300},
-            {'min': 450, 'value': 150}
+            {'min': 9300, 'value': 900},
+            {'min': 6200, 'value': 600},
+            {'min': 3100, 'value': 300},
+            {'min': 2170, 'value': 200},
+            {'min': 1085, 'value': 150},
+            {'min': 465, 'value': 100},
         ],
         'presets': {
             'single': [480, 240, 150, 70],
@@ -673,3 +795,72 @@ CURRENCIES = {
 CURRENCY_CHOICES = tuple([
     (key, '{}   {}'.format(key.upper(), data['symbol'])) for key, data in CURRENCIES.items()
 ])
+
+
+LOCALE_CURRENCY_MAP = {
+    'ast': 'eur',
+    'az': 'azn',
+    'bn': 'bdt',
+    'bs': 'bam',
+    'ca': 'eur',
+    'cak': 'gtq',
+    'cs': 'czk',
+    'da': 'dkk',
+    'de': 'eur',
+    'dsb': 'eur',
+    'el': 'eur',
+    'en-au': 'aud',
+    'en-ca': 'cad',
+    'en-gb': 'gbp',
+    'en-in': 'inr',
+    'en-nz': 'nzd',
+    'en-us': 'usd',
+    'en-za': 'zar',
+    'es': 'eur',
+    'es-ar': 'ars',
+    'es-cl': 'clp',
+    'es-el': 'eur',
+    'es-mx': 'mxn',
+    'es-xl': 'mxn',
+    'et': 'eur',
+    'fi': 'eur',
+    'fr': 'eur',
+    'fy-nl': 'eur',
+    'gu-in': 'inr',
+    'he': 'ils',
+    'hi-in': 'inr',
+    'hr': 'hrk',
+    'hsb': 'eur',
+    'hu': 'huf',
+    'id': 'idr',
+    'it': 'eur',
+    'ja': 'jpy',
+    'ka': 'gel',
+    'kab': 'dzd',
+    'ko': 'krw',
+    'lo': 'lak',
+    'lv': 'eur',
+    'ml': 'inr',
+    'mr': 'inr',
+    'ms': 'myr',
+    'nb-no': 'nok',
+    'nl': 'eur',
+    'nn-no': 'nok',
+    'pa-in': 'inr',
+    'pl': 'pln',
+    'pt-br': 'brl',
+    'pt-pt': 'eur',
+    'ro': 'ron',
+    'ru': 'rub',
+    'sk': 'eur',
+    'sl': 'eur',
+    'sq': 'all',
+    'sv-se': 'sek',
+    'ta': 'inr',
+    'te': 'inr',
+    'th': 'thb',
+    'tr': 'try',
+    'uk': 'uah',
+    'zh-cn': 'cny',
+    'zh-tw': 'twd'
+}

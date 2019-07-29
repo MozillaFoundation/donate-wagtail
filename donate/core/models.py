@@ -14,6 +14,7 @@ from modelcluster.fields import ParentalKey
 
 from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
+from donate.payments.utils import get_default_currency
 
 
 class DonationPage(Page):
@@ -22,13 +23,20 @@ class DonationPage(Page):
     def currencies(self):
         return constants.CURRENCIES.copy()
 
+    def get_initial_currency(self, request):
+        # Query argument takes first preference
+        if request.GET.get('currency') in constants.CURRENCIES:
+            return request.GET['currency']
+        # Otherwise sniff based on browser language
+        return get_default_currency(request.META['HTTP_ACCEPT_LANGUAGE'])
+
     def get_context(self, request):
         ctx = super().get_context(request)
         ctx.update({
             'currencies': self.currencies,
             'braintree_params': settings.BRAINTREE_PARAMS,
             'braintree_form': BraintreePaypalPaymentForm(),
-            'currency_form': CurrencyForm(),
+            'currency_form': CurrencyForm(initial={'currency': self.get_initial_currency(request)}),
         })
         return ctx
 

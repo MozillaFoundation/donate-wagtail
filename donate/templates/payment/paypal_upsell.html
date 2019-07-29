@@ -1,0 +1,62 @@
+{% extends "pages/base_page.html" %}
+{% load i18n form_tags static %}
+
+{% block title %}{% trans "Thank you" %}{% endblock %}
+
+{% block template_name %}app--details{% endblock %}
+
+{% block content %}
+
+<div class="layout layout--narrow">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <h1 class="heading heading--primary">{% trans "Thank you for your generous gift" %}</h1>
+
+            <p>{% trans "We'd love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
+            <p>{% trans "Yes, I will give" %}</p>
+
+            <form method="post" class="form" id="payments__braintree-form">
+                <div class="form__container form__container--flex">
+                    <div class="form__section form__section--main-column">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <div class="form__errors">{{ error }}</div>
+                            {% endfor %}
+                        {% elif form.errors %}
+                            <div class="form__errors">
+                                {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
+                            </div>
+                        {% endif %}
+
+                        {% render_form_field form.amount %}
+                        {% render_form_field form.currency %}
+                        {% render_form_field form.braintree_nonce %}
+
+                        <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel" %}
+                    </div>
+
+                    <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
+
+                    <div class="form__section form__section--actions">
+
+                        <div id="payments__paypal-button--upsell"></div>
+                        <a href="{% url 'payments:completed' %}" class="button button--large button--full">
+                            {% trans "No" %}
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+    {{ braintree_params|json_script:"payments__braintree-params" }}
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="{% static '_js/payments-paypal-upsell.compiled.js' %}"></script>
+{% endblock %}
