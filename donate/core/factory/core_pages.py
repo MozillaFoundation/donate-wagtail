@@ -26,7 +26,8 @@ class CampaignPageFactory(PageFactory):
         model = CampaignPage
 
     title = Faker('text', max_nb_chars=140)
-    lead_text = Faker('paragraph', nb_sentences=5, variable_nb_sentences=True)
+    lead_text = Faker('paragraph', nb_sentences=2, variable_nb_sentences=True)
+    intro = Faker('paragraph', nb_sentences=5, variable_nb_sentences=True)
     hero_image = SubFactory(ImageFactory)
 
 
