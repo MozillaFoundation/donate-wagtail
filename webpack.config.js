@@ -48,4 +48,15 @@ let paymentsPaypal = {
   }
 };
 
-module.exports = [main, paymentsCard, paymentsPaypal];
+let paymentsPaypalUpsell = {
+  entry: `./source/js/payments-paypal-upsell.js`,
+  output: {
+    path: frontendPath,
+    filename: `payments-paypal-upsell.compiled.js`
+  },
+  module: {
+    rules
+  }
+};
+
+module.exports = [main, paymentsCard, paymentsPaypal, paymentsPaypalUpsell];

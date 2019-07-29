@@ -23,6 +23,11 @@ urlpatterns = [
         name='paypal'
     ),
     path(
+        'paypal/thank-you/',
+        views.PaypalUpsellView.as_view(),
+        name='paypal_upsell'
+    ),
+    path(
         'stay-in-touch/',
         views.NewsletterSignupView.as_view(),
         name='newsletter_signup'
