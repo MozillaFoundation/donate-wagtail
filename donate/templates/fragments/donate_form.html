@@ -1,5 +1,5 @@
 {% load i18n form_tags %}
-<div class="donate-form__content">
+<div class="donate-form__content" id="js-donate-form">
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container" role="tablist">
             <div class="tabs__option" role="presentation">
@@ -20,25 +20,27 @@
                 <input type="hidden" name="currency" value="usd">
 
                 <div class="donate-form__fields">
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="50" id="one-time-amount-1" autocomplete="off">
-                        <label for="one-time-amount-1" class="donation-amount__label">$50</label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="25" id="one-time-amount-2" autocomplete="off">
-                        <label for="one-time-amount-2" class="donation-amount__label">$25</label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="one-time-amount-3" autocomplete="off">
-                        <label for="one-time-amount-3" class="donation-amount__label">$10</label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
-                        <label for="one-time-amount-4" class="donation-amount__label">$3</label>
+                    <div id="js-donate-form-single">
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="50" id="one-time-amount-1" autocomplete="off">
+                            <label for="one-time-amount-1" class="donation-amount__label">$50</label>
+                        </div>
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="25" id="one-time-amount-2" autocomplete="off">
+                            <label for="one-time-amount-2" class="donation-amount__label">$25</label>
+                        </div>
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="10" id="one-time-amount-3" autocomplete="off">
+                            <label for="one-time-amount-3" class="donation-amount__label">$10</label>
+                        </div>
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
+                            <label for="one-time-amount-4" class="donation-amount__label">$3</label>
+                        </div>
                     </div>
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off">
-                        <label for="one-time-amount-other" class="donation-amount__label">$</label>
+                        <label for="one-time-amount-other" class="donation-amount__label" data-currency>$</label>
                         <input type="text" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}">
                     </div>
                     <input type="hidden" class="one-time-amount__total">
@@ -83,25 +85,27 @@
                 <input type="hidden" name="currency" value="usd">
 
                 <div class="donate-form__fields">
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off" checked>
-                        <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">{% trans "per month" %}</span></label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="5" id="monthly-amount-2" autocomplete="off">
-                        <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">{% trans "per month" %}</span></label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="monthly-amount-3" autocomplete="off">
-                        <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">{% trans "per month" %}</span></label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
-                        <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">{% trans "per month" %}</span></label>
+                    <div id="js-donate-form-monthly">
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off" checked>
+                            <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">{% trans "per month" %}</span></label>
+                        </div>
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="5" id="monthly-amount-2" autocomplete="off">
+                            <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">{% trans "per month" %}</span></label>
+                        </div>
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="3" id="monthly-amount-3" autocomplete="off">
+                            <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">{% trans "per month" %}</span></label>
+                        </div>
+                        <div class="donation-amount">
+                            <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
+                            <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">{% trans "per month" %}</span></label>
+                        </div>
                     </div>
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off">
-                        <label for="monthly-amount-other" class="donation-amount__label">$</label>
+                        <label for="monthly-amount-other" class="donation-amount__label" data-currency>$</label>
                         <input type="text" class="donation-amount__input" id="monthly-amount-other-input" placeholder="{% trans 'Other amount' %}">
                     </div>
                     <input type="hidden" class="monthly-amount__total">
