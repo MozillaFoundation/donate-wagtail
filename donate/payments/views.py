@@ -2,19 +2,21 @@ import logging
 
 from django.conf import settings
 from django.http import Http404, HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
+from django.utils.timezone import now
 from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
 
 from braintree import ErrorCodes
+from dateutil.relativedelta import relativedelta
 
 from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
     BraintreeCardPaymentForm, BraintreePaypalPaymentForm, StartCardPaymentForm,
-    NewsletterSignupForm
+    NewsletterSignupForm, UpsellForm
 )
-from .utils import get_currency_info, freeze_transaction_details_for_session
+from .utils import get_currency_info, get_suggested_monthly_upgrade, freeze_transaction_details_for_session
 
 logger = logging.getLogger(__name__)
 
@@ -28,15 +30,18 @@ class BraintreePaymentMixin:
     def get_merchant_account_id(self, currency):
         return settings.BRAINTREE_MERCHANT_ACCOUNTS[currency]
 
-    def get_transaction_details_for_session(self, result, form):
+    def get_plan_id(self, currency):
+        return settings.BRAINTREE_PLANS[currency]
+
+    def get_transaction_details_for_session(self, result, form, **kwargs):
         raise NotImplementedError()
 
     def process_braintree_error_result(result, form):
         raise NotImplementedError()
 
-    def success(self, result, form):
+    def success(self, result, form, **kwargs):
         # Store details of the transaction in a session variable
-        details = self.get_transaction_details_for_session(result, form)
+        details = self.get_transaction_details_for_session(result, form, **kwargs)
         self.request.session['completed_transaction_details'] = freeze_transaction_details_for_session(details)
         return HttpResponseRedirect(self.get_success_url())
 
@@ -63,9 +68,6 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         return {
             'amount': self.amount
         }
-
-    def get_plan_id(self, currency):
-        return settings.BRAINTREE_PLANS[currency]
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -148,35 +150,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         else:
             return self.process_monthly_transaction(form)
 
-    def process_single_transaction(self, form):
-        result = gateway.transaction.sale({
-            'amount': form.cleaned_data['amount'],
-            'merchant_account_id': self.get_merchant_account_id(self.currency),
-            'billing': self.get_address_info(form.cleaned_data),
-            'customer': {
-                'first_name': form.cleaned_data['first_name'],
-                'last_name': form.cleaned_data['last_name'],
-                'email': form.cleaned_data['email'],
-            },
-            # Custom fields need to be set up in Braintree before they will be accepted.
-            'custom_fields': self.get_custom_fields(form),
-            'payment_method_nonce': form.cleaned_data['braintree_nonce'],
-            'options': {
-                'submit_for_settlement': True
-            }
-        })
-
-        if result.is_success:
-            return self.success(result, form)
-        else:
-            logger.error(
-                'Failed Braintree transaction: {}'.format(result.message),
-                extra={'result': result}
-            )
-            return self.process_braintree_error_result(result, form)
-
-    def process_monthly_transaction(self, form):
-        # Create a customer and payment method for this customsr
+    def create_customer(self, form):
         result = gateway.customer.create({
             'first_name': form.cleaned_data['first_name'],
             'last_name': form.cleaned_data['last_name'],
@@ -188,13 +162,48 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             }
         })
 
-        if result.is_success:
-            payment_method = result.customer.payment_methods[0]
-        else:
+        if not result.is_success:
             logger.error(
                 'Failed to create Braintree customer: {}'.format(result.message),
                 extra={'result': result}
             )
+
+        return result
+
+    def process_single_transaction(self, form):
+        # Create a customer and payment method for this customer
+        # We vault this customer so that upsell doesn't require further authorization
+        result = self.create_customer(form)
+        if result.is_success:
+            payment_method = result.customer.payment_methods[0]
+        else:
+            return self.process_braintree_error_result(result, form)
+
+        result = gateway.transaction.sale({
+            'amount': form.cleaned_data['amount'],
+            'merchant_account_id': self.get_merchant_account_id(self.currency),
+            'payment_method_token': payment_method.token,
+            'options': {
+                'submit_for_settlement': True
+            }
+        })
+
+        if result.is_success:
+            return self.success(result, form, payment_method_token=payment_method.token)
+        else:
+            logger.error(
+                'Failed Braintree transaction: {}'.format(result.message),
+                extra={'result': result}
+            )
+            return self.process_braintree_error_result(result, form)
+
+    def process_monthly_transaction(self, form):
+        # Create a customer and payment method for this customer
+        result = self.create_customer(form)
+
+        if result.is_success:
+            payment_method = result.customer.payment_methods[0]
+        else:
             return self.process_braintree_error_result(result, form)
 
         # Create a subcription against the payment method
@@ -220,13 +229,22 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         else:
             return result.subscription.id
 
-    def get_transaction_details_for_session(self, result, form):
+    def get_transaction_details_for_session(self, result, form, **kwargs):
         details = form.cleaned_data.copy()
         details.update({
             'transaction_id': self.get_transaction_id(result),
             'payment_method': constants.METHOD_CARD,
+            'currency': self.currency,
+            'payment_frequency': self.payment_frequency,
+            'payment_method_token': kwargs.get('payment_method_token'),
         })
         return details
+
+    def get_success_url(self):
+        if self.payment_frequency == constants.FREQUENCY_SINGLE:
+            return reverse('payments:card_upsell')
+        else:
+            return super().get_success_url()
 
 
 class PaypalPaymentView(BraintreePaymentMixin, FormView):
@@ -293,13 +311,88 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
         }
 
 
-class NewsletterSignupView(FormView):
+class TransactionRequiredMixin:
+
+    """
+    Mixin that redirects the user to the home page if they try to access a view
+    without having completed a payment transaction.
+    """
+    def dispatch(self, request, *args, **kwargs):
+        if not request.session.get('completed_transaction_details'):
+            return HttpResponseRedirect('/')
+        return super().dispatch(request, *args, **kwargs)
+
+
+class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
+    form_class = UpsellForm
+    success_url = reverse_lazy('payments:completed')
+    template_name = 'payment/card_upsell.html'
+
+    def get(self, request, *args, **kwargs):
+        # Avoid repeat submissions and make sure that the previous transaction was
+        # a single card transaction.
+        last_transaction = self.request.session['completed_transaction_details']
+        if not(
+            last_transaction['payment_frequency'] == constants.FREQUENCY_SINGLE
+            and last_transaction['payment_method'] == constants.METHOD_CARD
+        ):
+            return HttpResponseRedirect(self.get_success_url())
+
+        return super().get(request, *args, **kwargs)
+
+    def get_initial(self):
+        last_transaction = self.request.session['completed_transaction_details']
+        return {
+            'amount': get_suggested_monthly_upgrade(last_transaction['currency'], last_transaction['amount'])
+        }
+
+    def form_valid(self, form):
+        payment_method_token = self.request.session['completed_transaction_details']['payment_method_token']
+        currency = self.request.session['completed_transaction_details']['currency']
+
+        # Create a subcription against the payment method
+        start_date = now().date() + relativedelta(months=1)     # Start one month from today
+        result = gateway.subscription.create({
+            'plan_id': self.get_plan_id(currency),
+            'merchant_account_id': self.get_merchant_account_id(currency),
+            'payment_method_token': payment_method_token,
+            'first_billing_date': start_date,
+            'price': form.cleaned_data['amount'],
+        })
+
+        if result.is_success:
+            return self.success(result, form, currency=currency)
+        else:
+            logger.error(
+                'Failed to create Braintree subscription: {}'.format(result.message),
+                extra={'result': result}
+            )
+            return self.process_braintree_error_result(result, form)
+
+    def get_transaction_details_for_session(self, result, form, **kwargs):
+        details = form.cleaned_data.copy()
+        details.update({
+            'transaction_id': result.subscription.id,
+            'payment_method': constants.METHOD_CARD,
+            'currency': kwargs['currency'],
+            'payment_frequency': constants.FREQUENCY_MONTHLY,
+        })
+        return details
+
+    def process_braintree_error_result(self, result, form):
+        default_error_message = _('Sorry there was an error processing your payment. '
+                                  'Please try again later.')
+        form.add_error(None, default_error_message)
+        return self.form_invalid(form)
+
+
+class NewsletterSignupView(TransactionRequiredMixin, FormView):
     form_class = NewsletterSignupForm
     success_url = reverse_lazy('payments:completed')
     template_name = 'payment/newsletter_signup.html'
 
 
-class ThankYouView(TemplateView):
+class ThankYouView(TransactionRequiredMixin, TemplateView):
     template_name = 'payment/thank_you.html'
 
     def get_context_data(self, **kwargs):
