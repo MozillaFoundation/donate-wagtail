@@ -41,7 +41,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
-    "braintree-web": "^3.48.0",
+    "braintree-web": "^3.49.0",
     "classnames": "2.2.6",
     "event-stream": "4.0.1",
     "html-entities": "^1.2.1",
