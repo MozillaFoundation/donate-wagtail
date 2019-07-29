@@ -240,7 +240,7 @@ class CardPaymentViewTestCase(TestCase):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             self.view.create_customer(form)
 
         mock_gateway.customer.create.assert_called_once_with({
@@ -270,10 +270,10 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
-        with mock.patch.object(CardPaymentView, 'create_customer') as mock_create_customer:
+        with mock.patch.object(CardPaymentView, 'create_customer', autospec=True) as mock_create_customer:
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
-            with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
                 self.view.form_valid(form)
 
         mock_gateway.transaction.sale.assert_called_once_with({
@@ -308,10 +308,10 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
-        with mock.patch.object(CardPaymentView, 'create_customer') as mock_create_customer:
+        with mock.patch.object(CardPaymentView, 'create_customer', autospec=True) as mock_create_customer:
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
-            with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
                 self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
@@ -325,7 +325,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = False
             response = self.view.form_valid(form)
 
@@ -359,7 +359,7 @@ class PaypalPaymentViewTestCase(TestCase):
         )
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.transaction.sale.return_value = MockBraintreeResult()
             self.view.form_valid(form)
 
@@ -376,7 +376,7 @@ class PaypalPaymentViewTestCase(TestCase):
         )
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
             mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
             self.view.form_valid(form)
@@ -398,7 +398,7 @@ class PaypalPaymentViewTestCase(TestCase):
         )
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = False
             response = self.view.form_valid(form)
 
@@ -472,7 +472,7 @@ class CardUpsellViewTestCase(TestCase):
         form = UpsellForm({'amount': Decimal(15)})
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
@@ -487,7 +487,7 @@ class CardUpsellViewTestCase(TestCase):
         form = UpsellForm({'amount': Decimal(15)})
         assert form.is_valid()
 
-        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.subscription.create.return_value.is_success = False
             response = self.view.form_valid(form)
 
