@@ -9,17 +9,17 @@ form-item
 {% if field.errors %}form-item--errors{% endif %}
 ">
 
-    {% if field.errors %}
-        <div class="form-item__errors">
-            {{ field.errors }}
-        </div>
-    {% endif %}
-
     {% if not widget_type == "checkbox_input" %}
         {% include "forms/_label.html" %}
     {% endif %}
 
     {% include "forms/_field.html" %}
+
+    {% if field.errors %}
+        <div class="form-item__errors">
+            {{ field.errors }}
+        </div>
+    {% endif %}
 
 </div>
 

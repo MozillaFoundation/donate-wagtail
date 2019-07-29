@@ -5,12 +5,19 @@
   margin-top: 0;
 
   &--primary {
-    @include font-size(xxl);
+    @include font-size(xl);
+    @include media-query(tablet-portrait) {
+      @include font-size(xxl);
+    }
   }
 
   &--secondary {
-    @include font-size(l);
+    @include font-size(m);
     font-weight: $weight--bold;
+
+    @include media-query(tablet-portrait) {
+      @include font-size(l);
+    }
   }
 
   &--tertiary {

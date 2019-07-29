@@ -2,11 +2,11 @@
   $root: &;
   margin-bottom: 20px;
 
-  // sass-lint:disable class-name-format
   &--errors {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px dotted $color--red;
+    input:not([type="checkbox"]),
+    textarea {
+      border-color: $color--warning !important;
+    }
   }
 
   &--checkbox_input {
@@ -65,10 +65,9 @@
   }
 
   &__errors {
-    @include font-size(s);
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: $color--red;
+    @include font-size(xxs);
+    color: $color--warning;
+    padding-top: ($gutter / 4);
   }
 
   &__help {
@@ -78,8 +77,7 @@
   }
 
   input:not([type="checkbox"]),
-  textarea,
-  select {
+  textarea {
     width: 100%;
     padding: ($gutter * 0.75) ($gutter);
     border: 1px solid $color--border;
@@ -94,5 +92,18 @@
   input[type="checkbox"] {
     margin-right: 10px;
   }
-  // sass-lint:enddisable
+
+  &__dummy-placeholder {
+    // Used for braintree hosted fields
+    height: 57px;
+    background-color: $color--white;
+    padding: 15px 20px;
+    border: 1px solid $color--border;
+    width: 100%;
+  }
+
+  .donate-form__currency & {
+    // override as can't apply modifier class due to form being added
+    margin-bottom: 0;
+  }
 }

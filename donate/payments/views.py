@@ -14,7 +14,7 @@ from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
     BraintreeCardPaymentForm, BraintreePaypalPaymentForm, StartCardPaymentForm,
-    UpsellForm
+    NewsletterSignupForm, UpsellForm
 )
 from .utils import get_currency_info, get_suggested_monthly_upgrade, freeze_transaction_details_for_session
 
@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 class BraintreePaymentMixin:
+    success_url = reverse_lazy('payments:newsletter_signup')
 
     def get_custom_fields(self, form):
         return {}
@@ -43,9 +44,6 @@ class BraintreePaymentMixin:
         details = self.get_transaction_details_for_session(result, form, **kwargs)
         self.request.session['completed_transaction_details'] = freeze_transaction_details_for_session(details)
         return HttpResponseRedirect(self.get_success_url())
-
-    def get_success_url(self):
-        return reverse('payments:completed')
 
 
 class CardPaymentView(BraintreePaymentMixin, FormView):
@@ -386,6 +384,12 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
                                   'Please try again later.')
         form.add_error(None, default_error_message)
         return self.form_invalid(form)
+
+
+class NewsletterSignupView(TransactionRequiredMixin, FormView):
+    form_class = NewsletterSignupForm
+    success_url = reverse_lazy('payments:completed')
+    template_name = 'payment/newsletter_signup.html'
 
 
 class ThankYouView(TransactionRequiredMixin, TemplateView):

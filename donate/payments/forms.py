@@ -37,3 +37,8 @@ class CurrencyForm(forms.Form):
 
 class UpsellForm(forms.Form):
     amount = forms.DecimalField(min_value=0.01, decimal_places=2)
+
+
+class NewsletterSignupForm(forms.Form):
+    email = forms.EmailField()
+    privacy = forms.BooleanField()

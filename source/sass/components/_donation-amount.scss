@@ -2,9 +2,12 @@
   $root: &;
 
   &--two-col {
-    @include media-query(tablet-landscape) {
-      grid-column-end: span 2;
-    }
+    grid-column: span 2;
+  }
+
+  &--other {
+    display: flex;
+    flex-direction: row;
   }
 
   &__container {
@@ -21,6 +24,12 @@
     cursor: pointer;
     transition: color $transition, border-color $transition,
       background-color $transition;
+
+    #{$root}--other & {
+      flex-basis: 55px;
+      min-width: 55px;
+      max-width: 55px;
+    }
   }
 
   &__radio {
@@ -31,6 +40,15 @@
       background-color: $color--primary;
       border-color: $color--primary;
       color: $color--white;
+    }
+  }
+
+  &__input {
+    #{$root}--other & {
+      flex-grow: 1;
+      padding-left: ($gutter * 0.75);
+      border: 1px solid $color--border;
+      border-left: 0;
     }
   }
 }

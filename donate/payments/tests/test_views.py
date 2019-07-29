@@ -341,7 +341,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
     def test_get_success_url(self):
         self.assertEqual(
             self.view.get_success_url(),
-            reverse('payments:completed')
+            reverse('payments:newsletter_signup')
         )
 
 
