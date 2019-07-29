@@ -1,6 +1,6 @@
 class CurrencySelect {
   static selector() {
-    return "#id_currency";
+    return "#id_currency-switcher-currency";
   }
 
   constructor(node) {
@@ -9,15 +9,30 @@ class CurrencySelect {
     this.data = JSON.parse(document.getElementById("currencies").innerHTML);
     this.oneOffContainer = document.getElementById("js-donate-form-single");
     this.monthlyContainer = document.getElementById("js-donate-form-monthly");
+    this.defaultCurrency = document.getElementById(
+      "id_currency-switcher-currency"
+    ).options[
+      document.getElementById("id_currency-switcher-currency").selectedIndex
+    ].value;
 
     this.bindEvents();
   }
 
-  // Get correct currency data from json
+  // Assign default options
+  processSelectDefaultValue() {
+    var selectedData = this.data[this.defaultCurrency];
+    this.assignValues(selectedData);
+  }
+
+  // Get correct currency data from json based on select choice
   getSelectValue() {
     var value = this.selectMenu[this.selectMenu.selectedIndex].value;
     var selectedData = this.data[value];
 
+    this.assignValues(selectedData);
+  }
+
+  assignValues(selectedData) {
     // Create arrays for monthly and one off based on data
     var oneOffValues = selectedData.presets.single;
     var monthlyValue = selectedData.presets.monthly;
@@ -83,9 +98,13 @@ class CurrencySelect {
       return;
     }
 
+    // On select choice
     this.selectMenu.addEventListener("change", () => {
       this.getSelectValue();
     });
+
+    // Initial defaults
+    this.processSelectDefaultValue();
   }
 }
 
