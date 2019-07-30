@@ -28,10 +28,12 @@
                         {% render_form_field form.email %}
                         {% render_form_field form.privacy %}
 
-                        <button class="button button--large button--full button--primary" type="submit">
-                            {% trans "Sign Up" %}
-                        </button>
-                        <a href="{% url 'payments:completed' %}">{% trans "No Thanks" %}</a>
+                        <div class="donate-form__actions-buttons">
+                            <button class="button button--large button--full button--primary" type="submit">
+                                {% trans "Sign Up" %}
+                            </button>
+                            <a class="button button--large button--secondary" href="{% url 'payments:completed' %}">{% trans "No Thanks" %}</a>
+                        </div>
                     </div>
                 </div>
             </form>

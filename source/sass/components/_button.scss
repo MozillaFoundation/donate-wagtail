@@ -14,12 +14,28 @@
   &--primary {
     background-color: $color--primary;
     color: $color--white;
+    text-align: center;
     transition: background-color $transition;
 
     &:hover,
     &:active,
     &:focus {
+      color: $color--white;
       background-color: darken($color--primary, 5%);
+    }
+  }
+
+  &--secondary {
+    background-color: $color--grey-40;
+    text-align: center;
+    color: $color--white;
+    transition: background-color $transition;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color--white;
+      background-color: darken($color--grey-40, 5%);
     }
   }
 
