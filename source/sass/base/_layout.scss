@@ -19,6 +19,10 @@
     max-width: $site-width--default;
     margin: 0 $gutter;
 
+    @include media-query(tablet-portrait) {
+      margin: 0 ($gutter * 2);
+    }
+
     @include media-query(tablet-landscape) {
       flex-direction: row;
     }

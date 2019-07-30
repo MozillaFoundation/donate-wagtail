@@ -6,6 +6,7 @@
 
   &--primary {
     @include font-size(xl);
+    line-height: 1.1;
     @include media-query(tablet-portrait) {
       @include font-size(xxl);
     }
@@ -21,7 +22,7 @@
   }
 
   &--bottom-margin {
-    margin-bottom: ($gutter / 2);
+    margin-bottom: ($gutter * 0.75);
   }
 
   &--dark-bg {
