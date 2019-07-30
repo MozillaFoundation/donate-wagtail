@@ -12,12 +12,8 @@
   }
 
   &--secondary {
-    @include font-size(m);
+    @include font-size(l);
     font-weight: $weight--bold;
-
-    @include media-query(tablet-portrait) {
-      @include font-size(l);
-    }
   }
 
   &--tertiary {
