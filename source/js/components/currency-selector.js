@@ -66,7 +66,11 @@ class CurrencySelect {
       .map((donationValue, index) => {
         return `<div class='donation-amount'>
                     <input type='radio' class='donation-amount__radio' name='amount' value='${donationValue}' id='${type}-${index}' autocomplete='off'>
-                    <label for='${type}-${index}' class='donation-amount__label'>${currency}${donationValue}</label>
+                    <label for='${type}-${index}' class='donation-amount__label'>
+                        ${currency}${donationValue} ${
+          type === "monthly-amount" ? "per month" : ""
+        }
+                    </label>
                 </div>`;
       })
       .join("");
