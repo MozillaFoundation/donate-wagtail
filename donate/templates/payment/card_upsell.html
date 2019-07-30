@@ -13,11 +13,10 @@
             <h1 class="heading heading--primary">{% trans "Thank you for your generous gift" %}</h1>
 
             <p>{% trans "We'd love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
-            <p>{% trans "Yes, I will give" %}</p>
 
             <form method="post" class="form">
-                <div class="form__container form__container--flex">
-                    <div class="form__section form__section--main-column">
+                <div class="form__container">
+                    <div class="form__section">
                         {% csrf_token %}
 
                         {% if form.non_field_errors %}
@@ -30,17 +29,20 @@
                             </div>
                         {% endif %}
 
-                        {% render_form_field form.amount %}
+                        <div class="form__group form__group--additional-info">
+                            <span class="form-item__input-additional-info">/ {% trans "Monthly" %}</span>
+                            {% render_form_field form.amount %}
+                        </div>
 
-                        <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel." %}</p>
+                        <p><small>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel." %}</small></p>
                     </div>
 
-                    <div class="form__section form__section--actions">
+                    <div class="form__section form__section--actions donate-form__actions-buttons">
 
-                        <button value="yes" class="button button--large button--full button--primary" type="submit">
+                        <button value="yes" class="button button--large button--primary" type="submit">
                             {% trans "Yes" %}
                         </button>
-                        <a href="{% url 'payments:completed' %}" class="button button--large button--full">
+                        <a href="{% url 'payments:completed' %}" class="button button--large button--secondary">
                             {% trans "No" %}
                         </a>
                     </div>

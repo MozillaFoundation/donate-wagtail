@@ -10,16 +10,22 @@
   }
 
   &--checkbox_input {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    #{$root}__wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
 
     label {
       order: 2;
       margin-bottom: 0;
       font-weight: normal;
+
+      .app--newsletter-signup & {
+        @include font-size(xxs);
+      }
     }
 
     input {
@@ -100,6 +106,15 @@
     padding: 15px 20px;
     border: 1px solid $color--border;
     width: 100%;
+  }
+
+  &__input-additional-info {
+    @include font-size(m);
+    position: absolute;
+    right: ($gutter * 2);
+    top: 45px; // ensure it sits in the middle of associated input
+    pointer-events: none;
+    color: $color--grey-40;
   }
 
   .donate-form__currency & {

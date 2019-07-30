@@ -1,7 +1,15 @@
 {% extends "pages/base_page.html" %}
 {% load i18n %}
 
+{% block template_name %}app--thanks{% endblock %}
+
 {% block content %}
-<h1>{% trans "Thank you for your donation!" %}</h1>
-<p>{% blocktrans with id=completed_transaction_details.transaction_id %}Your transaction reference is: {{ id }}{% endblocktrans %}
+<div class="layout layout--narrow">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your donation!" %}</h1>
+            <p>{% blocktrans with id=completed_transaction_details.transaction_id %}Your transaction reference is: {{ id }}{% endblocktrans %}</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
