@@ -1,11 +1,28 @@
 import json
 
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 
 from wagtail.core.models import Page
 
 from ..factory.core_pages import CampaignPageFactory, LandingPageFactory
-from ..models import CampaignPageDonationAmount
+from ..models import CampaignPageDonationAmount, DonationPage
+
+
+class DonationPageTestCase(TestCase):
+
+    def test_get_initial_currency_uses_currency_arg(self):
+        request = RequestFactory().get('/?currency=gbp')
+        self.assertEqual(
+            DonationPage().get_initial_currency(request),
+            'gbp'
+        )
+
+    def test_get_initial_currency_uses_header(self):
+        request = RequestFactory().get('/', HTTP_ACCEPT_LANGUAGE='es-CL;q=0.9')
+        self.assertEqual(
+            DonationPage().get_initial_currency(request),
+            'clp'
+        )
 
 
 class CampaignPageTestCase(TestCase):
