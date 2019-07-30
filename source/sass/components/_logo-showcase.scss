@@ -1,4 +1,5 @@
 .logo-showcase {
+  margin-bottom: $gutter;
   &__container {
     display: flex;
     flex-direction: row;
@@ -9,19 +10,22 @@
     margin-right: $gutter;
   }
 
-  &::after {
-    position: relative;
-    left: -($gutter);
-    right: -($gutter);
-    display: block;
-    content: "";
-    width: calc(100% + (#{$gutter} * 2));
-    border-bottom: 1px solid $color--border;
-    padding-top: $gutter;
-    margin-bottom: $gutter;
+  .app--landing-page & {
+    margin-bottom: 0;
+    &::after {
+      position: relative;
+      left: -($gutter);
+      right: -($gutter);
+      display: block;
+      content: "";
+      width: calc(100% + (#{$gutter} * 2));
+      border-bottom: 1px solid $color--border;
+      padding-top: $gutter;
+      margin-bottom: $gutter;
 
-    @include media-query(tablet-portrait) {
-      display: none;
+      @include media-query(tablet-portrait) {
+        display: none;
+      }
     }
   }
 }
