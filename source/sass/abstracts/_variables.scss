@@ -42,11 +42,12 @@ $weight--bold: 700;
 $weight--semibold: 600;
 $weight--medium: 500;
 $weight--normal: 400;
-$weight--light: 200;
+$weight--light: 300;
 
 // Font sizes
 $base-font-size: 16px;
 $base-line-height: 1.6;
+$base-line-height--mobile: 1.4;
 
 $font-sizes: (
   default: $base-font-size,

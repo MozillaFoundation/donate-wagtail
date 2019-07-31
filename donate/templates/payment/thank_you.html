@@ -1,7 +1,48 @@
 {% extends "pages/base_page.html" %}
 {% load i18n %}
 
+{% block template_name %}app--thanks{% endblock %}
+
 {% block content %}
-<h1>{% trans "Thank you for your donation!" %}</h1>
-<p>{% blocktrans with id=completed_transaction_details.transaction_id %}Your transaction reference is: {{ id }}{% endblocktrans %}
+<div class="layout layout--narrow">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <div class="notification notification--neutral">
+                <div class="notification__container">
+                    <div class="notification__message">
+                        {% blocktrans with id=completed_transaction_details.transaction_id %}Thank you! Your transaction reference is: {{ id }}{% endblocktrans %}
+                    </div>
+                </div>
+            </div>
+            <h1 class="heading heading--primary heading--bottom-margin">{% trans "One last thing…" %}</h1>
+            <p>{% trans "Can you help us share the important work Mozilla is doing?" %}</p>
+            <div class="button__group">
+                <a class="button button--outline button--icon" href="https://facebook.com/mozilla">
+                    <svg class="button__icon button__icon--facebook" width="16" height="16">
+                        <use xlink:href="#facebook"></use>
+                    </svg>
+                    <div class="button__label">{% trans "Facebook" %}</div>
+                </a>
+                <a class="button button--outline button--icon" href="https://twitter.com/mozilla">
+                    <svg class="button__icon button__icon--twitter" width="16" height="16">
+                        <use xlink:href="#twitter"></use>
+                    </svg>
+                    <div class="button__label">{% trans "Twitter" %}</div>
+                </a>
+                <a class="button button--outline button--icon" href="#">
+                    <svg class="button__icon button__icon--email" width="16" height="16">
+                        <use xlink:href="#email"></use>
+                    </svg>
+                    <div class="button__label">{% trans "Email" %}</div>
+                </a>
+                <a class="button button--outline button--icon" href="#">
+                    <svg class="button__icon button__icon--link" width="16" height="16">
+                        <use xlink:href="#link"></use>
+                    </svg>
+                    <div class="button__label">{% trans "Link" %}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
