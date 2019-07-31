@@ -3,16 +3,18 @@
 
 {% block title %}{% trans "Stay in touch" %}{% endblock %}
 
+{% block template_name %}app--newsletter-signup{% endblock %}
+
 {% block content %}
 <div class="layout layout--narrow">
     <div class="layout__container">
         <div class="layout__full-col">
-            <h1>{% trans "Thank you for your generous gift" %}</h1>
+            <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
             <p>{% blocktrans %}Protect the internet as a global public resource. Join our email list to take action and stay updated!{% endblocktrans %}</p>
 
             <form method="post" class="form">
-                <div class="form__container form__container--flex">
-                    <div class="form__section form__section--main-column">
+                <div class="form__container">
+                    <div class="form__section">
                         {% csrf_token %}
 
                         {% if form.non_field_errors %}
@@ -27,11 +29,13 @@
 
                         {% render_form_field form.email %}
                         {% render_form_field form.privacy %}
+                    </div>
 
+                    <div class="form__section form__section--actions button__group">
                         <button class="button button--large button--full button--primary" type="submit">
                             {% trans "Sign Up" %}
                         </button>
-                        <a href="{% url 'payments:completed' %}">{% trans "No Thanks" %}</a>
+                        <a class="button button--large button--secondary" href="{% url 'payments:completed' %}">{% trans "No Thanks" %}</a>
                     </div>
                 </div>
             </form>
