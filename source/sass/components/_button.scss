@@ -23,6 +23,18 @@
       color: $color--white;
       background-color: darken($color--primary, 5%);
     }
+
+    &[disabled] {
+      opacity: 0.5;
+      background-color: $color--disabled;
+    }
+  }
+
+  &--secondary {
+    @include font-size(default);
+    border: 2px solid $color--black;
+    font-weight: $weight--bold;
+    text-align: center;
   }
 
   &--secondary {
@@ -57,6 +69,10 @@
 
   &--full {
     width: 100%;
+  }
+
+  &--medium {
+    padding: ($gutter / 2) ($gutter * 0.75);
   }
 
   &--large {
