@@ -4,6 +4,7 @@ import Tabs from "./components/tabs";
 import MenuToggle from "./components/menu-toggle";
 import AmountToggle from "./components/donation-amount-toggle";
 import CurrencySelect from "./components/currency-selector";
+import OtherAmount from "./components/donation-other-amount";
 import WayPointDetect from "./components/waypoint-detection";
 
 // Manage tab index for primary nav

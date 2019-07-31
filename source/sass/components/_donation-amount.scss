@@ -36,7 +36,8 @@
     position: absolute;
     z-index: -1;
 
-    &:checked + #{$root}__label {
+    &:checked + #{$root}__label,
+    &:focus + #{$root}__label {
       background-color: $color--primary;
       border-color: $color--primary;
       color: $color--white;

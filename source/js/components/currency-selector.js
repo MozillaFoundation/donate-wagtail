@@ -77,7 +77,7 @@ class CurrencySelect {
 
     container.insertAdjacentHTML(
       "beforeend",
-      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off'><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='text' class='donation-amount__input' id='${type}-other-input' placeholder='Other amount'></div>`
+      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='text' class='donation-amount__input' id='${type}-other-input' placeholder='Other amount' data-other-amount></div>`
     );
   }
 
@@ -86,6 +86,17 @@ class CurrencySelect {
     document.querySelectorAll("[data-currency]").forEach(currencyitem => {
       currencyitem.innerHTML = currency;
     });
+
+    // Other amount vars
+    this.otherAmountInput = document.querySelectorAll("[data-other-amount]");
+    this.otherAmountLabel = document.querySelectorAll("[data-currency]");
+    this.otherAmountRadio = document.querySelectorAll(
+      "[data-other-amount-radio]"
+    );
+
+    this.bindOtherAmountEvents();
+
+    console.log(this.otherAmountInput.length);
   }
 
   // Add class to container if paypal should be disabled
@@ -95,6 +106,21 @@ class CurrencySelect {
     } else {
       this.formContainer.classList.remove("paypal-disabled");
     }
+  }
+
+  // Update Radio to checked
+  selectRadio(event) {
+    this.otherAmountRadio.forEach(radio => {
+      radio.checked = true;
+    });
+  }
+
+  // Updated radio value based on custom input
+  updateValue(event) {
+    const value = parseFloat(event.target.value).toFixed(2);
+    this.otherAmountRadio.forEach(radiovalue => {
+      radiovalue.value = value;
+    });
   }
 
   bindEvents() {
@@ -109,6 +135,17 @@ class CurrencySelect {
 
     // Initial defaults
     this.processSelectDefaultValue();
+  }
+
+  bindOtherAmountEvents() {
+    for (var i = 0; i < this.otherAmountInput.length; i++) {
+      this.otherAmountInput[i].addEventListener("click", event =>
+        this.selectRadio(event)
+      );
+      this.otherAmountInput[i].addEventListener("change", event =>
+        this.updateValue(event)
+      );
+    }
   }
 }
 
