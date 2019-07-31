@@ -38,12 +38,12 @@ class CurrencyForm(forms.Form):
 
 
 class UpsellForm(forms.Form):
-    amount = forms.DecimalField(min_value=0.01, decimal_places=2)
+    amount = forms.DecimalField(min_value=1, decimal_places=2, widget=forms.NumberInput(attrs={'step': 'any'}))
 
 
 class BraintreePaypalUpsellForm(BraintreePaymentForm):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
-    amount = forms.DecimalField(min_value=0.01, decimal_places=2, widget=forms.NumberInput)
+    amount = forms.DecimalField(min_value=1, decimal_places=2, widget=forms.NumberInput(attrs={'step': 'any'}))
 
 
 class NewsletterSignupForm(forms.Form):
