@@ -70,6 +70,10 @@
     padding-top: ($gutter / 4);
   }
 
+  &__standalone-error {
+    border-color: $color--warning !important;
+  }
+
   &__help {
     @include font-size(s);
     margin-top: 5px;
