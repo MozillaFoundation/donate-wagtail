@@ -3,6 +3,7 @@ import "babel-polyfill";
 import Tabs from "./components/tabs";
 import MenuToggle from "./components/menu-toggle";
 import AmountToggle from "./components/donation-amount-toggle";
+import CurrencySelect from "./components/currency-selector";
 import WayPointDetect from "./components/waypoint-detection";
 
 // Manage tab index for primary nav
@@ -42,6 +43,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   tabIndexer();
+
+  for (const currencySelect of document.querySelectorAll(
+    CurrencySelect.selector()
+  )) {
+    new CurrencySelect(currencySelect);
+  }
 
   WayPointDetect();
 });

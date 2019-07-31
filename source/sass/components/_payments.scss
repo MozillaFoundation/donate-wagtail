@@ -5,6 +5,11 @@
     background-color: $color--light-red;
     color: $color--white;
   }
+  &__paypal-button {
+    .paypal-disabled & {
+      display: none;
+    }
+  }
 }
 
 // Vendor-generated classes

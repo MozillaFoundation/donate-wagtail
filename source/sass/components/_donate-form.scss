@@ -28,6 +28,7 @@
     @include media-query(tablet-portrait) {
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: ($gutter);
+      min-height: 154px; // ensure there's no repaint when js is injected to insert form elements (providing there's only two rows of options)
     }
   }
 
