@@ -2,15 +2,13 @@
   $root: &;
 
   &__container {
-    margin-bottom: 20px;
+    margin-bottom: $gutter;
   }
 
   &__errors {
     @include font-size(s);
-    padding: 20px;
-    margin-bottom: 15px;
-    color: $color--white;
-    background-color: $color--warning;
+    padding: $gutter 0;
+    color: $color--warning;
   }
 
   &__group {
