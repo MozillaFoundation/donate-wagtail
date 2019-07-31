@@ -18,7 +18,7 @@ function scrollamaInit() {
 }
 
 export default () => {
-  if (document.querySelectorAll("[data-waypoint-element]")) {
+  if (document.querySelectorAll("[data-waypoint-element]").length) {
     scrollamaInit();
   }
 };
