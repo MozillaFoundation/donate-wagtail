@@ -10,6 +10,7 @@ from . import constants
 class StartCardPaymentForm(forms.Form):
     amount = forms.DecimalField(min_value=0.01, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
+    source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
 
 class BraintreePaymentForm(forms.Form):
@@ -31,6 +32,7 @@ class BraintreeCardPaymentForm(BraintreePaymentForm):
 class BraintreePaypalPaymentForm(BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
+    source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
 
 class CurrencyForm(forms.Form):
