@@ -45,7 +45,6 @@ class AmountToggle {
       this.inputForm.dataset.state = "invalid";
       this.inputForm.classList.add("form-item__standalone-error");
       this.updateButton.setAttribute("disabled", "disabled");
-      console.log("disable");
       return;
     }
 
@@ -55,7 +54,6 @@ class AmountToggle {
       this.inputForm.dataset.state = "valid";
       this.updateButton.removeAttribute("disabled");
       this.inputForm.classList.remove("form-item__standalone-error");
-      console.log("enable");
     }
   }
 
