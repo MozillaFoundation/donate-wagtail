@@ -5,7 +5,6 @@ import MenuToggle from "./components/menu-toggle";
 import AmountToggle from "./components/donation-amount-toggle";
 import CurrencySelect from "./components/currency-selector";
 import WayPointDetect from "./components/waypoint-detection";
-WayPointDetect();
 
 // Manage tab index for primary nav
 function tabIndexer() {
@@ -50,4 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
   )) {
     new CurrencySelect(currencySelect);
   }
+
+  WayPointDetect();
 });
