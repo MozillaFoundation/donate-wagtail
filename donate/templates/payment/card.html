@@ -19,7 +19,7 @@
                             {% if payment_frequency == 'monthly' %}
                                 {% blocktrans with symbol=symbol amount=amount span_class=span_class %}You are donating {{ symbol }} <span class="{{ span_class }}">{{ amount }}</span> per month{% endblocktrans %}
                             {% else %}
-                                {% blocktrans with symbol=symbol amount=amount span_class=span_clas %}You are donating {{ symbol }} <span class="{{ span_class }}">{{ amount }}</span>{% endblocktrans %}
+                                {% blocktrans with symbol=symbol amount=amount span_class=span_class %}You are donating {{ symbol }} <span class="{{ span_class }}">{{ amount }}</span>{% endblocktrans %}
                             {% endif %}
                             {% endwith %}
                         </div>
