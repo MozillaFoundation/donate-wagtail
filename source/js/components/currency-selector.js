@@ -11,9 +11,7 @@ class CurrencySelect {
     this.monthlyContainer = document.getElementById("js-donate-form-monthly");
     this.defaultCurrency = document.getElementById(
       "id_currency-switcher-currency"
-    ).options[
-      document.getElementById("id_currency-switcher-currency").selectedIndex
-    ].value;
+    ).value;
 
     this.bindEvents();
   }
@@ -95,8 +93,6 @@ class CurrencySelect {
     );
 
     this.bindOtherAmountEvents();
-
-    console.log(this.otherAmountInput.length);
   }
 
   // Add class to container if paypal should be disabled
