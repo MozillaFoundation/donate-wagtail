@@ -39,16 +39,16 @@
                         <button class="donate-form__actions-button button button--primary button--large button--rounded button--multiple-icons button--no-label" type="submit" formaction="{% url 'payments:card' frequency='single' %}">
                             <div class="button__label">{% trans "Donate" %}</div>
                             <div class="button__icons">
-                                <svg class="button__icon-item" width="27" height="13">
+                                <svg class="button__icon-item button__icon-item--discover" width="27" height="13">
                                     <use xlink:href="#card-discover"></use>
                                 </svg>
-                                <svg class="button__icon-item" width="20" height="18">
+                                <svg class="button__icon-item button__icon-item--amex" width="20" height="18">
                                     <use xlink:href="#card-amex"></use>
                                 </svg>
-                                <svg class="button__icon-item" width="32" height="18">
+                                <svg class="button__icon-item button__icon-item--mastercard" width="32" height="18">
                                     <use xlink:href="#card-mastercard"></use>
                                 </svg>
-                                <svg class="button__icon-item" width="35" height="12">
+                                <svg class="button__icon-item button__icon-item--visa" width="35" height="12">
                                     <use xlink:href="#card-visa"></use>
                                 </svg>
                             </div>

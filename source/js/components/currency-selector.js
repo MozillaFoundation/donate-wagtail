@@ -36,9 +36,6 @@ class CurrencySelect {
     var monthlyValue = selectedData.presets.monthly;
     var currency = selectedData.symbol;
 
-    // Check if papal is needed
-    this.checkPaypal(selectedData);
-
     // Create buttons
     this.outputOptions(
       oneOffValues,
@@ -52,6 +49,9 @@ class CurrencySelect {
       currency,
       this.monthlyContainer
     );
+
+    // Check if payment options are needed
+    this.checkDisabled(selectedData);
 
     this.updateCurrency(currency);
   }
@@ -95,12 +95,24 @@ class CurrencySelect {
     this.bindOtherAmountEvents();
   }
 
-  // Add class to container if paypal should be disabled
-  checkPaypal(selectedData) {
-    if (selectedData.disabled == "paypal") {
-      this.formContainer.classList.add("paypal-disabled");
-    } else {
-      this.formContainer.classList.remove("paypal-disabled");
+  // Add class to container if payment provider should be disabled
+  addClassToContainer(items) {
+    items.forEach(item => {
+      this.formContainer.classList.add(`${item}-disabled`);
+    });
+  }
+
+  checkDisabled(selectedData) {
+    // Remove existing classes
+    Array.from(this.formContainer.classList).forEach(className => {
+      if (className.endsWith("-disabled")) {
+        this.formContainer.classList.remove(className);
+      }
+    });
+
+    // Add Classes to hide payment option
+    if (selectedData.disabled) {
+      this.addClassToContainer(selectedData.disabled);
     }
   }
 

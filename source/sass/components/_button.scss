@@ -126,6 +126,12 @@
     @include media-query(tablet-portrait) {
       height: 18px;
     }
+
+    &--amex {
+      .amex-disabled & {
+        display: none;
+      }
+    }
   }
 
   &__group {
