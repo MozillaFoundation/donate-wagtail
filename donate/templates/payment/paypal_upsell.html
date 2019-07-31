@@ -10,14 +10,14 @@
 <div class="layout layout--narrow">
     <div class="layout__container">
         <div class="layout__full-col">
-            <h1 class="heading heading--primary">{% trans "Thank you for your generous gift" %}</h1>
+            <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
 
             <p>{% trans "We'd love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
             <p>{% trans "Yes, I will give" %}</p>
 
             <form method="post" class="form" id="payments__braintree-form">
-                <div class="form__container form__container--flex">
-                    <div class="form__section form__section--main-column">
+                <div class="form__container">
+                    <div class="form__section">
                         {% csrf_token %}
 
                         {% if form.non_field_errors %}
@@ -39,12 +39,9 @@
 
                     <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
 
-                    <div class="form__section form__section--actions">
-
+                    <div class="form__section form__section--actions button__group">
                         <div id="payments__paypal-button--upsell"></div>
-                        <a href="{% url 'payments:completed' %}" class="button button--large button--full">
-                            {% trans "No" %}
-                        </a>
+                        <a class="button button--large button--secondary" href="{% url 'payments:completed' %}">{% trans "No" %}</a>
                     </div>
                 </div>
             </form>

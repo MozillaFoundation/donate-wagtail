@@ -42,8 +42,8 @@
 
             <div class="donate__form-wrapper">
                 <form method="post" class="form" id="payments__braintree-form">
-                    <div class="form__container form__container--flex">
-                        <div class="form__section form__section--main-column">
+                    <div class="form__container">
+                        <div class="form__section">
                             {% csrf_token %}
 
                             {% if form.non_field_errors %}

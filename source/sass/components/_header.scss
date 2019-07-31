@@ -14,13 +14,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 24px 20px;
+    padding: 24px $gutter;
     margin: 0 auto;
 
-    @include media-query(tablet-landscape) {
+    @include media-query(tablet-portrait) {
+      padding: 24px ($gutter * 2);
     }
 
     @include media-query(desktop) {
+      padding: 24px $gutter;
       max-width: (
         $site-width--default + (20 * 2)
       ); // Allow for padding on container
