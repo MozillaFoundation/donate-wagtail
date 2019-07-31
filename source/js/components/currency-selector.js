@@ -16,6 +16,13 @@ class CurrencySelect {
     this.bindEvents();
   }
 
+  // Assign default options
+  processSelectDefaultValue() {
+    var selectedData = this.data[this.defaultCurrency];
+    // Check if payment options are needed
+    this.checkDisabled(selectedData);
+  }
+
   // Get correct currency data from json based on select choice
   getSelectValue() {
     var value = this.selectMenu[this.selectMenu.selectedIndex].value;
@@ -134,6 +141,9 @@ class CurrencySelect {
     this.selectMenu.addEventListener("change", () => {
       this.getSelectValue();
     });
+
+    // Initial defaults
+    this.processSelectDefaultValue();
   }
 
   bindOtherAmountEvents() {
