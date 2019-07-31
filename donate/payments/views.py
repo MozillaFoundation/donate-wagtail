@@ -74,6 +74,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         ctx.update({
             'currency_info': get_currency_info(self.currency),
             'braintree_params': settings.BRAINTREE_PARAMS,
+            'payment_frequency': self.payment_frequency,
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
         })
         return ctx
