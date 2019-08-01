@@ -340,7 +340,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
     success_url = reverse_lazy('payments:completed')
     template_name = 'payment/card_upsell.html'
 
-    def get(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         # Avoid repeat submissions and make sure that the previous transaction was
         # a single card transaction.
         last_transaction = self.request.session['completed_transaction_details']
@@ -350,12 +350,17 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         ):
             return HttpResponseRedirect(self.get_success_url())
 
-        return super().get(request, *args, **kwargs)
+        self.suggested_upgrade = get_suggested_monthly_upgrade(
+            last_transaction['currency'], last_transaction['amount']
+        )
+        if self.suggested_upgrade is None:
+            return HttpResponseRedirect(self.get_success_url())
+
+        return super().dispatch(request, *args, **kwargs)
 
     def get_initial(self):
-        last_transaction = self.request.session['completed_transaction_details']
         return {
-            'amount': get_suggested_monthly_upgrade(last_transaction['currency'], last_transaction['amount'])
+            'amount': self.suggested_upgrade
         }
 
     def form_valid(self, form):
@@ -403,7 +408,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
     success_url = reverse_lazy('payments:completed')
     template_name = 'payment/paypal_upsell.html'
 
-    def get(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         # Avoid repeat submissions and make sure that the previous transaction was
         # a single card transaction.
         last_transaction = self.request.session['completed_transaction_details']
@@ -413,13 +418,18 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         ):
             return HttpResponseRedirect(self.get_success_url())
 
-        return super().get(request, *args, **kwargs)
+        self.suggested_upgrade = get_suggested_monthly_upgrade(
+            last_transaction['currency'], last_transaction['amount']
+        )
+        if self.suggested_upgrade is None:
+            return HttpResponseRedirect(self.get_success_url())
+
+        return super().dispatch(request, *args, **kwargs)
 
     def get_initial(self):
-        last_transaction = self.request.session['completed_transaction_details']
         return {
-            'currency': last_transaction['currency'],
-            'amount': get_suggested_monthly_upgrade(last_transaction['currency'], last_transaction['amount'])
+            'currency': self.request.session['completed_transaction_details']['currency'],
+            'amount': self.suggested_upgrade
         }
 
     def form_valid(self, form):

@@ -53,9 +53,6 @@ class UtilsTestCase(TestCase):
         self.assertEqual(get_suggested_monthly_upgrade('usd', Decimal(125)), Decimal(10))
         self.assertEqual(get_suggested_monthly_upgrade('usd', Decimal(35)), Decimal(5))
 
-    def test_get_suggested_monthly_upgrade_default(self):
-        # AED has no monthly suggestions, so we should default to 10% rounded up
-        self.assertEqual(get_suggested_monthly_upgrade('aed', Decimal(156)), Decimal(16))
-        # USD has suggestins, but this value is below the smallest suggestion tier, so we
-        # should default to 10% rounded up
-        self.assertEqual(get_suggested_monthly_upgrade('usd', Decimal(11)), Decimal(2))
+    def test_get_suggested_monthly_upgrade_small_single_amount(self):
+        self.assertIsNone(get_suggested_monthly_upgrade('usd', Decimal(1)))
+        self.assertIsNone(get_suggested_monthly_upgrade('aed', Decimal(1)))
