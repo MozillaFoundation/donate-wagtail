@@ -116,9 +116,13 @@
     @include font-size(m);
     position: absolute;
     right: ($gutter * 2);
-    top: 45px; // ensure it sits in the middle of associated input
+    top: 39px; // ensure it sits in the middle of associated input
     pointer-events: none;
     color: $color--grey-40;
+
+    @include media-query(tablet-portrait) {
+      top: 42px; // ensure it sits in the middle of associated input
+    }
   }
 
   .donate-form__currency & {
