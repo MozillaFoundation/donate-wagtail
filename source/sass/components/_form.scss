@@ -35,8 +35,8 @@
   }
 
   &__section {
-    &--actions {
-      margin-bottom: ($gutter * 2);
+    &--bottom-margin {
+      margin-bottom: ($gutter * 1.5);
     }
   }
 }

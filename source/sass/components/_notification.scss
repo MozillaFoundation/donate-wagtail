@@ -1,5 +1,8 @@
 .notification {
-  margin-bottom: $gutter;
+  margin-bottom: ($gutter * 1.5);
+
+  @include media-query(tablet-portrait) {
+  }
 
   &--neutral {
     background-color: $color--neutral;
@@ -17,10 +20,11 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: ($gutter * 0.75) $gutter;
+    padding: ($gutter * 1.25) $gutter;
 
     @include media-query(tablet-portrait) {
       flex-direction: row;
+      padding: $gutter;
     }
   }
 
