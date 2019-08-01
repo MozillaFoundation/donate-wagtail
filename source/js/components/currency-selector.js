@@ -21,6 +21,8 @@ class CurrencySelect {
     var selectedData = this.data[this.defaultCurrency];
     // Check if payment options are needed
     this.checkDisabled(selectedData);
+    // Enable other amount
+    this.bindOtherAmountEvents();
   }
 
   // Get correct currency data from json based on select choice
@@ -93,13 +95,6 @@ class CurrencySelect {
       input.value = selectedData.code;
     });
 
-    // Other amount vars
-    this.otherAmountInput = document.querySelectorAll("[data-other-amount]");
-    this.otherAmountLabel = document.querySelectorAll("[data-currency]");
-    this.otherAmountRadio = document.querySelectorAll(
-      "[data-other-amount-radio]"
-    );
-
     this.bindOtherAmountEvents();
   }
 
@@ -154,6 +149,12 @@ class CurrencySelect {
   }
 
   bindOtherAmountEvents() {
+    // Other amount vars
+    this.otherAmountInput = document.querySelectorAll("[data-other-amount]");
+    this.otherAmountLabel = document.querySelectorAll("[data-currency]");
+    this.otherAmountRadio = document.querySelectorAll(
+      "[data-other-amount-radio]"
+    );
     for (var i = 0; i < this.otherAmountInput.length; i++) {
       this.otherAmountInput[i].addEventListener("click", event =>
         this.selectRadio(event)
