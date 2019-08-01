@@ -21,7 +21,7 @@
     padding: 0 $gutter;
 
     @include media-query(tablet-portrait) {
-      padding: 0 ($gutter * 3);
+      padding: 0 ($gutter * 4);
     }
 
     @include media-query(tablet-landscape) {
