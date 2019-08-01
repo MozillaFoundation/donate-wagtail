@@ -26,12 +26,18 @@
     @include media-query(tablet-landscape) {
       @include z-index(nav-desktop);
       top: -50px;
-      left: 190px;
+      left: ($gutter * 13.5);
       flex-direction: row;
       padding-top: 0;
       padding-bottom: 0;
       transform: translateY(8px);
       background-color: transparent;
+    }
+
+    @include media-query(desktop) {
+      left: (
+        $gutter * 10.5
+      ); // take into account header__container no longer having padding
     }
   }
 
