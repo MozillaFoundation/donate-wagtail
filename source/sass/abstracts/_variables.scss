@@ -68,7 +68,9 @@ $breakpoints: (
   "mob-landscape" "(min-width: 480px)",
   "tablet-portrait" "(min-width: 768px)",
   "tablet-landscape" "(min-width: 1024px)",
-  "desktop" "(min-width: 1280px)",
+  "paypal-specific" "(min-width: 1090px)",
+  // needed for working with responsive paypal button
+    "desktop" "(min-width: 1280px)",
   "desktop-wide" "(min-width: 2556px)"
 );
 
