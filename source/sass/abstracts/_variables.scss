@@ -19,11 +19,16 @@ $color--secondary: #eaeaea;
 $color--tertiary: #f9f9f9;
 
 $color--white: #ffffff;
-$color--black: #141414;
+$color--black: #111111;
 $color--border: $color--grey-20;
 $color--background: $color--white;
 
+$color--neutral: $color--grey-05;
+$color--warning: $color--red;
+$color--positive: $color--blue;
+
 $color--default: $color--grey-80;
+$color--disabled: $color--grey-20;
 $color--link: $color--blue;
 $color--link-hover: darken($color--blue, 10%);
 
@@ -37,17 +42,18 @@ $weight--bold: 700;
 $weight--semibold: 600;
 $weight--medium: 500;
 $weight--normal: 400;
-$weight--light: 200;
+$weight--light: 300;
 
 // Font sizes
 $base-font-size: 16px;
 $base-line-height: 1.6;
+$base-line-height--mobile: 1.4;
 
 $font-sizes: (
   default: $base-font-size,
   xxl: 36px,
   xl: 28px,
-  l: 21px,
+  l: 22px,
   m: 18px,
   s: 15px,
   xs: 14px,
@@ -78,7 +84,7 @@ $z-index: (
   header: 50,
   nav-desktop: 60,
   ui-overlay: 70,
-  8: 80,
+  sticky-message: 80,
   9: 90,
   modal: 100
 );
@@ -86,12 +92,12 @@ $z-index: (
 // --------------------------------- Grid Dimensions --------------------------------------
 
 // Max widths
-$site-width--small: 560px;
+$site-width--small: 728px;
 $site-width--default: 1100px;
 $site-width--large: 1200px;
 
 // Grid setup
-$grid: 20px;
+$grid: 16px;
 $gutter: $grid;
 
 // --------------------------------- Transitions --------------------------------------

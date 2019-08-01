@@ -1,6 +1,7 @@
-{% load static i18n %}
+{% load static i18n util_tags %}
 <!doctype html>
 {% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html class="no-js" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
@@ -19,7 +20,7 @@
         <meta name="msapplication-config" content="{% static '_images/favicon/browserconfig.xml' %}">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:600,400,300,700,300italic|Zilla+Slab:300,700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:700,600,400,300|Zilla+Slab:300,500,700">
         <link rel="stylesheet" href="{% static '_css/main.compiled.css' %}">
 
     </head>
@@ -27,7 +28,7 @@
     <body>
         {% block body_top %}{% endblock %}
 
-        <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %}">
+        <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %} {% if LANGUAGE_BIDI %}app--rtl{% endif %} {% if not LANGUAGE_CODE|is_english %}app--no-menu{% endif %}">
             <div class="app__container">
 
                 {% include "fragments/svg-sprites.html" %}

@@ -1,15 +1,20 @@
 .heading {
   @include heading-text();
-  font-weight: $weight--medium;
   margin-bottom: 0;
   margin-top: 0;
 
   &--primary {
-    @include font-size(xxl);
+    @include font-size(xl);
+    line-height: 1.1;
+    font-weight: $weight--light;
+    @include media-query(tablet-portrait) {
+      @include font-size(xxl);
+    }
   }
 
   &--secondary {
     @include font-size(l);
+    font-weight: $weight--bold;
   }
 
   &--tertiary {
@@ -17,6 +22,10 @@
   }
 
   &--bottom-margin {
-    margin-bottom: ($gutter / 2);
+    margin-bottom: ($gutter * 1.5);
+  }
+
+  &--dark-bg {
+    color: $color--white;
   }
 }

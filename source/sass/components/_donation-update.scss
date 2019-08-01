@@ -1,0 +1,44 @@
+.donation-update {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &__toggle {
+    &.selected {
+      color: $color--black;
+    }
+  }
+
+  &__form-item {
+    position: relative;
+  }
+
+  &__label {
+    @include hidden();
+  }
+
+  &__currency-symbol {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    pointer-events: none;
+    border-right: 1px solid $color--border;
+    padding: ($gutter * 0.75) ($gutter);
+    text-align: center;
+  }
+
+  &__input {
+    padding-left: 70px !important; // allow space for currency symbol
+  }
+
+  &__action {
+    width: 100%;
+
+    @include media-query(tablet-portrait) {
+      width: auto;
+    }
+  }
+}

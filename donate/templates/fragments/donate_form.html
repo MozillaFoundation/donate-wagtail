@@ -1,89 +1,129 @@
 {% load i18n form_tags %}
-<div class="donate-form__content">
+<div class="donate-form__content" id="js-donate-form">
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container" role="tablist">
             <div class="tabs__option" role="presentation">
-                <div
-                    class="tabs__item tabs__item--selected js-tab-item"
-                    href="#tab-panel-1"
-                    role="tab"
-                    aria-controls="tab-panel-1"
-                    aria-selected="true"
-                    id="tab-1"
-                >
-                <input type="radio" name="donation_frequency" id="one-time" value="one-time" checked>
-                <label for="one-time">{% trans "One time" %}</label>
-                </div>
+                <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" role="tab" aria-controls="tab-panel-1" aria-selected="true" id="tab-1">
+                    <input type="radio" class="tabs__radio-option" name="donation_frequency" id="one-time" value="one-time" checked>
+                    <span class="tabs__label-text">{% trans "One time" %}</span>
+                </label>
             </div>
             <div class="tabs__option" role="presentation">
-                <div
-                    class="tabs__item js-tab-item"
-                    href="#tab-panel-2"
-                    role="tab"
-                    aria-controls="tab-panel-2"
-                    aria-selected="true"
-                    id="tab-1"
-                >
-                    <input type="radio" name="donation_frequency" id="monthly" value="monthly">
-                    <label for="monthly">{% trans "Monthly" %}</label>
-                </div>
+                <label for="monthly" class="tabs__label js-tab-item" role="tab" aria-controls="tab-panel-2" id="tab-2">
+                    <input type="radio" class="tabs__radio-option" name="donation_frequency" id="monthly" value="monthly">
+                    <span class="tabs__label-text">{% trans "Monthly" %}</span>
+                </label>
             </div>
         </form>
         <div class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
             <form method="GET" id="donate-form--single">
-                <input type="hidden" name="currency" value="usd">
+                <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
-                <div class="donate-form__fields">
+                <div class="donate-form__fields" id="js-donate-form-single">
+                    {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="50" id="one-time-amount-1" autocomplete="off">
-                        <label for="one-time-amount-1" class="donation-amount__label">$50</label>
+                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
+                        <label for="one-time-amount-{{ forloop.counter0 }}" class="donation-amount__label">
+                            {{ initial_currency_info.symbol }}{{ amount }}
+                        </label>
                     </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="25" id="one-time-amount-2" autocomplete="off">
-                        <label for="one-time-amount-2" class="donation-amount__label">$25</label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="one-time-amount-3" autocomplete="off">
-                        <label for="one-time-amount-3" class="donation-amount__label">$10</label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="one-time-amount-4" autocomplete="off" checked>
-                        <label for="one-time-amount-4" class="donation-amount__label">$3</label>
+                    {% endfor %}
+
+                    <div class="donation-amount donation-amount--two-col donation-amount--other">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
+                        <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{{ initial_currency_info.symbol }}</label>
+                        <input type="text" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
                 </div>
+                <input type="hidden" class="one-time-amount__total">
                 <div class="donate-form__actions">
-                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card_personal_details' frequency='single' %}">{% trans "Donate" %}</button>
-
-                    <div id="payments__paypal-button--single" class="payments__paypal-button"></div>
+                    <header class="donate-form__actions-header">
+                        <h2 class="donate-form__actions-heading heading heading--secondary">{% trans "Choose Payment" %}</h2>
+                        <div class="donate-form__secure">
+                            <svg class="donate-form__secure-icon" width="24" height="24">
+                                <use xlink:href="#padlock"></use>
+                            </svg>
+                            <div class="donate-form__label">
+                                {% trans "Secure" %}
+                            </div>
+                        </div>
+                    </header>
+                    <div class="donate-form__actions-buttons">
+                        <button class="donate-form__actions-button button button--primary button--large button--rounded button--multiple-icons button--no-label" type="submit" formaction="{% url 'payments:card' frequency='single' %}">
+                            <div class="button__label">{% trans "Donate" %}</div>
+                            <div class="button__icons">
+                                <svg class="button__icon-item button__icon-item--discover" width="27" height="13">
+                                    <use xlink:href="#card-discover"></use>
+                                </svg>
+                                <svg class="button__icon-item button__icon-item--amex" width="20" height="18">
+                                    <use xlink:href="#card-amex"></use>
+                                </svg>
+                                <svg class="button__icon-item button__icon-item--mastercard" width="32" height="18">
+                                    <use xlink:href="#card-mastercard"></use>
+                                </svg>
+                                <svg class="button__icon-item button__icon-item--visa" width="35" height="12">
+                                    <use xlink:href="#card-visa"></use>
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="payments__paypal-button--single" class="payments__paypal-button"></div>
+                    </div>
                 </div>
             </form>
         </div>
         <div class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
             <form method="GET" id="donate-form--monthly">
-                <input type="hidden" name="currency" value="usd">
+                <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
-                <div class="donate-form__fields">
+                <div class="donate-form__fields" id="js-donate-form-monthly">
+                    {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="10" id="monthly-amount-1" autocomplete="off" checked>
-                        <label for="monthly-amount-1" class="donation-amount__label">$10 <span class="donation-amount__note">per month</span></label>
+                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="monthly-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
+                        <label for="monthly-amount-{{ forloop.counter0 }}" class="donation-amount__label">
+                            {{ initial_currency_info.symbol }}{{ amount }} {% trans "per month" %}
+                        </label>
                     </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="5" id="monthly-amount-2" autocomplete="off">
-                        <label for="monthly-amount-2" class="donation-amount__label">$5 <span class="donation-amount__note">per month</span></label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="3" id="monthly-amount-3" autocomplete="off">
-                        <label for="monthly-amount-3" class="donation-amount__label">$3 <span class="donation-amount__note">per month</span></label>
-                    </div>
-                    <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="2" id="monthly-amount-4" autocomplete="off">
-                        <label for="monthly-amount-4" class="donation-amount__label">$2 <span class="donation-amount__note">per month</span></label>
+                    {% endfor %}
+
+                    <div class="donation-amount donation-amount--two-col donation-amount--other">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
+                        <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{{ initial_currency_info.symbol }}</label>
+                        <input type="text" class="donation-amount__input" id="monthly-amount-other-input" placeholder="Other amount" data-other-amount="">
                     </div>
                 </div>
+                <input type="hidden" class="monthly-amount__total">
                 <div class="donate-form__actions">
-                    <button class="button button--primary" type="submit" formaction="{% url 'payments:card_personal_details' frequency='monthly' %}">{% trans "Donate" %}</button>
-
-                    <div id="payments__paypal-button--monthly" class="payments__paypal-button"></div>
+                    <header class="donate-form__actions-header">
+                        <h2 class="donate-form__actions-heading heading heading--secondary">{% trans "Choose Payment" %}</h2>
+                        <div class="donate-form__secure">
+                            <svg class="donate-form__secure-icon" width="18" height="18">
+                                <use xlink:href="#padlock"></use>
+                            </svg>
+                            <div class="donate-form__label">
+                                {% trans "Secure" %}
+                            </div>
+                        </div>
+                    </header>
+                    <div class="donate-form__actions-buttons">
+                        <button class="donate-form__actions-button button button--primary button--large button--rounded button--multiple-icons button--no-label" type="submit" formaction="{% url 'payments:card' frequency='monthly' %}">
+                            <div class="button__label">{% trans "Donate" %}</div>
+                            <div class="button__icons">
+                                <svg class="button__icon-item" width="27" height="13">
+                                    <use xlink:href="#card-discover"></use>
+                                </svg>
+                                <svg class="button__icon-item" width="20" height="18">
+                                    <use xlink:href="#card-amex"></use>
+                                </svg>
+                                <svg class="button__icon-item" width="32" height="18">
+                                    <use xlink:href="#card-mastercard"></use>
+                                </svg>
+                                <svg class="button__icon-item" width="35" height="12">
+                                    <use xlink:href="#card-visa"></use>
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="payments__paypal-button--monthly" class="payments__paypal-button"></div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -96,6 +136,7 @@
         {% render_form_field braintree_form.braintree_nonce %}
         {% render_form_field braintree_form.amount %}
         {% render_form_field braintree_form.frequency %}
+        {% render_form_field braintree_form.currency %}
     </form>
 
     <footer class="donate-form__footer">

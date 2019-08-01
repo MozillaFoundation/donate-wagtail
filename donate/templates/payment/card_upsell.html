@@ -1,0 +1,54 @@
+{% extends "pages/base_page.html" %}
+{% load i18n form_tags static %}
+
+{% block title %}{% trans "Thank you" %}{% endblock %}
+
+{% block template_name %}app--details{% endblock %}
+
+{% block content %}
+
+<div class="layout layout--narrow">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
+
+            <p>{% trans "We'd love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
+
+            <form method="post" class="form">
+                <div class="form__container">
+                    <div class="form__section">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <div class="form__errors">{{ error }}</div>
+                            {% endfor %}
+                        {% elif form.errors %}
+                            <div class="form__errors">
+                                {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
+                            </div>
+                        {% endif %}
+
+                        <div class="form__group form__group--additional-info">
+                            <span class="form-item__input-additional-info">/ {% trans "Monthly" %}</span>
+                            {% render_form_field form.amount %}
+                        </div>
+
+                        <p><small>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel." %}</small></p>
+                    </div>
+
+                    <div class="form__section form__section--actions form__section--bottom-margin button__group">
+                        <button value="yes" class="button button--large button--primary" type="submit">
+                            {% trans "Yes" %}
+                        </button>
+                        <a href="{% url 'payments:newsletter_signup' %}" class="button button--large button--secondary">
+                            {% trans "No" %}
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

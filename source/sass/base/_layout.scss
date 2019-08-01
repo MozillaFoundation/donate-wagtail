@@ -1,53 +1,115 @@
 .layout {
-  $landing-page-top-space: ($gutter * 2);
+  $root: &;
+  $top-space: ($gutter * 2);
+  $top-space-mobile: $gutter;
+  $top-space-tablet: ($gutter * 1.5);
+
+  &--narrow {
+    #{$root}__container {
+      max-width: $site-width--small;
+
+      @include media-query(tablet-portrait) {
+        margin: 0 auto;
+      }
+    }
+  }
 
   &__container {
     display: flex;
     flex-direction: column;
     max-width: $site-width--default;
-    margin: 0 $gutter;
+    padding: 0 $gutter;
+
+    @include media-query(tablet-portrait) {
+      padding: 0 ($gutter * 4);
+    }
 
     @include media-query(tablet-landscape) {
       flex-direction: row;
+    }
+
+    @include media-query(desktop) {
+      padding: 0;
       margin: 0 auto;
+    }
+
+    &--full {
+      margin: 0;
+      max-width: 100%;
     }
   }
 
-  &__full {
+  &__full-col {
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
+    margin-top: $top-space-mobile;
+
+    @include media-query(tablet-portrait) {
+      margin-top: $top-space-tablet;
+    }
+
+    @include media-query(tablet-landscape) {
+      margin-top: $top-space;
+    }
+
+    .app--campaign-page & {
+      margin-top: 0;
+    }
+  }
+
+  &__half-col {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    @include media-query(tablet-landscape) {
+      flex-basis: 50%;
+      min-width: 50%;
+      max-width: 50%;
+    }
   }
 
   &__primary-col {
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
+    margin-top: $top-space-mobile;
+
+    @include media-query(tablet-portrait) {
+      margin-top: $top-space-tablet;
+    }
 
     @include media-query(tablet-landscape) {
       flex-basis: 65%;
       min-width: 65%;
       max-width: 65%;
+      margin-top: $top-space;
     }
 
-    .app--landing-page & {
-      margin-top: $landing-page-top-space;
+    .app--campaign-page & {
+      margin-top: 0;
     }
   }
-
   &__secondary-col {
     flex-basis: 100%;
     max-width: 100%;
     min-width: 100%;
+    margin-top: $top-space-mobile;
+
+    @include media-query(tablet-portrait) {
+      margin-top: $top-space-tablet;
+    }
 
     @include media-query(tablet-landscape) {
       flex-basis: 35%;
       min-width: 35%;
       max-width: 35%;
+      margin-top: $top-space;
     }
 
-    .app--landing-page & {
-      margin-top: $landing-page-top-space;
+    .app--campaign-page & {
+      margin-top: 0;
     }
   }
 }

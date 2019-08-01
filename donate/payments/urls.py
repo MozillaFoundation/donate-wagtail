@@ -8,24 +8,29 @@ app_name = 'payments'
 
 urlpatterns = [
     path(
+        'card/thank-you/',
+        views.CardUpsellView.as_view(),
+        name='card_upsell'
+    ),
+    path(
         'card/<str:frequency>/',
-        views.PersonalDetailsView.as_view(),
-        name='card_personal_details'
-    ),
-    path(
-        'card/single/pay/',
-        views.SingleCardPaymentView.as_view(),
-        name='card_details_single'
-    ),
-    path(
-        'card/monthly/pay/',
-        views.MonthlyCardPaymentView.as_view(),
-        name='card_details_monthly'
+        views.CardPaymentView.as_view(),
+        name='card'
     ),
     path(
         'paypal/',
         views.PaypalPaymentView.as_view(),
         name='paypal'
+    ),
+    path(
+        'paypal/thank-you/',
+        views.PaypalUpsellView.as_view(),
+        name='paypal_upsell'
+    ),
+    path(
+        'stay-in-touch/',
+        views.NewsletterSignupView.as_view(),
+        name='newsletter_signup'
     ),
     path(
         'thank-you/',
