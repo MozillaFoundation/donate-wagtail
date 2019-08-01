@@ -498,6 +498,12 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     success_url = reverse_lazy('payments:completed')
     template_name = 'payment/newsletter_signup.html'
 
+    def get(self, request, *args, **kwargs):
+        # Skip this view if the user is already subscribed
+        if request.COOKIES.get('subscribed') == '1':
+            return HttpResponseRedirect(self.get_success_url())
+        return super().get(request, *args, **kwargs)
+
 
 class ThankYouView(TransactionRequiredMixin, TemplateView):
     template_name = 'payment/thank_you.html'

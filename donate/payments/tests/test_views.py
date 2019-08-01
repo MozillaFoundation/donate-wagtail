@@ -15,8 +15,8 @@ from ..forms import (
     BraintreePaypalUpsellForm, UpsellForm
 )
 from ..views import (
-    BraintreePaymentMixin, CardPaymentView, CardUpsellView, PaypalPaymentView,
-    PaypalUpsellView, TransactionRequiredMixin
+    BraintreePaymentMixin, CardPaymentView, CardUpsellView, NewsletterSignupView,
+    PaypalPaymentView, PaypalUpsellView, TransactionRequiredMixin
 )
 from ..exceptions import InvalidAddress
 
@@ -624,3 +624,14 @@ class PaypalUpsellViewTestCase(TestCase):
                 'payment_frequency': 'monthly',
             }
         )
+
+
+class NewsletterSignupViewTestCase(TestCase):
+
+    def test_skips_if_subscribed(self):
+        request = RequestFactory().get('/')
+        request.COOKIES['subscribed'] = '1'
+        view = NewsletterSignupView()
+        response = view.get(request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], view.get_success_url())
