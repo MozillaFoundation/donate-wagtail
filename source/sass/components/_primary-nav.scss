@@ -26,7 +26,7 @@
     @include media-query(tablet-landscape) {
       @include z-index(nav-desktop);
       top: -50px;
-      left: 190px;
+      left: ($gutter * 11.5);
       flex-direction: row;
       padding-top: 0;
       padding-bottom: 0;

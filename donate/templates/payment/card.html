@@ -49,7 +49,7 @@
             <div class="donate__form-wrapper">
                 <form method="post" class="form" id="payments__braintree-form">
                     <div class="form__container">
-                        <div class="form__section">
+                        <div class="form__section form__section--bottom-margin">
                             {% csrf_token %}
 
                             {% if form.non_field_errors %}
@@ -79,9 +79,11 @@
                                 {% render_form_field form.post_code %}
                                 {% render_form_field form.town %}
                             </div>
-
-
                             {% render_form_field form.country %}
+
+                        </div>
+
+                        <div class="form__section">
 
                             <div class="donate-form">
                                 <header class="donate-form__actions-header donate-form__actions-header--baseline">
@@ -98,34 +100,34 @@
                                 {% render_form_field form.braintree_nonce %}
                             </div>
 
-                        </div>
+                            <div id="payments__braintree-errors-card" hidden></div>
 
-                        <div id="payments__braintree-errors-card" hidden></div>
-
-                        <div class="form-item">
-                            <label class="form-item__label" for="card-number">Card number</label>
-                            <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="card-number"></div>
-                        </div>
-
-                        <div class="form__group form__group--two-col form__group--gutter">
                             <div class="form-item">
-                                <label class="form-item__label" for="expiration-date">Expiration date</label>
-                                <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="expiration-date"></div>
+                                <label class="form-item__label" for="card-number">Card number</label>
+                                <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="card-number"></div>
                             </div>
 
-                            <div class="form-item">
-                                <label class="form-item__label" for="cvv">CVV</label>
-                                <div class="form-item__tooltip-wrapper">
-                                    <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="cvv"></div>
+                            <div class="form__group form__group--two-col form__group--gutter">
+                                <div class="form-item">
+                                    <label class="form-item__label" for="expiration-date">Expiration date</label>
+                                    <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="expiration-date"></div>
+                                </div>
+
+                                <div class="form-item">
+                                    <label class="form-item__label" for="cvv">CVV</label>
+                                    <div class="form-item__tooltip-wrapper">
+                                        <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="cvv"></div>
+                                    </div>
                                 </div>
                             </div>
+
+                            <footer class="donate-form__footer">
+                                <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel." %}</p>
+                            </footer>
+
                         </div>
 
-                        <footer class="donate-form__footer">
-                            <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel." %}</p>
-                        </footer>
-
-                        <div class="form__section form__section--actions">
+                        <div class="form__section form__section--actions form__section--bottom-margin">
 
                             <button value="donate" class="button button--large button--full button--primary button--icon" id="payments__payment-submit" disabled>
                                 <svg class="button__icon" width="24" height="24">
@@ -137,7 +139,7 @@
                         </div>
 
                         <footer class="donate__footer">
-                            <p>{% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}</p>
+                            <p class="introduction">{% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}</p>
                             <div class="logo-showcase">
                                 <div class="logo-showcase__container">
                                     <div class="logo-showcase__item logo-item">

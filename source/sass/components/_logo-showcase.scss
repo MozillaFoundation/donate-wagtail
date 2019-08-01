@@ -20,7 +20,7 @@
       content: "";
       width: calc(100% + (#{$gutter} * 2));
       border-bottom: 1px solid $color--border;
-      padding-top: $gutter;
+      padding-top: ($gutter * 1.5);
       margin-bottom: $gutter;
 
       @include media-query(tablet-portrait) {

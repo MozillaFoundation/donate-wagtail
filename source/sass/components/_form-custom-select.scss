@@ -52,7 +52,7 @@ $select-height--small: 37px;
     background-color: $color--white;
     border: 1px solid $color--border;
     outline: none;
-    font-weight: 600;
+    font-weight: $weight--normal;
     text-indent: 13px;
     appearance: none;
     border-radius: 0;
@@ -73,7 +73,7 @@ $select-height--small: 37px;
     }
 
     select {
-      @include font-size(xs);
+      @include font-size(default);
       color: $color--black;
       height: $select-height--small;
     }
