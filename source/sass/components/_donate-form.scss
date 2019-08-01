@@ -70,11 +70,15 @@
   &__actions-buttons {
     display: grid;
     grid-gap: $gutter;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+
+    @include media-query(tablet-portrait) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &__actions-button {
-    max-height: 45px; // match height of paypal button
+    height: 45px; // match height of paypal button
   }
 
   &__currency {
