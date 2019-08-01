@@ -54,7 +54,7 @@ class CurrencySelect {
     // Check if payment options are needed
     this.checkDisabled(selectedData);
 
-    this.updateCurrency(currency);
+    this.updateCurrency(selectedData);
   }
 
   // Output donation form buttons
@@ -80,10 +80,15 @@ class CurrencySelect {
     );
   }
 
-  updateCurrency(currency) {
+  updateCurrency(selectedData) {
     // Update currency symbol
     document.querySelectorAll("[data-currency]").forEach(currencyitem => {
-      currencyitem.innerHTML = currency;
+      currencyitem.innerHTML = selectedData.symbol;
+    });
+
+    // Update hidden currency inputs
+    this.formContainer.querySelectorAll(".js-form-currency").forEach(input => {
+      input.value = selectedData.code;
     });
 
     // Other amount vars
