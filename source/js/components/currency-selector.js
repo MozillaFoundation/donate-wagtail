@@ -64,7 +64,9 @@ class CurrencySelect {
     container.innerHTML = data
       .map((donationValue, index) => {
         return `<div class='donation-amount'>
-                    <input type='radio' class='donation-amount__radio' name='amount' value='${donationValue}' id='${type}-${index}' autocomplete='off'>
+                    <input type='radio' class='donation-amount__radio' name='amount' value='${donationValue}' id='${type}-${index}' autocomplete='off' ${
+          index == 0 ? "checked" : ""
+        }>
                     <label for='${type}-${index}' class='donation-amount__label'>
                         ${currency}${donationValue} ${
           type === "monthly-amount" ? "per month" : ""
