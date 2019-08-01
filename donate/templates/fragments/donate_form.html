@@ -17,12 +17,12 @@
         </form>
         <div class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
             <form method="GET" id="donate-form--single">
-                <input type="hidden" name="currency" value="usd">
+                <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
                 <div class="donate-form__fields" id="js-donate-form-single">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
                         <label for="one-time-amount-{{ forloop.counter0 }}" class="donation-amount__label">
                             {{ initial_currency_info.symbol }}{{ amount }}
                         </label>
@@ -73,12 +73,12 @@
         </div>
         <div class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
             <form method="GET" id="donate-form--monthly">
-                <input type="hidden" name="currency" value="usd">
+                <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
                 <div class="donate-form__fields" id="js-donate-form-monthly">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="monthly-amount-{{ forloop.counter0 }}" autocomplete="off">
+                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="monthly-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
                         <label for="monthly-amount-{{ forloop.counter0 }}" class="donation-amount__label">
                             {{ initial_currency_info.symbol }}{{ amount }} {% trans "per month" %}
                         </label>

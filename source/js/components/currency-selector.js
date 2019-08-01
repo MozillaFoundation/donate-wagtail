@@ -54,7 +54,7 @@ class CurrencySelect {
     // Check if payment options are needed
     this.checkDisabled(selectedData);
 
-    this.updateCurrency(currency);
+    this.updateCurrency(selectedData);
   }
 
   // Output donation form buttons
@@ -64,7 +64,9 @@ class CurrencySelect {
     container.innerHTML = data
       .map((donationValue, index) => {
         return `<div class='donation-amount'>
-                    <input type='radio' class='donation-amount__radio' name='amount' value='${donationValue}' id='${type}-${index}' autocomplete='off'>
+                    <input type='radio' class='donation-amount__radio' name='amount' value='${donationValue}' id='${type}-${index}' autocomplete='off' ${
+          index == 0 ? "checked" : ""
+        }>
                     <label for='${type}-${index}' class='donation-amount__label'>
                         ${currency}${donationValue} ${
           type === "monthly-amount" ? "per month" : ""
@@ -80,10 +82,15 @@ class CurrencySelect {
     );
   }
 
-  updateCurrency(currency) {
+  updateCurrency(selectedData) {
     // Update currency symbol
     document.querySelectorAll("[data-currency]").forEach(currencyitem => {
-      currencyitem.innerHTML = currency;
+      currencyitem.innerHTML = selectedData.symbol;
+    });
+
+    // Update hidden currency inputs
+    this.formContainer.querySelectorAll(".js-form-currency").forEach(input => {
+      input.value = selectedData.code;
     });
 
     // Other amount vars
