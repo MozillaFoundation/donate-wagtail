@@ -18,7 +18,7 @@
     margin: 0 auto;
 
     @include media-query(tablet-portrait) {
-      padding: 24px ($gutter * 2);
+      padding: 24px ($gutter * 3);
     }
 
     @include media-query(desktop) {

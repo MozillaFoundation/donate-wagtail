@@ -2,6 +2,7 @@
   $root: &;
   $top-space: ($gutter * 2);
   $top-space-mobile: $gutter;
+  $top-space-tablet: ($gutter * 1.5);
 
   &--narrow {
     #{$root}__container {
@@ -20,7 +21,7 @@
     margin: 0 $gutter;
 
     @include media-query(tablet-portrait) {
-      margin: 0 ($gutter * 2);
+      margin: 0 ($gutter * 3);
     }
 
     @include media-query(tablet-landscape) {
@@ -42,6 +43,10 @@
     max-width: 100%;
     min-width: 100%;
     margin-top: $top-space-mobile;
+
+    @include media-query(tablet-portrait) {
+      margin-top: $top-space-tablet;
+    }
 
     @include media-query(tablet-landscape) {
       margin-top: $top-space;
@@ -70,6 +75,10 @@
     min-width: 100%;
     margin-top: $top-space-mobile;
 
+    @include media-query(tablet-portrait) {
+      margin-top: $top-space-tablet;
+    }
+
     @include media-query(tablet-landscape) {
       flex-basis: 65%;
       min-width: 65%;
@@ -86,6 +95,10 @@
     max-width: 100%;
     min-width: 100%;
     margin-top: $top-space-mobile;
+
+    @include media-query(tablet-portrait) {
+      margin-top: $top-space-tablet;
+    }
 
     @include media-query(tablet-landscape) {
       flex-basis: 35%;
