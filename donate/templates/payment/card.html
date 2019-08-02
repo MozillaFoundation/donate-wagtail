@@ -132,8 +132,10 @@
                                 <svg class="button__icon" width="24" height="24">
                                     <use xlink:href="#padlock"></use>
                                 </svg>
-                                {% format_currency currency_info.code form.amount.value as formatted_amount %}
-                                {% blocktrans with formatted_amount=formatted_amount %}Donate <span class="js-donation-value">{{ formatted_amount }}</span>{% endblocktrans %}
+                                <div class="button__label">
+                                    {% format_currency currency_info.code form.amount.value as formatted_amount %}
+                                    {% blocktrans with formatted_amount=formatted_amount %}Donate <span class="button__value js-donation-value">{{ formatted_amount }}</span>{% endblocktrans %}
+                                </div>
                             </button>
 
                         </div>
