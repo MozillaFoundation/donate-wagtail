@@ -13,6 +13,14 @@ class AmountToggle {
     this.activeClass = "active";
     this.selectedClass = "selected";
 
+    let locale = this.updateForm.getAttribute("data-locale").replace("_", "-");
+    let currency = this.updateForm.getAttribute("data-currency").toUpperCase();
+    this.formatter = new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+      minimumFractionDigits: 0
+    });
+
     this.bindEvents();
   }
 
@@ -28,7 +36,9 @@ class AmountToggle {
 
   UpdatePageDonationAmount() {
     document.querySelectorAll(".js-donation-value").forEach(donationAmount => {
-      donationAmount.textContent = this.hiddenInput.value;
+      donationAmount.textContent = this.formatter.format(
+        this.hiddenInput.value
+      );
     });
   }
 

@@ -23,6 +23,7 @@ boto3 = "*"
 braintree = "*"
 django-countries = "*"
 freezegun = "*"
+py-moneyed = "*"
 
 [requires]
 python_version = "3.7"
