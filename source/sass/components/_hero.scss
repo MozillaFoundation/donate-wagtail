@@ -16,13 +16,28 @@
     padding: ($gutter / 2) $gutter;
 
     @include media-query(tablet-portrait) {
-      padding-top: ($gutter * 5);
-      padding-bottom: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0 ($gutter * 4);
     }
 
     @include media-query(desktop-wide) {
-      padding-left: 0;
-      padding-right: 0;
+      padding: 0;
+    }
+  }
+
+  &__content-container {
+    @include media-query(tablet-portrait) {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    @include media-query(desktop) {
+      max-width: $site-width--default;
     }
   }
 
@@ -39,6 +54,8 @@
 
     @include media-query(tablet-portrait) {
       color: $color--white;
+      margin-bottom: $gutter;
+      max-width: 60%;
     }
 
     @include media-query(tablet-landscape) {
@@ -53,6 +70,11 @@
 
     @include media-query(tablet-portrait) {
       color: $color--white;
+      max-width: 60%;
+    }
+
+    @include media-query(desktop) {
+      font-weight: $weight--bold;
     }
   }
 }
