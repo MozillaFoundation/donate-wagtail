@@ -283,7 +283,8 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
             with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-                self.view.form_valid(form)
+                with mock.patch('donate.payments.views.queue.enqueue', autospec=True) as mock_queue:
+                    self.view.form_valid(form)
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'merchant_account_id': 'usd-ac',
@@ -340,7 +341,8 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
             with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-                self.view.form_valid(form)
+                with mock.patch('donate.payments.views.queue.enqueue', autospec=True) as mock_queue:
+                    self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
@@ -431,7 +433,8 @@ class PaypalPaymentViewTestCase(TestCase):
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
             mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
-            self.view.form_valid(form)
+            with mock.patch('donate.payments.views.queue.enqueue', autospec=True) as mock_queue:
+                self.view.form_valid(form)
 
         mock_gateway.customer.create.assert_called_once_with({
             'payment_method_nonce': 'hello-braintree',
@@ -572,7 +575,8 @@ class CardUpsellViewTestCase(TestCase):
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-            self.view.form_valid(form)
+            with mock.patch('donate.payments.views.queue.enqueue', autospec=True) as mock_queue:
+                self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
@@ -658,7 +662,8 @@ class PaypalUpsellViewTestCase(TestCase):
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
             mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
-            self.view.form_valid(form)
+            with mock.patch('donate.payments.views.queue.enqueue', autospec=True) as mock_queue:
+                self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',

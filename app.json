@@ -13,6 +13,14 @@
       "url": "heroku/python"
     }
   ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+    },
+    "worker": {
+      "quantity": 1,
+     }
+  },
   "env": {
     "HEROKU_APP_NAME": {
       "required": true

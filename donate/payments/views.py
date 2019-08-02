@@ -17,6 +17,7 @@ from .forms import (
     BraintreeCardPaymentForm, BraintreePaypalPaymentForm, BraintreePaypalUpsellForm,
     NewsletterSignupForm, StartCardPaymentForm, UpsellForm
 )
+from .tasks import queue, send_transaction_to_basket
 from .utils import get_currency_info, get_suggested_monthly_upgrade, freeze_transaction_details_for_session
 
 logger = logging.getLogger(__name__)
@@ -46,8 +47,12 @@ class BraintreePaymentMixin:
     def success(self, result, form, **kwargs):
         # Store details of the transaction in a session variable
         details = self.get_transaction_details_for_session(result, form, **kwargs)
-        self.request.session['completed_transaction_details'] = freeze_transaction_details_for_session(details)
-        self.request.session['source_page_id'] = self.get_source_page_id()
+        source_page_id = self.get_source_page_id()
+        details['source_page_id'] = source_page_id
+        details = freeze_transaction_details_for_session(details)
+        self.request.session['completed_transaction_details'] = details
+        self.request.session['source_page_id'] = source_page_id
+        queue.enqueue(send_transaction_to_basket, details)
         return HttpResponseRedirect(self.get_success_url())
 
 
@@ -533,6 +538,10 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         if request.COOKIES.get('subscribed') == '1':
             return HttpResponseRedirect(self.get_success_url())
         return super().get(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        queue.enqueue(send_newsletter_subscription_to_basket, form.cleaned_data)
+        return super().form_valid(form)
 
 
 class ThankYouView(TransactionRequiredMixin, TemplateView):
