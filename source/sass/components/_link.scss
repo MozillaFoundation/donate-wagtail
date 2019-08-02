@@ -28,4 +28,10 @@
       fill: $color--white;
     }
   }
+
+  &--icon {
+    #{$root}__svg-title {
+      @include hidden();
+    }
+  }
 }

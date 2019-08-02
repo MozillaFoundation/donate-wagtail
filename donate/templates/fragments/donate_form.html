@@ -32,7 +32,8 @@
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{{ initial_currency_info.symbol }}</label>
-                        <input type="text" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
+                        <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
+                        <input type="text" class="donation-amount__input" name="one-time-amount-other-input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
                 </div>
                 <input type="hidden" class="one-time-amount__total">
@@ -88,7 +89,8 @@
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{{ initial_currency_info.symbol }}</label>
-                        <input type="text" class="donation-amount__input" id="monthly-amount-other-input" placeholder="Other amount" data-other-amount="">
+                        <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
+                        <input type="text" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" placeholder="Other amount" data-other-amount="">
                     </div>
                 </div>
                 <input type="hidden" class="monthly-amount__total">
