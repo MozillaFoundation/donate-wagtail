@@ -95,8 +95,12 @@
       position: relative;
       top: -110px;
       background-color: $color--white;
-      padding: $gutter ($gutter * 2);
+      padding: ($gutter * 1.5) ($gutter * 2);
       margin-bottom: -100px; // make up for top minus value
+    }
+
+    @include media-query(desktop) {
+      padding: ($gutter * 2) ($gutter * 3);
     }
   }
 }
