@@ -1,5 +1,5 @@
-{% load i18n form_tags %}
-<div class="donate-form__content" id="js-donate-form">
+{% load i18n form_tags util_tags %}
+<div class="donate-form__content" id="js-donate-form" data-locale="{% get_locale %}">
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container" role="tablist">
             <div class="tabs__option" role="presentation">
@@ -17,6 +17,7 @@
         </form>
         <div class="tabs__panel js-tab-panel" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
             <form method="GET" id="donate-form--single">
+                <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
                 <div class="donate-form__fields" id="js-donate-form-single">
@@ -24,14 +25,14 @@
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
                         <label for="one-time-amount-{{ forloop.counter0 }}" class="donation-amount__label">
-                            {{ initial_currency_info.symbol }}{{ amount }}
+                            {% format_currency initial_currency_info.code amount %}
                         </label>
                     </div>
                     {% endfor %}
 
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
-                        <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{{ initial_currency_info.symbol }}</label>
+                        <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                         <input type="text" class="donation-amount__input" name="one-time-amount-other-input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
@@ -74,6 +75,7 @@
         </div>
         <div class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
             <form method="GET" id="donate-form--monthly">
+                <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
                 <div class="donate-form__fields" id="js-donate-form-monthly">
@@ -81,14 +83,14 @@
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="monthly-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
                         <label for="monthly-amount-{{ forloop.counter0 }}" class="donation-amount__label">
-                            {{ initial_currency_info.symbol }}{{ amount }} {% trans "per month" %}
+                            {% format_currency initial_currency_info.code amount %}
                         </label>
                     </div>
                     {% endfor %}
 
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
-                        <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{{ initial_currency_info.symbol }}</label>
+                        <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                         <input type="text" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" placeholder="Other amount" data-other-amount="">
                     </div>
@@ -139,6 +141,7 @@
         {% render_form_field braintree_form.amount %}
         {% render_form_field braintree_form.frequency %}
         {% render_form_field braintree_form.currency %}
+        {% render_form_field braintree_form.source_page_id %}
     </form>
 
     <footer class="donate-form__footer">

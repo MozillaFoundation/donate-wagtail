@@ -6,6 +6,12 @@ class CurrencySelect {
   constructor(node) {
     this.selectMenu = node;
     this.formContainer = document.getElementById("js-donate-form");
+    // Convert a locale provided by Django in the form en_US to a
+    // BCP 47 compliant tag in the form en-US.
+    // See https://tools.ietf.org/html/bcp47
+    this.locale = this.formContainer
+      .getAttribute("data-locale")
+      .replace("_", "-");
     this.data = JSON.parse(document.getElementById("currencies").innerHTML);
     this.oneOffContainer = document.getElementById("js-donate-form-single");
     this.monthlyContainer = document.getElementById("js-donate-form-monthly");
@@ -37,40 +43,45 @@ class CurrencySelect {
     // Create arrays for monthly and one off based on data
     var oneOffValues = selectedData.presets.single;
     var monthlyValue = selectedData.presets.monthly;
-    var currency = selectedData.symbol;
+    var formatter = new Intl.NumberFormat(this.locale, {
+      style: "currency",
+      currency: selectedData.code.toUpperCase(),
+      minimumFractionDigits: 0
+    });
 
     // Create buttons
     this.outputOptions(
       oneOffValues,
       "one-time-amount",
-      currency,
+      formatter,
       this.oneOffContainer
     );
     this.outputOptions(
       monthlyValue,
       "monthly-amount",
-      currency,
+      formatter,
       this.monthlyContainer
     );
 
     // Check if payment options are needed
     this.checkDisabled(selectedData);
 
-    this.updateCurrency(selectedData);
+    this.updateCurrency(selectedData, formatter);
   }
 
   // Output donation form buttons
-  outputOptions(data, type, currency, container) {
+  outputOptions(data, type, formatter, container) {
     var container = container;
 
     container.innerHTML = data
       .map((donationValue, index) => {
+        var formattedValue = formatter.format(donationValue);
         return `<div class='donation-amount'>
                     <input type='radio' class='donation-amount__radio' name='amount' value='${donationValue}' id='${type}-${index}' autocomplete='off' ${
           index == 0 ? "checked" : ""
         }>
                     <label for='${type}-${index}' class='donation-amount__label'>
-                        ${currency}${donationValue} ${
+                        ${formattedValue} ${
           type === "monthly-amount" ? "per month" : ""
         }
                     </label>
@@ -84,10 +95,20 @@ class CurrencySelect {
     );
   }
 
-  updateCurrency(selectedData) {
+  updateCurrency(selectedData, formatter) {
+    var formattedParts = formatter.formatToParts(1);
+    // Default symbol
+    var symbol = selectedData.symbol;
+    // ... which we attempt to replace with a localised one
+    formattedParts.forEach(part => {
+      if (part["type"] === "currency") {
+        symbol = part["value"];
+      }
+    });
+
     // Update currency symbol
     document.querySelectorAll("[data-currency]").forEach(currencyitem => {
-      currencyitem.innerHTML = selectedData.symbol;
+      currencyitem.innerHTML = symbol;
     });
 
     // Update hidden currency inputs

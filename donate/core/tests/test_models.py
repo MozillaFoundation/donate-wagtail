@@ -24,6 +24,28 @@ class DonationPageTestCase(TestCase):
             'clp'
         )
 
+    def test_serve_sets_subscribed_cookie(self):
+        request = RequestFactory().get('/?subscribed=1')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        response = page.serve(request)
+        self.assertEqual(response.cookies['subscribed'].value, '1')
+
+    def test_serve_doesnt_set_subscribed_cookie_if_invalid_query_arg(self):
+        request = RequestFactory().get('/?subscribed=foo')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        response = page.serve(request)
+        self.assertNotIn('subscribed', response.cookies)
+
 
 class CampaignPageTestCase(TestCase):
 

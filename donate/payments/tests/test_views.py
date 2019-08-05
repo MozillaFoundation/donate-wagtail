@@ -9,14 +9,16 @@ from django.views.generic import FormView
 from braintree import ErrorCodes, ErrorResult
 from freezegun import freeze_time
 from freezegun.api import FakeDate
+from wagtail.core.models import Page
 
+from donate.core.factory.core_pages import LandingPageFactory
 from ..forms import (
     BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm,
     BraintreePaypalUpsellForm, UpsellForm
 )
 from ..views import (
-    BraintreePaymentMixin, CardPaymentView, CardUpsellView, PaypalPaymentView,
-    PaypalUpsellView, TransactionRequiredMixin
+    BraintreePaymentMixin, CardPaymentView, CardUpsellView, NewsletterSignupView,
+    PaypalPaymentView, PaypalUpsellView, TransactionRequiredMixin
 )
 from ..exceptions import InvalidAddress
 
@@ -57,6 +59,9 @@ class BraintreeMixinTestView(BraintreePaymentMixin, FormView):
             'some': 'data'
         }
 
+    def get_source_page_id(self):
+        return 3
+
 
 class BraintreeMixinTestCase(TestCase):
 
@@ -73,6 +78,7 @@ class BraintreeMixinTestCase(TestCase):
             'amount': '50',
             'some': 'data',
         })
+        self.assertEqual(view.request.session['source_page_id'], 3)
 
 
 class CardPaymentViewTestCase(TestCase):
@@ -82,12 +88,11 @@ class CardPaymentViewTestCase(TestCase):
             'first_name': 'Alice',
             'last_name': 'Bob',
             'email': 'alice@example.com',
-            'phone_number': '+442088611222',
             'address_line_1': '1 Oak Tree Hill',
             'town': 'New York',
             'post_code': '10022',
             'country': 'US',
-            'amount': 50,
+            'amount': Decimal(50),
             'braintree_nonce': 'hello-braintree',
         }
 
@@ -96,6 +101,7 @@ class CardPaymentViewTestCase(TestCase):
         self.view = CardPaymentView()
         self.view.payment_frequency = 'single'
         self.view.currency = 'usd'
+        self.view.source_page_id = 3
         self.view.request = self.request
 
         self.fake_error_result = ErrorResult("gateway", {
@@ -259,6 +265,9 @@ class CardPaymentViewTestCase(TestCase):
             }
         })
 
+    def test_get_source_page_id(self):
+        self.assertEqual(self.view.get_source_page_id(), 3)
+
 
 class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
 
@@ -296,6 +305,25 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             self.view.get_success_url(),
             reverse('payments:card_upsell')
         )
+
+    def test_get_transaction_details_for_session(self):
+        form = BraintreeCardPaymentForm(self.form_data)
+        assert form.is_valid()
+        details = self.view.get_transaction_details_for_session(
+            MockBraintreeResult(),
+            form,
+            payment_method_token='token-1'
+        )
+
+        expected_details = self.form_data.copy()
+        expected_details.update({
+            'transaction_id': 'transaction-id-1',
+            'payment_method': 'card',
+            'payment_frequency': 'single',
+            'payment_method_token': 'token-1',
+            'currency': 'usd',
+        })
+        self.assertEqual(details, expected_details)
 
 
 class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
@@ -344,6 +372,25 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             reverse('payments:newsletter_signup')
         )
 
+    def test_get_transaction_details_for_session(self):
+        form = BraintreeCardPaymentForm(self.form_data)
+        assert form.is_valid()
+        details = self.view.get_transaction_details_for_session(
+            MockBraintreeSubscriptionResult(),
+            form,
+            payment_method_token='token-1'
+        )
+
+        expected_details = self.form_data.copy()
+        expected_details.update({
+            'transaction_id': 'subscription-id-1',
+            'payment_method': 'card',
+            'payment_frequency': 'monthly',
+            'payment_method_token': 'token-1',
+            'currency': 'usd',
+        })
+        self.assertEqual(details, expected_details)
+
 
 class PaypalPaymentViewTestCase(TestCase):
 
@@ -356,7 +403,8 @@ class PaypalPaymentViewTestCase(TestCase):
             'braintree_nonce': 'hello-braintree',
             'amount': Decimal(10),
             'currency': 'usd',
-            'frequency': 'single'
+            'frequency': 'single',
+            'source_page_id': 3
         }
 
     def test_transaction_data_submitted_to_braintree(self):
@@ -425,6 +473,10 @@ class PaypalPaymentViewTestCase(TestCase):
             }
         )
 
+    def test_get_source_page_id(self):
+        self.view.source_page_id = 3
+        self.assertEqual(self.view.get_source_page_id(), 3)
+
     def test_get_success_url_single(self):
         self.view.payment_frequency = 'single'
         self.assertEqual(
@@ -450,6 +502,27 @@ class TransactionRequiredMixinTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], '/')
 
+    def test_get_source_page(self):
+        landing_page = LandingPageFactory.create(
+            parent=Page.objects.first(),
+            title='Donate today',
+            slug='landing',
+        )
+        view = TransactionRequiredMixin()
+        view.request = RequestFactory().get('/')
+        view.request.session = {
+            'source_page_id': landing_page.pk,
+        }
+        self.assertEqual(view.get_source_page(), landing_page)
+
+    def test_get_source_page_invalid_id(self):
+        view = TransactionRequiredMixin()
+        view.request = RequestFactory().get('/')
+        view.request.session = {
+            'source_page_id': 14,
+        }
+        self.assertIsNone(view.get_source_page())
+
 
 class CardUpsellViewTestCase(TestCase):
 
@@ -460,7 +533,6 @@ class CardUpsellViewTestCase(TestCase):
                 'first_name': 'Alice',
                 'last_name': 'Bob',
                 'email': 'alice@example.com',
-                'phone_number': '+442088611222',
                 'address_line_1': '1 Oak Tree Hill',
                 'town': 'New York',
                 'post_code': '10022',
@@ -470,20 +542,27 @@ class CardUpsellViewTestCase(TestCase):
                 'payment_frequency': 'single',
                 'payment_method': 'card',
                 'payment_method_token': 'payment-method-1',
-            }
+            },
+            'source_page_id': 3,
         }
         self.view = CardUpsellView()
         self.view.request = self.request
 
     def test_skips_if_previous_transaction_was_not_card(self):
         self.request.session['completed_transaction_details']['payment_method'] = 'paypal'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
     def test_skips_if_previous_transaction_was_not_single(self):
         self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], reverse('payments:completed'))
+
+    def test_skips_if_previous_transaction_was_too_small(self):
+        self.request.session['completed_transaction_details']['amount'] = 1
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
@@ -530,6 +609,9 @@ class CardUpsellViewTestCase(TestCase):
             }
         )
 
+    def test_get_source_page_id(self):
+        self.assertEqual(self.view.get_source_page_id(), 3)
+
 
 class PaypalUpsellViewTestCase(TestCase):
 
@@ -542,20 +624,27 @@ class PaypalUpsellViewTestCase(TestCase):
                 'payment_frequency': 'single',
                 'payment_method': 'paypal',
                 'payment_method_token': 'payment-method-1',
-            }
+            },
+            'source_page_id': 3,
         }
         self.view = PaypalUpsellView()
         self.view.request = self.request
 
     def test_skips_if_previous_transaction_was_not_paypal(self):
         self.request.session['completed_transaction_details']['payment_method'] = 'card'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
     def test_skips_if_previous_transaction_was_not_single(self):
         self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], reverse('payments:completed'))
+
+    def test_skips_if_previous_transaction_was_too_small(self):
+        self.request.session['completed_transaction_details']['amount'] = 1
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
@@ -612,3 +701,17 @@ class PaypalUpsellViewTestCase(TestCase):
                 'payment_frequency': 'monthly',
             }
         )
+
+        def test_get_source_page_id(self):
+            self.assertEqual(self.view.get_source_page_id(), 3)
+
+
+class NewsletterSignupViewTestCase(TestCase):
+
+    def test_skips_if_subscribed(self):
+        request = RequestFactory().get('/')
+        request.COOKIES['subscribed'] = '1'
+        view = NewsletterSignupView()
+        response = view.get(request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], view.get_success_url())
