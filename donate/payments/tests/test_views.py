@@ -477,13 +477,19 @@ class CardUpsellViewTestCase(TestCase):
 
     def test_skips_if_previous_transaction_was_not_card(self):
         self.request.session['completed_transaction_details']['payment_method'] = 'paypal'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
     def test_skips_if_previous_transaction_was_not_single(self):
         self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], reverse('payments:completed'))
+
+    def test_skips_if_previous_transaction_was_too_small(self):
+        self.request.session['completed_transaction_details']['amount'] = 1
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
@@ -549,13 +555,19 @@ class PaypalUpsellViewTestCase(TestCase):
 
     def test_skips_if_previous_transaction_was_not_paypal(self):
         self.request.session['completed_transaction_details']['payment_method'] = 'card'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
     def test_skips_if_previous_transaction_was_not_single(self):
         self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
-        response = self.view.get(self.request)
+        response = self.view.dispatch(self.request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], reverse('payments:completed'))
+
+    def test_skips_if_previous_transaction_was_too_small(self):
+        self.request.session['completed_transaction_details']['amount'] = 1
+        response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:completed'))
 
