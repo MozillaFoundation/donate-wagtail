@@ -6,6 +6,9 @@ class CurrencySelect {
   constructor(node) {
     this.selectMenu = node;
     this.formContainer = document.getElementById("js-donate-form");
+    // Convert a locale provided by Django in the form en_US to a
+    // BCP 47 compliant tag in the form en-US.
+    // See https://tools.ietf.org/html/bcp47
     this.locale = this.formContainer
       .getAttribute("data-locale")
       .replace("_", "-");
