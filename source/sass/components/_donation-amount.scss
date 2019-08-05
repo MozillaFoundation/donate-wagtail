@@ -30,6 +30,10 @@
       min-width: 55px;
       max-width: 55px;
     }
+
+    &--hidden {
+      @include hidden();
+    }
   }
 
   &__radio {

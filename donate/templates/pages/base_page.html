@@ -68,14 +68,14 @@
                         <div class="form-group form-group--two-col">
                             <div class="form-item">
                                 <label for="email-newsletter">{% trans "Join our email list to take action and stay updated!" %}</label>
-                                <input type="text" name="email-newsletter" placeholder="Enter email address">
+                                <input type="text" name="email-newsletter" id="email-newsletter" placeholder="Enter email address">
                             </div>
                             <div class="form-item">
                                 <button class="button button--primary">{% trans "Sign up" %}</button>
                             </div>
                         </div>
                         <div class="form-item">
-                            <input type="checkbox"><label>{% trans "I'm okay with Mozilla handling my info as explained in this <a href='#'>Privacy Notice</a>" %}</label>
+                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy">{% trans "I'm okay with Mozilla handling my info as explained in this <a href='#'>Privacy Notice</a>" %}</label>
                         </div>
                     </form>
                 </div>
@@ -91,16 +91,19 @@
                         <h2 class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">More about us</h2>
                         <div class="footer-links__social">
                             <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
+                                <div class="link__svg-title">Twitter</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
                                     <use xlink:href="#twitter"></use>
                                 </svg>
                             </a>
                             <a class="link link--icon link--dark-bg" href="https://www.instagram.com/mozilla/" target="_blank" rel="noopener">
+                                <div class="link__svg-title">Instagram</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--instagram" width="24" height="24">
                                     <use xlink:href="#instagram"></use>
                                 </svg>
                             </a>
                             <a class="link link--icon link--dark-bg" href="https://github.com/mozilla" target="_blank" rel="noopener">
+                                <div class="link__svg-title">Github</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--github" width="24" height="24">
                                     <use xlink:href="#github"></use>
                                 </svg>

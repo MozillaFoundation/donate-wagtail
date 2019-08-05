@@ -72,6 +72,12 @@
     @include font-size(m);
     padding: ($gutter * 0.75);
     font-weight: $weight--semibold;
+
+    .donate-form__actions-buttons & {
+      @include media-query(tablet-landscape) {
+        padding: 0 ($gutter * 0.75);
+      }
+    }
   }
 
   &--uppercase {
