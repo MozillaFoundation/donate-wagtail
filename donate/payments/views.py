@@ -9,6 +9,7 @@ from django.views.generic import FormView, TemplateView
 
 from braintree import ErrorCodes
 from dateutil.relativedelta import relativedelta
+from wagtail.core.models import Page
 
 from . import constants, gateway
 from .exceptions import InvalidAddress
@@ -36,6 +37,9 @@ class BraintreePaymentMixin:
     def get_transaction_details_for_session(self, result, form, **kwargs):
         raise NotImplementedError()
 
+    def get_source_page_id(self):
+        raise NotImplementedError()
+
     def process_braintree_error_result(result, form):
         raise NotImplementedError()
 
@@ -43,6 +47,7 @@ class BraintreePaymentMixin:
         # Store details of the transaction in a session variable
         details = self.get_transaction_details_for_session(result, form, **kwargs)
         self.request.session['completed_transaction_details'] = freeze_transaction_details_for_session(details)
+        self.request.session['source_page_id'] = self.get_source_page_id()
         return HttpResponseRedirect(self.get_success_url())
 
 
@@ -62,6 +67,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
 
         self.amount = start_form.cleaned_data['amount']
         self.currency = start_form.cleaned_data['currency']
+        self.source_page_id = start_form.cleaned_data['source_page_id']
         return super().dispatch(request, *args, **kwargs)
 
     def get_initial(self):
@@ -241,6 +247,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         })
         return details
 
+    def get_source_page_id(self):
+        return self.source_page_id
+
     def get_success_url(self):
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             return reverse('payments:card_upsell')
@@ -256,6 +265,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
     def form_valid(self, form):
         self.payment_frequency = form.cleaned_data['frequency']
         self.currency = form.cleaned_data['currency']
+        self.source_page_id = form.cleaned_data['source_page_id']
 
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             result = gateway.transaction.sale({
@@ -316,6 +326,9 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
             'payment_frequency': self.payment_frequency,
         }
 
+    def get_source_page_id(self):
+        return self.source_page_id
+
     def get_success_url(self):
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             return reverse('payments:paypal_upsell')
@@ -333,6 +346,15 @@ class TransactionRequiredMixin:
         if not request.session.get('completed_transaction_details'):
             return HttpResponseRedirect('/')
         return super().dispatch(request, *args, **kwargs)
+
+    def get_source_page(self):
+        source_page_id = self.request.session.get('source_page_id')
+        try:
+            return Page.objects.live().get(pk=source_page_id).specific
+        except Page.DoesNotExist:
+            # This is an edge case where the page has been unpublished/deleted
+            # after someone initiated a payment from it.
+            pass
 
 
 class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
@@ -395,6 +417,10 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
             'payment_frequency': constants.FREQUENCY_MONTHLY,
         })
         return details
+
+    def get_source_page_id(self):
+        # Return the source page ID that is already set on the session from the original single transaction
+        return self.request.session.get('source_page_id')
 
     def process_braintree_error_result(self, result, form):
         default_error_message = _('Sorry there was an error processing your payment. '
@@ -478,6 +504,10 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             'payment_frequency': constants.FREQUENCY_MONTHLY,
         })
         return details
+
+    def get_source_page_id(self):
+        # Return the source page ID that is already set on the session from the original single transaction
+        return self.request.session.get('source_page_id')
 
     def process_braintree_error_result(self, result, form):
         default_error_message = _('Sorry there was an error processing your payment. '

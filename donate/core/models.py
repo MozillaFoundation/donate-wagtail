@@ -44,7 +44,7 @@ class DonationPage(Page):
             'currencies': self.currencies,
             'initial_currency_info': get_currency_info(initial_currency),
             'braintree_params': settings.BRAINTREE_PARAMS,
-            'braintree_form': BraintreePaypalPaymentForm(),
+            'braintree_form': BraintreePaypalPaymentForm(initial={'source_page_id': self.pk}),
             'currency_form': CurrencyForm(initial={'currency': initial_currency}),
         })
         return ctx
