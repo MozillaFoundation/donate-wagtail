@@ -552,19 +552,19 @@ class CardUpsellViewTestCase(TestCase):
         self.request.session['completed_transaction_details']['payment_method'] = 'paypal'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], reverse('payments:completed'))
+        self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
 
     def test_skips_if_previous_transaction_was_not_single(self):
         self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], reverse('payments:completed'))
+        self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
 
     def test_skips_if_previous_transaction_was_too_small(self):
         self.request.session['completed_transaction_details']['amount'] = 1
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], reverse('payments:completed'))
+        self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
 
     @freeze_time('2019-07-26')
     def test_subscription_data_submitted_to_braintree(self):
@@ -634,19 +634,19 @@ class PaypalUpsellViewTestCase(TestCase):
         self.request.session['completed_transaction_details']['payment_method'] = 'card'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], reverse('payments:completed'))
+        self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
 
     def test_skips_if_previous_transaction_was_not_single(self):
         self.request.session['completed_transaction_details']['payment_frequency'] = 'monthly'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], reverse('payments:completed'))
+        self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
 
     def test_skips_if_previous_transaction_was_too_small(self):
         self.request.session['completed_transaction_details']['amount'] = 1
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['Location'], reverse('payments:completed'))
+        self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
 
     @freeze_time('2019-07-26')
     def test_subscription_data_submitted_to_braintree(self):
