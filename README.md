@@ -83,7 +83,7 @@ Run the back-end test suite with:
 
 ### Basket donations queue:
 
-Basket has 4 [donation event types](https://github.com/mozmeao/basket/blob/master/basket/news/management/commands/process_donations_queue.py#L21-L26): 
+Basket has [4 event types we can use](https://github.com/mozmeao/basket/blob/master/basket/news/management/commands/process_donations_queue.py#L21-L26): 
 
 - `donation`: process a donation and send its data to SFDC,
 - `crm_petition_data`: add petition signature to SFDC,
