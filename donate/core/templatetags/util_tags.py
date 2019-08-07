@@ -3,8 +3,11 @@ from decimal import Decimal
 from django import template
 from django.utils.translation import to_locale
 
-from moneyed import get_currency, Money
-from moneyed.localization import format_money, _FORMATTER
+from babel.core import Locale
+from babel.numbers import (
+    format_currency as babel_format_currency,
+    get_currency_symbol
+)
 
 register = template.Library()
 
@@ -22,14 +25,25 @@ def get_locale(context):
 @register.simple_tag(takes_context=True)
 def format_currency(context, currency_code, amount):
     locale = to_locale(context['request'].LANGUAGE_CODE)
-    currency_obj = get_currency(currency_code.upper())
-    amount = Decimal(amount)
-    exponent = amount.as_tuple().exponent
-    return format_money(Money(amount, currency_obj), locale=locale, decimal_places=-exponent)
+    locale_obj = Locale.parse(locale)
+    pattern = locale_obj.currency_formats['standard'].pattern
+
+    # By default, Babel will display a fixed number of decimal places based on the
+    # default format for the currency. It doesn't offer any way to tell
+    # format_currency to hide decimals for integer values
+    # see https://github.com/python-babel/babel/issues/478
+    # In order to work around this, we fetch the pattern for the currency in
+    # the current locale, and replace a padded decimal with an optional one.
+    # We also have to set currency_digits=False otherwise this gets ignored entirely.
+    if Decimal(amount) == int(amount):
+        pattern = pattern.replace('0.00', '0.##')
+
+    return babel_format_currency(
+        amount, currency_code.upper(), format=pattern, locale=locale_obj, currency_digits=False
+    )
 
 
 @register.simple_tag(takes_context=True)
 def get_localized_currency_symbol(context, currency_code):
     locale = to_locale(context['request'].LANGUAGE_CODE)
-    prefix, suffix = _FORMATTER.get_sign_definition(currency_code.upper(), locale)
-    return prefix.strip() or suffix.strip()
+    return get_currency_symbol(currency_code.upper(), locale)

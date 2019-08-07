@@ -11,7 +11,7 @@ class UtilTagsTestCase(TestCase):
     def setUp(self):
         self.request = RequestFactory().get('/')
 
-    def test_format_currency_usd_en_us(self):
+    def test_format_currency_usd_en_us_integer(self):
         self.request.LANGUAGE_CODE = 'en-US'
         ctx = {
             'request': self.request
@@ -25,7 +25,7 @@ class UtilTagsTestCase(TestCase):
             'request': self.request
         }
         value = format_currency(ctx, 'usd', 1.5)
-        self.assertEqual(value, '$1.5')
+        self.assertEqual(value, '$1.50')
 
     def test_format_currency_usd_en_gb(self):
         self.request.LANGUAGE_CODE = 'en-GB'
@@ -41,7 +41,7 @@ class UtilTagsTestCase(TestCase):
             'request': self.request
         }
         value = format_currency(ctx, 'aed', 1)
-        self.assertEqual(value, 'Dhs1')
+        self.assertEqual(value, 'AED1')
 
     def test_format_currency_aed_ar(self):
         self.request.LANGUAGE_CODE = 'ar'
@@ -49,7 +49,7 @@ class UtilTagsTestCase(TestCase):
             'request': self.request
         }
         value = format_currency(ctx, 'aed', 1)
-        self.assertEqual(value, 'د.إ1')
+        self.assertEqual(value, 'د.إ.‏ 1')
 
     def test_get_localised_symbol_usd_en_us(self):
         self.request.LANGUAGE_CODE = 'en-US'
