@@ -1,3 +1,4 @@
+from decimal import Decimal
 import json
 
 from django.test import TestCase, RequestFactory
@@ -81,3 +82,27 @@ class CampaignPageTestCase(TestCase):
             'single': [5, 2],
             'monthly': [15, 12],
         })
+
+    def test_initial_currency_context_includes_overrides(self):
+        CampaignPageDonationAmount.objects.create(
+            campaign=self.campaign_page,
+            currency='usd',
+            single_options=json.dumps([
+                {'type': 'amount', 'value': '5'},
+                {'type': 'amount', 'value': '2'},
+            ]),
+            monthly_options=json.dumps([
+                {'type': 'amount', 'value': '15'},
+                {'type': 'amount', 'value': '12'},
+            ])
+        )
+        request = RequestFactory().get('/?currency=usd')
+        ctx = self.campaign_page.get_context(request)
+        self.assertEqual(
+            ctx['initial_currency_info']['presets']['single'],
+            [Decimal(5), Decimal(2)]
+        )
+        self.assertEqual(
+            ctx['initial_currency_info']['presets']['monthly'],
+            [Decimal(15), Decimal(12)]
+        )
