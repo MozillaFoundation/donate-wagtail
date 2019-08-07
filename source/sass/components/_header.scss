@@ -14,13 +14,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 24px 20px;
+    padding: 24px $gutter;
     margin: 0 auto;
 
-    @include media-query(tablet-landscape) {
+    @include media-query(tablet-portrait) {
+      padding: 24px ($gutter);
     }
 
     @include media-query(desktop) {
+      padding: 24px $gutter;
       max-width: (
         $site-width--default + (20 * 2)
       ); // Allow for padding on container
@@ -32,7 +34,7 @@
     width: $logo-width-mobile;
     height: $logo-height-mobile;
 
-    @include media-query(tablet-landscape) {
+    @include media-query(tablet-portrait) {
       width: $logo-width-desktop;
       height: $logo-height-desktop;
     }
@@ -44,7 +46,7 @@
     height: $logo-height-mobile;
     background-color: $color--black;
 
-    @include media-query(tablet-landscape) {
+    @include media-query(tablet-portrait) {
       width: $logo-width-desktop;
       height: $logo-height-desktop;
     }
@@ -52,7 +54,7 @@
     &--desktop {
       display: none;
 
-      @include media-query(tablet-landscape) {
+      @include media-query(tablet-portrait) {
         display: block;
       }
     }
@@ -60,7 +62,7 @@
     &--mobile {
       display: block;
 
-      @include media-query(tablet-landscape) {
+      @include media-query(tablet-portrait) {
         display: none;
       }
     }

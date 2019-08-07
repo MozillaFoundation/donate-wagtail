@@ -28,6 +28,7 @@ $color--warning: $color--red;
 $color--positive: $color--blue;
 
 $color--default: $color--grey-80;
+$color--disabled: $color--grey-20;
 $color--link: $color--blue;
 $color--link-hover: darken($color--blue, 10%);
 
@@ -41,11 +42,12 @@ $weight--bold: 700;
 $weight--semibold: 600;
 $weight--medium: 500;
 $weight--normal: 400;
-$weight--light: 200;
+$weight--light: 300;
 
 // Font sizes
 $base-font-size: 16px;
 $base-line-height: 1.6;
+$base-line-height--mobile: 1.4;
 
 $font-sizes: (
   default: $base-font-size,
@@ -66,7 +68,9 @@ $breakpoints: (
   "mob-landscape" "(min-width: 480px)",
   "tablet-portrait" "(min-width: 768px)",
   "tablet-landscape" "(min-width: 1024px)",
-  "desktop" "(min-width: 1280px)",
+  "paypal-specific" "(min-width: 1090px)",
+  // needed for working with responsive paypal button
+    "desktop" "(min-width: 1280px)",
   "desktop-wide" "(min-width: 2556px)"
 );
 
@@ -82,7 +86,7 @@ $z-index: (
   header: 50,
   nav-desktop: 60,
   ui-overlay: 70,
-  8: 80,
+  sticky-message: 80,
   9: 90,
   modal: 100
 );
@@ -95,7 +99,7 @@ $site-width--default: 1100px;
 $site-width--large: 1200px;
 
 // Grid setup
-$grid: 20px;
+$grid: 16px;
 $gutter: $grid;
 
 // --------------------------------- Transitions --------------------------------------

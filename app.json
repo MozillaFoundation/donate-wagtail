@@ -38,6 +38,12 @@
     "BRAINTREE_MERCHANT_ID": {
       "required": true
     },
+    "BRAINTREE_MERCHANT_ACCOUNTS": {
+      "required": true
+    },
+    "BRAINTREE_PLANS": {
+      "required": true
+    },
     "BRAINTREE_TOKENIZATION_KEY": {
       "required": true
     },

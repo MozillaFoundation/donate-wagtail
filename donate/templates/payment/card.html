@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load i18n form_tags static %}
+{% load i18n form_tags static util_tags %}
 
 {% block title %}{% trans "Your information" %}{% endblock %}
 
@@ -15,34 +15,40 @@
                 <div class="notification notification--neutral">
                     <div class="notification__container">
                         <div class="notification__message">
-                            {% trans "You are donating" %} {{ currency_info.symbol }} {{ form.amount.value|floatformat:"-2" }}
+                            {% format_currency currency_info.code form.amount.value as formatted_amount %}
+                            {% if payment_frequency == 'monthly' %}
+                                {% blocktrans with formatted_amount=formatted_amount span_class='js-donation-value' %}You are donating <span class="{{ span_class }}">{{ formatted_amount }}</span> per month{% endblocktrans %}
+                            {% else %}
+                                {% blocktrans with formatted_amount=formatted_amount span_class='js-donation-value' %}You are donating <span class="{{ span_class }}">{{ formatted_amount }}</span>{% endblocktrans %}
+                            {% endif %}
                         </div>
                         <div class="notification__action">
-                            <a href="#donate__amount-edit" data-amount-toggle>{% trans "Change amount" %}</a>
+                            <a href="#donate__amount-edit" class="donation-update__toggle" data-amount-toggle>{% trans "Change amount" %}</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="donation-update" data-amount-actions>
-                    <div class="donation-update__container">
-                        <div class="form-item">
-                            <label for="donation-update">{{ currency_info.symbol }}</label>
-                            <input type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="1">
+                    <form class="donation-update__container" id="js-update-donation-amount-form" data-currency="{{ currency_info.code }}" data-locale="{% get_locale %}">
+                        <div class="donation-update__form-item form-item">
+                            <label class="donation-update__label form-item__label" for="donation-update">{% trans "Donation Amount" %}</label>
+                            <div class="donation-update__currency-symbol">{% get_localized_currency_symbol currency_info.code %}</div>
+                            <input class="donation-update__input form-item__input" id="js-update-donation-value" type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="1" required>
                         </div>
                         <div class="form-item">
-                            <button class="button button--primary">{% trans 'Confirm' %}</button>
+                            <button class="donation-update__action button button--primary button--large" id="js-update-button">{% trans 'Confirm' %}</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
-                <h1 class="heading heading--primary">{% trans "Your details" %}</h1>
+                <h1 class="heading heading--primary heading--bottom-margin">{% trans "Your Details" %}</h1>
 
             </div>
 
             <div class="donate__form-wrapper">
                 <form method="post" class="form" id="payments__braintree-form">
-                    <div class="form__container form__container--flex">
-                        <div class="form__section form__section--main-column">
+                    <div class="form__container">
+                        <div class="form__section form__section--bottom-margin">
                             {% csrf_token %}
 
                             {% if form.non_field_errors %}
@@ -64,51 +70,88 @@
                             {% endif %}
 
                             {% render_form_field form.amount %}
+                            {% render_form_field form.email %}
                             {% render_form_field form.first_name %}
                             {% render_form_field form.last_name %}
-                            {% render_form_field form.email %}
                             {% render_form_field form.address_line_1 %}
-                            {% render_form_field form.town %}
-                            {% render_form_field form.post_code %}
+                            <div class="form__group form__group--town-post">
+                                {% render_form_field form.post_code %}
+                                {% render_form_field form.town %}
+                            </div>
                             {% render_form_field form.country %}
 
-                            {% render_form_field form.braintree_nonce %}
-
                         </div>
 
-                        <div id="payments__braintree-errors-card" hidden></div>
+                        <div class="form__section">
 
-                        <div class="form-item">
-                            <label for="card-number">Card number</label>
-                            <div class="form-item__wrapper payments__braintree-hosted-field" id="card-number"></div>
-                        </div>
-
-                        <div class="form-item">
-                            <label for="cvv">Card security code</label>
-                            <div class="form-item__tooltip-wrapper">
-                                <div class="form-item__wrapper payments__braintree-hosted-field" id="cvv"></div>
+                            <div class="donate-form">
+                                <header class="donate-form__actions-header donate-form__actions-header--baseline">
+                                    <h2 class="donate-form__actions-heading heading heading--primary">{% trans "Payment" %}</h2>
+                                    <div class="donate-form__secure">
+                                        <svg class="donate-form__secure-icon" width="24" height="24">
+                                            <use xlink:href="#padlock"></use>
+                                        </svg>
+                                        <div class="donate-form__label">
+                                            {% trans "Secure" %}
+                                        </div>
+                                    </div>
+                                </header>
+                                {% render_form_field form.braintree_nonce %}
                             </div>
+
+                            <div id="payments__braintree-errors-card" hidden></div>
+
+                            <div class="form-item">
+                                <label class="form-item__label" for="card-number">Card number</label>
+                                <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="card-number"></div>
+                            </div>
+
+                            <div class="form__group form__group--two-col form__group--gutter">
+                                <div class="form-item">
+                                    <label class="form-item__label" for="expiration-date">Expiration date</label>
+                                    <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="expiration-date"></div>
+                                </div>
+
+                                <div class="form-item">
+                                    <label class="form-item__label" for="cvv">CVV</label>
+                                    <div class="form-item__tooltip-wrapper">
+                                        <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="cvv"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <footer class="donate-form__footer">
+                                <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel." %}</p>
+                            </footer>
+
                         </div>
 
-                        <div class="form-item">
-                            <label for="expiration-date">Expiration date</label>
-                            <div class="form-item__wrapper payments__braintree-hosted-field" id="expiration-date"></div>
-                        </div>
-
-                        <div class="form__section form__section--actions">
+                        <div class="form__section form__section--actions form__section--bottom-margin">
 
                             <button value="donate" class="button button--large button--full button--primary button--icon" id="payments__payment-submit" disabled>
                                 <svg class="button__icon" width="24" height="24">
                                     <use xlink:href="#padlock"></use>
                                 </svg>
-                                {% blocktrans with symbol=currency_info.symbol amount=form.amount.value|floatformat:"-2" %}Donate {{ symbol }} {{ amount }}{% endblocktrans %}
+                                <div class="button__label">
+                                    {% format_currency currency_info.code form.amount.value as formatted_amount %}
+                                    {% blocktrans with formatted_amount=formatted_amount %}Donate <span class="button__value js-donation-value">{{ formatted_amount }}</span>{% endblocktrans %}
+                                </div>
                             </button>
 
                         </div>
 
                         <footer class="donate__footer">
-                            {% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}
-                            LOGOS TBD
+                            <p class="introduction">{% trans 'Your donation helps keep the Web open and free. Thank you in advance for your gift' %}</p>
+                            <div class="logo-showcase">
+                                <div class="logo-showcase__container">
+                                    <div class="logo-showcase__item logo-item">
+                                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
+                                    </div>
+                                    <div class="logo-showcase__item logo-item">
+                                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
+                                    </div>
+                                </div>
+                            </div>
                         </footer>
 
                     </div>

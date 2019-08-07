@@ -14,6 +14,7 @@ from modelcluster.fields import ParentalKey
 
 from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
+from donate.payments.utils import get_default_currency
 
 
 class DonationPage(Page):
@@ -22,13 +23,29 @@ class DonationPage(Page):
     def currencies(self):
         return constants.CURRENCIES.copy()
 
+    def get_initial_currency(self, request):
+        # Query argument takes first preference
+        if request.GET.get('currency') in constants.CURRENCIES:
+            return request.GET['currency']
+        # Otherwise sniff based on browser language
+        return get_default_currency(request.META.get('HTTP_ACCEPT_LANGUAGE', ''))
+
+    def serve(self, request, *args, **kwargs):
+        response = super().serve(request, *args, **kwargs)
+        if request.GET.get('subscribed') == '1':
+            # Set a cookie that expires at the end of the session
+            response.set_cookie('subscribed', '1', httponly=True)
+        return response
+
     def get_context(self, request):
         ctx = super().get_context(request)
+        initial_currency = self.get_initial_currency(request)
         ctx.update({
             'currencies': self.currencies,
+            'initial_currency_info': self.currencies[initial_currency],
             'braintree_params': settings.BRAINTREE_PARAMS,
-            'braintree_form': BraintreePaypalPaymentForm(),
-            'currency_form': CurrencyForm(),
+            'braintree_form': BraintreePaypalPaymentForm(initial={'source_page_id': self.pk}),
+            'currency_form': CurrencyForm(initial={'currency': initial_currency}),
         })
         return ctx
 
@@ -66,10 +83,12 @@ class CampaignPage(DonationPage):
         related_name='+',
     )
     lead_text = models.CharField(max_length=800)
+    intro = RichTextField()
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('hero_image'),
         FieldPanel('lead_text'),
+        FieldPanel('intro'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
     ]
 

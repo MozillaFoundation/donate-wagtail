@@ -1,15 +1,29 @@
 .tabs {
-  &__item {
-    @include font-size(xs);
-    display: block;
-    padding: 18px 0;
+  &__label {
+    @include font-size(default);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $gutter 0;
     text-align: center;
     font-weight: $weight--bold;
-    letter-spacing: 0.86px;
-    line-height: 28px;
+    letter-spacing: 1.25px;
+    line-height: 1;
     text-transform: uppercase;
     color: $color--black;
     margin-right: ($gutter);
+    cursor: pointer;
+  }
+
+  &__label-text {
+    @include media-query(tablet-landscape) {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  &__radio-option {
+    margin-right: ($gutter / 2);
   }
 
   &__panel {

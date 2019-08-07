@@ -2,20 +2,41 @@
   $root: &;
 
   &__container {
-    margin-bottom: 20px;
+    margin-bottom: $gutter;
   }
 
   &__errors {
     @include font-size(s);
-    padding: 20px;
-    margin-bottom: 15px;
-    color: $color--white;
-    background-color: $color--tertiary;
+    padding: $gutter 0;
+    color: $color--warning;
+  }
+
+  &__group {
+    &--two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    &--gutter {
+      grid-gap: $gutter;
+    }
+    &--town-post {
+      display: grid;
+      grid-template-columns: 0.3fr 0.7fr;
+
+      .form-item:nth-of-type(2) {
+        input {
+          border-left: 0;
+        }
+      }
+    }
+    &--additional-info {
+      position: relative;
+    }
   }
 
   &__section {
-    &--actions {
-      margin-bottom: ($gutter * 2);
+    &--bottom-margin {
+      margin-bottom: ($gutter * 1.5);
     }
   }
 }

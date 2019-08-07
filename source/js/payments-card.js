@@ -80,6 +80,13 @@ function setupBraintree() {
         });
 
         submitButton.addEventListener("click", function(e) {
+          // Trigger browser form validation
+          if (
+            typeof (paymentForm.reportValidity !== "undefined") &&
+            !paymentForm.reportValidity()
+          ) {
+            return false;
+          }
           e.preventDefault();
           var state = hostedFieldsInstance.getState(),
             formValid = Object.keys(state.fields).every(function(key) {

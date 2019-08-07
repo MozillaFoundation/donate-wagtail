@@ -2,24 +2,30 @@
   $root: &;
   margin-bottom: 20px;
 
-  // sass-lint:disable class-name-format
   &--errors {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px dotted $color--red;
+    input:not([type="checkbox"]),
+    textarea {
+      border-color: $color--warning !important;
+    }
   }
 
   &--checkbox_input {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    #{$root}__wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
 
     label {
       order: 2;
       margin-bottom: 0;
       font-weight: normal;
+
+      .app--newsletter-signup & {
+        @include font-size(xxs);
+      }
     }
 
     input {
@@ -65,10 +71,13 @@
   }
 
   &__errors {
-    @include font-size(s);
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: $color--red;
+    @include font-size(xxs);
+    color: $color--warning;
+    padding-top: ($gutter / 4);
+  }
+
+  &__standalone-error {
+    border-color: $color--warning !important;
   }
 
   &__help {
@@ -78,8 +87,7 @@
   }
 
   input:not([type="checkbox"]),
-  textarea,
-  select {
+  textarea {
     width: 100%;
     padding: ($gutter * 0.75) ($gutter);
     border: 1px solid $color--border;
@@ -94,5 +102,31 @@
   input[type="checkbox"] {
     margin-right: 10px;
   }
-  // sass-lint:enddisable
+
+  &__dummy-placeholder {
+    // Used for braintree hosted fields
+    height: 57px;
+    background-color: $color--white;
+    padding: 15px 20px;
+    border: 1px solid $color--border;
+    width: 100%;
+  }
+
+  &__input-additional-info {
+    @include font-size(m);
+    position: absolute;
+    right: ($gutter * 2);
+    top: 39px; // ensure it sits in the middle of associated input
+    pointer-events: none;
+    color: $color--grey-40;
+
+    @include media-query(tablet-portrait) {
+      top: 42px; // ensure it sits in the middle of associated input
+    }
+  }
+
+  .donate-form__currency & {
+    // override as can't apply modifier class due to form being added
+    margin-bottom: 0;
+  }
 }

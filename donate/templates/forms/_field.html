@@ -1,4 +1,4 @@
-<div class="form-item__wrapper">
+<div class="form-item__wrapper {% if widget_type == 'select' or widget_type == 'lazy_select' %}form-custom-select{% endif %}">
 
     {{ field }}
 

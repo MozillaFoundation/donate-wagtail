@@ -14,12 +14,49 @@
   &--primary {
     background-color: $color--primary;
     color: $color--white;
+    text-align: center;
     transition: background-color $transition;
 
     &:hover,
     &:active,
     &:focus {
+      color: $color--white;
       background-color: darken($color--primary, 5%);
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+      background-color: $color--disabled;
+    }
+  }
+
+  &--secondary {
+    background-color: $color--grey-40;
+    text-align: center;
+    color: $color--white;
+    transition: background-color $transition;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color--white;
+      background-color: darken($color--grey-40, 5%);
+    }
+  }
+
+  &--outline {
+    @include font-size(default);
+    border: 2px solid $color--black;
+    color: $color--black;
+    padding: ($gutter * 0.75) ($gutter / 2);
+    transition: border-color $transition;
+    font-weight: $weight--bold;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color--black;
+      border-color: $color--primary;
     }
   }
 
@@ -27,15 +64,31 @@
     width: 100%;
   }
 
+  &--medium {
+    padding: ($gutter / 2) ($gutter * 0.75);
+  }
+
   &--large {
     @include font-size(m);
     padding: ($gutter * 0.75);
     font-weight: $weight--semibold;
+
+    .donate-form__actions-buttons & {
+      @include media-query(tablet-landscape) {
+        padding: 0 ($gutter * 0.75);
+      }
+    }
   }
 
-  &__icon {
-    fill: $color--white;
-    margin-right: ($gutter / 4);
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &--icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
   }
 
   &--rounded {
@@ -54,9 +107,36 @@
     justify-content: center;
   }
 
+  &__icon {
+    #{$root}--icon & {
+      margin-right: ($gutter / 2);
+    }
+    #{$root}--primary & {
+      margin-right: ($gutter / 4);
+      fill: $color--white;
+    }
+  }
+
   &__icon-item {
     margin: 0 ($gutter / 4);
-    height: 18px;
+    height: 13px;
     width: auto;
+
+    @include media-query(tablet-portrait) {
+      height: 18px;
+    }
+
+    &--amex {
+      .amex-disabled & {
+        display: none;
+      }
+    }
+  }
+
+  &__group {
+    display: grid;
+    grid-gap: ($gutter * 0.75);
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: $gutter;
   }
 }

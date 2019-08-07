@@ -5,15 +5,24 @@
     background-color: $color--light-red;
     color: $color--white;
   }
+  &__button {
+    height: 45px;
+    overflow: hidden;
 
-  &__braintree-hosted-field {
-    height: 52px;
-    background-color: $color--grey-05;
-    padding: 10px;
-    border: 1px solid $color--grey-40;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 370px;
+    @include media-query(tablet-landscape) {
+      height: 35px;
+    }
+
+    @include media-query(paypal-specific) {
+      height: 45px;
+    }
+
+    &--paypal {
+      border-radius: 4px;
+      .paypal-disabled & {
+        display: none;
+      }
+    }
   }
 }
 
