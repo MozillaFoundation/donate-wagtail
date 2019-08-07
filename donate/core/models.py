@@ -19,6 +19,29 @@ from donate.payments.utils import get_default_currency
 
 class DonationPage(Page):
 
+    PROJECT_MOZILLAFOUNDATION = 'mozillafoundation'
+    PROJECT_THUNDERBIRD = 'thunderbird'
+    PROJECT_CHOICES = (
+        (PROJECT_MOZILLAFOUNDATION, 'Mozilla Foundation'),
+        (PROJECT_THUNDERBIRD, 'Thunderbird'),
+    )
+
+    project = models.CharField(
+        max_length=25,
+        choices=PROJECT_CHOICES,
+        default=PROJECT_MOZILLAFOUNDATION,
+        help_text='The project that donations from this campaign should be associated with'
+    )
+    campaign_id = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Used for analytics and reporting'
+    )
+
+    settings_panels = Page.settings_panels + [
+        FieldPanel('campaign_id'),
+    ]
+
     @cached_property
     def currencies(self):
         return constants.CURRENCIES.copy()
@@ -68,6 +91,7 @@ class LandingPage(DonationPage):
     intro = RichTextField()
 
     content_panels = Page.content_panels + [
+        FieldPanel('project'),
         ImageChooserPanel('featured_image'),
         FieldPanel('intro'),
     ]
@@ -86,6 +110,7 @@ class CampaignPage(DonationPage):
     intro = RichTextField()
 
     content_panels = Page.content_panels + [
+        FieldPanel('project'),
         ImageChooserPanel('hero_image'),
         FieldPanel('lead_text'),
         FieldPanel('intro'),
