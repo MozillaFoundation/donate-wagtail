@@ -94,7 +94,7 @@ For this project, we're only using the `donation` event type.
 
 ### Donation event type
 
-Example of a donation message sent to Basket:
+Example of a donation message sent to Basket, via SQS:
 
 ```
 { event_type: 'donation',
@@ -136,7 +136,7 @@ Example of a donation message sent to Basket:
 
 ### Newsletter signup
 
-We're using Basket newsletter API to signup people to our newsletter. Specs are available in [Basket's documentation](https://basket.readthedocs.io/newsletter_api.html#news-subscribe)
+We're using Basket newsletter HTTP API to signup people to our newsletter. Specs are available in [Basket's documentation](https://basket.readthedocs.io/newsletter_api.html#news-subscribe). (Note that this is different than the SQS approach used for donation events) 
 
 Example from donate.mozilla.org:
 ```
