@@ -450,16 +450,17 @@ class PaypalPaymentViewTestCase(TestCase):
             'price': Decimal(10),
         })
 
-    def test_failed_customer_creation_calls_error_processor(self):
+    def test_failed_customer_creation_calls_form_invalid(self):
         self.form_data['frequency'] = 'monthly'
         form = BraintreePaypalPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = False
-            response = self.view.form_valid(form)
+            with mock.patch.object(PaypalPaymentView, 'form_invalid') as mock_form_invalid:
+                self.view.form_valid(form)
 
-        self.assertTrue(response.status_code, 200)
+        mock_form_invalid.assert_called_once()
 
     def test_get_transaction_details_for_session(self):
         self.form_data['frequency'] = 'monthly'
@@ -496,6 +497,20 @@ class PaypalPaymentViewTestCase(TestCase):
             self.view.get_success_url(),
             reverse('payments:newsletter_signup')
         )
+
+    def test_form_invalid_redirects_to_referrer(self):
+        self.view.request.META['HTTP_REFERER'] = f'http://{self.view.request.get_host()}'
+        with mock.patch('donate.payments.views.messages', autospec=True):
+            response = self.view.form_invalid(BraintreePaypalPaymentForm())
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], f'http://{self.view.request.get_host()}')
+
+    def test_form_invalid_redirects_to_home_if_unsafe_referrer(self):
+        self.view.request.META['HTTP_REFERER'] = 'https://example.com'
+        with mock.patch('donate.payments.views.messages', autospec=True):
+            response = self.view.form_invalid(BraintreePaypalPaymentForm())
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], '/')
 
 
 class TransactionRequiredMixinTestCase(TestCase):

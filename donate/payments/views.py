@@ -1,8 +1,10 @@
 import logging
 
 from django.conf import settings
+from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from django.utils.http import is_safe_url
 from django.utils.timezone import now
 from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
@@ -276,8 +278,8 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
 
 class PaypalPaymentView(BraintreePaymentMixin, FormView):
     form_class = BraintreePaypalPaymentForm
-    frequency = None
-    template_name = 'payment/paypal.html'       # This is only rendered if we have an error
+    generic_error_message = _('Something went wrong. We were unable to process your payment.')
+    http_method_names = ['post']
 
     def form_valid(self, form, send_data_to_basket=True):
         self.payment_frequency = form.cleaned_data['frequency']
@@ -308,7 +310,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                     'Failed to create Braintree customer: {}'.format(result.message),
                     extra={'result': result}
                 )
-                return self.process_braintree_error_result(result, form)
+                return self.form_invalid(form)
 
             # Create a subcription against the payment method
             result = gateway.subscription.create({
@@ -325,10 +327,23 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 'Failed Braintree transaction: {}'.format(result.message),
                 extra={'result': result}
             )
-            return self.process_braintree_error_result(result, form)
+            return self.form_invalid(form)
 
-    def process_braintree_error_result(self, result, form):
-        return self.get(self.request)
+    def form_invalid(self, form):
+        messages.error(self.request, self.generic_error_message)
+        return self.redirect_to_source_url()
+
+    def redirect_to_source_url(self):
+        # Redirect back to the page that the form was submitted from.
+        # The CSRF middleware will reject the request if no valid referrer is set, so
+        # there in no possibility of this being empty. The is_safe_url
+        # check is also redundant, but we do it just to be sure.
+        referrer = self.request.META['HTTP_REFERER']
+        if is_safe_url(referrer, allowed_hosts={self.request.get_host()}):
+            return HttpResponseRedirect(referrer)
+
+        # If for some reason the referrer was invalid, redirect back to the home page
+        return HttpResponseRedirect('/')
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
