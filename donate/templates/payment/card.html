@@ -120,9 +120,11 @@
                                 </div>
                             </div>
 
+                            {% if payment_frequency == 'monthly' %}
                             <footer class="donate-form__footer">
                                 <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel." %}</p>
                             </footer>
+                            {% endif %}
 
                         </div>
 
