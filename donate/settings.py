@@ -17,6 +17,8 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, []),
     ASSET_DOMAIN=(str, ''),
     AWS_LOCATION=(str, ''),
+    AWS_ACCESS_KEY_ID=(str, ''),
+    AWS_SECRET_ACCESS_KEY=(str, ''),
     CONTENT_TYPE_NO_SNIFF=bool,
     CORS_REGEX_WHITELIST=(tuple, ()),
     CORS_WHITELIST=(tuple, ()),
@@ -39,6 +41,9 @@ env = environ.Env(
     BRAINTREE_TOKENIZATION_KEY=(str, ''),
     BRAINTREE_MERCHANT_ACCOUNTS=(dict, {}),
     BRAINTREE_PLANS=(dict, {}),
+    # Basket and SQS
+    BASKET_API_ROOT_URL=(str, ''),
+    BASKET_SQS_QUEUE_URL=(str, ''),
 )
 
 # Read in the environment
@@ -251,16 +256,18 @@ STATICFILES_DIRS = [app('frontend')]
 STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
 
+# S3 credentials for SQS and S3
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_LOCATION = env('AWS_LOCATION')
+
 # Storage for user generated files
 USE_S3 = env('USE_S3')
 if USE_S3:
     # Use S3 to store user files if the corresponding environment var is set
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
-    AWS_LOCATION = env('AWS_LOCATION')
     MEDIA_URL = 'https://' + AWS_S3_CUSTOM_DOMAIN + '/'
     MEDIA_ROOT = ''
     # This is a workaround for https://github.com/wagtail/wagtail/issues/3206
@@ -395,6 +402,10 @@ BRAINTREE_PARAMS = {
     'use_sandbox': BRAINTREE_USE_SANDBOX,
     'token': BRAINTREE_TOKENIZATION_KEY,
 }
+
+# Basket
+BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL') or None
+BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
 
 # Wagtail settings
 

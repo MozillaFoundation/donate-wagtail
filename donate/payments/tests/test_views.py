@@ -25,6 +25,8 @@ from ..exceptions import InvalidAddress
 
 class MockBraintreeTransaction:
     id = 'transaction-id-1'
+    disbursement_details = mock.MagicMock()
+    disbursement_details.settlement_amount = Decimal(10)
 
 
 class MockBraintreeResult:
@@ -38,6 +40,7 @@ class MockBraintreeSubscription:
 
 class MockBraintreePaymentMethod:
     token = 'payment-method-1'
+    last_4 = '1234'
 
 
 class MockBraintreeCustomer:
@@ -72,11 +75,14 @@ class BraintreeMixinTestCase(TestCase):
         view = BraintreeMixinTestView()
         view.request = RequestFactory().get('/')
         view.request.session = {}
-        view.success(MockBraintreeResult(), form)
+        view.request.LANGUAGE_CODE = 'en-US'
+        view.success(MockBraintreeResult(), form, send_data_to_basket=False)
 
         self.assertEqual(view.request.session['completed_transaction_details'], {
             'amount': '50',
             'some': 'data',
+            'locale': 'en-US',
+            'source_page_id': 3,
         })
         self.assertEqual(view.request.session['source_page_id'], 3)
 
@@ -98,6 +104,7 @@ class CardPaymentViewTestCase(TestCase):
 
         self.request = RequestFactory().get('/')
         self.request.session = {}
+        self.request.LANGUAGE_CODE = 'en-US'
         self.view = CardPaymentView()
         self.view.payment_frequency = 'single'
         self.view.currency = 'usd'
@@ -283,7 +290,7 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
             with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-                self.view.form_valid(form)
+                self.view.form_valid(form, send_data_to_basket=False)
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'merchant_account_id': 'usd-ac',
@@ -293,12 +300,6 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
                 'submit_for_settlement': True,
             }
         })
-
-    def test_get_transaction_id(self):
-        self.assertEqual(
-            self.view.get_transaction_id(MockBraintreeResult()),
-            'transaction-id-1'
-        )
 
     def test_get_success_url(self):
         self.assertEqual(
@@ -312,7 +313,10 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         details = self.view.get_transaction_details_for_session(
             MockBraintreeResult(),
             form,
-            payment_method_token='token-1'
+            payment_method_token='token-1',
+            transaction_id='transaction-id-1',
+            last_4='1234',
+            settlement_amount=Decimal(10),
         )
 
         expected_details = self.form_data.copy()
@@ -322,6 +326,8 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             'payment_frequency': 'single',
             'payment_method_token': 'token-1',
             'currency': 'usd',
+            'last_4': '1234',
+            'settlement_amount': Decimal(10),
         })
         self.assertEqual(details, expected_details)
 
@@ -340,7 +346,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
             with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-                self.view.form_valid(form)
+                self.view.form_valid(form, send_data_to_basket=False)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
@@ -360,12 +366,6 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         self.assertFalse(form.is_valid())
         self.assertTrue(response.status_code, 200)
 
-    def test_get_transaction_id(self):
-        self.assertEqual(
-            self.view.get_transaction_id(MockBraintreeSubscriptionResult()),
-            'subscription-id-1'
-        )
-
     def test_get_success_url(self):
         self.assertEqual(
             self.view.get_success_url(),
@@ -378,7 +378,9 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         details = self.view.get_transaction_details_for_session(
             MockBraintreeSubscriptionResult(),
             form,
-            payment_method_token='token-1'
+            payment_method_token='token-1',
+            transaction_id='subscription-id-1',
+            last_4='1234',
         )
 
         expected_details = self.form_data.copy()
@@ -388,6 +390,8 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             'payment_frequency': 'monthly',
             'payment_method_token': 'token-1',
             'currency': 'usd',
+            'last_4': '1234',
+            'settlement_amount': None,
         })
         self.assertEqual(details, expected_details)
 
@@ -397,6 +401,7 @@ class PaypalPaymentViewTestCase(TestCase):
     def setUp(self):
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
+        self.request.LANGUAGE_CODE = 'en-US'
         self.view = PaypalPaymentView()
         self.view.request = self.request
         self.form_data = {
@@ -413,7 +418,7 @@ class PaypalPaymentViewTestCase(TestCase):
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.transaction.sale.return_value = MockBraintreeResult()
-            self.view.form_valid(form)
+            self.view.form_valid(form, send_data_to_basket=False)
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'amount': 10,
@@ -431,7 +436,7 @@ class PaypalPaymentViewTestCase(TestCase):
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
             mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
-            self.view.form_valid(form)
+            self.view.form_valid(form, send_data_to_basket=False)
 
         mock_gateway.customer.create.assert_called_once_with({
             'payment_method_nonce': 'hello-braintree',
@@ -445,16 +450,17 @@ class PaypalPaymentViewTestCase(TestCase):
             'price': Decimal(10),
         })
 
-    def test_failed_customer_creation_calls_error_processor(self):
+    def test_failed_customer_creation_calls_form_invalid(self):
         self.form_data['frequency'] = 'monthly'
         form = BraintreePaypalPaymentForm(self.form_data)
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = False
-            response = self.view.form_valid(form)
+            with mock.patch.object(PaypalPaymentView, 'form_invalid') as mock_form_invalid:
+                self.view.form_valid(form)
 
-        self.assertTrue(response.status_code, 200)
+        mock_form_invalid.assert_called_once()
 
     def test_get_transaction_details_for_session(self):
         self.form_data['frequency'] = 'monthly'
@@ -470,6 +476,7 @@ class PaypalPaymentViewTestCase(TestCase):
                 'payment_method': 'paypal',
                 'payment_frequency': 'monthly',
                 'currency': 'usd',
+                'settlement_amount': None,
             }
         )
 
@@ -490,6 +497,20 @@ class PaypalPaymentViewTestCase(TestCase):
             self.view.get_success_url(),
             reverse('payments:newsletter_signup')
         )
+
+    def test_form_invalid_redirects_to_referrer(self):
+        self.view.request.META['HTTP_REFERER'] = f'http://{self.view.request.get_host()}'
+        with mock.patch('donate.payments.views.messages', autospec=True):
+            response = self.view.form_invalid(BraintreePaypalPaymentForm())
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], f'http://{self.view.request.get_host()}')
+
+    def test_form_invalid_redirects_to_home_if_unsafe_referrer(self):
+        self.view.request.META['HTTP_REFERER'] = 'https://example.com'
+        with mock.patch('donate.payments.views.messages', autospec=True):
+            response = self.view.form_invalid(BraintreePaypalPaymentForm())
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], '/')
 
 
 class TransactionRequiredMixinTestCase(TestCase):
@@ -528,6 +549,7 @@ class CardUpsellViewTestCase(TestCase):
 
     def setUp(self):
         self.request = RequestFactory().get('/')
+        self.request.LANGUAGE_CODE = 'en-US'
         self.request.session = {
             'completed_transaction_details': {
                 'first_name': 'Alice',
@@ -572,7 +594,7 @@ class CardUpsellViewTestCase(TestCase):
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-            self.view.form_valid(form)
+            self.view.form_valid(form, send_data_to_basket=False)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
@@ -627,6 +649,7 @@ class PaypalUpsellViewTestCase(TestCase):
             },
             'source_page_id': 3,
         }
+        self.request.LANGUAGE_CODE = 'en-US'
         self.view = PaypalUpsellView()
         self.view.request = self.request
 
@@ -658,7 +681,7 @@ class PaypalUpsellViewTestCase(TestCase):
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
             mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
-            self.view.form_valid(form)
+            self.view.form_valid(form, send_data_to_basket=False)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
