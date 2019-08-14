@@ -1,0 +1,5 @@
+{% if messages %}
+    {% for message in messages %}
+    <div class="messages messages__{{ message.level }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
