@@ -24,6 +24,7 @@ braintree = "*"
 django-countries = "*"
 freezegun = "*"
 babel = "*"
+rq = "*"
 
 [requires]
 python_version = "3.7"

@@ -12,3 +12,7 @@ BRAINTREE_PLANS = {
     'usd': 'usd-plan',
     'gbp': 'gbp-plan',
 }
+
+BASKET_API_ROOT_URL = 'http://localhost'
+BASKET_SQS_QUEUE_URL = 'sqs.us-east-1.amazonaws.com/1234567890/test'
+AWS_LOCATION = 'us-east-1'
