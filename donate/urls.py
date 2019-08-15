@@ -1,6 +1,5 @@
 from django.apps import apps
 from django.conf import settings
-from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.cache import cache_page
@@ -12,6 +11,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from donate.payments import urls as payments_urls
+from donate.core.utils import i18n_patterns
 
 # Patterns not subject to i18n
 urlpatterns = [
