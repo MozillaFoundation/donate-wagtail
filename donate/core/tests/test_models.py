@@ -1,6 +1,7 @@
 from decimal import Decimal
 import json
 
+from django.conf import settings
 from django.test import TestCase, RequestFactory
 
 from wagtail.core.models import Page
@@ -47,6 +48,28 @@ class DonationPageTestCase(TestCase):
         )
         response = page.serve(request)
         self.assertNotIn('subscribed', response.cookies)
+
+    def test_get_context(self):
+        request = RequestFactory().get('/')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+            project='mozillafoundation',
+            campaign_id='pi_day',
+        )
+        ctx = page.get_context(request)
+
+        self.assertEqual(ctx['currencies'], page.currencies)
+        self.assertEqual(ctx['initial_currency_info'], page.currencies['usd'])
+        self.assertEqual(ctx['braintree_params'], settings.BRAINTREE_PARAMS)
+        self.assertEqual(ctx['braintree_form'].initial, {
+            'source_page_id': page.pk,
+            'landing_url': request.build_absolute_uri(),
+            'project': page.project,
+            'campaign_id': page.campaign_id,
+        })
 
 
 class CampaignPageTestCase(TestCase):

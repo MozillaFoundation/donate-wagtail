@@ -54,9 +54,9 @@ def send_transaction_to_basket(data):
         'recurring': data['payment_frequency'] == constants.FREQUENCY_MONTHLY,
         'service': data['payment_method'],
         'transaction_id': data['transaction_id'],
-        'project': 'mozillafoundation',   # TODO switch based on campaign
+        'project': data['project'],
         'last_4': data.get('last_4', None),
-        'donation_url': '',   # TODO obtain campaign URL
+        'donation_url': data['landing_url'],
         'locale': data['locale'],
         'conversion_amount': data.get('settlement_amount', None),
     }

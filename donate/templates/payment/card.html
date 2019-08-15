@@ -69,7 +69,6 @@
                                 </div>
                             {% endif %}
 
-                            {% render_form_field form.amount %}
                             {% render_form_field form.email %}
                             {% render_form_field form.first_name %}
                             {% render_form_field form.last_name %}
@@ -80,6 +79,9 @@
                             </div>
                             {% render_form_field form.country %}
 
+                            {% for field in form.hidden_fields %}
+                                {{ field }}
+                            {% endfor %}
                         </div>
 
                         <div class="form__section">
@@ -96,7 +98,6 @@
                                         </div>
                                     </div>
                                 </header>
-                                {% render_form_field form.braintree_nonce %}
                             </div>
 
                             <div id="payments__braintree-errors-card" hidden></div>

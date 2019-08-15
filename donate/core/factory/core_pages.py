@@ -17,6 +17,8 @@ class LandingPageFactory(PageFactory):
         model = LandingPage
 
     title = Faker('text', max_nb_chars=140)
+    campaign_id = Faker('text', max_nb_chars=140)
+    project = 'mozillafoundation'
     intro = Faker('paragraph', nb_sentences=5, variable_nb_sentences=True)
     featured_image = SubFactory(ImageFactory)
 

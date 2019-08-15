@@ -29,7 +29,10 @@ class BraintreePaymentMixin:
     success_url = reverse_lazy('payments:newsletter_signup')
 
     def get_custom_fields(self, form):
-        return {}
+        return {
+            'project': self.request.session.get('project', 'mozillafoundation'),
+            'campaign_id': self.request.session.get('campaign_id', ''),
+        }
 
     def get_merchant_account_id(self, currency):
         return settings.BRAINTREE_MERCHANT_ACCOUNTS[currency]
@@ -46,15 +49,23 @@ class BraintreePaymentMixin:
     def process_braintree_error_result(result, form):
         raise NotImplementedError()
 
+    def save_campaign_parameters_to_session(self, form):
+        # These are stored in the session so that they can be used to track upsell transactions as well
+        self.request.session['landing_url'] = form.cleaned_data['landing_url']
+        self.request.session['campaign_id'] = form.cleaned_data['campaign_id']
+        self.request.session['project'] = form.cleaned_data['project']
+
     def success(self, result, form, send_data_to_basket=True, **kwargs):
         # Store details of the transaction in a session variable
         details = self.get_transaction_details_for_session(result, form, **kwargs)
-        source_page_id = self.get_source_page_id()
-        details['source_page_id'] = source_page_id
-        details['locale'] = self.request.LANGUAGE_CODE
+        details.update({
+            'source_page_id': self.get_source_page_id(),
+            'locale': self.request.LANGUAGE_CODE,
+            'landing_url': self.request.session.get('landing_url', ''),
+            'project': self.request.session.get('project', ''),
+        })
         details = freeze_transaction_details_for_session(details)
         self.request.session['completed_transaction_details'] = details
-        self.request.session['source_page_id'] = source_page_id
         if send_data_to_basket:
             queue.enqueue(send_transaction_to_basket, details)
         return HttpResponseRedirect(self.get_success_url())
@@ -80,8 +91,12 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_initial(self):
+        donation_page = Page.objects.get(pk=self.source_page_id).specific
         return {
-            'amount': self.amount
+            'amount': self.amount,
+            'landing_url': self.request.META.get('HTTP_REFERER', ''),
+            'project': donation_page.project,
+            'campaign_id': donation_page.campaign_id,
         }
 
     def get_context_data(self, **kwargs):
@@ -161,6 +176,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         return self.form_invalid(form)
 
     def form_valid(self, form, send_data_to_basket=True):
+        self.save_campaign_parameters_to_session(form)
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             return self.process_single_transaction(form, send_data_to_basket=send_data_to_basket)
         else:
@@ -282,6 +298,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
     http_method_names = ['post']
 
     def form_valid(self, form, send_data_to_basket=True):
+        self.save_campaign_parameters_to_session(form)
         self.payment_frequency = form.cleaned_data['frequency']
         self.currency = form.cleaned_data['currency']
         self.source_page_id = form.cleaned_data['source_page_id']
@@ -381,15 +398,6 @@ class TransactionRequiredMixin:
         if not request.session.get('completed_transaction_details'):
             return HttpResponseRedirect('/')
         return super().dispatch(request, *args, **kwargs)
-
-    def get_source_page(self):
-        source_page_id = self.request.session.get('source_page_id')
-        try:
-            return Page.objects.live().get(pk=source_page_id).specific
-        except Page.DoesNotExist:
-            # This is an edge case where the page has been unpublished/deleted
-            # after someone initiated a payment from it.
-            pass
 
 
 class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
