@@ -50,8 +50,8 @@ class DonationPage(Page):
         # Query argument takes first preference
         if request.GET.get('currency') in constants.CURRENCIES:
             return request.GET['currency']
-        # Otherwise sniff based on browser language
-        return get_default_currency(request.META.get('HTTP_ACCEPT_LANGUAGE', ''))
+        # Otherwise use the language code determined by Django
+        return get_default_currency(getattr(request, 'LANGUAGE_CODE', ''))
 
     def serve(self, request, *args, **kwargs):
         response = super().serve(request, *args, **kwargs)

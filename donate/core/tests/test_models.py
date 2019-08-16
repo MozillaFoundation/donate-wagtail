@@ -18,11 +18,12 @@ class DonationPageTestCase(TestCase):
             'gbp'
         )
 
-    def test_get_initial_currency_uses_header(self):
-        request = RequestFactory().get('/', HTTP_ACCEPT_LANGUAGE='es-CL;q=0.9')
+    def test_get_initial_currency_uses_locale(self):
+        request = RequestFactory().get('/')
+        request.LANGUAGE_CODE = 'es-mx'
         self.assertEqual(
             DonationPage().get_initial_currency(request),
-            'clp'
+            'mxn'
         )
 
     def test_serve_sets_subscribed_cookie(self):
