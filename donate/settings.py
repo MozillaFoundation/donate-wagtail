@@ -44,6 +44,10 @@ env = environ.Env(
     # Basket and SQS
     BASKET_API_ROOT_URL=(str, ''),
     BASKET_SQS_QUEUE_URL=(str, ''),
+    # Recaptcha
+    RECAPTCHA_SITE_KEY=(str, ''),
+    RECAPTCHA_SECRET_KEY=(str, ''),
+    RECAPTCHA_ENABLED=(bool, False),
 )
 
 # Read in the environment
@@ -70,6 +74,7 @@ INSTALLED_APPS = [
     'donate.users',
     'donate.core',
     'donate.payments',
+    'donate.recaptcha',
 
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -406,6 +411,11 @@ BRAINTREE_PARAMS = {
 # Basket
 BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL') or None
 BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
+
+# Recaptcha
+RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
+RECAPTCHA_SECRET_KEY = env('RECAPTCHA_SECRET_KEY')
+RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
 
 # Wagtail settings
 

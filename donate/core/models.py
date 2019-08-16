@@ -76,6 +76,7 @@ class DonationPage(Page):
                 }
             ),
             'currency_form': CurrencyForm(initial={'currency': initial_currency}),
+            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.RECAPTCHA_ENABLED else None,
         })
         return ctx
 

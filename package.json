@@ -18,7 +18,7 @@
     "optimize": "run-p optimize:**",
     "server": "pipenv run python manage.py runserver",
     "start": "run-p build-uncompressed server watch:**",
-    "test:eslint": "eslint --config ./.eslintrc.json \"source/js/**/*.js\" webpack.config.js",
+    "test:eslint": "eslint --fix --config ./.eslintrc.json \"source/js/**/*.js\" webpack.config.js",
     "test:scss": "stylelint \"source/sass/**/*.scss\" \"source/js/**/*.scss\" --syntax scss",
     "test:scss:styleguide:color": "stylelint \"source/sass/**/*.scss\" \"source/js/**/*.scss\" \"!source/sass/**/_variables.scss\" \"!source/sass/**/_normalize.scss\" --syntax scss --config .stylelintrc-colors.js",
     "test": "run-s test:** build",
