@@ -106,6 +106,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'braintree_params': settings.BRAINTREE_PARAMS,
             'payment_frequency': self.payment_frequency,
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
+            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.RECAPTCHA_ENABLED else None,
         })
         return ctx
 

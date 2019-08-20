@@ -1,9 +1,12 @@
 import client from "braintree-web/client";
 import hostedFields from "braintree-web/hosted-fields";
+import expectRecaptcha from "./components/recaptcha";
 
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
+    captchaInput = document.getElementById("id_captcha"),
+    captchaEnabled = captchaInput !== null,
     submitButton = document.getElementById("payments__payment-submit"),
     loadingErrorMsg =
       "An error occurred. Please reload the page or try again later.",
@@ -108,7 +111,11 @@ function setupBraintree() {
               }
 
               nonceInput.value = payload.nonce;
-              paymentForm.submit();
+              if (captchaEnabled) {
+                expectRecaptcha(window.grecaptcha.execute);
+              } else {
+                paymentForm.submit();
+              }
             });
           } else {
             showErrorMessage(
@@ -121,6 +128,20 @@ function setupBraintree() {
   }
 
   initHostedFields();
+
+  // Set up recaptcha
+  expectRecaptcha(() => {
+    window.grecaptcha.render("g-recaptcha", {
+      sitekey: document
+        .getElementById("g-recaptcha")
+        .getAttribute("data-public-key"),
+      size: "invisible",
+      callback: token => {
+        captchaInput.value = token;
+        paymentForm.submit();
+      }
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {

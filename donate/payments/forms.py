@@ -1,8 +1,11 @@
 from django import forms
+from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from django_countries.fields import CountryField
+
+from donate.recaptcha.fields import ReCaptchaField
 
 from . import constants
 
@@ -34,11 +37,17 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     post_code = forms.CharField(label=_('ZIP Code'))
     country = CountryField().formfield(initial='US')
 
+    if settings.RECAPTCHA_ENABLED:
+        captcha = ReCaptchaField()
+
 
 class BraintreePaypalPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
+
+    if settings.RECAPTCHA_ENABLED:
+        captcha = ReCaptchaField()
 
 
 class CurrencyForm(forms.Form):
