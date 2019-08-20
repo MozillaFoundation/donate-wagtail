@@ -9,9 +9,7 @@ from django.views.generic import FormView
 from braintree import ErrorCodes, ErrorResult
 from freezegun import freeze_time
 from freezegun.api import FakeDate
-from wagtail.core.models import Page
 
-from donate.core.factory.core_pages import LandingPageFactory
 from ..forms import (
     BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm,
     BraintreePaypalUpsellForm, UpsellForm
@@ -59,7 +57,6 @@ class BraintreeMixinTestView(BraintreePaymentMixin, FormView):
     def get_transaction_details_for_session(self, result, form):
         return {
             'amount': '50',
-            'some': 'data'
         }
 
     def get_source_page_id(self):
@@ -74,17 +71,20 @@ class BraintreeMixinTestCase(TestCase):
 
         view = BraintreeMixinTestView()
         view.request = RequestFactory().get('/')
-        view.request.session = {}
+        view.request.session = {
+            'landing_url': 'http://localhost',
+            'project': 'thunderbird',
+        }
         view.request.LANGUAGE_CODE = 'en-US'
         view.success(MockBraintreeResult(), form, send_data_to_basket=False)
 
         self.assertEqual(view.request.session['completed_transaction_details'], {
             'amount': '50',
-            'some': 'data',
             'locale': 'en-US',
             'source_page_id': 3,
+            'landing_url': 'http://localhost',
+            'project': 'thunderbird',
         })
-        self.assertEqual(view.request.session['source_page_id'], 3)
 
 
 class CardPaymentViewTestCase(TestCase):
@@ -100,6 +100,9 @@ class CardPaymentViewTestCase(TestCase):
             'country': 'US',
             'amount': Decimal(50),
             'braintree_nonce': 'hello-braintree',
+            'landing_url': 'http://localhost',
+            'project': 'mozillafoundation',
+            'campaign_id': 'pi_day',
         }
 
         self.request = RequestFactory().get('/')
@@ -238,7 +241,7 @@ class CardPaymentViewTestCase(TestCase):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
         custom_fields = self.view.get_custom_fields(form)
-        self.assertEqual(custom_fields, {})
+        self.assertEqual(custom_fields, {'campaign_id': '', 'project': 'mozillafoundation'})
 
     def test_get_address_info(self):
         info = self.view.get_address_info(self.form_data)
@@ -261,7 +264,7 @@ class CardPaymentViewTestCase(TestCase):
             'last_name': self.form_data['last_name'],
             'email': self.form_data['email'],
             'payment_method_nonce': 'hello-braintree',
-            'custom_fields': {},
+            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': ''},
             'credit_card': {
                 'billing_address': {
                     'street_address': self.form_data['address_line_1'],
@@ -300,6 +303,10 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
                 'submit_for_settlement': True,
             }
         })
+
+        self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
+        self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
+        self.assertEqual(self.request.session['project'], self.form_data['project'])
 
     def test_get_success_url(self):
         self.assertEqual(
@@ -355,6 +362,10 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             'price': 50,
         })
 
+        self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
+        self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
+        self.assertEqual(self.request.session['project'], self.form_data['project'])
+
     def test_failed_customer_creation_calls_error_processor(self):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
@@ -409,7 +420,10 @@ class PaypalPaymentViewTestCase(TestCase):
             'amount': Decimal(10),
             'currency': 'usd',
             'frequency': 'single',
-            'source_page_id': 3
+            'source_page_id': 3,
+            'landing_url': 'http://localhost',
+            'project': 'mozillafoundation',
+            'campaign_id': '',
         }
 
     def test_transaction_data_submitted_to_braintree(self):
@@ -422,11 +436,15 @@ class PaypalPaymentViewTestCase(TestCase):
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'amount': 10,
-            'custom_fields': {},
+            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': ''},
             'payment_method_nonce': 'hello-braintree',
             'merchant_account_id': 'usd-ac',
             'options': {'submit_for_settlement': True}
         })
+
+        self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
+        self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
+        self.assertEqual(self.request.session['project'], self.form_data['project'])
 
     def test_subscription_data_submitted_to_braintree(self):
         self.form_data['frequency'] = 'monthly'
@@ -440,7 +458,7 @@ class PaypalPaymentViewTestCase(TestCase):
 
         mock_gateway.customer.create.assert_called_once_with({
             'payment_method_nonce': 'hello-braintree',
-            'custom_fields': {},
+            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': ''},
         })
 
         mock_gateway.subscription.create.assert_called_once_with({
@@ -522,27 +540,6 @@ class TransactionRequiredMixinTestCase(TestCase):
         response = view.dispatch(view.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], '/')
-
-    def test_get_source_page(self):
-        landing_page = LandingPageFactory.create(
-            parent=Page.objects.first(),
-            title='Donate today',
-            slug='landing',
-        )
-        view = TransactionRequiredMixin()
-        view.request = RequestFactory().get('/')
-        view.request.session = {
-            'source_page_id': landing_page.pk,
-        }
-        self.assertEqual(view.get_source_page(), landing_page)
-
-    def test_get_source_page_invalid_id(self):
-        view = TransactionRequiredMixin()
-        view.request = RequestFactory().get('/')
-        view.request.session = {
-            'source_page_id': 14,
-        }
-        self.assertIsNone(view.get_source_page())
 
 
 class CardUpsellViewTestCase(TestCase):

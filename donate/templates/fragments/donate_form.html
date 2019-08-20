@@ -1,4 +1,4 @@
-{% load i18n form_tags util_tags %}
+{% load i18n util_tags %}
 <div class="donate-form__content" id="js-donate-form" data-locale="{% get_locale %}">
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container" role="tablist">
@@ -34,7 +34,7 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
-                        <input type="text" class="donation-amount__input" name="one-time-amount-other-input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
+                        <input type="text" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
                 </div>
                 <input type="hidden" class="one-time-amount__total">
@@ -137,11 +137,9 @@
     <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
     <form id="payments__braintree-form" method="post" action="{% url 'payments:paypal' %}" hidden>
         {% csrf_token %}
-        {% render_form_field braintree_form.braintree_nonce %}
-        {% render_form_field braintree_form.amount %}
-        {% render_form_field braintree_form.frequency %}
-        {% render_form_field braintree_form.currency %}
-        {% render_form_field braintree_form.source_page_id %}
+        {% for field in braintree_form.hidden_fields %}
+            {{ field }}
+        {% endfor %}
     </form>
 
     <footer class="donate-form__footer">

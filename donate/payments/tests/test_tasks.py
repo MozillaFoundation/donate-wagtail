@@ -53,6 +53,7 @@ class BasketTransactionTestCase(TestCase):
             'payment_frequency': 'single',
             'payment_method': 'card',
             'transaction_id': 'transaction-1',
+            'landing_url': 'http://localhost',
             'project': 'mozillafoundation',
             'last_4': '1234',
             'locale': 'en-US',
@@ -71,7 +72,7 @@ class BasketTransactionTestCase(TestCase):
             'transaction_id': 'transaction-1',
             'project': 'mozillafoundation',
             'last_4': '1234',
-            'donation_url': '',
+            'donation_url': 'http://localhost',
             'locale': 'en-US',
             'conversion_amount': Decimal(10),
         }

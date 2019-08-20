@@ -18,7 +18,13 @@ class BraintreePaymentForm(forms.Form):
     amount = forms.DecimalField(min_value=0.01, decimal_places=2, widget=forms.HiddenInput)
 
 
-class BraintreeCardPaymentForm(BraintreePaymentForm):
+class CampaignFormMixin(forms.Form):
+    landing_url = forms.URLField(required=False, widget=forms.HiddenInput)
+    project = forms.CharField(widget=forms.HiddenInput)
+    campaign_id = forms.CharField(required=False, widget=forms.HiddenInput)
+
+
+class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     # max_length on all the fields here is to comply with Braintree validation requirements.
     first_name = forms.CharField(label=_('First name'), max_length=255)
     last_name = forms.CharField(label=_('Last name'), max_length=255)
@@ -29,7 +35,7 @@ class BraintreeCardPaymentForm(BraintreePaymentForm):
     country = CountryField().formfield(initial='US')
 
 
-class BraintreePaypalPaymentForm(BraintreePaymentForm):
+class BraintreePaypalPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
