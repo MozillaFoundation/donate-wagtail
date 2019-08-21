@@ -4,6 +4,8 @@ Django settings for donate project.
 import os
 import environ
 import logging.config
+
+import django
 import dj_database_url
 
 app = environ.Path(__file__) - 1
@@ -217,6 +219,10 @@ LANGUAGES = [
     ('en-CA', 'English (Canada)'),
     ('en-GB', 'English (Great Britain)'),
     ('es', 'Spanish'),
+    ('es-AR', 'Spanish (Argentina)'),
+    ('es-CL', 'Spanish (Chile)'),
+    ('es-MX', 'Spanish (Mexico)'),
+    ('es-XL', 'Spanish (Latin America)'),
     ('et', 'Estonian'),
     ('fr', 'French'),
     ('fy-NL', 'Frisian'),
@@ -259,6 +265,24 @@ LANGUAGES = [
     ('zh-CN', 'Chinese (China)'),
     ('zh-TW', 'Chinese (Taiwan)'),
 ]
+
+# Set some fallbacks in django.conf.locale.LANG_INFO, and add some that don't exist
+django.conf.locale.LANG_INFO['es-ar']['fallback'] = ['es']
+django.conf.locale.LANG_INFO['es-mx']['fallback'] = ['es']
+django.conf.locale.LANG_INFO['es-cl'] = {
+    'bidi': False,
+    'code': 'es-cl',
+    'name': 'Chilean Spanish',
+    'name_local': 'español de Chile',
+    'fallback': ['es']
+}
+django.conf.locale.LANG_INFO['es-xl'] = {
+    'bidi': False,
+    'code': 'es-xl',
+    'name': 'Latin American Spanish',
+    'name_local': 'español',
+    'fallback': ['es']
+}
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [app('frontend')]
