@@ -3,7 +3,9 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
+from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
+from django.views.i18n import JavaScriptCatalog
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -19,6 +21,9 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    # TODO we may want to version this cache, or pre-compile the catalog at build time
+    # See https://django-statici18n.readthedocs.io
+    path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
 )
 
