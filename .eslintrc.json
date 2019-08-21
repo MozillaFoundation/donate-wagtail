@@ -3,8 +3,7 @@
     "prettier"
   ],
   "plugins": [
-    "prettier",
-    "react"
+    "prettier"
   ],
   "parserOptions": {
     "sourceType": "module"
