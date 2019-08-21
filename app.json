@@ -44,6 +44,18 @@
     "AWS_STORAGE_BUCKET_NAME": {
       "required": true
     },
+    "BASKET_QUEUE_REGION": {
+      "required": true
+    },
+    "BASKET_QUEUE_URL": {
+      "required": true
+    },
+    "BASKET_ACCESS_KEY": {
+      "required": true
+    },
+    "BASKET_SECRET_ACCESS_KEY": {
+      "required": true
+    },
     "BRAINTREE_MERCHANT_ID": {
       "required": true
     },
