@@ -104,7 +104,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    'donate.core.middleware.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -190,11 +190,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-US'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+LOCALE_PATHS = [
+    app('locale'),
+]
 
 LANGUAGES = [
     ('ach', 'Acholi'),
@@ -209,16 +213,16 @@ LANGUAGES = [
     ('de', 'German'),
     ('dsb', 'Sorbian, Lower'),
     ('el', 'Greek'),
-    ('en-us', 'English (US)'),
-    ('en-ca', 'English (Canada)'),
-    ('en-gb', 'English (Great Britain)'),
+    ('en-US', 'English (US)'),
+    ('en-CA', 'English (Canada)'),
+    ('en-GB', 'English (Great Britain)'),
     ('es', 'Spanish'),
     ('et', 'Estonian'),
     ('fr', 'French'),
-    ('fy-nl', 'Frisian'),
-    ('gu-in', 'Gujarati'),
+    ('fy-NL', 'Frisian'),
+    ('gu-IN', 'Gujarati'),
     ('he', 'Hebrew'),
-    ('hi-in', 'Hindi'),
+    ('hi-IN', 'Hindi'),
     ('hr', 'Croatian'),
     ('hsb', 'Sorbian, Upper'),
     ('hu', 'Hungarian'),
@@ -234,26 +238,26 @@ LANGUAGES = [
     ('ms', 'Malay'),
     ('ml', 'Malayalam'),
     ('mr', 'Marathi'),
-    ('nb-no', 'Norwegian Bokmål'),
+    ('nb-NO', 'Norwegian Bokmål'),
     ('nl', 'Dutch'),
-    ('nn-no', 'Norwegian Nynorsk'),
+    ('nn-NO', 'Norwegian Nynorsk'),
     ('pl', 'Polish'),
-    ('pt-br', 'Portuguese (Brazil)'),
-    ('pt-pt', 'Portuguese (Portugal)'),
-    ('pa-in', 'Punjabi'),
+    ('pt-BR', 'Portuguese (Brazil)'),
+    ('pt-PT', 'Portuguese (Portugal)'),
+    ('pa-IN', 'Punjabi'),
     ('ro', 'Romanian'),
     ('ru', 'Russian'),
     ('sk', 'Slovak'),
     ('sl', 'Slovenian'),
     ('sq', 'Albanian'),
-    ('sv-se', 'Swedish'),
+    ('sv-SE', 'Swedish'),
     ('ta', 'Tamil'),
     ('te', 'Telugu'),
     ('th', 'Thai'),
     ('tr', 'Turkish'),
     ('uz', 'Uzbek'),
-    ('zh-cn', 'Chinese (China)'),
-    ('zh-tw', 'Chinese (Taiwan)'),
+    ('zh-CN', 'Chinese (China)'),
+    ('zh-TW', 'Chinese (Taiwan)'),
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
