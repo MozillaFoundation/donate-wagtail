@@ -17,6 +17,8 @@ from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
 from donate.payments.utils import get_default_currency
 
+from .blocks import ContentBlock
+
 
 class DonationPage(Page):
 
@@ -90,7 +92,7 @@ class LandingPage(DonationPage):
 
     # Only allow creating landing pages at the root level
     parent_page_types = ['wagtailcore.Page']
-    subpage_types = ['core.CampaignPage']
+    subpage_types = ['core.CampaignPage', 'core.ContentPage']
 
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -178,3 +180,20 @@ class CampaignPageDonationAmount(models.Model):
 
     class Meta:
         unique_together = (('campaign', 'currency'),)
+
+
+class ContentPage(Page):
+    template = 'pages/core/content_page.html'
+    parent_page_types = ['LandingPage']
+    subpage_types = ['ContentPage']
+
+    call_to_action_text = models.CharField(max_length=255, blank=True)
+    call_to_action_url = models.URLField(blank=True)
+
+    body = StreamField(ContentBlock)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('call_to_action_text'),
+        FieldPanel('call_to_action_url'),
+        StreamFieldPanel('body'),
+    ]

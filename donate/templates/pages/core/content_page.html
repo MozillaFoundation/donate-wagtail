@@ -1,0 +1,18 @@
+{% extends "pages/base_page.html" %}
+{% load form_tags static wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block content %}
+
+<div class="layout">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <h1>{{ page.title }}</h1>
+            {% if page.call_to_action_text and page.call_to_action_url %}
+                <a href="{{ page.call_to_action_url }}">{{ page.call_to_action_text }}</a>
+            {% endif %}
+
+            {{ page.body }}
+        </div>
+    </div>
+</div>
+{% endblock %}
