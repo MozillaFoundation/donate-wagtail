@@ -22,7 +22,7 @@ class UtilsTestCase(TestCase):
         })
 
     def test_get_default_currency_matches_exact_locale(self):
-        self.assertEqual(get_default_currency('nb-no'), 'nok')
+        self.assertEqual(get_default_currency('nb-NO'), 'nok')
 
     def test_get_default_currency_falls_back_to_base_language(self):
         self.assertEqual(get_default_currency('es-GG'), 'eur')
