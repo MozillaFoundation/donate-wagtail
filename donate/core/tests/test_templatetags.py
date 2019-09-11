@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory
 
-from ..templatetags.util_tags import format_currency, get_localized_currency_symbol
+from ..templatetags.util_tags import format_currency, get_localized_currency_symbol, to_known_locale
 
 
 class UtilTagsTestCase(TestCase):
@@ -10,6 +10,9 @@ class UtilTagsTestCase(TestCase):
 
     def setUp(self):
         self.request = RequestFactory().get('/')
+
+    def test_to_known_locale_fallback_map(self):
+        self.assertEqual(to_known_locale('es-xl'), 'es')
 
     def test_format_currency_usd_en_us_integer(self):
         self.request.LANGUAGE_CODE = 'en-US'
