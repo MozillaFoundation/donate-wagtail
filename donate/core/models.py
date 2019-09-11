@@ -1,3 +1,4 @@
+from copy import deepcopy
 from decimal import Decimal
 
 from django.conf import settings
@@ -44,7 +45,7 @@ class DonationPage(Page):
 
     @cached_property
     def currencies(self):
-        return constants.CURRENCIES.copy()
+        return deepcopy(constants.CURRENCIES)
 
     def get_initial_currency(self, request):
         # Query argument takes first preference
