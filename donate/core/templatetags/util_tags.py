@@ -9,7 +9,14 @@ from babel.numbers import (
     get_currency_symbol
 )
 
+from ..constants import LOCALE_MAP
+
 register = template.Library()
+
+
+def to_known_locale(code):
+    code = LOCALE_MAP.get(code, code)
+    return to_locale(code)
 
 
 @register.filter
@@ -19,12 +26,12 @@ def is_english(language_code):
 
 @register.simple_tag(takes_context=True)
 def get_locale(context):
-    return to_locale(context['request'].LANGUAGE_CODE)
+    return to_known_locale(context['request'].LANGUAGE_CODE)
 
 
 @register.simple_tag(takes_context=True)
 def format_currency(context, currency_code, amount):
-    locale = to_locale(context['request'].LANGUAGE_CODE)
+    locale = to_known_locale(context['request'].LANGUAGE_CODE)
     locale_obj = Locale.parse(locale)
     pattern = locale_obj.currency_formats['standard'].pattern
 
@@ -45,5 +52,5 @@ def format_currency(context, currency_code, amount):
 
 @register.simple_tag(takes_context=True)
 def get_localized_currency_symbol(context, currency_code):
-    locale = to_locale(context['request'].LANGUAGE_CODE)
+    locale = to_known_locale(context['request'].LANGUAGE_CODE)
     return get_currency_symbol(currency_code.upper(), locale)

@@ -1,7 +1,12 @@
-from django.test import RequestFactory, TestCase
 from django.utils import translation
+from django.utils.translation.trans_real import (
+    to_language as django_to_language,
+    parse_accept_lang_header as django_parse_accept_lang_header
+)
+from django.test import TestCase
+from django.urls import reverse
 
-from ..utils import ISO3166LocalePrefixPattern, get_language_from_request, language_code_to_iso_3166
+from .. import language_code_to_iso_3166, parse_accept_lang_header, to_language
 
 
 class UtilsTestCase(TestCase):
@@ -11,22 +16,32 @@ class UtilsTestCase(TestCase):
         self.assertEqual(language_code_to_iso_3166('en-us'), 'en-US')
         self.assertEqual(language_code_to_iso_3166('fr'), 'fr')
 
-    def test_ISO3166LocalePrefixPattern(self):
+    def test_to_language(self):
+        self.assertEqual(to_language('en_US'), 'en-US')
+
+    def test_parse_accept_lang_header_returns_iso_3166_language(self):
+        self.assertEqual(
+            parse_accept_lang_header('en-GB,en;q=0.5'),
+            (('en-GB', 1.0), ('en', 0.5)),
+        )
+
+
+class UtilsIntegrationTestCase(TestCase):
+
+    """
+    Test that our overrides to Django translation functions work.
+    """
+    def test_to_language(self):
+        self.assertEqual(django_to_language('en_US'), 'en-US')
+
+    def test_parse_accept_lang_header_returns_iso_3166_language(self):
+        self.assertEqual(
+            django_parse_accept_lang_header('en-GB,en;q=0.5'),
+            (('en-GB', 1.0), ('en', 0.5)),
+        )
+
+    def test_reverse_produces_correct_url_prefix(self):
+        translation.activate('en-GB')
+        url = reverse('payments:completed')
+        self.assertTrue(url.startswith('/en-GB/'))
         translation.deactivate()
-        pattern = ISO3166LocalePrefixPattern(prefix_default_language=True)
-        # Pattern should not match lowercase URLs
-        self.assertIsNone(pattern.match('en-us/'))
-        # It should match this URL
-        self.assertTrue(pattern.match('en-US/'))
-
-    def test_get_language_from_request_returns_iso_3166_language(self):
-        request = RequestFactory().get('/')
-        request.META['HTTP_ACCEPT_LANGUAGE'] = 'en-GB,en;q=0.5'
-        language = get_language_from_request(request)
-        self.assertEqual(language, 'en-GB')
-
-    def test_get_language_from_request_fallback_language(self):
-        request = RequestFactory().get('/')
-        request.META['HTTP_ACCEPT_LANGUAGE'] = 'en-FO,en;q=0.5'
-        language = get_language_from_request(request)
-        self.assertEqual(language, 'en-US')

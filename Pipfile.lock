@@ -34,18 +34,18 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:30fe3adfd01b03b9e3e5ba679e6b3f5f241776c2c007d1273e03b9f2b59dba78",
-                "sha256:5e33aa3ef57b1d90ed7e7645c1e338957476d098b446ef2daf3e7ced80c9d852"
+                "sha256:366a1f3ec37b9434f25247cbe876f9ca1b53d35e35af18f74c735445100b4bc4",
+                "sha256:e7718b48cd073ad59a99a33d14252319dfaf550be3682b0c6a58da052fb05fcc"
             ],
             "index": "pypi",
-            "version": "==1.9.211"
+            "version": "==1.9.217"
         },
         "botocore": {
             "hashes": [
-                "sha256:4d810eec1ea4f182be9d48a4a834d92b6360069fb541bfc2f8814d5acba31d59",
-                "sha256:9d7f6e468592e0d296edddb26bb7d02b5caaa7a192d7b0b1d8957432e6270cc1"
+                "sha256:68a0a22ca4e0e7e7ab482f63e21debfe402841fc49b8503dec0a7307b565d774",
+                "sha256:7a213b876e58b1b5380cf30faa05ba45073692ad4a3cc803ba763082a36436bb"
             ],
-            "version": "==1.12.211"
+            "version": "==1.12.217"
         },
         "braintree": {
             "hashes": [
@@ -175,10 +175,10 @@
         },
         "faker": {
             "hashes": [
-                "sha256:96ad7902706f2409a2d0c3de5132f69b413555a419bacec99d3f16e657895b47",
-                "sha256:b3bb64aff9571510de6812df45122b633dbc6227e870edae3ed9430f94698521"
+                "sha256:1d3f700e8dfcefd6e657118d71405d53e86974448aba78884f119bbd84c0cddf",
+                "sha256:d5366e120191c5610fceeebfe1c298dc46da0277096f639c6dd7e2eaee0fa547"
             ],
-            "version": "==2.0.0"
+            "version": "==2.0.1"
         },
         "freezegun": {
             "hashes": [
