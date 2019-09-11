@@ -21,7 +21,7 @@ class DonationPageTestCase(TestCase):
 
     def test_get_initial_currency_uses_locale(self):
         request = RequestFactory().get('/')
-        request.LANGUAGE_CODE = 'es-mx'
+        request.LANGUAGE_CODE = 'es-MX'
         self.assertEqual(
             DonationPage().get_initial_currency(request),
             'mxn'

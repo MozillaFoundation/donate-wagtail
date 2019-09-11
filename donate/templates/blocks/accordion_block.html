@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+<h2>{{ value.title }}</h2>
+
+<ul>
+    {% for item in value.items %}
+    <li>
+        <h3>{{ item.title }}</h3>
+        {{ item.content|richtext }}
+    </li>
+    {% endfor %}
+</ul>

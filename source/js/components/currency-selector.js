@@ -82,16 +82,17 @@ class CurrencySelect {
         }>
                     <label for='${type}-${index}' class='donation-amount__label'>
                         ${formattedValue} ${
-          type === "monthly-amount" ? "per month" : ""
+          type === "monthly-amount" ? window.gettext("per month") : ""
         }
                     </label>
                 </div>`;
       })
       .join("");
 
+    var otherAmountString = window.gettext("Other amount");
     container.insertAdjacentHTML(
       "beforeend",
-      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='text' class='donation-amount__input' id='${type}-other-input' placeholder='Other amount' data-other-amount></div>`
+      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='text' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount></div>`
     );
   }
 
