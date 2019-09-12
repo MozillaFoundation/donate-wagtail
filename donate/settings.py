@@ -46,6 +46,9 @@ env = environ.Env(
     # Basket and SQS
     BASKET_API_ROOT_URL=(str, ''),
     BASKET_SQS_QUEUE_URL=(str, ''),
+    # Pontoon
+    WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
+    WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
     # Recaptcha
     RECAPTCHA_SITE_KEY=(str, ''),
     RECAPTCHA_SECRET_KEY=(str, ''),
@@ -77,6 +80,11 @@ INSTALLED_APPS = [
     'donate.core',
     'donate.payments',
     'donate.recaptcha',
+
+    'wagtail_localize',
+    'wagtail_localize.admin.language_switch',
+    'wagtail_localize.translation_memory',
+    'wagtail_localize_pontoon',
 
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -373,6 +381,10 @@ LOGGING = {
             'handlers': ['debug-error'],
             'level': 'ERROR'
         },
+        'rq.worker': {
+            'handlers': ['info'],
+            'level': 'INFO',
+        },
         'donate': {
             'handlers': ['info'],
             'level': 'INFO',
@@ -439,6 +451,11 @@ BRAINTREE_PARAMS = {
 # Basket
 BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL') or None
 BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
+
+# Pontoon settings
+WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
+WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
+WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
 
 # Recaptcha
 RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
