@@ -21,10 +21,16 @@ from ..views import (
 from ..exceptions import InvalidAddress
 
 
+class MockPaypalDetails:
+    payer_email = 'customer@example.com'
+    payer_last_name = 'Jones'
+
+
 class MockBraintreeTransaction:
     id = 'transaction-id-1'
     disbursement_details = mock.MagicMock()
     disbursement_details.settlement_amount = Decimal(10)
+    paypal_details = MockPaypalDetails()
 
 
 class MockBraintreeResult:
@@ -42,6 +48,8 @@ class MockBraintreePaymentMethod:
 
 
 class MockBraintreeCustomer:
+    email = 'customer@example.com'
+    last_name = 'Jones'
     payment_methods = [
         MockBraintreePaymentMethod()
     ]
@@ -486,8 +494,10 @@ class PaypalPaymentViewTestCase(TestCase):
         assert form.is_valid()
         self.view.payment_frequency = 'monthly'
         self.view.currency = 'usd'
+        result = MockBraintreeSubscriptionResult()
+        result.customer = MockBraintreeCustomer()
         self.assertEqual(
-            self.view.get_transaction_details_for_session(MockBraintreeSubscriptionResult(), form),
+            self.view.get_transaction_details_for_session(result, form),
             {
                 'amount': Decimal(10),
                 'transaction_id': 'subscription-id-1',
@@ -495,6 +505,8 @@ class PaypalPaymentViewTestCase(TestCase):
                 'payment_frequency': 'monthly',
                 'currency': 'usd',
                 'settlement_amount': None,
+                'email': 'customer@example.com',
+                'last_name': 'Jones',
             }
         )
 
@@ -625,6 +637,14 @@ class CardUpsellViewTestCase(TestCase):
                 'payment_method': 'card',
                 'currency': 'usd',
                 'payment_frequency': 'monthly',
+                'country': 'US',
+                'first_name': 'Alice',
+                'last_name': 'Bob',
+                'email': 'alice@example.com',
+                'payment_method_token': 'payment-method-1',
+                'address_line_1': '1 Oak Tree Hill',
+                'post_code': '10022',
+                'town': 'New York',
             }
         )
 
@@ -719,6 +739,7 @@ class PaypalUpsellViewTestCase(TestCase):
                 'payment_method': 'paypal',
                 'currency': 'usd',
                 'payment_frequency': 'monthly',
+                'payment_method_token': 'payment-method-1',
             }
         )
 

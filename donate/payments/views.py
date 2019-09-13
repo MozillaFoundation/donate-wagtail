@@ -366,10 +366,14 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
     def get_transaction_details_for_session(self, result, form, **kwargs):
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             transaction_id = result.transaction.id
-            settlement_amount = result.transaction.disbursement_details.settlement_amount,
+            settlement_amount = result.transaction.disbursement_details.settlement_amount
+            email = result.transaction.paypal_details.payer_email
+            last_name = result.transaction.paypal_details.payer_last_name
         else:
             transaction_id = result.subscription.id
             settlement_amount = None
+            email = result.customer.email
+            last_name = result.customer.last_name
         return {
             'amount': form.cleaned_data['amount'],
             'settlement_amount': settlement_amount,
@@ -377,6 +381,8 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
             'payment_method': constants.METHOD_PAYPAL,
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
+            'last_name': last_name,
+            'email': email,
         }
 
     def get_source_page_id(self):
@@ -453,7 +459,10 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
             return self.process_braintree_error_result(result, form)
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
-        details = form.cleaned_data.copy()
+        # Start with the details from the single payment, which contain`
+        # name, email etc., and then update with new information.
+        details = self.request.session['completed_transaction_details']
+        details.update(form.cleaned_data)
         details.update({
             'transaction_id': result.subscription.id,
             'payment_method': constants.METHOD_CARD,
@@ -540,7 +549,10 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             return self.process_braintree_error_result(result, form)
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
-        details = form.cleaned_data.copy()
+        # Start with the details from the single payment, which contain`
+        # name, email etc., and then update with new information.
+        details = self.request.session['completed_transaction_details']
+        details.update(form.cleaned_data)
         details.update({
             'transaction_id': result.subscription.id,
             'payment_method': constants.METHOD_PAYPAL,
