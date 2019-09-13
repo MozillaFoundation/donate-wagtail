@@ -585,7 +585,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
             # TODO - LANGUAGE_CODE is in the format en-us, and basket expects en-US
             # To address as part of https://github.com/mozilla/donate-wagtail/issues/167
             data['lang'] = self.request.LANGUAGE_CODE
-            queue.enqueue(send_newsletter_subscription_to_basket, form.cleaned_data)
+            queue.enqueue(send_newsletter_subscription_to_basket, data)
         return super().form_valid(form)
 
 
