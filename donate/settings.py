@@ -21,6 +21,7 @@ env = environ.Env(
     AWS_LOCATION=(str, ''),
     AWS_ACCESS_KEY_ID=(str, ''),
     AWS_SECRET_ACCESS_KEY=(str, ''),
+    AWS_REGION=(str, 'us-east-1'),
     CONTENT_TYPE_NO_SNIFF=bool,
     CORS_REGEX_WHITELIST=(tuple, ()),
     CORS_WHITELIST=(tuple, ()),
@@ -294,6 +295,7 @@ STATIC_URL = '/static/'
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_LOCATION = env('AWS_LOCATION')
+AWS_REGION = env('AWS_REGION')
 
 # Storage for user generated files
 USE_S3 = env('USE_S3')
