@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'storages',
+    'django_rq',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -444,6 +445,14 @@ BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
 RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_SECRET_KEY = env('RECAPTCHA_SECRET_KEY')
 RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
+
+# Django-rq
+RQ_QUEUES = {
+    'default': {
+        'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
+        'DEFAULT_TIMEOUT': 500,
+    },
+}
 
 # Wagtail settings
 
