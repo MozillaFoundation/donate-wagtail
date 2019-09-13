@@ -25,6 +25,7 @@ django-countries = "*"
 freezegun = "*"
 babel = "*"
 rq = "*"
+django-rq = "*"
 
 [requires]
 python_version = "3.7"

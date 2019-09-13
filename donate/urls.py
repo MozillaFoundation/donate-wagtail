@@ -18,6 +18,7 @@ urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('django-rq/', include('django_rq.urls'))
 ]
 
 urlpatterns += i18n_patterns(
