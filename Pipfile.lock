@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2f764da11467569d8cbf8f89e6d8875de4d2a54cfc145b29c9e06b835352b133"
+            "sha256": "3c54b6cb6ecc728bd4ef31a1cdd51c62fe43169a0bb68e46660dae4629bf1d61"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -396,7 +396,7 @@
         },
         "wagtail-localize-pontoon": {
             "git": "https://github.com/kaedroho/wagtail-localize-pontoon.git",
-            "ref": "c18bf32b1ec50a02752531202257bbac9162a7f1"
+            "ref": "6da86f8e80f592f980274fcf89c7fe0a266e6de1"
         },
         "webencodings": {
             "hashes": [

@@ -24,7 +24,7 @@ braintree = "*"
 django-countries = "*"
 freezegun = "*"
 wagtail-localize = {git = "https://github.com/kaedroho/wagtail-localize.git", ref="d76f5341eeedd2727ea69e693dae3e01a8efd478"}
-wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git", ref="c18bf32b1ec50a02752531202257bbac9162a7f1"}
+wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git", ref="6da86f8e80f592f980274fcf89c7fe0a266e6de1"}
 babel = "*"
 rq = "*"
 django-rq = "*"
