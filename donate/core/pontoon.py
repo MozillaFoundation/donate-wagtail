@@ -1,9 +1,7 @@
+import django_rq
 from redlock import RedLock, RedLockError
-from rq import Queue
 
 from wagtail_localize_pontoon.sync import SyncManager
-
-from worker import conn
 
 
 def _sync_task():
@@ -20,7 +18,7 @@ class CustomSyncManager(SyncManager):
     def __init__(self):
         super().__init__()
 
-        self.queue = Queue('wagtail_localize_pontoon.sync', connection=conn)
+        self.queue = django_rq.get_queue('wagtail_localize_pontoon.sync')
 
     def sync(self):
         """

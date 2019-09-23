@@ -476,6 +476,12 @@ RQ_QUEUES = {
         'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
         'DEFAULT_TIMEOUT': 500,
     },
+
+    # Must be a separate queue as it's limited to one item at a time
+    'wagtail_localize_pontoon.sync': {
+        'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
+        'DEFAULT_TIMEOUT': 500,
+    },
 }
 
 # Wagtail settings
