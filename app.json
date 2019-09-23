@@ -35,6 +35,9 @@
     "AWS_LOCATION": {
       "required": true
     },
+    "AWS_REGION": {
+      "required": true
+    },
     "AWS_S3_CUSTOM_DOMAIN": {
       "required": true
     },

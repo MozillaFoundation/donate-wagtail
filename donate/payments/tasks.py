@@ -5,9 +5,8 @@ import time
 from django.conf import settings
 from django.core.serializers.json import DjangoJSONEncoder
 
+import django_rq
 import requests
-from rq import Queue
-from worker import conn
 
 from . import constants
 from .sqs import sqs_client
@@ -15,7 +14,7 @@ from .sqs import sqs_client
 
 logger = logging.getLogger(__name__)
 
-queue = Queue(connection=conn)
+queue = django_rq.get_queue('default')
 
 BASKET_NEWSLETTER_API_PATH = '/news/subscribe'
 

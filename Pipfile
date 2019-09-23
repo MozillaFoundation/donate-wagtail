@@ -27,6 +27,7 @@ wagtail-localize = {git = "https://github.com/kaedroho/wagtail-localize.git", re
 wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git", ref="c18bf32b1ec50a02752531202257bbac9162a7f1"}
 babel = "*"
 rq = "*"
+django-rq = "*"
 
 # Need to install a pre-release in order to get the RedLock.locked() method
 redlock = {git = "https://github.com/glasslion/redlock.git", ref="7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}

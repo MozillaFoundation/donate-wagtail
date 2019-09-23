@@ -22,6 +22,7 @@ env = environ.Env(
     AWS_LOCATION=(str, ''),
     AWS_ACCESS_KEY_ID=(str, ''),
     AWS_SECRET_ACCESS_KEY=(str, ''),
+    AWS_REGION=(str, 'us-east-1'),
     CONTENT_TYPE_NO_SNIFF=bool,
     CORS_REGEX_WHITELIST=(tuple, ()),
     CORS_WHITELIST=(tuple, ()),
@@ -103,6 +104,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'storages',
+    'django_rq',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -304,6 +306,7 @@ STATIC_URL = '/static/'
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_LOCATION = env('AWS_LOCATION')
+AWS_REGION = env('AWS_REGION')
 
 # Storage for user generated files
 USE_S3 = env('USE_S3')
@@ -466,6 +469,14 @@ WAGTAILLOCALIZE_PONTOON_GIT_SSH_PRIVATE_KEY = base64.b64decode(env('WAGTAILLOCAL
 RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_SECRET_KEY = env('RECAPTCHA_SECRET_KEY')
 RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
+
+# Django-rq
+RQ_QUEUES = {
+    'default': {
+        'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
+        'DEFAULT_TIMEOUT': 500,
+    },
+}
 
 # Wagtail settings
 
