@@ -143,9 +143,12 @@
     </form>
 
     <footer class="donate-form__footer">
-        <p>{% blocktrans with braintree_url='https://www.braintreepayments.com/legal/braintree-privacy-policy' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' email='donate@mozilla.org' wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}
-            Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a> (for credit/debit cards) or <a href="{{ paypal_url }}">Paypal</a>, and a record of your donation will be stored by Mozilla. Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href="mailto:{{ email }}">{{ email }}</a>. We are able to provide refunds up to one year after a donation is processed. Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a>
-        {% endblocktrans %}</p>
+        <p>{% blocktrans with braintree_url='https://www.braintreepayments.com/legal/braintree-privacy-policy' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' email='donate@mozilla.org' %}
+            Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a> (for credit/debit cards) or <a href="{{ paypal_url }}">PayPal</a>, and a record of your donation will be stored by Mozilla. Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}
+        </p>
+        <p>
+            <b>{% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}</b>
+        </p>
         <p>{% blocktrans with faq_url='/faq' email='donate@mozilla.org' %}Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.{% endblocktrans %}</p>
         <p>{% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}</p>
     </footer>

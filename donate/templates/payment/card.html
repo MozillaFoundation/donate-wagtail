@@ -103,18 +103,18 @@
                             <div id="payments__braintree-errors-card" hidden></div>
 
                             <div class="form-item">
-                                <label class="form-item__label" for="card-number">Card number</label>
+                                <label class="form-item__label" for="card-number">{% trans "Card number" %}</label>
                                 <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="card-number"></div>
                             </div>
 
                             <div class="form__group form__group--two-col form__group--gutter">
                                 <div class="form-item">
-                                    <label class="form-item__label" for="expiration-date">Expiration date</label>
+                                    <label class="form-item__label" for="expiration-date">{% trans "Expiration date" %}</label>
                                     <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="expiration-date"></div>
                                 </div>
 
                                 <div class="form-item">
-                                    <label class="form-item__label" for="cvv">CVV</label>
+                                    <label class="form-item__label" for="cvv">{% trans "CVV" %}</label>
                                     <div class="form-item__tooltip-wrapper">
                                         <div class="form-item__dummy-placeholder payments__braintree-hosted-field" id="cvv"></div>
                                     </div>
@@ -137,7 +137,7 @@
                                 </svg>
                                 <div class="button__label">
                                     {% format_currency currency_info.code form.amount.value as formatted_amount %}
-                                    {% blocktrans with formatted_amount=formatted_amount %}Donate <span class="button__value js-donation-value">{{ formatted_amount }}</span>{% endblocktrans %}
+                                    {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }}</span>{% endblocktrans %}
                                 </div>
                             </button>
 
@@ -148,10 +148,10 @@
                             <div class="logo-showcase">
                                 <div class="logo-showcase__container">
                                     <div class="logo-showcase__item logo-item">
-                                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
+                                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="{% trans 'Seal of Charity Navigator 4-Star' %}">
                                     </div>
                                     <div class="logo-showcase__item logo-item">
-                                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
+                                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="{% trans 'Seal of GuideStar Gold 2019' %}">
                                     </div>
                                 </div>
                             </div>

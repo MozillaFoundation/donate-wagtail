@@ -12,7 +12,7 @@
         <div class="layout__full-col">
             <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
 
-            <p>{% trans "We'd love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
+            <p>{% trans "We’d love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
 
             <form method="post" class="form">
                 <div class="form__container">
@@ -30,7 +30,7 @@
                         {% endif %}
 
                         <div class="form__group form__group--additional-info">
-                            <span class="form-item__input-additional-info">/ {% trans "Monthly" %}</span>
+                            <span class="form-item__input-additional-info">{% trans "/ Monthly" %}</span>
                             {% render_form_field form.amount %}
                         </div>
 
