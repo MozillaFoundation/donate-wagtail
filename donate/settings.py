@@ -166,10 +166,12 @@ if DATABASE_URL is not None:
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 if env('REDIS_URL'):
+    REDIS_URL = env('REDIS_URL')
+
     CACHES = {
         'default': {
             'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': env('REDIS_URL'),
+            'LOCATION': REDIS_URL,
             'OPTIONS': {
                 'CLIENT_CLASS': 'django_redis.client.DefaultClient',
                 # timeout for read/write operations after a connection is established
@@ -184,6 +186,8 @@ if env('REDIS_URL'):
         }
     }
 else:
+    REDIS_URL = None
+
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
@@ -473,13 +477,13 @@ RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
 # Django-rq
 RQ_QUEUES = {
     'default': {
-        'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
+        'URL': REDIS_URL or 'redis://localhost:6379/0',
         'DEFAULT_TIMEOUT': 500,
     },
 
     # Must be a separate queue as it's limited to one item at a time
     'wagtail_localize_pontoon.sync': {
-        'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
+        'URL': REDIS_URL or 'redis://localhost:6379/0',
         'DEFAULT_TIMEOUT': 500,
     },
 }

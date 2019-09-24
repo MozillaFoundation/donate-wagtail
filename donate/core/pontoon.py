@@ -1,4 +1,5 @@
 import django_rq
+from django.conf import settings
 from redlock import RedLock, RedLockError
 
 from wagtail_localize_pontoon.sync import SyncManager
@@ -20,6 +21,13 @@ class CustomSyncManager(SyncManager):
 
         self.queue = django_rq.get_queue('wagtail_localize_pontoon.sync')
 
+    def lock(self):
+        return RedLock("lock:wagtail_localize_pontoon.sync", connection_details=[
+            {
+                'url': settings.REDIS_URL or 'redis://localhost:6379/0',
+            }
+        ])
+
     def sync(self):
         """
         Performs the synchronisation
@@ -27,7 +35,7 @@ class CustomSyncManager(SyncManager):
         Called directly from the sync_pontoon command
         """
         try:
-            with RedLock("wagtail_localize_pontoon.sync"):
+            with self.lock():
                 super().sync()
 
         except RedLockError:
@@ -53,4 +61,4 @@ class CustomSyncManager(SyncManager):
         """
         Returns True if a synchronisation job is running right now
         """
-        return RedLock("wagtail_localize_pontoon.sync").locked()
+        return self.lock().locked()
