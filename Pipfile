@@ -9,7 +9,7 @@ python-coveralls = "*"
 
 [packages]
 django = ">=2.2,<2.3"
-wagtail = "==2.6.1"
+wagtail = "==2.6.2"
 dj-database-url = "*"
 whitenoise = "*"
 "psycopg2-binary" = ">=2.8,<2.9"
