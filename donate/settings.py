@@ -4,7 +4,6 @@ Django settings for donate project.
 import os
 import environ
 import logging.config
-import base64
 
 import django
 import dj_database_url
@@ -51,7 +50,6 @@ env = environ.Env(
     # Pontoon
     WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
     WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
-    WAGTAILLOCALIZE_PONTOON_GIT_SSH_PRIVATE_KEY=(str, ''),
     # Recaptcha
     RECAPTCHA_SITE_KEY=(str, ''),
     RECAPTCHA_SECRET_KEY=(str, ''),
@@ -465,7 +463,6 @@ BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
 WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
 WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
 WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
-WAGTAILLOCALIZE_PONTOON_GIT_SSH_PRIVATE_KEY = base64.b64decode(env('WAGTAILLOCALIZE_PONTOON_GIT_SSH_PRIVATE_KEY'))
 
 # Recaptcha
 RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
