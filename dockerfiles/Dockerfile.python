@@ -1,5 +1,8 @@
 FROM python:3.7-slim
 
+RUN apt update -y
+RUN apt install -y git
+
 # We want output
 ENV PYTHONUNBUFFERED 1
 # We don't want *.pyc
