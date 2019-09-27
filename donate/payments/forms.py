@@ -2,6 +2,7 @@ from django import forms
 from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import pgettext
 
 from django_countries.fields import CountryField
 
@@ -34,7 +35,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     email = forms.EmailField(label=_('Email'), max_length=255)
     address_line_1 = forms.CharField(label=_('Street'), max_length=255)
     town = forms.CharField(label=_('Town'), max_length=255)
-    post_code = forms.CharField(label=_('ZIP Code'))
+    post_code = forms.CharField(label=pgettext("Feel free to replace with “Postal code” or equivalent", 'ZIP Code'))
     country = CountryField().formfield(initial='US')
 
     if settings.RECAPTCHA_ENABLED:
