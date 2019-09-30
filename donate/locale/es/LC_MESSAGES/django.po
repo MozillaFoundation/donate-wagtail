@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 13:00+0000\n"
+"POT-Creation-Date: 2019-09-30 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgid "Street"
 msgstr ""
 
 #: donate/payments/forms.py:37
-msgid "Town"
+msgid "City"
 msgstr ""
 
 #: donate/payments/forms.py:38
@@ -90,11 +90,11 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:8
 msgid "ONE TIME"
-msgstr "Test1"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:14
 msgid "MONTHLY"
-msgstr "TEST2"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:36
 #: donate/templates/fragments/donate_form.html:37
@@ -148,11 +148,11 @@ msgid "Participate"
 msgstr ""
 
 #: donate/templates/pages/base_page.html:27
-msgid "Internet&nbsp;Health"
+msgid "Internet Health"
 msgstr ""
 
 #: donate/templates/pages/base_page.html:30
-msgid "About&nbsp;Us"
+msgid "About Us"
 msgstr ""
 
 #: donate/templates/pages/base_page.html:41
@@ -309,7 +309,7 @@ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgstr ""
 
 #: donate/templates/payment/card.html:147
-msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift"
+msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4
