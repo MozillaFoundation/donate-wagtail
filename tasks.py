@@ -45,6 +45,13 @@ def makemigrations(ctx):
 
 
 @task
+def makemessages(ctx):
+    """Compile all template messages for localization"""
+    manage(ctx, "makemessages --keep-pot --no-wrap")
+    os.rename("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+
+
+@task
 def test(ctx):
     """Run tests"""
     print("Running flake8")
@@ -130,6 +137,13 @@ def docker_makemigrations(ctx):
 
 
 @task
+def docker_makemessages(ctx):
+    """Compile all template messages for localization"""
+    docker_manage(ctx, "makemessages --keep-pot --no-wrap")
+    os.rename("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+
+
+@task
 def docker_test_python(ctx):
     """Run python tests"""
     print("Running flake8")
@@ -137,7 +151,7 @@ def docker_test_python(ctx):
     print("Running tests")
     docker_manage(ctx, "test --settings=donate.settings_test")
 
-    
+
 @task
 def docker_test_node(ctx):
     """Run node tests"""
