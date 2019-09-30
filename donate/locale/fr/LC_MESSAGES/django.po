@@ -90,11 +90,11 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:8
 msgid "ONE TIME"
-msgstr ""
+msgstr "UNIQUE"
 
 #: donate/templates/fragments/donate_form.html:14
 msgid "MONTHLY"
-msgstr ""
+msgstr "MENSUEL"
 
 #: donate/templates/fragments/donate_form.html:36
 #: donate/templates/fragments/donate_form.html:37
