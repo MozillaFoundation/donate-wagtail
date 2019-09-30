@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 12:20+0000\n"
+"POT-Creation-Date: 2019-09-30 12:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Captcha was invalid. Please try again."
 msgstr ""
 
-#: donate/templates/404.html:9
+#: donate/templates/404.html:4 donate/templates/404.html:9
 msgid "Page not found"
 msgstr ""
 
@@ -98,6 +98,7 @@ msgstr ""
 #: donate/templates/fragments/donate_form.html:36
 #: donate/templates/fragments/donate_form.html:37
 #: donate/templates/fragments/donate_form.html:94
+#: donate/templates/fragments/donate_form.html:95
 msgid "Other amount"
 msgstr ""
 
