@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="form-item">
-                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy">{% trans "I'm okay with Mozilla handling my info as explained in this <a href='#'>Privacy Notice</a>" %}</label>
+                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>{% endblocktrans %}</label>
                         </div>
                     </form>
                 </div>
@@ -91,19 +91,19 @@
                         <h2 class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
                         <div class="footer-links__social">
                             <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
-                                <div class="link__svg-title">Twitter</div>
+                                <div class="link__svg-title">{% trans "Twitter" %}</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
                                     <use xlink:href="#twitter"></use>
                                 </svg>
                             </a>
                             <a class="link link--icon link--dark-bg" href="https://www.instagram.com/mozilla/" target="_blank" rel="noopener">
-                                <div class="link__svg-title">Instagram</div>
+                                <div class="link__svg-title">{% trans "Instagram" %}</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--instagram" width="24" height="24">
                                     <use xlink:href="#instagram"></use>
                                 </svg>
                             </a>
                             <a class="link link--icon link--dark-bg" href="https://github.com/mozilla" target="_blank" rel="noopener">
-                                <div class="link__svg-title">Github</div>
+                                <div class="link__svg-title">{% trans "GitHub" %}</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--github" width="24" height="24">
                                     <use xlink:href="#github"></use>
                                 </svg>
@@ -137,7 +137,9 @@
                 </a>
             </div>
             <div class="footer__legal layout__half-col">
-                <p class="footer__legal-license">{% trans "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at" %} <a class="link link--dark-bg" href="https://www.mozilla.org/">mozilla.org</a>.</p>
+                <p class="footer__legal-license">
+                    {% blocktrans with link_attributes='class="link link--dark-bg" href="https://www.mozilla.org/"' site_url='mozilla.org' %}Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ link_attributes }}>{{ site_url }}</a>.{% endblocktrans %}
+                </p>
             </div>
         </div>
     </div>

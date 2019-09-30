@@ -1,4 +1,4 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags i18n %}
 <nav role="navigation" aria-label="Primary">
     <ul class="nav nav--primary" role="menubar">
         {% for link in primarynav %}
@@ -7,7 +7,7 @@
                     {% include_block link with has_children=children.exists %}
                     {% if children.exists %}
                         <ul class="nav nav--subnav" role="menu">
-                            <li class="nav__item nav__item--back" data-subnav-back>&lsaquo; Back</li>
+                            <li class="nav__item nav__item--back" data-subnav-back>&lsaquo; {% trans "Back" %}</li>
                             <li class="nav__item" role="presentation">{% include_block link %}</li>
                             {% for child in children.all %}
                                 <li class="nav__item nav__item--secondary" role="presentation">
