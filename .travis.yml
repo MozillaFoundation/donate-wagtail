@@ -34,7 +34,6 @@ matrix:
       before_script:
         - psql -c 'create database donate;' -U postgres
       script:
-        - pipenv run python ./manage.py compilemessages
         - pipenv run flake8 donate/
         - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings_test
       after_success:
