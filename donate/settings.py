@@ -47,6 +47,9 @@ env = environ.Env(
     # Basket and SQS
     BASKET_API_ROOT_URL=(str, ''),
     BASKET_SQS_QUEUE_URL=(str, ''),
+    # Pontoon
+    WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
+    WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
     # Recaptcha
     RECAPTCHA_SITE_KEY=(str, ''),
     RECAPTCHA_SECRET_KEY=(str, ''),
@@ -78,6 +81,11 @@ INSTALLED_APPS = [
     'donate.core',
     'donate.payments',
     'donate.recaptcha',
+
+    'wagtail_localize',
+    'wagtail_localize.admin.language_switch',
+    'wagtail_localize.translation_memory',
+    'wagtail_localize_pontoon',
 
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -155,10 +163,12 @@ if DATABASE_URL is not None:
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 if env('REDIS_URL'):
+    REDIS_URL = env('REDIS_URL')
+
     CACHES = {
         'default': {
             'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': env('REDIS_URL'),
+            'LOCATION': REDIS_URL,
             'OPTIONS': {
                 'CLIENT_CLASS': 'django_redis.client.DefaultClient',
                 # timeout for read/write operations after a connection is established
@@ -173,6 +183,8 @@ if env('REDIS_URL'):
         }
     }
 else:
+    REDIS_URL = None
+
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
@@ -376,6 +388,10 @@ LOGGING = {
             'handlers': ['debug-error'],
             'level': 'ERROR'
         },
+        'rq.worker': {
+            'handlers': ['info'],
+            'level': 'INFO',
+        },
         'donate': {
             'handlers': ['info'],
             'level': 'INFO',
@@ -443,6 +459,11 @@ BRAINTREE_PARAMS = {
 BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL') or None
 BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
 
+# Pontoon settings
+WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
+WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
+WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
+
 # Recaptcha
 RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_SECRET_KEY = env('RECAPTCHA_SECRET_KEY')
@@ -451,7 +472,13 @@ RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
 # Django-rq
 RQ_QUEUES = {
     'default': {
-        'URL': env('REDIS_URL') or 'redis://localhost:6379/0',
+        'URL': REDIS_URL or 'redis://localhost:6379/0',
+        'DEFAULT_TIMEOUT': 500,
+    },
+
+    # Must be a separate queue as it's limited to one item at a time
+    'wagtail_localize_pontoon.sync': {
+        'URL': REDIS_URL or 'redis://localhost:6379/0',
         'DEFAULT_TIMEOUT': 500,
     },
 }

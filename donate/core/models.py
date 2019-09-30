@@ -12,6 +12,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.fields import ParentalKey
+from wagtail_localize.models import TranslatablePageMixin, TranslatablePageRoutingMixin, Locale
 
 from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
@@ -20,7 +21,7 @@ from donate.payments.utils import get_default_currency
 from .blocks import ContentBlock
 
 
-class DonationPage(Page):
+class DonationPage(TranslatablePageMixin, Page):
 
     PROJECT_MOZILLAFOUNDATION = 'mozillafoundation'
     PROJECT_THUNDERBIRD = 'thunderbird'
@@ -53,6 +54,7 @@ class DonationPage(Page):
         # Query argument takes first preference
         if request.GET.get('currency') in constants.CURRENCIES:
             return request.GET['currency']
+
         # Otherwise use the language code determined by Django
         return get_default_currency(getattr(request, 'LANGUAGE_CODE', ''))
 
@@ -83,11 +85,26 @@ class DonationPage(Page):
         })
         return ctx
 
+    @classmethod
+    def can_create_at(cls, parent):
+        if not super().can_create_at(parent):
+            return False
+
+        # Prevent pages being created in translated sections
+        if issubclass(parent.specific_class, TranslatablePageMixin):
+            if parent.specific.locale_id != Locale.objects.default_id():
+                return False
+
+        return True
+
     class Meta:
+        unique_together = [
+            ('translation_key', 'locale'),
+        ]
         abstract = True
 
 
-class LandingPage(DonationPage):
+class LandingPage(TranslatablePageRoutingMixin, DonationPage):
     template = 'pages/core/landing_page.html'
 
     # Only allow creating landing pages at the root level
@@ -106,6 +123,24 @@ class LandingPage(DonationPage):
         ImageChooserPanel('featured_image'),
         FieldPanel('intro'),
     ]
+
+    translatable_fields = [
+        'title',
+        'seo_title',
+        'search_description',
+        'intro',
+    ]
+
+    def save(self, *args, **kwargs):
+        # This slug isn't used anywhere but it does need to be unique for each language
+        language_code = self.locale.language.code.lower()
+        if language_code == 'en-us':
+            # Needs to be something nice as translators will see it
+            self.slug = 'mozilla-donate'
+        else:
+            self.slug = 'mozilla-donate-' + language_code
+
+        super().save(*args, **kwargs)
 
 
 class CampaignPage(DonationPage):
@@ -126,6 +161,15 @@ class CampaignPage(DonationPage):
         FieldPanel('lead_text'),
         FieldPanel('intro'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
+    ]
+
+    translatable_fields = [
+        'title',
+        'slug',
+        'seo_title',
+        'search_description',
+        'lead_text',
+        'intro',
     ]
 
     @classmethod
@@ -182,7 +226,7 @@ class CampaignPageDonationAmount(models.Model):
         unique_together = (('campaign', 'currency'),)
 
 
-class ContentPage(Page):
+class ContentPage(TranslatablePageMixin, Page):
     template = 'pages/core/content_page.html'
     parent_page_types = ['LandingPage']
     subpage_types = ['ContentPage']
@@ -196,4 +240,12 @@ class ContentPage(Page):
         FieldPanel('call_to_action_text'),
         FieldPanel('call_to_action_url'),
         StreamFieldPanel('body'),
+    ]
+
+    translatable_fields = [
+        'title',
+        'seo_title',
+        'search_description',
+        'call_to_action_text',
+        'body',
     ]

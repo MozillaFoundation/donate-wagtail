@@ -23,9 +23,14 @@ boto3 = "*"
 braintree = "*"
 django-countries = "*"
 freezegun = "*"
+wagtail-localize = {git = "https://github.com/kaedroho/wagtail-localize.git", ref="51f006abdbce7603cd9e4ea48f9c23793763153c"}
+wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git", ref="64f79b2f8bc37c307bdab8db2b86c78f99ba31ad"}
 babel = "*"
 rq = "*"
 django-rq = "*"
+
+# Need to install a pre-release in order to get the RedLock.locked() method
+redlock = {git = "https://github.com/glasslion/redlock.git", ref="7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}
 
 [requires]
 python_version = "3.7"
