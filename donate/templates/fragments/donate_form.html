@@ -92,7 +92,7 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
-                        <input type="text" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" placeholder="Other amount" data-other-amount="">
+                        <input type="text" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
                 </div>
                 <input type="hidden" class="monthly-amount__total">
