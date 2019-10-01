@@ -74,6 +74,12 @@
     "BRAINTREE_PRIVATE_KEY": {
       "required": true
     },
+    "SSH_CONFIG": {
+      "required": true
+    },
+    "SSH_KEY": {
+      "required": true
+    },
     "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
     "CORS_WHITELIST": "*",
