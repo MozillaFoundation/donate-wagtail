@@ -7,14 +7,25 @@ echo "-----> Downloading and installing gettext tools"
 
 cd $BUILD_DIR
 
+# Ensure the file was not cached
 rm -f gettext.tar.xz
 
+# Fetch our precompiled gettext package
 curl -s -L -o gettext.tar.xz $GETTEXT_TARBALL
 
+# Verify the contents of the package
 if [ "$GETTEXT_SHA256" != "$(sha256sum gettext.tar.xz | cut -d ' ' -f 1)" ]; then
     echo "Checksum doesn't match. gettext tools will not be installed."
     exit 1
 fi
 
+# extract the gettext tools
 tar -xvf gettext.tar.xz > /dev/null
+
+# clean up
 rm gettext.tar.xz
+
+PATH=$BUILD_DIR/gettext/bin:$PATH
+LD_LIBRARY_PATH=$BUILD_DIR/gettext/lib:$LD_LIBRARY_PATH
+
+python $BUILD_DIR/manage.py compilemessages
