@@ -6,7 +6,7 @@
     "heroku-postgresql:hobby-dev",
     "heroku-redis:hobby-dev"
   ],
-  "buildpacks": {
+  "buildpacks": [
     {
       "url": "https://github.com/Osmose/heroku-buildpack-ssh"
     },
