@@ -6,7 +6,7 @@
     "heroku-postgresql:hobby-dev",
     "heroku-redis:hobby-dev"
   ],
-  "buildpacks": {
+  "buildpacks": [
     {
       "url": "https://github.com/Osmose/heroku-buildpack-ssh"
     },
@@ -72,6 +72,12 @@
       "required": true
     },
     "BRAINTREE_PRIVATE_KEY": {
+      "required": true
+    },
+    "SSH_CONFIG": {
+      "required": true
+    },
+    "SSH_KEY": {
       "required": true
     },
     "BRAINTREE_USE_SANDBOX": "True",
