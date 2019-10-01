@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 # msgfmt is not available at runtime. We need to copy it to be able to run "manage.py compilemessages" for localization.
 cp $(which msgfmt) $BUILD_DIR/bin/msgfmt
+
+# libgettextsrc-0.19.8.1.so needs to be reachable at runtime
+cp $(find /usr/ -name "libgettextsrc-0.19.8.1.so") $BUILD_DIR/bin/libgettextsrc-0.19.8.1.so
