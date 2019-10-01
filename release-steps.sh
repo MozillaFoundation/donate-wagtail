@@ -3,9 +3,4 @@
 # Django Migrations
 python manage.py migrate --no-input
 
-PATH=$BUILD_DIR/gettext/bin:$PATH
-
-echo $PATH
-ls -la
-
-python manage.py compilemessages
+PATH=$BUILD_DIR/gettext/bin:$PATH python manage.py compilemessages
