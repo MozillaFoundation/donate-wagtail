@@ -19,13 +19,15 @@ if [ "$GETTEXT_SHA256" != "$(sha256sum gettext.tar.xz | cut -d ' ' -f 1)" ]; the
     exit 1
 fi
 
-# extract the gettext tools
+# Extract the gettext tools
 tar -xvf gettext.tar.xz > /dev/null
 
 # clean up
 rm gettext.tar.xz
 
+# Update PATH and LD_LIBRARY_PATH so that gettext binaries are available and can run.
 PATH=$BUILD_DIR/gettext/bin:$PATH
 LD_LIBRARY_PATH=$BUILD_DIR/gettext/lib:$LD_LIBRARY_PATH
 
+# Compile localized strings
 python $BUILD_DIR/manage.py compilemessages
