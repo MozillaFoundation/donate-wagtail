@@ -20,7 +20,7 @@ if [ "$GETTEXT_SHA256" != "$(sha256sum gettext.tar.xz | cut -d ' ' -f 1)" ]; the
 fi
 
 # Extract the gettext tools
-tar -xvf gettext.tar.xz > /dev/null
+tar -xf gettext.tar.xz > /dev/null
 
 # clean up
 rm gettext.tar.xz
