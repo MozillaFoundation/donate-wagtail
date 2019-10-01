@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# msgfmt is not available at runtime. We need to copy it to be able to run "manage.py compilemessages" for localization.
+cp $(which msgfmt) /app/.heroku/vendor/bin/msgfmt
