@@ -5,7 +5,8 @@ GETTEXT_TARBALL="https://assets.mofoprod.net/gettext/gettext-0.20.1.tar.xz"
 
 echo "-----> Downloading and installing gettext tools"
 
-pushd $BUILD_DIR > /dev/null
+cd $BUILD_DIR
+
 rm -f gettext.tar.xz
 
 curl -s -L -o gettext.tar.xz $GETTEXT_TARBALL
@@ -17,7 +18,3 @@ fi
 
 tar -xvf gettext.tar.xz > /dev/null
 rm gettext.tar.xz
-popd >/dev/null
-
-export PATH=$BUILD_DIR/gettext/bin:$PATH
-
