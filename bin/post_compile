@@ -10,7 +10,7 @@ rm -f gettext.tar.xz
 
 curl -s -L -o gettext.tar.xz $GETTEXT_TARBALL
 
-if [ "$GETTEXT_SHA256" != "$(sha256sum gettext.tar.xz)" ]; then
+if [ "$GETTEXT_SHA256" != "$(sha256sum gettext.tar.xz | cut -d '' -f 1)" ]; then
     echo "Checksum doesn't match. gettext tools will not be installed."
     exit 1
 fi
