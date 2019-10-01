@@ -3,7 +3,7 @@
 # Django Migrations
 python manage.py migrate --no-input
 
-export PATH=$BUILD_DIR/gettext/bin:$PATH
+PATH=$BUILD_DIR/gettext/bin:$PATH
 
 echo $PATH
 ls -la
