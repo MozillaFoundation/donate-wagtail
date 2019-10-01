@@ -34,18 +34,18 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:8fed2b76e4234e109ad566c90c010e20525d2d4cff779d1f0930f6b8ef377a35",
-                "sha256:a22e14cf17e8022fed803872e8f536dee15c213b43a73941fac66c939dd6663d"
+                "sha256:5ff78c697d8009b9fe9808baea60660f0a07be666fb7c65fc4c11756f568124e",
+                "sha256:d01314496080ac82ddff3d1b2c6ad542d89bfcb100b7a0e8aaf2d6aef99775c6"
             ],
             "index": "pypi",
-            "version": "==1.9.235"
+            "version": "==1.9.239"
         },
         "botocore": {
             "hashes": [
-                "sha256:8a9ac0dea40e76f89cdf6de98da7872a5f39aa632d90037cee0685f43609d26d",
-                "sha256:90287722dbec20f32d9e8b56da1d94c8575bb3e1d097e659aedb6e17b825e395"
+                "sha256:14ff881779776a5b08e4bb8d7e0cd6ca86e36fc80decc536d605c406fb81c993",
+                "sha256:5df4a8f8bb579daed58368d6c15cdd72455bfee7dc86be243e2ef4dff5ba1177"
             ],
-            "version": "==1.12.235"
+            "version": "==1.12.239"
         },
         "braintree": {
             "hashes": [
@@ -169,9 +169,9 @@
         },
         "draftjs-exporter": {
             "hashes": [
-                "sha256:503f222c81de9a0619158d8f88b638f9069af8de233dc020faa782c7a3b22100"
+                "sha256:5839cbc29d7bce2fb99837a404ca40c3a07313f2a20e2700de7ad6aa9a9a18fb"
             ],
-            "version": "==2.1.6"
+            "version": "==2.1.7"
         },
         "factory-boy": {
             "hashes": [
