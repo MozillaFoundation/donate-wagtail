@@ -4,8 +4,6 @@
 python manage.py migrate --no-input
 
 PATH=$HOME/gettext/bin:$PATH
-
-echo $PATH
-ls -la
+LD_LIBRARY_PATH=$HOME/gettext/lib:$LD_LIBRARY_PATH
 
 python manage.py compilemessages
