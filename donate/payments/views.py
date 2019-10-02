@@ -187,7 +187,8 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'custom_fields': self.get_custom_fields(form),
             'credit_card': {
                 'billing_address': self.get_address_info(form.cleaned_data)
-            }
+            },
+            'device_data': form.cleaned_data['device_data'],
         })
 
         if not result.is_success:

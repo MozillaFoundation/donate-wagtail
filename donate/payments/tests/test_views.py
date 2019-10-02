@@ -107,6 +107,7 @@ class CardPaymentViewTestCase(TestCase):
             'landing_url': 'http://localhost',
             'project': 'mozillafoundation',
             'campaign_id': 'pi_day',
+            'device_data': '{"some": "data"}'
         }
 
         self.request = RequestFactory().get('/')
@@ -275,7 +276,8 @@ class CardPaymentViewTestCase(TestCase):
                     'postal_code': self.form_data['post_code'],
                     'country_code_alpha2': self.form_data['country'],
                 }
-            }
+            },
+            'device_data': self.form_data['device_data'],
         })
 
 

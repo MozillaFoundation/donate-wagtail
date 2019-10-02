@@ -1,10 +1,12 @@
 import client from "braintree-web/client";
+import dataCollector from "braintree-web/data-collector";
 import hostedFields from "braintree-web/hosted-fields";
 import expectRecaptcha from "./components/recaptcha";
 
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
+    deviceDataInput = document.getElementById("id_device_data"),
     captchaInput = document.getElementById("id_captcha"),
     captchaEnabled = captchaInput !== null,
     submitButton = document.getElementById("payments__payment-submit"),
@@ -44,6 +46,18 @@ function setupBraintree() {
         showErrorMessage(loadingErrorMsg);
         return;
       }
+
+      dataCollector.create({ client: clientInstance, kount: true }, function(
+        clientErr,
+        dataCollectorInstance
+      ) {
+        if (clientErr) {
+          showErrorMessage(loadingErrorMsg);
+          return;
+        }
+
+        deviceDataInput.value = dataCollectorInstance.deviceData;
+      });
 
       var options = {
         client: clientInstance,
