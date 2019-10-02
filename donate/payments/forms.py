@@ -74,6 +74,6 @@ class NewsletterSignupForm(forms.Form):
     email = forms.EmailField()
     privacy = forms.BooleanField(
         label=mark_safe(_(
-            "I’m okay with Mozilla handling my info as explained in this <a %(attrs)s>Privacy Notice</a>."
-        ) % {'attrs': 'href="https://www.mozilla.org/privacy/websites/"'})
+            "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
+        ) % {'url': 'https://www.mozilla.org/privacy/websites/'})
     )
