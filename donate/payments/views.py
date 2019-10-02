@@ -590,6 +590,11 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
             return HttpResponseRedirect(self.get_success_url())
         return super().get(request, *args, **kwargs)
 
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['email'] = self.request.session['completed_transaction_details'].get('email', '')
+        return initial
+
     def form_valid(self, form, send_data_to_basket=True):
         if send_data_to_basket:
             data = form.cleaned_data.copy()

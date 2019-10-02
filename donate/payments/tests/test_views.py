@@ -756,3 +756,16 @@ class NewsletterSignupViewTestCase(TestCase):
         response = view.get(request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], view.get_success_url())
+
+    def test_get_initial_populates_email_from_session(self):
+        request = RequestFactory().get('/')
+        request.session = {
+            'completed_transaction_details': {
+                'email': 'test@example.com',
+            }
+        }
+        view = NewsletterSignupView()
+        view.request = request
+        self.assertEqual(view.get_initial(), {
+            'email': 'test@example.com',
+        })
