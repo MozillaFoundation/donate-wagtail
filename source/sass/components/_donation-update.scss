@@ -6,6 +6,7 @@
   }
 
   &__toggle {
+      color: $color--dark-blue;
     &.selected {
       color: $color--black;
     }
