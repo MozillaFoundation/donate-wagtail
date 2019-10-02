@@ -101,22 +101,26 @@ For this project, we're only using the `donation` event type.
 Example of a donation message sent to Basket, via SQS:
 
 ```
-{ event_type: 'donation',
-  last_name: 'alex',
-  email: 'alex@alex.org',
-  donation_amount: 50,
-  currency: 'usd',
-  created: 1563801762,
-  recurring: false,
-  service: 'stripe',
-  transaction_id: 'ch_1Ez1TSG8Mmx3htnxyShib70n',
-  project: 'mozillafoundation',
-  last_4: '4242',
-  donation_url: 'http://localhost:3000/en-US/',
-  locale: 'en-US',
-  conversion_amount: 50,
-  net_amount: 48.6,
-  transaction_fee: 1.4 }
+{
+    'data': {
+        'event_type': 'donation',
+        'last_name': 'alex',
+        'email': 'alex@alex.org',
+        'donation_amount': 50,
+        'currency': 'usd',
+        'created': 1563801762,
+        'recurring': false,
+        'service': 'paypal',
+        'transaction_id': 'ch_1Ez1TSG8Mmx3htnxyShib70n',
+        'project': 'mozillafoundation',
+        'last_4': '4242',
+        'donation_url': 'http://localhost:3000/en-US/',
+        'locale': 'en-US',
+        'conversion_amount': 50,
+        'net_amount': 48.6,
+        'transaction_fee': 1.4
+    }
+}
 ```
 
 - `event_type`: Basket event type. Should be donation,

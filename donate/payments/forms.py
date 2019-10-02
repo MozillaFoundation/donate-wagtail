@@ -34,7 +34,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     last_name = forms.CharField(label=_('Last name'), max_length=255)
     email = forms.EmailField(label=_('Email'), max_length=255)
     address_line_1 = forms.CharField(label=_('Street'), max_length=255)
-    town = forms.CharField(label=_('City'), max_length=255)
+    city = forms.CharField(label=_('City'), max_length=255)
     post_code = forms.CharField(label=pgettext("Feel free to replace with “Postal code” or equivalent", 'ZIP Code'))
     country = CountryField().formfield(initial='US')
 

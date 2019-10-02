@@ -54,6 +54,6 @@
 
 {% block extra_js %}
     {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="https://www.paypalobjects.com/api/checkout.min.js" data-version-4></script>
     <script src="{% static '_js/payments-paypal-upsell.compiled.js' %}"></script>
 {% endblock %}
