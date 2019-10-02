@@ -35,7 +35,12 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     email = forms.EmailField(label=_('Email'), max_length=255)
     address_line_1 = forms.CharField(label=_('Street'), max_length=255)
     city = forms.CharField(label=_('City'), max_length=255)
-    post_code = forms.CharField(label=pgettext_lazy("Feel free to replace with “Postal code” or equivalent", 'ZIP Code'))
+    post_code = forms.CharField(
+        label=pgettext_lazy(
+            "Feel free to replace with “Postal code” or equivalent",
+            'ZIP Code'
+        )
+    )
     country = CountryField().formfield(initial='US')
 
     if settings.RECAPTCHA_ENABLED:
