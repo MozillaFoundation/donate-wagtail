@@ -6,6 +6,7 @@ from django.utils.translation import pgettext
 
 from django_countries.fields import CountryField
 
+from donate.core.utils import is_donation_page
 from donate.recaptcha.fields import ReCaptchaField
 
 from . import constants
@@ -15,6 +16,12 @@ class StartCardPaymentForm(forms.Form):
     amount = forms.DecimalField(min_value=0.01, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
+
+    def clean_source_page_id(self):
+        id = self.cleaned_data['source_page_id']
+        if not is_donation_page(id):
+            raise forms.ValidationError('Invalid source page ID.')
+        return id
 
 
 class BraintreePaymentForm(forms.Form):
@@ -45,7 +52,6 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
 class BraintreePaypalPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
-    source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
     if settings.RECAPTCHA_ENABLED:
         captcha = ReCaptchaField()

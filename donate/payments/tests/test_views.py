@@ -67,9 +67,6 @@ class BraintreeMixinTestView(BraintreePaymentMixin, FormView):
             'amount': '50',
         }
 
-    def get_source_page_id(self):
-        return 3
-
 
 class BraintreeMixinTestCase(TestCase):
 
@@ -89,7 +86,6 @@ class BraintreeMixinTestCase(TestCase):
         self.assertEqual(view.request.session['completed_transaction_details'], {
             'amount': '50',
             'locale': 'en-US',
-            'source_page_id': 3,
             'landing_url': 'http://localhost',
             'project': 'thunderbird',
         })
@@ -119,7 +115,6 @@ class CardPaymentViewTestCase(TestCase):
         self.view = CardPaymentView()
         self.view.payment_frequency = 'single'
         self.view.currency = 'usd'
-        self.view.source_page_id = 3
         self.view.request = self.request
 
         self.fake_error_result = ErrorResult("gateway", {
@@ -283,9 +278,6 @@ class CardPaymentViewTestCase(TestCase):
             }
         })
 
-    def test_get_source_page_id(self):
-        self.assertEqual(self.view.get_source_page_id(), 3)
-
 
 class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
 
@@ -428,7 +420,6 @@ class PaypalPaymentViewTestCase(TestCase):
             'amount': Decimal(10),
             'currency': 'usd',
             'frequency': 'single',
-            'source_page_id': 3,
             'landing_url': 'http://localhost',
             'project': 'mozillafoundation',
             'campaign_id': '',
@@ -510,10 +501,6 @@ class PaypalPaymentViewTestCase(TestCase):
             }
         )
 
-    def test_get_source_page_id(self):
-        self.view.source_page_id = 3
-        self.assertEqual(self.view.get_source_page_id(), 3)
-
     def test_get_success_url_single(self):
         self.view.payment_frequency = 'single'
         self.assertEqual(
@@ -574,7 +561,6 @@ class CardUpsellViewTestCase(TestCase):
                 'payment_method': 'card',
                 'payment_method_token': 'payment-method-1',
             },
-            'source_page_id': 3,
         }
         self.view = CardUpsellView()
         self.view.request = self.request
@@ -648,9 +634,6 @@ class CardUpsellViewTestCase(TestCase):
             }
         )
 
-    def test_get_source_page_id(self):
-        self.assertEqual(self.view.get_source_page_id(), 3)
-
 
 class PaypalUpsellViewTestCase(TestCase):
 
@@ -664,7 +647,6 @@ class PaypalUpsellViewTestCase(TestCase):
                 'payment_method': 'paypal',
                 'payment_method_token': 'payment-method-1',
             },
-            'source_page_id': 3,
         }
         self.request.LANGUAGE_CODE = 'en-US'
         self.view = PaypalUpsellView()
@@ -742,9 +724,6 @@ class PaypalUpsellViewTestCase(TestCase):
                 'payment_method_token': 'payment-method-1',
             }
         )
-
-        def test_get_source_page_id(self):
-            self.assertEqual(self.view.get_source_page_id(), 3)
 
 
 class NewsletterSignupViewTestCase(TestCase):
