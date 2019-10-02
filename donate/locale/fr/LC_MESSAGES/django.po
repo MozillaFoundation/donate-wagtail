@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-02 15:29+0000\n"
-"PO-Revision-Date: 2019-10-02 11:16+0200\n"
+"POT-Creation-Date: 2019-10-02 17:05+0000\n"
+"PO-Revision-Date: 2019-10-02 19:07+0200\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -26,7 +26,7 @@ msgstr "Prénom"
 msgid "Last name"
 msgstr "Nom"
 
-#: donate/payments/forms.py:35 donate/templates/payment/thank_you.html:36
+#: donate/payments/forms.py:35
 msgid "Email"
 msgstr "Adresse électronique"
 
@@ -385,7 +385,13 @@ msgstr "Pouvez-vous nous aider à partager le travail important mené par Mozill
 msgid "Facebook"
 msgstr "Facebook"
 
+#: donate/templates/payment/thank_you.html:36
+msgctxt "Share button"
+msgid "Email"
+msgstr "Courriel"
+
 #: donate/templates/payment/thank_you.html:42
+msgctxt "Share button"
 msgid "Link"
 msgstr "Lien"
 
