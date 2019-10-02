@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-02 16:50+0000\n"
+"POT-Creation-Date: 2019-10-02 17:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: donate/payments/forms.py:35 donate/templates/payment/thank_you.html:36
+#: donate/payments/forms.py:35
 msgid "Email"
 msgstr ""
 
@@ -384,7 +384,13 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
+#: donate/templates/payment/thank_you.html:36
+msgctxt "Share button"
+msgid "Email"
+msgstr ""
+
 #: donate/templates/payment/thank_you.html:42
+msgctxt "Share button"
 msgid "Link"
 msgstr ""
 
