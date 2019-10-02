@@ -60,14 +60,14 @@
     <div class="footer__container layout">
         <div class="footer__primary-content layout__container">
             <div class="footer__newsletter newsletter-signup layout__half-col">
-                <div class="newsletter-signup__container">
+                <div class="newsletter-signup__container" aria-labelledby="email-newsletter-heading">
                     <header class="newsletter-signup__header">
-                        <h2 class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</h2>
+                        <span class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</span>
                     </header>
                     <form class="newsletter-signup__form">
                         <div class="form-group form-group--two-col">
                             <div class="form-item">
-                                <label for="email-newsletter">{% trans "Join our email list to take action and stay updated!" %}</label>
+                                <label for="email-newsletter" id="email-newsletter-heading">{% trans "Join our email list to take action and stay updated!" %}</label>
                                 <input type="text" name="email-newsletter" id="email-newsletter" placeholder="{% trans 'Enter email address' %}">
                             </div>
                             <div class="form-item">
