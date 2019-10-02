@@ -88,8 +88,8 @@
                 </div>
                 <div class="footer-links__container">
                     <header class="footer-links__header">
-                        <h2 class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
-                        <div class="footer-links__social">
+                        <h2 id="about-us-heading" class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
+                        <div class="footer-links__social" aria-labelledby="about-us-heading">
                             <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
                                 <div class="link__svg-title">{% trans "Twitter" %}</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
@@ -110,7 +110,7 @@
                             </a>
                         </div>
                     </header>
-                    <ul class="footer-links__group">
+                    <ul class="footer-links__group" aria-labelledby="about-us-heading">
                         <li class="footer-links__item">
                             <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
                         </li>
