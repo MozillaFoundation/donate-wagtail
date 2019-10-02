@@ -61,20 +61,22 @@ class BasketTransactionTestCase(TestCase):
         }
 
         self.sample_payload = {
-            'event_type': 'donation',
-            'last_name': 'Bob',
-            'email': 'test@example.com',
-            'donation_amount': Decimal(10),
-            'currency': 'usd',
-            'created': 1565222400,
-            'recurring': False,
-            'service': 'card',
-            'transaction_id': 'transaction-1',
-            'project': 'mozillafoundation',
-            'last_4': '1234',
-            'donation_url': 'http://localhost',
-            'locale': 'en-US',
-            'conversion_amount': Decimal(10),
+            'data': {
+                'event_type': 'donation',
+                'last_name': 'Bob',
+                'email': 'test@example.com',
+                'donation_amount': Decimal(10),
+                'currency': 'usd',
+                'created': 1565222400,
+                'recurring': False,
+                'service': 'card',
+                'transaction_id': 'transaction-1',
+                'project': 'mozillafoundation',
+                'last_4': '1234',
+                'donation_url': 'http://localhost',
+                'locale': 'en-US',
+                'conversion_amount': Decimal(10),
+            }
         }
 
     def test_sqs_payload(self):
@@ -92,6 +94,6 @@ class BasketTransactionTestCase(TestCase):
     def test_send_transaction_to_basket_monthly(self):
         self.sample_data['payment_frequency'] = 'monthly'
         self.sample_data['settlement_amount'] = None
-        self.sample_payload['recurring'] = True
-        self.sample_payload['conversion_amount'] = None
+        self.sample_payload['data']['recurring'] = True
+        self.sample_payload['data']['conversion_amount'] = None
         self.test_sqs_payload()

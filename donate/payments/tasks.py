@@ -44,20 +44,22 @@ def send_transaction_to_basket(data):
         return
 
     payload = {
-        'event_type': 'donation',
-        'last_name': data['last_name'],
-        'email': data['email'],
-        'donation_amount': data['amount'],
-        'currency': data['currency'],
-        'created': int(time.time()),
-        'recurring': data['payment_frequency'] == constants.FREQUENCY_MONTHLY,
-        'service': data['payment_method'],
-        'transaction_id': data['transaction_id'],
-        'project': data['project'],
-        'last_4': data.get('last_4', None),
-        'donation_url': data['landing_url'],
-        'locale': data['locale'],
-        'conversion_amount': data.get('settlement_amount', None),
+        'data': {
+            'event_type': 'donation',
+            'last_name': data['last_name'],
+            'email': data['email'],
+            'donation_amount': data['amount'],
+            'currency': data['currency'],
+            'created': int(time.time()),
+            'recurring': data['payment_frequency'] == constants.FREQUENCY_MONTHLY,
+            'service': data['payment_method'],
+            'transaction_id': data['transaction_id'],
+            'project': data['project'],
+            'last_4': data.get('last_4', None),
+            'donation_url': data['landing_url'],
+            'locale': data['locale'],
+            'conversion_amount': data.get('settlement_amount', None),
+        }
     }
 
     client.send_message(
