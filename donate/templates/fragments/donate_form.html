@@ -20,7 +20,7 @@
                 <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
-                <div class="donate-form__fields" id="js-donate-form-single">
+                <div class="donate-form__fields" id="js-donate-form-single" role="radiogroup">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
@@ -80,7 +80,7 @@
                 <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
-                <div class="donate-form__fields" id="js-donate-form-monthly">
+                <div class="donate-form__fields" id="js-donate-form-monthly" role="radiogroup">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="monthly-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
