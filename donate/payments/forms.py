@@ -2,7 +2,7 @@ from django import forms
 from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import pgettext
+from django.utils.translation import pgettext_lazy
 
 from django_countries.fields import CountryField
 
@@ -34,8 +34,13 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
     last_name = forms.CharField(label=_('Last name'), max_length=255)
     email = forms.EmailField(label=_('Email'), max_length=255)
     address_line_1 = forms.CharField(label=_('Street'), max_length=255)
-    town = forms.CharField(label=_('City'), max_length=255)
-    post_code = forms.CharField(label=pgettext("Feel free to replace with “Postal code” or equivalent", 'ZIP Code'))
+    city = forms.CharField(label=_('City'), max_length=255)
+    post_code = forms.CharField(
+        label=pgettext_lazy(
+            "Feel free to replace with “Postal code” or equivalent",
+            'ZIP Code'
+        )
+    )
     country = CountryField().formfield(initial='US')
 
     if settings.RECAPTCHA_ENABLED:
@@ -69,6 +74,6 @@ class NewsletterSignupForm(forms.Form):
     email = forms.EmailField()
     privacy = forms.BooleanField(
         label=mark_safe(_(
-            "I’m okay with Mozilla handling my info as explained in this <a %(attrs)s>Privacy Notice</a>."
-        ) % {'attrs': 'href="https://www.mozilla.org/privacy/websites/"'})
+            "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
+        ) % {'url': 'https://www.mozilla.org/privacy/websites/'})
     )

@@ -113,7 +113,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
     def get_address_info(self, form_data):
         address_info = {
             'street_address': form_data['address_line_1'],
-            'locality': form_data['town'],
+            'locality': form_data['city'],
             'postal_code': form_data['post_code'],
             'country_code_alpha2': form_data['country'],
         }

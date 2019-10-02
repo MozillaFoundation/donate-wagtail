@@ -46,9 +46,17 @@ def makemigrations(ctx):
 
 @task
 def makemessages(ctx):
-    """Compile all template messages for localization"""
+    """Extract all template messages in .po files for localization"""
     manage(ctx, "makemessages --keep-pot --no-wrap")
+    manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules --ignore=donate/frontend")
     os.rename("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+    os.rename("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
+
+
+@task
+def compilemessages(ctx):
+    """Compile the latest translations"""
+    manage(ctx, "compilemessages")
 
 
 @task
@@ -138,9 +146,17 @@ def docker_makemigrations(ctx):
 
 @task
 def docker_makemessages(ctx):
-    """Compile all template messages for localization"""
+    """Extract all template messages in .po files for localization"""
     docker_manage(ctx, "makemessages --keep-pot --no-wrap")
+    docker_manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules --ignore=donate/frontend")
     os.rename("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+    os.rename("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
+
+
+@task
+def docker_compilemessages(ctx):
+    """Compile the latest translations"""
+    docker_manage(ctx, "compilemessages")
 
 
 @task
