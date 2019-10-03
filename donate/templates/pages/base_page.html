@@ -34,7 +34,7 @@
 {% endblock navigation %}
 
 {% block header %}
-    <header class="header">
+    <div class="header">
         <div class="header__container">
 
             <div class="header__menu-toggle">
@@ -52,7 +52,7 @@
             </a>
 
         </div>
-    </header>
+    </div>
 {% endblock header %}
 
 {% block footer %}
@@ -61,9 +61,9 @@
         <div class="footer__primary-content layout__container">
             <div class="footer__newsletter newsletter-signup layout__half-col">
                 <div class="newsletter-signup__container" aria-labelledby="email-newsletter-heading">
-                    <header class="newsletter-signup__header">
+                    <div class="newsletter-signup__header">
                         <span class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</span>
-                    </header>
+                    </div>
                     <form class="newsletter-signup__form">
                         <div class="form-group form-group--two-col">
                             <div class="form-item">
@@ -87,7 +87,7 @@
                     </a>
                 </div>
                 <div class="footer-links__container">
-                    <header class="footer-links__header">
+                    <div class="footer-links__header">
                         <h2 id="about-us-heading" class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
                         <div class="footer-links__social" aria-labelledby="about-us-heading">
                             <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
@@ -109,7 +109,7 @@
                                 </svg>
                             </a>
                         </div>
-                    </header>
+                    </div>
                     <ul class="footer-links__group" aria-labelledby="about-us-heading">
                         <li class="footer-links__item">
                             <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
