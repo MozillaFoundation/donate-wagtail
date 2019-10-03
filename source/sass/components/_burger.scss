@@ -11,7 +11,8 @@
   outline: 0;
   transition: background-color $transition;
 
-  &:focus {
+  &:focus,
+  &:hover {
     #{$root}__bar {
       background-color: $color--grey-60;
     }
