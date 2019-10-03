@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-02 15:29+0000\n"
+"POT-Creation-Date: 2019-10-03 08:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,32 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: donate/payments/forms.py:33
-msgid "First name"
-msgstr ""
-
-#: donate/payments/forms.py:34
-msgid "Last name"
-msgstr ""
-
-#: donate/payments/forms.py:35 donate/templates/payment/thank_you.html:36
-msgid "Email"
-msgstr ""
-
-#: donate/payments/forms.py:36
-msgid "Street"
+#: donate/payments/forms.py:19 donate/payments/forms.py:26
+#: donate/payments/forms.py:70 donate/payments/forms.py:77
+msgid "Amount"
 msgstr ""
 
 #: donate/payments/forms.py:37
-msgid "City"
+msgid "First name"
+msgstr ""
+
+#: donate/payments/forms.py:38
+msgid "Last name"
+msgstr ""
+
+#: donate/payments/forms.py:39 donate/payments/forms.py:82
+msgid "Email"
+msgstr ""
+
+#: donate/payments/forms.py:40
+msgid "Street"
 msgstr ""
 
 #: donate/payments/forms.py:41
+msgid "City"
+msgstr ""
+
+#: donate/payments/forms.py:45
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
 msgstr ""
 
-#: donate/payments/forms.py:77 donate/templates/pages/base_page.html:78
+#: donate/payments/forms.py:48
+msgid "Country"
+msgstr ""
+
+#: donate/payments/forms.py:90 donate/templates/pages/base_page.html:78
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
@@ -76,7 +85,7 @@ msgstr ""
 msgid "Something went wrong. We were unable to process your payment."
 msgstr ""
 
-#: donate/payments/views.py:479 donate/payments/views.py:569
+#: donate/payments/views.py:487 donate/payments/views.py:579
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr ""
 
@@ -385,7 +394,13 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
+#: donate/templates/payment/thank_you.html:36
+msgctxt "Share button"
+msgid "Email"
+msgstr ""
+
 #: donate/templates/payment/thank_you.html:42
+msgctxt "Share button"
 msgid "Link"
 msgstr ""
 

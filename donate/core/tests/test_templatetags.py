@@ -12,7 +12,7 @@ class UtilTagsTestCase(TestCase):
         self.request = RequestFactory().get('/')
 
     def test_to_known_locale_fallback_map(self):
-        self.assertEqual(to_known_locale('es-xl'), 'es')
+        self.assertEqual(to_known_locale('es-XL'), 'es')
 
     def test_format_currency_usd_en_us_integer(self):
         self.request.LANGUAGE_CODE = 'en-US'
