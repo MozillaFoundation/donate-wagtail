@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-02 17:05+0000\n"
-"PO-Revision-Date: 2019-10-02 19:07+0200\n"
+"POT-Creation-Date: 2019-10-03 08:48+0000\n"
+"PO-Revision-Date: 2019-10-03 10:51+0200\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,32 +18,41 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2\n"
 
-#: donate/payments/forms.py:33
+#: donate/payments/forms.py:19 donate/payments/forms.py:26
+#: donate/payments/forms.py:70 donate/payments/forms.py:77
+msgid "Amount"
+msgstr "Montant"
+
+#: donate/payments/forms.py:37
 msgid "First name"
 msgstr "Prénom"
 
-#: donate/payments/forms.py:34
+#: donate/payments/forms.py:38
 msgid "Last name"
 msgstr "Nom"
 
-#: donate/payments/forms.py:35
+#: donate/payments/forms.py:39 donate/payments/forms.py:82
 msgid "Email"
 msgstr "Adresse électronique"
 
-#: donate/payments/forms.py:36
+#: donate/payments/forms.py:40
 msgid "Street"
 msgstr "Rue"
 
-#: donate/payments/forms.py:37
+#: donate/payments/forms.py:41
 msgid "City"
 msgstr "Ville"
 
-#: donate/payments/forms.py:41
+#: donate/payments/forms.py:45
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
 msgstr "Code postal"
 
-#: donate/payments/forms.py:77 donate/templates/pages/base_page.html:78
+#: donate/payments/forms.py:48
+msgid "Country"
+msgstr "Pays"
+
+#: donate/payments/forms.py:90 donate/templates/pages/base_page.html:78
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "J’accepte que Mozilla utilise mes informations conformément à <a href='%(url)s'>cette politique de confidentialité</a>."
@@ -76,7 +85,7 @@ msgstr "Désolé, une erreur s’est produite lors du traitement de votre paieme
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "Une erreur s’est produite. Nous n’avons pas pu traiter votre paiement."
 
-#: donate/payments/views.py:479 donate/payments/views.py:569
+#: donate/payments/views.py:487 donate/payments/views.py:579
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "Désolé, une erreur s’est produite lors du traitement de votre paiement. Veuillez réessayer ultérieurement."
 
