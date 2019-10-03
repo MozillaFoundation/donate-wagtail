@@ -1,6 +1,6 @@
 .form-item {
   $root: &;
-  margin-bottom: 20px;
+  margin-bottom: $gutter;
 
   &--errors {
     input:not([type="checkbox"]),
