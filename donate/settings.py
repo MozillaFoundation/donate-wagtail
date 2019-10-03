@@ -124,6 +124,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'donate.urls'
@@ -449,7 +450,6 @@ CSP_FONT_SRC = env('CSP_FONT_SRC', default=CSP_DEFAULT)
 CSP_CONNECT_SRC = env('CSP_CONNECT_SRC', default=None)
 CSP_STYLE_SRC = env('CSP_STYLE_SRC', default=CSP_DEFAULT)
 CSP_BASE_URI = env('CSP_BASE_URI', default=None)
-CSP_CHILD_SRC = env('CSP_CHILD_SRC', default=None)
 CSP_FRAME_ANCESTORS = env('CSP_FRAME_ANCESTORS', default=None)
 CSP_FORM_ACTION = env('CSP_FORM_ACTION', default=None)
 CSP_SANDBOX = env('CSP_SANDBOX', default=None)
