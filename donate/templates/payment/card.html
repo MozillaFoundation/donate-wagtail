@@ -33,7 +33,7 @@
                         <div class="donation-update__form-item form-item">
                             <label class="donation-update__label form-item__label" for="donation-update">{% trans "Donation Amount" %}</label>
                             <div class="donation-update__currency-symbol">{% get_localized_currency_symbol currency_info.code %}</div>
-                            <input class="donation-update__input form-item__input" id="js-update-donation-value" type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="1" required>
+                            <input class="donation-update__input form-item__input" id="js-update-donation-value" type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="1" max="10000000" required>
                         </div>
                         <div class="form-item">
                             <button class="donation-update__action button button--primary button--large" id="js-update-button">{% trans 'Confirm' %}</button>

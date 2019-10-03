@@ -11,15 +11,20 @@ from donate.recaptcha.fields import ReCaptchaField
 from . import constants
 
 
+# Global maximum amount value of 10 million, not currency-specific, intended
+# only to put a sane upper limit on all payments.
+MAX_AMOUNT_VALUE = 10000000
+
+
 class StartCardPaymentForm(forms.Form):
-    amount = forms.DecimalField(min_value=0.01, decimal_places=2)
+    amount = forms.DecimalField(min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
 
 class BraintreePaymentForm(forms.Form):
     braintree_nonce = forms.CharField(widget=forms.HiddenInput)
-    amount = forms.DecimalField(min_value=0.01, decimal_places=2, widget=forms.HiddenInput)
+    amount = forms.DecimalField(min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2, widget=forms.HiddenInput)
 
 
 class CampaignFormMixin(forms.Form):
@@ -62,12 +67,18 @@ class CurrencyForm(forms.Form):
 
 
 class UpsellForm(forms.Form):
-    amount = forms.DecimalField(min_value=1, decimal_places=2, widget=forms.NumberInput(attrs={'step': 'any'}))
+    amount = forms.DecimalField(
+        min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
+        widget=forms.NumberInput(attrs={'step': 'any'})
+    )
 
 
 class BraintreePaypalUpsellForm(BraintreePaymentForm):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
-    amount = forms.DecimalField(min_value=1, decimal_places=2, widget=forms.NumberInput(attrs={'step': 'any'}))
+    amount = forms.DecimalField(
+        min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
+        widget=forms.NumberInput(attrs={'step': 'any'})
+    )
 
 
 class NewsletterSignupForm(forms.Form):
