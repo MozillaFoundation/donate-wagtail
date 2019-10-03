@@ -41,7 +41,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
             'ZIP Code'
         )
     )
-    country = CountryField().formfield(initial='US')
+    country = CountryField(_('Country')).formfield(initial='US')
 
     if settings.RECAPTCHA_ENABLED:
         captcha = ReCaptchaField()
