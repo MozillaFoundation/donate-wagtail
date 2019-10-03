@@ -11,15 +11,23 @@ from donate.recaptcha.fields import ReCaptchaField
 from . import constants
 
 
+# Global maximum amount value of 10 million, not currency-specific, intended
+# only to put a sane upper limit on all payments.
+MAX_AMOUNT_VALUE = 10000000
+
+
 class StartCardPaymentForm(forms.Form):
-    amount = forms.DecimalField(min_value=0.01, decimal_places=2)
+    amount = forms.DecimalField(label=_('Amount'), min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
 
 class BraintreePaymentForm(forms.Form):
     braintree_nonce = forms.CharField(widget=forms.HiddenInput)
-    amount = forms.DecimalField(min_value=0.01, decimal_places=2, widget=forms.HiddenInput)
+    amount = forms.DecimalField(
+        label=_('Amount'), min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
+        widget=forms.HiddenInput
+    )
 
 
 class CampaignFormMixin(forms.Form):
@@ -41,7 +49,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
             'ZIP Code'
         )
     )
-    country = CountryField().formfield(initial='US')
+    country = CountryField(_('Country')).formfield(initial='US')
 
     if settings.RECAPTCHA_ENABLED:
         captcha = ReCaptchaField()
@@ -62,18 +70,28 @@ class CurrencyForm(forms.Form):
 
 
 class UpsellForm(forms.Form):
-    amount = forms.DecimalField(min_value=1, decimal_places=2, widget=forms.NumberInput(attrs={'step': 'any'}))
+    amount = forms.DecimalField(
+        label=_('Amount'), min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
+        widget=forms.NumberInput(attrs={'step': 'any'})
+    )
 
 
 class BraintreePaypalUpsellForm(BraintreePaymentForm):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
-    amount = forms.DecimalField(min_value=1, decimal_places=2, widget=forms.NumberInput(attrs={'step': 'any'}))
+    amount = forms.DecimalField(
+        label=_('Amount'), min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
+        widget=forms.NumberInput(attrs={'step': 'any'})
+    )
 
 
 class NewsletterSignupForm(forms.Form):
-    email = forms.EmailField()
-    privacy = forms.BooleanField(
-        label=mark_safe(_(
+    email = forms.EmailField(label=_('Email'))
+    privacy = forms.BooleanField()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Because we're rendering HTML into this label, we can't set it at runtime.
+        # Django will attempt to translate the string too early if we do.
+        self.fields['privacy'].label = mark_safe(_(
             "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
         ) % {'url': 'https://www.mozilla.org/privacy/websites/'})
-    )

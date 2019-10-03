@@ -17,6 +17,7 @@
       max-width: 33.333%;
       min-width: 33.333%;
       margin-bottom: $gutter;
+      margin-right: $gutter;
     }
   }
   &__group {
@@ -57,7 +58,7 @@
     transition: fill $transition;
 
     &:hover {
-      fill: $color--link-hover;
+      fill: $color--light-blue;
     }
   }
 }

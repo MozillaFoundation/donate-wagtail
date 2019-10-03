@@ -102,6 +102,7 @@ INSTALLED_APPS = [
     'taggit',
     'storages',
     'django_rq',
+    'django_countries',
 
     'django.contrib.admin',
     'django.contrib.auth',
