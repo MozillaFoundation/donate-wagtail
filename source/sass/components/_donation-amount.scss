@@ -51,10 +51,16 @@
   &__input {
     #{$root}--other & {
       flex-grow: 1;
-      padding-right: ($gutter * 0.75);
       padding-left: ($gutter * 0.75);
       border: 1px solid $color--border;
       border-left: 0;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
   }
 }
