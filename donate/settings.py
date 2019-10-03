@@ -104,6 +104,7 @@ INSTALLED_APPS = [
     'taggit',
     'storages',
     'django_rq',
+    'django_countries',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -115,6 +116,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -254,6 +256,7 @@ LANGUAGES = [
     ('ka', 'Georgian'),
     ('kab', 'Kabyle'),
     ('ko', 'Korean'),
+    ('lg', 'Luganda'),
     ('lo', 'Lao'),
     ('lv', 'Latvian'),
     ('lg', 'Luganda'),
@@ -277,6 +280,7 @@ LANGUAGES = [
     ('te', 'Telugu'),
     ('th', 'Thai'),
     ('tr', 'Turkish'),
+    ('uk', 'Ukrainian'),
     ('uz', 'Uzbek'),
     ('zh-CN', 'Chinese (China)'),
     ('zh-TW', 'Chinese (Taiwan)'),
@@ -298,6 +302,36 @@ django.conf.locale.LANG_INFO['es-xl'] = {
     'name': 'Latin American Spanish',
     'name_local': 'español',
     'fallback': ['es']
+}
+django.conf.locale.LANG_INFO['ach'] = {
+    'bidi': False,
+    'code': 'ach',
+    'name': 'Acholi',
+    'name_local': 'Acholi',
+}
+django.conf.locale.LANG_INFO['lg'] = {
+    'bidi': False,
+    'code': 'lg',
+    'name': 'Luganda',
+    'name_local': 'Luganda',
+}
+django.conf.locale.LANG_INFO['lo'] = {
+    'bidi': False,
+    'code': 'lo',
+    'name': 'Lao',
+    'name_local': 'Lao',
+}
+django.conf.locale.LANG_INFO['ms'] = {
+    'bidi': False,
+    'code': 'ms',
+    'name': 'Malay',
+    'name_local': 'Malay',
+}
+django.conf.locale.LANG_INFO['uk'] = {
+    'bidi': False,
+    'code': 'uk',
+    'name': 'Ukrainian',
+    'name_local': 'Ukrainian',
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

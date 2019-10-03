@@ -113,7 +113,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
     def get_address_info(self, form_data):
         address_info = {
             'street_address': form_data['address_line_1'],
-            'locality': form_data['town'],
+            'locality': form_data['city'],
             'postal_code': form_data['post_code'],
             'country_code_alpha2': form_data['country'],
         }
@@ -401,9 +401,15 @@ class TransactionRequiredMixin:
     Mixin that redirects the user to the home page if they try to access a view
     without having completed a payment transaction.
     """
+    def transaction_exists_in_session(self):
+        return 'completed_transaction_details' in self.request.session
+
+    def handle_no_transaction(self):
+        return HttpResponseRedirect('/')
+
     def dispatch(self, request, *args, **kwargs):
-        if not request.session.get('completed_transaction_details'):
-            return HttpResponseRedirect('/')
+        if not self.transaction_exists_in_session():
+            return self.handle_no_transaction()
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -413,6 +419,8 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
     template_name = 'payment/card_upsell.html'
 
     def dispatch(self, request, *args, **kwargs):
+        if not self.transaction_exists_in_session():
+            return self.handle_no_transaction()
         # Avoid repeat submissions and make sure that the previous transaction was
         # a single card transaction.
         last_transaction = self.request.session['completed_transaction_details']
@@ -488,6 +496,8 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
     template_name = 'payment/paypal_upsell.html'
 
     def dispatch(self, request, *args, **kwargs):
+        if not self.transaction_exists_in_session():
+            return self.handle_no_transaction()
         # Avoid repeat submissions and make sure that the previous transaction was
         # a single card transaction.
         last_transaction = self.request.session['completed_transaction_details']
@@ -589,6 +599,11 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         if request.COOKIES.get('subscribed') == '1':
             return HttpResponseRedirect(self.get_success_url())
         return super().get(request, *args, **kwargs)
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['email'] = self.request.session['completed_transaction_details'].get('email', '')
+        return initial
 
     def form_valid(self, form, send_data_to_basket=True):
         if send_data_to_basket:

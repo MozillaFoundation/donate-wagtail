@@ -103,7 +103,7 @@ class CardPaymentViewTestCase(TestCase):
             'last_name': 'Bob',
             'email': 'alice@example.com',
             'address_line_1': '1 Oak Tree Hill',
-            'town': 'New York',
+            'city': 'New York',
             'post_code': '10022',
             'country': 'US',
             'amount': Decimal(50),
@@ -255,7 +255,7 @@ class CardPaymentViewTestCase(TestCase):
         info = self.view.get_address_info(self.form_data)
         self.assertEqual(info, {
             'street_address': self.form_data['address_line_1'],
-            'locality': self.form_data['town'],
+            'locality': self.form_data['city'],
             'postal_code': self.form_data['post_code'],
             'country_code_alpha2': self.form_data['country'],
         })
@@ -276,7 +276,7 @@ class CardPaymentViewTestCase(TestCase):
             'credit_card': {
                 'billing_address': {
                     'street_address': self.form_data['address_line_1'],
-                    'locality': self.form_data['town'],
+                    'locality': self.form_data['city'],
                     'postal_code': self.form_data['post_code'],
                     'country_code_alpha2': self.form_data['country'],
                 }
@@ -565,7 +565,7 @@ class CardUpsellViewTestCase(TestCase):
                 'last_name': 'Bob',
                 'email': 'alice@example.com',
                 'address_line_1': '1 Oak Tree Hill',
-                'town': 'New York',
+                'city': 'New York',
                 'post_code': '10022',
                 'country': 'US',
                 'amount': 50,
@@ -644,7 +644,7 @@ class CardUpsellViewTestCase(TestCase):
                 'payment_method_token': 'payment-method-1',
                 'address_line_1': '1 Oak Tree Hill',
                 'post_code': '10022',
-                'town': 'New York',
+                'city': 'New York',
             }
         )
 
@@ -756,3 +756,16 @@ class NewsletterSignupViewTestCase(TestCase):
         response = view.get(request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], view.get_success_url())
+
+    def test_get_initial_populates_email_from_session(self):
+        request = RequestFactory().get('/')
+        request.session = {
+            'completed_transaction_details': {
+                'email': 'test@example.com',
+            }
+        }
+        view = NewsletterSignupView()
+        view.request = request
+        self.assertEqual(view.get_initial(), {
+            'email': 'test@example.com',
+        })

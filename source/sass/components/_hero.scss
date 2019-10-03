@@ -41,8 +41,13 @@
     }
   }
 
+  &__image {
+    background-color: $color--black;
+  }
+
   &__image-item {
     display: block;
+    opacity: 0.8;
     width: 100%;
     height: auto;
   }
