@@ -16,12 +16,12 @@
   }
 
   &--dark-bg {
-    color: $color--grey-20;
+    color: $color--white;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color--white;
+      color: $color--light-blue;
     }
 
     &#{$root}--icon {

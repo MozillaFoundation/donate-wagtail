@@ -67,15 +67,15 @@
                     <form class="newsletter-signup__form">
                         <div class="form-group form-group--two-col">
                             <div class="form-item">
-                                <label for="email-newsletter" id="email-newsletter-heading">{% trans "Join our email list to take action and stay updated!" %}</label>
-                                <input type="text" name="email-newsletter" id="email-newsletter" placeholder="{% trans 'Enter email address' %}">
+                                <label class="newsletter-signup__label" for="email-newsletter" id="email-newsletter-heading">{% trans "Join our email list to take action and stay updated!" %}</label>
+                                <input class="newsletter-signup__input" type="text" name="email-newsletter" id="email-newsletter" placeholder="{% trans 'Enter email address' %}">
                             </div>
                             <div class="form-item">
-                                <button class="button button--primary">{% trans "Sign up" %}</button>
+                                <button class="newsletter-signup__button button button--primary">{% trans "Sign up" %}</button>
                             </div>
                         </div>
-                        <div class="form-item">
-                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>.{% endblocktrans %}</label>
+                        <div class="form-item ">
+                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy" class="newsletter-signup__privacy-label">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>.{% endblocktrans %}</label>
                         </div>
                     </form>
                 </div>
