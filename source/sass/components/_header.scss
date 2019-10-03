@@ -69,6 +69,7 @@
   }
 
   &__menu-toggle {
+    display: flex;
     width: 28px;
     height: 28px;
     margin-right: ($gutter);
