@@ -1,9 +1,10 @@
 .payments {
   &__braintree-error {
-    margin: 10px 0;
-    padding: 10px;
+    margin: $gutter 0 ($gutter / 2);
+    padding: ($gutter / 2) $gutter;
     background-color: $color--light-red;
-    color: $color--white;
+    color: $color--black;
+    text-align: center;
   }
   &__button {
     height: 45px;

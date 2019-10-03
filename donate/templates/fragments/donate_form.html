@@ -1,4 +1,7 @@
 {% load i18n util_tags %}
+
+<div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
+
 <div class="donate-form__content" id="js-donate-form" data-locale="{% get_locale %}">
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container">
@@ -139,7 +142,6 @@
     </div>
 
     {# Form for submitting payment from Paypal only #}
-    <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
     <form id="payments__braintree-form" method="post" action="{% url 'payments:paypal' %}" hidden>
         {% csrf_token %}
         {% for field in braintree_form.hidden_fields %}
