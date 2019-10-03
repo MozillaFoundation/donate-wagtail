@@ -1,15 +1,15 @@
 {% load i18n util_tags %}
 <div class="donate-form__content" id="js-donate-form" data-locale="{% get_locale %}">
     <div class="donate-form__tabs tabs js-tabs">
-        <form class="donate-form__tab-options tabs__container" role="tablist">
+        <form class="donate-form__tab-options tabs__container">
             <div class="tabs__option" role="presentation">
-                <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" role="tab" aria-controls="tab-panel-1" aria-selected="true" id="tab-1">
+                <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" aria-controls="tab-panel-1" aria-selected="true" id="tab-1">
                     <input type="radio" class="tabs__radio-option" name="donation_frequency" id="one-time" value="one-time" checked>
                     <span class="tabs__label-text">{% trans "ONE TIME" %}</span>
                 </label>
             </div>
             <div class="tabs__option" role="presentation">
-                <label for="monthly" class="tabs__label js-tab-item" role="tab" aria-controls="tab-panel-2" id="tab-2">
+                <label for="monthly" class="tabs__label js-tab-item" aria-controls="tab-panel-2" id="tab-2">
                     <input type="radio" class="tabs__radio-option" name="donation_frequency" id="monthly" value="monthly">
                     <span class="tabs__label-text">{% trans "MONTHLY" %}</span>
                 </label>
@@ -20,7 +20,7 @@
                 <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
-                <div class="donate-form__fields" id="js-donate-form-single">
+                <div class="donate-form__fields" id="js-donate-form-single" role="radiogroup">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
@@ -34,7 +34,7 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
-                        <input type="text" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
+                        <input type="number" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="1" max="10000000" data-other-amount="">
                     </div>
                 </div>
                 <input type="hidden" class="one-time-amount__total">
@@ -72,18 +72,20 @@
                     </div>
                 </div>
             </form>
+
+            {% include "fragments/donate_form_disclaimer.html" with monthly=false %}
         </div>
         <div class="js-tab-panel tabs__panel tabs__panel--hidden" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
             <form method="GET" id="donate-form--monthly">
                 <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
 
-                <div class="donate-form__fields" id="js-donate-form-monthly">
+                <div class="donate-form__fields" id="js-donate-form-monthly" role="radiogroup">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
                         <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="monthly-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
                         <label for="monthly-amount-{{ forloop.counter0 }}" class="donation-amount__label">
-                            {% format_currency initial_currency_info.code amount %}
+                            {% format_currency initial_currency_info.code amount %} {% trans "per month" %}
                         </label>
                     </div>
                     {% endfor %}
@@ -92,7 +94,7 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
-                        <input type="text" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" placeholder="{% trans 'Other amount' %}" data-other-amount="">
+                        <input type="number" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" min="1" max="10000000" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
                 </div>
                 <input type="hidden" class="monthly-amount__total">
@@ -130,6 +132,9 @@
                     </div>
                 </div>
             </form>
+
+            {% include "fragments/donate_form_disclaimer.html" with monthly=True %}
+
         </div>
     </div>
 
@@ -141,14 +146,4 @@
             {{ field }}
         {% endfor %}
     </form>
-
-    <footer class="donate-form__footer">
-        <p>{% blocktrans with braintree_url='https://www.braintreepayments.com/legal/braintree-privacy-policy' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' email='donate@mozilla.org' %}Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a> (for credit/debit cards) or <a href="{{ paypal_url }}">PayPal</a>, and a record of your donation will be stored by Mozilla. Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}
-        </p>
-        <p>
-            <b>{% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}</b>
-        </p>
-        <p>{% blocktrans with faq_url='/faq' email='donate@mozilla.org' %}Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.{% endblocktrans %}</p>
-        <p>{% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}</p>
-    </footer>
 </div>

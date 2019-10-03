@@ -34,7 +34,7 @@
                         {% render_form_field form.currency %}
                         {% render_form_field form.braintree_nonce %}
 
-                        <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel" %}
+                        <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel." %}
                     </div>
 
                     <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
@@ -54,6 +54,6 @@
 
 {% block extra_js %}
     {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="https://www.paypalobjects.com/api/checkout.min.js" data-version-4></script>
     <script src="{% static '_js/payments-paypal-upsell.compiled.js' %}"></script>
 {% endblock %}

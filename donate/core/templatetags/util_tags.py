@@ -42,7 +42,7 @@ def format_currency(context, currency_code, amount):
     # In order to work around this, we fetch the pattern for the currency in
     # the current locale, and replace a padded decimal with an optional one.
     # We also have to set currency_digits=False otherwise this gets ignored entirely.
-    if Decimal(amount) == int(amount):
+    if Decimal(amount) == int(float(amount)):
         pattern = pattern.replace('0.00', '0.##')
 
     return babel_format_currency(

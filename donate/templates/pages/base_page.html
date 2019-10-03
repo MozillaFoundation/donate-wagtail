@@ -18,23 +18,23 @@
     <nav class="primary-nav" role="navigation" aria-label="Primary" data-primary-nav>
         <ul class="primary-nav__container" role="menubar">
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/initiatives" data-nav-tab-index>{% trans "Initiatives" %}</a>
+                <a class="nav-item__link" role="menuitem" href="https://foundation.mozilla.org/initiatives" data-nav-tab-index>{% trans "Initiatives" %}</a>
             </li>
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/participate" data-nav-tab-index>{% trans "Participate" %}</a>
+                <a class="nav-item__link" role="menuitem" href="https://foundation.mozilla.org/participate" data-nav-tab-index>{% trans "Participate" %}</a>
             </li>
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/internet-health" data-nav-tab-index>{% trans "Internet Health" %}</a>
+                <a class="nav-item__link" role="menuitem" href="https://foundation.mozilla.org/internet-health" data-nav-tab-index>{% trans "Internet Health" %}</a>
             </li>
             <li class="nav-item nav-item--primary" role="presentation">
-                <a class="nav-item__link" href="https://foundation.mozilla.org/about" data-nav-tab-index>{% trans "About Us" %}</a>
+                <a class="nav-item__link" role="menuitem" href="https://foundation.mozilla.org/about" data-nav-tab-index>{% trans "About Us" %}</a>
             </li>
         </ul>
     </nav>
 {% endblock navigation %}
 
 {% block header %}
-    <header class="header">
+    <div class="header">
         <div class="header__container">
 
             <div class="header__menu-toggle">
@@ -52,7 +52,7 @@
             </a>
 
         </div>
-    </header>
+    </div>
 {% endblock header %}
 
 {% block footer %}
@@ -60,14 +60,14 @@
     <div class="footer__container layout">
         <div class="footer__primary-content layout__container">
             <div class="footer__newsletter newsletter-signup layout__half-col">
-                <div class="newsletter-signup__container">
-                    <header class="newsletter-signup__header">
-                        <h2 class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</h2>
-                    </header>
+                <div class="newsletter-signup__container" aria-labelledby="email-newsletter-heading">
+                    <div class="newsletter-signup__header">
+                        <span class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</span>
+                    </div>
                     <form class="newsletter-signup__form">
                         <div class="form-group form-group--two-col">
                             <div class="form-item">
-                                <label for="email-newsletter">{% trans "Join our email list to take action and stay updated!" %}</label>
+                                <label for="email-newsletter" id="email-newsletter-heading">{% trans "Join our email list to take action and stay updated!" %}</label>
                                 <input type="text" name="email-newsletter" id="email-newsletter" placeholder="{% trans 'Enter email address' %}">
                             </div>
                             <div class="form-item">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="form-item">
-                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>{% endblocktrans %}</label>
+                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>.{% endblocktrans %}</label>
                         </div>
                     </form>
                 </div>
@@ -87,9 +87,9 @@
                     </a>
                 </div>
                 <div class="footer-links__container">
-                    <header class="footer-links__header">
-                        <h2 class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
-                        <div class="footer-links__social">
+                    <div class="footer-links__header">
+                        <h2 id="about-us-heading" class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
+                        <div class="footer-links__social" aria-labelledby="about-us-heading">
                             <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
                                 <div class="link__svg-title">{% trans "Twitter" %}</div>
                                 <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
@@ -109,8 +109,8 @@
                                 </svg>
                             </a>
                         </div>
-                    </header>
-                    <ul class="footer-links__group">
+                    </div>
+                    <ul class="footer-links__group" aria-labelledby="about-us-heading">
                         <li class="footer-links__item">
                             <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
                         </li>
@@ -138,7 +138,8 @@
             </div>
             <div class="footer__legal layout__half-col">
                 <p class="footer__legal-license">
-                    {% blocktrans with link_attributes='class="link link--dark-bg" href="https://www.mozilla.org/"' site_url='mozilla.org' %}Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ link_attributes }}>{{ site_url }}</a>.{% endblocktrans %}
+                    {% blocktrans with link_attributes='class="link link--dark-bg" href="https://www.mozilla.org/"' site_url='mozilla.org' trimmed %}
+                    Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ link_attributes }}>{{ site_url }}</a>.{% endblocktrans %}
                 </p>
             </div>
         </div>
