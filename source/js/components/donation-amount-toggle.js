@@ -26,7 +26,7 @@ class AmountToggle {
 
   UpdateHiddenInputFromInput(event) {
     if (this.inputForm.reportValidity()) {
-      // Covert the number to 2 decimal places if needed
+      // Convert the number to 2 decimal places if needed
       this.inputForm.value = parseFloat(this.inputForm.value).toFixed(2);
       this.hiddenInput.value = this.inputForm.value;
       // Hide form after updating hidden input
