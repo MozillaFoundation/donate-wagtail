@@ -33,6 +33,10 @@
       transform: translateY(8px);
       background-color: transparent;
     }
+
+    @include media-query(desktop) {
+      left: ($gutter * 10.5);
+    }
   }
 
   &.is-visible {
