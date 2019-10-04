@@ -1,3 +1,7 @@
+:root {
+  --currency-width: 0; // populated with donation currency width js
+}
+
 .form {
   $root: &;
 
@@ -21,6 +25,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
+    &--flex {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+    }
     &--gutter {
       grid-gap: $gutter;
     }
@@ -36,6 +45,12 @@
     }
     &--additional-info {
       position: relative;
+
+      input:not([type="checkbox"]) {
+        .app--upsell & {
+          padding-left: calc((var(--currency-width)) + ((#{$gutter}) * 1.5));
+        }
+      }
     }
   }
 

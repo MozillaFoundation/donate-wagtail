@@ -119,6 +119,11 @@
     top: 50%;
     pointer-events: none;
     color: $color--grey-60;
+
+    &--left {
+      left: $gutter;
+      right: auto;
+    }
   }
 
   .donate-form__currency & {
