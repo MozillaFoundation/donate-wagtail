@@ -43,19 +43,28 @@
 
   &__image {
     background-color: $color--black;
+    margin-bottom: ($gutter / 2);
+
+    @include media-query(tablet-portrait) {
+      margin-bottom: 0;
+    }
   }
 
   &__image-item {
     display: block;
-    opacity: 0.8;
     width: 100%;
     height: auto;
+
+    @include media-query(tablet-portrait) {
+      opacity: 0.8;
+    }
   }
 
   &__heading {
     @include font-size(xxl);
     color: $color--black;
     font-weight: $weight--medium;
+    margin-bottom: ($gutter / 2);
 
     @include media-query(tablet-portrait) {
       color: $color--white;
@@ -75,11 +84,12 @@
 
     @include media-query(tablet-portrait) {
       color: $color--white;
-      max-width: 60%;
+      max-width: 90%;
     }
 
     @include media-query(desktop) {
       font-weight: $weight--bold;
+      max-width: 60%;
     }
   }
 }
