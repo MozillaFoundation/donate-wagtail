@@ -81,9 +81,9 @@ class CurrencySelect {
           index == 0 ? "checked" : ""
         }>
                     <label for='${type}-${index}' class='donation-amount__label'>
-                        ${formattedValue} ${
+                        ${formattedValue} <span>${
           type === "monthly-amount" ? window.gettext("per month") : ""
-        }
+        }</span>
                     </label>
                 </div>`;
       })
