@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-03 12:28+0000\n"
+"POT-Creation-Date: 2019-10-04 15:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,74 +18,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: donate/payments/forms.py:20 donate/payments/forms.py:28
-#: donate/payments/forms.py:74 donate/payments/forms.py:82
+#: donate/payments/forms.py:21 donate/payments/forms.py:35
+#: donate/payments/forms.py:80 donate/payments/forms.py:88
 msgid "Amount"
 msgstr ""
 
-#: donate/payments/forms.py:41
+#: donate/payments/forms.py:48
 msgid "First name"
 msgstr ""
 
-#: donate/payments/forms.py:42
+#: donate/payments/forms.py:49
 msgid "Last name"
 msgstr ""
 
-#: donate/payments/forms.py:43 donate/payments/forms.py:88
+#: donate/payments/forms.py:50 donate/payments/forms.py:94
 msgid "Email"
 msgstr ""
 
-#: donate/payments/forms.py:44
+#: donate/payments/forms.py:51
 msgid "Street"
 msgstr ""
 
-#: donate/payments/forms.py:45
+#: donate/payments/forms.py:52
 msgid "City"
 msgstr ""
 
-#: donate/payments/forms.py:49
+#: donate/payments/forms.py:56
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
 msgstr ""
 
-#: donate/payments/forms.py:52
+#: donate/payments/forms.py:59
 msgid "Country"
 msgstr ""
 
-#: donate/payments/forms.py:96 donate/templates/pages/base_page.html:78
+#: donate/payments/forms.py:102 donate/templates/pages/base_page.html:78
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
 
-#: donate/payments/views.py:128
+#: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
 msgstr ""
 
-#: donate/payments/views.py:129 donate/payments/views.py:130
+#: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
 msgstr ""
 
-#: donate/payments/views.py:131
+#: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
 msgstr ""
 
-#: donate/payments/views.py:132
+#: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
 msgstr ""
 
-#: donate/payments/views.py:141 donate/payments/views.py:142
+#: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
 msgstr ""
 
-#: donate/payments/views.py:156
+#: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr ""
 
-#: donate/payments/views.py:298
+#: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
 msgstr ""
 
-#: donate/payments/views.py:487 donate/payments/views.py:579
+#: donate/payments/views.py:478 donate/payments/views.py:566
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr ""
 
@@ -93,43 +93,55 @@ msgstr ""
 msgid "Captcha was invalid. Please try again."
 msgstr ""
 
-#: donate/templates/404.html:4 donate/templates/404.html:9
+#: donate/templates/404.html:4
 msgid "Page not found"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:8
+#: donate/templates/404.html:12
+msgid "Uh oh!"
+msgstr ""
+
+#: donate/templates/404.html:13
+msgid "Sorry, the page does not exist"
+msgstr ""
+
+#: donate/templates/404.html:14
+msgid "Go to our home page"
+msgstr ""
+
+#: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:14
+#: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:36
-#: donate/templates/fragments/donate_form.html:37
-#: donate/templates/fragments/donate_form.html:96
-#: donate/templates/fragments/donate_form.html:97
+#: donate/templates/fragments/donate_form.html:39
+#: donate/templates/fragments/donate_form.html:40
+#: donate/templates/fragments/donate_form.html:99
+#: donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:43
-#: donate/templates/fragments/donate_form.html:103
+#: donate/templates/fragments/donate_form.html:46
+#: donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:49
-#: donate/templates/fragments/donate_form.html:109
+#: donate/templates/fragments/donate_form.html:52
+#: donate/templates/fragments/donate_form.html:112
 #: donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:55
-#: donate/templates/fragments/donate_form.html:115
+#: donate/templates/fragments/donate_form.html:58
+#: donate/templates/fragments/donate_form.html:118
 #: donate/templates/pages/base_page.html:115
 msgid "Donate"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:88
+#: donate/templates/fragments/donate_form.html:91
 msgid "per month"
 msgstr ""
 
@@ -198,7 +210,7 @@ msgid "More about us"
 msgstr ""
 
 #: donate/templates/pages/base_page.html:94
-#: donate/templates/payment/thank_you.html:30
+#: donate/templates/payment/thank_you.html:32
 msgid "Twitter"
 msgstr ""
 
@@ -284,7 +296,7 @@ msgid "Your Details"
 msgstr ""
 
 #: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell.html:28
+#: donate/templates/payment/card_upsell.html:29
 #: donate/templates/payment/newsletter_signup.html:26
 #: donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
@@ -329,6 +341,7 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4
 #: donate/templates/payment/paypal_upsell.html:4
+#: donate/templates/payment/thank_you.html:4
 msgid "Thank you"
 msgstr ""
 
@@ -340,24 +353,29 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:15
 #: donate/templates/payment/paypal_upsell.html:15
-msgid "We’d love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?"
+msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:33
+#: donate/templates/payment/card_upsell.html:16
+#: donate/templates/payment/paypal_upsell.html:16
+msgid "Yes, I will give:"
+msgstr ""
+
+#: donate/templates/payment/card_upsell.html:35
+#: donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:37
-#: donate/templates/payment/paypal_upsell.html:37
+#: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:42
+#: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:45
-#: donate/templates/payment/paypal_upsell.html:44
+#: donate/templates/payment/card_upsell.html:47
+#: donate/templates/payment/paypal_upsell.html:47
 msgid "No"
 msgstr ""
 
@@ -377,33 +395,29 @@ msgstr ""
 msgid "No Thanks"
 msgstr ""
 
-#: donate/templates/payment/paypal_upsell.html:16
-msgid "Yes, I will give"
-msgstr ""
-
-#: donate/templates/payment/thank_you.html:13
+#: donate/templates/payment/thank_you.html:15
 #, python-format
 msgid "Thank you! Your transaction reference is: %(id)s"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:17
+#: donate/templates/payment/thank_you.html:19
 msgid "One last thing…"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:18
+#: donate/templates/payment/thank_you.html:20
 msgid "Can you help us share the important work Mozilla is doing?"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:24
+#: donate/templates/payment/thank_you.html:26
 msgid "Facebook"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:36
+#: donate/templates/payment/thank_you.html:38
 msgctxt "Share button"
 msgid "Email"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:42
+#: donate/templates/payment/thank_you.html:44
 msgctxt "Share button"
 msgid "Link"
 msgstr ""
