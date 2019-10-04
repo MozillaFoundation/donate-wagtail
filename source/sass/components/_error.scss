@@ -1,0 +1,13 @@
+.error {
+  &__message {
+    margin-bottom: ($gutter * 2);
+    color: $color--black;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    margin-bottom: ($gutter * 2);
+  }
+}
