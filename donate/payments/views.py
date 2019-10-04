@@ -431,6 +431,13 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
             'amount': self.suggested_upgrade
         }
 
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['currency_info'] = get_currency_info(
+            self.request.session['completed_transaction_details']['currency']
+        )
+        return ctx
+
     def form_valid(self, form, send_data_to_basket=True):
         payment_method_token = self.request.session['completed_transaction_details']['payment_method_token']
         currency = self.request.session['completed_transaction_details']['currency']
@@ -565,6 +572,9 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         ctx = super().get_context_data(**kwargs)
         ctx.update({
             'braintree_params': settings.BRAINTREE_PARAMS,
+            'currency_info': get_currency_info(
+                self.request.session['completed_transaction_details']['currency']
+            ),
         })
         return ctx
 

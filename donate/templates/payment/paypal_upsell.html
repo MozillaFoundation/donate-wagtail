@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load i18n form_tags static %}
+{% load i18n form_tags static util_tags %}
 
 {% block title %}{% trans "Thank you" %}{% endblock %}
 
@@ -30,6 +30,7 @@
                             </div>
                         {% endif %}
 
+                        {% get_localized_currency_symbol currency_info.code %}
                         {% render_form_field form.amount %}
                         {% render_form_field form.currency %}
                         {% render_form_field form.braintree_nonce %}
