@@ -1,4 +1,7 @@
 .error {
+  padding-top: ($gutter * 6);
+  padding-bottom: ($gutter * 6);
+
   &__message {
     margin-bottom: ($gutter * 2);
     color: $color--black;

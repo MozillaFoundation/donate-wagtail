@@ -42,8 +42,6 @@
     .app--404 & {
       flex-direction: column-reverse;
       max-width: 800px;
-      padding-top: ($gutter * 6);
-      padding-bottom: ($gutter * 6);
 
       @include media-query(tablet-landscape) {
         flex-direction: row;
