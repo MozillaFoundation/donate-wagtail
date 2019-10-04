@@ -25,10 +25,21 @@
     transition: color $transition, border-color $transition,
       background-color $transition;
 
+    span {
+      @include font-size(xs);
+      display: block;
+    }
     #{$root}--other & {
       flex-basis: 55px;
       min-width: 55px;
       max-width: 55px;
+    }
+    #donate-form--monthly #{$root}--other & {
+      padding-top: 22px;
+
+      @include media-query(tablet-portrait) {
+        padding-top: 32px;
+      }
     }
 
     &--hidden {
