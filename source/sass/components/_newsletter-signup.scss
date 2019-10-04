@@ -11,6 +11,7 @@
     font-weight: $weight--bold;
     padding: ($gutter / 4) $gutter;
     margin-left: $gutter;
+    min-width: 90px; // prevent word wrapping
   }
   &__privacy-label {
     @include font-size(xs);
@@ -20,6 +21,18 @@
 
       &:hover {
         color: $color--blue;
+      }
+    }
+  }
+  &__form {
+    .form-item {
+      input:not([type="checkbox"]) {
+        height: 49px;
+        border: 2px solid $color--white;
+        transition: border $transition;
+        &:focus {
+          border: 2px solid $color--light-blue;
+        }
       }
     }
   }
