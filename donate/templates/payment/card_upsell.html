@@ -3,7 +3,7 @@
 
 {% block title %}{% trans "Thank you" %}{% endblock %}
 
-{% block template_name %}app--details{% endblock %}
+{% block template_name %}app--upsell{% endblock %}
 
 {% block content %}
 
@@ -30,7 +30,7 @@
                         {% endif %}
 
                         <div class="form__group form__group--additional-info">
-                            {% get_localized_currency_symbol currency_info.code %}
+                            <span class="form-item__input-additional-info form-item__input-additional-info--left" data-donation-currency>{% get_localized_currency_symbol currency_info.code %}</span>
                             <span class="form-item__input-additional-info">{% trans "/ Monthly" %}</span>
                             {% render_form_field form.amount %}
                         </div>
