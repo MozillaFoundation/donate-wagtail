@@ -51,12 +51,22 @@
     padding: ($gutter * 0.75) ($gutter / 2);
     transition: border-color $transition;
     font-weight: $weight--bold;
+    background-color: $color--white;
+    transition: background-color $transition;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color--black;
-      border-color: $color--primary;
+      color: $color--white;
+      background-color: $color--black;
+
+      #{$root}__icon {
+        fill: $color--white;
+      }
+
+      #{$root}__icon--link {
+        stroke: $color--white;
+      }
     }
   }
 
@@ -111,6 +121,9 @@
       margin-right: ($gutter / 4);
       fill: $color--white;
     }
+    &--link {
+      stroke: $color--black;
+    }
   }
 
   &__icon-item {
@@ -134,5 +147,12 @@
     grid-gap: ($gutter * 0.75);
     grid-template-columns: 1fr 1fr;
     margin-bottom: $gutter;
+
+    .app--thanks & {
+      @include media-query(tablet-portrait) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: $gutter;
+      }
+    }
   }
 }
