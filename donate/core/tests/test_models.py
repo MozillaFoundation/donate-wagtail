@@ -65,7 +65,6 @@ class DonationPageTestCase(TestCase):
         self.assertEqual(ctx['initial_currency_info'], page.currencies['usd'])
         self.assertEqual(ctx['braintree_params'], settings.BRAINTREE_PARAMS)
         self.assertEqual(ctx['braintree_form'].initial, {
-            'source_page_id': page.pk,
             'landing_url': request.build_absolute_uri(),
             'project': page.project,
             'campaign_id': page.campaign_id,

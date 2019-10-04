@@ -74,7 +74,6 @@ class DonationPage(TranslatablePageMixin, Page):
             'braintree_params': settings.BRAINTREE_PARAMS,
             'braintree_form': BraintreePaypalPaymentForm(
                 initial={
-                    'source_page_id': self.pk,
                     'landing_url': request.build_absolute_uri(),
                     'project': self.project,
                     'campaign_id': self.campaign_id,
