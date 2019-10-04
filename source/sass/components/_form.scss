@@ -16,8 +16,10 @@
 
   &__errors {
     @include font-size(s);
-    padding: $gutter 0;
-    color: $color--warning;
+    padding: $gutter;
+    color: $color--black;
+    background-color: $color--light-red;
+    margin-bottom: $gutter;
   }
 
   &__group {
