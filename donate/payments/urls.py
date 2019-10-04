@@ -36,5 +36,5 @@ urlpatterns = [
         'thank-you/',
         views.ThankYouView.as_view(),
         name='completed'
-    ),
+    )
 ]

@@ -1,14 +1,13 @@
 from decimal import Decimal
-import json
 from unittest import mock
 
-from django.conf import settings
-from django.core.serializers.json import DjangoJSONEncoder
 from django.test import TestCase, override_settings
 
 from freezegun import freeze_time
 
-from ..tasks import send_newsletter_subscription_to_basket, send_transaction_to_basket
+from ..tasks import (
+    BraintreeWebhookProcessor, send_newsletter_subscription_to_basket, send_transaction_to_basket
+)
 
 
 class NewsletterSignupTestCase(TestCase):
@@ -79,21 +78,65 @@ class BasketTransactionTestCase(TestCase):
             }
         }
 
-    def test_sqs_payload(self):
-        with mock.patch('donate.payments.tasks.sqs_client', autospec=True) as mock_client:
+    def _test_sqs_payload(self):
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
             send_transaction_to_basket(self.sample_data)
-        expected_json = json.dumps(self.sample_payload, cls=DjangoJSONEncoder, sort_keys=True)
-        mock_client.return_value.send_message.assert_called_once_with(
-            QueueUrl=settings.BASKET_SQS_QUEUE_URL,
-            MessageBody=expected_json,
-        )
+        mock_send.assert_called_once_with(self.sample_payload)
 
     def test_send_transaction_to_basket_single(self):
-        self.test_sqs_payload()
+        self._test_sqs_payload()
 
     def test_send_transaction_to_basket_monthly(self):
         self.sample_data['payment_frequency'] = 'monthly'
         self.sample_data['settlement_amount'] = None
         self.sample_payload['data']['recurring'] = True
         self.sample_payload['data']['conversion_amount'] = None
-        self.test_sqs_payload()
+        self._test_sqs_payload()
+
+
+class ProcessWebhookTestCase(TestCase):
+
+    def test_processor_calls_method_based_on_kind(self):
+        notification = mock.Mock()
+        notification.kind = 'subscription_charged_unsuccessfully'
+        with mock.patch.object(
+            BraintreeWebhookProcessor, 'process_subscription_charged_unsuccessfully'
+        ) as mock_process_method:
+            BraintreeWebhookProcessor().process(notification)
+
+        mock_process_method.assert_called_once_with(notification)
+
+    def test_process_subscription_charged_unsuccessfully(self):
+        notification = mock.Mock()
+        notification.kind = 'subscription_charged_unsuccessfully'
+        notification.subscription.id = 'test-id'
+        tx = mock.Mock()
+        tx.status = 'failed'
+        notification.subscription.transactions = [tx]
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            BraintreeWebhookProcessor().process_subscription_charged_unsuccessfully(notification)
+        mock_send.assert_called_once_with({
+            'data': {
+                'event_type': 'charge.failed',
+                'transaction_id': 'test-id',
+                'failure_code': 'failed',
+            }
+        })
+
+    def test_process_dispute_lost(self):
+        notification = mock.Mock()
+        notification.kind = 'dispute_lost'
+        notification.dispute.transaction.id = 'test-id'
+        notification.dispute.reason = 'fraud'
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            BraintreeWebhookProcessor().process_dispute_lost(notification)
+        mock_send.assert_called_once_with({
+            'data': {
+                'event_type': 'charge.dispute.closed',
+                'status': 'lost',
+                'transaction_id': 'test-id',
+                'failure_code': 'fraud',
+            }
+        })
