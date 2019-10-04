@@ -31,6 +31,9 @@
   }
 
   &--secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: $color--grey-40;
     text-align: center;
     color: $color--white;
@@ -81,6 +84,7 @@
   &--large {
     @include font-size(m);
     padding: ($gutter * 0.75);
+    min-height: 60px;
     font-weight: $weight--semibold;
 
     .donate-form__actions-buttons & {
