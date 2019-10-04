@@ -13,7 +13,10 @@ services:
       - .:/app:delegated
     depends_on:
       - postgres
+      - redis
       - watch-static-files
+    links:
+      - redis
 
   # Database
   postgres:
@@ -22,6 +25,12 @@ services:
       - "5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/:delegated
+
+  redis:
+    image: redis
+    container_name: 'redis'
+    ports:
+      - "6379"
 
   # Rebuild static files automatically
   watch-static-files:

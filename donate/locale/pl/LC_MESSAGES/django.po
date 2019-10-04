@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 16:46+0000\n"
+"POT-Creation-Date: 2019-10-03 12:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: donate/payments/forms.py:33
+#: donate/payments/forms.py:20 donate/payments/forms.py:28
+#: donate/payments/forms.py:74 donate/payments/forms.py:82
+msgid "Amount"
+msgstr ""
+
+#: donate/payments/forms.py:41
 msgid "First name"
 msgstr ""
 
-#: donate/payments/forms.py:34
+#: donate/payments/forms.py:42
 msgid "Last name"
 msgstr ""
 
-#: donate/payments/forms.py:35 donate/templates/payment/thank_you.html:36
+#: donate/payments/forms.py:43 donate/payments/forms.py:88
 msgid "Email"
 msgstr ""
 
-#: donate/payments/forms.py:36
+#: donate/payments/forms.py:44
 msgid "Street"
 msgstr ""
 
-#: donate/payments/forms.py:37
+#: donate/payments/forms.py:45
 msgid "City"
 msgstr ""
 
-#: donate/payments/forms.py:38
+#: donate/payments/forms.py:49
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
 msgstr ""
 
-#: donate/payments/forms.py:72
+#: donate/payments/forms.py:52
+msgid "Country"
+msgstr ""
+
+#: donate/payments/forms.py:96 donate/templates/pages/base_page.html:78
 #, python-format
-msgid "I’m okay with Mozilla handling my info as explained in this <a %(attrs)s>Privacy Notice</a>."
+msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
 
 #: donate/payments/views.py:128
@@ -76,7 +85,7 @@ msgstr ""
 msgid "Something went wrong. We were unable to process your payment."
 msgstr ""
 
-#: donate/payments/views.py:479 donate/payments/views.py:569
+#: donate/payments/views.py:487 donate/payments/views.py:579
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr ""
 
@@ -98,44 +107,53 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:36
 #: donate/templates/fragments/donate_form.html:37
-#: donate/templates/fragments/donate_form.html:94
-#: donate/templates/fragments/donate_form.html:95
+#: donate/templates/fragments/donate_form.html:96
+#: donate/templates/fragments/donate_form.html:97
 msgid "Other amount"
 msgstr ""
 
 #: donate/templates/fragments/donate_form.html:43
-#: donate/templates/fragments/donate_form.html:101
+#: donate/templates/fragments/donate_form.html:103
 msgid "Choose Payment"
 msgstr ""
 
 #: donate/templates/fragments/donate_form.html:49
-#: donate/templates/fragments/donate_form.html:107
+#: donate/templates/fragments/donate_form.html:109
 #: donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr ""
 
 #: donate/templates/fragments/donate_form.html:55
-#: donate/templates/fragments/donate_form.html:113
+#: donate/templates/fragments/donate_form.html:115
 #: donate/templates/pages/base_page.html:115
 msgid "Donate"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:146
-#, python-format
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla. Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
+#: donate/templates/fragments/donate_form.html:88
+msgid "per month"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:149
+#: donate/templates/fragments/donate_form_disclaimer.html:5
+#, python-format
+msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
+msgstr ""
+
+#: donate/templates/fragments/donate_form_disclaimer.html:8
+#, python-format
+msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+
+#: donate/templates/fragments/donate_form_disclaimer.html:14
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:151
+#: donate/templates/fragments/donate_form_disclaimer.html:18
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr ""
 
-#: donate/templates/fragments/donate_form.html:152
+#: donate/templates/fragments/donate_form_disclaimer.html:23
 msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
 msgstr ""
 
@@ -173,11 +191,6 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:74
 msgid "Sign up"
-msgstr ""
-
-#: donate/templates/pages/base_page.html:78
-#, python-format
-msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>"
 msgstr ""
 
 #: donate/templates/pages/base_page.html:91
@@ -219,6 +232,7 @@ msgid "Mozilla is a global non-profit dedicated to putting you in control of you
 msgstr ""
 
 #: donate/templates/pages/core/campaign_page.html:38
+msgctxt "Button"
 msgid "DONATE NOW"
 msgstr ""
 
@@ -235,6 +249,7 @@ msgid "Seal of GuideStar Gold 2019"
 msgstr ""
 
 #: donate/templates/pages/core/campaign_page.html:65
+msgctxt "Header"
 msgid "Donate now"
 msgstr ""
 
@@ -333,6 +348,7 @@ msgid "/ Monthly"
 msgstr ""
 
 #: donate/templates/payment/card_upsell.html:37
+#: donate/templates/payment/paypal_upsell.html:37
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgstr ""
 
@@ -365,10 +381,6 @@ msgstr ""
 msgid "Yes, I will give"
 msgstr ""
 
-#: donate/templates/payment/paypal_upsell.html:37
-msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel"
-msgstr ""
-
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "Thank you! Your transaction reference is: %(id)s"
@@ -386,7 +398,13 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
+#: donate/templates/payment/thank_you.html:36
+msgctxt "Share button"
+msgid "Email"
+msgstr ""
+
 #: donate/templates/payment/thank_you.html:42
+msgctxt "Share button"
 msgid "Link"
 msgstr ""
 

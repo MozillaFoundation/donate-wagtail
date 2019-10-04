@@ -70,6 +70,8 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
 USE_X_FORWARDED_HOST = env('USE_X_FORWARDED_HOST')
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 HEROKU_APP_NAME = env('HEROKU_APP_NAME')
 
@@ -102,6 +104,7 @@ INSTALLED_APPS = [
     'taggit',
     'storages',
     'django_rq',
+    'django_countries',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -113,6 +116,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -123,6 +127,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'donate.urls'
@@ -252,6 +257,7 @@ LANGUAGES = [
     ('ka', 'Georgian'),
     ('kab', 'Kabyle'),
     ('ko', 'Korean'),
+    ('lg', 'Luganda'),
     ('lo', 'Lao'),
     ('lv', 'Latvian'),
     ('lg', 'Luganda'),
@@ -275,6 +281,7 @@ LANGUAGES = [
     ('te', 'Telugu'),
     ('th', 'Thai'),
     ('tr', 'Turkish'),
+    ('uk', 'Ukrainian'),
     ('uz', 'Uzbek'),
     ('zh-CN', 'Chinese (China)'),
     ('zh-TW', 'Chinese (Taiwan)'),
@@ -296,6 +303,36 @@ django.conf.locale.LANG_INFO['es-xl'] = {
     'name': 'Latin American Spanish',
     'name_local': 'español',
     'fallback': ['es']
+}
+django.conf.locale.LANG_INFO['ach'] = {
+    'bidi': False,
+    'code': 'ach',
+    'name': 'Acholi',
+    'name_local': 'Acholi',
+}
+django.conf.locale.LANG_INFO['lg'] = {
+    'bidi': False,
+    'code': 'lg',
+    'name': 'Luganda',
+    'name_local': 'Luganda',
+}
+django.conf.locale.LANG_INFO['lo'] = {
+    'bidi': False,
+    'code': 'lo',
+    'name': 'Lao',
+    'name_local': 'Lao',
+}
+django.conf.locale.LANG_INFO['ms'] = {
+    'bidi': False,
+    'code': 'ms',
+    'name': 'Malay',
+    'name_local': 'Malay',
+}
+django.conf.locale.LANG_INFO['uk'] = {
+    'bidi': False,
+    'code': 'uk',
+    'name': 'Ukrainian',
+    'name_local': 'Ukrainian',
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -416,7 +453,6 @@ CSP_FONT_SRC = env('CSP_FONT_SRC', default=CSP_DEFAULT)
 CSP_CONNECT_SRC = env('CSP_CONNECT_SRC', default=None)
 CSP_STYLE_SRC = env('CSP_STYLE_SRC', default=CSP_DEFAULT)
 CSP_BASE_URI = env('CSP_BASE_URI', default=None)
-CSP_CHILD_SRC = env('CSP_CHILD_SRC', default=None)
 CSP_FRAME_ANCESTORS = env('CSP_FRAME_ANCESTORS', default=None)
 CSP_FORM_ACTION = env('CSP_FORM_ACTION', default=None)
 CSP_SANDBOX = env('CSP_SANDBOX', default=None)

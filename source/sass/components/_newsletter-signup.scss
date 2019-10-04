@@ -1,0 +1,26 @@
+.newsletter-signup {
+  &__header {
+    margin-bottom: ($gutter * 1.5);
+  }
+  &__label {
+    display: block;
+    margin-bottom: ($gutter * 1.5);
+  }
+  &__button {
+    height: 50px;
+    font-weight: $weight--bold;
+    padding: ($gutter / 4) $gutter;
+    margin-left: $gutter;
+  }
+  &__privacy-label {
+    @include font-size(xs);
+
+    a {
+      color: $color--light-blue;
+
+      &:hover {
+        color: $color--blue;
+      }
+    }
+  }
+}

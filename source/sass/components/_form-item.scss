@@ -1,6 +1,6 @@
 .form-item {
   $root: &;
-  margin-bottom: 20px;
+  margin-bottom: $gutter;
 
   &--errors {
     input:not([type="checkbox"]),
@@ -118,7 +118,7 @@
     right: ($gutter * 2);
     top: 39px; // ensure it sits in the middle of associated input
     pointer-events: none;
-    color: $color--grey-40;
+    color: $color--grey-60;
 
     @include media-query(tablet-portrait) {
       top: 42px; // ensure it sits in the middle of associated input

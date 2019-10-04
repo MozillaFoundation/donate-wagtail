@@ -48,10 +48,12 @@ img {
 
 // sass-lint:disable single-line-per-selector
 button,
-input,
+input:not([type="checkbox"]):not([type="radio"]),
 select,
 textarea {
   font-family: inherit;
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 // sass-lint:enddisable
 
