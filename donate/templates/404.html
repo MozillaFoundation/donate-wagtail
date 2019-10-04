@@ -1,10 +1,21 @@
 {% extends "pages/base_page.html" %}
-{% load i18n wagtailcore_tags wagtailsettings_tags %}
+{% load i18n wagtailcore_tags wagtailsettings_tags static %}
 
 {% block title %}{% trans "Page not found" %}{% endblock %}
 
-{% block template_name %}template-404{% endblock %}
+{% block template_name %}app--404{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Page not found" %}</h1>
+    <div class="layout">
+        <div class="layout__container">
+            <div class="layout__half-col error">
+                <h1 class="error__heading heading heading--primary">{% trans "Uh oh!" %}</h1>
+                <p class="error__message">{% trans "Sorry, the page does not exist" %}</p>
+                <a href="/" class="error__button button button--outline">{% trans "Go to our home page" %}</a>
+            </div>
+            <div class="layout__half-col">
+                <img class="error__image" src="{% static '_images/404.svg' %}" alt="Sad anthropomorphized 404">
+            </div>
+        </div>
+    </div>
 {% endblock %}

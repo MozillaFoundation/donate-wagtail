@@ -10,6 +10,13 @@
     @include media-query(tablet-portrait) {
       @include font-size(xxl);
     }
+
+    .app--404 & {
+      font-size: 48px; // Custom for 404
+      font-weight: $weight--medium;
+      color: $color--black;
+      margin-bottom: $gutter;
+    }
   }
 
   &--secondary {
