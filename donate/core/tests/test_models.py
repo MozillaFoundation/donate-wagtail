@@ -129,3 +129,38 @@ class CampaignPageTestCase(TestCase):
             ctx['initial_currency_info']['presets']['monthly'],
             [Decimal(15), Decimal(12)]
         )
+
+    def test_get_initial_frequency_uses_arg(self):
+        request = RequestFactory().get('/?frequency=monthly')
+        self.assertEqual(
+            DonationPage().get_initial_frequency(request),
+            'monthly'
+        )
+
+    def test_get_initial_frequency_ignores_invalid_value(self):
+        request = RequestFactory().get('/?frequency=bogus')
+        self.assertEqual(
+            DonationPage().get_initial_frequency(request),
+            'single'
+        )
+
+    def test_get_initial_currency_info_uses_arg_and_sorts(self):
+        request = RequestFactory().get('/?presets=1,9,5,3')
+        self.assertEqual(
+            DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
+            [Decimal(9), Decimal(5), Decimal(3), Decimal(1)]
+        )
+
+    def test_get_initial_currency_info_skips_if_invalid_params_present(self):
+        request = RequestFactory().get('/?presets=1,9,5,3,foo')
+        self.assertEqual(
+            DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
+            DonationPage().currencies['usd']['presets']['single']
+        )
+
+    def test_get_initial_currency_info_limits_to_four_shoices(self):
+        request = RequestFactory().get('/?presets=1,9,5,3,7,3')
+        self.assertEqual(
+            DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
+            [Decimal(9), Decimal(7), Decimal(5), Decimal(3)]
+        )
