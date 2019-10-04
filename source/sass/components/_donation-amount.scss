@@ -48,7 +48,7 @@
     }
   }
 
-  &__input {
+  &__input:not([type="checkbox"]):not([type="radio"]) {
     #{$root}--other & {
       flex-grow: 1;
       padding-left: ($gutter * 0.75);
