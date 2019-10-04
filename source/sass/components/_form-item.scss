@@ -1,6 +1,6 @@
 .form-item {
   $root: &;
-  margin-bottom: 20px;
+  margin-bottom: $gutter;
 
   &--errors {
     input:not([type="checkbox"]),
@@ -105,7 +105,7 @@
 
   &__dummy-placeholder {
     // Used for braintree hosted fields
-    height: 57px;
+    height: 60px;
     background-color: $color--white;
     padding: 15px 20px;
     border: 1px solid $color--border;
@@ -116,12 +116,13 @@
     @include font-size(m);
     position: absolute;
     right: ($gutter * 2);
-    top: 39px; // ensure it sits in the middle of associated input
+    top: 50%;
     pointer-events: none;
-    color: $color--grey-40;
+    color: $color--grey-60;
 
-    @include media-query(tablet-portrait) {
-      top: 42px; // ensure it sits in the middle of associated input
+    &--left {
+      left: $gutter;
+      right: auto;
     }
   }
 

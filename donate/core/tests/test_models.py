@@ -1,5 +1,7 @@
+from decimal import Decimal
 import json
 
+from django.conf import settings
 from django.test import TestCase, RequestFactory
 
 from wagtail.core.models import Page
@@ -17,12 +19,56 @@ class DonationPageTestCase(TestCase):
             'gbp'
         )
 
-    def test_get_initial_currency_uses_header(self):
-        request = RequestFactory().get('/', HTTP_ACCEPT_LANGUAGE='es-CL;q=0.9')
+    def test_get_initial_currency_uses_locale(self):
+        request = RequestFactory().get('/')
+        request.LANGUAGE_CODE = 'es-MX'
         self.assertEqual(
             DonationPage().get_initial_currency(request),
-            'clp'
+            'mxn'
         )
+
+    def test_serve_sets_subscribed_cookie(self):
+        request = RequestFactory().get('/?subscribed=1')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        response = page.serve(request)
+        self.assertEqual(response.cookies['subscribed'].value, '1')
+
+    def test_serve_doesnt_set_subscribed_cookie_if_invalid_query_arg(self):
+        request = RequestFactory().get('/?subscribed=foo')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        response = page.serve(request)
+        self.assertNotIn('subscribed', response.cookies)
+
+    def test_get_context(self):
+        request = RequestFactory().get('/')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+            project='mozillafoundation',
+            campaign_id='pi_day',
+        )
+        ctx = page.get_context(request)
+
+        self.assertEqual(ctx['currencies'], page.currencies)
+        self.assertEqual(ctx['initial_currency_info'], page.currencies['usd'])
+        self.assertEqual(ctx['braintree_params'], settings.BRAINTREE_PARAMS)
+        self.assertEqual(ctx['braintree_form'].initial, {
+            'landing_url': request.build_absolute_uri(),
+            'project': page.project,
+            'campaign_id': page.campaign_id,
+        })
 
 
 class CampaignPageTestCase(TestCase):
@@ -59,3 +105,27 @@ class CampaignPageTestCase(TestCase):
             'single': [5, 2],
             'monthly': [15, 12],
         })
+
+    def test_initial_currency_context_includes_overrides(self):
+        CampaignPageDonationAmount.objects.create(
+            campaign=self.campaign_page,
+            currency='usd',
+            single_options=json.dumps([
+                {'type': 'amount', 'value': '5'},
+                {'type': 'amount', 'value': '2'},
+            ]),
+            monthly_options=json.dumps([
+                {'type': 'amount', 'value': '15'},
+                {'type': 'amount', 'value': '12'},
+            ])
+        )
+        request = RequestFactory().get('/?currency=usd')
+        ctx = self.campaign_page.get_context(request)
+        self.assertEqual(
+            ctx['initial_currency_info']['presets']['single'],
+            [Decimal(5), Decimal(2)]
+        )
+        self.assertEqual(
+            ctx['initial_currency_info']['presets']['monthly'],
+            [Decimal(15), Decimal(12)]
+        )

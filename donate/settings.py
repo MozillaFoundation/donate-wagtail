@@ -4,6 +4,8 @@ Django settings for donate project.
 import os
 import environ
 import logging.config
+
+import django
 import dj_database_url
 
 app = environ.Path(__file__) - 1
@@ -17,6 +19,9 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, []),
     ASSET_DOMAIN=(str, ''),
     AWS_LOCATION=(str, ''),
+    AWS_ACCESS_KEY_ID=(str, ''),
+    AWS_SECRET_ACCESS_KEY=(str, ''),
+    AWS_REGION=(str, 'us-east-1'),
     CONTENT_TYPE_NO_SNIFF=bool,
     CORS_REGEX_WHITELIST=(tuple, ()),
     CORS_WHITELIST=(tuple, ()),
@@ -39,6 +44,16 @@ env = environ.Env(
     BRAINTREE_TOKENIZATION_KEY=(str, ''),
     BRAINTREE_MERCHANT_ACCOUNTS=(dict, {}),
     BRAINTREE_PLANS=(dict, {}),
+    # Basket and SQS
+    BASKET_API_ROOT_URL=(str, ''),
+    BASKET_SQS_QUEUE_URL=(str, ''),
+    # Pontoon
+    WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
+    WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
+    # Recaptcha
+    RECAPTCHA_SITE_KEY=(str, ''),
+    RECAPTCHA_SECRET_KEY=(str, ''),
+    RECAPTCHA_ENABLED=(bool, False),
 )
 
 # Read in the environment
@@ -55,6 +70,8 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
 USE_X_FORWARDED_HOST = env('USE_X_FORWARDED_HOST')
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 HEROKU_APP_NAME = env('HEROKU_APP_NAME')
 
@@ -65,6 +82,12 @@ INSTALLED_APPS = [
     'donate.users',
     'donate.core',
     'donate.payments',
+    'donate.recaptcha',
+
+    'wagtail_localize',
+    'wagtail_localize.admin.language_switch',
+    'wagtail_localize.translation_memory',
+    'wagtail_localize_pontoon',
 
     'wagtail.contrib.settings',
     'wagtail.embeds',
@@ -80,6 +103,8 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'storages',
+    'django_rq',
+    'django_countries',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -91,6 +116,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -101,6 +127,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'donate.urls'
@@ -141,10 +168,12 @@ if DATABASE_URL is not None:
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 if env('REDIS_URL'):
+    REDIS_URL = env('REDIS_URL')
+
     CACHES = {
         'default': {
             'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': env('REDIS_URL'),
+            'LOCATION': REDIS_URL,
             'OPTIONS': {
                 'CLIENT_CLASS': 'django_redis.client.DefaultClient',
                 # timeout for read/write operations after a connection is established
@@ -159,6 +188,8 @@ if env('REDIS_URL'):
         }
     }
 else:
+    REDIS_URL = None
+
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
@@ -180,11 +211,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-US'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+LOCALE_PATHS = [
+    app('locale'),
+]
 
 LANGUAGES = [
     ('ach', 'Acholi'),
@@ -199,16 +234,20 @@ LANGUAGES = [
     ('de', 'German'),
     ('dsb', 'Sorbian, Lower'),
     ('el', 'Greek'),
-    ('en-us', 'English (US)'),
-    ('en-ca', 'English (Canada)'),
-    ('en-gb', 'English (Great Britain)'),
+    ('en-US', 'English (US)'),
+    ('en-CA', 'English (Canada)'),
+    ('en-GB', 'English (Great Britain)'),
     ('es', 'Spanish'),
+    ('es-AR', 'Spanish (Argentina)'),
+    ('es-CL', 'Spanish (Chile)'),
+    ('es-MX', 'Spanish (Mexico)'),
+    ('es-XL', 'Spanish (Latin America)'),
     ('et', 'Estonian'),
     ('fr', 'French'),
-    ('fy-nl', 'Frisian'),
-    ('gu-in', 'Gujarati'),
+    ('fy-NL', 'Frisian'),
+    ('gu-IN', 'Gujarati'),
     ('he', 'Hebrew'),
-    ('hi-in', 'Hindi'),
+    ('hi-IN', 'Hindi'),
     ('hr', 'Croatian'),
     ('hsb', 'Sorbian, Upper'),
     ('hu', 'Hungarian'),
@@ -218,49 +257,102 @@ LANGUAGES = [
     ('ka', 'Georgian'),
     ('kab', 'Kabyle'),
     ('ko', 'Korean'),
+    ('lg', 'Luganda'),
     ('lo', 'Lao'),
     ('lv', 'Latvian'),
     ('lg', 'Luganda'),
     ('ms', 'Malay'),
     ('ml', 'Malayalam'),
     ('mr', 'Marathi'),
-    ('nb-no', 'Norwegian Bokmål'),
+    ('nb-NO', 'Norwegian Bokmål'),
     ('nl', 'Dutch'),
-    ('nn-no', 'Norwegian Nynorsk'),
+    ('nn-NO', 'Norwegian Nynorsk'),
     ('pl', 'Polish'),
-    ('pt-br', 'Portuguese (Brazil)'),
-    ('pt-pt', 'Portuguese (Portugal)'),
-    ('pa-in', 'Punjabi'),
+    ('pt-BR', 'Portuguese (Brazil)'),
+    ('pt-PT', 'Portuguese (Portugal)'),
+    ('pa-IN', 'Punjabi'),
     ('ro', 'Romanian'),
     ('ru', 'Russian'),
     ('sk', 'Slovak'),
     ('sl', 'Slovenian'),
     ('sq', 'Albanian'),
-    ('sv-se', 'Swedish'),
+    ('sv-SE', 'Swedish'),
     ('ta', 'Tamil'),
     ('te', 'Telugu'),
     ('th', 'Thai'),
     ('tr', 'Turkish'),
+    ('uk', 'Ukrainian'),
     ('uz', 'Uzbek'),
-    ('zh-cn', 'Chinese (China)'),
-    ('zh-tw', 'Chinese (Taiwan)'),
+    ('zh-CN', 'Chinese (China)'),
+    ('zh-TW', 'Chinese (Taiwan)'),
 ]
+
+# Set some fallbacks in django.conf.locale.LANG_INFO, and add some that don't exist
+django.conf.locale.LANG_INFO['es-ar']['fallback'] = ['es']
+django.conf.locale.LANG_INFO['es-mx']['fallback'] = ['es']
+django.conf.locale.LANG_INFO['es-cl'] = {
+    'bidi': False,
+    'code': 'es-cl',
+    'name': 'Chilean Spanish',
+    'name_local': 'español de Chile',
+    'fallback': ['es']
+}
+django.conf.locale.LANG_INFO['es-xl'] = {
+    'bidi': False,
+    'code': 'es-xl',
+    'name': 'Latin American Spanish',
+    'name_local': 'español',
+    'fallback': ['es']
+}
+django.conf.locale.LANG_INFO['ach'] = {
+    'bidi': False,
+    'code': 'ach',
+    'name': 'Acholi',
+    'name_local': 'Acholi',
+}
+django.conf.locale.LANG_INFO['lg'] = {
+    'bidi': False,
+    'code': 'lg',
+    'name': 'Luganda',
+    'name_local': 'Luganda',
+}
+django.conf.locale.LANG_INFO['lo'] = {
+    'bidi': False,
+    'code': 'lo',
+    'name': 'Lao',
+    'name_local': 'Lao',
+}
+django.conf.locale.LANG_INFO['ms'] = {
+    'bidi': False,
+    'code': 'ms',
+    'name': 'Malay',
+    'name_local': 'Malay',
+}
+django.conf.locale.LANG_INFO['uk'] = {
+    'bidi': False,
+    'code': 'uk',
+    'name': 'Ukrainian',
+    'name_local': 'Ukrainian',
+}
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [app('frontend')]
 STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
 
+# S3 credentials for SQS and S3
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_LOCATION = env('AWS_LOCATION')
+AWS_REGION = env('AWS_REGION')
+
 # Storage for user generated files
 USE_S3 = env('USE_S3')
 if USE_S3:
     # Use S3 to store user files if the corresponding environment var is set
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
-    AWS_LOCATION = env('AWS_LOCATION')
     MEDIA_URL = 'https://' + AWS_S3_CUSTOM_DOMAIN + '/'
     MEDIA_ROOT = ''
     # This is a workaround for https://github.com/wagtail/wagtail/issues/3206
@@ -333,6 +425,10 @@ LOGGING = {
             'handlers': ['debug-error'],
             'level': 'ERROR'
         },
+        'rq.worker': {
+            'handlers': ['info'],
+            'level': 'INFO',
+        },
         'donate': {
             'handlers': ['info'],
             'level': 'INFO',
@@ -357,7 +453,6 @@ CSP_FONT_SRC = env('CSP_FONT_SRC', default=CSP_DEFAULT)
 CSP_CONNECT_SRC = env('CSP_CONNECT_SRC', default=None)
 CSP_STYLE_SRC = env('CSP_STYLE_SRC', default=CSP_DEFAULT)
 CSP_BASE_URI = env('CSP_BASE_URI', default=None)
-CSP_CHILD_SRC = env('CSP_CHILD_SRC', default=None)
 CSP_FRAME_ANCESTORS = env('CSP_FRAME_ANCESTORS', default=None)
 CSP_FORM_ACTION = env('CSP_FORM_ACTION', default=None)
 CSP_SANDBOX = env('CSP_SANDBOX', default=None)
@@ -394,6 +489,34 @@ BRAINTREE_PLANS = env('BRAINTREE_PLANS')
 BRAINTREE_PARAMS = {
     'use_sandbox': BRAINTREE_USE_SANDBOX,
     'token': BRAINTREE_TOKENIZATION_KEY,
+}
+
+# Basket
+BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL') or None
+BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL') or None
+
+# Pontoon settings
+WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
+WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
+WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
+
+# Recaptcha
+RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
+RECAPTCHA_SECRET_KEY = env('RECAPTCHA_SECRET_KEY')
+RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
+
+# Django-rq
+RQ_QUEUES = {
+    'default': {
+        'URL': REDIS_URL or 'redis://localhost:6379/0',
+        'DEFAULT_TIMEOUT': 500,
+    },
+
+    # Must be a separate queue as it's limited to one item at a time
+    'wagtail_localize_pontoon.sync': {
+        'URL': REDIS_URL or 'redis://localhost:6379/0',
+        'DEFAULT_TIMEOUT': 500,
+    },
 }
 
 # Wagtail settings

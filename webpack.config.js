@@ -7,10 +7,7 @@ let rules = [
     exclude: /node_modules/,
     loader: `babel-loader`,
     query: {
-      presets: [
-        [`@babel/preset-env`, { targets: `> 1%, last 2 versions` }],
-        [`@babel/preset-react`]
-      ]
+      presets: [[`@babel/preset-env`, { targets: `> 1%, last 2 versions` }]]
     }
   }
 ];

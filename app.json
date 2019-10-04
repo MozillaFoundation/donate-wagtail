@@ -3,9 +3,13 @@
   "description": "Donate platform",
   "repository": "https://github.com/mozilla/donate-wagtail",
   "addons": [
-    "heroku-postgresql:hobby-dev"
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev"
   ],
   "buildpacks": [
+    {
+      "url": "https://github.com/Osmose/heroku-buildpack-ssh"
+    },
     {
       "url": "heroku/nodejs"
     },
@@ -13,6 +17,14 @@
       "url": "heroku/python"
     }
   ],
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
+     }
+  },
   "env": {
     "HEROKU_APP_NAME": {
       "required": true
@@ -26,6 +38,9 @@
     "AWS_LOCATION": {
       "required": true
     },
+    "AWS_REGION": {
+      "required": true
+    },
     "AWS_S3_CUSTOM_DOMAIN": {
       "required": true
     },
@@ -33,6 +48,12 @@
       "required": true
     },
     "AWS_STORAGE_BUCKET_NAME": {
+      "required": true
+    },
+    "BASKET_SQS_QUEUE_URL": {
+      "required": true
+    },
+    "BASKET_API_ROOT_URL": {
       "required": true
     },
     "BRAINTREE_MERCHANT_ID": {
@@ -53,6 +74,12 @@
     "BRAINTREE_PRIVATE_KEY": {
       "required": true
     },
+    "SSH_CONFIG": {
+      "required": true
+    },
+    "SSH_KEY": {
+      "required": true
+    },
     "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
     "CORS_WHITELIST": "*",
@@ -62,7 +89,13 @@
     "SET_HSTS": "True",
     "SSL_REDIRECT": "True",
     "X_FRAME_OPTIONS": "DENY",
-    "XSS_PROTECTION": "True"
+    "XSS_PROTECTION": "True",
+    "CSP_SCRIPT_SRC": "'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js js.braintreegateway.com assets.braintreegateway.com www.paypalobjects.com c.paypal.com www.paypal.com",
+    "CSP_IMG_SRC": "* data:",
+    "CSP_FONT_SRC": "'self' fonts.googleapis.com fonts.gstatic.com",
+    "CSP_STYLE_SRC": "'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com",
+    "CSP_FRAME_SRC": "'self' assets.braintreegateway.com c.paypal.com *.paypal.com",
+    "CSP_CONNECT_SRC": "api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com"
   },
   "scripts": {
     "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin",

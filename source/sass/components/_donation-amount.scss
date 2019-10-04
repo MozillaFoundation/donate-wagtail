@@ -30,6 +30,10 @@
       min-width: 55px;
       max-width: 55px;
     }
+
+    &--hidden {
+      @include hidden();
+    }
   }
 
   &__radio {
@@ -50,6 +54,13 @@
       padding-left: ($gutter * 0.75);
       border: 1px solid $color--border;
       border-left: 0;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
   }
 }

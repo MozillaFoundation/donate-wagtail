@@ -1,14 +1,14 @@
 {% extends "pages/base_page.html" %}
-{% load wagtailcore_tags wagtailsettings_tags %}
+{% load i18n wagtailcore_tags wagtailsettings_tags %}
 
-{% block title %}Page not found{% endblock %}
+{% block title %}{% trans "Page not found" %}{% endblock %}
 
 {% block template_name %}app--404{% endblock %}
 
 {% block content %}
-<div class="layout">
-    <div class="layout__container">
-        <h1 class="heading heading--primary">Page not found</h1>
+    <div class="layout">
+        <div class="layout__container">
+            <h1 class="heading heading--primary">{% trans "Page not found" %}</h1>
+        </div>
     </div>
-</div>
 {% endblock %}

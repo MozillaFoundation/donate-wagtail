@@ -13,22 +13,34 @@ class AmountToggle {
     this.activeClass = "active";
     this.selectedClass = "selected";
 
+    let locale = this.updateForm.getAttribute("data-locale").replace("_", "-");
+    let currency = this.updateForm.getAttribute("data-currency").toUpperCase();
+    this.formatter = new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+      minimumFractionDigits: 0
+    });
+
     this.bindEvents();
   }
 
   UpdateHiddenInputFromInput(event) {
-    // Covert the number to 2 decimal places if needed
-    this.inputForm.value = parseFloat(this.inputForm.value).toFixed(2);
-    this.hiddenInput.value = this.inputForm.value;
-    // Hide form after updating hidden input
-    this.toggleOptions(event);
-    // Change values that exist on the page
-    this.UpdatePageDonationAmount();
+    if (this.inputForm.reportValidity()) {
+      // Convert the number to 2 decimal places if needed
+      this.inputForm.value = parseFloat(this.inputForm.value).toFixed(2);
+      this.hiddenInput.value = this.inputForm.value;
+      // Hide form after updating hidden input
+      this.toggleOptions(event);
+      // Change values that exist on the page
+      this.UpdatePageDonationAmount();
+    }
   }
 
   UpdatePageDonationAmount() {
     document.querySelectorAll(".js-donation-value").forEach(donationAmount => {
-      donationAmount.textContent = this.hiddenInput.value;
+      donationAmount.textContent = this.formatter.format(
+        this.hiddenInput.value
+      );
     });
   }
 

@@ -1,8 +1,17 @@
+:root {
+  --currency-width: 0; // populated with donation currency width js
+}
+
 .form {
   $root: &;
 
   &__container {
     margin-bottom: $gutter;
+
+    input:not([type="checkbox"]):not([type="radio"]),
+    select {
+      min-height: 60px;
+    }
   }
 
   &__errors {
@@ -16,10 +25,15 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
+    &--flex {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+    }
     &--gutter {
       grid-gap: $gutter;
     }
-    &--town-post {
+    &--city-post {
       display: grid;
       grid-template-columns: 0.3fr 0.7fr;
 
@@ -31,6 +45,12 @@
     }
     &--additional-info {
       position: relative;
+
+      input:not([type="checkbox"]) {
+        .app--upsell & {
+          padding-left: calc((var(--currency-width)) + ((#{$gutter}) * 1.5));
+        }
+      }
     }
   }
 

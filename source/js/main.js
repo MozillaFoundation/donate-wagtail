@@ -5,6 +5,7 @@ import MenuToggle from "./components/menu-toggle";
 import AmountToggle from "./components/donation-amount-toggle";
 import CurrencySelect from "./components/currency-selector";
 import WayPointDetect from "./components/waypoint-detection";
+import DonationCurrencyWidth from "./components/donation-currency-width";
 
 // Manage tab index for primary nav
 function tabIndexer() {
@@ -30,6 +31,12 @@ function closeMenu() {
 document.addEventListener("DOMContentLoaded", function() {
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {
     new MenuToggle(menutoggle, openMenu, closeMenu);
+  }
+
+  for (const currencywidth of document.querySelectorAll(
+    DonationCurrencyWidth.selector()
+  )) {
+    new DonationCurrencyWidth(currencywidth);
   }
 
   for (const donatetoggle of document.querySelectorAll(

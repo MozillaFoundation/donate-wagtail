@@ -21,28 +21,11 @@ class UtilsTestCase(TestCase):
             'amount': '50'
         })
 
-    def test_get_default_currency_uses_map(self):
-        self.assertEqual(
-            get_default_currency('en-AU;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5'),
-            'aud'
-        )
-        self.assertEqual(
-            get_default_currency('en-CA;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5'),
-            'cad'
-        )
-
-    def test_get_default_currency_next_language_pre(self):
-        # First preference is a bogus language. Second one is korean.
-        self.assertEqual(
-            get_default_currency('fo-FO;q=0.9, ko;q=0.8'),
-            'krw'
-        )
+    def test_get_default_currency_matches_exact_locale(self):
+        self.assertEqual(get_default_currency('nb-NO'), 'nok')
 
     def test_get_default_currency_falls_back_to_base_language(self):
-        self.assertEqual(
-            get_default_currency('es-GG;q=0.9'),
-            'eur'
-        )
+        self.assertEqual(get_default_currency('es-GG'), 'eur')
 
     def test_get_default_currency_fallback_to_usd(self):
         self.assertEqual(get_default_currency(''), 'usd')
@@ -53,9 +36,6 @@ class UtilsTestCase(TestCase):
         self.assertEqual(get_suggested_monthly_upgrade('usd', Decimal(125)), Decimal(10))
         self.assertEqual(get_suggested_monthly_upgrade('usd', Decimal(35)), Decimal(5))
 
-    def test_get_suggested_monthly_upgrade_default(self):
-        # AED has no monthly suggestions, so we should default to 10% rounded up
-        self.assertEqual(get_suggested_monthly_upgrade('aed', Decimal(156)), Decimal(16))
-        # USD has suggestins, but this value is below the smallest suggestion tier, so we
-        # should default to 10% rounded up
-        self.assertEqual(get_suggested_monthly_upgrade('usd', Decimal(11)), Decimal(2))
+    def test_get_suggested_monthly_upgrade_small_single_amount(self):
+        self.assertIsNone(get_suggested_monthly_upgrade('usd', Decimal(1)))
+        self.assertIsNone(get_suggested_monthly_upgrade('aed', Decimal(1)))

@@ -1,9 +1,9 @@
 {% extends "pages/base_page.html" %}
-{% load i18n form_tags static %}
+{% load i18n form_tags static util_tags %}
 
 {% block title %}{% trans "Thank you" %}{% endblock %}
 
-{% block template_name %}app--details{% endblock %}
+{% block template_name %}app--upsell{% endblock %}
 
 {% block content %}
 
@@ -12,8 +12,8 @@
         <div class="layout__full-col">
             <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
 
-            <p>{% trans "We'd love to have you as a sustaining supporter of Mozilla. Could you add a monthly donation starting next month?" %}</p>
-            <p>{% trans "Yes, I will give" %}</p>
+            <p>{% trans "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>" %}</p>
+            <p>{% trans "Yes, I will give:" %}</p>
 
             <form method="post" class="form" id="payments__braintree-form">
                 <div class="form__container">
@@ -30,18 +30,21 @@
                             </div>
                         {% endif %}
 
-                        {% render_form_field form.amount %}
+                        <div class="form__group form__group--additional-info">
+                            <span class="form-item__input-additional-info form-item__input-additional-info--left" data-donation-currency>{% get_localized_currency_symbol currency_info.code %}</span>
+                            {% render_form_field form.amount %}
+                            <span class="form-item__input-additional-info">{% trans "/ Monthly" %}</span>
+                        </div>
                         {% render_form_field form.currency %}
                         {% render_form_field form.braintree_nonce %}
 
-                        <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel" %}
                     </div>
 
                     <div id="payments__braintree-errors-paypal" class="payments__braintree-error" hidden></div>
 
                     <div class="form__section form__section--actions form__section--bottom-margin button__group">
                         <div id="payments__paypal-button--upsell"></div>
-                        <a class="button button--large button--secondary" href="{% url 'payments:newsletter_signup' %}">{% trans "No" %}</a>
+                        <a class="button button--rounded button--secondary" href="{% url 'payments:newsletter_signup' %}">{% trans "No" %}</a>
                     </div>
                 </div>
             </form>
@@ -54,6 +57,6 @@
 
 {% block extra_js %}
     {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="https://www.paypalobjects.com/api/checkout.min.js" data-version-4></script>
     <script src="{% static '_js/payments-paypal-upsell.compiled.js' %}"></script>
 {% endblock %}

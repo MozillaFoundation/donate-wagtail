@@ -19,7 +19,7 @@ $color--secondary: #eaeaea;
 $color--tertiary: #f9f9f9;
 
 $color--white: #ffffff;
-$color--black: #111111;
+$color--black: #000000;
 $color--border: $color--grey-20;
 $color--background: $color--white;
 
@@ -68,7 +68,9 @@ $breakpoints: (
   "mob-landscape" "(min-width: 480px)",
   "tablet-portrait" "(min-width: 768px)",
   "tablet-landscape" "(min-width: 1024px)",
-  "desktop" "(min-width: 1280px)",
+  "paypal-specific" "(min-width: 1090px)",
+  // needed for working with responsive paypal button
+    "desktop" "(min-width: 1280px)",
   "desktop-wide" "(min-width: 2556px)"
 );
 

@@ -24,8 +24,10 @@
                                  class="hero__image-item">
                         </div>
                         <div class="hero__content">
-                            <h1 class="heading heading--primary hero__heading">{{ page.title }}</h1>
-                            <p class="hero__description">{{ page.lead_text }}</p>
+                            <div class="hero__content-container">
+                                <h1 class="heading heading--primary hero__heading">{{ page.title }}</h1>
+                                <p class="hero__description">{{ page.lead_text }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -33,7 +35,7 @@
         </div>
         <div class="sticky-message" data-waypoint-element>
             <div class="sticky-message__container">
-                <a href="#anchor-donate" class="sticky-message__action button button--primary button--uppercase button--large">Donate now</a>
+                <a href="#anchor-donate" class="sticky-message__action button button--primary button--large">{% trans "DONATE NOW" context "Button" %}</a>
             </div>
         </div>
         <div class="layout__container">
@@ -47,10 +49,10 @@
                     <div class="logo-showcase__container">
                         <div class="logo-showcase__container">
                             <div class="logo-showcase__item logo-item">
-                                <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
+                                <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="{% trans 'Seal of Charity Navigator 4-Star' %}">
                             </div>
                             <div class="logo-showcase__item logo-item">
-                                <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
+                                <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="{% trans 'Seal of GuideStar Gold 2019' %}">
                             </div>
                         </div>
                     </div>
@@ -60,13 +62,14 @@
                 <div class="donate-form js-data-waypoint" id="anchor-donate">
                     <header class="donate-form__header">
                         <h1 class="heading heading--primary">
-                            {% trans "Donate now" %}
+                            {% trans "Donate now" context "Header" %}
                         </h1>
 
                         <div class="donate-form__currency">
                             {% render_form_field currency_form.currency %}
                         </div>
                     </header>
+                    {% include "fragments/messages.html" %}
                     {% include "fragments/donate_form.html" %}
                 </div>
             </div>

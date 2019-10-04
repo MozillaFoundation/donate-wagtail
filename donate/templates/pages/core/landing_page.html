@@ -30,10 +30,10 @@
             <div class="logo-showcase column-spacing">
                 <div class="logo-showcase__container">
                     <div class="logo-showcase__item logo-item">
-                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="Seal of Charity Navigator 4-Star">
+                        <img class="logo-item__image" src="{% static '_images/seal-charity-navigator-4-star.png' %}" alt="{% trans 'Seal of Charity Navigator 4-Star' %}">
                     </div>
                     <div class="logo-showcase__item logo-item">
-                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="Seal of GuideStar Gold 2019">
+                        <img class="logo-item__image" src="{% static '_images/seal-guidestar-gold-2019.png' %}" alt="{% trans 'Seal of GuideStar Gold 2019' %}">
                     </div>
                 </div>
             </div>
@@ -46,17 +46,25 @@
                         {% render_form_field currency_form.currency %}
                     </div>
                 </header>
+                {% include "fragments/messages.html" %}
                 {% include "fragments/donate_form.html" %}
             </div>
         </div>
     </div>
 </div>
 
+{% if recaptcha_site_key %}
+<div id="g-recaptcha" data-public-key="{{ recaptcha_site_key }}"></div>
+{% endif %}
+
 {% endblock %}
 
 {% block extra_js %}
     {{ currencies|json_script:"currencies" }}
     {{ braintree_params|json_script:"payments__braintree-params" }}
-    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="https://www.paypalobjects.com/api/checkout.min.js" data-version-4></script>
     <script src="{% static '_js/payments-paypal.compiled.js' %}"></script>
+    {% if recaptcha_site_key %}
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+    {% endif %}
 {% endblock %}

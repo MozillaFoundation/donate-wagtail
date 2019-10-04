@@ -8,8 +8,12 @@ export default function initPaypal(
   flow,
   buttonId
 ) {
-  var loadingErrorMsg =
-    "An error occurred. Please reload the page or try again later.";
+  var loadingErrorMsg = window.gettext(
+    "An error occurred. Please reload the page or try again later."
+  );
+  var generalErrorMsg = window.gettext(
+    "There was an error processing your payment. Please try again."
+  );
   var braintreeParams = JSON.parse(
     document.getElementById("payments__braintree-params").textContent
   );
@@ -71,9 +75,7 @@ export default function initPaypal(
               payload
             ) {
               if (err) {
-                showErrorMessage(
-                  "There was an error processing your payment. Please try again."
-                );
+                showErrorMessage(generalErrorMsg);
                 return;
               }
 
@@ -82,13 +84,11 @@ export default function initPaypal(
           },
 
           onCancel: function() {
-            showErrorMessage("Payment cancelled");
+            showErrorMessage(window.gettext("Payment cancelled"));
           },
 
           onError: function(err) {
-            showErrorMessage(
-              "There was an error processing your payment. Please try again."
-            );
+            showErrorMessage(generalErrorMsg);
           }
         },
         buttonId
