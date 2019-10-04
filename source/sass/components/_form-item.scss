@@ -116,12 +116,13 @@
     @include font-size(m);
     position: absolute;
     right: ($gutter * 2);
-    top: 39px; // ensure it sits in the middle of associated input
+    top: 50%;
     pointer-events: none;
     color: $color--grey-60;
 
-    @include media-query(tablet-portrait) {
-      top: 42px; // ensure it sits in the middle of associated input
+    &--left {
+      left: $gutter;
+      right: auto;
     }
   }
 
