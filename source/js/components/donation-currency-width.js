@@ -9,7 +9,6 @@ class DonationCurrencyWidth {
   }
 
   getWidth() {
-    // Set custom css property to give padding on slide
     this.currencyWidth = this.node.getBoundingClientRect();
     document.documentElement.style.setProperty(
       "--currency-width",
