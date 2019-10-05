@@ -1,5 +1,5 @@
 from copy import deepcopy
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 from django.conf import settings
 from django.db import models
@@ -65,12 +65,36 @@ class DonationPage(TranslatablePageMixin, Page):
             response.set_cookie('subscribed', '1', httponly=True)
         return response
 
+    def get_initial_frequency(self, request):
+        frequency = request.GET.get('frequency', '')
+        return frequency if frequency in dict(constants.FREQUENCY_CHOICES) else constants.FREQUENCY_SINGLE
+
+    def get_initial_currency_info(self, request, initial_currency, initial_frequency):
+        initial_currency_info = self.currencies[initial_currency]
+        # Check if presets have been specified in a query arg
+        custom_presets = request.GET.get('presets', '').split(',')
+        try:
+            custom_presets = [Decimal(p).quantize(Decimal('0.01')) for p in custom_presets]
+        except InvalidOperation:
+            return initial_currency_info
+
+        if not custom_presets:
+            return initial_currency_info
+
+        custom_presets.sort(reverse=True)
+        initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
+        return initial_currency_info
+
     def get_context(self, request):
         ctx = super().get_context(request)
         initial_currency = self.get_initial_currency(request)
+        initial_frequency = self.get_initial_frequency(request)
         ctx.update({
             'currencies': self.currencies,
-            'initial_currency_info': self.currencies[initial_currency],
+            'initial_currency_info': self.get_initial_currency_info(
+                request, initial_currency, initial_frequency
+            ),
+            'initial_frequency': initial_frequency,
             'braintree_params': settings.BRAINTREE_PARAMS,
             'braintree_form': BraintreePaypalPaymentForm(
                 initial={
