@@ -51,7 +51,7 @@ class BasketTransactionTestCase(TestCase):
             'amount': Decimal(10),
             'currency': 'usd',
             'payment_frequency': 'single',
-            'payment_method': 'card',
+            'payment_method': 'Braintree_Card',
             'transaction_id': 'transaction-1',
             'landing_url': 'http://localhost',
             'project': 'mozillafoundation',
