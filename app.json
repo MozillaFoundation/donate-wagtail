@@ -90,6 +90,8 @@
     "SSL_REDIRECT": "True",
     "X_FRAME_OPTIONS": "DENY",
     "XSS_PROTECTION": "True",
+    "CSRF_COOKIE_SECURE": "True",
+    "SESSION_COOKIE_SECURE": "True",
     "CSP_SCRIPT_SRC": "'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js js.braintreegateway.com assets.braintreegateway.com www.paypalobjects.com c.paypal.com www.paypal.com",
     "CSP_IMG_SRC": "* data:",
     "CSP_FONT_SRC": "'self' fonts.googleapis.com fonts.gstatic.com",
