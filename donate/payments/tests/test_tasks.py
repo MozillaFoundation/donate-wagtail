@@ -69,7 +69,7 @@ class BasketTransactionTestCase(TestCase):
                 'currency': 'usd',
                 'created': 1565222400,
                 'recurring': False,
-                'service': 'card',
+                'service': 'Braintree_Card',
                 'transaction_id': 'transaction-1',
                 'project': 'mozillafoundation',
                 'last_4': '1234',

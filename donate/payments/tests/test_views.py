@@ -566,7 +566,7 @@ class CardUpsellViewTestCase(TestCase):
         self.view.request = self.request
 
     def test_skips_if_previous_transaction_was_not_card(self):
-        self.request.session['completed_transaction_details']['payment_method'] = 'paypal'
+        self.request.session['completed_transaction_details']['payment_method'] = 'Braintree_Paypal'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
@@ -653,7 +653,7 @@ class PaypalUpsellViewTestCase(TestCase):
         self.view.request = self.request
 
     def test_skips_if_previous_transaction_was_not_paypal(self):
-        self.request.session['completed_transaction_details']['payment_method'] = 'card'
+        self.request.session['completed_transaction_details']['payment_method'] = 'Braintree_Card'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
