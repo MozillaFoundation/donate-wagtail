@@ -8,8 +8,8 @@ FREQUENCY_CHOICES = (
     (FREQUENCY_MONTHLY, 'Monthly'),
 )
 
-METHOD_CARD = 'card'
-METHOD_PAYPAL = 'paypal'
+METHOD_CARD = 'Braintree_Card'
+METHOD_PAYPAL = 'Braintree_Paypal'
 
 METHODS = (METHOD_CARD, METHOD_PAYPAL)
 
