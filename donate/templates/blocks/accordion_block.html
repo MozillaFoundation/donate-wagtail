@@ -1,11 +1,47 @@
 {% load wagtailcore_tags %}
-<h2>{{ value.title }}</h2>
+    
+    <div class="accordion" >
 
-<ul>
-    {% for item in value.items %}
-    <li>
-        <h3>{{ item.title }}</h3>
-        {{ item.content|richtext }}
-    </li>
-    {% endfor %}
-</ul>
+        <h2 class="accordion__heading">{{ value.title }}</h2>
+
+        <div class="accordion__items">
+            {% for item in value.items %}
+                <div class="accordion-item" data-accordion>
+                    <a
+                        href="#"
+                        role="tab"
+                        class="accordion-item__link"
+                        data-accordion-question
+                        aria-controls="answer-{{ accordion_id }}-{{ forloop.counter }}"
+                        aria-expanded="false"
+                        aria-selected="false"
+                        tabindex="0"
+                        id="question-{{ accordion_id }}-{{ forloop.counter }}"
+                    >
+                        <h3 class="accordion-item__heading">{{ item.title }}</h3>
+                        <div class="accordion-item__icons">
+                            <svg class="accordion-item__icon accordion-item__icon--add" width="24" height="24">
+                                <use xlink:href="#add"></use>
+                            </svg>
+                            <svg class="accordion-item__icon accordion-item__icon--remove" width="24" height="24">
+                                <use xlink:href="#remove"></use>
+                            </svg>
+                        </div>
+                    </a>
+                    <div
+                        aria-live="polite"
+                        class="accordion-item__content"
+                        data-accordion-answer
+                        id="answer-{{ accordion_id }}-{{ forloop.counter }}"
+                        role="tabpanel"
+                        aria-labelledby="question-{{ accordion_id }}-{{ forloop.counter }}"
+                        aria-hidden="false"
+                    >
+                        {{ item.content|richtext }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+        
+</div>

@@ -1,0 +1,53 @@
+.accordion-item {
+  $root: &;
+  padding: ($gutter / 2) 0;
+  border-bottom: 1px solid $color--border;
+
+  &__content {
+    @include font-size(s);
+    display: none;
+    padding: ($gutter * 1.5) 0 $gutter;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: $color--black;
+    outline: 0;
+  }
+
+  &__heading {
+    @include font-size(l);
+    margin: 0;
+  }
+
+  #{$root}__icon {
+    margin-left: $gutter;
+
+    &--add {
+      display: block;
+    }
+
+    &--remove {
+      display: none;
+    }
+  }
+
+  &.is-open {
+    #{$root}__content {
+      display: block;
+    }
+
+    #{$root}__icon {
+      &--add {
+        display: none;
+      }
+
+      &--remove {
+        display: block;
+      }
+    }
+  }
+}

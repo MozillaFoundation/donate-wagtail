@@ -1,0 +1,28 @@
+.page-header {
+  background-color: $color--black;
+  padding: ($gutter * 3) $gutter;
+
+  @include media-query(tablet-portrait) {
+    padding: ($gutter * 4) $gutter;
+  }
+
+  &__container {
+    max-width: $site-width--default;
+    text-align: center;
+
+    @include media-query(tablet-portrait) {
+      padding: 0 ($gutter * 4);
+    }
+
+    @include media-query(desktop) {
+      padding: 0;
+      margin: 0 auto;
+    }
+  }
+
+  &__heading {
+    @include font-size(xxl);
+    margin: 0;
+    color: $color--white;
+  }
+}
