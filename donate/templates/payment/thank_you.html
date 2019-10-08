@@ -22,7 +22,8 @@
             <div class="button__group">
                 {% trans "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as twitter_text %}
                 {% trans "I donated to mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as facebook_text %}
-                
+                {% trans "I donated to mozilla today" as email_subject %}
+
                 {# see https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.5 #}
                 {# Add a default image to use for social sharing here in case one is not provided on the page. #}
                 <a class="button button--outline button--icon" href="https://www.facebook.com/dialog/feed?app_id={{ social_media_settings.facebook_app_id }}&amp;link=http://donate.mozilla.org&amp;picture={{ request.get_host }}{% static '_images/og.png' %}&amp;name={{ page.title|urlencode }}&amp;description={{ facebook_text|urlencode }}" title="Share on Facebook">
@@ -38,7 +39,7 @@
                     </svg>
                     <div class="button__label">{% trans "Twitter" %}</div>
                 </a>
-                <a class="button button--outline button--icon" href="mailto:?&amp;subject=I donated to mozilla today&amp;body=http://donate.mozilla.org">
+                <a class="button button--outline button--icon" href="mailto:?&amp;subject={{ email_subject|urlencode }}&amp;body=http://donate.mozilla.org">
                     <svg class="button__icon button__icon--email" width="16" height="16">
                         <use xlink:href="#email"></use>
                     </svg>
