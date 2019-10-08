@@ -329,7 +329,7 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         expected_details = self.form_data.copy()
         expected_details.update({
             'transaction_id': 'transaction-id-1',
-            'payment_method': 'card',
+            'payment_method': 'Braintree_Card',
             'payment_frequency': 'single',
             'payment_method_token': 'token-1',
             'currency': 'usd',
@@ -397,7 +397,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         expected_details = self.form_data.copy()
         expected_details.update({
             'transaction_id': 'subscription-id-1',
-            'payment_method': 'card',
+            'payment_method': 'Braintree_Card',
             'payment_frequency': 'monthly',
             'payment_method_token': 'token-1',
             'currency': 'usd',
@@ -492,7 +492,7 @@ class PaypalPaymentViewTestCase(TestCase):
             {
                 'amount': Decimal(10),
                 'transaction_id': 'subscription-id-1',
-                'payment_method': 'paypal',
+                'payment_method': 'Braintree_Paypal',
                 'payment_frequency': 'monthly',
                 'currency': 'usd',
                 'settlement_amount': None,
@@ -558,7 +558,7 @@ class CardUpsellViewTestCase(TestCase):
                 'amount': 50,
                 'currency': 'usd',
                 'payment_frequency': 'single',
-                'payment_method': 'card',
+                'payment_method': 'Braintree_Card',
                 'payment_method_token': 'payment-method-1',
             },
         }
@@ -566,7 +566,7 @@ class CardUpsellViewTestCase(TestCase):
         self.view.request = self.request
 
     def test_skips_if_previous_transaction_was_not_card(self):
-        self.request.session['completed_transaction_details']['payment_method'] = 'paypal'
+        self.request.session['completed_transaction_details']['payment_method'] = 'Braintree_Paypal'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
@@ -620,7 +620,7 @@ class CardUpsellViewTestCase(TestCase):
             {
                 'amount': Decimal(17),
                 'transaction_id': 'subscription-id-1',
-                'payment_method': 'card',
+                'payment_method': 'Braintree_Card',
                 'currency': 'usd',
                 'payment_frequency': 'monthly',
                 'country': 'US',
@@ -644,7 +644,7 @@ class PaypalUpsellViewTestCase(TestCase):
                 'amount': 50,
                 'currency': 'usd',
                 'payment_frequency': 'single',
-                'payment_method': 'paypal',
+                'payment_method': 'Braintree_Paypal',
                 'payment_method_token': 'payment-method-1',
             },
         }
@@ -653,7 +653,7 @@ class PaypalUpsellViewTestCase(TestCase):
         self.view.request = self.request
 
     def test_skips_if_previous_transaction_was_not_paypal(self):
-        self.request.session['completed_transaction_details']['payment_method'] = 'card'
+        self.request.session['completed_transaction_details']['payment_method'] = 'Braintree_Card'
         response = self.view.dispatch(self.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], reverse('payments:newsletter_signup'))
@@ -718,7 +718,7 @@ class PaypalUpsellViewTestCase(TestCase):
                 'amount': Decimal(17),
                 'transaction_id': 'subscription-id-1',
                 'braintree_nonce': 'hello-braintree',
-                'payment_method': 'paypal',
+                'payment_method': 'Braintree_Paypal',
                 'currency': 'usd',
                 'payment_frequency': 'monthly',
                 'payment_method_token': 'payment-method-1',
