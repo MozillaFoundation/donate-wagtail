@@ -52,7 +52,7 @@
                         <span class="button__initial">{% trans "Link" context "Share button" %}</span>
                         <span class="button__copied">{% trans "Copied" %}</span>
                     </div>
-                    <input style="display: none;" type="text" value="{{ request.get_host }}" data-copy-value>
+                    <input class="button__hidden" type="text" value="{{ request.get_host }}" data-copy-value>
                 </a>
             </div>
         </div>

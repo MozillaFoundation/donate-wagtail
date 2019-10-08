@@ -190,6 +190,13 @@
     }
   }
 
+  &__hidden {
+    height: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.01;
+  }
+
   .page-header & {
     display: inline-block;
     text-transform: uppercase;
