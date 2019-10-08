@@ -1,0 +1,13 @@
+.accordion {
+  margin-bottom: ($gutter * 2);
+
+  &__heading {
+    @include font-size(xl);
+    text-align: center;
+    margin-bottom: ($gutter * 2);
+  }
+
+  &__items {
+    border-top: 1px solid $color--border;
+  }
+}

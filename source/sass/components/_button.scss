@@ -57,6 +57,20 @@
     background-color: $color--white;
     transition: background-color $transition;
 
+    &#{$root}--dark-bg {
+      color: $color--white;
+      border-color: $color--white;
+      background-color: transparent;
+      transition: background-color $transition, color $transition;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $color--white;
+        color: $color--black;
+      }
+    }
+
     &:hover,
     &:active,
     &:focus {
@@ -158,5 +172,11 @@
         grid-gap: $gutter;
       }
     }
+  }
+
+  .page-header & {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-top: $gutter;
   }
 }
