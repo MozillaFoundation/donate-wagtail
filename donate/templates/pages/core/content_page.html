@@ -3,15 +3,22 @@
 
 {% block content %}
 
+<header class="page-header">
+    <div class="page-header__container">
+        <h1 class="page-header__heading">{{ page.title }}</h1>
+        {% if page.call_to_action_text and page.call_to_action_url %}
+            <a class="page-header__cta button button--outline button--dark-bg" href="{{ page.call_to_action_url }}">{{ page.call_to_action_text }}</a>
+        {% endif %}
+    </div>
+</header>
+
 <div class="layout">
     <div class="layout__container">
         <div class="layout__full-col">
-            <h1>{{ page.title }}</h1>
-            {% if page.call_to_action_text and page.call_to_action_url %}
-                <a href="{{ page.call_to_action_url }}">{{ page.call_to_action_text }}</a>
-            {% endif %}
-
-            {{ page.body }}
+            
+            <div class="page-body">
+                {{ page.body }}
+            </div>
         </div>
     </div>
 </div>
