@@ -13,7 +13,6 @@ class CopyURL {
     this.input.select();
     this.input.setSelectionRange(0, 99999); /*For mobile devices*/
     document.execCommand("copy");
-    alert("Copied the text: " + this.input.value);
   }
 
   updateButton() {
