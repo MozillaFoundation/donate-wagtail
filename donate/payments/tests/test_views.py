@@ -34,6 +34,7 @@ class MockBraintreeTransaction:
     disbursement_details = mock.MagicMock()
     disbursement_details.settlement_amount = Decimal(10)
     paypal_details = MockPaypalDetails()
+    credit_card_details = mock.MagicMock()
 
 
 class MockBraintreeResult:
@@ -100,6 +101,33 @@ class BraintreeMixinTestCase(TestCase):
             'campaign_id': 'piday',
         })
 
+    def test_queue_ga_transaction(self):
+        view = BraintreeMixinTestView()
+        view.request = RequestFactory().get('/')
+        view.request.session = self.client.session
+        with mock.patch('donate.payments.views.queue_ga_event', autospec=True) as mock_queue:
+            view.queue_ga_transaction('trans-id', 'usd', Decimal(50), 'Card', 'Donation')
+        self.assertEqual(mock_queue.call_count, 3)
+        mock_queue.assert_any_call(view.request, [
+            'ecommerce:addTransaction', {
+                'id': 'trans-id',
+                'revenue': '50',
+                'currency': 'USD',
+                'affiliation': '',
+            }
+        ])
+        mock_queue.assert_any_call(view.request, [
+            'ecommerce:addItem', {
+                'id': 'trans-id',
+                'name': 'Card',
+                'sku': 'Card',
+                'category': 'Donation',
+                'price': '50',
+                'quantity': '1',
+            }
+        ])
+        mock_queue.assert_any_call(view.request, ['ecommerce:send'])
+
 
 class CardPaymentViewTestCase(TestCase):
 
@@ -121,7 +149,7 @@ class CardPaymentViewTestCase(TestCase):
         }
 
         self.request = RequestFactory().get('/')
-        self.request.session = {}
+        self.request.session = self.client.session
         self.request.LANGUAGE_CODE = 'en-US'
         self.view = CardPaymentView()
         self.view.payment_frequency = 'single'
@@ -325,6 +353,33 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
         self.assertEqual(self.request.session['project'], self.form_data['project'])
 
+    def test_ga_transaction_and_event(self):
+        form = BraintreeCardPaymentForm(self.form_data)
+        assert form.is_valid()
+
+        with mock.patch.object(CardPaymentView, 'create_customer', autospec=True) as mock_create_customer:
+            mock_create_customer.return_value.is_success = True
+            mock_create_customer.return_value.customer = MockBraintreeCustomer()
+            with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
+                mock_gateway.transaction.sale.return_value = MockBraintreeResult()
+                with mock.patch.object(CardPaymentView, 'queue_ga_transaction') as mock_queue_tx:
+                    with mock.patch('donate.payments.views.queue_ga_event') as mock_queue_event:
+                        self.view.form_valid(form, send_data_to_basket=False)
+
+        mock_queue_tx.assert_called_once_with(
+            id='transaction-id-1',
+            currency='usd',
+            amount=Decimal(50),
+            name='Card Donation',
+            category='one-time'
+        )
+        mock_queue_event.assert_called_once_with(self.view.request, ['send', 'event', {
+                'eventCategory': 'Donation',
+                'eventAction': 'Card',
+                'eventLabel': 'Single',
+            }
+        ])
+
     def test_get_success_url(self):
         self.assertEqual(
             self.view.get_success_url(),
@@ -389,6 +444,33 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
         self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
         self.assertEqual(self.request.session['project'], self.form_data['project'])
+
+    def test_ga_transaction_and_event(self):
+        form = BraintreeCardPaymentForm(self.form_data)
+        assert form.is_valid()
+
+        with mock.patch.object(CardPaymentView, 'create_customer', autospec=True) as mock_create_customer:
+            mock_create_customer.return_value.is_success = True
+            mock_create_customer.return_value.customer = MockBraintreeCustomer()
+            with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
+                mock_gateway.subscription.create.return_value = MockBraintreeSubscriptionResult()
+                with mock.patch.object(CardPaymentView, 'queue_ga_transaction') as mock_queue_tx:
+                    with mock.patch('donate.payments.views.queue_ga_event') as mock_queue_event:
+                        self.view.form_valid(form, send_data_to_basket=False)
+
+        mock_queue_tx.assert_called_once_with(
+            id='subscription-id-1',
+            currency='usd',
+            amount=Decimal(50),
+            name='Card Donation',
+            category='monthly'
+        )
+        mock_queue_event.assert_called_once_with(self.view.request, ['send', 'event', {
+                'eventCategory': 'Donation',
+                'eventAction': 'Card',
+                'eventLabel': 'Monthly',
+            }
+        ])
 
     def test_failed_customer_creation_calls_error_processor(self):
         form = BraintreeCardPaymentForm(self.form_data)
@@ -473,6 +555,30 @@ class PaypalPaymentViewTestCase(TestCase):
         self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
         self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
         self.assertEqual(self.request.session['project'], self.form_data['project'])
+
+    def test_ga_transaction(self):
+        form = BraintreePaypalPaymentForm(self.form_data)
+        assert form.is_valid()
+
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
+            mock_gateway.transaction.sale.return_value = MockBraintreeResult()
+            with mock.patch.object(PaypalPaymentView, 'queue_ga_transaction') as mock_queue_tx:
+                with mock.patch('donate.payments.views.queue_ga_event') as mock_queue_event:
+                    self.view.form_valid(form, send_data_to_basket=False)
+
+        mock_queue_tx.assert_called_once_with(
+            id='transaction-id-1',
+            currency='usd',
+            amount=Decimal(10),
+            name='PayPal Donation',
+            category='one-time'
+        )
+        mock_queue_event.assert_called_once_with(self.view.request, ['send', 'event', {
+                'eventCategory': 'Donation',
+                'eventAction': 'PayPal',
+                'eventLabel': 'Single',
+            }
+        ])
 
     @freeze_time('2019-07-26')
     def test_subscription_data_submitted_to_braintree(self):
@@ -576,7 +682,7 @@ class TransactionRequiredMixinTestCase(TestCase):
     def test_missing_transaction_redirects(self):
         view = TransactionRequiredMixin()
         view.request = RequestFactory().get('/')
-        view.request.session = {}
+        view.request.session = self.client.session
         response = view.dispatch(view.request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['Location'], '/')
@@ -587,21 +693,20 @@ class CardUpsellViewTestCase(TestCase):
     def setUp(self):
         self.request = RequestFactory().get('/')
         self.request.LANGUAGE_CODE = 'en-US'
-        self.request.session = {
-            'completed_transaction_details': {
-                'first_name': 'Alice',
-                'last_name': 'Bob',
-                'email': 'alice@example.com',
-                'address_line_1': '1 Oak Tree Hill',
-                'city': 'New York',
-                'post_code': '10022',
-                'country': 'US',
-                'amount': 50,
-                'currency': 'usd',
-                'payment_frequency': 'single',
-                'payment_method': 'Braintree_Card',
-                'payment_method_token': 'payment-method-1',
-            },
+        self.request.session = self.client.session
+        self.request.session['completed_transaction_details'] = {
+            'first_name': 'Alice',
+            'last_name': 'Bob',
+            'email': 'alice@example.com',
+            'address_line_1': '1 Oak Tree Hill',
+            'city': 'New York',
+            'post_code': '10022',
+            'country': 'US',
+            'amount': 50,
+            'currency': 'usd',
+            'payment_frequency': 'single',
+            'payment_method': 'Braintree_Card',
+            'payment_method_token': 'payment-method-1',
         }
         self.view = CardUpsellView()
         self.view.request = self.request
@@ -639,6 +744,23 @@ class CardUpsellViewTestCase(TestCase):
             'price': Decimal(15),
             'first_billing_date': FakeDate(2019, 8, 26)
         })
+
+    def test_ga_transaction(self):
+        form = UpsellForm({'amount': Decimal(15)})
+        assert form.is_valid()
+
+        with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
+            mock_gateway.subscription.create.return_value = MockBraintreeSubscriptionResult()
+            with mock.patch.object(CardUpsellView, 'queue_ga_transaction') as mock_queue_tx:
+                self.view.form_valid(form)
+
+        mock_queue_tx.assert_called_once_with(
+            id='subscription-id-1',
+            currency='usd',
+            amount=Decimal(15),
+            name='Card Donation',
+            category='monthly'
+        )
 
     def test_failed_customer_creation_calls_error_processor(self):
         form = UpsellForm({'amount': Decimal(15)})
@@ -680,14 +802,13 @@ class PaypalUpsellViewTestCase(TestCase):
 
     def setUp(self):
         self.request = RequestFactory().get('/')
-        self.request.session = {
-            'completed_transaction_details': {
-                'amount': 50,
-                'currency': 'usd',
-                'payment_frequency': 'single',
-                'payment_method': 'Braintree_Paypal',
-                'payment_method_token': 'payment-method-1',
-            },
+        self.request.session = self.client.session
+        self.request.session['completed_transaction_details'] = {
+            'amount': 50,
+            'currency': 'usd',
+            'payment_frequency': 'single',
+            'payment_method': 'Braintree_Paypal',
+            'payment_method_token': 'payment-method-1',
         }
         self.request.LANGUAGE_CODE = 'en-US'
         self.view = PaypalUpsellView()
@@ -730,6 +851,27 @@ class PaypalUpsellViewTestCase(TestCase):
             'price': Decimal(15),
             'first_billing_date': FakeDate(2019, 8, 26)
         })
+
+    def test_ga_transaction(self):
+        form = BraintreePaypalUpsellForm({
+            'amount': Decimal(15), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
+        })
+        assert form.is_valid()
+
+        with mock.patch('donate.payments.views.gateway') as mock_gateway:
+            mock_gateway.customer.create.return_value.is_success = True
+            mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
+            mock_gateway.subscription.create.return_value = MockBraintreeSubscriptionResult()
+            with mock.patch.object(PaypalUpsellView, 'queue_ga_transaction') as mock_queue_tx:
+                self.view.form_valid(form)
+
+        mock_queue_tx.assert_called_once_with(
+            id='subscription-id-1',
+            currency='usd',
+            amount=Decimal(15),
+            name='PayPal Donation',
+            category='monthly'
+        )
 
     def test_failed_customer_creation_calls_error_processor(self):
         form = BraintreePaypalUpsellForm({
