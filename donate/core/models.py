@@ -13,6 +13,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.fields import ParentalKey
 from wagtail_localize.models import TranslatablePageMixin, TranslatablePageRoutingMixin, Locale
+from wagtail_localize.fields import TranslatableField, SynchronizedField
 
 from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
@@ -148,10 +149,13 @@ class LandingPage(TranslatablePageRoutingMixin, DonationPage):
     ]
 
     translatable_fields = [
-        'title',
-        'seo_title',
-        'search_description',
-        'intro',
+        TranslatableField('title'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        SynchronizedField('project'),
+        SynchronizedField('campaign_id'),
+        SynchronizedField('featured_image'),
+        TranslatableField('intro'),
     ]
 
     def save(self, *args, **kwargs):
@@ -187,12 +191,14 @@ class CampaignPage(DonationPage):
     ]
 
     translatable_fields = [
-        'title',
-        'slug',
-        'seo_title',
-        'search_description',
-        'lead_text',
-        'intro',
+        TranslatableField('title'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        SynchronizedField('project'),
+        SynchronizedField('campaign_id'),
+        SynchronizedField('hero_image'),
+        TranslatableField('lead_text'),
+        TranslatableField('intro'),
     ]
 
     @classmethod
@@ -266,9 +272,12 @@ class ContentPage(TranslatablePageMixin, Page):
     ]
 
     translatable_fields = [
-        'title',
-        'seo_title',
-        'search_description',
-        'call_to_action_text',
-        'body',
+        TranslatableField('title'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+        SynchronizedField('project'),
+        SynchronizedField('campaign_id'),
+        TranslatableField('call_to_action_text'),
+        SynchronizedField('call_to_action_url'),
+        TranslatableField('body'),
     ]

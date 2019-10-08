@@ -49,8 +49,8 @@ def makemessages(ctx):
     """Extract all template messages in .po files for localization"""
     manage(ctx, "makemessages --keep-pot --no-wrap")
     manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules")
-    os.rename("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
-    os.rename("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
+    os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+    os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
 
 
 @task
@@ -149,8 +149,8 @@ def docker_makemessages(ctx):
     """Extract all template messages in .po files for localization"""
     docker_manage(ctx, "makemessages --keep-pot --no-wrap")
     docker_manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules")
-    os.rename("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
-    os.rename("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
+    os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+    os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
 
 
 @task
