@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-04 15:59+0000\n"
-"PO-Revision-Date: 2019-10-04 18:00+0200\n"
+"POT-Creation-Date: 2019-10-08 10:41+0000\n"
+"PO-Revision-Date: 2019-10-08 11:44+0100\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -157,8 +157,8 @@ msgstr "Les dons mensuels sont prélevés chaque mois, le même jour que votre d
 
 #: donate/templates/fragments/donate_form_disclaimer.html:14
 #, python-format
-msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "Autres façons de faire un don : <a href=\"%(wire_transfer_url)s\">virement bancaire ou SEPA</a> | <a href=\"%(check_url)s\">chèque</a>"
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+msgstr "Autres façons de faire un don : <a href=\"%(wire_transfer_url)s\">virement bancaire ou SEPA</a> | <a href=\"%(check_url)s\">chèque</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:18
 #, python-format
