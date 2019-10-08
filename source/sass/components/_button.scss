@@ -160,6 +160,22 @@
     }
   }
 
+  &__copied {
+    display: none;
+
+    .copied & {
+      display: block;
+    }
+  }
+
+  &__initial {
+    display: block;
+
+    .copied & {
+      display: none;
+    }
+  }
+
   &__group {
     display: grid;
     grid-gap: ($gutter * 0.75);

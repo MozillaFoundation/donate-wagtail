@@ -1,5 +1,5 @@
 {% extends "pages/base_page.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block title %}{% trans "Thank you" %}{% endblock %}
 
@@ -18,30 +18,41 @@
             </div>
             <h1 class="heading heading--primary heading--bottom-margin">{% trans "One last thing…" %}</h1>
             <p>{% trans "Can you help us share the important work Mozilla is doing?" %}</p>
+
             <div class="button__group">
-                <a class="button button--outline button--icon" href="https://facebook.com/mozilla">
+                {# see https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.5 #}
+                {# Add a default image to use for social sharing here in case one is not provided on the page. #}
+                <a class="button button--outline button--icon" href="https://www.facebook.com/dialog/feed?app_id={{ social_media_settings.facebook_app_id }}&amp;link=http://donate.mozilla.org&amp;picture={{ request.get_host }}{% static '_images/og.png' %}&amp;name={{ page.title|urlencode }}&amp;description=I donated to @mozilla today because I %23lovetheweb. Join me and help fight for a better and healthier internet, for all." title="Share on Facebook">
                     <svg class="button__icon button__icon--facebook" width="16" height="16">
                         <use xlink:href="#facebook"></use>
                     </svg>
                     <div class="button__label">{% trans "Facebook" %}</div>
                 </a>
-                <a class="button button--outline button--icon" href="https://twitter.com/mozilla">
+                {# see https://dev.twitter.com/web/tweet-button/web-intent #}
+                <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text=I donated to @mozilla today because I %23lovetheweb. Join me and help fight for a better and healthier internet, for all.&amp;url=http://donate.mozilla.org&amp;via=mozilla" title="Share on Twitter">
                     <svg class="button__icon button__icon--twitter" width="16" height="16">
                         <use xlink:href="#twitter"></use>
                     </svg>
                     <div class="button__label">{% trans "Twitter" %}</div>
                 </a>
-                <a class="button button--outline button--icon" href="#">
+                <a class="button button--outline button--icon" href="mailto:?&amp;subject=I donated to mozilla today&amp;body=http://donate.mozilla.org">
                     <svg class="button__icon button__icon--email" width="16" height="16">
                         <use xlink:href="#email"></use>
                     </svg>
                     <div class="button__label">{% trans "Email" context "Share button" %}</div>
                 </a>
-                <a class="button button--outline button--icon" href="#">
-                    <svg class="button__icon button__icon--link" width="16" height="16">
+                <a class="button button--outline button--icon" href="#" data-copy-link>
+                    <svg class="button__icon button__icon--link button__initial" width="16" height="16">
                         <use xlink:href="#link"></use>
                     </svg>
-                    <div class="button__label">{% trans "Link" context "Share button" %}</div>
+                    <svg class="button__icon button__copied" width="16" height="16">
+                        <use xlink:href="#tick"></use>
+                    </svg>
+                    <div class="button__label">
+                        <span class="button__initial">{% trans "Link" context "Share button" %}</span>
+                        <span class="button__copied">{% trans "Copied" %}</span>
+                    </div>
+                    <input style="display: none;" type="text" value="{{ request.get_host }}" data-copy-value>
                 </a>
             </div>
         </div>
