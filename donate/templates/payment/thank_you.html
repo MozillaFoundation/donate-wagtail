@@ -20,20 +20,23 @@
             <p>{% trans "Can you help us share the important work Mozilla is doing?" %}</p>
 
             <div class="button__group">
-                {% trans "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as twitter_text %}
-                {% trans "I donated to mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as facebook_text %}
-                {% trans "I donated to mozilla today" as email_subject %}
+                {% trans "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as twitter_text context "Used as a tweet" %}
+                {% trans "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as facebook_text context "Facebook post" %}
+                {% trans "I donated to Mozilla today" as email_subject context "Email subject line" %}
+                {% trans "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy." as tb_twitter_text context "Used as a tweet" %}
+                {% trans "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy." as tb_facebook_text context "Facebook post" %}
+                {% trans "I donated to Thunderbird today" as tb_email_subject context "Email subject line" %}
 
                 {# see https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.5 #}
                 {# Add a default image to use for social sharing here in case one is not provided on the page. #}
-                <a class="button button--outline button--icon" href="https://www.facebook.com/dialog/feed?app_id={{ social_media_settings.facebook_app_id }}&amp;link=http://donate.mozilla.org&amp;picture={{ request.get_host }}{% static '_images/og.png' %}&amp;name={{ page.title|urlencode }}&amp;description={{ facebook_text|urlencode }}" title="Share on Facebook">
+                <a class="button button--outline button--icon" href="https://www.facebook.com/dialog/feed?app_id={{ social_media_settings.facebook_app_id }}&amp;link=http://donate.mozilla.org&amp;picture={{ request.get_host }}{% static '_images/og.png' %}&amp;name={{ page.title|urlencode }}&amp;description={{ facebook_text|urlencode }}" title="{% trans 'Share on Facebook' %}">
                     <svg class="button__icon button__icon--facebook" width="16" height="16">
                         <use xlink:href="#facebook"></use>
                     </svg>
                     <div class="button__label">{% trans "Facebook" %}</div>
                 </a>
                 {# see https://dev.twitter.com/web/tweet-button/web-intent #}
-                <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url=http://donate.mozilla.org&amp;via=mozilla" title="Share on Twitter">
+                <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url=http://donate.mozilla.org&amp;via=mozilla" title="{% trans 'Share on Twitter' %}">
                     <svg class="button__icon button__icon--twitter" width="16" height="16">
                         <use xlink:href="#twitter"></use>
                     </svg>
