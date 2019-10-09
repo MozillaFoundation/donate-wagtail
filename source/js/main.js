@@ -6,7 +6,9 @@ import AmountToggle from "./components/donation-amount-toggle";
 import CurrencySelect from "./components/currency-selector";
 import WayPointDetect from "./components/waypoint-detection";
 import DonationCurrencyWidth from "./components/donation-currency-width";
+import CopyURL from "./components/copy-url";
 import Accordion from "./components/accordion";
+import "./components/newsletter";
 
 // Manage tab index for primary nav
 function tabIndexer() {
@@ -62,5 +64,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   for (const accordion of document.querySelectorAll(Accordion.selector())) {
     new Accordion(accordion);
+  }
+
+  for (const copyurl of document.querySelectorAll(CopyURL.selector())) {
+    new CopyURL(copyurl);
   }
 });

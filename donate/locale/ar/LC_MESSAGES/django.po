@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-08 12:00+0000\n"
+"POT-Creation-Date: 2019-10-09 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: donate/payments/forms.py:102 donate/templates/pages/base_page.html:78
+#: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
@@ -137,7 +137,7 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:58
 #: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:115
+#: donate/templates/pages/base_page.html:116
 msgid "Donate"
 msgstr ""
 
@@ -174,76 +174,76 @@ msgstr ""
 msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
 msgstr ""
 
-#: donate/templates/pages/base_page.html:21
+#: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:24
+#: donate/templates/pages/base_page.html:25
 msgid "Participate"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:27
+#: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:30
+#: donate/templates/pages/base_page.html:31
 msgid "About Us"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:41
+#: donate/templates/pages/base_page.html:42
 msgid "Menu"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:65
+#: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:70
+#: donate/templates/pages/base_page.html:71
 msgid "Join our email list to take action and stay updated!"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:71
+#: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:74
+#: donate/templates/pages/base_page.html:75
 msgid "Sign up"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:91
+#: donate/templates/pages/base_page.html:92
 msgid "More about us"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:94
-#: donate/templates/payment/thank_you.html:32
+#: donate/templates/pages/base_page.html:95
+#: donate/templates/payment/thank_you.html:43
 msgid "Twitter"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:100
+#: donate/templates/pages/base_page.html:101
 msgid "Instagram"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:106
+#: donate/templates/pages/base_page.html:107
 msgid "GitHub"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:118
+#: donate/templates/pages/base_page.html:119
 msgid "Participation Guidelines"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:121
+#: donate/templates/pages/base_page.html:122
 msgid "Legal"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:124
+#: donate/templates/pages/base_page.html:125
 msgid "Privacy"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:127
+#: donate/templates/pages/base_page.html:128
 msgid "License"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:141
+#: donate/templates/pages/base_page.html:142
 #, python-format
 msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
 msgstr ""
@@ -413,18 +413,60 @@ msgstr ""
 msgid "Can you help us share the important work Mozilla is doing?"
 msgstr ""
 
+#: donate/templates/payment/thank_you.html:23
+msgctxt "Used as a tweet"
+msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:24
+msgctxt "Facebook post"
+msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:25
+msgctxt "Email subject line"
+msgid "I donated to Mozilla today"
+msgstr ""
+
 #: donate/templates/payment/thank_you.html:26
+msgctxt "Used as a tweet"
+msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:27
+msgctxt "Facebook post"
+msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:28
+msgctxt "Email subject line"
+msgid "I donated to Thunderbird today"
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:32
+msgid "Share on Facebook"
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:36
 msgid "Facebook"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:38
+#: donate/templates/payment/thank_you.html:39
+msgid "Share on Twitter"
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:49
 msgctxt "Share button"
 msgid "Email"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:44
+#: donate/templates/payment/thank_you.html:59
 msgctxt "Share button"
 msgid "Link"
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:60
+msgid "Copied"
 msgstr ""
 
 #: donate/templates/tags/primarynav.html:10
