@@ -160,6 +160,22 @@
     }
   }
 
+  &__copied {
+    display: none;
+
+    .copied & {
+      display: block;
+    }
+  }
+
+  &__initial {
+    display: block;
+
+    .copied & {
+      display: none;
+    }
+  }
+
   &__group {
     display: grid;
     grid-gap: ($gutter * 0.75);
@@ -172,6 +188,13 @@
         grid-gap: $gutter;
       }
     }
+  }
+
+  &__hidden {
+    height: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.01;
   }
 
   .page-header & {
