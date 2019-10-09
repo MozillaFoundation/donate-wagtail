@@ -81,6 +81,18 @@ Run the back-end test suite with:
     docker-compose exec backend pipenv run python manage.py test --settings=donate.settings_test
 
 
+## Braintree configuration
+
+The following environment variables are required to configure payment processing via Braintree:
+
+- `BRAINTREE_MERCHANT_ID`: the merchant ID for the Braintree account used to process donations.
+- `BRAINTREE_MERCHANT_ACCOUNTS`: a series of key-value pairs that map each supported currency to the corresponding Braintree merchant account that is configured in that currency. For example: `usd=usd-ac,gbp=gbp-ac,eur=eur-ac` where `usd-ac`, `gbp-ac` and `eur-ac` are merchant account IDs.
+- `BRAINTREE_PLANS`: a series of key-value pairs that map each supported currency to the corresponding Braintree subscription plan that is configured in that currency. For example: `usd=usd-plan,gbp=gbp-plan,eur=eur-plan` where `usd-plan`, `gbp-plan` and `eur-plan` are plan IDs.
+- `BRAINTREE_PUBLIC_KEY`: Public API key provided by Braintree.
+- `BRAINTREE_PRIVATE_KEY`: Private API key provided by Braintree.
+- `BRAINTREE_TOKENIZATION_KEY`: Tokenization key provided by Braintree.
+- `BRAINTREE_USE_SANDBOX`: Boolean to configure whether or not to use the Braintree sandbox.
+
 ## Basket
 
 [Basket](https://github.com/mozmeao/basket) is a tool run by MoCo to manage newsletter subscriptions and donations. It's listening for messages (JSON) sent to a SQS queue.
