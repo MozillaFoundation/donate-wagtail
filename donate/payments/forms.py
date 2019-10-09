@@ -57,6 +57,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
         )
     )
     country = CountryField(_('Country')).formfield(initial='US')
+    device_data = forms.CharField(widget=forms.HiddenInput, required=False)
 
     if settings.RECAPTCHA_ENABLED:
         captcha = ReCaptchaField()
