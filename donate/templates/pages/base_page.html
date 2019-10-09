@@ -65,20 +65,27 @@
                     <div class="newsletter-signup__header">
                         <span class="newsletter-signup__heading heading heading--dark-bg heading--bottom-margin heading--secondary">{% trans "Protect the internet as a global public resource" %}</span>
                     </div>
-                    <form class="newsletter-signup__form">
+                    <form class="newsletter-signup__form" action="https://www.mozilla.org/en-US/newsletter/" id="newsletter_form">
+                        <input type="hidden" id="fmt" name="fmt" value="H">
+                        <input type="hidden" id="newsletters" name="newsletters" value="mozilla-foundation">
+                        <div id="newsletter_errors" class="newsletter-signup__errors"></div>
                         <div class="form__group form__group--flex">
                             <div class="form-item">
                                 <label class="newsletter-signup__label" for="email-newsletter" id="email-newsletter-heading">{% trans "Join our email list to take action and stay updated!" %}</label>
-                                <input class="newsletter-signup__input" type="text" name="email-newsletter" id="email-newsletter" placeholder="{% trans 'Enter email address' %}">
+                                <input class="newsletter-signup__input" type="text" name="email-newsletter" id="email-newsletter" required placeholder="{% trans 'Enter email address' %}">
                             </div>
                             <div class="form-item">
-                                <button class="newsletter-signup__button button button--primary">{% trans "Sign up" %}</button>
+                                <button id="newsletter_submit" type="submit" class="newsletter-signup__button button button--primary">{% trans "Sign up" %}</button>
                             </div>
                         </div>
                         <div class="form-item ">
-                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy"><label for="newsletter-privacy" class="newsletter-signup__privacy-label">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>.{% endblocktrans %}</label>
+                            <input type="checkbox" name="newsletter-privacy" id="newsletter-privacy" required><label for="newsletter-privacy" class="newsletter-signup__privacy-label">{% blocktrans with url='https://www.mozilla.org/privacy/websites/' %}I’m okay with Mozilla handling my info as explained in this <a href='{{ url }}'>Privacy Notice</a>.{% endblocktrans %}</label>
                         </div>
                     </form>
+                    <div id="newsletter_thanks" class="newsletter-signup__thanks">
+                        <h2>{% trans "Thanks!" %}</h2>
+                        {% blocktrans %}<p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.</p>{% endblocktrans %}
+                    </div>
                 </div>
             </div>
             <div class="footer__nav footer-links layout__half-col">

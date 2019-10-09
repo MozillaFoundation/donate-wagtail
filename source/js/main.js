@@ -8,6 +8,7 @@ import WayPointDetect from "./components/waypoint-detection";
 import DonationCurrencyWidth from "./components/donation-currency-width";
 import CopyURL from "./components/copy-url";
 import Accordion from "./components/accordion";
+import "./components/newsletter";
 
 // Manage tab index for primary nav
 function tabIndexer() {

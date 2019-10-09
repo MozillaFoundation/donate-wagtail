@@ -2,10 +2,7 @@
   "name": "donate-wagtail",
   "description": "Donate platform",
   "repository": "https://github.com/mozilla/donate-wagtail",
-  "addons": [
-    "heroku-postgresql:hobby-dev",
-    "heroku-redis:hobby-dev"
-  ],
+  "addons": ["heroku-postgresql:hobby-dev", "heroku-redis:hobby-dev"],
   "buildpacks": [
     {
       "url": "https://github.com/Osmose/heroku-buildpack-ssh"
@@ -23,7 +20,7 @@
     },
     "worker": {
       "quantity": 1
-     }
+    }
   },
   "env": {
     "HEROKU_APP_NAME": {
@@ -97,7 +94,7 @@
     "CSP_FONT_SRC": "'self' fonts.googleapis.com fonts.gstatic.com",
     "CSP_STYLE_SRC": "'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com",
     "CSP_FRAME_SRC": "'self' assets.braintreegateway.com c.paypal.com *.paypal.com",
-    "CSP_CONNECT_SRC": "api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com"
+    "CSP_CONNECT_SRC": "api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com https://www.mozilla.org/en-US/newsletter/"
   },
   "scripts": {
     "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin",

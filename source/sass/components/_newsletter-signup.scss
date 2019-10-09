@@ -6,12 +6,19 @@
     display: block;
     margin-bottom: ($gutter * 1.5);
   }
+  &__thanks {
+    display: none; // toggled with js when email submitted
+  }
   &__button {
     height: 50px;
     font-weight: $weight--bold;
     padding: ($gutter / 4) $gutter;
     margin-left: $gutter;
     min-width: 90px; // prevent word wrapping
+  }
+  &__errors {
+    color: $color--red;
+    margin-bottom: ($gutter / 2);
   }
   &__privacy-label {
     @include font-size(xs);
