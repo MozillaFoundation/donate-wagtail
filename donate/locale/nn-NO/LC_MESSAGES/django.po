@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 18:50+0000\n"
+"PO-Revision-Date: 2019-10-10 18:55+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -265,7 +265,7 @@ msgstr "Doner no"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
-msgstr ""
+msgstr "Dine opplysningar"
 
 #: donate/templates/payment/card.html:20
 #, python-format
@@ -279,19 +279,19 @@ msgstr ""
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "Endre beløp"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "Donasjonsbeløp"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
-msgstr ""
+msgstr "Stadfest"
 
 #: donate/templates/payment/card.html:44
 msgid "Your Details"
-msgstr ""
+msgstr "Dine detaljar"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
@@ -307,11 +307,11 @@ msgstr ""
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
-msgstr ""
+msgstr "Betaling"
 
 #: donate/templates/payment/card.html:106
 msgid "Card number"
-msgstr ""
+msgstr "Kortnummer"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "Takk skal du ha"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13
 msgid "Thank you for your generous gift"
