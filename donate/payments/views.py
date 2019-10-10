@@ -611,8 +611,3 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
 
 class ThankYouView(TransactionRequiredMixin, TemplateView):
     template_name = 'payment/thank_you.html'
-
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
-        ctx['completed_transaction_details'] = self.request.session['completed_transaction_details']
-        return ctx

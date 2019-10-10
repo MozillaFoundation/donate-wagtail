@@ -12,7 +12,7 @@
             <div class="notification notification--neutral">
                 <div class="notification__container">
                     <div class="notification__message">
-                        {% blocktrans with id=completed_transaction_details.transaction_id %}Thank you! Your transaction reference is: {{ id }}{% endblocktrans %}
+                        <p>{% blocktrans with email='donate@mozilla.org' %}From all of us at Mozilla, <strong>thank you</strong>! We'll put your donation right to work protecting the web as a global public resource, open and available to all. We're sending you a thank-you note; if you don't receive that in a few minutes please check your junk or spam folders, or drop us a note at <a href="{{ email }}">{{ email }}</a> for a replacement.{% endblocktrans %}</p>
                     </div>
                 </div>
             </div>
