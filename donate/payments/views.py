@@ -295,6 +295,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
         self.save_campaign_parameters_to_session(form)
         self.payment_frequency = form.cleaned_data['frequency']
         self.currency = form.cleaned_data['currency']
+        success_kwargs = {}
 
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             result = gateway.transaction.sale({
@@ -315,6 +316,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
 
             if result.is_success:
                 payment_method = result.customer.payment_methods[0]
+                success_kwargs['payment_method'] = payment_method
             else:
                 logger.error(
                     'Failed to create Braintree customer: {}'.format(result.message),
@@ -331,7 +333,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
             })
 
         if result.is_success:
-            return self.success(result, form, send_data_to_basket=send_data_to_basket)
+            return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
         else:
             logger.error(
                 'Failed Braintree transaction: {}'.format(result.message),
@@ -364,8 +366,8 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
         else:
             transaction_id = result.subscription.id
             settlement_amount = None
-            email = result.customer.email
-            last_name = result.customer.last_name
+            email = kwargs['payment_method'].email
+            last_name = kwargs['payment_method'].payer_info['last_name']
         return {
             'amount': form.cleaned_data['amount'],
             'settlement_amount': settlement_amount,
