@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 13:50+0000\n"
+"PO-Revision-Date: 2019-10-10 18:50+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -50,7 +50,7 @@ msgstr "Postnummer"
 
 #: donate/payments/forms.py:59
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
 #, python-format
@@ -184,11 +184,11 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
-msgstr ""
+msgstr "Om oss"
 
 #: donate/templates/pages/base_page.html:42
 msgid "Menu"
-msgstr ""
+msgstr "Meny"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
@@ -204,23 +204,23 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:75
 msgid "Sign up"
-msgstr ""
+msgstr "Registrer deg"
 
 #: donate/templates/pages/base_page.html:92
 msgid "More about us"
-msgstr ""
+msgstr "Meir om oss"
 
 #: donate/templates/pages/base_page.html:95 donate/templates/payment/thank_you.html:43
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: donate/templates/pages/base_page.html:101
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: donate/templates/pages/base_page.html:107
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: donate/templates/pages/base_page.html:119
 msgid "Participation Guidelines"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:125
 msgid "Privacy"
-msgstr ""
+msgstr "Personvern"
 
 #: donate/templates/pages/base_page.html:128
 msgid "License"
@@ -248,7 +248,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "DONER NO"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
@@ -261,7 +261,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
 msgid "Donate now"
-msgstr ""
+msgstr "Doner no"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
