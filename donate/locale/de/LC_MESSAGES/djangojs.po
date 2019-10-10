@@ -2,52 +2,45 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2019-10-09 11:29+0000\n"
+"Last-Translator: Michael Köhler <michael.koehler1@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:1
-#: source/js/components/currency-selector.js:85
+#: donate/frontend/_js/main.compiled.js:1 source/js/components/currency-selector.js:85
 msgid "per month"
-msgstr ""
+msgstr "pro Monat"
 
 #: donate/frontend/_js/main.compiled.js:1
 msgid "Other amount"
-msgstr ""
+msgstr "Anderer Betrag"
 
-#: donate/frontend/_js/payments-card.compiled.js:1
-#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
-#: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:12 source/js/payments-card.js:12
+#: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
+#: source/js/payments-card.js:12
 msgid "An error occurred. Please reload the page or try again later."
-msgstr ""
+msgstr "Ein Fehler ist aufgetreten. Bitte laden Sie die Seite neu oder versuchen Sie es später erneut."
 
-#: donate/frontend/_js/payments-card.compiled.js:1
-#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
-#: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:15 source/js/payments-card.js:110
+#: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:15
+#: source/js/payments-card.js:110
 msgid "There was an error processing your payment. Please try again."
-msgstr ""
+msgstr "Bei der Verarbeitung Ihrer Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
 
-#: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:126
+#: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:126
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "Einige der folgenden Felder sind ungültig. Bitte korrigieren Sie die ungültigen Felder und versuchen Sie es erneut."
 
-#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
-#: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:87
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"
-msgstr ""
+msgstr "Zahlung abgebrochen"
