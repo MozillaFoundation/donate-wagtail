@@ -36,6 +36,10 @@
                             {% render_form_field form.amount %}
                         </div>
 
+                        {% for field in form.hidden_fields %}
+                            {{ field }}
+                        {% endfor %}
+
                         <p><small>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel." %}</small></p>
                     </div>
 

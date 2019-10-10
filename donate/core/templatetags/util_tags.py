@@ -29,9 +29,9 @@ def get_locale(context):
     return to_known_locale(context['request'].LANGUAGE_CODE)
 
 
-@register.simple_tag(takes_context=True)
-def format_currency(context, currency_code, amount):
-    locale = to_known_locale(context['request'].LANGUAGE_CODE)
+@register.simple_tag()
+def format_currency(language_code, currency_code, amount):
+    locale = to_known_locale(language_code)
     locale_obj = Locale.parse(locale)
     pattern = locale_obj.currency_formats['standard'].pattern
 

@@ -15,43 +15,23 @@ class UtilTagsTestCase(TestCase):
         self.assertEqual(to_known_locale('es-XL'), 'es')
 
     def test_format_currency_usd_en_us_integer(self):
-        self.request.LANGUAGE_CODE = 'en-US'
-        ctx = {
-            'request': self.request
-        }
-        value = format_currency(ctx, 'usd', 1)
+        value = format_currency('en-US', 'usd', 1)
         self.assertEqual(value, '$1')
 
     def test_format_currency_usd_en_us_decimal(self):
-        self.request.LANGUAGE_CODE = 'en-US'
-        ctx = {
-            'request': self.request
-        }
-        value = format_currency(ctx, 'usd', 1.5)
+        value = format_currency('en-US', 'usd', 1.5)
         self.assertEqual(value, '$1.50')
 
     def test_format_currency_usd_en_gb(self):
-        self.request.LANGUAGE_CODE = 'en-GB'
-        ctx = {
-            'request': self.request
-        }
-        value = format_currency(ctx, 'usd', 1)
+        value = format_currency('en-GB', 'usd', 1)
         self.assertEqual(value, 'US$1')
 
     def test_format_currency_aed_en_us(self):
-        self.request.LANGUAGE_CODE = 'en-US'
-        ctx = {
-            'request': self.request
-        }
-        value = format_currency(ctx, 'aed', 1)
+        value = format_currency('en-US', 'aed', 1)
         self.assertEqual(value, 'AED1')
 
     def test_format_currency_aed_ar(self):
-        self.request.LANGUAGE_CODE = 'ar'
-        ctx = {
-            'request': self.request
-        }
-        value = format_currency(ctx, 'aed', 1)
+        value = format_currency('ar', 'aed', 1)
         self.assertEqual(value, 'د.إ.‏ 1')
 
     def test_get_localised_symbol_usd_en_us(self):

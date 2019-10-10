@@ -15,7 +15,7 @@
                 <div class="notification notification--neutral">
                     <div class="notification__container">
                         <div class="notification__message">
-                            {% format_currency currency_info.code form.amount.value as formatted_amount %}
+                            {% format_currency request.LANGUAGE_CODE currency_info.code form.amount.value as formatted_amount %}
                             {% if payment_frequency == 'monthly' %}
                                 {% blocktrans with formatted_amount=formatted_amount span_class='js-donation-value' %}You are donating <span class="{{ span_class }}">{{ formatted_amount }}</span> per month{% endblocktrans %}
                             {% else %}
@@ -33,7 +33,7 @@
                         <div class="donation-update__form-item form-item">
                             <label class="donation-update__label form-item__label" for="donation-update">{% trans "Donation Amount" %}</label>
                             <div class="donation-update__currency-symbol">{% get_localized_currency_symbol currency_info.code %}</div>
-                            <input class="donation-update__input form-item__input" id="js-update-donation-value" type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="1" max="10000000" required>
+                            <input class="donation-update__input form-item__input" id="js-update-donation-value" type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="{{ currency_info.minAmount }}" max="10000000" required>
                         </div>
                         <div class="form-item">
                             <button class="donation-update__action button button--primary button--large" id="js-update-button">{% trans 'Confirm' %}</button>
@@ -136,7 +136,7 @@
                                     <use xlink:href="#padlock"></use>
                                 </svg>
                                 <div class="button__label">
-                                    {% format_currency currency_info.code form.amount.value as formatted_amount %}
+                                    {% format_currency request.LANGUAGE_CODE currency_info.code form.amount.value as formatted_amount %}
                                     {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }}</span>{% endblocktrans %}
                                 </div>
                             </button>
