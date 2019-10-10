@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 21:27+0000\n"
+"PO-Revision-Date: 2019-10-10 21:48+0000\n"
 "Last-Translator: Linda DIB <lynda.dib@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: kab\n"
@@ -41,7 +41,7 @@ msgstr "Abrid"
 
 #: donate/payments/forms.py:52
 msgid "City"
-msgstr ""
+msgstr "Aɣrem"
 
 #: donate/payments/forms.py:56
 msgctxt "Feel free to replace with “Postal code” or equivalent"
@@ -50,12 +50,12 @@ msgstr ""
 
 #: donate/payments/forms.py:59
 msgid "Country"
-msgstr ""
+msgstr "Tamurt"
 
 #: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "Qebleɣ akken Mozilla ad tesseqdec talɣut-inu akken tella deg <a href='%(url)s'> tsertit-a n tbaḍnit</a>."
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
@@ -95,7 +95,7 @@ msgstr ""
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "Ulac asebter"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Ddu ɣer usebter agejdan"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -119,7 +119,7 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
-msgstr ""
+msgstr "Tallayt-nniḍen"
 
 #: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
@@ -131,7 +131,7 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
-msgstr ""
+msgstr "Mudd tawsa"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
@@ -176,19 +176,19 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Ttekki"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
-msgstr ""
+msgstr "Tazmert n Internet"
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
-msgstr ""
+msgstr "Fell-aɣ"
 
 #: donate/templates/pages/base_page.html:42
 msgid "Menu"
-msgstr ""
+msgstr "Umuɣ"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:75
 msgid "Sign up"
-msgstr ""
+msgstr "Jerred"
 
 #: donate/templates/pages/base_page.html:92
 msgid "More about us"
