@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 12:12+0000\n"
+"PO-Revision-Date: 2019-10-11 12:36+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Kodi postar që dhatë, nuk është i vlefshëm."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
@@ -131,7 +131,7 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
-msgstr ""
+msgstr "Dhuroni"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
@@ -200,43 +200,43 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
-msgstr ""
+msgstr "Jepni adresë email"
 
 #: donate/templates/pages/base_page.html:75
 msgid "Sign up"
-msgstr ""
+msgstr "Regjistrohuni"
 
 #: donate/templates/pages/base_page.html:92
 msgid "More about us"
-msgstr ""
+msgstr "Më tepër rreth nesh"
 
 #: donate/templates/pages/base_page.html:95 donate/templates/payment/thank_you.html:43
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: donate/templates/pages/base_page.html:101
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: donate/templates/pages/base_page.html:107
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: donate/templates/pages/base_page.html:119
 msgid "Participation Guidelines"
-msgstr ""
+msgstr "Udhëzime Pjesëmarrjeje"
 
 #: donate/templates/pages/base_page.html:122
 msgid "Legal"
-msgstr ""
+msgstr "Ligjore"
 
 #: donate/templates/pages/base_page.html:125
 msgid "Privacy"
-msgstr ""
+msgstr "Privatësi"
 
 #: donate/templates/pages/base_page.html:128
 msgid "License"
-msgstr ""
+msgstr "Licencë"
 
 #: donate/templates/pages/base_page.html:142
 #, python-format
@@ -261,7 +261,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
 msgid "Donate now"
-msgstr ""
+msgstr "Dhuroni sot"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
@@ -287,11 +287,11 @@ msgstr ""
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
-msgstr ""
+msgstr "Ripohojeni"
 
 #: donate/templates/payment/card.html:44
 msgid "Your Details"
-msgstr ""
+msgstr "Hollësitë Tuaja"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
@@ -307,19 +307,19 @@ msgstr ""
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
-msgstr ""
+msgstr "Pagesë"
 
 #: donate/templates/payment/card.html:106
 msgid "Card number"
-msgstr ""
+msgstr "Numër karte"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "Datë skadimi"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
-msgstr ""
+msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
@@ -336,7 +336,7 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "Faleminderit"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13
 msgid "Thank you for your generous gift"
@@ -360,15 +360,15 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
-msgstr ""
+msgstr "Po"
 
 #: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
-msgstr ""
+msgstr "Jo"
 
 #: donate/templates/payment/newsletter_signup.html:4
 msgid "Stay in touch"
-msgstr ""
+msgstr "Mbani lidhje"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
@@ -376,11 +376,11 @@ msgstr ""
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
-msgstr ""
+msgstr "Regjistrohuni"
 
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
-msgstr ""
+msgstr "Jo, Faleminderit"
 
 #: donate/templates/payment/thank_you.html:15
 #, python-format
@@ -427,30 +427,30 @@ msgstr ""
 
 #: donate/templates/payment/thank_you.html:32
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Ndajeni me të tjerët në Facebook"
 
 #: donate/templates/payment/thank_you.html:36
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:39
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Ndajeni me të tjerët në Twitter"
 
 #: donate/templates/payment/thank_you.html:49
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: donate/templates/payment/thank_you.html:59
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "Lidhje"
 
 #: donate/templates/payment/thank_you.html:60
 msgid "Copied"
-msgstr ""
+msgstr "U kopjua"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "Mbrapsht"
