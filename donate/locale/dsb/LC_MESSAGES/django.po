@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 20:31+0000\n"
+"PO-Revision-Date: 2019-10-11 20:32+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -142,7 +142,7 @@ msgstr "na mjasec"
 msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
-msgstr ""
+msgstr "Waše płaśeńske daty se wót <a href=\"%(braintree_url)s\">Braintree</a> (za kreditowe kórty) abo <a href=\"%(paypal_url)s\">PayPal</a> pśeźěłaju, a datowa sajźba wašogo dara so pla Mozilla składujo."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
