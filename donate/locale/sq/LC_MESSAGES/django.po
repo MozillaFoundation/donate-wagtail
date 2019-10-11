@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 12:11+0000\n"
+"PO-Revision-Date: 2019-10-11 12:12+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -172,23 +172,23 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
-msgstr ""
+msgstr "Nisma"
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Merrni pjesë"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
-msgstr ""
+msgstr "Shëndeti i Internetit"
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
-msgstr ""
+msgstr "Rreth Nesh"
 
 #: donate/templates/pages/base_page.html:42
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
