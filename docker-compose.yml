@@ -7,6 +7,8 @@ services:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.python
     command: pipenv run python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DATABASE_URL=postgres://donate:mozilla@postgres:5432/donate
     ports:
       - "8000:8000"
     volumes:
@@ -34,9 +36,13 @@ services:
 
   # Database
   postgres:
+    environment:
+      - POSTGRES_USER=donate
+      - POSTGRES_PASSWORD=mozilla
+      - POSTGRES_DB=donate
     image: postgres:11
     ports:
-      - "5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/:delegated
 
