@@ -21,7 +21,7 @@ msgstr ""
 
 #: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:80 donate/payments/forms.py:88
 msgid "Amount"
-msgstr "Test"
+msgstr ""
 
 #: donate/payments/forms.py:48
 msgid "First name"
