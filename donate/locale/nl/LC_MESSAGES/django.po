@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 06:09+0000\n"
+"PO-Revision-Date: 2019-10-11 06:14+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -91,11 +91,11 @@ msgstr ""
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Captcha was ongeldig. Probeer het opnieuw."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "Pagina niet gevonden"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
@@ -103,7 +103,7 @@ msgstr ""
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "Sorry, de pagina bestaat niet"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
@@ -111,31 +111,31 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "EENMALIG"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "MAANDELIJKS"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
-msgstr ""
+msgstr "Ander bedrag"
 
 #: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
-msgstr ""
+msgstr "Betalingsmethode kiezen"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "BEVEILIGD"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
-msgstr ""
+msgstr "Doneren"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
-msgstr ""
+msgstr "per maand"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
@@ -184,11 +184,11 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
-msgstr ""
+msgstr "Over ons"
 
 #: donate/templates/pages/base_page.html:42
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
@@ -200,27 +200,27 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
-msgstr ""
+msgstr "E-mailadres invoeren"
 
 #: donate/templates/pages/base_page.html:75
 msgid "Sign up"
-msgstr ""
+msgstr "Registreren"
 
 #: donate/templates/pages/base_page.html:92
 msgid "More about us"
-msgstr ""
+msgstr "Meer over ons"
 
 #: donate/templates/pages/base_page.html:95 donate/templates/payment/thank_you.html:43
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: donate/templates/pages/base_page.html:101
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: donate/templates/pages/base_page.html:107
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: donate/templates/pages/base_page.html:119
 msgid "Participation Guidelines"
@@ -228,15 +228,15 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:122
 msgid "Legal"
-msgstr ""
+msgstr "Juridisch"
 
 #: donate/templates/pages/base_page.html:125
 msgid "Privacy"
-msgstr ""
+msgstr "Privacy"
 
 #: donate/templates/pages/base_page.html:128
 msgid "License"
-msgstr ""
+msgstr "Licentie"
 
 #: donate/templates/pages/base_page.html:142
 #, python-format
@@ -248,24 +248,24 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "NU DONEREN"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "Seal of Charity Navigator 4-Star"
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
-msgstr ""
+msgstr "Seal of GuideStar Gold 2019"
 
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
 msgid "Donate now"
-msgstr ""
+msgstr "Nu doneren"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
-msgstr ""
+msgstr "Uw gegevens"
 
 #: donate/templates/payment/card.html:20
 #, python-format
@@ -279,7 +279,7 @@ msgstr ""
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "Bedrag wijzigen"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
@@ -287,11 +287,11 @@ msgstr ""
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
-msgstr ""
+msgstr "Bevestigen"
 
 #: donate/templates/payment/card.html:44
 msgid "Your Details"
-msgstr ""
+msgstr "Uw details"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
@@ -307,19 +307,19 @@ msgstr ""
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
-msgstr ""
+msgstr "Betaling"
 
 #: donate/templates/payment/card.html:106
 msgid "Card number"
-msgstr ""
+msgstr "Kaartnummer"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "Vervaldatum"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
-msgstr ""
+msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
@@ -336,7 +336,7 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "Bedankt"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13
 msgid "Thank you for your generous gift"

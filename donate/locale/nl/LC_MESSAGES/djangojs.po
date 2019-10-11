@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 06:53+0000\n"
+"PO-Revision-Date: 2019-10-10 05:38+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -21,11 +21,11 @@ msgstr ""
 
 #: donate/frontend/_js/main.compiled.js:1 source/js/components/currency-selector.js:85
 msgid "per month"
-msgstr ""
+msgstr "per maand"
 
 #: donate/frontend/_js/main.compiled.js:1
 msgid "Other amount"
-msgstr ""
+msgstr "Ander bedrag"
 
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
 #: source/js/payments-card.js:12
