@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 14:20+0000\n"
+"PO-Revision-Date: 2019-10-11 15:05+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -305,7 +305,7 @@ msgstr "Waš formular zmylki wobsahuje. Prošu porjedźće deleka wuzběhnjene p
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "Njemóžeće płaćenje přejwesć, dokelž předźěłar płaćenjow je zmylk z wašimi adresowymi informacijemi zdźělił:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
@@ -329,7 +329,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Awtorizuju Mozilla, moju kartu z deleka podatej sumu poćežić a to kóždy měsać činić, doniž njewupowědźu."
 
 #: donate/templates/payment/card.html:140
 #, python-format
@@ -338,7 +338,7 @@ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> darić"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "Waš dar pomha, web wotewrjeny a swobodny dźeržeć. Dźakujemy so dočasa za waš dar."
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
@@ -350,7 +350,7 @@ msgstr "Wulki dźak za waš šćedriwy dar"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Bychmy was rady jako stajneho podpěraćela za Mozilla měli. <b>Móhł wy kóždy měsac započinajo z přichodnym měsacom darić?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
@@ -362,7 +362,7 @@ msgstr "/ Kóždy měsac"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Awtorizuju Mozilla, moju kartu z horjeka podatej sumu poćežić a to kóždy měsać činić, doniž njewupowědźu."
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
@@ -378,7 +378,7 @@ msgstr "Wostańće w zwisku"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Škitajće internet jako globalnu zjawnu resursu. Přidružće so našej e-mejlowej lisćinje, zo byšće do skutka stupił a na běžnym wostał!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
@@ -404,7 +404,7 @@ msgstr "Móžeće nam pomhać, wažne dźěło dźělić, kotrež Mozilla čini?
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Sym dźensa @mozilla darił, dokelž #lubujuweb. Darće tež a wojujće z nami za lěpši a strowši internet za wšěch."
 
 #: donate/templates/payment/thank_you.html:24
 msgctxt "Facebook post"
