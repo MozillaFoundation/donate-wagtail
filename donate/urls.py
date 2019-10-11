@@ -51,7 +51,7 @@ if settings.DEBUG:
 
     if settings.SENTRY_DSN:
         urlpatterns = [
-            path('sentry-debug', lambda r :  1 / 0)
+            path('sentry-debug', lambda r:  1 / 0)
         ] + urlpatterns
 
 
