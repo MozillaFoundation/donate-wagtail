@@ -49,6 +49,11 @@ if settings.DEBUG:
             path('__debug__/', include(debug_toolbar.urls)),
         ] + urlpatterns
 
+    if settings.SENTRY_DSN:
+        urlpatterns = [
+            path('sentry-debug', lambda r :  1 / 0)
+        ] + urlpatterns
+
 
 # Add Wagtail URLs at the end.
 urlpatterns += i18n_patterns(

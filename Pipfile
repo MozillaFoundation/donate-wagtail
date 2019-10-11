@@ -23,14 +23,15 @@ boto3 = "*"
 braintree = "*"
 django-countries = "*"
 freezegun = "*"
-wagtail-localize = {git = "https://github.com/kaedroho/wagtail-localize.git", ref="6b4426dbac8fb4e1201e71e8cabe64830ecf8019"}
-wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git", ref="50397b0103055cac36887a80120a6d1d04660ed8"}
+wagtail-localize = {git = "https://github.com/kaedroho/wagtail-localize.git",ref = "6b4426dbac8fb4e1201e71e8cabe64830ecf8019"}
+wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git",ref = "50397b0103055cac36887a80120a6d1d04660ed8"}
 babel = "*"
 rq = "*"
 django-rq = "*"
 # Need to install a pre-release in order to get the RedLock.locked() method
 redlock = {git = "https://github.com/glasslion/redlock.git",ref = "7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}
 django-csp = "*"
+sentry-sdk = "==0.12.3"
 
 [requires]
 python_version = "3.7"
