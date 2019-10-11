@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 13:21+0000\n"
+"PO-Revision-Date: 2019-10-11 13:35+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -148,11 +148,13 @@ msgstr "Waše płaćenske daty so wot <a href=\"%(braintree_url)s\">Braintree</a
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Měsačne dary so kóždy měsac na samsnym dnju zběraja, na kotrymž dźensa dariće, a pokročuja so tak dołho kaž je přetorhnjeće. Zo byčće přetorhnył, sćelće nam mejlku na <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Dalše móžnosće darjenja: <a href=\"%(wire_transfer_url)s\">Přepokazanje abo SEPA</a> | <a href=\"%(check_url)s\">Šek</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
