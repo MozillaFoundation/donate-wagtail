@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 05:38+0000\n"
+"PO-Revision-Date: 2019-10-10 05:39+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -30,16 +30,16 @@ msgstr "Ander bedrag"
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
 #: source/js/payments-card.js:12
 msgid "An error occurred. Please reload the page or try again later."
-msgstr ""
+msgstr "Er is een fout opgetreden. Laad de pagina opnieuw of probeer het later nog eens."
 
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:15
 #: source/js/payments-card.js:110
 msgid "There was an error processing your payment. Please try again."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het verwerken van uw betaling. Probeer het opnieuw."
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:126
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "Sommige van de onderstaande velden zijn ongeldig. Corrigeer de ongeldige velden en probeer het opnieuw."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"
