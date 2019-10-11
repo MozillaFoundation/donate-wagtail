@@ -131,7 +131,7 @@ msgstr "VARNO"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
-msgstr "Donirajte"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
