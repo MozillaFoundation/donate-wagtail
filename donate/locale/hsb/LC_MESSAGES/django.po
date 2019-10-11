@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 21:03+0000\n"
+"PO-Revision-Date: 2019-10-11 13:21+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -79,15 +79,15 @@ msgstr "PWČ, kotrež sće podał, płaćiwe njeje."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Při předźěłowanju wašeho płaćenja je bohužel zmylk nastał. Prošu spytajće pozdźišo hišće raz abo wužiwajće druhu płaćensku metodu."
 
 #: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Něšto je so nimokuliło. Njemóžemy waše płaćenje předźěłać."
 
 #: donate/payments/views.py:478 donate/payments/views.py:566
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Při předźěłowanju wašeho płaćenja je bohužel zmylk nastał. Prošu spytajće pozdźišo hišće raz."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
@@ -142,7 +142,7 @@ msgstr "na měsac"
 msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
-msgstr ""
+msgstr "Waše płaćenske daty so wot <a href=\"%(braintree_url)s\">Braintree</a> (za kreditne karty) abo <a href=\"%(paypal_url)s\">PayPal</a> předźěłaja, a datowa sadźba wašeho dara so pola Mozilla składuje."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
