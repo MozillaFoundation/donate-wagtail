@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 19:52+0000\n"
+"PO-Revision-Date: 2019-10-11 20:25+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -30,16 +30,16 @@ msgstr "Druga suma"
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
 #: source/js/payments-card.js:12
 msgid "An error occurred. Please reload the page or try again later."
-msgstr ""
+msgstr "Zmólka jo nastała. Pšosym zacytajśo bok znowego abo wopytajśo pózdźej hyšći raz."
 
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:15
 #: source/js/payments-card.js:110
 msgid "There was an error processing your payment. Please try again."
-msgstr ""
+msgstr "Pśi pśeźěłowanju wašogo płaśenja jo zmólka nastała. Pšosym wopytajśo hyšći raz."
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:126
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "Někotare póla su njepłaśiwe. Pšosym korigěrujśo njepłaśiwe póla a wopytajśoe hyšći raz."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"

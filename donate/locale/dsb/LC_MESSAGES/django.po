@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 20:12+0000\n"
+"PO-Revision-Date: 2019-10-11 20:31+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -59,15 +59,15 @@ msgstr "Som z tym wobjadny, kak Mozilla wobchada pó to´s tych <a href='%(url)s
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Kórtowy typ, kótaryž sćo wužył, se njeakceptěrujo."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Wěstotny kod kreditoweje kórty (CVV), kótaryž sćo zapódał, jo był njepłaśiwy."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Datum spadnjenja, kótaryž sćo zapódał, jo był njepłaśiwy."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
@@ -79,19 +79,19 @@ msgstr "Postowa licba, kótaruž sćo pódał, njejo płaśiwa."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Pśi pśeźěłowanju wašogo płaśenja jo bóžko zmólka nastała. Pšosym wopytajśo pózdźej hyšći raz abo wužywajśo drugu płaśeńsku metodu."
 
 #: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Něco njejo se raźiło. Njamóžomy wašo płaśenje pśeźěłaś."
 
 #: donate/payments/views.py:478 donate/payments/views.py:566
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Pśi pśeźěłowanju wašogo płaśenja jo bóžko zmólka nastała. Pšosym wopytajśo pózdźej hyšći raz."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Captcha jo był njepłaśiwy. Pšosym wopytajśo hyšći raz."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
@@ -103,7 +103,7 @@ msgstr "Ow ow!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "Bok bóžko njeksistěrujo"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
@@ -405,7 +405,7 @@ msgstr "Som źinsa @mozilla pósćił, dokulaž #lubujomweb. Pósććo teke a w�
 #: donate/templates/payment/thank_you.html:24
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Som źinsa Mozilla pósćił, dokulaž #lubujomweb. Pósććo teke a wójujśo z nami za lěpšy a strowšy internet za wšykne."
 
 #: donate/templates/payment/thank_you.html:25
 msgctxt "Email subject line"
@@ -415,12 +415,12 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:26
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Som źinsa @mozthunderbird pósćił, za lichotu #dochadposta. Pódpěrajśo teke wy priwatnosć komunikacije."
 
 #: donate/templates/payment/thank_you.html:27
 msgctxt "Facebook post"
 msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Som źinsa Thunderbird pósćił, za lichotu #dochadposta. Pódpěrajśo teke wy priwatnosć komunikacije."
 
 #: donate/templates/payment/thank_you.html:28
 msgctxt "Email subject line"
@@ -429,30 +429,30 @@ msgstr ""
 
 #: donate/templates/payment/thank_you.html:32
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Na Facebooku źěliś"
 
 #: donate/templates/payment/thank_you.html:36
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:39
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Na Twitter źěliś"
 
 #: donate/templates/payment/thank_you.html:49
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: donate/templates/payment/thank_you.html:59
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "Wótkaz"
 
 #: donate/templates/payment/thank_you.html:60
 msgid "Copied"
-msgstr ""
+msgstr "Kopěrowane"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "Slědk"
