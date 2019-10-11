@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 05:58+0000\n"
-"Last-Translator: Rok Žerdin <zerdo90@gmail.com>\n"
+"PO-Revision-Date: 2019-10-11 08:26+0000\n"
+"Last-Translator: Davide Quaranta <dvd.forty@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:80 donate/payments/forms.py:88
 msgid "Amount"
-msgstr ""
+msgstr "Importo"
 
 #: donate/payments/forms.py:48
 msgid "First name"
@@ -33,7 +33,7 @@ msgstr "Cognome"
 
 #: donate/payments/forms.py:50 donate/payments/forms.py:94
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: donate/payments/forms.py:51
 msgid "Street"
@@ -46,7 +46,7 @@ msgstr "Città"
 #: donate/payments/forms.py:56
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
-msgstr ""
+msgstr "Codice postale"
 
 #: donate/payments/forms.py:59
 msgid "Country"
@@ -59,47 +59,47 @@ msgstr ""
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Il tipo di carta usata non è accettato."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Il codice CVV inserito non è valido."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "La data di scadenza inserita non è valida."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "Il numero della carta di credito inserito non è valido."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Il codice postale inserito non è valido."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Si è verificato un errore durante l’elaborazione del pagamento. Riprova più tardi o usa un altro metodo di pagamento."
 
 #: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Qualcosa è andato storto. Non è stato possibile elaborare il pagamento."
 
 #: donate/payments/views.py:478 donate/payments/views.py:566
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Si è verificato un errore durante l’elaborazione del pagamento. Riprova più tardi."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Il captcha inserito non è valido. Riprova."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "Pagina non trovata"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "Ops..."
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Vai alla pagina iniziale"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
