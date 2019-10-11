@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 14:05+0000\n"
+"PO-Revision-Date: 2019-10-11 14:20+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -164,7 +164,7 @@ msgstr "Dalše móžnosće darjenja: <a href=\"%(wire_transfer_url)s\">Přepokaz
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "Maće problemy při darjenju? Wopytajće naše <a href=\"%(faq_url)s\">Huste prašenja</a> za wotmołwy na najhusćiše prašenja. Maće hišće problemy? <a href=\"mailto:%(email)s\">Sćelće nam mejlku</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -200,7 +200,7 @@ msgstr "Škitajće internet jako globalnu zjawnu resursu"
 
 #: donate/templates/pages/base_page.html:71
 msgid "Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Přidružće so našej e-mejlowej lisćinje, zo byšće do skutka stupił a na běžnym wostał!"
 
 #: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
@@ -301,7 +301,7 @@ msgstr "Waše podrobnosće"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr ""
+msgstr "Waš formular zmylki wobsahuje. Prošu porjedźće deleka wuzběhnjene pola."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
