@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 15:05+0000\n"
+"PO-Revision-Date: 2019-10-11 20:21+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -103,7 +103,7 @@ msgstr "Ow ow!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr "Bohužel strona njekesistuje"
+msgstr "Bohužel strona njeeksistuje"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
