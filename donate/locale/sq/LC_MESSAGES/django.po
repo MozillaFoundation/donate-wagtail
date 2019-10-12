@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 12:36+0000\n"
+"PO-Revision-Date: 2019-10-12 12:10+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Lloji i kartës që përdorët s’është i pranueshëm."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
@@ -91,7 +91,7 @@ msgstr ""
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Captcha qe e pavlefshme. Ju lutemi, riprovoni."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
