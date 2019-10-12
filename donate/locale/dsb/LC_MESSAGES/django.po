@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 20:32+0000\n"
+"PO-Revision-Date: 2019-10-12 11:51+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -148,6 +148,8 @@ msgstr "Waše płaśeńske daty se wót <a href=\"%(braintree_url)s\">Braintree<
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Mjasecne dary se kuždy mjasec na tom samskem dnju wuběraju, na kótaremž źinsa pósćiwaśo, a pókšacuju se tak dłujko, až je njepśetergnjośo. Aby pśeterhnuł, sćelśo nam mejlku na <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
