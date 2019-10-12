@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-12 12:11+0000\n"
+"PO-Revision-Date: 2019-10-12 12:48+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -331,7 +331,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Awtorizěrujom Mozilla, móju kórtu z dołojce pódaneju sumu wobśěžyś a to kuždy mjaseć gótowaś, až njewupowěźejom."
 
 #: donate/templates/payment/card.html:140
 #, python-format
@@ -340,7 +340,7 @@ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> pósćiś"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "Waš dar pomaga, web wótwórjony a lichy źaržaś. Źěkujomy se do casa za waš dar."
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
