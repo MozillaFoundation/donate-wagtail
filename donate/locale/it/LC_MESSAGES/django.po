@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 17:16+0000\n"
+"PO-Revision-Date: 2019-10-11 17:37+0000\n"
 "Last-Translator: Enrico Belleri <idesmi@protonmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -172,23 +172,23 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
-msgstr ""
+msgstr "Iniziative"
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Partecipa"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
-msgstr ""
+msgstr "Salute di Internet"
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
-msgstr ""
+msgstr "Chi siamo"
 
 #: donate/templates/pages/base_page.html:42
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
