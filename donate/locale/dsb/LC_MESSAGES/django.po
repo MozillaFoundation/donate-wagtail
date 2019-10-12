@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-12 12:10+0000\n"
+"PO-Revision-Date: 2019-10-12 12:11+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -311,7 +311,7 @@ msgstr "Njamóžośo płaśenje pśejwasć, dokulaž pśeźěłowaŕ płaśenjow
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Pšosym korigěruj toś te zmólki a wopytajśo hyšći raz."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
