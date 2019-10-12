@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 17:37+0000\n"
-"Last-Translator: Enrico Belleri <idesmi@protonmail.com>\n"
+"PO-Revision-Date: 2019-10-11 15:41+0000\n"
+"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Nazione"
 #: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "Acconsento al trattamento dei miei dati da parte di Mozilla secondo quanto indicato nell’<a href='%(url)s'>informativa sulla privacy</a>."
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
@@ -103,7 +103,7 @@ msgstr "Ops..."
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "Pagina inesistente"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"

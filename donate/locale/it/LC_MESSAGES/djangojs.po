@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 16:13+0000\n"
-"Last-Translator: Enrico Belleri <idesmi@protonmail.com>\n"
+"PO-Revision-Date: 2019-10-11 15:54+0000\n"
+"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Si è verificato un errore durante l’elaborazione del pagamento. Ripro
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:126
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "I dati di alcuni campi non risultano validi. Correggili e riprova."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"
