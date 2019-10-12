@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 08:26+0000\n"
-"Last-Translator: Davide Quaranta <dvd.forty@gmail.com>\n"
+"PO-Revision-Date: 2019-10-11 17:16+0000\n"
+"Last-Translator: Enrico Belleri <idesmi@protonmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -111,31 +111,31 @@ msgstr "Vai alla pagina iniziale"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "UNA TANTUM"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "MENSILE"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
-msgstr ""
+msgstr "Altro importo"
 
 #: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
-msgstr ""
+msgstr "Metodo di pagamento"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "SICURO"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
-msgstr ""
+msgstr "Fai una donazione"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
-msgstr ""
+msgstr "al mese"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
