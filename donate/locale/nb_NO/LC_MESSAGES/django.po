@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-12 04:21+0000\n"
+"PO-Revision-Date: 2019-10-12 13:06+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -59,27 +59,27 @@ msgstr "Jeg er forstått med hvordan Mozilla behandler mine personlige data, som
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Den typen kort du brukte, godtas ikke."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "CVV-koden du oppga var ugyldig."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Utløpsdatoen du oppga var ugyldig."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "Kredittkortnummeret du oppga var ugyldig."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Postnummeret du oppga er ikke gyldig."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Beklager, det oppsto en feil under behandlingen av betalingen din. Prøv igjen senere eller bruk en annen betalingsmetode."
 
 #: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
@@ -336,27 +336,27 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "Tusen takk"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13
 msgid "Thank you for your generous gift"
-msgstr ""
+msgstr "Tusen takk for din generøse gave"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Vi vil gjerne ha deg som en støttende tilhenger av Mozilla. <b>Kan du legge til en månedlig donasjon som begynner neste måned?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "Ja, jeg vil gi:"
 
 #: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
-msgstr ""
+msgstr "/ Månedlig"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Jeg gir Mozilla Foundation fullmakt til å belaste kortet mitt i det beløpet som er vist ovenfor og fortsette å gjøre det hver måned til jeg avbryter."
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
@@ -372,7 +372,7 @@ msgstr "Hold kontakten"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Beskytt internett som en global offentlig ressurs. Bli med på vår e-postliste for å iverksette tiltak og holde deg oppdatert!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
@@ -389,41 +389,41 @@ msgstr "Takk skal du ha! Transaksjonsreferansen din er: %(id)s"
 
 #: donate/templates/payment/thank_you.html:19
 msgid "One last thing…"
-msgstr ""
+msgstr "En siste ting…"
 
 #: donate/templates/payment/thank_you.html:20
 msgid "Can you help us share the important work Mozilla is doing?"
-msgstr ""
+msgstr "Kan du hjelpe oss med å dele det viktige arbeidet Mozilla gjør?"
 
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Jeg donerte til @mozilla i dag fordi jeg #lovetheweb. Bli med meg og kjemp for et bedre og sunnere internett for alle."
 
 #: donate/templates/payment/thank_you.html:24
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Jeg donerte til Mozilla i dag fordi jeg #lovetheweb. Bli med meg og kjemp for et bedre og sunnere internett for alle."
 
 #: donate/templates/payment/thank_you.html:25
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Jeg donerte til Mozilla i dag"
 
 #: donate/templates/payment/thank_you.html:26
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Jeg donerte til @mozthunderbird i dag for å #freetheinbox. Bli med meg for å støtte kommunikasjonspersonvern."
 
 #: donate/templates/payment/thank_you.html:27
 msgctxt "Facebook post"
 msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Jeg donerte til Thunderbird i dag for å #freetheinbox. Bli med meg for å støtte kommunikasjonspersonvern."
 
 #: donate/templates/payment/thank_you.html:28
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Jeg donerte til Thunderbird i dag"
 
 #: donate/templates/payment/thank_you.html:32
 msgid "Share on Facebook"
