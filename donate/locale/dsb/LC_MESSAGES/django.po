@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-12 12:48+0000\n"
+"PO-Revision-Date: 2019-10-12 12:58+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -142,7 +142,7 @@ msgstr "na mjasec"
 msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
-msgstr "Waše płaśeńske daty se wót <a href=\"%(braintree_url)s\">Braintree</a> (za kreditowe kórty) abo <a href=\"%(paypal_url)s\">PayPal</a> pśeźěłaju, a datowa sajźba wašogo dara so pla Mozilla składujo."
+msgstr "Waše płaśeńske daty se wót <a href=\"%(braintree_url)s\">Braintree</a> (za kreditowe kórty) abo <a href=\"%(paypal_url)s\">PayPal</a> pśeźěłaju, a datowa sajźba wašogo dara se pla Mozilla składujo."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
@@ -202,7 +202,7 @@ msgstr "Šćitajśo internet ako globalnu zjawnu resursu"
 
 #: donate/templates/pages/base_page.html:71
 msgid "Join our email list to take action and stay updated!"
-msgstr "Pśizamkniśo se našej e-mailowej lisćinje, aby chopiła agěrowaś a aby na běžnem wóstał!"
+msgstr "Pśizamkniśo se našej e-mailowej lisćinje, aby chopiła agěrowaś a wóstał na běžnem!"
 
 #: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
@@ -352,7 +352,7 @@ msgstr "Wjeliki źěk za waš šćodry dar"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "By my was rady měli ako stawnego pódpěrarja za Mozilla. <b>Mógał wy kuždy mjasec zachopinajucy z pśiducym mjasecom pósćiwaś?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
@@ -364,7 +364,7 @@ msgstr "/ Kuždy mjasec"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Awtorizěrujom Mozilla, móju kórtu z górjejce pódaneju sumu wobśěžyś a to kuždy mjaseć gótowaś, až njewupowěźejom."
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
@@ -380,7 +380,7 @@ msgstr "Wóstańśo w zwisku"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Šćitajśo internet ako globalnu zjawnu resursu. Pśizamkniśo se našej e-mailowej lisćinje, aby chopił agěrowaś a wóstał na běžnem!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
@@ -393,15 +393,15 @@ msgstr "Ně, źěkujom se"
 #: donate/templates/payment/thank_you.html:15
 #, python-format
 msgid "Thank you! Your transaction reference is: %(id)s"
-msgstr ""
+msgstr "Wjeliki źěk! Waša transakcijowa referenca jo: %(id)s"
 
 #: donate/templates/payment/thank_you.html:19
 msgid "One last thing…"
-msgstr ""
+msgstr "Jadna slědna wěc…"
 
 #: donate/templates/payment/thank_you.html:20
 msgid "Can you help us share the important work Mozilla is doing?"
-msgstr ""
+msgstr "Móžośo nam pomagaś, wažne źěło źěliś, kótarež Mozilla gótujo?"
 
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Used as a tweet"
@@ -416,7 +416,7 @@ msgstr "Som źinsa Mozilla pósćił, dokulaž #lubujomweb. Pósććo teke a wó
 #: donate/templates/payment/thank_you.html:25
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Som źinsa pósćił Mozilla"
 
 #: donate/templates/payment/thank_you.html:26
 msgctxt "Used as a tweet"
@@ -431,7 +431,7 @@ msgstr "Som źinsa Thunderbird pósćił, za lichotu #dochadposta. Pódpěrajśo
 #: donate/templates/payment/thank_you.html:28
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Som źinsa pósćił Thunderbird"
 
 #: donate/templates/payment/thank_you.html:32
 msgid "Share on Facebook"
