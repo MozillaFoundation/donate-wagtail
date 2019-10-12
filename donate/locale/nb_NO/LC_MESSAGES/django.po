@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 14:37+0000\n"
+"PO-Revision-Date: 2019-10-12 03:22+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
-msgstr ""
+msgstr "Internetthelse"
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
@@ -228,15 +228,15 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:122
 msgid "Legal"
-msgstr ""
+msgstr "Juridisk informasjon"
 
 #: donate/templates/pages/base_page.html:125
 msgid "Privacy"
-msgstr ""
+msgstr "Personvern"
 
 #: donate/templates/pages/base_page.html:128
 msgid "License"
-msgstr ""
+msgstr "Lisens"
 
 #: donate/templates/pages/base_page.html:142
 #, python-format
@@ -270,20 +270,20 @@ msgstr "Din informasjon"
 #: donate/templates/payment/card.html:20
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr ""
+msgstr "Du donerer <span class=\"%(span_class)s\">%(formatted_amount)s</span> per måned"
 
 #: donate/templates/payment/card.html:22
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Du donerer <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "Endre beløp"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "Donasjonsbeløp"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
