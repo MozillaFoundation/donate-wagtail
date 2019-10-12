@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-12 12:10+0000\n"
+"PO-Revision-Date: 2019-10-12 12:29+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -55,7 +55,7 @@ msgstr "Vend"
 #: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "Pajtohem me trajtimin që Mozilla u bën të dhënave të mia, ashtu si shpjegohet në këtë <a href='%(url)s'>Shënim mbi Privatësinë</a>."
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
@@ -63,15 +63,15 @@ msgstr "Lloji i kartës që përdorët s’është i pranueshëm."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Kodi CVV që dhatë është i pavlefshëm."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Data e skadimit që dhatë është e pavlefshme."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "Numri i kartës së kreditit që dhatë është i pavlefshëm."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
@@ -79,15 +79,15 @@ msgstr "Kodi postar që dhatë, nuk është i vlefshëm."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Na ndjeni, pati një gabim në përpunimin e pagesës tuaj. Ju lutemi, riprovoni më vonë ose përdorni një metodë tjetër pagesash."
 
 #: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Diç shkoi ters. S’qemë në gjendje të kryejmë pagesën tuaj."
 
 #: donate/payments/views.py:478 donate/payments/views.py:566
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Na ndjeni, pati një gabim në kryerjen e pagesës tuaj. Ju lutemi, riprovoni më vonë."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
@@ -103,19 +103,19 @@ msgstr ""
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "Na ndjeni, faqja nuk ekziston"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Shkoni te faqja juaj hyrëse"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "NJË HERËSH"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "PËRMUAJSHËM"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
@@ -127,7 +127,7 @@ msgstr "Zgjidhni Pagesë"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "I SIGURT"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
@@ -135,7 +135,7 @@ msgstr "Dhuroni"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
-msgstr ""
+msgstr "për muaj"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
@@ -143,26 +143,29 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
 msgstr ""
+"Të dhënat e pagesës tuaj do të përpunohen nga <a href=\"%(braintree_url)s\">Braintree</a> (për karta krediti/debiti) ose <a href=\"%(paypal_url)s\">PayPal</a>, dhe një regjistrim i dhurimit tuaj do "
+"të depozitohet nga Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Dhurimet mujore tërhiqen çdo muaj në të njëjtën ditë si sot që po dhuroni, dhe kjo do të vazhdojë deri sa të anulohet. Për ta anuluar, dërgonani email te <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Rrugë të tjera për të dhënë diçka: <a href=\"%(wire_transfer_url)s\">Transfertë Bankare </a> | <a href=\"%(check_url)s\">Çek</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "Rrugë të tjera për të dhënë diçka: <a href=\"%(wire_transfer_url)s\">Transfertë Bankare ose SEPA</a> | <a href=\"%(check_url)s\">Çek</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "Probleme me dhurimin? Vizitoni ndarjen tonë <a href=\"%(faq_url)s\">FAQ</a>, për përgjigje ndaj pyetjeve më të rëndomta. Keni ende probleme? <a href=\"mailto:%(email)s\">Dërgonani një email</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -192,11 +195,11 @@ msgstr "Menu"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
-msgstr ""
+msgstr "Mbrojeni Internetin si një burim publik global"
 
 #: donate/templates/pages/base_page.html:71
 msgid "Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Merrni pjesë te lista jonë e postimeve, për t’u hedhur në veprim dhe për të qenë i përditësuar!"
 
 #: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
@@ -248,7 +251,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "DHURONI QË SOT"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
@@ -265,25 +268,25 @@ msgstr "Dhuroni sot"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
-msgstr ""
+msgstr "Të dhëna tuajat"
 
 #: donate/templates/payment/card.html:20
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr ""
+msgstr "Po dhuroni <span class=\"%(span_class)s\">%(formatted_amount)s</span> në muaj"
 
 #: donate/templates/payment/card.html:22
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Po dhuroni <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "Ndryshoni sasinë"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "Sasi Dhurimi"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
@@ -295,15 +298,15 @@ msgstr "Hollësitë Tuaja"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr ""
+msgstr "Pati disa gabime me formularin tuaj. Ju lutemi, ndryshoni fushat e theksuara më poshtë."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "S’qemë në gjendje të bëjnë pagesë, ngaqë përpunuesi i pagesave raportoi një gabim me të dhënat e adresës tuaj:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Ju lutemi, ndreqini këto gabime dhe riprovoni."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
@@ -328,11 +331,11 @@ msgstr ""
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Dhuroni <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "Dhurimi juaj ndihmon të mbahet Web-i i hapur dhe i lirë. Faleminderit paraprakisht për dhuratën tuaj."
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
@@ -340,7 +343,7 @@ msgstr "Faleminderit"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13
 msgid "Thank you for your generous gift"
-msgstr ""
+msgstr "Faleminderit për dhuratën tuaj bujare"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
@@ -348,11 +351,11 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "Po, do të jap:"
 
 #: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
-msgstr ""
+msgstr "/ Në muaj"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -372,7 +375,7 @@ msgstr "Mbani lidhje"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Mbrojeni Internetin si një burim publik global. Merrni pjesë te lista jonë e postimeve, për t’u hedhur në veprim dhe për të qenë i përditësuar!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
@@ -385,15 +388,15 @@ msgstr "Jo, Faleminderit"
 #: donate/templates/payment/thank_you.html:15
 #, python-format
 msgid "Thank you! Your transaction reference is: %(id)s"
-msgstr ""
+msgstr "Faleminderit! Referenca e transaksionit tuaj është: %(id)s"
 
 #: donate/templates/payment/thank_you.html:19
 msgid "One last thing…"
-msgstr ""
+msgstr "Një gjë të fundit…"
 
 #: donate/templates/payment/thank_you.html:20
 msgid "Can you help us share the important work Mozilla is doing?"
-msgstr ""
+msgstr "A mund të na ndihmoni të ndajmë me të tjerë punën e rëndësishme që bën Mozilla?"
 
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Used as a tweet"
@@ -408,7 +411,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:25
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Sot dhurova për Mozilla-n"
 
 #: donate/templates/payment/thank_you.html:26
 msgctxt "Used as a tweet"
@@ -423,7 +426,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:28
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Sot dhurova për Thunderbird-in"
 
 #: donate/templates/payment/thank_you.html:32
 msgid "Share on Facebook"
