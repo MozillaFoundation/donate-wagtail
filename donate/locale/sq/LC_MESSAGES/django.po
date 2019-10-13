@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-13 08:50+0000\n"
+"PO-Revision-Date: 2019-10-13 08:56+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -99,7 +99,7 @@ msgstr "S’u gjet faqe"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "Oh!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -259,11 +259,11 @@ msgstr "DHURONI QË SOT"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "Vulë “Charity Navigator” 4 yje"
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
-msgstr ""
+msgstr "Vulë GuideStar Gold 2019"
 
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
@@ -351,7 +351,7 @@ msgstr "Faleminderit për dhuratën tuaj bujare"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Do të donim t’ju kishim një përkrahës të qëndrueshëm të Mozilla-s. <b>A mund të shtoni një dhurim të përmuajshëm duke filluar nga muaji pasues?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
@@ -363,7 +363,7 @@ msgstr "/ Në muaj"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "E autorizoj Mozilla Foundation të marrë përmes kartës time vlerën e treguar më sipër dhe të vazhdojë ta bëjë çdo muaj, deri sa ta anuloj."
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
@@ -405,12 +405,12 @@ msgstr "A mund të na ndihmoni të ndajmë me të tjerë punën e rëndësishme 
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Sot dhurova për @mozilla, ngaqë #lovetheweb. Ejani me mua dhe ndihmoni të luftohet për një internet më të mirë dhe më të shëndetshëm, për të gjithë."
 
 #: donate/templates/payment/thank_you.html:24
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Sot dhurova për Mozilla-n, ngaqë #lovetheweb. Ejani me mua dhe ndihmoni të luftohet për një internet më të mirë dhe më të shëndetshëm, për të gjithë."
 
 #: donate/templates/payment/thank_you.html:25
 msgctxt "Email subject line"
@@ -420,12 +420,12 @@ msgstr "Sot dhurova për Mozilla-n"
 #: donate/templates/payment/thank_you.html:26
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Sot dhurova për @mozthunderbird që të arrihet #freetheinbox. Ejani me mua që të përkrahim privatësinë e komunikimeve."
 
 #: donate/templates/payment/thank_you.html:27
 msgctxt "Facebook post"
 msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Sot dhurova për Thunderbird-in që të arrihet #freetheinbox. Ejani me mua që të përkrahim privatësinë e komunikimeve."
 
 #: donate/templates/payment/thank_you.html:28
 msgctxt "Email subject line"
