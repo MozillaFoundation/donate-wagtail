@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-11 15:41+0000\n"
+"PO-Revision-Date: 2019-10-12 13:12+0000\n"
 "Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -143,32 +143,40 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
 msgstr ""
+"I tuoi dati di pagamento saranno elaborati da <a href=\"%(braintree_url)s\">Braintree</a> (per carte di credito o debito) o <a href=\"%(paypal_url)s\">PayPal</a>. Mozilla conserverà in registro "
+"traccia della tua donazione."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"Le donazioni mensili vengono addebitate ogni mese, lo stesso giorno del mese in cui hai autorizzato la prima donazione, e si ripetono finché tu stesso non revochi l’autorizzazione di pagamento. Per "
+"interrompere le donazioni mensili, invia un’email all’indirizzo <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Metodi di versamento alternativi: <a href=\"%(wire_transfer_url)s\">bonifico bancario o SEPA</a> | <a href=\"%(check_url)s\">assegno</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "Metodi di versamento alternativi: <a href=\"%(wire_transfer_url)s\">bonifico bancario o SEPA</a> | <a href=\"%(check_url)s\">assegno</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr ""
+"Problemi con la donazione? Consulta le risposte alle domande più comuni nella pagina <a href=\"%(faq_url)s\">FAQ</a>. Non hai trovato la soluzione al tuo problema? <a "
+"href=\"mailto:%(email)s\">Inviaci un’email</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
 "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
 " to the fullest extent permitted by law."
 msgstr ""
+"Le donazioni sono destinate a Mozilla Foundation, un’organizzazione 501(c)(3) con sede a Mountain View, California, e vengono utilizzate a sua discrezione per finalità senza scopo di lucro. Sono "
+"deducibili fiscalmente negli Stati Uniti nella misura consentita dalla legge."
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
