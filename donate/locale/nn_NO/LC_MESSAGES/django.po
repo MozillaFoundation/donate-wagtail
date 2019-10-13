@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-10 18:55+0000\n"
+"PO-Revision-Date: 2019-10-13 11:11+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -99,7 +99,7 @@ msgstr "Fann ikkje sida"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "Åh nei!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -123,19 +123,19 @@ msgstr "Anna beløp"
 
 #: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
-msgstr ""
+msgstr "Vel betalingsmåte"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "SIKKER"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:116
 msgid "Donate"
-msgstr ""
+msgstr "Doner"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
-msgstr ""
+msgstr "per månad"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
@@ -176,11 +176,11 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Delta"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
-msgstr ""
+msgstr "Internetthelse"
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
@@ -200,7 +200,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:72
 msgid "Enter email address"
-msgstr ""
+msgstr "Skriv inn e-postadresse"
 
 #: donate/templates/pages/base_page.html:75
 msgid "Sign up"
@@ -224,11 +224,11 @@ msgstr "GitHub"
 
 #: donate/templates/pages/base_page.html:119
 msgid "Participation Guidelines"
-msgstr ""
+msgstr "Retningslinjer for deltaking"
 
 #: donate/templates/pages/base_page.html:122
 msgid "Legal"
-msgstr ""
+msgstr "Juridisk informasjon"
 
 #: donate/templates/pages/base_page.html:125
 msgid "Privacy"
@@ -236,7 +236,7 @@ msgstr "Personvern"
 
 #: donate/templates/pages/base_page.html:128
 msgid "License"
-msgstr ""
+msgstr "Lisens"
 
 #: donate/templates/pages/base_page.html:142
 #, python-format
