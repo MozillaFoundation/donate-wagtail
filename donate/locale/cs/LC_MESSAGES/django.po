@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-13 16:02+0000\n"
+"PO-Revision-Date: 2019-10-13 16:17+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -79,11 +79,11 @@ msgstr "Zadané PSČ je neplatné."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Při zpracování vaší platby došlo k chybě. Zkuste to prosím znovu později nebo vyberte jinou formu úhrady."
 
 #: donate/payments/views.py:290
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Něco se nepovedlo. Vaši platbu jsme nemohli zpracovat."
 
 #: donate/payments/views.py:478 donate/payments/views.py:566
 msgid "Sorry there was an error processing your payment. Please try again later."
@@ -91,7 +91,7 @@ msgstr "Při zpracování vaší platby došlo k chybě. Zkuste to prosím znovu
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Neplatná captcha. Zkuste to prosím znovu."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
@@ -142,7 +142,7 @@ msgstr "měsíčně"
 msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
-msgstr ""
+msgstr "Informace o vaší platbě zpracuje <a href=\"%(braintree_url)s\">Braintree</a> (pro platební karty) nebo <a href=\"%(paypal_url)s\">PayPal</a> a záznam o vašem příspěvku si Mozilla uloží."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
@@ -152,17 +152,17 @@ msgstr ""
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Další způsoby darování: <a href=\"%(wire_transfer_url)s\">bankovní převod nebo SEPA</a> | <a href=\"%(check_url)s\">šek</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "Další způsoby darování: <a href=\"%(wire_transfer_url)s\">bankovní převod nebo SEPA</a> | <a href=\"%(check_url)s\">šek</a> | <a href=\"%(bitcoin_url)s\">Bitcoiny</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "Nedaří se vám přispět? Podívejte se do <a href=\"%(faq_url)s\">často kladených otázek</a>, kde najdete odpovědi na nejčastější otázky. Nepomohlo? <a href=\"mailto:%(email)s\">Pošlete nám email</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -250,7 +250,7 @@ msgstr "Mozilla je mezinárodní nezisková organizace s cílem vám dát kontro
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "PŘISPĚT"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
@@ -330,7 +330,7 @@ msgstr ""
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Chci přispět <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
