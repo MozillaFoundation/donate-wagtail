@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-13 20:38+0000\n"
+"PO-Revision-Date: 2019-10-13 20:58+0000\n"
 "Last-Translator: Mikeyy <mihovil@miho.im>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -30,7 +30,7 @@ msgstr "Drugi iznos"
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
 #: source/js/payments-card.js:12
 msgid "An error occurred. Please reload the page or try again later."
-msgstr ""
+msgstr "Došlo je do pogreške. Ponovno učitajte stranicu ili pokušajte ponovno kasnije."
 
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:15
 #: source/js/payments-card.js:110
@@ -39,7 +39,7 @@ msgstr "Dogodila se greška prilikom obrade vašeg plaćanja. Molimo, pokušajte
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:126
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "Neka polja u nastavku nisu ispravna. Ispravite neispravna polja i pokušajte ponovno."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"

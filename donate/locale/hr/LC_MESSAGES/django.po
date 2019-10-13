@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-13 20:52+0000\n"
+"PO-Revision-Date: 2019-10-13 20:57+0000\n"
 "Last-Translator: Mikeyy <mihovil@miho.im>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -59,15 +59,15 @@ msgstr "Slažem se da Mozilla upravlja mojim informacijama, kao što je objašnj
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Vrsta kartice koju ste koristili se ne prihvaća."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "CVV kôd koji ste unijeli nije ispravan."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Datum isteka koji ste unijeli nije ispravan."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
@@ -255,11 +255,11 @@ msgstr "DONIRAJTE SADA"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "Pečat Charity Navigator 4 zvjezdice"
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
-msgstr ""
+msgstr "Pečat GuideStar zlato 2019"
 
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
@@ -306,7 +306,7 @@ msgstr ""
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Ispravite ove pogreške i pokušajte ponovo."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
@@ -388,7 +388,7 @@ msgstr "Ne hvala"
 #: donate/templates/payment/thank_you.html:15
 #, python-format
 msgid "Thank you! Your transaction reference is: %(id)s"
-msgstr ""
+msgstr "Hvala vam! Referenca za vašu transakciju je: %(id)s"
 
 #: donate/templates/payment/thank_you.html:19
 msgid "One last thing…"
