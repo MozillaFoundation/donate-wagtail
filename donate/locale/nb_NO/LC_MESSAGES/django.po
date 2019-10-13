@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: 2019-10-12 18:26+0000\n"
+"PO-Revision-Date: 2019-10-13 01:06+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -107,7 +107,7 @@ msgstr "Beklager, siden eksisterer ikke"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Gå til hjemmesiden vår"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -143,6 +143,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
 msgstr ""
+"Betalingsopplysningene blir behandlet av <a href=\"%(braintree_url)s\">Braintree</a> (for kreditt-/debetkort) eller <a href=\"%(paypal_url)s\">Paypal</a>, og en oversikt over donasjonen din blir "
+"lagret hos Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
@@ -152,31 +154,35 @@ msgstr ""
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Andre måter å gi bidrag på: <a href=\"%(wire_transfer_url)s\">Bankoverføring eller SEPA</a> | <a href=\"%(check_url)s\">Sjekk</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "Andre måter å gi bidrag på: <a href=\"%(wire_transfer_url)s\">Bankoverføring eller SEPA</a> | <a href=\"%(check_url)s\">Sjekk</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr ""
+"Har du problem med å donere? Besøk <a href=\"%(faq_url)s\">ofte stilte spørsmål (FAQ)</a> for å få svar på de vanligste spørsmålene. Har du fremdeles problem? <a href=\"mailto:%(email)s\">Send oss "
+"en e-post</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
 "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
 " to the fullest extent permitted by law."
 msgstr ""
+"Bidrag går til stiftelsen Mozilla, en 501(c)(3) organisation med base i Mountain View, California, og skal brukes etter egen vurdering i velgjørende formål. Det er full fradragsrett i USA i det "
+"omfanget som loven tillater."
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
-msgstr ""
+msgstr "Initiativer"
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Delta"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
@@ -295,7 +301,7 @@ msgstr "Dine detaljer"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr ""
+msgstr "Det var noen feil med skjemaet ditt. Endre feltene som er uthevet nedenfor."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
@@ -328,7 +334,7 @@ msgstr ""
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Doner <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
