@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 18:37+0000\n"
+"PO-Revision-Date: 2019-10-14 20:54+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -421,10 +421,9 @@ msgid "We’ve emailed you a donation receipt; if it’s missing, please check y
 msgstr "Smy wam darjensku kwitowanku přez e-mejl pósćeli; jel faluje, hladajće do swojeho čaporoweho rjadowaka a stajće so přez <a href=\"%(email)s\">%(email)s</a> do zwiska."
 
 #: donate/templates/payment/thank_you.html:15
-#, fuzzy
 #| msgid "Can you help us share the important work Mozilla is doing?"
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr "Móžeće nam pomhać, wažne dźěło dźělić, kotrež Mozilla čini?"
+msgstr "Naposledk, móžeće wažne dźěło, kotrež Mozilla čini, dźělić, zo byšće swój wliw zesylnić? Dźakujemy so hišće raz!"
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
