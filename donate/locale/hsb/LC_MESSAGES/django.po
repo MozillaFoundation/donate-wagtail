@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-12 11:52+0000\n"
+"PO-Revision-Date: 2019-10-14 18:28+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: donate/core/translation.py:12
 msgid "This field is required."
-msgstr ""
+msgstr "Tute polo je trěbne."
 
 #: donate/core/translation.py:15
 #, fuzzy
@@ -35,8 +35,7 @@ msgstr "Kartowe čisło"
 msgid "Enter a valid email address."
 msgstr "E-mejlowu adresu zapodać"
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr "Suma"
 
@@ -134,27 +133,19 @@ msgstr "JÓNKRÓĆNY"
 msgid "MONTHLY"
 msgstr "KÓŽDY MĚSAC"
 
-#: donate/templates/fragments/donate_form.html:39
-#: donate/templates/fragments/donate_form.html:40
-#: donate/templates/fragments/donate_form.html:99
-#: donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "Druha suma"
 
-#: donate/templates/fragments/donate_form.html:46
-#: donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "Płaćensku metodu wubrać"
 
-#: donate/templates/fragments/donate_form.html:52
-#: donate/templates/fragments/donate_form.html:112
-#: donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "WĚSTY"
 
-#: donate/templates/fragments/donate_form.html:58
-#: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:123
+#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:123
 msgid "Donate"
 msgstr "Darić"
 
@@ -164,13 +155,17 @@ msgstr "na měsac"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
+"by Mozilla."
 msgstr "Waše płaćenske daty so wot <a href=\"%(braintree_url)s\">Braintree</a> (za kreditne karty) abo <a href=\"%(paypal_url)s\">PayPal</a> předźěłaja, a datowa sadźba wašeho dara so pola Mozilla składuje."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr "Měsačne dary so kóždy měsac na samsnym dnju zběraja, na kotrymž dźensa dariće, a pokročuja so tak dołho, doniž je njepřetorhnjeće. Zo byšće přetorhnył, sćelće nam mejlku na <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Měsačne dary so kóždy měsac na samsnym dnju zběraja, na kotrymž dźensa dariće, a pokročuja so tak dołho, doniž je njepřetorhnjeće. Zo byšće přetorhnył, sćelće nam mejlku na <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
@@ -188,8 +183,12 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr "Maće problemy při darjenju? Wopytajće naše <a href=\"%(faq_url)s\">Huste prašenja</a> za wotmołwy na najhusćiše prašenja. Maće hišće problemy? <a href=\"mailto:%(email)s\">Sćelće nam mejlku</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
-msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
-msgstr "Dary su za załožbu Mozilla Foundation, organizaciju 501(c)(3) ze sydłom w Mountain View, Kaliforniskej, a su myslene za zaměry, kotrež su powšitkownosći wužitne. Hodźa so w Zjednoćenych statach w najwyšej měrje wot dawka wotsadźić, kotruž zakoń dowoluje."
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
+msgstr ""
+"Dary su za załožbu Mozilla Foundation, organizaciju 501(c)(3) ze sydłom w Mountain View, Kaliforniskej, a su myslene za zaměry, kotrež su powšitkownosći wužitne. Hodźa so w Zjednoćenych statach w "
+"najwyšej měrje wot dawka wotsadźić, kotruž zakoń dowoluje."
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
@@ -235,14 +234,13 @@ msgstr "Ně, dźakuju so"
 
 #: donate/templates/pages/base_page.html:87
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr ""
+msgstr "Jeli hišće njejsće abonement powěsćoweho lista Mozilla wobkrućił, dyrbiće to nětko činić. Prošu hladajće do dochadneje e-mejle abo papjernika za e-mejlku wot nas."
 
 #: donate/templates/pages/base_page.html:99
 msgid "More about us"
 msgstr "Wjace wo nas"
 
-#: donate/templates/pages/base_page.html:102
-#: donate/templates/payment/thank_you.html:38
+#: donate/templates/pages/base_page.html:102 donate/templates/payment/thank_you.html:38
 msgid "Twitter"
 msgstr "Twitter"
 
@@ -272,23 +270,23 @@ msgstr "Licenca"
 
 #: donate/templates/pages/base_page.html:149
 #, python-format
-msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
-msgstr "Mozilla je swětodaloko powšitkownosći wužitna organizacija, kotraž so za to zasadźuje, zo maće kontrolu nad swojim dožiwjenjom online a zo so přichod weba za powšitkowne dobro wuhotuje. Wopytajće nas na <a %(link_attributes)s>%(site_url)s</a>."
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
+msgstr ""
+"Mozilla je swětodaloko powšitkownosći wužitna organizacija, kotraž so za to zasadźuje, zo maće kontrolu nad swojim dožiwjenjom online a zo so přichod weba za powšitkowne dobro wuhotuje. Wopytajće "
+"nas na <a %(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "NĚTKO DARIĆ"
 
-#: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page.html:33
-#: donate/templates/payment/card.html:151
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "4-hwězdny pječat Charity Navigator"
 
-#: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page.html:36
-#: donate/templates/payment/card.html:154
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
 msgstr "Złoty pječat GuideStar 2019"
 
@@ -327,10 +325,7 @@ msgstr "Wobkrućić"
 msgid "Your Details"
 msgstr "Waše podrobnosće"
 
-#: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell.html:29
-#: donate/templates/payment/newsletter_signup.html:26
-#: donate/templates/payment/paypal_upsell.html:29
+#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr "Waš formular zmylki wobsahuje. Prošu porjedźće deleka wuzběhnjene pola."
 
@@ -371,31 +366,23 @@ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> darić"
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr "Waš dar pomha, web wotewrjeny a swobodny dźeržeć. Dźakujemy so dočasa za waš dar."
 
-#: donate/templates/payment/card_upsell.html:4
-#: donate/templates/payment/paypal_upsell.html:4
-#: donate/templates/payment/thank_you.html:4
+#: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
 msgstr "Wulki dźak"
 
-#: donate/templates/payment/card_upsell.html:13
-#: donate/templates/payment/newsletter_signup.html:12
-#: donate/templates/payment/paypal_upsell.html:13
-#: donate/templates/payment/thank_you.html:12
+#: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
 msgstr "Wulki dźak za waš šćedriwy dar"
 
-#: donate/templates/payment/card_upsell.html:15
-#: donate/templates/payment/paypal_upsell.html:15
+#: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Bychmy was rady jako stajneho podpěraćela za Mozilla měli. <b>Móhł wy kóždy měsac započinajo z přichodnym měsacom darić?</b>"
 
-#: donate/templates/payment/card_upsell.html:16
-#: donate/templates/payment/paypal_upsell.html:16
+#: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
 msgstr "Haj, dam:"
 
-#: donate/templates/payment/card_upsell.html:35
-#: donate/templates/payment/paypal_upsell.html:36
+#: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
 msgstr "/ Kóždy měsac"
 
@@ -407,8 +394,7 @@ msgstr "Awtorizuju Mozilla, moju kartu z horjeka podatej sumu poćežić a to k�
 msgid "Yes"
 msgstr "Haj"
 
-#: donate/templates/payment/card_upsell.html:47
-#: donate/templates/payment/paypal_upsell.html:47
+#: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
 msgstr "Ně"
 
@@ -430,12 +416,12 @@ msgstr "Ně, dźakuju so"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Waš dar budźe pomhać, web škitać, jón wotewrjeny a za wšěch k dispoziciji dźeržeć."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "Smy wam darjensku kwitowanku přez e-mejl pósćeli; jel faluje, hladajće do swojeho čaporoweho rjadowaka a stajće so přez <a href=\"%(email)s\">%(email)s</a> do zwiska."
 
 #: donate/templates/payment/thank_you.html:15
 #, fuzzy
@@ -503,7 +489,6 @@ msgstr "Kopěrowane"
 msgid "Back"
 msgstr "Wróćo"
 
-#, python-format
 #~ msgid "Thank you! Your transaction reference is: %(id)s"
 #~ msgstr "Wulki dźak! Waša transakcijowa referenca je: %(id)s"
 
