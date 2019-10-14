@@ -9,15 +9,10 @@
 <div class="layout layout--narrow">
     <div class="layout__container">
         <div class="layout__full-col">
-            <div class="notification notification--neutral">
-                <div class="notification__container">
-                    <div class="notification__message">
-                        <p>{% blocktrans with email='donate@mozilla.org' %}From all of us at Mozilla, <strong>thank you</strong>! We'll put your donation right to work protecting the web as a global public resource, open and available to all. We're sending you a thank-you note; if you don't receive that in a few minutes please check your junk or spam folders, or drop us a note at <a href="{{ email }}">{{ email }}</a> for a replacement.{% endblocktrans %}</p>
-                    </div>
-                </div>
-            </div>
-            <h1 class="heading heading--primary heading--bottom-margin">{% trans "One last thing…" %}</h1>
-            <p>{% trans "Can you help us share the important work Mozilla is doing?" %}</p>
+            <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
+            <p>{% blocktrans %}Your donation will go right to work protecting the web, keeping it open and available to all.{% endblocktrans %} {% blocktrans with email='donate@mozilla.org' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href="{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
+
+            <p>{% trans "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!" %}</p>
 
             <div class="button__group">
                 {% trans "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as twitter_text context "Used as a tweet" %}
