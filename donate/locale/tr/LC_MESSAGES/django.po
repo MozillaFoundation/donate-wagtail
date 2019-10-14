@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 16:07+0000\n"
+"PO-Revision-Date: 2019-10-14 16:24+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
@@ -21,15 +21,15 @@ msgstr ""
 
 #: donate/core/translation.py:12
 msgid "This field is required."
-msgstr ""
+msgstr "Bu alanı doldurmalısınız."
 
 #: donate/core/translation.py:15
 msgid "Enter a number."
-msgstr ""
+msgstr "Bir sayı girin."
 
 #: donate/core/translation.py:18
 msgid "Enter a valid email address."
-msgstr ""
+msgstr "Geçerli bir e-posta adresi yazın."
 
 #: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Girdiğiniz CVV kodu geçersiz."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
@@ -107,7 +107,7 @@ msgstr ""
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "Sayfa bulunamadı"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
@@ -119,15 +119,15 @@ msgstr ""
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Ana sayfamıza gidin"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "BİR KEZ"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "HER AY"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
@@ -135,11 +135,11 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
-msgstr ""
+msgstr "Ödeme yöntemini seçin"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "GÜVENLİ"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:123
 msgid "Donate"
