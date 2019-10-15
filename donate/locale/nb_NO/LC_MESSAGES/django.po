@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-15 12:09+0000\n"
+"PO-Revision-Date: 2019-10-15 12:15+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -276,6 +276,8 @@ msgid ""
 "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
 "%(link_attributes)s>%(site_url)s</a>."
 msgstr ""
+"Mozilla er en verdensomspennende ideell organisasjon som har som formål å gi deg kontroll over nettopplevelsen din og utforme fremtidens internett til det beste for almenheten. Besøk oss på <a "
+"%(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
@@ -331,11 +333,11 @@ msgstr "Det var noen feil med skjemaet ditt. Endre feltene som er uthevet nedenf
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "Vi kunne ikke ta imot betalingen fordi betalingstjenesten rapporterte en feil med adresseinformasjonen din:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Rett opp disse feilene og prøv igjen."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
@@ -355,7 +357,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Jeg gir Mozilla Foundation fullmakt til å belaste kortet mitt i det beløpet som er vist nedenfor og fortsette å gjøre det hver måned til jeg avbryter."
 
 #: donate/templates/payment/card.html:140
 #, python-format
@@ -364,7 +366,7 @@ msgstr "Doner <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "Din donasjon hjelper til med å holde nettet åpent og gratis. På forhånd takk for gaven."
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
@@ -416,7 +418,7 @@ msgstr "Nei takk"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Din donasjon går rett til å beskytte nettet, holde det åpent og tilgjengelig for alle."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
