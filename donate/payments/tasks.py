@@ -1,15 +1,13 @@
-import json
 import logging
 import time
 
 from django.conf import settings
-from django.core.serializers.json import DjangoJSONEncoder
 
 import django_rq
 import requests
 
-from . import constants
-from .sqs import sqs_client
+from . import constants, gateway
+from .sqs import send_to_sqs
 
 
 logger = logging.getLogger(__name__)
@@ -39,11 +37,7 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
-    client = sqs_client()
-    if client is None:
-        return
-
-    payload = {
+    send_to_sqs({
         'data': {
             'event_type': 'donation',
             'last_name': data['last_name'],
@@ -60,9 +54,36 @@ def send_transaction_to_basket(data):
             'locale': data['locale'],
             'conversion_amount': data.get('settlement_amount', None),
         }
-    }
+    })
 
-    client.send_message(
-        QueueUrl=settings.BASKET_SQS_QUEUE_URL,
-        MessageBody=json.dumps(payload, cls=DjangoJSONEncoder, sort_keys=True),
-    )
+
+class BraintreeWebhookProcessor:
+
+    def process(self, notification):
+        process_method = getattr(self, 'process_{}'.format(notification.kind), None)
+        if process_method is not None:
+            return process_method(notification)
+
+    def process_subscription_charged_unsuccessfully(self, notification):
+        send_to_sqs({
+            'data': {
+                'event_type': 'charge.failed',
+                'transaction_id': notification.subscription.id,
+                'failure_code': notification.subscription.transactions[0].status,
+            }
+        })
+
+    def process_dispute_lost(self, notification):
+        send_to_sqs({
+            'data': {
+                'event_type': 'charge.dispute.closed',
+                'status': 'lost',
+                'transaction_id': notification.dispute.transaction.id,
+                'failure_code': notification.dispute.reason,
+            }
+        })
+
+
+def process_webhook(form_data):
+    notification = gateway.webhook_notification.parse(form_data['bt_signature'], form_data['bt_payload'])
+    BraintreeWebhookProcessor().process(notification)

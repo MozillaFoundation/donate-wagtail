@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 09:50+0000\n"
+"POT-Creation-Date: 2019-10-14 15:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
+#: donate/core/translation.py:12
+msgid "This field is required."
+msgstr ""
+
+#: donate/core/translation.py:15
+msgid "Enter a number."
+msgstr ""
+
+#: donate/core/translation.py:18
+msgid "Enter a valid email address."
+msgstr ""
+
 #: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:80 donate/payments/forms.py:88
+#: donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr ""
 
@@ -31,7 +43,7 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: donate/payments/forms.py:50 donate/payments/forms.py:94
+#: donate/payments/forms.py:50 donate/payments/forms.py:95
 msgid "Email"
 msgstr ""
 
@@ -52,7 +64,7 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
-#: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
+#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:82
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
@@ -81,11 +93,11 @@ msgstr ""
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr ""
 
-#: donate/payments/views.py:290
+#: donate/payments/views.py:291
 msgid "Something went wrong. We were unable to process your payment."
 msgstr ""
 
-#: donate/payments/views.py:478 donate/payments/views.py:566
+#: donate/payments/views.py:481 donate/payments/views.py:569
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr ""
 
@@ -137,7 +149,7 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form.html:58
 #: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:116
+#: donate/templates/pages/base_page.html:123
 msgid "Donate"
 msgstr ""
 
@@ -198,52 +210,60 @@ msgstr ""
 msgid "Protect the internet as a global public resource"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:71
+#: donate/templates/pages/base_page.html:74
 msgid "Join our email list to take action and stay updated!"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:72
+#: donate/templates/pages/base_page.html:75
 msgid "Enter email address"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:75
+#: donate/templates/pages/base_page.html:78
 msgid "Sign up"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:92
+#: donate/templates/pages/base_page.html:86
+msgid "Thanks!"
+msgstr ""
+
+#: donate/templates/pages/base_page.html:87
+msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
+msgstr ""
+
+#: donate/templates/pages/base_page.html:99
 msgid "More about us"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:95
-#: donate/templates/payment/thank_you.html:43
+#: donate/templates/pages/base_page.html:102
+#: donate/templates/payment/thank_you.html:38
 msgid "Twitter"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:101
+#: donate/templates/pages/base_page.html:108
 msgid "Instagram"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:107
+#: donate/templates/pages/base_page.html:114
 msgid "GitHub"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:119
+#: donate/templates/pages/base_page.html:126
 msgid "Participation Guidelines"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:122
+#: donate/templates/pages/base_page.html:129
 msgid "Legal"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:125
+#: donate/templates/pages/base_page.html:132
 msgid "Privacy"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:128
+#: donate/templates/pages/base_page.html:135
 msgid "License"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:142
+#: donate/templates/pages/base_page.html:149
 #, python-format
 msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
 msgstr ""
@@ -353,6 +373,7 @@ msgstr ""
 #: donate/templates/payment/card_upsell.html:13
 #: donate/templates/payment/newsletter_signup.html:12
 #: donate/templates/payment/paypal_upsell.html:13
+#: donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
 msgstr ""
 
@@ -400,72 +421,72 @@ msgstr ""
 msgid "No Thanks"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:15
+#: donate/templates/payment/thank_you.html:13
+msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
+msgstr ""
+
+#: donate/templates/payment/thank_you.html:13
 #, python-format
-msgid "Thank you! Your transaction reference is: %(id)s"
+msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:19
-msgid "One last thing…"
+#: donate/templates/payment/thank_you.html:15
+msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:20
-msgid "Can you help us share the important work Mozilla is doing?"
-msgstr ""
-
-#: donate/templates/payment/thank_you.html:23
+#: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:24
+#: donate/templates/payment/thank_you.html:19
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:25
+#: donate/templates/payment/thank_you.html:20
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:26
+#: donate/templates/payment/thank_you.html:21
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:27
+#: donate/templates/payment/thank_you.html:22
 msgctxt "Facebook post"
 msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:28
+#: donate/templates/payment/thank_you.html:23
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:32
+#: donate/templates/payment/thank_you.html:27
 msgid "Share on Facebook"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:36
+#: donate/templates/payment/thank_you.html:31
 msgid "Facebook"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:39
+#: donate/templates/payment/thank_you.html:34
 msgid "Share on Twitter"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:49
+#: donate/templates/payment/thank_you.html:44
 msgctxt "Share button"
 msgid "Email"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:59
+#: donate/templates/payment/thank_you.html:54
 msgctxt "Share button"
 msgid "Link"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:60
+#: donate/templates/payment/thank_you.html:55
 msgid "Copied"
 msgstr ""
 

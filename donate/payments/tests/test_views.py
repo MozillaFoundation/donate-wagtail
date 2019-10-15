@@ -45,6 +45,10 @@ class MockBraintreeSubscription:
 class MockBraintreePaymentMethod:
     token = 'payment-method-1'
     last_4 = '1234'
+    email = 'test@example.com'
+    payer_info = {
+        'last_name': 'Jones'
+    }
 
 
 class MockBraintreeCustomer:
@@ -488,9 +492,9 @@ class PaypalPaymentViewTestCase(TestCase):
         self.view.payment_frequency = 'monthly'
         self.view.currency = 'usd'
         result = MockBraintreeSubscriptionResult()
-        result.customer = MockBraintreeCustomer()
+        payment_method = MockBraintreePaymentMethod()
         self.assertEqual(
-            self.view.get_transaction_details_for_session(result, form),
+            self.view.get_transaction_details_for_session(result, form, payment_method=payment_method),
             {
                 'amount': Decimal(10),
                 'transaction_id': 'subscription-id-1',
@@ -498,7 +502,7 @@ class PaypalPaymentViewTestCase(TestCase):
                 'payment_frequency': 'monthly',
                 'currency': 'usd',
                 'settlement_amount': None,
-                'email': 'customer@example.com',
+                'email': 'test@example.com',
                 'last_name': 'Jones',
             }
         )

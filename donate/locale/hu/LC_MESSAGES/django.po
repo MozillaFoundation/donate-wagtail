@@ -2,153 +2,163 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-09 09:50+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"PO-Revision-Date: 2019-10-14 17:30+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pontoon\n"
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:80 donate/payments/forms.py:88
+#: donate/core/translation.py:12
+msgid "This field is required."
+msgstr "Ez a mező kötelező."
+
+#: donate/core/translation.py:15
+#| msgid "Card number"
+msgid "Enter a number."
+msgstr "Adjon meg egy számot."
+
+#: donate/core/translation.py:18
+#| msgid "Enter email address"
+msgid "Enter a valid email address."
+msgstr "Adjon meg egy érvényes e-mail címet."
+
+#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
-msgstr ""
+msgstr "Összeg"
 
 #: donate/payments/forms.py:48
 msgid "First name"
-msgstr ""
+msgstr "Utónév"
 
 #: donate/payments/forms.py:49
 msgid "Last name"
-msgstr ""
+msgstr "Vezetéknév"
 
-#: donate/payments/forms.py:50 donate/payments/forms.py:94
+#: donate/payments/forms.py:50 donate/payments/forms.py:95
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: donate/payments/forms.py:51
 msgid "Street"
-msgstr ""
+msgstr "Utca"
 
 #: donate/payments/forms.py:52
 msgid "City"
-msgstr ""
+msgstr "Város"
 
 #: donate/payments/forms.py:56
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
-msgstr ""
+msgstr "Irányítószám"
 
 #: donate/payments/forms.py:59
 msgid "Country"
-msgstr ""
+msgstr "Ország"
 
-#: donate/payments/forms.py:102 donate/templates/pages/base_page.html:79
+#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:82
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "Elfogadom, hogy a Mozilla az <a href='%(url)s'>adatvédelmi nyilatkozatnak</a> megfelelően kezelje az adataimat."
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "A használt kártya típusa nem elfogadott."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "A megadott CVV-kód érvénytelen."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "A megadott lejárati dátum érvénytelen."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "A megadott bankkártyaszám érvénytelen."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "A megadott irányítószám érvénytelen."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Sajnos hiba történt a fizetés feldolgozásakor. Próbálkozzon újra később, vagy használjon másik fizetési módot."
 
-#: donate/payments/views.py:290
+#: donate/payments/views.py:291
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Valami hiba történt. Nem tudtuk feldolgozni a fizetését."
 
-#: donate/payments/views.py:478 donate/payments/views.py:566
+#: donate/payments/views.py:481 donate/payments/views.py:569
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Sajnos hiba történt a fizetés feldolgozásakor. Próbálja újra később."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "A Captcha érvénytelen. Próbálja újra."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "Az oldal nem található"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "O-ó!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "Sajnáljuk, az oldal nem létezik"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Ugrás a kezdőlapunkra"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "EGYSZERI"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "HAVI"
 
-#: donate/templates/fragments/donate_form.html:39
-#: donate/templates/fragments/donate_form.html:40
-#: donate/templates/fragments/donate_form.html:99
-#: donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
-msgstr ""
+msgstr "Más összeg"
 
-#: donate/templates/fragments/donate_form.html:46
-#: donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
-msgstr ""
+msgstr "Fizetési mód"
 
-#: donate/templates/fragments/donate_form.html:52
-#: donate/templates/fragments/donate_form.html:112
-#: donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "BIZTONSÁGOS"
 
-#: donate/templates/fragments/donate_form.html:58
-#: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:116
+#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:123
 msgid "Donate"
-msgstr ""
+msgstr "Adományozás"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
-msgstr ""
+msgstr "havonta"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
+"by Mozilla."
 msgstr ""
+"A fizetési adatait a <a href=\"%(braintree_url)s\">Braintree</a> (bankkártya esetén) vagy a <a href=\"%(paypal_url)s\">PayPal</a> fogja feldolgozni, az adományának nyilvántartását pedig a Mozilla "
+"fogja végezni."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
@@ -171,165 +181,175 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
-msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
 msgstr ""
+"A hozzájárulások a Mozilla Foundationhöz kerülnek, amely egy Montain Viewban, Kaliforniában bejegyzett alapítvány (501(c)(3) szervezet). A hozzájárulások belátás szerint használhatóak fel, "
+"jótékonysági célokra. A hozzájárulás az USA-ban adóból levonható, a törvény által maximálisan megengedett mértékben."
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
-msgstr ""
+msgstr "Kezdeményezések"
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Közreműködés"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
-msgstr ""
+msgstr "Az Internet egészsége"
 
 #: donate/templates/pages/base_page.html:31
 msgid "About Us"
-msgstr ""
+msgstr "Rólunk"
 
 #: donate/templates/pages/base_page.html:42
 msgid "Menu"
-msgstr ""
+msgstr "Menü"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
-msgstr ""
+msgstr "Az internet, mint egy globális, nyilvános erőforrás, megvédése"
 
-#: donate/templates/pages/base_page.html:71
+#: donate/templates/pages/base_page.html:74
 msgid "Join our email list to take action and stay updated!"
-msgstr ""
-
-#: donate/templates/pages/base_page.html:72
-msgid "Enter email address"
-msgstr ""
+msgstr "Csatlakozzon az e-mail listánkhoz, hogy cselekedjen és folyamatosan híreket kapjon!"
 
 #: donate/templates/pages/base_page.html:75
+msgid "Enter email address"
+msgstr "Adja meg az e-mail címét"
+
+#: donate/templates/pages/base_page.html:78
 msgid "Sign up"
-msgstr ""
+msgstr "Regisztráció"
 
-#: donate/templates/pages/base_page.html:92
+#: donate/templates/pages/base_page.html:86
+#| msgid "Thank you"
+msgid "Thanks!"
+msgstr "Köszönjük!"
+
+#: donate/templates/pages/base_page.html:87
+msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
+msgstr ""
+"Ha korábban nem erősítette meg a Mozillához kapcsolódó hírlevél feliratkozását, akkor lehet hogy meg kell tennie. Ellenőrizze a Beérkezett üzenetek mappáját vagy a spam-szűrőjét az e-mailünk után."
+
+#: donate/templates/pages/base_page.html:99
 msgid "More about us"
-msgstr ""
+msgstr "Többet rólunk"
 
-#: donate/templates/pages/base_page.html:95
-#: donate/templates/payment/thank_you.html:43
+#: donate/templates/pages/base_page.html:102 donate/templates/payment/thank_you.html:38
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
-#: donate/templates/pages/base_page.html:101
+#: donate/templates/pages/base_page.html:108
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
-#: donate/templates/pages/base_page.html:107
+#: donate/templates/pages/base_page.html:114
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
-#: donate/templates/pages/base_page.html:119
+#: donate/templates/pages/base_page.html:126
 msgid "Participation Guidelines"
-msgstr ""
+msgstr "Közreműködési irányelvek"
 
-#: donate/templates/pages/base_page.html:122
+#: donate/templates/pages/base_page.html:129
 msgid "Legal"
-msgstr ""
+msgstr "Jogi információk"
 
-#: donate/templates/pages/base_page.html:125
+#: donate/templates/pages/base_page.html:132
 msgid "Privacy"
-msgstr ""
+msgstr "Adatvédelem"
 
-#: donate/templates/pages/base_page.html:128
+#: donate/templates/pages/base_page.html:135
 msgid "License"
-msgstr ""
+msgstr "Licenc"
 
-#: donate/templates/pages/base_page.html:142
+#: donate/templates/pages/base_page.html:149
 #, python-format
-msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
 msgstr ""
+"A Mozilla egy globális nonprofit szervezet, amely elkötelezett abban, hogy az Ön kezébe adja az online élményének irányítását, és a web jövőjének alakítását a közjó érdekében. Látogasson meg minket "
+"a <a %(link_attributes)s>%(site_url)s</a> webhelyen."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "ADOMÁNYOZZON MOST"
 
-#: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page.html:33
-#: donate/templates/payment/card.html:151
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "A Charity Navigator 4 csillagos pecsétje"
 
-#: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page.html:36
-#: donate/templates/payment/card.html:154
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
-msgstr ""
+msgstr "A GuideStar Gold 2019 pecsétje"
 
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
 msgid "Donate now"
-msgstr ""
+msgstr "Adományozzon most"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
-msgstr ""
+msgstr "Az Ön információi"
 
 #: donate/templates/payment/card.html:20
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr ""
+msgstr "Ön havonta <span class=\"%(span_class)s\">%(formatted_amount)s</span> összeget adományoz"
 
 #: donate/templates/payment/card.html:22
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Ön <span class=\"%(span_class)s\">%(formatted_amount)s</span> összeget adományoz"
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "Összeg módosítása"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "Adomány összege"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
-msgstr ""
+msgstr "Megerősítés"
 
 #: donate/templates/payment/card.html:44
 msgid "Your Details"
-msgstr ""
+msgstr "Az Ön részletei"
 
-#: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell.html:29
-#: donate/templates/payment/newsletter_signup.html:26
-#: donate/templates/payment/paypal_upsell.html:29
+#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr ""
+msgstr "Volt néhány hiba az űrlapon. Módosítsa az alább kiemelt mezőket."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "Nem tudtuk elfogadni a fizetését, mert a fizetésfeldolgozó hibát jelentett a címadataival kapcsolatban:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Javítsa ezeket a hibákat és próbálja újra."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
-msgstr ""
+msgstr "Fizetés"
 
 #: donate/templates/payment/card.html:106
 msgid "Card number"
-msgstr ""
+msgstr "Kártyaszám"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "Lejárati dátum"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
-msgstr ""
+msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
@@ -338,137 +358,129 @@ msgstr ""
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> adományozása"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:4
-#: donate/templates/payment/paypal_upsell.html:4
-#: donate/templates/payment/thank_you.html:4
+#: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "Köszönjük"
 
-#: donate/templates/payment/card_upsell.html:13
-#: donate/templates/payment/newsletter_signup.html:12
-#: donate/templates/payment/paypal_upsell.html:13
+#: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
-msgstr ""
+msgstr "Köszönjük a nagylelkű felajánlását"
 
-#: donate/templates/payment/card_upsell.html:15
-#: donate/templates/payment/paypal_upsell.html:15
+#: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Szeretnénk, ha Ön a Mozilla tartós támogatója lenne. <b>Be tudna állítani egy havi adományt a következő hónaptól kezdve?</b>"
 
-#: donate/templates/payment/card_upsell.html:16
-#: donate/templates/payment/paypal_upsell.html:16
+#: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "Igen, ennyit fogok adni:"
 
-#: donate/templates/payment/card_upsell.html:35
-#: donate/templates/payment/paypal_upsell.html:36
+#: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
-msgstr ""
+msgstr "havonta"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Felhatalmazom a Mozilla Alapítványt, hogy terhelje meg a kártyámat a fent látott összeggel, és ezt minden hónapban folytassa, amíg le nem mondom."
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
-msgstr ""
+msgstr "Igen"
 
-#: donate/templates/payment/card_upsell.html:47
-#: donate/templates/payment/paypal_upsell.html:47
+#: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
-msgstr ""
+msgstr "Nem"
 
 #: donate/templates/payment/newsletter_signup.html:4
 msgid "Stay in touch"
-msgstr ""
+msgstr "Maradjon kapcsolatban"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Védje az internetet, mint globális nyilvános erőforrást. Csatlakozzon az e-mail listánkhoz, hogy cselekedjen és folyamatosan frissüljön!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
-msgstr ""
+msgstr "Regisztráció"
 
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
-msgstr ""
+msgstr "Köszönöm, nem"
+
+#: donate/templates/payment/thank_you.html:13
+msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
+msgstr "Az adománya a web védelmére lesz fordítva, hogy az mindenki számára nyílt és elérhető legyen."
+
+#: donate/templates/payment/thank_you.html:13
+#, python-format
+msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
+msgstr "Elküldtük Önnek az adományozás nyugtáját; ha hiányzik, akkor ellenőrizze a levélszemét mappákat, majd vegye fel velünk a kapcsolatot a(z) <a href=\"%(email)s\">%(email)s</a> címen."
 
 #: donate/templates/payment/thank_you.html:15
-#, python-format
-msgid "Thank you! Your transaction reference is: %(id)s"
-msgstr ""
+msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
+msgstr "Végül, megsokszorozná a hatását azzal, hogy megosztja a Mozilla fontos munkáját? Még egyszer köszönjük!"
 
-#: donate/templates/payment/thank_you.html:19
-msgid "One last thing…"
-msgstr ""
-
-#: donate/templates/payment/thank_you.html:20
-msgid "Can you help us share the important work Mozilla is doing?"
-msgstr ""
-
-#: donate/templates/payment/thank_you.html:23
+#: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Támogattam a @mozilla #lovetheweb kampányát. Csatlakozz, segíts küzdeni a jobb és egészségesebb internetért, mindenki számára."
 
-#: donate/templates/payment/thank_you.html:24
+#: donate/templates/payment/thank_you.html:19
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Támogattam a Mozilla #lovetheweb kampányát. Csatlakozz, segíts küzdeni a jobb és egészségesebb internetért, mindenki számára."
 
-#: donate/templates/payment/thank_you.html:25
+#: donate/templates/payment/thank_you.html:20
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Ma támogattam a Mozillát"
 
-#: donate/templates/payment/thank_you.html:26
+#: donate/templates/payment/thank_you.html:21
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Támogattam a @mozthunderbird #freetheinbox kampányát. Csatlakozz hozzám a kommunikációs magánszféra támogatásában."
 
-#: donate/templates/payment/thank_you.html:27
+#: donate/templates/payment/thank_you.html:22
 msgctxt "Facebook post"
 msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Támogattam a Thunderbird #freetheinbox kampányát. Csatlakozz hozzám a kommunikációs magánszféra támogatásában."
 
-#: donate/templates/payment/thank_you.html:28
+#: donate/templates/payment/thank_you.html:23
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Ma támogottam a Thunderbirdöt"
 
-#: donate/templates/payment/thank_you.html:32
+#: donate/templates/payment/thank_you.html:27
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Megosztás Facebookon"
 
-#: donate/templates/payment/thank_you.html:36
+#: donate/templates/payment/thank_you.html:31
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
-#: donate/templates/payment/thank_you.html:39
+#: donate/templates/payment/thank_you.html:34
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Megosztás Twitteren"
 
-#: donate/templates/payment/thank_you.html:49
+#: donate/templates/payment/thank_you.html:44
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
-#: donate/templates/payment/thank_you.html:59
+#: donate/templates/payment/thank_you.html:54
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "Hivatkozás"
 
-#: donate/templates/payment/thank_you.html:60
+#: donate/templates/payment/thank_you.html:55
 msgid "Copied"
-msgstr ""
+msgstr "Másolva"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "Vissza"
