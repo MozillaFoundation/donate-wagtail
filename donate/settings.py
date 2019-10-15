@@ -56,7 +56,18 @@ env = environ.Env(
     RECAPTCHA_SITE_KEY=(str, ''),
     RECAPTCHA_SECRET_KEY=(str, ''),
     RECAPTCHA_ENABLED=(bool, False),
+    SENTRY_DSN=(str, None),
 )
+
+SENTRY_DSN = env('SENTRY_DSN')
+
+if SENTRY_DSN:
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()]
+    )
 
 # Read in the environment
 if os.path.exists(f'{root}/.env') is True:

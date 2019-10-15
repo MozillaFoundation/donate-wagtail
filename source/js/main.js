@@ -1,4 +1,5 @@
 import "babel-polyfill";
+import * as Sentry from "@sentry/browser";
 
 import Tabs from "./components/tabs";
 import MenuToggle from "./components/menu-toggle";
@@ -32,6 +33,9 @@ function closeMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  // Initialize Sentry error reporting
+  Sentry.init({ dsn: __SENTRY_DSN__ });
+
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {
     new MenuToggle(menutoggle, openMenu, closeMenu);
   }

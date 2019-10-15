@@ -1,3 +1,4 @@
+let webpack = require(`webpack`);
 let path = require(`path`);
 let frontendPath = path.resolve(__dirname, `donate`, `frontend`, `_js`);
 
@@ -20,7 +21,12 @@ let main = {
   },
   module: {
     rules
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      __SENTRY_DSN__: JSON.stringify(process.env.SENTRY_DSN)
+    })
+  ]
 };
 
 let paymentsCard = {
