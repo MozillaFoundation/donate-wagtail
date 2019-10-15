@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 20:54+0000\n"
+"PO-Revision-Date: 2019-10-15 10:52+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -178,7 +178,7 @@ msgstr "Dalše móžnosće darjenja: <a href=\"%(wire_transfer_url)s\">Přepokaz
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr "Maće problemy při darjenju? Wopytajće naše <a href=\"%(faq_url)s\">Huste prašenja</a> za wotmołwy na najhusćiše prašenja. Maće hišće problemy? <a href=\"mailto:%(email)s\">Sćelće nam mejlku</a>."
+msgstr "Maće problemy při darjenju? Wopytajće naše <a href=\"%(faq_url)s\">HSP</a> za wotmołwy na najhusćiše prašenja. Maće hišće problemy? <a href=\"mailto:%(email)s\">Sćelće nam mejlku</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
