@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-15 07:56+0000\n"
+"PO-Revision-Date: 2019-10-15 10:14+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -165,7 +165,7 @@ msgstr ""
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "Månedlige donasjoner belastes hver måned på samme dag som du donerer i dag, og vil fortsette til du avbryter. For å avbryte, send oss en e-post på <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
@@ -214,7 +214,7 @@ msgstr "Meny"
 
 #: donate/templates/pages/base_page.html:66
 msgid "Protect the internet as a global public resource"
-msgstr ""
+msgstr "Beskytt internett som en global offentlig ressurs"
 
 #: donate/templates/pages/base_page.html:74
 msgid "Join our email list to take action and stay updated!"
