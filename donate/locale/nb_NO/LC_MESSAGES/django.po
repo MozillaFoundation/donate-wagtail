@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-15 10:14+0000\n"
+"PO-Revision-Date: 2019-10-15 12:09+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -236,7 +236,7 @@ msgstr "Nei takk"
 
 #: donate/templates/pages/base_page.html:87
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr ""
+msgstr "Om du ikke tidligere har bekreftet et abonnement på et Mozilla-relatert nyhetsbrev, må du kanskje gjøre det nå. Se etter en e-post fra oss i innboksen din eller i søppelpostfilteret ditt."
 
 #: donate/templates/pages/base_page.html:99
 msgid "More about us"
@@ -256,7 +256,7 @@ msgstr "GitHub"
 
 #: donate/templates/pages/base_page.html:126
 msgid "Participation Guidelines"
-msgstr ""
+msgstr "Retningslinjer for deltakelse"
 
 #: donate/templates/pages/base_page.html:129
 msgid "Legal"
