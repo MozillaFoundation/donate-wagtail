@@ -34,7 +34,10 @@ function closeMenu() {
 
 document.addEventListener("DOMContentLoaded", function() {
   // Initialize Sentry error reporting
-  Sentry.init({ dsn: __SENTRY_DSN__ });
+  Sentry.init({
+    dsn: __SENTRY_DSN__,
+    release: __HEROKU_RELEASE_VERSION__
+  });
 
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {
     new MenuToggle(menutoggle, openMenu, closeMenu);

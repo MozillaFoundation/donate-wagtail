@@ -57,16 +57,19 @@ env = environ.Env(
     RECAPTCHA_SECRET_KEY=(str, ''),
     RECAPTCHA_ENABLED=(bool, False),
     SENTRY_DSN=(str, None),
+    HEROKU_RELEASE_VERSION=(str, None),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
+HEROKU_RELEASE_VERSION = env('HEROKU_RELEASE_VERSION')
 
 if SENTRY_DSN:
     import sentry_sdk
     from sentry_sdk.integrations.django import DjangoIntegration
     sentry_sdk.init(
         dsn=SENTRY_DSN,
-        integrations=[DjangoIntegration()]
+        integrations=[DjangoIntegration()],
+        release=HEROKU_RELEASE_VERSION
     )
 
 # Read in the environment
