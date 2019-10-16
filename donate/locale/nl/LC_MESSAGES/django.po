@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 20:07+0000\n"
+"PO-Revision-Date: 2019-10-16 12:09+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -424,12 +424,13 @@ msgstr ""
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
 msgstr ""
+"We hebben u een e-mailbericht met donatiebewijs gestuurd; als dit ontbreekt, controleer dan uw mappen met ongewenste e-mail / spam, en neem daarna contact met ons op via <a "
+"href=\"%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
-#, fuzzy
 #| msgid "Can you help us share the important work Mozilla is doing?"
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr "Kunt u ons helpen het belangrijke werk dat Mozilla doet te delen?"
+msgstr "En verder, wilt u ons helpen het belangrijke werk dat Mozilla doet te delen? Nogmaals bedankt!"
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
