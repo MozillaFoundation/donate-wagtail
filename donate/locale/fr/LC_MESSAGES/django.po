@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-11 11:20+0000\n"
-"Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
+"PO-Revision-Date: 2019-10-16 13:39+0000\n"
+"Last-Translator: goofy <goofy@babelzilla.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -20,17 +20,17 @@ msgstr ""
 
 #: donate/core/translation.py:12
 msgid "This field is required."
-msgstr ""
+msgstr "Ce champ est nécessaire."
 
 #: donate/core/translation.py:15
 #| msgid "Card number"
 msgid "Enter a number."
-msgstr ""
+msgstr "Veuillez saisir un nombre."
 
 #: donate/core/translation.py:18
 #| msgid "Enter email address"
 msgid "Enter a valid email address."
-msgstr ""
+msgstr "Veuillez saisir une adresse électronique valide."
 
 #: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
@@ -230,7 +230,7 @@ msgstr "Je m’inscris"
 #: donate/templates/pages/base_page.html:86
 #| msgid "No Thanks"
 msgid "Thanks!"
-msgstr ""
+msgstr "Merci !"
 
 #: donate/templates/pages/base_page.html:87
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
@@ -416,12 +416,14 @@ msgstr "Non merci"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Votre don servira à protéger le Web, à le garder ouvert et à le rendre accessible à tout le monde."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
 msgstr ""
+"Nous vous avons envoyé le reçu de votre don par courrier électronique. Si vous ne le trouvez pas, vérifiez vos dossiers de courrier indésirable, puis contactez-nous à l’adresse <a "
+"href=\"%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
 #| msgid "Can you help us share the important work Mozilla is doing?"
