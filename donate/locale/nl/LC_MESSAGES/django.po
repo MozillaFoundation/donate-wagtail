@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-17 10:47+0000\n"
-"Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
+"PO-Revision-Date: 2019-10-17 19:09+0000\n"
+"Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -378,7 +378,7 @@ msgstr "Bedankt voor uw gulle gift"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "We zien u graag als vaste supporter van Mozilla. <b>Zou u met een ingang van volgende maand een maandelijkse donatie willen doen?</b>"
+msgstr "We zien u graag als vaste supporter van Mozilla. <b>Zou u met ingang van volgende maand een maandelijkse donatie willen doen?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
@@ -418,7 +418,7 @@ msgstr "Nee, bedankt"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr "Uw donatie gaat rechtstreeks naar het werk dat nodig is om het internet voor iedereen bereikbaar, veilig en open te houden."
+msgstr "Uw donatie gaat rechtstreeks naar het werk dat nodig is om het internet voor iedereen toegankelijk, veilig en open te houden."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
