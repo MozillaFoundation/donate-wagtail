@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 22:30+0000\n"
+"PO-Revision-Date: 2019-10-17 01:32+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
-msgstr ""
+msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
@@ -450,30 +450,30 @@ msgstr ""
 
 #: donate/templates/payment/thank_you.html:27
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Del på Facebook"
 
 #: donate/templates/payment/thank_you.html:31
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:34
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Del på Twitter"
 
 #: donate/templates/payment/thank_you.html:44
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: donate/templates/payment/thank_you.html:54
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "Lenke"
 
 #: donate/templates/payment/thank_you.html:55
 msgid "Copied"
-msgstr ""
+msgstr "Kopiert"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "Tilbake"
