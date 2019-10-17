@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-17 19:12+0000\n"
+"PO-Revision-Date: 2019-10-17 19:16+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fy_NL\n"
@@ -430,59 +430,59 @@ msgstr "Dan noch dit, wolle jo ús helpe it wichtige wurk dat Mozilla docht te d
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Ik haw hjoed oan @mozilla donearre, want ik #lovetheweb. Fjochtsje mei my mei foar in better en sûner ynternet, foar elkenien."
 
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Ik haw hjoed oan Mozilla donearre, want ik #lovetheweb. Fjochtsje mei my mei foar in better en sûner ynternet, foar elkenien."
 
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Ik haw hjoed oan Mozilla donearre"
 
 #: donate/templates/payment/thank_you.html:21
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Ik haw hjoed oan @mozthunderbird donearre foar frijheid fan it postfek. Stypje mei my de privacy fan kommunikaasje."
 
 #: donate/templates/payment/thank_you.html:22
 msgctxt "Facebook post"
 msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Ik haw hjoed oan Thunderbird donearre foar frijheid fan it postfek. Stypje mei my de privacy fan kommunikaasje."
 
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Ik haw hjoed oan Thunderbird donearre"
 
 #: donate/templates/payment/thank_you.html:27
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Diele op Facebook"
 
 #: donate/templates/payment/thank_you.html:31
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:34
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Diele op Twitter"
 
 #: donate/templates/payment/thank_you.html:44
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: donate/templates/payment/thank_you.html:54
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "Keppeling"
 
 #: donate/templates/payment/thank_you.html:55
 msgid "Copied"
-msgstr ""
+msgstr "Kopiearre"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "Tebek"
