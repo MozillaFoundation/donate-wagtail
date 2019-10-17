@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-15 13:42+0000\n"
+"PO-Revision-Date: 2019-10-17 11:08+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -77,7 +77,7 @@ msgstr "Den typen kort du brukte, godtas ikke."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr "CVV-koden du oppga var ugyldig."
+msgstr "CVV-koden du skrev inn er ugyldig."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
@@ -85,7 +85,7 @@ msgstr "Utløpsdatoen du oppga var ugyldig."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr "Kredittkortnummeret du oppga var ugyldig."
+msgstr "Kredittkortnummeret du skrev inn er ugyldig."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
