@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-16 12:09+0000\n"
-"Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
+"PO-Revision-Date: 2019-10-16 10:53+0000\n"
+"Last-Translator: nick <nick@invendi.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -418,7 +418,7 @@ msgstr "Nee, bedankt"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Uw donatie gaat rechtstreeks naar het werk dat nodig is om het internet voor iedereen bereikbaar, veilig en open te houden."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
