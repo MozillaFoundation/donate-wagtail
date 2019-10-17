@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-17 01:50+0000\n"
+"PO-Revision-Date: 2019-10-17 02:11+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -89,7 +89,7 @@ msgstr "Kredittkortnummeret du skreiv inn er ugyldig."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Postnummeret du skreiv inn er ikkje gyldig."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
@@ -105,7 +105,7 @@ msgstr ""
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Captcha var ugyldig. Prøv på nytt."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
@@ -326,7 +326,7 @@ msgstr ""
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Rett opp desse feila og prøv igjen."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
@@ -338,7 +338,7 @@ msgstr "Kortnummer"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "Går ut-dato"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
@@ -426,7 +426,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Facebook post"
 msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Eg donerte til Mozilla i dag fordi eg #lovetheweb. Bli med meg og kjemp for eit betre og sunnare internett for alle."
 
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Email subject line"
@@ -446,7 +446,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:23
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Eg donerte til Thunderbird i dag"
 
 #: donate/templates/payment/thank_you.html:27
 msgid "Share on Facebook"
