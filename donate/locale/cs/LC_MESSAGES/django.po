@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-17 06:09+0000\n"
+"PO-Revision-Date: 2019-10-19 14:24+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -329,7 +329,7 @@ msgstr "Ve vyplněném formuláři jsme našli chyby. Upravte prosím níže vyz
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "Vaši platbu se nepodařilo zpracovat kvůli následující chybě s vámi zadanou adresou:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
@@ -358,7 +358,7 @@ msgstr "Souhlasím s tím, aby Mozilla Foundation strhla z mé platební karty n
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr "Chci darovat <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Darovat <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
@@ -374,11 +374,11 @@ msgstr "Děkujeme za váš dar"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Budeme moc rádi, pokud se rozhodnete Mozillu podporovat dlouhodobě. <b>Na této stránce můžete zadat pravidelnou měsíční platbu počínaje příštím měsícem.</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "Ano, chci darovat:"
 
 #: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
@@ -414,16 +414,16 @@ msgstr "Ne, děkuji"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Váš dar využijeme přímo na ochranu webu jako otevřeného zdroje dostupného pro všechny."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "Potvrzení o daru jsme vám poslali e-mailem. Pokud ho ve své schránce nenajdete, zkontrolujte prosím složku se spamem a případně nás kontaktujte na adrese <a href=\"%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr ""
+msgstr "V neposlední řadě můžete svou pomoc znásobit sdílením informací, jaké důležité věci Mozilla dělá. Děkujeme vám."
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
