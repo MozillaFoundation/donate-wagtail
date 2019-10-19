@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-19 11:11+0000\n"
+"PO-Revision-Date: 2019-10-19 11:20+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -233,7 +233,7 @@ msgstr "Dziękujemy!"
 
 #: donate/templates/pages/base_page.html:87
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr ""
+msgstr "Jeśli jeszcze nigdy nie potwierdzono subskrypcji biuletynu Mozilli, to możesz musieć to zrobić. Sprawdź, czy w skrzynce odbiorczej lub spamie jest wiadomość od nas."
 
 #: donate/templates/pages/base_page.html:99
 msgid "More about us"
@@ -415,18 +415,19 @@ msgstr "Nie, dziękuję"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Twój datek od razu przyczyni się do ochrony Internetu, aby pozostał otwarty i dostępny dla wszystkich."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
 msgstr ""
+"Wysłaliśmy potwierdzenie datku na Twój adres e-mail. Jeśli nie możesz go znaleźć, to prosimy sprawdzić w folderze z niechcianymi wiadomościami/spamem, a następnie skontaktować się z nami pod adresem"
+" <a href=\"%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
-#, fuzzy
 #| msgid "Can you help us share the important work Mozilla is doing?"
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr "Czy możesz pomóc nam opowiedzieć o ważnej pracy, jaką wykonuje Mozilla?"
+msgstr "Czy możesz pomnożyć swój udział, opowiadając o ważnej pracy, jaką wykonuje Mozilla? Jeszcze raz dziękujemy!"
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
