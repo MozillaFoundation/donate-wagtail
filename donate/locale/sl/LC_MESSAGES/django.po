@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 16:39+0000\n"
-"Last-Translator: Rok Žerdin <zerdo90@gmail.com>\n"
+"PO-Revision-Date: 2019-10-19 08:20+0000\n"
+"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -24,10 +24,9 @@ msgid "This field is required."
 msgstr "To polje je obvezno."
 
 #: donate/core/translation.py:15
-#, fuzzy
 #| msgid "Card number"
 msgid "Enter a number."
-msgstr "Številka kartice"
+msgstr "Vnesite številko."
 
 #: donate/core/translation.py:18
 #| msgid "Enter email address"
@@ -78,7 +77,7 @@ msgstr ""
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Koda CVV, ki ste jo vnesli, je neveljavna."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
@@ -90,7 +89,7 @@ msgstr ""
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Poštna številka, ki ste jo vnesli, ni veljavna."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
@@ -114,7 +113,7 @@ msgstr "Strani ni mogoče najti"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "Ojoj!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -122,7 +121,7 @@ msgstr ""
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "Obiščite začetno stran"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -189,11 +188,11 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:22
 msgid "Initiatives"
-msgstr ""
+msgstr "Pobude"
 
 #: donate/templates/pages/base_page.html:25
 msgid "Participate"
-msgstr ""
+msgstr "Sodelujte"
 
 #: donate/templates/pages/base_page.html:28
 msgid "Internet Health"
@@ -234,7 +233,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:99
 msgid "More about us"
-msgstr ""
+msgstr "Več o nas"
 
 #: donate/templates/pages/base_page.html:102 donate/templates/payment/thank_you.html:38
 msgid "Twitter"
@@ -305,11 +304,11 @@ msgstr ""
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "Spremeni znesek"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "Znesek prispevka"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
