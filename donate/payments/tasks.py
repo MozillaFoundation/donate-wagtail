@@ -41,6 +41,7 @@ def send_transaction_to_basket(data):
         'data': {
             'event_type': 'donation',
             'last_name': data['last_name'],
+            'first_name': data['first_name'],
             'email': data['email'],
             'donation_amount': data['amount'],
             'currency': data['currency'],
