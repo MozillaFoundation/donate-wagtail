@@ -45,7 +45,8 @@ class BasketTransactionTestCase(TestCase):
 
     def setUp(self):
         self.sample_data = {
-            'last_name': 'Bob',
+            'last_name': 'Bobbertson',
+            'first_name': 'Bob',
             'email': 'test@example.com',
             'amount': Decimal(10),
             'currency': 'usd',
@@ -62,7 +63,8 @@ class BasketTransactionTestCase(TestCase):
         self.sample_payload = {
             'data': {
                 'event_type': 'donation',
-                'last_name': 'Bob',
+                'last_name': 'Bobbertson',
+                'first_name': 'Bob',
                 'email': 'test@example.com',
                 'donation_amount': Decimal(10),
                 'currency': 'usd',
