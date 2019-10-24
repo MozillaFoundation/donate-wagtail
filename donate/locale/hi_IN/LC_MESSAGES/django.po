@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-24 11:31+0000\n"
+"PO-Revision-Date: 2019-10-24 11:51+0000\n"
 "Last-Translator: Mahtab Alam <mahtab.ceh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi_IN\n"
@@ -87,31 +87,31 @@ msgstr "आपके द्वारा दर्ज किया गया क�
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "आपके द्वारा दिया गया पोस्ट कोड सही नहीं है।"
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "क्षमा करें, आपके पेमेंट को पूरा करने में एक समस्या हुई। कृपया बाद में पुनः प्रयास करें या कोई अन्य भुगतान तरीके का उपयोग करें।"
 
 #: donate/payments/views.py:291
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "कुछ समस्या उत्पन्न हुई। हम आपके भुगतान को पूरा करने में असमर्थ रहे।"
 
 #: donate/payments/views.py:481 donate/payments/views.py:569
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "क्षमा करें, आपके भुगतान को पूरा करने में कोई समस्या उत्पन्न हुई। कृपया कुछ देर बाद पुनः प्रयास करें।"
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "कैप्चा गलत था। कृपया पुनः प्रयास करें।"
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "पृष्ठ उपलब्ध नहीं"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "अरे नहीं!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
