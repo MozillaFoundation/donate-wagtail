@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-24 08:00+0000\n"
+"PO-Revision-Date: 2019-10-24 11:31+0000\n"
 "Last-Translator: Mahtab Alam <mahtab.ceh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi_IN\n"
@@ -67,23 +67,23 @@ msgstr "देश"
 #: donate/payments/forms.py:103 donate/templates/pages/base_page.html:82
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "इस <a href='%(url)s'>गोपनीयता निति</a> में बताए अनुसार Mozilla द्वारा मेरी जानकारियों के रखे जाने से मुझे कोई आपत्ति नहीं है।"
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "आपके द्वारा उपयोग कार्ड प्रकार स्वीकृत नहीं हैं।"
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "आपके द्वारा दर्ज CVV कोड गलत था।"
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "आपके द्वारा दर्ज की गई समाप्ति तिथि गलत थी।"
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "आपके द्वारा दर्ज किया गया क्रेडिट कार्ड नंबर गलत था।"
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
