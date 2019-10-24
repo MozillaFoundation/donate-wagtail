@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-14 17:30+0000\n"
+"PO-Revision-Date: 2019-10-24 14:01+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -164,21 +164,25 @@ msgstr ""
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"A havi adományok minden hónapban ugyanakkor kerülnek levonásra, és ez addig folytatódik, amíg le nem mondja. A lemondáshoz írjon nekünk egy levelet a következő címre: <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Az adományozás más módjai: <a href=\"%(wire_transfer_url)s\">Banki átutalás vagy SEPA</a> | <a href=\"%(check_url)s\">Csekk</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "Az adományozás más módjai: <a href=\"%(wire_transfer_url)s\">Banki átutalás vagy SEPA</a> | <a href=\"%(check_url)s\">Csekk</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr ""
+"Problémái vannak az adományozással? Keresse fel a <a href=\"%(faq_url)s\">GYIK-ot</a> a leggyakoribb kérdésekre vonatkozásó válaszokért. Még mindig vannak problémái? <a "
+"href=\"mailto:%(email)s\">Küldjön nekünk egy e-mailt</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -353,7 +357,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Felhatalmazom a Mozilla Alapítványt, hogy terhelje meg a kártyámat a lent látott összeggel, és ezt minden hónapban folytassa, amíg le nem mondom."
 
 #: donate/templates/payment/card.html:140
 #, python-format
@@ -362,7 +366,7 @@ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> adományozás
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "Az adománya segít, hogy a web nyílt és szabad maradhasson. Előre is köszönjük a felajánlását."
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
