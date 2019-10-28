@@ -75,8 +75,11 @@
                     </div>
                 </div>
             </form>
-
-            {% include "fragments/donate_form_disclaimer.html" with monthly=false thunderbird=false %}
+            {% if THUNDERBIRD_INSTANCE %}
+                {% include "fragments/donate_form_disclaimer_thunderbird.html" with monthly=false %}
+            {% else %}
+                {% include "fragments/donate_form_disclaimer.html" with monthly=false %}
+            {% endif %}
         </div>
         <div class="js-tab-panel tabs__panel {% if initial_frequency == 'single' %}tabs__panel--hidden{% endif %}" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
             <form method="GET" id="donate-form--monthly">
@@ -136,7 +139,11 @@
                 </div>
             </form>
 
-            {% include "fragments/donate_form_disclaimer.html" with monthly=True thunderbird=false %}
+            {% if THUNDERBIRD_INSTANCE %}
+                {% include "fragments/donate_form_disclaimer_thunderbird.html" with monthly=true %}
+            {% else %}
+                {% include "fragments/donate_form_disclaimer.html" with monthly=true %}
+            {% endif %}
 
         </div>
     </div>

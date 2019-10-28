@@ -12,7 +12,11 @@
         <div class="layout__full-col">
             <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
 
-            <p>{% trans "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>" %}</p>
+            <p>
+                {% block sustaining_supporter %}
+                    {% trans "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>" %}
+                {% endblock %}
+            </p>
             <p>{% trans "Yes, I will give:" %}</p>
 
             <form method="post" class="form" id="payments__braintree-form">

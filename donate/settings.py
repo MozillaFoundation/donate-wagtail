@@ -58,6 +58,7 @@ env = environ.Env(
     RECAPTCHA_ENABLED=(bool, False),
     SENTRY_DSN=(str, None),
     HEROKU_RELEASE_VERSION=(str, None),
+    THUNDERBIRD_INSTANCE=(bool, False),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
@@ -157,6 +158,7 @@ TEMPLATES = [
         ],
         'OPTIONS': {
             'context_processors': [
+                'donate.context_processors.export_vars',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -543,3 +545,6 @@ RQ_QUEUES = {
 
 # This name is displayed in the Wagtail admin.
 WAGTAIL_SITE_NAME = "donate"
+
+# Defines if content should be tailored for Mozilla or Thunderbird
+THUNDERBIRD_INSTANCE = env('THUNDERBIRD_INSTANCE')

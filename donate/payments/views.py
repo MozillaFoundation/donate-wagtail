@@ -407,7 +407,11 @@ class TransactionRequiredMixin:
 class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
     form_class = UpsellForm
     success_url = reverse_lazy('payments:newsletter_signup')
-    template_name = 'payment/card_upsell.html'
+
+    if settings.THUNDERBIRD_INSTANCE:
+        template_name = 'payment/card_upsell_thunderbird.html'
+    else:
+        template_name = 'payment/card_upsell.html'
 
     def dispatch(self, request, *args, **kwargs):
         if not self.transaction_exists_in_session():
@@ -487,7 +491,11 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
 class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
     form_class = BraintreePaypalUpsellForm
     success_url = reverse_lazy('payments:newsletter_signup')
-    template_name = 'payment/paypal_upsell.html'
+
+    if settings.THUNDERBIRD_INSTANCE:
+        template_name = 'payment/paypal_upsell_thunderbird.html'
+    else:
+        template_name = 'payment/paypal_upsell.html'
 
     def dispatch(self, request, *args, **kwargs):
         if not self.transaction_exists_in_session():

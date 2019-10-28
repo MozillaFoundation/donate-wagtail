@@ -11,19 +11,23 @@
     </p>
     <p>
         <b>
-            {% if thunderbird %}
-                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}
-            {% else %}
-                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' bitcoin_url='https://wiki.mozilla.org/Donate_Bitcoin' %}Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a> | <a href="{{ bitcoin_url }}">Bitcoin</a>{% endblocktrans %}
-            {% endif %}
+            {% block ways_to_give %}
+                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' bitcoin_url='https://wiki.mozilla.org/Donate_Bitcoin' trimmed %}
+                    Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a> | <a href="{{ bitcoin_url }}">Bitcoin</a>
+                {% endblocktrans %}
+            {% endblock %}
         </b>
     </p>
     <p>
-        {% blocktrans with faq_url='/faq' email='donate@mozilla.org' trimmed %}
-            Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.
-        {% endblocktrans %}
+        {% block faq %}
+            {% blocktrans with faq_url='/faq' email='donate@mozilla.org' trimmed %}
+                Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.
+            {% endblocktrans %}
+        {% endblock %}
     </p>
     <p>
-        {% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}
+        {% block donation_use %}
+            {% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}
+        {% endblock %}
     </p>
 </footer>
