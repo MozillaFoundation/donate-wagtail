@@ -107,7 +107,7 @@ def docker_test_python(ctx):
     print("* Running flake8")
     ctx.run("docker-compose run --rm backend pipenv run flake8 tasks.py donate/", **PLATFORM_ARG)
     print("* Running tests")
-    docker_manage(ctx, "test --settings=donate.settings_test")
+    docker_manage(ctx, "test --settings=donate.settings --configuration=Testing")
 
 
 @task

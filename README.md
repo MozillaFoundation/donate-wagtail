@@ -27,6 +27,20 @@ It's possible to connect your IDE to the python virtual env available inside the
 
 To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend pipenv run python manage.py test --settings=donate.settings_test`. Since it's pretty long, most case are covered by Invoke commands.
 
+## Configuration
+
+[Django Configurations](https://django-configurations.readthedocs.io/en/stable/) is used for application configuration. The following Configuration Classes are provided:
+
+| Value                 | Purpose                                                                                                            |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------|
+|  Development          |  Base configuration, suitable for local development.                                                               |
+|  Staging              | Staging configuration.                                                                                             |
+| Production            | Production configuration.                                                                                          |
+| ReviewApp             | Review App configuration. Use this configuration for Heroku Review apps.                                           |
+| ThuderbirdDevelopment | Base configuration that enables all the Thunderbird template and string overrides. Suitable for local development. |
+| ThunderbirdStaging    | Staging configuration for Thunderbird donation configurations.                                                     |
+| ThunderbirdProduction | Production configuration for Thunderbird donation configurations.                                                  |
+
 ## Invoke tasks
 
 Invoke is a python tasks runner that creates shortcuts for commands we frequently use. For example, instead of `docker-compose run --rm backend pipenv manage.py migrate`, you can use `inv docker-migrate`. It can also be used to run management commands: `inv docker-manage load-fake-data`. If you need to add multiple args to an invoke commands, use quotes. ex: `invoke docker-npm "install moment"`

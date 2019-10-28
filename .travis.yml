@@ -7,7 +7,6 @@ env:
   global:
   - ALLOWED_HOSTS=localhost
   - CONTENT_TYPE_NO_SNIFF=True
-  - CORS_WHITELIST="*"
   - DATABASE_URL=postgres://postgres@localhost:5432/donate
   - DEBUG=False
   - DJANGO_SECRET_KEY=secret
@@ -32,8 +31,8 @@ matrix:
     - psql -c 'create database donate;' -U postgres
     script:
     - pipenv run flake8 donate/
-    - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings_test
-    - pipenv run python manage.py test_compilemessages_ci --settings=donate.settings_test
+    - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings --configuration=Testing
+    - pipenv run python manage.py test_compilemessages_ci --settings=donate.settings --configuration=Testing
     after_success:
     - coveralls
   - name: npm tests
@@ -42,3 +41,4 @@ matrix:
     - nvm use --lts=carbon
     install: "./travis-scripts/npm-install.sh"
     script: npm run test
+

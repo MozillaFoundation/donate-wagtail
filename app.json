@@ -74,9 +74,10 @@
     "SLACK_WEBHOOK_RA": {
       "required": true
     },
+    "DJANGO_CONFIGURATION": "ReviewApp",
+    "DJANGO_SETTINGS_MODULE": "donate.settings",
     "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
-    "CORS_WHITELIST": "*",
     "DEBUG": "False",
     "NPM_CONFIG_PRODUCTION": "true",
     "USE_S3": "True",
