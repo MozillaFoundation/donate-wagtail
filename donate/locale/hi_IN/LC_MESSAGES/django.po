@@ -123,11 +123,11 @@ msgstr "हमारे मुख्य पृष्ठ पर जाएं"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr "ONE TIME"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr "MONTHLY"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
@@ -139,7 +139,7 @@ msgstr "भुगतान प्रकार चुनें"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr "SECURE"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:123
 msgid "Donate"
@@ -270,7 +270,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr "DONATE NOW"
+msgstr ""
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
