@@ -28,7 +28,7 @@
     <body>
         {% block body_top %}{% endblock %}
 
-        <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %} {% if LANGUAGE_BIDI %}app--rtl{% endif %} {% if not LANGUAGE_CODE|is_fmo_locale %}app--no-menu{% endif %}">
+        <div class="app {% block template_name %}app--{{ page.get_verbose_name|slugify }}{% endblock %} {% if LANGUAGE_BIDI %}app--rtl{% endif %}">
             <div class="app__container">
 
                 {% include "fragments/svg-sprites.html" %}
