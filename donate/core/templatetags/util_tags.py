@@ -19,9 +19,10 @@ def to_known_locale(code):
     return to_locale(code)
 
 
+# Filters locales supported on foundation.mozilla.org
 @register.filter
-def is_english(language_code):
-    return language_code.startswith('en')
+def is_fmo_locale(language_code):
+    return language_code.startswith(('de', 'en', 'es', 'fr', 'pl', 'pt'))
 
 
 @register.simple_tag(takes_context=True)
