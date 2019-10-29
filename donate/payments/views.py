@@ -618,4 +618,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
 
 
 class ThankYouView(TransactionRequiredMixin, TemplateView):
-    template_name = 'payment/thank_you.html'
+    if settings.THUNDERBIRD_INSTANCE:
+        template_name = 'payment/thank_you_thunderbird.html'
+    else:
+        template_name = 'payment/thank_you.html'
