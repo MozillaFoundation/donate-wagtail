@@ -1,14 +1,18 @@
 {% extends "base.html" %}
-{% load i18n static %}
+{% load i18n static util_tags %}
 
 {% block meta_tags %}
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{ page.title }}" />
+    <meta name="twitter:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{{ request.site.site_name }} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {{ request.site.site_name }}{% endif %}" />
+    <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro }}{% endif %}" />
+    <meta name="twitter:image" content="{% static '_images/og.png' %}"/>
 
     {# facebook opengraph tags #}
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ page.url }}" />
-    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{{ request.site.site_name }} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {{ request.site.site_name }}{% endif %}" />
+    <meta property="og:site_name" content="{% if request.site.site_name %}{{ request.site.site_name }}{% endif %}" />
+    <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro }}{% endif %}" />
     <meta property="og:image" content="{% static '_images/og.png' %}"/>
 {% endblock meta_tags %}
 
