@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"POT-Creation-Date: 2019-10-29 14:18+0000\n"
 "PO-Revision-Date: 2019-10-25 09:52+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,16 +24,15 @@ msgid "This field is required."
 msgstr "Kjo fushë është e domosdoshme."
 
 #: donate/core/translation.py:15
-#| msgid "Card number"
 msgid "Enter a number."
 msgstr "Jepni një numër."
 
 #: donate/core/translation.py:18
-#| msgid "Enter email address"
 msgid "Enter a valid email address."
 msgstr "Jepni adresë email të vlefshme."
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:21 donate/payments/forms.py:35
+#: donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr "Shumë"
 
@@ -66,7 +65,7 @@ msgstr "Kod ZIP"
 msgid "Country"
 msgstr "Vend"
 
-#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:82
+#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:86
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "Pajtohem me trajtimin që Mozilla u bën të dhënave të mia, ashtu si shpjegohet në këtë <a href='%(url)s'>Shënim mbi Privatësinë</a>."
@@ -131,19 +130,27 @@ msgstr "NJË HERËSH"
 msgid "MONTHLY"
 msgstr "PËRMUAJSHËM"
 
-#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39
+#: donate/templates/fragments/donate_form.html:40
+#: donate/templates/fragments/donate_form.html:99
+#: donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "Tjetër sasi"
 
-#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46
+#: donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "Zgjidhni Pagesë"
 
-#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52
+#: donate/templates/fragments/donate_form.html:112
+#: donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "I SIGURT"
 
-#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:123
+#: donate/templates/fragments/donate_form.html:58
+#: donate/templates/fragments/donate_form.html:118
+#: donate/templates/pages/base_page.html:127
 msgid "Donate"
 msgstr "Dhuroni"
 
@@ -153,18 +160,13 @@ msgstr "për muaj"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
-msgid ""
-"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
-"by Mozilla."
-msgstr ""
-"Të dhënat e pagesës tuaj do të përpunohen nga <a href=\"%(braintree_url)s\">Braintree</a> (për karta krediti/debiti) ose <a href=\"%(paypal_url)s\">PayPal</a>, dhe një regjistrim i dhurimit tuaj do "
-"të depozitohet nga Mozilla."
+msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
+msgstr "Të dhënat e pagesës tuaj do të përpunohen nga <a href=\"%(braintree_url)s\">Braintree</a> (për karta krediti/debiti) ose <a href=\"%(paypal_url)s\">PayPal</a>, dhe një regjistrim i dhurimit tuaj do të depozitohet nga Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
-"Dhurimet mujore tërhiqen çdo muaj në të njëjtën ditë si sot që po dhuroni, dhe kjo do të vazhdojë deri sa të anulohet. Për ta anuluar, dërgonani email te <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr "Dhurimet mujore tërhiqen çdo muaj në të njëjtën ditë si sot që po dhuroni, dhe kjo do të vazhdojë deri sa të anulohet. Për ta anuluar, dërgonani email te <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
@@ -182,111 +184,107 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr "Probleme me dhurimin? Vizitoni ndarjen tonë <a href=\"%(faq_url)s\">FAQ</a>, për përgjigje ndaj pyetjeve më të rëndomta. Keni ende probleme? <a href=\"mailto:%(email)s\">Dërgonani një email</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
-msgid ""
-"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
-" to the fullest extent permitted by law."
-msgstr ""
-"Kontributet shkojnë për Mozilla Foundation, një ent 501(c)(3) me qendër në Mountain View, California, për t’u përdorur sipas dëshirës së tij për qëllimet e veta bamirëse. Ato janë të përjashtueshme "
-"nga taksimi në ShBA deri në atë shkallë që lejon ligji."
+msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
+msgstr "Kontributet shkojnë për Mozilla Foundation, një ent 501(c)(3) me qendër në Mountain View, California, për t’u përdorur sipas dëshirës së tij për qëllimet e veta bamirëse. Ato janë të përjashtueshme nga taksimi në ShBA deri në atë shkallë që lejon ligji."
 
-#: donate/templates/pages/base_page.html:22
+#: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
 msgstr "Nisma"
 
-#: donate/templates/pages/base_page.html:25
+#: donate/templates/pages/base_page.html:29
 msgid "Participate"
 msgstr "Merrni pjesë"
 
-#: donate/templates/pages/base_page.html:28
+#: donate/templates/pages/base_page.html:32
 msgid "Internet Health"
 msgstr "Shëndeti i Internetit"
 
-#: donate/templates/pages/base_page.html:31
+#: donate/templates/pages/base_page.html:35
 msgid "About Us"
 msgstr "Rreth Nesh"
 
-#: donate/templates/pages/base_page.html:42
+#: donate/templates/pages/base_page.html:46
 msgid "Menu"
 msgstr "Menu"
 
-#: donate/templates/pages/base_page.html:66
+#: donate/templates/pages/base_page.html:70
 msgid "Protect the internet as a global public resource"
 msgstr "Mbrojeni Internetin si një burim publik global"
 
-#: donate/templates/pages/base_page.html:74
+#: donate/templates/pages/base_page.html:78
 msgid "Join our email list to take action and stay updated!"
 msgstr "Merrni pjesë te lista jonë e postimeve, për t’u hedhur në veprim dhe për të qenë i përditësuar!"
 
-#: donate/templates/pages/base_page.html:75
+#: donate/templates/pages/base_page.html:79
 msgid "Enter email address"
 msgstr "Jepni adresë email"
 
-#: donate/templates/pages/base_page.html:78
+#: donate/templates/pages/base_page.html:82
 msgid "Sign up"
 msgstr "Regjistrohuni"
 
-#: donate/templates/pages/base_page.html:86
+#: donate/templates/pages/base_page.html:90
 #, fuzzy
 #| msgid "No Thanks"
 msgid "Thanks!"
 msgstr "Jo, Faleminderit"
 
-#: donate/templates/pages/base_page.html:87
+#: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr ""
-"Nëse s’keni ripohuar më parë një pajtim te një buletin i Mozilla-s, mund t’ju duhet ta bëni. Ju lutemi, kontrolloni email-et tuaj ose filtrin tuaj për mesazhe të padëshiruar për një email nga ne."
+msgstr "Nëse s’keni ripohuar më parë një pajtim te një buletin i Mozilla-s, mund t’ju duhet ta bëni. Ju lutemi, kontrolloni email-et tuaj ose filtrin tuaj për mesazhe të padëshiruar për një email nga ne."
 
-#: donate/templates/pages/base_page.html:99
+#: donate/templates/pages/base_page.html:103
 msgid "More about us"
 msgstr "Më tepër rreth nesh"
 
-#: donate/templates/pages/base_page.html:102 donate/templates/payment/thank_you.html:38
+#: donate/templates/pages/base_page.html:106
+#: donate/templates/payment/thank_you.html:34
 msgid "Twitter"
 msgstr "Twitter"
 
-#: donate/templates/pages/base_page.html:108
+#: donate/templates/pages/base_page.html:112
 msgid "Instagram"
 msgstr "Instagram"
 
-#: donate/templates/pages/base_page.html:114
+#: donate/templates/pages/base_page.html:118
 msgid "GitHub"
 msgstr "GitHub"
 
-#: donate/templates/pages/base_page.html:126
+#: donate/templates/pages/base_page.html:130
 msgid "Participation Guidelines"
 msgstr "Udhëzime Pjesëmarrjeje"
 
-#: donate/templates/pages/base_page.html:129
+#: donate/templates/pages/base_page.html:133
 msgid "Legal"
 msgstr "Ligjore"
 
-#: donate/templates/pages/base_page.html:132
+#: donate/templates/pages/base_page.html:136
 msgid "Privacy"
 msgstr "Privatësi"
 
-#: donate/templates/pages/base_page.html:135
+#: donate/templates/pages/base_page.html:139
 msgid "License"
 msgstr "Licencë"
 
-#: donate/templates/pages/base_page.html:149
+#: donate/templates/pages/base_page.html:153
 #, python-format
-msgid ""
-"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
-"%(link_attributes)s>%(site_url)s</a>."
-msgstr ""
-"Mozilla është një ent global jofitimprurës përkushtuar vënies tuaj në kontroll të jetës tuaj internetore dhe dhënies formë të ardhmes së web-it për të mirën publike. Na vizitoni te <a "
-"%(link_attributes)s>%(site_url)s</a>."
+msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
+msgstr "Mozilla është një ent global jofitimprurës përkushtuar vënies tuaj në kontroll të jetës tuaj internetore dhe dhënies formë të ardhmes së web-it për të mirën publike. Na vizitoni te <a %(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "DHURONI QË SOT"
 
-#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
+#: donate/templates/pages/core/campaign_page.html:52
+#: donate/templates/pages/core/landing_page.html:33
+#: donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "Vulë “Charity Navigator” 4 yje"
 
-#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
+#: donate/templates/pages/core/campaign_page.html:55
+#: donate/templates/pages/core/landing_page.html:36
+#: donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
 msgstr "Vulë GuideStar Gold 2019"
 
@@ -325,7 +323,10 @@ msgstr "Ripohojeni"
 msgid "Your Details"
 msgstr "Hollësitë Tuaja"
 
-#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
+#: donate/templates/payment/card.html:60
+#: donate/templates/payment/card_upsell.html:29
+#: donate/templates/payment/newsletter_signup.html:26
+#: donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr "Pati disa gabime me formularin tuaj. Ju lutemi, ndryshoni fushat e theksuara më poshtë."
 
@@ -366,23 +367,31 @@ msgstr "Dhuroni <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr "Dhurimi juaj ndihmon të mbahet Web-i i hapur dhe i lirë. Faleminderit paraprakisht për dhuratën tuaj."
 
-#: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
+#: donate/templates/payment/card_upsell.html:4
+#: donate/templates/payment/paypal_upsell.html:4
+#: donate/templates/payment/thank_you.html:4
 msgid "Thank you"
 msgstr "Faleminderit"
 
-#: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
+#: donate/templates/payment/card_upsell.html:13
+#: donate/templates/payment/newsletter_signup.html:12
+#: donate/templates/payment/paypal_upsell.html:13
+#: donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
 msgstr "Faleminderit për dhuratën tuaj bujare"
 
-#: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
+#: donate/templates/payment/card_upsell.html:15
+#: donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Do të donim t’ju kishim një përkrahës të qëndrueshëm të Mozilla-s. <b>A mund të shtoni një dhurim të përmuajshëm duke filluar nga muaji pasues?</b>"
 
-#: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
+#: donate/templates/payment/card_upsell.html:16
+#: donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
 msgstr "Po, do të jap:"
 
-#: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
+#: donate/templates/payment/card_upsell.html:35
+#: donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
 msgstr "/ Në muaj"
 
@@ -394,7 +403,8 @@ msgstr "E autorizoj Mozilla Foundation të marrë përmes kartës time vlerën e
 msgid "Yes"
 msgstr "Po"
 
-#: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
+#: donate/templates/payment/card_upsell.html:47
+#: donate/templates/payment/paypal_upsell.html:47
 msgid "No"
 msgstr "Jo"
 
@@ -419,8 +429,9 @@ msgid "Your donation will go right to work protecting the web, keeping it open a
 msgstr "Dhurimi juaj do të shkojë drejt e për punë mbrojtjeje të internetit, për ta mbajtur të hapur dhe të përdorshëm nga cilido."
 
 #: donate/templates/payment/thank_you.html:13
-#, python-format
-msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
+#, fuzzy, python-format
+#| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
+msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr "Ju kemi dërguar me email një dëftesë dhurimi; nëse mungon, ju lutemi, kontrollni dosjet tuaja hedhurinë/mesazhe të padëshiruar, mandej lidhuni me ne te <a href=\"%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
@@ -435,59 +446,57 @@ msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight
 msgstr "Sot dhurova për @mozilla, ngaqë #lovetheweb. Ejani me mua dhe ndihmoni të luftohet për një internet më të mirë dhe më të shëndetshëm, për të gjithë."
 
 #: donate/templates/payment/thank_you.html:19
-msgctxt "Facebook post"
-msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr "Sot dhurova për Mozilla-n, ngaqë #lovetheweb. Ejani me mua dhe ndihmoni të luftohet për një internet më të mirë dhe më të shëndetshëm, për të gjithë."
-
-#: donate/templates/payment/thank_you.html:20
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
 msgstr "Sot dhurova për Mozilla-n"
 
-#: donate/templates/payment/thank_you.html:21
+#: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
 msgstr "Sot dhurova për @mozthunderbird që të arrihet #freetheinbox. Ejani me mua që të përkrahim privatësinë e komunikimeve."
 
-#: donate/templates/payment/thank_you.html:22
-msgctxt "Facebook post"
-msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr "Sot dhurova për Thunderbird-in që të arrihet #freetheinbox. Ejani me mua që të përkrahim privatësinë e komunikimeve."
-
-#: donate/templates/payment/thank_you.html:23
+#: donate/templates/payment/thank_you.html:21
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "Sot dhurova për Thunderbird-in"
 
-#: donate/templates/payment/thank_you.html:27
+#: donate/templates/payment/thank_you.html:23
 msgid "Share on Facebook"
 msgstr "Ndajeni me të tjerët në Facebook"
 
-#: donate/templates/payment/thank_you.html:31
+#: donate/templates/payment/thank_you.html:27
 msgid "Facebook"
 msgstr "Facebook"
 
-#: donate/templates/payment/thank_you.html:34
+#: donate/templates/payment/thank_you.html:30
 msgid "Share on Twitter"
 msgstr "Ndajeni me të tjerët në Twitter"
 
-#: donate/templates/payment/thank_you.html:44
+#: donate/templates/payment/thank_you.html:40
 msgctxt "Share button"
 msgid "Email"
 msgstr "Email"
 
-#: donate/templates/payment/thank_you.html:54
+#: donate/templates/payment/thank_you.html:50
 msgctxt "Share button"
 msgid "Link"
 msgstr "Lidhje"
 
-#: donate/templates/payment/thank_you.html:55
+#: donate/templates/payment/thank_you.html:51
 msgid "Copied"
 msgstr "U kopjua"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
 msgstr "Mbrapsht"
+
+#~ msgctxt "Facebook post"
+#~ msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
+#~ msgstr "Sot dhurova për Mozilla-n, ngaqë #lovetheweb. Ejani me mua dhe ndihmoni të luftohet për një internet më të mirë dhe më të shëndetshëm, për të gjithë."
+
+#~ msgctxt "Facebook post"
+#~ msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
+#~ msgstr "Sot dhurova për Thunderbird-in që të arrihet #freetheinbox. Ejani me mua që të përkrahim privatësinë e komunikimeve."
 
 #~ msgid "Thank you! Your transaction reference is: %(id)s"
 #~ msgstr "Faleminderit! Referenca e transaksionit tuaj është: %(id)s"
