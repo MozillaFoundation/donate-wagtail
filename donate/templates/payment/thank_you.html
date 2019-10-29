@@ -10,21 +10,17 @@
     <div class="layout__container">
         <div class="layout__full-col">
             <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
-            <p>{% blocktrans %}Your donation will go right to work protecting the web, keeping it open and available to all.{% endblocktrans %} {% blocktrans with email='donate@mozilla.org' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href="{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
+            <p>{% blocktrans %}Your donation will go right to work protecting the web, keeping it open and available to all.{% endblocktrans %} {% blocktrans with email='donate@mozilla.org' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
 
             <p>{% trans "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!" %}</p>
 
             <div class="button__group">
                 {% trans "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as twitter_text context "Used as a tweet" %}
-                {% trans "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as facebook_text context "Facebook post" %}
                 {% trans "I donated to Mozilla today" as email_subject context "Email subject line" %}
                 {% trans "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy." as tb_twitter_text context "Used as a tweet" %}
-                {% trans "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy." as tb_facebook_text context "Facebook post" %}
                 {% trans "I donated to Thunderbird today" as tb_email_subject context "Email subject line" %}
 
-                {# see https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.5 #}
-                {# Add a default image to use for social sharing here in case one is not provided on the page. #}
-                <a class="button button--outline button--icon" href="https://www.facebook.com/dialog/feed?app_id={{ social_media_settings.facebook_app_id }}&amp;link=http://donate.mozilla.org&amp;picture={{ request.get_host }}{% static '_images/og.png' %}&amp;name={{ page.title|urlencode }}&amp;description={{ facebook_text|urlencode }}" title="{% trans 'Share on Facebook' %}">
+                <a class="button button--outline button--icon" href="https://www.facebook.com/sharer/sharer.php?u=https://donate.mozilla.org/" title="{% trans 'Share on Facebook' %}">
                     <svg class="button__icon button__icon--facebook" width="16" height="16">
                         <use xlink:href="#facebook"></use>
                     </svg>

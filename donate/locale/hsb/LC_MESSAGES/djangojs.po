@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"POT-Creation-Date: 2019-10-29 14:18+0000\n"
 "PO-Revision-Date: 2019-10-10 11:59+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 "X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 #: source/js/components/currency-selector.js:85
 msgid "per month"
 msgstr "na měsac"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 msgid "Other amount"
 msgstr "Druha suma"
 

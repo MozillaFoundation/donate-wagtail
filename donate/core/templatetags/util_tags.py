@@ -19,11 +19,6 @@ def to_known_locale(code):
     return to_locale(code)
 
 
-@register.filter
-def is_english(language_code):
-    return language_code.startswith('en')
-
-
 @register.simple_tag(takes_context=True)
 def get_locale(context):
     return to_known_locale(context['request'].LANGUAGE_CODE)

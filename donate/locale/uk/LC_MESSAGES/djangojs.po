@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"POT-Creation-Date: 2019-10-29 14:18+0000\n"
 "PO-Revision-Date: 2019-10-10 13:19+0000\n"
 "Last-Translator: Stanislav <zoyzich@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 #: source/js/components/currency-selector.js:85
 msgid "per month"
 msgstr "за місяць"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 msgid "Other amount"
 msgstr "Інша сума"
 

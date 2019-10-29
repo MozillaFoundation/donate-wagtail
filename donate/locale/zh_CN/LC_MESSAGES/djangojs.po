@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"POT-Creation-Date: 2019-10-29 14:18+0000\n"
 "PO-Revision-Date: 2019-10-09 13:11+0000\n"
 "Last-Translator: passionforlife <eloli@foxmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 #: source/js/components/currency-selector.js:85
 msgid "per month"
 msgstr "每月"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 msgid "Other amount"
 msgstr "其他金额"
 

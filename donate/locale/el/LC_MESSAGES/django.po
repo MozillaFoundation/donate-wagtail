@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"POT-Creation-Date: 2019-10-29 14:18+0000\n"
 "PO-Revision-Date: 2019-10-21 15:50+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,8 @@ msgstr "Εισάγετε αριθμό."
 msgid "Enter a valid email address."
 msgstr "Εισάγετε έγκυρη διεύθυνση email."
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:21 donate/payments/forms.py:35
+#: donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr "Ποσό"
 
@@ -64,7 +65,7 @@ msgstr "Ταχ. κώδικας"
 msgid "Country"
 msgstr "Χώρα"
 
-#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:82
+#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:86
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
@@ -129,19 +130,27 @@ msgstr "ΜΙΑ ΦΟΡΑ"
 msgid "MONTHLY"
 msgstr "ΜΗΝΙΑΙΑ"
 
-#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39
+#: donate/templates/fragments/donate_form.html:40
+#: donate/templates/fragments/donate_form.html:99
+#: donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "Άλλο ποσό"
 
-#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46
+#: donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "Επιλογή πληρωμής"
 
-#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52
+#: donate/templates/fragments/donate_form.html:112
+#: donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "ΑΣΦΑΛΕΣ"
 
-#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:123
+#: donate/templates/fragments/donate_form.html:58
+#: donate/templates/fragments/donate_form.html:118
+#: donate/templates/pages/base_page.html:127
 msgid "Donate"
 msgstr "Δωρεά"
 
@@ -151,9 +160,7 @@ msgstr "ανά μήνα"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
-msgid ""
-"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
-"by Mozilla."
+msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
 msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
@@ -177,92 +184,89 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
-msgid ""
-"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
-" to the fullest extent permitted by law."
+msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
 msgstr ""
 
-#: donate/templates/pages/base_page.html:22
+#: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:25
+#: donate/templates/pages/base_page.html:29
 msgid "Participate"
 msgstr "Συμμετοχή"
 
-#: donate/templates/pages/base_page.html:28
+#: donate/templates/pages/base_page.html:32
 msgid "Internet Health"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:31
+#: donate/templates/pages/base_page.html:35
 msgid "About Us"
 msgstr "Σχετικά με εμάς"
 
-#: donate/templates/pages/base_page.html:42
+#: donate/templates/pages/base_page.html:46
 msgid "Menu"
 msgstr "Μενού"
 
-#: donate/templates/pages/base_page.html:66
+#: donate/templates/pages/base_page.html:70
 msgid "Protect the internet as a global public resource"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:74
+#: donate/templates/pages/base_page.html:78
 msgid "Join our email list to take action and stay updated!"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:75
+#: donate/templates/pages/base_page.html:79
 msgid "Enter email address"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:78
+#: donate/templates/pages/base_page.html:82
 msgid "Sign up"
 msgstr "Εγγραφή"
 
-#: donate/templates/pages/base_page.html:86
+#: donate/templates/pages/base_page.html:90
 msgid "Thanks!"
 msgstr "Ευχαριστούμε!"
 
-#: donate/templates/pages/base_page.html:87
+#: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
 msgstr ""
 
-#: donate/templates/pages/base_page.html:99
+#: donate/templates/pages/base_page.html:103
 msgid "More about us"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:102 donate/templates/payment/thank_you.html:38
+#: donate/templates/pages/base_page.html:106
+#: donate/templates/payment/thank_you.html:34
 msgid "Twitter"
 msgstr "Twitter"
 
-#: donate/templates/pages/base_page.html:108
+#: donate/templates/pages/base_page.html:112
 msgid "Instagram"
 msgstr "Instagram"
 
-#: donate/templates/pages/base_page.html:114
+#: donate/templates/pages/base_page.html:118
 msgid "GitHub"
 msgstr "GitHub"
 
-#: donate/templates/pages/base_page.html:126
+#: donate/templates/pages/base_page.html:130
 msgid "Participation Guidelines"
 msgstr ""
 
-#: donate/templates/pages/base_page.html:129
+#: donate/templates/pages/base_page.html:133
 msgid "Legal"
 msgstr "Νομικά"
 
-#: donate/templates/pages/base_page.html:132
+#: donate/templates/pages/base_page.html:136
 msgid "Privacy"
 msgstr "Απόρρητο"
 
-#: donate/templates/pages/base_page.html:135
+#: donate/templates/pages/base_page.html:139
 msgid "License"
 msgstr "Άδεια"
 
-#: donate/templates/pages/base_page.html:149
+#: donate/templates/pages/base_page.html:153
 #, python-format
-msgid ""
-"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
-"%(link_attributes)s>%(site_url)s</a>."
+msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
 msgstr ""
 
 #: donate/templates/pages/core/campaign_page.html:38
@@ -270,11 +274,15 @@ msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "ΔΩΡΕΑ ΤΩΡΑ"
 
-#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
+#: donate/templates/pages/core/campaign_page.html:52
+#: donate/templates/pages/core/landing_page.html:33
+#: donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
 msgstr ""
 
-#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
+#: donate/templates/pages/core/campaign_page.html:55
+#: donate/templates/pages/core/landing_page.html:36
+#: donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
 msgstr ""
 
@@ -313,7 +321,10 @@ msgstr "Επιβεβαίωση"
 msgid "Your Details"
 msgstr "Οι λεπτομέρειές σας"
 
-#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
+#: donate/templates/payment/card.html:60
+#: donate/templates/payment/card_upsell.html:29
+#: donate/templates/payment/newsletter_signup.html:26
+#: donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr ""
 
@@ -354,23 +365,31 @@ msgstr "Δωρεά <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
+#: donate/templates/payment/card_upsell.html:4
+#: donate/templates/payment/paypal_upsell.html:4
+#: donate/templates/payment/thank_you.html:4
 msgid "Thank you"
 msgstr "Ευχαριστούμε"
 
-#: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
+#: donate/templates/payment/card_upsell.html:13
+#: donate/templates/payment/newsletter_signup.html:12
+#: donate/templates/payment/paypal_upsell.html:13
+#: donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
+#: donate/templates/payment/card_upsell.html:15
+#: donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
+#: donate/templates/payment/card_upsell.html:16
+#: donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
 msgstr ""
 
-#: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
+#: donate/templates/payment/card_upsell.html:35
+#: donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
 msgstr "/ Μήνα"
 
@@ -382,7 +401,8 @@ msgstr ""
 msgid "Yes"
 msgstr "Ναι"
 
-#: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
+#: donate/templates/payment/card_upsell.html:47
+#: donate/templates/payment/paypal_upsell.html:47
 msgid "No"
 msgstr "Όχι"
 
@@ -408,7 +428,7 @@ msgstr ""
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
-msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
+msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
 
 #: donate/templates/payment/thank_you.html:15
@@ -421,53 +441,43 @@ msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight
 msgstr ""
 
 #: donate/templates/payment/thank_you.html:19
-msgctxt "Facebook post"
-msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
-
-#: donate/templates/payment/thank_you.html:20
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:21
+#: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
 msgstr ""
 
-#: donate/templates/payment/thank_you.html:22
-msgctxt "Facebook post"
-msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
-
-#: donate/templates/payment/thank_you.html:23
+#: donate/templates/payment/thank_you.html:21
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "Έκανα μια δωρεά στο Thunderbird σήμερα"
 
-#: donate/templates/payment/thank_you.html:27
+#: donate/templates/payment/thank_you.html:23
 msgid "Share on Facebook"
 msgstr "Κοινοποίηση στο Facebook"
 
-#: donate/templates/payment/thank_you.html:31
+#: donate/templates/payment/thank_you.html:27
 msgid "Facebook"
 msgstr "Facebook"
 
-#: donate/templates/payment/thank_you.html:34
+#: donate/templates/payment/thank_you.html:30
 msgid "Share on Twitter"
 msgstr "Κοινοποίηση στο Twitter"
 
-#: donate/templates/payment/thank_you.html:44
+#: donate/templates/payment/thank_you.html:40
 msgctxt "Share button"
 msgid "Email"
 msgstr "Email"
 
-#: donate/templates/payment/thank_you.html:54
+#: donate/templates/payment/thank_you.html:50
 msgctxt "Share button"
 msgid "Link"
 msgstr "Σύνδεσμος"
 
-#: donate/templates/payment/thank_you.html:55
+#: donate/templates/payment/thank_you.html:51
 msgid "Copied"
 msgstr "Αντιγράφηκε"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 15:32+0000\n"
+"POT-Creation-Date: 2019-10-29 14:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 #: source/js/components/currency-selector.js:85
 msgid "per month"
 msgstr ""
 
-#: donate/frontend/_js/main.compiled.js:1
+#: donate/frontend/_js/main.compiled.js:16
 msgid "Other amount"
 msgstr ""
 
