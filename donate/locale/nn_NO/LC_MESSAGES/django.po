@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 15:32+0000\n"
-"PO-Revision-Date: 2019-10-17 02:15+0000\n"
+"PO-Revision-Date: 2019-10-29 01:08+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -69,7 +69,7 @@ msgstr "Land"
 #: donate/payments/forms.py:103 donate/templates/pages/base_page.html:82
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "Eg godkjenner at Mozilla behandlar mine personlege data som forklart i denne <a href='%(url)s'>personvernmerknaden</a>."
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
@@ -93,15 +93,15 @@ msgstr "Postnummeret du skreiv inn er ikkje gyldig."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Beklagar, det oppstod ein feil under behandlinga av betalinga di. Prøv igjen seinare eller bruk ein annan betalingsmetode."
 
 #: donate/payments/views.py:291
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Noko gjekk gale. Vi klarte ikkje å behandle betalinga di."
 
 #: donate/payments/views.py:481 donate/payments/views.py:569
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Beklagar, det oppstod ein feil under behandlinga av betalinga di. Prøv igjen seinare."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
@@ -157,11 +157,13 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
 msgstr ""
+"Betalingsopplysningane blir behandla av <a href=\"%(braintree_url)s\">Braintree</a> (for kreditt-/debetkort) eller <a href=\"%(paypal_url)s\">Paypal</a>, og ei oversikt over donasjonen din blir "
+"lagra hos Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "Månadlege donasjonar vert belasta kvar månad på same dag som du donerer i dag, og vil fortsette til du avbryt. For å avbryte, send oss ein e-post på <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
