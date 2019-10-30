@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-30 07:11+0000\n"
+"PO-Revision-Date: 2019-10-30 07:31+0000\n"
 "Last-Translator: नरेंद्र पेटकर - narendrapetkar <n.v.petkar@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: mr\n"
@@ -155,26 +155,28 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
 msgstr ""
+"आपल्या देय तपशीलांवर (क्रेडिट / डेबिट कार्डसाठी) <a href=\"%(braintree_url)s\">Braintree</a> किंवा <a href=\"%(paypal_url)s\">PayPal</a> द्वारे प्रक्रिया केली जाईल, आणि आपल्या देणगीची नोंद Mozilla "
+"द्वारे संग्रहित केली जाईल."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "आपण आज दान करता त्याच दिवशी दरमहा देणग्या आकारल्या जातात आणि आपण रद्द करेपर्यंत चालूच राहतील. रद्द करण्यासाठी, आम्हाला <a href=\"mailto:%(email)s\">%(email)s</a> वर ईमेल करा."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "देण्याचे अन्य मार्गः <a href=\"%(wire_transfer_url)s\">वायर ट्रान्सफर किंवा SEPA</a> | <a href=\"%(check_url)s\">तपासा</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "देण्याचे अन्य मार्गः <a href=\"%(wire_transfer_url)s\">वायर ट्रान्सफर किंवा SEPA</a> | <a href=\"%(check_url)s\">तपासा</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "देणगी देण्यात समस्या? बर्‍याच सामान्य प्रश्नांच्या उत्तरांसाठी आमच्या <a href=\"%(faq_url)s\">FAQ</a> वर भेट द्या. अद्याप समस्या आहे? <a href=\"mailto:%(email)s\">आम्हाला ईमेल पाठवा</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -184,79 +186,79 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
-msgstr ""
+msgstr "पुढाकार"
 
 #: donate/templates/pages/base_page.html:29
 msgid "Participate"
-msgstr ""
+msgstr "सामील व्हा"
 
 #: donate/templates/pages/base_page.html:32
 msgid "Internet Health"
-msgstr ""
+msgstr "इंटरनेटचे स्वास्थ्य"
 
 #: donate/templates/pages/base_page.html:35
 msgid "About Us"
-msgstr ""
+msgstr "आमच्या विषयी"
 
 #: donate/templates/pages/base_page.html:46
 msgid "Menu"
-msgstr ""
+msgstr "मेनू"
 
 #: donate/templates/pages/base_page.html:70
 msgid "Protect the internet as a global public resource"
-msgstr ""
+msgstr "जागतिक सार्वजनिक स्रोत म्हणून इंटरनेटचे संरक्षण करा"
 
 #: donate/templates/pages/base_page.html:78
 msgid "Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "कारवाई करण्यासाठी आणि अद्ययावत रहाण्यासाठी आमच्या ईमेल यादीमध्ये सामील व्हा!"
 
 #: donate/templates/pages/base_page.html:79
 msgid "Enter email address"
-msgstr ""
+msgstr "ईमेल पत्ता प्रविष्ट करा"
 
 #: donate/templates/pages/base_page.html:82
 msgid "Sign up"
-msgstr ""
+msgstr "साइन अप करा"
 
 #: donate/templates/pages/base_page.html:90
 msgid "Thanks!"
-msgstr ""
+msgstr "धन्यवाद!"
 
 #: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr ""
+msgstr "आपण जर याआधी Mozilla संबंधित बातमीपत्राचे सभासदत्व नक्की केले नसेल तर आपल्याला ते करावे लागेल. आपला इनबॉक्स किंवा स्पॅम वर्गिक्रूत मेल्स मध्ये क्रुपया आमचा ई-मेल तपासा."
 
 #: donate/templates/pages/base_page.html:103
 msgid "More about us"
-msgstr ""
+msgstr "आमच्याबद्दल अधिक"
 
 #: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you.html:34
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: donate/templates/pages/base_page.html:112
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: donate/templates/pages/base_page.html:118
 msgid "GitHub"
-msgstr ""
+msgstr "GItHub"
 
 #: donate/templates/pages/base_page.html:130
 msgid "Participation Guidelines"
-msgstr ""
+msgstr "सहभाग मार्गदर्शक तत्त्वे"
 
 #: donate/templates/pages/base_page.html:133
 msgid "Legal"
-msgstr ""
+msgstr "कायदेविषयक"
 
 #: donate/templates/pages/base_page.html:136
 msgid "Privacy"
-msgstr ""
+msgstr "गोपनीयता"
 
 #: donate/templates/pages/base_page.html:139
 msgid "License"
-msgstr ""
+msgstr "परवाना"
 
 #: donate/templates/pages/base_page.html:153
 #, python-format
@@ -268,7 +270,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "आत्ताच देणगी द्या"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
@@ -276,46 +278,46 @@ msgstr ""
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
-msgstr ""
+msgstr "GuideStar Gold 2019 चे सील"
 
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
 msgid "Donate now"
-msgstr ""
+msgstr "आत्ताच देणगी द्या"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
-msgstr ""
+msgstr "तुमची माहिती"
 
 #: donate/templates/payment/card.html:20
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr ""
+msgstr "आपण दरमहा <span class=\"%(span_class)s\">%(formatted_amount)s</span> चे दान करीत आहात"
 
 #: donate/templates/payment/card.html:22
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "आपण <span class=\"%(span_class)s\">%(formatted_amount)s</span> चे दान करीत आहात"
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "रक्कम बदला"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "देणगीची रक्कम"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
-msgstr ""
+msgstr "निश्चित करा"
 
 #: donate/templates/payment/card.html:44
 msgid "Your Details"
-msgstr ""
+msgstr "आपला तपशील"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr ""
+msgstr "आपल्या फॉर्ममध्ये काही त्रुटी होत्या. कृपया खाली ठळक केलेल्या क्षेत्रामध्ये सुधारणा करा."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
@@ -327,19 +329,19 @@ msgstr ""
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
-msgstr ""
+msgstr "देय"
 
 #: donate/templates/payment/card.html:106
 msgid "Card number"
-msgstr ""
+msgstr "कार्ड क्रमांक"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "कालबाह्यता तारीख"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
-msgstr ""
+msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
@@ -356,7 +358,7 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "धन्यवाद"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
