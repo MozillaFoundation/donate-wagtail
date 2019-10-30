@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-30 07:41+0000\n"
+"PO-Revision-Date: 2019-10-30 07:51+0000\n"
 "Last-Translator: नरेंद्र पेटकर - narendrapetkar <n.v.petkar@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: mr\n"
@@ -266,6 +266,7 @@ msgid ""
 "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
 "%(link_attributes)s>%(site_url)s</a>."
 msgstr ""
+"आपला ऑनलाईन अनुभव आपल्या ताब्यात देणे व लोकांच्या भल्यासाठी वेब चे भविष्य घडविण्यासाठी समर्पित Mozilla ही एक वैश्विक विना-नफा संस्था आहे. आम्हाला भेट द्या <a %(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
@@ -274,7 +275,7 @@ msgstr "आत्ताच देणगी द्या"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "Charity Navigator 4-Star चे सील"
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
@@ -321,7 +322,7 @@ msgstr "आपल्या फॉर्ममध्ये काही त्र
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "आपल्या पत्त्याच्या माहितीमध्ये देय प्रक्रियेने त्रुटी दर्शवल्यामुळे आम्ही आपली देणगी स्वीकारू शकलो नाही:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
@@ -345,16 +346,16 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "मी खाली दर्शविलेल्या रकमेवर माझे कार्ड आकारण्यासाठी आणि मी रद्द करेपर्यंत दरमहा असे करणे सुरू ठेवण्यासाठी Mozilla फाऊंडेशनला अधिकृत करतो."
 
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> चे दान करा"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "आपली देणगी वेब ला मुक्त आणि स्वतंत्र ठेवते. आपल्या भेटीसाठी आधीच धन्यवाद."
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
@@ -366,7 +367,7 @@ msgstr "आपल्या उदार भेटीसाठी धन्यव
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "आम्हास आपण Mozilla चे नेहमीचे समर्थक असणे आवडेल. <b>आपण पुढील महिन्यापासून मासिक देणगी द्याल का?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
@@ -378,7 +379,7 @@ msgstr "/ दरमहा"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "मी वर दर्शविलेल्या रकमेवर माझे कार्ड आकारण्यासाठी आणि मी रद्द करेपर्यंत दरमहा असे करणे सुरू ठेवण्यासाठी Mozilla फाऊंडेशनला अधिकृत करतो."
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
