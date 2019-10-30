@@ -19,11 +19,10 @@ class NewsletterSignupTestCase(TestCase):
                 'source_url': 'http://localhost/donate/thanks/',
                 'email': 'test@example.com'
             })
-        mock_requests.post.assert_called_once_with('http://localhost/news/subscribe', json={
+        mock_requests.post.assert_called_once_with('http://localhost/news/subscribe/', data={
             'format': 'html',
             'lang': 'en',
             'newsletters': 'mozilla-foundation',
-            'trigger_welcome': 'N',
             'source_url': 'http://localhost/donate/thanks/',
             'email': 'test@example.com',
         })

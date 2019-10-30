@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 queue = django_rq.get_queue('default')
 
-BASKET_NEWSLETTER_API_PATH = '/news/subscribe'
+BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
 
 
 def send_newsletter_subscription_to_basket(data):
@@ -26,12 +26,11 @@ def send_newsletter_subscription_to_basket(data):
         'format': 'html',
         'lang': data['lang'],
         'newsletters': 'mozilla-foundation',
-        'trigger_welcome': 'N',
         'source_url': data['source_url'],
         'email': data['email']
     }
     try:
-        return requests.post(url, json=payload)
+        return requests.post(url, data=payload)
     except requests.exceptions.RequestException:
         logger.exception('Failed to post to basket newsletter API')
 
