@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-30 07:51+0000\n"
+"PO-Revision-Date: 2019-10-30 08:50+0000\n"
 "Last-Translator: नरेंद्र पेटकर - narendrapetkar <n.v.petkar@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: mr\n"
@@ -395,7 +395,7 @@ msgstr "संपर्कात राहा"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "जागतिक सार्वजनिक स्रोत म्हणून इंटरनेटचे संरक्षण करा. कारवाई करण्यासाठी आणि अद्ययावत रहाण्यासाठी आमच्या ईमेल यादीमध्ये सामील व्हा!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
@@ -407,21 +407,21 @@ msgstr "नाही धन्यवाद"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "आपले देणगी वेबचे रक्षण करून, त्यास सर्वांसाठी खुले आणि उपलब्ध करण्याकडे जाईल."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "आम्ही आपल्याला देणगीची पावती ईमेल केली आहे; हरवले असल्यास, कृपया आपले जंक / स्पॅम फोल्डर्स तपासा, नंतर <a href=\"mailto:%(email)s\">%(email)s</a> येथे आमच्याशी संपर्क साधा."
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr ""
+msgstr "अंततः, आपण मोझीला करत असलेल्या महत्त्वपूर्ण कार्याबद्दल शेअर करून आपला प्रभाव वाढवू शकता का? पुन्हा धन्यवाद!"
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "मी आज @mozilla ला देणगी दिली #lovetheweb. माझ्यासह सामील व्हा आणि सर्वांसाठी चांगल्या आणि स्वस्थ इंटरनेटसाठी लढायला मदत करा."
 
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
