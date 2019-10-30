@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 queue = django_rq.get_queue('default')
 
-BASKET_NEWSLETTER_API_PATH = '/news/subscribe'
+BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
 
 
 def send_newsletter_subscription_to_basket(data):
