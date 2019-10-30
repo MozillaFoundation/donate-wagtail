@@ -26,7 +26,6 @@ def send_newsletter_subscription_to_basket(data):
         'format': 'html',
         'lang': data['lang'],
         'newsletters': 'mozilla-foundation',
-        'trigger_welcome': 'N',
         'source_url': data['source_url'],
         'email': data['email']
     }
