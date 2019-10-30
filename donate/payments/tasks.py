@@ -31,7 +31,7 @@ def send_newsletter_subscription_to_basket(data):
         'email': data['email']
     }
     try:
-        return requests.post(url, json=payload)
+        return requests.post(url, data=payload)
     except requests.exceptions.RequestException:
         logger.exception('Failed to post to basket newsletter API')
 
