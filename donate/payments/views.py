@@ -32,6 +32,7 @@ class BraintreePaymentMixin:
         return {
             'project': self.request.session.get('project', 'mozillafoundation'),
             'campaign_id': self.request.session.get('campaign_id', ''),
+            'locale': self.request.LANGUAGE_CODE,
         }
 
     def get_merchant_account_id(self, currency):

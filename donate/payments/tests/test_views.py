@@ -249,7 +249,11 @@ class CardPaymentViewTestCase(TestCase):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
         custom_fields = self.view.get_custom_fields(form)
-        self.assertEqual(custom_fields, {'campaign_id': '', 'project': 'mozillafoundation'})
+        self.assertEqual(custom_fields, {
+            'campaign_id': '',
+            'project': 'mozillafoundation',
+            'locale': 'en-US',
+        })
 
     def test_get_address_info(self):
         info = self.view.get_address_info(self.form_data)
@@ -272,7 +276,7 @@ class CardPaymentViewTestCase(TestCase):
             'last_name': self.form_data['last_name'],
             'email': self.form_data['email'],
             'payment_method_nonce': 'hello-braintree',
-            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': ''},
+            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': '', 'locale': 'en-US'},
             'credit_card': {
                 'billing_address': {
                     'street_address': self.form_data['address_line_1'],
@@ -441,7 +445,7 @@ class PaypalPaymentViewTestCase(TestCase):
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'amount': 10,
-            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': ''},
+            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': '', 'locale': 'en-US'},
             'payment_method_nonce': 'hello-braintree',
             'merchant_account_id': 'usd-ac',
             'options': {'submit_for_settlement': True}
@@ -463,7 +467,7 @@ class PaypalPaymentViewTestCase(TestCase):
 
         mock_gateway.customer.create.assert_called_once_with({
             'payment_method_nonce': 'hello-braintree',
-            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': ''},
+            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': '', 'locale': 'en-US'},
         })
 
         mock_gateway.subscription.create.assert_called_once_with({
