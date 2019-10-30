@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c1716e1cf6d6624fa56b017a4a1d5445fea992e7c01ff5e41671d8426bcf61e3"
+            "sha256": "d3c62b8e46c61d453816235a4c7469d3328ac17df7f4cec0bdebd2c145255335"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,18 +34,18 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:03130f43e15f02af7040946f7d4ebbba410fba5ee210b48ca8ba8407d2960b87",
-                "sha256:0b294a58635ed882a3821854f00264e6b3e65f2114c85c64109ad2280c7d5608"
+                "sha256:63b80dd065221a3143f80559392769a94c303e616bdb956d66685cd3160d409e",
+                "sha256:bf315a5aafab7e429ed08acce36f4c50de18024b1087e5050d5b7f0681862549"
             ],
             "index": "pypi",
-            "version": "==1.10.5"
+            "version": "==1.10.4"
         },
         "botocore": {
             "hashes": [
-                "sha256:13bf9d0d9b9cda278349c9ba0c35c96570795438d5bd29e5188e110b3f5a5183",
-                "sha256:cfce2c7d6a218d693ed6daa8a41040761e35d7a728d1cf43ae14c4132fb146f3"
+                "sha256:3773a28e139ccd41435afe64ee5945e5ccd1b84706f54bcb971788d71f7f138c",
+                "sha256:efd131a59107ceb3c9a0f885d947f1b150ab68a875bbec05004d9768e45e6a0f"
             ],
-            "version": "==1.13.5"
+            "version": "==1.13.4"
         },
         "braintree": {
             "hashes": [
@@ -412,6 +412,14 @@
             "index": "pypi",
             "version": "==2.0.0"
         },
+        "wagtail-localize": {
+            "git": "https://github.com/kaedroho/wagtail-localize.git",
+            "ref": "6b4426dbac8fb4e1201e71e8cabe64830ecf8019"
+        },
+        "wagtail-localize-pontoon": {
+            "git": "https://github.com/kaedroho/wagtail-localize-pontoon.git",
+            "ref": "50397b0103055cac36887a80120a6d1d04660ed8"
+        },
         "webencodings": {
             "hashes": [
                 "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78",
@@ -496,11 +504,11 @@
         },
         "flake8": {
             "hashes": [
-                "sha256:45681a117ecc81e870cbf1262835ae4af5e7a8b08e40b944a8a6e6b895914cfb",
-                "sha256:49356e766643ad15072a789a20915d3c91dc89fd313ccd71802303fd67e4deca"
+                "sha256:19241c1cbc971b9962473e4438a2ca19749a7dd002dd1a946eaba171b4114548",
+                "sha256:8e9dfa3cecb2400b3738a42c54c3043e821682b9c840b0448c0503f781130696"
             ],
             "index": "pypi",
-            "version": "==3.7.9"
+            "version": "==3.7.8"
         },
         "idna": {
             "hashes": [

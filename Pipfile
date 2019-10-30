@@ -23,8 +23,8 @@ boto3 = "*"
 braintree = "*"
 django-countries = "*"
 freezegun = "*"
-wagtail-localize = "0.3"
-wagtail-localize-pontoon = "0.1"
+wagtail-localize = {git = "https://github.com/kaedroho/wagtail-localize.git",ref = "6b4426dbac8fb4e1201e71e8cabe64830ecf8019"}
+wagtail-localize-pontoon = {git = "https://github.com/kaedroho/wagtail-localize-pontoon.git",ref = "50397b0103055cac36887a80120a6d1d04660ed8"}
 babel = "*"
 rq = "*"
 django-rq = "*"
