@@ -275,8 +275,6 @@ class ContentPage(TranslatablePageMixin, Page):
         TranslatableField('title'),
         TranslatableField('seo_title'),
         TranslatableField('search_description'),
-        SynchronizedField('project'),
-        SynchronizedField('campaign_id'),
         TranslatableField('call_to_action_text'),
         SynchronizedField('call_to_action_url'),
         TranslatableField('body'),
