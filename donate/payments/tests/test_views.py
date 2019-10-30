@@ -359,7 +359,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             mock_create_customer.return_value.is_success = True
             mock_create_customer.return_value.customer = MockBraintreeCustomer()
             with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-                self.view.form_valid(form, send_data_to_basket=False)
+                self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
@@ -595,7 +595,7 @@ class CardUpsellViewTestCase(TestCase):
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
-            self.view.form_valid(form, send_data_to_basket=False)
+            self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
@@ -686,7 +686,7 @@ class PaypalUpsellViewTestCase(TestCase):
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
             mock_gateway.customer.create.return_value.customer = MockBraintreeCustomer()
-            self.view.form_valid(form, send_data_to_basket=False)
+            self.view.form_valid(form)
 
         mock_gateway.subscription.create.assert_called_once_with({
             'plan_id': 'usd-plan',
