@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-30 07:31+0000\n"
+"PO-Revision-Date: 2019-10-30 07:41+0000\n"
 "Last-Translator: नरेंद्र पेटकर - narendrapetkar <n.v.petkar@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: mr\n"
@@ -182,7 +182,7 @@ msgstr "देणगी देण्यात समस्या? बर्‍�
 msgid ""
 "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
 " to the fullest extent permitted by law."
-msgstr ""
+msgstr "देणग्या माउंटन व्ह्यू, कॅलिफोर्निया येथे स्थायिक 501(c)(3) Mozilla फाऊंडेशन ला जातात, त्यांच्या समाजसेवेच्या कार्यासाठी, ते यु.एस. मध्ये नियमाप्रमाणे पूर्णतः करपात्र आहेत."
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "ह्या चुका सुधारून पुन्हा प्रयत्न करा."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
@@ -362,7 +362,7 @@ msgstr "धन्यवाद"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
-msgstr ""
+msgstr "आपल्या उदार भेटीसाठी धन्यवाद"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
@@ -370,11 +370,11 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "होय, मी देईन:"
 
 #: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
-msgstr ""
+msgstr "/ दरमहा"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -382,15 +382,15 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
-msgstr ""
+msgstr "होय"
 
 #: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
-msgstr ""
+msgstr "नाही"
 
 #: donate/templates/payment/newsletter_signup.html:4
 msgid "Stay in touch"
-msgstr ""
+msgstr "संपर्कात राहा"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
@@ -398,11 +398,11 @@ msgstr ""
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
-msgstr ""
+msgstr "साइन अप करा"
 
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
-msgstr ""
+msgstr "नाही धन्यवाद"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
@@ -425,44 +425,44 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "मी आज Mozilla ला देणगी दिली"
 
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "मी आज #freetheinbox ला @mozundunderbird ला देणगी दिली. संप्रेषणाच्या गोपनीयतेस पाठिंबा देण्यासाठी मला सामील व्हा."
 
 #: donate/templates/payment/thank_you.html:21
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "मी आज Thunderbird ला देणगी दिली"
 
 #: donate/templates/payment/thank_you.html:23
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Facebook वर शेअर करा"
 
 #: donate/templates/payment/thank_you.html:27
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:30
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Twitter वर शेअर करा"
 
 #: donate/templates/payment/thank_you.html:40
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "ईमेल"
 
 #: donate/templates/payment/thank_you.html:50
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "दुवा"
 
 #: donate/templates/payment/thank_you.html:51
 msgid "Copied"
-msgstr ""
+msgstr "प्रत बनवली"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "मागे"
