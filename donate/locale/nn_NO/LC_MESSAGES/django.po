@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-30 18:48+0000\n"
+"PO-Revision-Date: 2019-10-30 19:05+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -352,7 +352,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Eg godkjenner at Mozilla Foundation kan belaste kortet mitt med det beløpet som er vist nedanfor og fortsetje å gjere det kvar månad til eg avbryt."
 
 #: donate/templates/payment/card.html:140
 #, python-format
