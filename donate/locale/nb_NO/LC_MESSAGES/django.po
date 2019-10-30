@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-29 21:23+0000\n"
+"PO-Revision-Date: 2019-10-30 19:20+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -323,7 +323,7 @@ msgstr "Dine detaljer"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr "Det var noen feil med skjemaet ditt. Endre feltene som er uthevet nedenfor."
+msgstr "Det er noen feil med skjemaet ditt. Endre feltene som er uthevet nedenfor."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
@@ -351,7 +351,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr "Jeg gir Mozilla Foundation fullmakt til å belaste kortet mitt i det beløpet som er vist nedenfor og fortsette å gjøre det hver måned til jeg avbryter."
+msgstr "Jeg gir Mozilla Foundation fullmakt til å belaste kortet mitt med det beløpet som er vist nedenfor og fortsette å gjøre det hver måned til jeg avbryter."
 
 #: donate/templates/payment/card.html:140
 #, python-format
