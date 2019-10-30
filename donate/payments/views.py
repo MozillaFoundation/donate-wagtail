@@ -32,6 +32,7 @@ class BraintreePaymentMixin:
         return {
             'project': self.request.session.get('project', 'mozillafoundation'),
             'campaign_id': self.request.session.get('campaign_id', ''),
+            'locale': self.request.LANGUAGE_CODE,
         }
 
     def get_merchant_account_id(self, currency):
@@ -176,7 +177,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             return self.process_single_transaction(form, send_data_to_basket=send_data_to_basket)
         else:
-            return self.process_monthly_transaction(form, send_data_to_basket=send_data_to_basket)
+            return self.process_monthly_transaction(form)
 
     def create_customer(self, form):
         result = gateway.customer.create({
@@ -234,7 +235,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             )
             return self.process_braintree_error_result(result, form)
 
-    def process_monthly_transaction(self, form, send_data_to_basket=True):
+    def process_monthly_transaction(self, form):
         # Create a customer and payment method for this customer
         result = self.create_customer(form)
 
@@ -257,7 +258,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                 form,
                 transaction_id=result.subscription.id,
                 last_4=payment_method.last_4,
-                send_data_to_basket=send_data_to_basket,
+                send_data_to_basket=False,
             )
         else:
             logger.error(
@@ -331,6 +332,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 'payment_method_token': payment_method.token,
                 'price': form.cleaned_data['amount'],
             })
+            send_data_to_basket = False
 
         if result.is_success:
             return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
@@ -441,7 +443,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         )
         return ctx
 
-    def form_valid(self, form, send_data_to_basket=True):
+    def form_valid(self, form):
         payment_method_token = self.request.session['completed_transaction_details']['payment_method_token']
         currency = self.request.session['completed_transaction_details']['currency']
 
@@ -456,7 +458,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         })
 
         if result.is_success:
-            return self.success(result, form, currency=currency, send_data_to_basket=send_data_to_basket)
+            return self.success(result, form, currency=currency, send_data_to_basket=False)
         else:
             logger.error(
                 'Failed to create Braintree subscription: {}'.format(result.message),
@@ -515,7 +517,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             'amount': self.suggested_upgrade
         }
 
-    def form_valid(self, form, send_data_to_basket=True):
+    def form_valid(self, form):
         self.currency = form.cleaned_data['currency']
 
         # Create a customer and payment method for this customer
@@ -544,7 +546,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         })
 
         if result.is_success:
-            return self.success(result, form, send_data_to_basket=send_data_to_basket)
+            return self.success(result, form, send_data_to_basket=False)
         else:
             logger.error(
                 'Failed Braintree transaction: {}'.format(result.message),

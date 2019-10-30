@@ -110,6 +110,53 @@ class ProcessWebhookTestCase(TestCase):
 
         mock_process_method.assert_called_once_with(notification)
 
+    @freeze_time("2019-08-08 00:00:00", tz_offset=0)
+    def test_process_subscription_charged_successfully(self):
+        notification = mock.Mock()
+        notification.kind = 'subscription_charged_successfully'
+        tx = mock.Mock()
+        tx.id = 'test-id'
+        tx.customer_details = mock.Mock()
+        tx.customer_details.first_name = 'Bob'
+        tx.customer_details.last_name = 'Geldof'
+        tx.customer_details.email = 'test@example.com'
+        tx.custom_fields = {
+            'campaign_id': 'PIDAY',
+            'project': 'mozillafoundation',
+            'locale': 'en-US',
+        }
+        tx.amount = Decimal(10)
+        tx.currency_iso_code = 'USD'
+        tx.payment_instrument_type = 'credit_card'
+        tx.credit_card_details = mock.Mock()
+        tx.credit_card_details.last_4 = '1234'
+        tx.disbursement_details = mock.Mock()
+        tx.disbursement_details.settlement_amount = Decimal(10)
+        notification.subscription.transactions = [tx]
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            BraintreeWebhookProcessor().process_subscription_charged_successfully(notification)
+        mock_send.assert_called_once_with({
+            'data': {
+                'event_type': 'donation',
+                'last_name': 'Geldof',
+                'first_name': 'Bob',
+                'campaign_id': 'PIDAY',
+                'email': 'test@example.com',
+                'donation_amount': Decimal(10),
+                'currency': 'usd',
+                'created': 1565222400,
+                'recurring': True,
+                'service': 'Braintree_Card',
+                'transaction_id': 'test-id',
+                'project': 'mozillafoundation',
+                'last_4': '1234',
+                'donation_url': '',
+                'locale': 'en-US',
+                'conversion_amount': Decimal(10),
+            }
+        })
+
     def test_process_subscription_charged_unsuccessfully(self):
         notification = mock.Mock()
         notification.kind = 'subscription_charged_unsuccessfully'
