@@ -602,7 +602,6 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         if send_data_to_basket:
             data = form.cleaned_data.copy()
             data['source_url'] = self.request.build_absolute_uri()
-            data['newsletters'] = 'mozilla-foundation'
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
         return super().form_valid(form)
