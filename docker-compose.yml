@@ -18,6 +18,20 @@ services:
     links:
       - redis
 
+  # RQ Worker to process donations
+  backend-worker:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.python
+    command: pipenv run python manage.py rqworker default
+    volumes:
+      - .:/app:delegated
+    depends_on:
+      - postgres
+      - redis
+    links:
+      - redis
+
   # Database
   postgres:
     image: postgres:11
