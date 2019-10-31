@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-31 06:46+0000\n"
+"PO-Revision-Date: 2019-10-31 07:11+0000\n"
 "Last-Translator: Saikeo <kavhanxay@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lo\n"
@@ -67,51 +67,51 @@ msgstr "ປະເທດ"
 #: donate/payments/forms.py:103 donate/templates/pages/base_page.html:86
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "ຂ້ອຍອະນຸຍາດໃຫ້ Mozilla ຮອງຮັບຂໍ້ມູນຂອງຂ້ອຍຕາມທີ່ໄດ້ຮ່າງໄວ້ຢູ່ໃນ <a href='%(url)s'>ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</a>."
 
 #: donate/payments/views.py:123
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "ປະເພດຂອງບັດທີ່ທ່ານນຳໃຊ້ແມ່ນບໍ່ຖືກຍອມຮັບ."
 
 #: donate/payments/views.py:124 donate/payments/views.py:125
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "ລະຫັດ CVV ທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ."
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "ວັນໝົດອາຍຸທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ."
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "ເລກບັດເຄດິດທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ."
 
 #: donate/payments/views.py:136 donate/payments/views.py:137
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "ລະຫັດໄປສະນີທີ່ທ່ານລະບຸນັ້ນບໍ່ຖືກຕ້ອງ."
 
 #: donate/payments/views.py:151
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "ຂໍອະໄພ, ເກີດມີຂໍ້ຜິດພາດໃນການດຳເນີນການຈ່າຍເງິນຂອງທ່ານ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ ຫຼື ໃຊ້ວິທີການຈ່າຍດ້ວຍຮູບແບບອື່ນ."
 
 #: donate/payments/views.py:291
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "ມີບາງຢ່າງຜິດປົກກະຕິ. ພວກເຮົາບໍ່ສາມາດດຳເນີນການຈ່າຍເງິນຂອງທ່ານໄດ້."
 
 #: donate/payments/views.py:481 donate/payments/views.py:569
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "ຂໍອະໄພ, ເກີດມີຂໍ້ຜິດພາດໃນການດຳເນີນການຈ່າຍເງິນຂອງທ່ານ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Captcha ບໍ່ຖືກຕ້ອງ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "ບໍ່ພົບຫນ້ານີ້."
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "Uh oh!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -119,35 +119,35 @@ msgstr ""
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
-msgstr ""
+msgstr "ໄປທີ່ໜ້າທຳອິດຂອງພວກເຮົາ"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "ເທື່ອດຽວ"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "ລາຍເດືອນ"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
-msgstr ""
+msgstr "ຈຳນວນເງິນອື່ນໆ"
 
 #: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
-msgstr ""
+msgstr "ເລືອກການຊຳລະເງິນ"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "ປອດໄພ"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:127
 msgid "Donate"
-msgstr ""
+msgstr "ບໍ​ລິ​ຈາກ"
 
 #: donate/templates/fragments/donate_form.html:91
 msgid "per month"
-msgstr ""
+msgstr "ຕໍ່ເດືອນ"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
@@ -184,11 +184,11 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
-msgstr ""
+msgstr "ການເລີ່ມຕົ້ນ"
 
 #: donate/templates/pages/base_page.html:29
 msgid "Participate"
-msgstr ""
+msgstr "ເຂົ້າຮ່ວມ"
 
 #: donate/templates/pages/base_page.html:32
 msgid "Internet Health"
@@ -196,15 +196,15 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:35
 msgid "About Us"
-msgstr ""
+msgstr "ກ່ຽວກັບພວກເຮົາ"
 
 #: donate/templates/pages/base_page.html:46
 msgid "Menu"
-msgstr ""
+msgstr "ເມນູ"
 
 #: donate/templates/pages/base_page.html:70
 msgid "Protect the internet as a global public resource"
-msgstr ""
+msgstr "ປົກປ້ອງອິນເຕີເນັດໃນຖານະທີ່ເປັນຊັບພະຍາກອນສາທາລະນະຂອງຄົນທົ່ວໂລກ"
 
 #: donate/templates/pages/base_page.html:78
 msgid "Join our email list to take action and stay updated!"
@@ -212,15 +212,15 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:79
 msgid "Enter email address"
-msgstr ""
+msgstr "ກະລຸນາໃສ່ທີ່ຢູ່ອີເມວ"
 
 #: donate/templates/pages/base_page.html:82
 msgid "Sign up"
-msgstr ""
+msgstr "ລົງ​ທະ​ບຽນ"
 
 #: donate/templates/pages/base_page.html:90
 msgid "Thanks!"
-msgstr ""
+msgstr "ຂໍຂອບໃຈ!"
 
 #: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
@@ -228,35 +228,35 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:103
 msgid "More about us"
-msgstr ""
+msgstr "ເພີ່ມເຕີມກ່ຽວກັບພວກເຮົາ"
 
 #: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you.html:34
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: donate/templates/pages/base_page.html:112
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: donate/templates/pages/base_page.html:118
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: donate/templates/pages/base_page.html:130
 msgid "Participation Guidelines"
-msgstr ""
+msgstr "ແນວທາງການເຂົ້າຮ່ວມ"
 
 #: donate/templates/pages/base_page.html:133
 msgid "Legal"
-msgstr ""
+msgstr "ຖືກກົດຫມາຍ"
 
 #: donate/templates/pages/base_page.html:136
 msgid "Privacy"
-msgstr ""
+msgstr "ຄວາມເປັນສ່ວນຕົວ"
 
 #: donate/templates/pages/base_page.html:139
 msgid "License"
-msgstr ""
+msgstr "ໃບອະນຸຍາດ"
 
 #: donate/templates/pages/base_page.html:153
 #, python-format
@@ -268,7 +268,7 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
-msgstr ""
+msgstr "ບໍລິຈາກດຽວນີ້"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
@@ -281,41 +281,41 @@ msgstr ""
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"
 msgid "Donate now"
-msgstr ""
+msgstr "ບໍລິຈາກດຽວນີ້"
 
 #: donate/templates/payment/card.html:4
 msgid "Your information"
-msgstr ""
+msgstr "ຂໍ້ມູນຂອງທ່ານ"
 
 #: donate/templates/payment/card.html:20
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr ""
+msgstr "ທ່ານກຳລັງບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s ຕໍ່ເດືອນ"
 
 #: donate/templates/payment/card.html:22
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "ທ່ານກຳລັງບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s"
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
-msgstr ""
+msgstr "ປ່ຽນຈຳນວນເງິນ"
 
 #: donate/templates/payment/card.html:34
 msgid "Donation Amount"
-msgstr ""
+msgstr "ຈຳນວນເງິນບໍລິຈາກ"
 
 #: donate/templates/payment/card.html:39
 msgid "Confirm"
-msgstr ""
+msgstr "ຢືນຢັນ​"
 
 #: donate/templates/payment/card.html:44
 msgid "Your Details"
-msgstr ""
+msgstr "ລາຍລະອຽດຂອງທ່ານ"
 
 #: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
-msgstr ""
+msgstr "ເກີດມີຂໍ້ຜິດພາດບາງຢ່າງກັບແບບຟອມຂອງທ່ານ. ກະລຸນາແກ້ໄຂຂໍ້ມູນທີ່ຢູ່ຂ້າງລຸ່ມ."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
