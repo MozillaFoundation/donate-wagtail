@@ -119,11 +119,6 @@ class ProcessWebhookTestCase(TestCase):
         tx.customer_details.first_name = 'Bob'
         tx.customer_details.last_name = 'Geldof'
         tx.customer_details.email = 'test@example.com'
-        tx.custom_fields = {
-            'campaign_id': 'PIDAY',
-            'project': 'mozillafoundation',
-            'locale': 'en-US',
-        }
         tx.amount = Decimal(10)
         tx.currency_iso_code = 'USD'
         tx.payment_instrument_type = 'credit_card'
@@ -134,7 +129,18 @@ class ProcessWebhookTestCase(TestCase):
         notification.subscription.transactions = [tx]
 
         with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
-            BraintreeWebhookProcessor().process_subscription_charged_successfully(notification)
+            with mock.patch('donate.payments.tasks.gateway', autospec=True) as mock_gateway:
+                mock_payment_method = mock.Mock()
+                mock_payment_method.customer_id = 'customer-1'
+                mock_gateway.payment_method.find.return_value = mock_payment_method
+                mock_customer = mock.Mock()
+                mock_customer.custom_fields = {
+                    'campaign_id': 'PIDAY',
+                    'project': 'mozillafoundation',
+                    'locale': 'en-US',
+                }
+                mock_gateway.customer.find.return_value = mock_customer
+                BraintreeWebhookProcessor().process_subscription_charged_successfully(notification)
         mock_send.assert_called_once_with({
             'data': {
                 'event_type': 'donation',

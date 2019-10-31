@@ -68,20 +68,27 @@ class BraintreeWebhookProcessor:
     def process_subscription_charged_successfully(self, notification):
         last_tx = notification.subscription.transactions[0]
         is_paypal = last_tx.payment_instrument_type == 'paypal_account'
+
+        # Custom fields are stored against the customer, and it requires a few
+        # steps to get this object from Braintree
+        payment_method = gateway.payment_method.find(notification.subscription.payment_method_token)
+        customer = gateway.customer.find(payment_method.customer_id)
+        custom_fields = customer.custom_fields or {}
+
         send_transaction_to_basket({
             'last_name': last_tx.customer_details.last_name,
             'first_name': last_tx.customer_details.first_name,
-            'campaign_id': last_tx.custom_fields.get('campaign_id', ''),
+            'campaign_id': custom_fields.get('campaign_id', ''),
             'email': last_tx.customer_details.email,
             'amount': last_tx.amount,
             'currency': last_tx.currency_iso_code.lower(),
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,
-            'project': last_tx.custom_fields.get('project', 'mozillafoundation'),
+            'project': custom_fields.get('project', ''),
             'last_4': None if is_paypal else last_tx.credit_card_details.last_4,
             'landing_url': '',
-            'locale': last_tx.custom_fields.get('locale', ''),
+            'locale': custom_fields.get('locale', ''),
             'settlement_amount': last_tx.disbursement_details.settlement_amount,
         })
 
