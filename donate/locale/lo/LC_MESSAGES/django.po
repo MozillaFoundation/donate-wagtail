@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-31 07:11+0000\n"
+"PO-Revision-Date: 2019-10-31 07:15+0000\n"
 "Last-Translator: Saikeo <kavhanxay@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lo\n"
@@ -323,23 +323,23 @@ msgstr ""
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "ກະລຸນາແກ້ໄຂຂໍ້ຜິດພາດເຫລົ່ານີ້ ແລະ ລອງໃໝ່ອີກຄັ້ງ."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
-msgstr ""
+msgstr "ການຈ່າຍເງິນ"
 
 #: donate/templates/payment/card.html:106
 msgid "Card number"
-msgstr ""
+msgstr "ເລກບັດ"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "ວັນ​ຫມົດ​ອາ​ຍຸ"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
-msgstr ""
+msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
@@ -348,7 +348,7 @@ msgstr ""
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "ບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
@@ -356,11 +356,11 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
-msgstr ""
+msgstr "ຂອບ​ໃຈ"
 
 #: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
-msgstr ""
+msgstr "ຂອບໃຈສຳລັບຂອງຂັວນອັນບໍລິສຸດຂອງທ່ານ"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
@@ -368,11 +368,11 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "ແມ່ນແລ້ວ, ຂ້ອຍຈະໃຫ້:"
 
 #: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
-msgstr ""
+msgstr "/ ລາຍເດືອນ"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -388,7 +388,7 @@ msgstr ""
 
 #: donate/templates/payment/newsletter_signup.html:4
 msgid "Stay in touch"
-msgstr ""
+msgstr "ຕິດຕໍ່ພົວພັນ"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
@@ -396,11 +396,11 @@ msgstr ""
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
-msgstr ""
+msgstr "ລົງ​ທະ​ບຽນ"
 
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
-msgstr ""
+msgstr "ບໍ່, ຂອບໃຈ"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
@@ -423,7 +423,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "ຂ້ອຍໄດ້ບໍລິຈາກໃຫ້ Mozilla ໃນມື້ນີ້"
 
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
@@ -433,34 +433,34 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:21
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "ຂ້ອຍໄດ້ບໍລິຈາກໃຫ້ Thunderbird ໃນມື້ນີ້"
 
 #: donate/templates/payment/thank_you.html:23
 msgid "Share on Facebook"
-msgstr ""
+msgstr "ແບ່ງປັນໃນ Facebook"
 
 #: donate/templates/payment/thank_you.html:27
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:30
 msgid "Share on Twitter"
-msgstr ""
+msgstr "ແບ່ງປັນໃນ Twitter"
 
 #: donate/templates/payment/thank_you.html:40
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "ອີເມວ"
 
 #: donate/templates/payment/thank_you.html:50
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "ລີ້ງ"
 
 #: donate/templates/payment/thank_you.html:51
 msgid "Copied"
-msgstr ""
+msgstr "ສຳເນົາແລ້ວ"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
-msgstr ""
+msgstr "ກັບຄືນ"
