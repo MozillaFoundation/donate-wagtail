@@ -19,11 +19,13 @@ def sqs_client():
 
 
 def send_to_sqs(payload):
-    client = sqs_client()
-    if client is None:
-        return
+    # If BASKET_SQS_QUEUE_URL is not configured, do nothing (djangorq is logging the payload).
+    if settings.BASKET_SQS_QUEUE_URL:
+        client = sqs_client()
+        if client is None:
+            return
 
-    return client.send_message(
-        QueueUrl=settings.BASKET_SQS_QUEUE_URL,
-        MessageBody=json.dumps(payload, cls=DjangoJSONEncoder, sort_keys=True),
-    )
+        return client.send_message(
+            QueueUrl=settings.BASKET_SQS_QUEUE_URL,
+            MessageBody=json.dumps(payload, cls=DjangoJSONEncoder, sort_keys=True),
+        )
