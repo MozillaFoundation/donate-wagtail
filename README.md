@@ -170,3 +170,13 @@ Example from donate.mozilla.org:
 ```
 
 _Notes_: We want to keep the `trigger_welcome` at `N` and the `format` to `html`. We don't have the country info for now, but from what I understood, it's something we want to change.
+
+### Webhook Configuration
+
+There's a webhook endpoint for processing Braintree events. The events it supports are:
+
+* `subscription_charged_successfully`
+* `subscription_charged_unsuccessfully`
+* `dispute_lost`
+
+The endpoint accepts requests on `/braintree/webhook/` and will verify the payload signature to ensure it's a legitimate event. [Documentation for Braintree webhooks can be found here](https://developers.braintreepayments.com/guides/webhooks/overview).
