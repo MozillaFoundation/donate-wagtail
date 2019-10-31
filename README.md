@@ -175,6 +175,7 @@ _Notes_: We want to keep the `trigger_welcome` at `N` and the `format` to `html`
 
 There's a webhook endpoint for processing Braintree events. The events it supports are:
 
+* `subscription_charged_successfully`
 * `subscription_charged_unsuccessfully`
 * `dispute_lost`
 
