@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal
 from unittest import mock
 
@@ -366,6 +367,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
         super().setUp()
         self.view.payment_frequency = 'monthly'
 
+    @freeze_time('2019-07-26')
     def test_subscription_data_submitted_to_braintree(self):
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
@@ -381,6 +383,7 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
             'price': 50,
+            'first_billing_date': date(2019, 7, 26),
         })
 
         self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
@@ -471,6 +474,7 @@ class PaypalPaymentViewTestCase(TestCase):
         self.assertEqual(self.request.session['campaign_id'], self.form_data['campaign_id'])
         self.assertEqual(self.request.session['project'], self.form_data['project'])
 
+    @freeze_time('2019-07-26')
     def test_subscription_data_submitted_to_braintree(self):
         self.form_data['frequency'] = 'monthly'
         form = BraintreePaypalPaymentForm(self.form_data)
@@ -491,6 +495,7 @@ class PaypalPaymentViewTestCase(TestCase):
             'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
             'price': Decimal(10),
+            'first_billing_date': date(2019, 7, 26),
         })
 
     def test_failed_customer_creation_calls_form_invalid(self):
