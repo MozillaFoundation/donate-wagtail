@@ -53,15 +53,20 @@ class BraintreePaymentMixin:
         self.request.session['campaign_id'] = form.cleaned_data['campaign_id']
         self.request.session['project'] = form.cleaned_data['project']
 
-    def success(self, result, form, send_data_to_basket=True, **kwargs):
-        # Store details of the transaction in a session variable
-        details = self.get_transaction_details_for_session(result, form, **kwargs)
-        details.update({
+    def prepare_session_data(self, details):
+        data = {
             'locale': self.request.LANGUAGE_CODE,
             'landing_url': self.request.session.get('landing_url', ''),
             'project': self.request.session.get('project', ''),
-        })
-        details = freeze_transaction_details_for_session(details)
+            'campaign_id': self.request.session.get('campaign_id', ''),
+        }
+        data.update(details)
+        return freeze_transaction_details_for_session(data)
+
+    def success(self, result, form, send_data_to_basket=True, **kwargs):
+        # Store details of the transaction in a session variable
+        details = self.get_transaction_details_for_session(result, form, **kwargs)
+        details = self.prepare_session_data(details)
         self.request.session['completed_transaction_details'] = details
         if send_data_to_basket:
             queue.enqueue(send_transaction_to_basket, details)
@@ -365,19 +370,26 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
             transaction_id = result.transaction.id
             settlement_amount = result.transaction.disbursement_details.settlement_amount
             email = result.transaction.paypal_details.payer_email
+            first_name = result.transaction.paypal_details.payer_first_name
             last_name = result.transaction.paypal_details.payer_last_name
         else:
             transaction_id = result.subscription.id
             settlement_amount = None
             email = kwargs['payment_method'].email
+            first_name = kwargs['payment_method'].payer_info['first_name']
             last_name = kwargs['payment_method'].payer_info['last_name']
+
         return {
             'amount': form.cleaned_data['amount'],
+            'campaign_id': form.cleaned_data['campaign_id'],
+            'project': form.cleaned_data['project'],
+            'landing_url': form.cleaned_data['landing_url'],
             'settlement_amount': settlement_amount,
             'transaction_id': transaction_id,
             'payment_method': constants.METHOD_PAYPAL,
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
+            'first_name': first_name,
             'last_name': last_name,
             'email': email,
         }
