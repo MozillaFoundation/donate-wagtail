@@ -311,7 +311,8 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             'amount': Decimal(50),
             'options': {
                 'submit_for_settlement': True,
-            }
+            },
+            'device_data': '{"some": "data"}',
         })
 
         self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
