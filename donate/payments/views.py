@@ -215,7 +215,8 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'payment_method_token': payment_method.token,
             'options': {
                 'submit_for_settlement': True
-            }
+            },
+            'device_data': form.cleaned_data['device_data'],
         })
 
         if result.is_success:
