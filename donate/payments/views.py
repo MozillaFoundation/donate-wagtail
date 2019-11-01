@@ -616,9 +616,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         if send_data_to_basket:
             data = form.cleaned_data.copy()
-            data['source_url'] = self.request.get_full_path()
-            # TODO - LANGUAGE_CODE is in the format en-us, and basket expects en-US
-            # To address as part of https://github.com/mozilla/donate-wagtail/issues/167
+            data['source_url'] = self.request.build_absolute_uri()
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
         return super().form_valid(form)
