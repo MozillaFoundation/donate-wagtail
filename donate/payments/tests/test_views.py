@@ -14,6 +14,7 @@ from ..forms import (
     BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm,
     BraintreePaypalUpsellForm, UpsellForm
 )
+from ..tasks import send_transaction_to_basket
 from ..views import (
     BraintreePaymentMixin, CardPaymentView, CardUpsellView, NewsletterSignupView,
     PaypalPaymentView, PaypalUpsellView, TransactionRequiredMixin
@@ -23,6 +24,7 @@ from ..exceptions import InvalidAddress
 
 class MockPaypalDetails:
     payer_email = 'customer@example.com'
+    payer_first_name = 'Bob'
     payer_last_name = 'Jones'
 
 
@@ -47,6 +49,7 @@ class MockBraintreePaymentMethod:
     last_4 = '1234'
     email = 'test@example.com'
     payer_info = {
+        'first_name': 'Bob',
         'last_name': 'Jones'
     }
 
@@ -83,6 +86,7 @@ class BraintreeMixinTestCase(TestCase):
         view.request.session = {
             'landing_url': 'http://localhost',
             'project': 'thunderbird',
+            'campaign_id': 'piday',
         }
         view.request.LANGUAGE_CODE = 'en-US'
         view.success(MockBraintreeResult(), form, send_data_to_basket=False)
@@ -92,6 +96,7 @@ class BraintreeMixinTestCase(TestCase):
             'locale': 'en-US',
             'landing_url': 'http://localhost',
             'project': 'thunderbird',
+            'campaign_id': 'piday',
         })
 
 
@@ -348,6 +353,11 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         })
         self.assertEqual(details, expected_details)
 
+        # Ensure that the details are valid for what the basket task expects
+        with mock.patch('donate.payments.tasks.send_to_sqs') as mock_send:
+            send_transaction_to_basket(self.view.prepare_session_data(details))
+        mock_send.assert_called_once()
+
 
 class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
 
@@ -415,6 +425,11 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             'settlement_amount': None,
         })
         self.assertEqual(details, expected_details)
+
+        # Ensure that the details are valid for what the basket task expects
+        with mock.patch('donate.payments.tasks.send_to_sqs') as mock_send:
+            send_transaction_to_basket(self.view.prepare_session_data(details))
+        mock_send.assert_called_once()
 
 
 class PaypalPaymentViewTestCase(TestCase):
@@ -497,8 +512,9 @@ class PaypalPaymentViewTestCase(TestCase):
         self.view.currency = 'usd'
         result = MockBraintreeSubscriptionResult()
         payment_method = MockBraintreePaymentMethod()
+        details = self.view.get_transaction_details_for_session(result, form, payment_method=payment_method)
         self.assertEqual(
-            self.view.get_transaction_details_for_session(result, form, payment_method=payment_method),
+            details,
             {
                 'amount': Decimal(10),
                 'transaction_id': 'subscription-id-1',
@@ -507,9 +523,18 @@ class PaypalPaymentViewTestCase(TestCase):
                 'currency': 'usd',
                 'settlement_amount': None,
                 'email': 'test@example.com',
+                'first_name': 'Bob',
                 'last_name': 'Jones',
+                'campaign_id': '',
+                'project': 'mozillafoundation',
+                'landing_url': 'http://localhost',
             }
         )
+
+        # Ensure that the details are valid for what the basket task expects
+        with mock.patch('donate.payments.tasks.send_to_sqs') as mock_send:
+            send_transaction_to_basket(self.view.prepare_session_data(details))
+        mock_send.assert_called_once()
 
     def test_get_success_url_single(self):
         self.view.payment_frequency = 'single'
