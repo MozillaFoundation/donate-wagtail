@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-31 09:33+0000\n"
+"PO-Revision-Date: 2019-11-02 09:24+0000\n"
 "Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bn\n"
@@ -107,11 +107,11 @@ msgstr ""
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "পাতা পাওয়া যায়নি"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "আহ ওহ!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
