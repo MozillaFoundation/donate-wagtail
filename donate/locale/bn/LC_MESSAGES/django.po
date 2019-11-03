@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-11-02 09:24+0000\n"
-"Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
+"PO-Revision-Date: 2019-11-03 09:38+0000\n"
+"Last-Translator: Ahsun Mahmud Riad <ahsunriad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "আপনার দেয়া CVV সঠিক নয়।"
 
 #: donate/payments/views.py:126
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "আপনি মেয়াদ উত্তীর্ণের যে তারিখ দিয়েছেন তা অকার্যকর।"
 
 #: donate/payments/views.py:127
 msgid "The credit card number you entered was invalid."
@@ -103,7 +103,7 @@ msgstr ""
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "ক্যাপচা অবৈধ ছিল। অনুগ্রহপূর্বক আবার চেষ্টা করুন।"
 
 #: donate/templates/404.html:4
 msgid "Page not found"

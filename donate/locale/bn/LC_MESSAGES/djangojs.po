@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-11-02 09:28+0000\n"
-"Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
+"PO-Revision-Date: 2019-11-03 09:39+0000\n"
+"Last-Translator: Ahsun Mahmud Riad <ahsunriad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "আপনার পেমেন্ট প্রক্রিয়া ক
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:140
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "নিচের কিছু ক্ষেত্র অবৈধ। দয়া করে অবৈধ ক্ষেত্রগুলি সংশোধন করুন এবং আবার চেষ্টা করুন।"
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"
