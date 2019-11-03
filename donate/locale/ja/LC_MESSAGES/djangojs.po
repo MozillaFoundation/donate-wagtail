@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-09 18:34+0000\n"
-"Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
+"PO-Revision-Date: 2019-11-03 13:56+0000\n"
+"Last-Translator: marsf <chimantaea_mirabilis@yahoo.co.jp>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -30,16 +30,16 @@ msgstr "その他の金額"
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
 #: source/js/payments-card.js:14
 msgid "An error occurred. Please reload the page or try again later."
-msgstr ""
+msgstr "エラーが発生しました。ページを読み込み直すか、後でもう一度試してください。"
 
 #: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:15
 #: source/js/payments-card.js:124
 msgid "There was an error processing your payment. Please try again."
-msgstr ""
+msgstr "支払い処理中にエラーが発生しました。もう一度試してください。"
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:140
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "以下のいくつかの入力内容が無効です。無効なフィールドを訂正してもう一度試してください。"
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
 msgid "Payment cancelled"
