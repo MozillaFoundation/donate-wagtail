@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
 "PO-Revision-Date: 2019-10-19 06:01+0000\n"
 "Last-Translator: Mikeyy <mihovil@miho.im>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,35 +70,35 @@ msgstr "Država"
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "Slažem se da Mozilla upravlja mojim informacijama, kao što je objašnjeno u <a href='%(url)s'>politici privatnosti</a>."
 
-#: donate/payments/views.py:123
+#: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
 msgstr "Vrsta kartice koju ste koristili se ne prihvaća."
 
-#: donate/payments/views.py:124 donate/payments/views.py:125
+#: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
 msgstr "CVV kôd koji ste unijeli nije ispravan."
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
 msgstr "Datum isteka koji ste unijeli nije ispravan."
 
-#: donate/payments/views.py:127
+#: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
 msgstr "Upisani broj kartice nije ispravan."
 
-#: donate/payments/views.py:136 donate/payments/views.py:137
+#: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
 msgstr "Poštanski broj koji ste unijeli nije valjan."
 
-#: donate/payments/views.py:151
+#: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "Nažalost, došlo je do pogreške prilikom obrade Vašeg plaćanja. Pokušajte ponovno kasnije ili upotrijebite drugi način plaćanja."
 
-#: donate/payments/views.py:291
+#: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "Nešto je pošlo po zlu. Nismo uspjeli obraditi vašu uplatu."
 
-#: donate/payments/views.py:481 donate/payments/views.py:569
+#: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "Dogodila se greška prilikom obrade vašeg plaćanja. Molimo, pokušajte ponovno kasnije."
 
@@ -121,6 +121,16 @@ msgstr "Nažalost, stranica ne postoji"
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "Idite na početnu stranicu"
+
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
+#: donate/templates/pages/base_page.html:13
+#: donate/templates/pages/base_page.html:14
+#, fuzzy
+#| msgctxt "Email subject line"
+#| msgid "I donated to Mozilla today"
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr "Danas sam donirao Mozilli"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"

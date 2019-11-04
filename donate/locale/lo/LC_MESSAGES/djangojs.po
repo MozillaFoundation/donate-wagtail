@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
 "PO-Revision-Date: 2019-10-31 06:42+0000\n"
 "Last-Translator: Saikeo <kavhanxay@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:16 source/js/components/currency-selector.js:85
+#: donate/frontend/_js/main.compiled.js:16
+#: source/js/components/currency-selector.js:85
 msgid "per month"
 msgstr "ຕໍ່ເດືອນ"
 
@@ -27,20 +28,27 @@ msgstr "ຕໍ່ເດືອນ"
 msgid "Other amount"
 msgstr "ຈຳນວນອື່ນໆ"
 
-#: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:12
-#: source/js/payments-card.js:14
+#: donate/frontend/_js/payments-card.compiled.js:1
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
+#: donate/frontend/_js/payments-paypal.compiled.js:1
+#: source/js/components/paypal.js:12 source/js/payments-card.js:14
 msgid "An error occurred. Please reload the page or try again later."
 msgstr "ເກີດມີຂໍ້ຜິດພາດ. ກະລຸນາໂຫລດໜ້ານີ້ຄືນໃໝ່ ຫຼືລອງເຂົ້າໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ."
 
-#: donate/frontend/_js/payments-card.compiled.js:1 donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:15
-#: source/js/payments-card.js:124
+#: donate/frontend/_js/payments-card.compiled.js:1
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
+#: donate/frontend/_js/payments-paypal.compiled.js:1
+#: source/js/components/paypal.js:15 source/js/payments-card.js:124
 msgid "There was an error processing your payment. Please try again."
 msgstr "ເກີດມີຂໍ້ຜິດພາດໃນການດຳເນີນການຈ່າຍເງິນຂອງທ່ານ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
 
-#: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:140
+#: donate/frontend/_js/payments-card.compiled.js:1
+#: source/js/payments-card.js:140
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "ມີບາງຂໍ້ມູນດ້ານລຸ່ມບໍ່ຖືກຕ້ອງ. ກະລຸນາແກ້ໄຂຂໍ້ມູນທີ່ບໍ່ຖືກຕ້ອງ ແລະ ລອງໃໝ່ອີກຄັ້ງ."
 
-#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:87
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
+#: donate/frontend/_js/payments-paypal.compiled.js:1
+#: source/js/components/paypal.js:87
 msgid "Payment cancelled"
 msgstr "ການຈ່າຍເງິນຖືກຍົກເລີກແລ້ວ"
