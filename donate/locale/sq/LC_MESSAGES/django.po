@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
 "PO-Revision-Date: 2019-10-25 09:52+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,35 +70,35 @@ msgstr "Vend"
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "Pajtohem me trajtimin që Mozilla u bën të dhënave të mia, ashtu si shpjegohet në këtë <a href='%(url)s'>Shënim mbi Privatësinë</a>."
 
-#: donate/payments/views.py:123
+#: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
 msgstr "Lloji i kartës që përdorët s’është i pranueshëm."
 
-#: donate/payments/views.py:124 donate/payments/views.py:125
+#: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
 msgstr "Kodi CVV që dhatë është i pavlefshëm."
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
 msgstr "Data e skadimit që dhatë është e pavlefshme."
 
-#: donate/payments/views.py:127
+#: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
 msgstr "Numri i kartës së kreditit që dhatë është i pavlefshëm."
 
-#: donate/payments/views.py:136 donate/payments/views.py:137
+#: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
 msgstr "Kodi postar që dhatë, nuk është i vlefshëm."
 
-#: donate/payments/views.py:151
+#: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "Na ndjeni, pati një gabim në përpunimin e pagesës tuaj. Ju lutemi, riprovoni më vonë ose përdorni një metodë tjetër pagesash."
 
-#: donate/payments/views.py:291
+#: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "Diç shkoi ters. S’qemë në gjendje të kryejmë pagesën tuaj."
 
-#: donate/payments/views.py:481 donate/payments/views.py:569
+#: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "Na ndjeni, pati një gabim në kryerjen e pagesës tuaj. Ju lutemi, riprovoni më vonë."
 
@@ -121,6 +121,16 @@ msgstr "Na ndjeni, faqja nuk ekziston"
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "Shkoni te faqja juaj hyrëse"
+
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
+#: donate/templates/pages/base_page.html:13
+#: donate/templates/pages/base_page.html:14
+#, fuzzy
+#| msgctxt "Email subject line"
+#| msgid "I donated to Mozilla today"
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr "Sot dhurova për Mozilla-n"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"

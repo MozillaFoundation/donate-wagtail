@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
 "PO-Revision-Date: 2019-10-24 12:08+0000\n"
 "Last-Translator: Mahtab Alam <mahtab.ceh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,35 +70,35 @@ msgstr "देश"
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "इस <a href='%(url)s'>गोपनीयता निति</a> में बताए अनुसार Mozilla द्वारा मेरी जानकारियों के रखे जाने से मुझे कोई आपत्ति नहीं है।"
 
-#: donate/payments/views.py:123
+#: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
 msgstr "आपके द्वारा उपयोग कार्ड प्रकार स्वीकृत नहीं हैं।"
 
-#: donate/payments/views.py:124 donate/payments/views.py:125
+#: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
 msgstr "आपके द्वारा दर्ज CVV कोड गलत था।"
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
 msgstr "आपके द्वारा दर्ज की गई समाप्ति तिथि गलत थी।"
 
-#: donate/payments/views.py:127
+#: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
 msgstr "आपके द्वारा दर्ज किया गया क्रेडिट कार्ड नंबर गलत था।"
 
-#: donate/payments/views.py:136 donate/payments/views.py:137
+#: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
 msgstr "आपके द्वारा दिया गया पोस्ट कोड सही नहीं है।"
 
-#: donate/payments/views.py:151
+#: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "क्षमा करें, आपके पेमेंट को पूरा करने में एक समस्या हुई। कृपया बाद में पुनः प्रयास करें या कोई अन्य भुगतान तरीके का उपयोग करें।"
 
-#: donate/payments/views.py:291
+#: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "कुछ समस्या उत्पन्न हुई। हम आपके भुगतान को पूरा करने में असमर्थ रहे।"
 
-#: donate/payments/views.py:481 donate/payments/views.py:569
+#: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "क्षमा करें, आपके भुगतान को पूरा करने में कोई समस्या उत्पन्न हुई। कृपया कुछ देर बाद पुनः प्रयास करें।"
 
@@ -121,6 +121,13 @@ msgstr "क्षमा करें, यह पृष्ठ उपलब्ध 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "हमारे मुख्य पृष्ठ पर जाएं"
+
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
+#: donate/templates/pages/base_page.html:13
+#: donate/templates/pages/base_page.html:14
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
