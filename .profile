@@ -12,7 +12,7 @@ if [ $USE_PONTOON ]; then
   chmod 700 $SSH_DIR
 
   # echo is messing with the newlines, using this instead:
-  cat > id_rsa << EOF
+  cat > $SSH_DIR/id_rsa << EOF
   $SSH_KEY
 EOF
   chmod 400 $SSH_DIR/id_rsa
