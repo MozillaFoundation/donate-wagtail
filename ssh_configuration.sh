@@ -2,9 +2,10 @@
 # Create the necessary config files to be able to push to GitHub from Heroku.
 # Used for syncing translation files between Pontoon and wagtail-donate-prod
 
-set -ex
+set -e
 
 if [ $USE_PONTOON ]; then
+  echo "Generating SSH config"
   SSH_DIR=/app/.ssh
 
   mkdir $SSH_DIR
@@ -15,4 +16,5 @@ if [ $USE_PONTOON ]; then
 
   echo $SSH_CONFIG > $SSH_DIR/config
   chmod 600 $SSH_DIR/config
+  echo "Done!"
 fi
