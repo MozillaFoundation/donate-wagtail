@@ -4,13 +4,15 @@
 
 set -ex
 
-SSH_DIR=/app/.ssh
+if [ $USE_PONTOON ]; then
+  SSH_DIR=/app/.ssh
 
-mkdir $SSH_DIR
-chmod 700 $SSH_DIR
+  mkdir $SSH_DIR
+  chmod 700 $SSH_DIR
 
-echo $SSH_KEY > $SSH_DIR/id_rsa
-chmod 400 $SSH_DIR/id_rsa
+  echo $SSH_KEY > $SSH_DIR/id_rsa
+  chmod 400 $SSH_DIR/id_rsa
 
-echo $SSH_CONFIG > $SSH_DIR/config
-chmod 600 $SSH_DIR/config
+  echo $SSH_CONFIG > $SSH_DIR/config
+  chmod 600 $SSH_DIR/config
+fi
