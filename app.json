@@ -91,7 +91,7 @@
     "CSP_FONT_SRC": "'self' fonts.googleapis.com fonts.gstatic.com",
     "CSP_STYLE_SRC": "'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com",
     "CSP_FRAME_SRC": "'self' assets.braintreegateway.com c.paypal.com *.paypal.com",
-    "CSP_CONNECT_SRC": "api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com https://www.mozilla.org/en-US/newsletter/",
+    "CSP_CONNECT_SRC": "'self' api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com https://www.mozilla.org/en-US/newsletter/",
     "USE_PONTOON": "True",
     "WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR": "/tmp/wagtail-content-for-pontoon.git",
     "WAGTAILLOCALIZE_PONTOON_GIT_URL": "git@github.com:mozilla-l10n/mozilla-donate-content.git"
