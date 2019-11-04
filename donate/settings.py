@@ -453,10 +453,6 @@ LOGGING = {
         'donate': {
             'handlers': ['info'],
             'level': 'INFO',
-        },
-        'sync_pontoon': {
-            'handlers': ['info'],
-            'level': 'INFO'
         }
     }
 }
