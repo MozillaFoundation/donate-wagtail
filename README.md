@@ -42,8 +42,8 @@ Run `inv -l` in your terminal to get the list of available tasks.
 - `inv docker-makemessages`: Extract all template messages in .po files for localization
 - `inv docker-compilemessages`: Compile the latest translations
 - `inv docker-migrate`: Updates database schema
-- `inv docker-new_env`: Get a new dev environment and a new database with fake data
-- `inv docker-new_db`: Delete your database and create a new one with fake data
+- `inv docker-new-env`: Get a new dev environment and a new database with fake data
+- `inv docker-new-db`: Delete your database and create a new one with fake data
 - `inv docker-npm`: Shorthand to npm. ex: `inv docker-npm "[COMMAND] [ARG]"`
 - `inv docker-pipenv`: Shorthand to pipenv. ex: `inv docker-pipenv "[COMMAND] [ARG]"`
 - `inv docker-test-python`: Run python tests
