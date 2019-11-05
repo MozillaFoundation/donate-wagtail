@@ -20,26 +20,26 @@
                 {% trans "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy." as tb_twitter_text context "Used as a tweet" %}
                 {% trans "I donated to Thunderbird today" as tb_email_subject context "Email subject line" %}
 
-                <a class="button button--outline button--icon" href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}" title="{% trans 'Share on Facebook' %}">
+                <a class="button button--outline button--icon js-ga-track-click" href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}" title="{% trans 'Share on Facebook' %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Facebook">
                     <svg class="button__icon button__icon--facebook" width="16" height="16">
                         <use xlink:href="#facebook"></use>
                     </svg>
                     <div class="button__label">{% trans "Facebook" %}</div>
                 </a>
                 {# see https://dev.twitter.com/web/tweet-button/web-intent #}
-                <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}&amp;via=mozilla" title="{% trans 'Share on Twitter' %}">
+                <a class="button button--outline button--icon js-ga-track-click" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}&amp;via=mozilla" title="{% trans 'Share on Twitter' %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Twitter">
                     <svg class="button__icon button__icon--twitter" width="16" height="16">
                         <use xlink:href="#twitter"></use>
                     </svg>
                     <div class="button__label">{% trans "Twitter" %}</div>
                 </a>
-                <a class="button button--outline button--icon" href="mailto:?&amp;subject={{ email_subject|urlencode }}&amp;body={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}">
+                <a class="button button--outline button--icon js-ga-track-click" href="mailto:?&amp;subject={{ email_subject|urlencode }}&amp;body={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Email">
                     <svg class="button__icon button__icon--email" width="16" height="16">
                         <use xlink:href="#email"></use>
                     </svg>
                     <div class="button__label">{% trans "Email" context "Share button" %}</div>
                 </a>
-                <a class="button button--outline button--icon" href="#" data-copy-link>
+                <a class="button button--outline button--icon js-ga-track-click" href="#" data-copy-link data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Link">
                     <svg class="button__icon button__icon--link button__initial" width="16" height="16">
                         <use xlink:href="#link"></use>
                     </svg>

@@ -1,4 +1,4 @@
-{% load static i18n util_tags %}
+{% load analytics_tags static i18n util_tags %}
 <!doctype html>
 {% get_current_language as LANGUAGE_CODE %}
 {% get_current_language_bidi as LANGUAGE_BIDI %}
@@ -56,6 +56,8 @@
         <script src="{% url 'javascript-catalog' %}"></script>
         <script src="{% static '_js/main.compiled.js' %}"></script>
         {% endblock %}
+
+        {% render_ga_event_data %}
         {% block extra_js %}{% endblock %}
     </body>
 </html>
