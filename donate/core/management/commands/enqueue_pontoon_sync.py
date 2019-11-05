@@ -3,7 +3,7 @@ Management command that trigger a sync with Pontoon. Used on Heroku as a schedul
 """
 from django.core.management.base import BaseCommand
 
-from donate.core.pontoon import SyncManager
+from donate.core.pontoon import CustomSyncManager
 
 
 class Command(BaseCommand):
@@ -11,5 +11,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         print("Syncing with Pontoon...")
-        SyncManager().trigger()
+        CustomSyncManager().trigger()
         print("Done!")
