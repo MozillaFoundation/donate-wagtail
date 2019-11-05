@@ -10,6 +10,6 @@ class Command(BaseCommand):
     help = 'Enqueue a `sync_pontoon` job.'
 
     def handle(self, *args, **options):
-        print("Syncing with Pontoon")
+        print("Syncing with Pontoon...")
         SyncManager().trigger()
         print("Done!")
