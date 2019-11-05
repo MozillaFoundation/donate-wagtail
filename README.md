@@ -11,20 +11,22 @@
 ## Documentation
 
 - [Pages](docs/pages.md)
+- [Invoke Tasks](docs/invoke_tasks.md)
 
-## Notes on Docker
 
-It should be possible to connect the python virtual env inside the container to your IDE (tested with pycharm and vscode), if you run into issues, ping patjouk on slack.
+## Setup
 
-## How to Setup your Dev Environment with Docker
+### How to Setup your Dev Environment with Docker
 
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop) (macOS and Windows). For Linux users: install [Docker CE](https://docs.docker.com/install/#supported-platforms) and [Docker Compose](https://docs.docker.com/compose/install/). If you don't want to create a Docker account, direct links to download can be found [in this issue](https://github.com/docker/docker.github.io/issues/6910),
 - [Check your install](https://docs.docker.com/get-started/#test-docker-version) by running `docker run hello-world`,
 - [Install Invoke](https://www.pyinvoke.org/installing.html),
 - If relevant: delete your node_modules directory (`rm -rf node_modules`). It's not necessary, but it speeds up the install.
-- Run `inv docker-setup`.
+- Run `inv docker-new-env`.
 
-When it's done, run `docker-compose up`, wait until the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers.
+When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docekr-compose down`.
+
+It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
 
 ## Invoke tasks
 
