@@ -43,7 +43,7 @@
                         <button value="yes" class="button button--large button--primary" type="submit">
                             {% trans "Yes" %}
                         </button>
-                        <a href="{% url 'payments:newsletter_signup' %}" class="button button--large button--secondary">
+                        <a href="{% url 'payments:newsletter_signup' %}" class="button button--large button--secondary js-ga-track-click" data-ga-category="User Flow" data-ga-action="Monthly Upgrade Click" data-ga-label="No">
                             {% trans "No" %}
                         </a>
                     </div>

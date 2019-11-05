@@ -1,5 +1,6 @@
 import client from "braintree-web/client";
 import { create as paypalCreate } from "braintree-web/paypal-checkout";
+import gaEvent from "./analytics";
 
 export default function initPaypal(
   getAmount,
@@ -85,10 +86,18 @@ export default function initPaypal(
 
           onCancel: function() {
             showErrorMessage(window.gettext("Payment cancelled"));
+            gaEvent({
+              eventCategory: "User Flow",
+              eventAction: "Paypal Payment Cancelled"
+            });
           },
 
           onError: function(err) {
             showErrorMessage(generalErrorMsg);
+            gaEvent({
+              eventCategory: "User Flow",
+              eventAction: "PayPal Error"
+            });
           }
         },
         buttonId
