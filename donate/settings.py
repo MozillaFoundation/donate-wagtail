@@ -356,8 +356,8 @@ django.conf.locale.LANG_INFO['uk'] = {
     'name_local': 'Ukrainian',
 }
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [app('frontend')]
+STATICFILES_STORAGE = 'donate.utility.staticfiles.NonStrictCompressedManifestStaticFilesStorage'
 STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
 
