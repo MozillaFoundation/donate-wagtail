@@ -85,6 +85,7 @@ class BraintreeWebhookProcessor:
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,
+            'subscription_id': notification.subscription.id,
             'project': custom_fields.get('project', ''),
             'last_4': None if is_paypal else last_tx.credit_card_details.last_4,
             'landing_url': '',
