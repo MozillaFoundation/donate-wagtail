@@ -1,7 +1,5 @@
 from sys import platform
-
 import re
-from shutil import copy
 
 from invoke import task
 
@@ -18,100 +16,6 @@ if platform == 'win32':
 else:
     PLATFORM_ARG = dict(pty=True)
 
-
-# Tasks without Docker
-
-@task(optional=['option', 'flag'])
-def manage(ctx, command, option=None, flag=None):
-    """Shorthand to manage.py. inv manage \"[COMMAND] [ARG]\". ex: inv manage \"runserver 3000\""""
-    with ctx.cd(ROOT):
-        ctx.run(f"pipenv run python manage.py {command}", **PLATFORM_ARG)
-
-
-@task
-def runserver(ctx):
-    """Start a web server"""
-    manage(ctx, "runserver 0.0.0.0:8000")
-
-
-@task
-def migrate(ctx):
-    """Updates database schema"""
-    manage(ctx, "migrate", flag="noinput")
-
-
-@task
-def makemigrations(ctx):
-    """Creates new migration(s) for apps"""
-    manage(ctx, "makemigrations")
-
-
-@task
-def makemessages(ctx):
-    """Extract all template messages in .po files for localization"""
-    manage(ctx, "makemessages --keep-pot --no-wrap")
-    manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules")
-    os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
-    os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
-
-
-@task
-def compilemessages(ctx):
-    """Compile the latest translations"""
-    manage(ctx, "compilemessages")
-
-
-@task
-def test(ctx):
-    """Run tests"""
-    print("* Running flake8")
-    ctx.run(f"pipenv run flake8 tasks.py donate/", **PLATFORM_ARG)
-    print("* Running tests")
-    manage(ctx, "test --settings=donate.settings_test")
-
-
-@task
-def setup(ctx):
-    """Prepare your dev environment after a fresh git clone"""
-    with ctx.cd(ROOT):
-        print("* Setting default environment variables.")
-        if os.path.isfile(".env"):
-            print("* Keeping your existing .env")
-        else:
-            print("* Creating a new .env")
-            copy("env.default", ".env")
-        print("* Installing npm dependencies and build.")
-        ctx.run("npm install && npm run build")
-        print("* Installing Python dependencies.")
-        ctx.run("pipenv install --dev")
-        print("* Applying database migrations.")
-        migrate(ctx)
-        print("* Creating fake data")
-        manage(ctx, "load_fake_data")
-
-        # Windows doesn't support pty, skipping this step
-        if platform == 'win32':
-            print("All done!\n"
-                  "To create an admin user: pipenv run python manage.py createsuperuser\n"
-                  "To start your dev server: inv runserver")
-        else:
-            print("* Creating superuser.")
-            ctx.run("pipenv run python manage.py createsuperuser", pty=True)
-            print("* All done! To start your dev server, run the following:\n inv runserver")
-
-
-@task(aliases=["catchup"])
-def catch_up(ctx):
-    """Install dependencies and apply migrations"""
-    print("* Installing npm dependencies and build.")
-    ctx.run("npm install && npm run build")
-    print("* Installing Python dependencies.")
-    ctx.run("pipenv install --dev")
-    print("* Applying database migrations.")
-    migrate(ctx)
-
-
-# Tasks with Docker
 
 def create_docker_env_file(env_file):
     """Create or update an .env to work with a docker environment"""
