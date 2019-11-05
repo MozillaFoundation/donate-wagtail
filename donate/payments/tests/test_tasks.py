@@ -110,7 +110,7 @@ class ProcessWebhookTestCase(TestCase):
         mock_process_method.assert_called_once_with(notification)
 
     @freeze_time("2019-08-08 00:00:00", tz_offset=0)
-    def test_process_subscription_charged_successfully(self):
+    def test_process_subscription_charged_successfully_credit(self):
         notification = mock.Mock()
         notification.kind = 'subscription_charged_successfully'
         tx = mock.Mock()
@@ -156,6 +156,57 @@ class ProcessWebhookTestCase(TestCase):
                 'transaction_id': 'test-id',
                 'project': 'mozillafoundation',
                 'last_4': '1234',
+                'donation_url': '',
+                'locale': 'en-US',
+                'conversion_amount': Decimal(10),
+            }
+        })
+
+    @freeze_time("2019-08-08 00:00:00", tz_offset=0)
+    def test_process_credit_subscription_charged_successfully_paypal(self):
+        notification = mock.Mock()
+        notification.kind = 'subscription_charged_successfully'
+        tx = mock.Mock()
+        tx.id = 'test-id'
+        tx.paypal_details = mock.Mock()
+        tx.paypal_details.payer_first_name = 'Bob'
+        tx.paypal_details.payer_last_name = 'Geldof'
+        tx.paypal_details.payer_email = 'test@example.com'
+        tx.amount = Decimal(10)
+        tx.currency_iso_code = 'USD'
+        tx.payment_instrument_type = 'paypal_account'
+        tx.disbursement_details = mock.Mock()
+        tx.disbursement_details.settlement_amount = Decimal(10)
+        notification.subscription.transactions = [tx]
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            with mock.patch('donate.payments.tasks.gateway', autospec=True) as mock_gateway:
+                mock_payment_method = mock.Mock()
+                mock_payment_method.customer_id = 'customer-1'
+                mock_gateway.payment_method.find.return_value = mock_payment_method
+                mock_customer = mock.Mock()
+                mock_customer.custom_fields = {
+                    'campaign_id': 'PIDAY',
+                    'project': 'mozillafoundation',
+                    'locale': 'en-US',
+                }
+                mock_gateway.customer.find.return_value = mock_customer
+                BraintreeWebhookProcessor().process_subscription_charged_successfully(notification)
+        mock_send.assert_called_once_with({
+            'data': {
+                'event_type': 'donation',
+                'last_name': 'Geldof',
+                'first_name': 'Bob',
+                'campaign_id': 'PIDAY',
+                'email': 'test@example.com',
+                'donation_amount': Decimal(10),
+                'currency': 'usd',
+                'created': 1565222400,
+                'recurring': True,
+                'service': 'Braintree_Paypal',
+                'transaction_id': 'test-id',
+                'project': 'mozillafoundation',
+                'last_4': None,
                 'donation_url': '',
                 'locale': 'en-US',
                 'conversion_amount': Decimal(10),
