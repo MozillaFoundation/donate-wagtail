@@ -36,7 +36,11 @@ function setupBraintree() {
     amountInput.value = getAmountMonthly();
     frequencyInput.value = "monthly";
     currencyInput.value = currencySelect.value;
-    paymentForm.submit();
+    if (captchaEnabled) {
+      expectRecaptcha(window.grecaptcha.execute);
+    } else {
+      paymentForm.submit();
+    }
   };
 
   initPaypal(
