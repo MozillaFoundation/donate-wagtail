@@ -24,7 +24,7 @@ A scheduled task runs every 20 minutes to sync the donate platform with the `moz
 
 - A worker dyno running `python manage.py rqworker wagtail_localize_pontoon.sync`,
 - `Heroku Redis` add-on,
-- `Heroku scheduler` running every 20 min.
+- `Heroku scheduler` running `python manage.py enqueue_pontoon_sync` every 20 min.
 
 ### First run
 
