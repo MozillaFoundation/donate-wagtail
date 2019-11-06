@@ -49,6 +49,7 @@ def send_transaction_to_basket(data):
             'recurring': data['payment_frequency'] == constants.FREQUENCY_MONTHLY,
             'service': data['payment_method'],
             'transaction_id': data['transaction_id'],
+            'subscription_id': data['subscription_id'],
             'project': data['project'],
             'last_4': data.get('last_4', None),
             'donation_url': data['landing_url'],
