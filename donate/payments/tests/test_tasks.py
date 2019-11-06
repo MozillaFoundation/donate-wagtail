@@ -183,6 +183,7 @@ class ProcessWebhookTestCase(TestCase):
         tx.disbursement_details = mock.Mock()
         tx.disbursement_details.settlement_amount = Decimal(10)
         notification.subscription.transactions = [tx]
+        notification.subscription.id = 'test-subscription-id'
 
         with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
             with mock.patch('donate.payments.tasks.gateway', autospec=True) as mock_gateway:
@@ -210,6 +211,7 @@ class ProcessWebhookTestCase(TestCase):
                 'recurring': True,
                 'service': 'Braintree_Paypal',
                 'transaction_id': 'test-id',
+                'subscription_id': 'test-subscription-id',
                 'project': 'mozillafoundation',
                 'last_4': None,
                 'donation_url': '',
