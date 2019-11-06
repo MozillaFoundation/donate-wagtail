@@ -3,10 +3,11 @@ from django.utils.translation.trans_real import (
     to_language as django_to_language,
     parse_accept_lang_header as django_parse_accept_lang_header
 )
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
 from .. import language_code_to_iso_3166, parse_accept_lang_header, to_language
+from ..utils import queue_ga_event
 
 
 class UtilsTestCase(TestCase):
@@ -24,6 +25,20 @@ class UtilsTestCase(TestCase):
             parse_accept_lang_header('en-GB,en;q=0.5'),
             (('en-GB', 1.0), ('en', 0.5)),
         )
+
+    def test_queue_ga_event_new(self):
+        request = RequestFactory().get('/')
+        request.session = self.client.session
+        queue_ga_event(request, ['send', 'event', 'foo'])
+        self.assertEqual(request.session['ga_events'], [['send', 'event', 'foo']])
+
+    def test_queue_ga_event_append(self):
+        request = RequestFactory().get('/')
+        request.session = self.client.session
+        request.session['ga_events'] = [['send', 'event', 'foo']]
+        queue_ga_event(request, ['send', 'event', 'bar'])
+        self.assertEqual(request.session['ga_events'], [['send', 'event', 'foo'], ['send', 'event', 'bar']])
+        self.assertTrue(request.session.modified)
 
 
 class UtilsIntegrationTestCase(TestCase):

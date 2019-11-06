@@ -44,7 +44,7 @@
 
                     <div class="form__section form__section--actions form__section--bottom-margin button__group">
                         <div id="payments__paypal-button--upsell"></div>
-                        <a class="button button--rounded button--secondary" href="{% url 'payments:newsletter_signup' %}">{% trans "No" %}</a>
+                        <a class="button button--rounded button--secondary js-ga-track-click" href="{% url 'payments:newsletter_signup' %}" data-ga-category="User Flow" data-ga-action="Monthly Upgrade Click" data-ga-label="No">{% trans "No" %}</a>
                     </div>
                 </div>
             </form>

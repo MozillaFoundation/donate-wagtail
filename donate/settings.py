@@ -447,8 +447,8 @@ LOGGING = {
             'level': 'ERROR'
         },
         'rq.worker': {
-            'handlers': ['info'],
-            'level': 'INFO',
+            'handlers': ['debug'],
+            'level': 'DEBUG',
         },
         'donate': {
             'handlers': ['info'],

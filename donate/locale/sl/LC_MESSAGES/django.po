@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-05 09:23+0000\n"
+"PO-Revision-Date: 2019-11-05 15:58+0000\n"
 "Last-Translator: Rok Žerdin <zerdo90@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -79,11 +79,11 @@ msgstr "Koda CVV, ki ste jo vnesli, je neveljavna."
 
 #: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Datum poteka, ki ste ga vnesli, je neveljaven."
 
 #: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "Številka kreditne kartice, ki ste jo vnesli, je neveljavna."
 
 #: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
@@ -91,15 +91,15 @@ msgstr "Poštna številka, ki ste jo vnesli, ni veljavna."
 
 #: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "Pri obdelavi plačila je prišlo do napake. Poskusite znova kasneje ali uporabite drug način plačila."
 
 #: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "Nekaj se je zalomilo. Vašega plačila nismo mogli obdelati."
 
 #: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "Pri obdelavi plačila je prišlo do napake. Poskusite znova kasneje."
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
@@ -346,7 +346,7 @@ msgstr "Številka kartice"
 
 #: donate/templates/payment/card.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "Datum poteka"
 
 #: donate/templates/payment/card.html:117
 msgid "CVV"
@@ -420,7 +420,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "Po e-pošti smo vam poslali potrdilo o donaciji; če ga niste prejeli, preverite mapo z neželeno pošto in nam pišite na <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"

@@ -5,9 +5,6 @@
   "addons": ["heroku-postgresql:hobby-dev", "heroku-redis:hobby-dev"],
   "buildpacks": [
     {
-      "url": "https://github.com/Osmose/heroku-buildpack-ssh"
-    },
-    {
       "url": "heroku/nodejs"
     },
     {
@@ -71,12 +68,6 @@
     "BRAINTREE_PRIVATE_KEY": {
       "required": true
     },
-    "SSH_CONFIG": {
-      "required": true
-    },
-    "SSH_KEY": {
-      "required": true
-    },
     "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
     "CORS_WHITELIST": "*",
@@ -89,12 +80,12 @@
     "XSS_PROTECTION": "True",
     "CSRF_COOKIE_SECURE": "True",
     "SESSION_COOKIE_SECURE": "True",
-    "CSP_SCRIPT_SRC": "'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js js.braintreegateway.com assets.braintreegateway.com www.paypalobjects.com c.paypal.com www.paypal.com",
+    "CSP_SCRIPT_SRC": "'self' 'unsafe-inline' 'unsafe-eval' www.google-analytics.com js.braintreegateway.com assets.braintreegateway.com www.paypalobjects.com c.paypal.com www.paypal.com",
     "CSP_IMG_SRC": "* data:",
     "CSP_FONT_SRC": "'self' fonts.googleapis.com fonts.gstatic.com",
     "CSP_STYLE_SRC": "'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com",
     "CSP_FRAME_SRC": "'self' assets.braintreegateway.com c.paypal.com *.paypal.com",
-    "CSP_CONNECT_SRC": "'self' api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com https://www.mozilla.org/en-US/newsletter/"
+    "CSP_CONNECT_SRC": "'self' api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com www.google-analytics.com https://www.mozilla.org/en-US/newsletter/"
   },
   "scripts": {
     "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin",
