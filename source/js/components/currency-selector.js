@@ -1,3 +1,5 @@
+import gaEvent from "./analytics";
+
 class CurrencySelect {
   static selector() {
     return "#id_currency-switcher-currency";
@@ -29,6 +31,7 @@ class CurrencySelect {
     this.checkDisabled(selectedData);
     // Enable other amount
     this.bindOtherAmountEvents();
+    this.bindAnalyticsEvents();
   }
 
   // Get correct currency data from json based on select choice
@@ -117,7 +120,15 @@ class CurrencySelect {
       input.value = selectedData.code;
     });
 
+    gaEvent({
+      eventCategory: "User Flow",
+      eventAction: "Changed Currency",
+      eventLabel:
+        selectedData.code[0].toUpperCase() + selectedData.code.slice(1) // GA expects format Usd, Gbp
+    });
+
     this.bindOtherAmountEvents();
+    this.bindAnalyticsEvents();
   }
 
   // Add class to container if payment provider should be disabled
@@ -145,6 +156,11 @@ class CurrencySelect {
   selectRadio(event) {
     this.otherAmountRadio.forEach(radio => {
       radio.checked = true;
+    });
+    gaEvent({
+      eventCategory: "User Flow",
+      eventAction: "Changed Amount",
+      eventLabel: "Other"
     });
   }
 
@@ -184,6 +200,25 @@ class CurrencySelect {
       this.otherAmountInput[i].addEventListener("change", event =>
         this.updateValue(event)
       );
+    }
+  }
+
+  bindAnalyticsEvents() {
+    for (const input of this.formContainer.querySelectorAll(
+      ".donation-amount__radio"
+    )) {
+      input.addEventListener("input", e => {
+        if (
+          e.target.checked &&
+          !e.target.hasAttribute("data-other-amount-radio")
+        ) {
+          gaEvent({
+            eventCategory: "User Flow",
+            eventAction: "Changed Amount",
+            eventLabel: e.target.value
+          });
+        }
+      });
     }
   }
 }
