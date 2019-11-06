@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="donation-update" data-amount-actions>
-                    <form class="donation-update__container" id="js-update-donation-amount-form" data-currency="{{ currency_info.code }}" data-locale="{% get_locale %}">
+                    <form class="donation-update__container" id="js-update-donation-amount-form" data-currency="{{ currency_info.code }}" data-locale="{% get_django_locale %}">
                         <div class="donation-update__form-item form-item">
                             <label class="donation-update__label form-item__label" for="donation-update">{% trans "Donation Amount" %}</label>
                             <div class="donation-update__currency-symbol">{% get_localized_currency_symbol currency_info.code %}</div>

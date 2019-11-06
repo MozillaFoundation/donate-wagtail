@@ -19,9 +19,16 @@ def to_known_locale(code):
     return to_locale(code)
 
 
+# Django locale codes are matching locale folder names, following the ab_CD format
 @register.simple_tag(takes_context=True)
-def get_locale(context):
+def get_django_locale(context):
     return to_known_locale(context['request'].LANGUAGE_CODE)
+
+
+# External-facing locale codes, e.g. in the URL, follow the ab-CD format
+@register.simple_tag(takes_context=True)
+def get_external_locale(context):
+    return to_known_locale(context['request'].LANGUAGE_CODE).replace('_', '-')
 
 
 @register.simple_tag(takes_context=True)
