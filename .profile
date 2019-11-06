@@ -8,7 +8,7 @@ if [ $USE_PONTOON ]; then
   echo "Generating SSH config"
   SSH_DIR=/app/.ssh
 
-  mkdir $SSH_DIR
+  mkdir -p $SSH_DIR
   chmod 700 $SSH_DIR
 
   # echo is messing with the newlines, using this instead:
