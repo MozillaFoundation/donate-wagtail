@@ -90,7 +90,7 @@ class BraintreeWebhookProcessor:
                 'email': last_tx.customer_details.email,
             }
         else:
-            logger.error("Unexpected payment type on subscription webhook")
+            logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
 
         send_transaction_to_basket({
             'last_name': donor_details.get('last_name', ''),
