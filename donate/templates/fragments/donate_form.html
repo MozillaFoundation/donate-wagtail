@@ -6,13 +6,13 @@
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container">
             <div class="tabs__option" role="presentation">
-                <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" aria-controls="tab-panel-1" aria-selected="true" id="tab-1">
+                <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" aria-controls="tab-panel-1" aria-selected="true" id="tab-1" data-label="Single">
                     <input type="radio" class="tabs__radio-option" name="donation_frequency" id="one-time" value="one-time" {% if initial_frequency == 'single' %}checked{% endif %}>
                     <span class="tabs__label-text">{% trans "ONE TIME" %}</span>
                 </label>
             </div>
             <div class="tabs__option" role="presentation">
-                <label for="monthly" class="tabs__label js-tab-item" aria-controls="tab-panel-2" id="tab-2">
+                <label for="monthly" class="tabs__label js-tab-item" aria-controls="tab-panel-2" id="tab-2" data-label="Monthly">
                     <input type="radio" class="tabs__radio-option" name="donation_frequency" id="monthly" value="monthly" {% if initial_frequency == 'monthly' %}checked{% endif %}>
                     <span class="tabs__label-text">{% trans "MONTHLY" %}</span>
                 </label>

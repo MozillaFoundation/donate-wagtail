@@ -2,6 +2,7 @@ import client from "braintree-web/client";
 import dataCollector from "braintree-web/data-collector";
 import hostedFields from "braintree-web/hosted-fields";
 import expectRecaptcha from "./components/recaptcha";
+import gaEvent from "./components/analytics";
 
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
@@ -131,6 +132,11 @@ function setupBraintree() {
               if (captchaEnabled) {
                 expectRecaptcha(window.grecaptcha.execute);
               } else {
+                gaEvent({
+                  eventCategory: "Signup",
+                  eventAction: "Submitted the Form",
+                  eventLabel: "Donate"
+                });
                 paymentForm.submit();
               }
             });
