@@ -1,3 +1,5 @@
+import gaEvent from "./analytics";
+
 class Tabs {
   static selector() {
     return ".js-tab-item";
@@ -27,6 +29,11 @@ class Tabs {
       this.tab.classList.add("active");
       this.tab.setAttribute("aria-selected", "true");
       this.tabPanel.classList.remove("tabs__panel--hidden");
+      gaEvent({
+        eventCategory: "User Flow",
+        eventAction: "Changed Frequency",
+        eventLabel: this.tab.getAttribute("data-label")
+      });
     });
   }
 }

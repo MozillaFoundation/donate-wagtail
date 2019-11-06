@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-31 09:33+0000\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"PO-Revision-Date: 2019-11-05 05:57+0000\n"
 "Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bn\n"
@@ -67,51 +67,51 @@ msgstr "দেশ"
 #: donate/payments/forms.py:103 donate/templates/pages/base_page.html:86
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
-msgstr ""
+msgstr "আমি এই <a href='%(url)s'>গোপনীয়তা বিজ্ঞপ্তি</a> তে বর্ণিত যেভাবে Mozilla আমার তথ্য পরিচালনা করার তার সাথে একমত আছি।"
 
-#: donate/payments/views.py:123
+#: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
 msgstr "আপনি যে ধরণের কার্ড ব্যবহার করেছেন তা গ্রহণযোগ্য নয়।"
 
-#: donate/payments/views.py:124 donate/payments/views.py:125
+#: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
 msgstr "আপনার দেয়া CVV সঠিক নয়।"
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "আপনি মেয়াদ উত্তীর্ণের যে তারিখ দিয়েছেন তা অকার্যকর।"
 
-#: donate/payments/views.py:127
+#: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
 msgstr "আপনার দেয়া ক্রেডিট কার্ড নম্বরটি অবৈধ।"
 
-#: donate/payments/views.py:136 donate/payments/views.py:137
+#: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
 msgstr "আপনার প্রদত্ত পোস্ট কোডটি বৈধ নয়।"
 
-#: donate/payments/views.py:151
+#: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "দুঃখিত, আপনার অর্থ প্রদান প্রক্রিয়াকরনের সময় একটি ত্রুটি হয়েছিল। দয়া করে পরে আবার চেষ্টা করুন বা অর্থ প্রদানের অন্য পদ্ধতি ব্যবহার করুন।"
 
-#: donate/payments/views.py:291
+#: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "কিছু ভুল হয়েছে। আমরা আপনার অর্থ প্রদান প্রক্রিয়াকরনে অক্ষম।"
 
-#: donate/payments/views.py:481 donate/payments/views.py:569
+#: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "দুঃখিত, আপনার অর্থ প্রদানের প্রক্রিয়া করার সময় একটি ত্রুটি হয়েছিল। পরে আবার চেষ্টা করুন।"
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "ক্যাপচা অবৈধ ছিল। অনুগ্রহপূর্বক আবার চেষ্টা করুন।"
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "পাতা পাওয়া যায়নি"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "আহ ওহ!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -120,6 +120,13 @@ msgstr "দুঃখিত, পৃষ্ঠাটি বিদ্যমান �
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "আমাদের হোম পেজে যান"
+
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
+#| msgctxt "Email subject line"
+#| msgid "I donated to Mozilla today"
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr "Mozilla তে দান করুন"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -166,17 +173,17 @@ msgstr "আপনি আজ যে দিন অনুদান দিয়েছ�
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "দানের অন্যান্য উপায়: <a href=\"%(wire_transfer_url)s\">ওয়্যার ট্রান্সফার বা SEPA</a> | <a href=\"%(check_url)s\">চেক</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "দানের অন্যান্য উপায়: <a href=\"%(wire_transfer_url)s\">ওয়্যার ট্রান্সফার বা SEPA</a> | <a href=\"%(check_url)s\">চেক</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "দান করতে সমস্যা? সর্বাধিক সাধারণ প্রশ্নের উত্তরের জন্য আমাদের <a href=\"%(faq_url)s\">FAQ</a> দেখুন। এখনও সমস্যা আছে? <a href=\"mailto:%(email)s\">আমাদের ইমেইল করুন</a>।"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -274,11 +281,11 @@ msgstr "এখনি দান করুন"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "চ্যারিটি নেভিগেটর 4-স্টার সীল"
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
-msgstr ""
+msgstr "GuideStar গোল্ড 2019 এর সীল"
 
 #: donate/templates/pages/core/campaign_page.html:65
 msgctxt "Header"

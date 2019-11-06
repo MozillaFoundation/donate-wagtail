@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-31 07:15+0000\n"
-"Last-Translator: Saikeo <kavhanxay@hotmail.com>\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"PO-Revision-Date: 2019-11-06 14:14+0000\n"
+"Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
@@ -69,35 +69,35 @@ msgstr "ປະເທດ"
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "ຂ້ອຍອະນຸຍາດໃຫ້ Mozilla ຮອງຮັບຂໍ້ມູນຂອງຂ້ອຍຕາມທີ່ໄດ້ຮ່າງໄວ້ຢູ່ໃນ <a href='%(url)s'>ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</a>."
 
-#: donate/payments/views.py:123
+#: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
 msgstr "ປະເພດຂອງບັດທີ່ທ່ານນຳໃຊ້ແມ່ນບໍ່ຖືກຍອມຮັບ."
 
-#: donate/payments/views.py:124 donate/payments/views.py:125
+#: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
 msgstr "ລະຫັດ CVV ທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ."
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
 msgstr "ວັນໝົດອາຍຸທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ."
 
-#: donate/payments/views.py:127
+#: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
 msgstr "ເລກບັດເຄດິດທີ່ທ່ານປ້ອນບໍ່ຖືກຕ້ອງ."
 
-#: donate/payments/views.py:136 donate/payments/views.py:137
+#: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
 msgstr "ລະຫັດໄປສະນີທີ່ທ່ານລະບຸນັ້ນບໍ່ຖືກຕ້ອງ."
 
-#: donate/payments/views.py:151
+#: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "ຂໍອະໄພ, ເກີດມີຂໍ້ຜິດພາດໃນການດຳເນີນການຈ່າຍເງິນຂອງທ່ານ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ ຫຼື ໃຊ້ວິທີການຈ່າຍດ້ວຍຮູບແບບອື່ນ."
 
-#: donate/payments/views.py:291
+#: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "ມີບາງຢ່າງຜິດປົກກະຕິ. ພວກເຮົາບໍ່ສາມາດດຳເນີນການຈ່າຍເງິນຂອງທ່ານໄດ້."
 
-#: donate/payments/views.py:481 donate/payments/views.py:569
+#: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "ຂໍອະໄພ, ເກີດມີຂໍ້ຜິດພາດໃນການດຳເນີນການຈ່າຍເງິນຂອງທ່ານ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ."
 
@@ -120,6 +120,14 @@ msgstr ""
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "ໄປທີ່ໜ້າທຳອິດຂອງພວກເຮົາ"
+
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
+#, fuzzy
+#| msgctxt "Email subject line"
+#| msgid "I donated to Mozilla today"
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr "ຂ້ອຍໄດ້ບໍລິຈາກໃຫ້ Mozilla ໃນມື້ນີ້"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -290,12 +298,12 @@ msgstr "ຂໍ້ມູນຂອງທ່ານ"
 #: donate/templates/payment/card.html:20
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "ທ່ານກຳລັງບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s ຕໍ່ເດືອນ"
+msgstr "ທ່ານກຳລັງບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s</span> ຕໍ່ເດືອນ"
 
 #: donate/templates/payment/card.html:22
 #, python-format
 msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr "ທ່ານກຳລັງບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s"
+msgstr "ທ່ານກຳລັງບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:26
 msgid "Change amount"
@@ -348,7 +356,7 @@ msgstr ""
 #: donate/templates/payment/card.html:140
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr "ບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s"
+msgstr "ບໍລິຈາກ <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:147
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."

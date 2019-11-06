@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-29 14:18+0000\n"
-"PO-Revision-Date: 2019-10-29 15:55+0000\n"
-"Last-Translator: Michael Köhler <michael.koehler1@gmx.de>\n"
+"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"PO-Revision-Date: 2019-11-04 10:22+0000\n"
+"Last-Translator: Philipp Fischbeck <pfischbeck@googlemail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -69,35 +69,35 @@ msgstr "Land"
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "Ich bin einverstanden, dass Mozilla meine Daten wie in diesem <a href='%(url)s'>Datenschutzhinweis</a> angegeben verwendet."
 
-#: donate/payments/views.py:123
+#: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
 msgstr "Der von Ihnen verwendete Kartentyp wird nicht akzeptiert."
 
-#: donate/payments/views.py:124 donate/payments/views.py:125
+#: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
 msgstr "Der eingegebene CVV-Code war ungültig."
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
 msgstr "Das eingegebene Ablaufdatum war ungültig."
 
-#: donate/payments/views.py:127
+#: donate/payments/views.py:130
 msgid "The credit card number you entered was invalid."
 msgstr "Die eingegebene Kreditkartennummer war ungültig."
 
-#: donate/payments/views.py:136 donate/payments/views.py:137
+#: donate/payments/views.py:139 donate/payments/views.py:140
 msgid "The post code you provided is not valid."
 msgstr "Die von Ihnen angegebene Postleitzahl ist ungültig."
 
-#: donate/payments/views.py:151
+#: donate/payments/views.py:154
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "Bei der Verarbeitung Ihrer Zahlung ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal oder verwenden Sie eine andere Zahlungsmethode."
 
-#: donate/payments/views.py:291
+#: donate/payments/views.py:296
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "Etwas ist schief gelaufen. Wir konnten Ihre Zahlung nicht verarbeiten."
 
-#: donate/payments/views.py:481 donate/payments/views.py:569
+#: donate/payments/views.py:499 donate/payments/views.py:589
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "Bei der Verarbeitung Ihrer Zahlung ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal."
 
@@ -120,6 +120,13 @@ msgstr "Entschuldigung, die Seite existiert nicht"
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "Besuchen sie unsere Homepage"
+
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
+#| msgctxt "Email subject line"
+#| msgid "I donated to Mozilla today"
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr "An Mozilla spenden"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -415,7 +422,6 @@ msgstr "Mit Ihrer Spende schützen Sie das Internet und halten es offen und für
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
-#| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
 "Wir haben Ihnen eine Spendenquittung per E-Mail gesendet. Wenn sie fehlt, sehen Sie bitte in Ihrem Junk-/Spam-Ordner nach und kontaktieren Sie uns unter <a href=\"mailto:%(email)s\">%(email)s</a>."

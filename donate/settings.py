@@ -45,6 +45,7 @@ env = environ.Env(
     BRAINTREE_PRIVATE_KEY=(str, ''),
     BRAINTREE_TOKENIZATION_KEY=(str, ''),
     BRAINTREE_MERCHANT_ACCOUNTS=(dict, {}),
+    BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO=(dict, {}),
     BRAINTREE_PLANS=(dict, {}),
     # Basket and SQS
     BASKET_API_ROOT_URL=(str, ''),
@@ -446,8 +447,8 @@ LOGGING = {
             'level': 'ERROR'
         },
         'rq.worker': {
-            'handlers': ['info'],
-            'level': 'INFO',
+            'handlers': ['debug'],
+            'level': 'DEBUG',
         },
         'donate': {
             'handlers': ['info'],
@@ -504,6 +505,7 @@ BRAINTREE_PUBLIC_KEY = env('BRAINTREE_PUBLIC_KEY')
 BRAINTREE_PRIVATE_KEY = env('BRAINTREE_PRIVATE_KEY')
 BRAINTREE_TOKENIZATION_KEY = env('BRAINTREE_TOKENIZATION_KEY')
 BRAINTREE_MERCHANT_ACCOUNTS = env('BRAINTREE_MERCHANT_ACCOUNTS')
+BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO = env('BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO')
 BRAINTREE_PLANS = env('BRAINTREE_PLANS')
 
 BRAINTREE_PARAMS = {

@@ -11,6 +11,7 @@
 ## Documentation
 
 - [Pages](docs/pages.md)
+- [Pontoon Integration](docs/pontoon_integration.md)
 
 ## Setup your Dev Environment with Docker
 

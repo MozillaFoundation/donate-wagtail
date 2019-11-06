@@ -13,6 +13,7 @@ from braintree import ErrorCodes
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 
+from donate.core.utils import queue_ga_event
 from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
@@ -20,7 +21,10 @@ from .forms import (
     NewsletterSignupForm, StartCardPaymentForm, UpsellForm
 )
 from .tasks import queue, send_newsletter_subscription_to_basket, send_transaction_to_basket
-from .utils import get_currency_info, get_suggested_monthly_upgrade, freeze_transaction_details_for_session
+from .utils import (
+    get_currency_info, get_merchant_account_id_for_card, get_merchant_account_id_for_paypal, get_plan_id,
+    get_suggested_monthly_upgrade, freeze_transaction_details_for_session
+)
 
 logger = logging.getLogger(__name__)
 
@@ -35,12 +39,6 @@ class BraintreePaymentMixin:
             'locale': self.request.LANGUAGE_CODE,
         }
 
-    def get_merchant_account_id(self, currency):
-        return settings.BRAINTREE_MERCHANT_ACCOUNTS[currency]
-
-    def get_plan_id(self, currency):
-        return settings.BRAINTREE_PLANS[currency]
-
     def get_transaction_details_for_session(self, result, form, **kwargs):
         raise NotImplementedError()
 
@@ -53,19 +51,45 @@ class BraintreePaymentMixin:
         self.request.session['campaign_id'] = form.cleaned_data['campaign_id']
         self.request.session['project'] = form.cleaned_data['project']
 
-    def success(self, result, form, send_data_to_basket=True, **kwargs):
-        # Store details of the transaction in a session variable
-        details = self.get_transaction_details_for_session(result, form, **kwargs)
-        details.update({
+    def prepare_session_data(self, details):
+        data = {
             'locale': self.request.LANGUAGE_CODE,
             'landing_url': self.request.session.get('landing_url', ''),
             'project': self.request.session.get('project', ''),
-        })
-        details = freeze_transaction_details_for_session(details)
+            'campaign_id': self.request.session.get('campaign_id', ''),
+        }
+        data.update(details)
+        return freeze_transaction_details_for_session(data)
+
+    def success(self, result, form, send_data_to_basket=True, **kwargs):
+        # Store details of the transaction in a session variable
+        details = self.get_transaction_details_for_session(result, form, **kwargs)
+        details = self.prepare_session_data(details)
         self.request.session['completed_transaction_details'] = details
         if send_data_to_basket:
             queue.enqueue(send_transaction_to_basket, details)
         return HttpResponseRedirect(self.get_success_url())
+
+    def queue_ga_transaction(self, id, currency, amount, name, category):
+        queue_ga_event(self.request, [
+            'ecommerce:addTransaction', {
+                'id': id,
+                'revenue': str(amount),
+                'currency': currency.upper(),
+                'affiliation': self.request.session.get('project', ''),
+            }
+        ])
+        queue_ga_event(self.request, [
+            'ecommerce:addItem', {
+                'id': id,
+                'name': name,
+                'sku': name,
+                'category': category,
+                'price': str(amount),
+                'quantity': '1',
+            }
+        ])
+        queue_ga_event(self.request, ['ecommerce:send'])
 
 
 class CardPaymentView(BraintreePaymentMixin, FormView):
@@ -170,6 +194,12 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             # Processor decline or some other exception
             form.add_error(None, default_error_message)
 
+        queue_ga_event(self.request, ['send', 'event', {
+                'eventCategory': 'User Flow',
+                'eventAction': 'Card Error',
+                'eventLabel': result.message,
+            }
+        ])
         return self.form_invalid(form)
 
     def form_valid(self, form, send_data_to_basket=True):
@@ -211,7 +241,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
 
         result = gateway.transaction.sale({
             'amount': form.cleaned_data['amount'],
-            'merchant_account_id': self.get_merchant_account_id(self.currency),
+            'merchant_account_id': get_merchant_account_id_for_card(self.currency),
             'payment_method_token': payment_method.token,
             'options': {
                 'submit_for_settlement': True
@@ -220,6 +250,19 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         })
 
         if result.is_success:
+            self.queue_ga_transaction(
+                id=result.transaction.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                name='Card Donation',
+                category='one-time'
+            )
+            queue_ga_event(self.request, ['send', 'event', {
+                    'eventCategory': 'Donation',
+                    'eventAction': 'Card',
+                    'eventLabel': 'Single',
+                }
+            ])
             return self.success(
                 result,
                 form,
@@ -247,13 +290,27 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
 
         # Create a subcription against the payment method
         result = gateway.subscription.create({
-            'plan_id': self.get_plan_id(self.currency),
-            'merchant_account_id': self.get_merchant_account_id(self.currency),
+            'plan_id': get_plan_id(self.currency),
+            'merchant_account_id': get_merchant_account_id_for_card(self.currency),
             'payment_method_token': payment_method.token,
             'price': form.cleaned_data['amount'],
+            'first_billing_date': now().date(),
         })
 
         if result.is_success:
+            self.queue_ga_transaction(
+                id=result.subscription.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                name='Card Donation',
+                category='monthly'
+            )
+            queue_ga_event(self.request, ['send', 'event', {
+                    'eventCategory': 'Donation',
+                    'eventAction': 'Card',
+                    'eventLabel': 'Monthly',
+                }
+            ])
             return self.success(
                 result,
                 form,
@@ -302,13 +359,29 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
         if self.payment_frequency == constants.FREQUENCY_SINGLE:
             result = gateway.transaction.sale({
                 'amount': form.cleaned_data['amount'],
-                'merchant_account_id': self.get_merchant_account_id(self.currency),
+                'merchant_account_id': get_merchant_account_id_for_paypal(
+                    self.currency, form.cleaned_data['amount']
+                ),
                 'custom_fields': self.get_custom_fields(form),
                 'payment_method_nonce': form.cleaned_data['braintree_nonce'],
                 'options': {
                     'submit_for_settlement': True
                 }
             })
+            if result.is_success:
+                self.queue_ga_transaction(
+                    id=result.transaction.id,
+                    currency=self.currency,
+                    amount=form.cleaned_data['amount'],
+                    name='PayPal Donation',
+                    category='one-time'
+                )
+                queue_ga_event(self.request, ['send', 'event', {
+                        'eventCategory': 'Donation',
+                        'eventAction': 'PayPal',
+                        'eventLabel': 'Single',
+                    }
+                ])
         else:
             # Create a customer and payment method for this customer
             result = gateway.customer.create({
@@ -328,12 +401,29 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
 
             # Create a subcription against the payment method
             result = gateway.subscription.create({
-                'plan_id': self.get_plan_id(self.currency),
-                'merchant_account_id': self.get_merchant_account_id(self.currency),
+                'plan_id': get_plan_id(self.currency),
+                'merchant_account_id': get_merchant_account_id_for_paypal(
+                    self.currency, form.cleaned_data['amount']
+                ),
                 'payment_method_token': payment_method.token,
                 'price': form.cleaned_data['amount'],
+                'first_billing_date': now().date(),
             })
             send_data_to_basket = False
+            if result.is_success:
+                self.queue_ga_transaction(
+                    id=result.subscription.id,
+                    currency=self.currency,
+                    amount=form.cleaned_data['amount'],
+                    name='PayPal Donation',
+                    category='monthly'
+                )
+                queue_ga_event(self.request, ['send', 'event', {
+                        'eventCategory': 'Donation',
+                        'eventAction': 'PayPal',
+                        'eventLabel': 'Monthly',
+                    }
+                ])
 
         if result.is_success:
             return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
@@ -365,19 +455,26 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
             transaction_id = result.transaction.id
             settlement_amount = result.transaction.disbursement_details.settlement_amount
             email = result.transaction.paypal_details.payer_email
+            first_name = result.transaction.paypal_details.payer_first_name
             last_name = result.transaction.paypal_details.payer_last_name
         else:
             transaction_id = result.subscription.id
             settlement_amount = None
             email = kwargs['payment_method'].email
+            first_name = kwargs['payment_method'].payer_info['first_name']
             last_name = kwargs['payment_method'].payer_info['last_name']
+
         return {
             'amount': form.cleaned_data['amount'],
+            'campaign_id': form.cleaned_data['campaign_id'],
+            'project': form.cleaned_data['project'],
+            'landing_url': form.cleaned_data['landing_url'],
             'settlement_amount': settlement_amount,
             'transaction_id': transaction_id,
             'payment_method': constants.METHOD_PAYPAL,
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
+            'first_name': first_name,
             'last_name': last_name,
             'email': email,
         }
@@ -451,14 +548,27 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         # Create a subcription against the payment method
         start_date = now().date() + relativedelta(months=1)     # Start one month from today
         result = gateway.subscription.create({
-            'plan_id': self.get_plan_id(currency),
-            'merchant_account_id': self.get_merchant_account_id(currency),
+            'plan_id': get_plan_id(currency),
+            'merchant_account_id': get_merchant_account_id_for_card(currency),
             'payment_method_token': payment_method_token,
             'first_billing_date': start_date,
             'price': form.cleaned_data['amount'],
         })
 
         if result.is_success:
+            self.queue_ga_transaction(
+                id=result.subscription.id,
+                currency=currency,
+                amount=form.cleaned_data['amount'],
+                name='Card Donation',
+                category='monthly'
+            )
+            queue_ga_event(self.request, ['send', 'event', {
+                    'eventCategory': 'User Flow',
+                    'eventAction': 'Monthly Upgrade Click',
+                    'eventLabel': 'Yes',
+                }
+            ])
             return self.success(result, form, currency=currency, send_data_to_basket=False)
         else:
             logger.error(
@@ -539,14 +649,29 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         # Create a subcription against the payment method
         start_date = now().date() + relativedelta(months=1)     # Start one month from today
         result = gateway.subscription.create({
-            'plan_id': self.get_plan_id(self.currency),
-            'merchant_account_id': self.get_merchant_account_id(self.currency),
+            'plan_id': get_plan_id(self.currency),
+            'merchant_account_id': get_merchant_account_id_for_paypal(
+                self.currency, form.cleaned_data['amount']
+            ),
             'payment_method_token': payment_method.token,
             'first_billing_date': start_date,
             'price': form.cleaned_data['amount'],
         })
 
         if result.is_success:
+            self.queue_ga_transaction(
+                id=result.subscription.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                name='PayPal Donation',
+                category='monthly'
+            )
+            queue_ga_event(self.request, ['send', 'event', {
+                    'eventCategory': 'User Flow',
+                    'eventAction': 'Monthly Upgrade Click',
+                    'eventLabel': 'Yes',
+                }
+            ])
             return self.success(result, form, send_data_to_basket=False)
         else:
             logger.error(
@@ -604,11 +729,15 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         if send_data_to_basket:
             data = form.cleaned_data.copy()
-            data['source_url'] = self.request.get_full_path()
-            # TODO - LANGUAGE_CODE is in the format en-us, and basket expects en-US
-            # To address as part of https://github.com/mozilla/donate-wagtail/issues/167
+            data['source_url'] = self.request.build_absolute_uri()
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
+            queue_ga_event(self.request, ['send', 'event', {
+                    'eventCategory': 'Signup',
+                    'eventAction': 'Submitted the Form',
+                    'eventLabel': 'Email',
+                }
+            ])
         return super().form_valid(form)
 
 
