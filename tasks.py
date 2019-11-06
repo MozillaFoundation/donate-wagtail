@@ -22,7 +22,7 @@ def create_docker_env_file(env_file):
     with open(env_file, 'r') as f:
         env_vars = f.read()
     # update the DATABASE_URL env
-    new_db_url = "DATABASE_URL=postgres://postgres@postgres:5432/postgres"
+    new_db_url = "DATABASE_URL=postgres://donate:mozilla@postgres:5432/donate"
     old_db_url = re.search('DATABASE_URL=.*', env_vars)
     env_vars = env_vars.replace(old_db_url.group(0), new_db_url)
     # update the ALLOWED_HOSTS env
