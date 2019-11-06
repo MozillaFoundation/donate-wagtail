@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-06 11:02+0000\n"
+"PO-Revision-Date: 2019-11-06 11:33+0000\n"
 "Last-Translator: Mahtab Alam <mahtab.ceh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi_IN\n"
@@ -128,11 +128,11 @@ msgstr "Mozilla में दान दें"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "एक बार"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "मासिक"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
@@ -144,7 +144,7 @@ msgstr "भुगतान प्रकार चुनें"
 
 #: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
-msgstr ""
+msgstr "सुरक्षित"
 
 #: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:127
 msgid "Donate"
@@ -167,21 +167,23 @@ msgstr ""
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr ""
+"मासिक दान का भुगतान प्रति माह उसी दिन पर लिया जाता है, जिस दिन पर आपने आज दान किया है और आपके रद्द करने तक यह सिलसिला चलता रहता है। रद्द करने के लिए, <a href=\"mailto:%(email)s\"> %(email)s </a> पर "
+"हमें ईमेल करें।"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "दान देने के अन्य माध्यम: <a href=\"%(wire_transfer_url)s\"> वायर ट्रांसफर या SEPA</a> | <a href=\"%(check_url)s\">चेक</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "दान देने के अन्य माध्यम: <a href=\"%(wire_transfer_url)s\"> वायर ट्रांसफर या SEPA</a> | <a href=\"%(check_url)s\">चेक</a> | <a href=\"%(bitcoin_url)s\">बिटकॉइन</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "दान से जुडी कोई समस्या है? तो हमारे <a href=\"%(faq_url)s\">FAQ</a> पर जाकर इससे जुड़े कुछ सामान्य सवालों के उत्तर पाएं। अभी भी कोई समस्या है? <a href=\"mailto:%(email)s\">हमें एक ईमेल भेजें</a>।"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
