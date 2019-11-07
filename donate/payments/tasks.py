@@ -49,6 +49,7 @@ def send_transaction_to_basket(data):
             'recurring': data['payment_frequency'] == constants.FREQUENCY_MONTHLY,
             'service': data['payment_method'],
             'transaction_id': data['transaction_id'],
+            'subscription_id': data.get('subscription_id', None),
             'project': data['project'],
             'last_4': data.get('last_4', None),
             'donation_url': data['landing_url'],
@@ -75,16 +76,34 @@ class BraintreeWebhookProcessor:
         customer = gateway.customer.find(payment_method.customer_id)
         custom_fields = customer.custom_fields or {}
 
+        # The details of a donor are in a different spot depending on the payment method
+
+        if is_paypal:
+            donor_details = {
+                "last_name": last_tx.paypal_details.payer_last_name,
+                "first_name": last_tx.paypal_details.payer_first_name,
+                "email": last_tx.paypal_details.payer_email
+            }
+        elif last_tx.payment_instrument_type == 'credit_card':
+            donor_details = {
+                'last_name': last_tx.customer_details.last_name,
+                'first_name': last_tx.customer_details.first_name,
+                'email': last_tx.customer_details.email,
+            }
+        else:
+            logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
+
         send_transaction_to_basket({
-            'last_name': last_tx.customer_details.last_name,
-            'first_name': last_tx.customer_details.first_name,
+            'last_name': donor_details.get('last_name', ''),
+            'first_name': donor_details.get('first_name', ''),
             'campaign_id': custom_fields.get('campaign_id', ''),
-            'email': last_tx.customer_details.email,
+            'email': donor_details.get('email', ''),
             'amount': last_tx.amount,
             'currency': last_tx.currency_iso_code.lower(),
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,
+            'subscription_id': notification.subscription.id,
             'project': custom_fields.get('project', ''),
             'last_4': None if is_paypal else last_tx.credit_card_details.last_4,
             'landing_url': '',
