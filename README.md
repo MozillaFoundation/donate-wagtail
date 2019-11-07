@@ -13,19 +13,19 @@
 - [Pages](docs/pages.md)
 - [Pontoon Integration](docs/pontoon_integration.md)
 
-## Notes on Docker
-
-It should be possible to connect the python virtual env inside the container to your IDE (tested with pycharm and vscode), if you run into issues, ping patjouk on slack.
-
-## How to Setup your Dev Environment with Docker
+## Setup your Dev Environment with Docker
 
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop) (macOS and Windows). For Linux users: install [Docker CE](https://docs.docker.com/install/#supported-platforms) and [Docker Compose](https://docs.docker.com/compose/install/). If you don't want to create a Docker account, direct links to download can be found [in this issue](https://github.com/docker/docker.github.io/issues/6910),
 - [Check your install](https://docs.docker.com/get-started/#test-docker-version) by running `docker run hello-world`,
 - [Install Invoke](https://www.pyinvoke.org/installing.html),
 - If relevant: delete your node_modules directory (`rm -rf node_modules`). It's not necessary, but it speeds up the install.
-- Run `inv docker-setup`.
+- Run `inv docker-new-env`: it's building docker images, installing dependencies, setting up a populated DB, and configuring your environment variables.
 
-When it's done, run `docker-compose up`, wait until the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers.
+When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docker-compose down`. If you want a new dev environment, stop your containers and run `inv docker-new_env`.
+
+It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
+
+To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend pipenv run python manage.py test --settings=donate.settings_test`. Since it's pretty long, most case are covered by Invoke commands.
 
 ## Invoke tasks
 
@@ -33,54 +33,21 @@ Invoke is a python tasks runner that creates shortcuts for commands we frequentl
 
 Installation instructions: https://www.pyinvoke.org/installing.html
 
-### With Docker
-
 ### Invoke tasks available:
 
-- `inv -l`: list available tasks,
+Run `inv -l` in your terminal to get the list of available tasks.
+
 - `inv docker-catch-up (docker-catchup)`: Rebuild images and apply migrations
 - `inv docker-makemigrations`: Creates new migration(s)
 - `inv docker-manage`: Shorthand to manage.py. ex: `inv docker-manage "[COMMAND] [ARG]"`
+- `inv docker-makemessages`: Extract all template messages in .po files for localization
+- `inv docker-compilemessages`: Compile the latest translations
 - `inv docker-migrate`: Updates database schema
+- `inv docker-new-env`: Get a new dev environment and a new database with fake data
+- `inv docker-new-db`: Delete your database and create a new one with fake data
 - `inv docker-npm`: Shorthand to npm. ex: `inv docker-npm "[COMMAND] [ARG]"`
-- `inv docker-nuke-db`: Delete your database and create a new one with fake data
 - `inv docker-pipenv`: Shorthand to pipenv. ex: `inv docker-pipenv "[COMMAND] [ARG]"`
-- `inv docker-setup`: Prepare your dev environment after a fresh git clone
 - `inv docker-test-python`: Run python tests
-
-Use `docker-compose up/down` to start or shutdown the dev server.
-
-**note**: use `inv docker-setup` when you've just cloned the repo. If you did a `git pull` on master and want to install the latest dependencies and apply migrations, use `inv docker-catchup` instead.
-
-### Without Docker
-
-### Invoke tasks available:
-
-- `inv -l`: list available tasks,
-- `inv catch-up (catchup)`: Install dependencies and apply migrations
-- `inv makemigrations`: Creates new migration(s)
-- `inv manage`: Shorthand to manage.py. ex: `inv manage "[COMMAND] [ARG]"`
-- `inv migrate`: Updates database schema
-- `inv setup`: Prepare your dev environment after a fresh git clone
-- `inv test`: Run python tests
-- `inv runserver`: Start a web server
-
-**note**: use `inv setup` when you've just cloned the repo. If you did a `git pull` on master and want to install the latest dependencies and apply migrations, use `inv catchup` instead.
-
-### Without Invoke
-
-### Running commands inside the Docker container
-
-When the Django server is running, you can start the Django shell with:
-
-    docker-compose exec backend pipenv run python manage.py shell
-
-### Running tests
-
-Run the back-end test suite with:
-
-    docker-compose exec backend pipenv run python manage.py test --settings=donate.settings_test
-
 
 ## Braintree configuration
 
