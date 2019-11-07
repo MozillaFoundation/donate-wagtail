@@ -97,7 +97,7 @@ HEROKU_APP_NAME = env('HEROKU_APP_NAME')
 if HEROKU_APP_NAME:
     ALLOWED_HOSTS.append(HEROKU_APP_NAME + '.herokuapp.com')
 
-# Force permanent redirects to the domains specified in TARGET_DOMAINS
+# Force redirects to the domains specified in TARGET_DOMAINS
 DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')
 TARGET_DOMAINS = env('TARGET_DOMAINS')
 
