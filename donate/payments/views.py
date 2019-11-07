@@ -1,4 +1,5 @@
 import logging
+from sentry_sdk.integrations.django import ignore_logger
 
 from django.conf import settings
 from django.contrib import messages
@@ -26,7 +27,9 @@ from .utils import (
     get_suggested_monthly_upgrade, freeze_transaction_details_for_session
 )
 
+ignore_logger(__name__)
 logger = logging.getLogger(__name__)
+sentry_logger = logging.getLogger(f'{__name__}_sentry')
 
 
 class BraintreePaymentMixin:
@@ -393,9 +396,10 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 payment_method = result.customer.payment_methods[0]
                 success_kwargs['payment_method'] = payment_method
             else:
-                logger.error(
+                sentry_logger.error(
                     'Failed to create Braintree customer: {}'.format(result.message),
-                    extra={'result': result}
+                    extra={'result': result},
+                    exc_info=True
                 )
                 return self.form_invalid(form)
 
@@ -428,9 +432,10 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
         if result.is_success:
             return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
         else:
-            logger.error(
+            sentry_logger.error(
                 'Failed Braintree transaction: {}'.format(result.message),
-                extra={'result': result}
+                extra={'result': result},
+                exc_info=True
             )
             return self.form_invalid(form)
 
