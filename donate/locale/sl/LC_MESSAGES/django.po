@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-05 15:58+0000\n"
-"Last-Translator: Rok Žerdin <zerdo90@gmail.com>\n"
+"PO-Revision-Date: 2019-11-11 13:41+0000\n"
+"Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "Strinjam se, da Mozilla obdela te podatke, kot je razloženo v tem <a hr
 
 #: donate/payments/views.py:126
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Vrsta kartice, ki ste jo uporabili, ni sprejeta."
 
 #: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
@@ -124,7 +124,7 @@ msgstr "Obiščite začetno stran"
 #: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
 msgctxt "Page title"
 msgid "Donate to Mozilla"
-msgstr ""
+msgstr "Donirajte Mozilli"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -225,7 +225,7 @@ msgstr "Vnesite e-poštni naslov"
 
 #: donate/templates/pages/base_page.html:82
 msgid "Sign up"
-msgstr ""
+msgstr "Prijava"
 
 #: donate/templates/pages/base_page.html:90
 msgid "Thanks!"
@@ -283,7 +283,7 @@ msgstr "PRISPEVAJ ZDAJ"
 
 #: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
-msgstr ""
+msgstr "Pečat Charity Navigator: 4 zvezdice"
 
 #: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
@@ -403,11 +403,11 @@ msgstr "Ostanite obveščeni"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Zaščitite internet kot globalen javni vir. Pridružite se našemu dopisnemu seznamu, če želite ostati dejavni in obveščeni!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
-msgstr ""
+msgstr "Prijava"
 
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
@@ -415,7 +415,7 @@ msgstr "Ne, hvala"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "Vaša donacija bo namenjena zaščiti spleta, ohranjanju njegove odprtosti in dostopnosti vsem."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
@@ -434,17 +434,17 @@ msgstr "Pravkar sem doniral @mozilla, ker #lovetheweb. Pridruži se mi in pomaga
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Danes sem doniral Mozilli"
 
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Danes sem doniral @mozthunderbird za #freetheinbox. Pridruži se mi in pomagaj pri podpori za zasebnost komunikacij."
 
 #: donate/templates/payment/thank_you.html:21
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Danes sem doniral Thunderbirdu"
 
 #: donate/templates/payment/thank_you.html:23
 msgid "Share on Facebook"
