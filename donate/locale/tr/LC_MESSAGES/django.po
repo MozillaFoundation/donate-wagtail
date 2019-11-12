@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-04 15:24+0000\n"
+"PO-Revision-Date: 2019-11-11 13:52+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
@@ -160,6 +160,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 "by Mozilla."
 msgstr ""
+"Ödeme bilgileriniz <a href=\"%(braintree_url)s\">Braintree</a> (kredi/banka kartları için) veya <a href=\"%(paypal_url)s\">PayPal</a> tarafından işlenecektir ve bağışınızın kaydı Mozilla tarafından "
+"saklanacaktır."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
@@ -352,7 +354,7 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
-msgstr ""
+msgstr "Mozilla Foundation’a aşağıdaki tutarı kartımdan çekmesi ve ben iptal edene kadar her ay çekmeye devam etmesi için yetki veriyorum."
 
 #: donate/templates/payment/card.html:140
 #, python-format
