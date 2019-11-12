@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-06 14:14+0000\n"
-"Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
+"PO-Revision-Date: 2019-11-07 02:46+0000\n"
+"Last-Translator: Saikeo <kavhanxay@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
@@ -115,19 +115,18 @@ msgstr "Uh oh!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "ຂໍອະໄພ, ໜ້ານີ້ບໍ່ມີ"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
 msgstr "ໄປທີ່ໜ້າທຳອິດຂອງພວກເຮົາ"
 
 #: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
-#, fuzzy
 #| msgctxt "Email subject line"
 #| msgid "I donated to Mozilla today"
 msgctxt "Page title"
 msgid "Donate to Mozilla"
-msgstr "ຂ້ອຍໄດ້ບໍລິຈາກໃຫ້ Mozilla ໃນມື້ນີ້"
+msgstr "ບໍລິຈາກໃຫ້ Mozilla"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
@@ -388,11 +387,11 @@ msgstr ""
 
 #: donate/templates/payment/card_upsell.html:44
 msgid "Yes"
-msgstr ""
+msgstr "ຕົກລົງ"
 
 #: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
-msgstr ""
+msgstr "ບໍ່"
 
 #: donate/templates/payment/newsletter_signup.html:4
 msgid "Stay in touch"
@@ -412,12 +411,12 @@ msgstr "ບໍ່, ຂອບໃຈ"
 
 #: donate/templates/payment/thank_you.html:13
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
-msgstr ""
+msgstr "ການບໍລິຈາກຂອງທ່ານຈະຖືກນຳໄປໃຊ້ໃນການປົກປ້ອງເວັບໄຊຕ໌, ຮັກສາມັນໃຫ້ຢູ່ຮູບແບບເປີດເຜີຍ ແລະ ທຸກຄົນສາມາດນຳໃຊ້ໄດ້."
 
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "ພວກເຮົາໄດ້ສົ່ງອີເມວໃບຮັບເງິນບໍລິຈາກໃຫ້ທ່ານ; ຖ້າຫາກບໍ່ເຫັນ, ກະລຸນາກວດເບິ່ງໃນໂຟລເດີ junk/spam ຂອງທ່ານ, ຫຼັງຈາກນັ້ນຕິດຕໍ່ພວກເຮົາທີ່ <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
