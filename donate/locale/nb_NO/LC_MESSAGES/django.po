@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-04 23:12+0000\n"
+"PO-Revision-Date: 2019-11-07 08:35+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -428,7 +428,7 @@ msgstr "Vi har sendt deg en e-post med kvittering for donasjonen; hvis den mangl
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr "Til slutt, kan øke påvirkningen gjennom å dele det viktige arbeidet Mozilla gjør? Takk igjen!"
+msgstr "Til slutt, kan du øke påvirkningen gjennom å dele det viktige arbeidet Mozilla gjør? Takk igjen!"
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
