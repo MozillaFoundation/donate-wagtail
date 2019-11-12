@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-06 11:34+0000\n"
-"Last-Translator: Mahtab Alam <mahtab.ceh@gmail.com>\n"
+"PO-Revision-Date: 2019-11-12 15:11+0000\n"
+"Last-Translator: ravi <ravi.103151@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi_IN\n"
 "MIME-Version: 1.0\n"
@@ -432,7 +432,7 @@ msgstr ""
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "मैंने आज Mozilla को दान दिया"
 
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
@@ -446,29 +446,29 @@ msgstr ""
 
 #: donate/templates/payment/thank_you.html:23
 msgid "Share on Facebook"
-msgstr ""
+msgstr "Facebook पर साझा करें"
 
 #: donate/templates/payment/thank_you.html:27
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: donate/templates/payment/thank_you.html:30
 msgid "Share on Twitter"
-msgstr ""
+msgstr "Twitter पर साझा करें"
 
 #: donate/templates/payment/thank_you.html:40
 msgctxt "Share button"
 msgid "Email"
-msgstr ""
+msgstr "ईमेल"
 
 #: donate/templates/payment/thank_you.html:50
 msgctxt "Share button"
 msgid "Link"
-msgstr ""
+msgstr "लिंक"
 
 #: donate/templates/payment/thank_you.html:51
 msgid "Copied"
-msgstr ""
+msgstr "कॉपी की गई"
 
 #: donate/templates/tags/primarynav.html:10
 msgid "Back"
