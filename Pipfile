@@ -31,7 +31,7 @@ django-rq = "*"
 # Need to install a pre-release in order to get the RedLock.locked() method
 redlock = {git = "https://github.com/glasslion/redlock.git",ref = "7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}
 django-csp = "*"
-sentry-sdk = "==0.13.1"
+sentry-sdk = "==0.13.2"
 
 [requires]
 python_version = "3.7"
