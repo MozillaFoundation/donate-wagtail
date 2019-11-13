@@ -38,6 +38,8 @@ env = environ.Env(
     RANDOM_SEED=(int, None),
     CSRF_COOKIE_SECURE=(bool, False),
     SESSION_COOKIE_SECURE=(bool, False),
+    DOMAIN_REDIRECT_MIDDLEWARE_ENABLED=(bool, False),
+    TARGET_DOMAINS=(list, []),
     # Braintree
     BRAINTREE_USE_SANDBOX=(bool, True),
     BRAINTREE_MERCHANT_ID=(str, ''),
@@ -95,6 +97,10 @@ HEROKU_APP_NAME = env('HEROKU_APP_NAME')
 if HEROKU_APP_NAME:
     ALLOWED_HOSTS.append(HEROKU_APP_NAME + '.herokuapp.com')
 
+# Force redirects to the domains specified in TARGET_DOMAINS
+DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')
+TARGET_DOMAINS = env('TARGET_DOMAINS')
+
 INSTALLED_APPS = [
     'donate.users',
     'donate.core',
@@ -132,7 +138,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = list(filter(None, [
+    'donate.utility.middleware.TargetDomainRedirectMiddleware' if DOMAIN_REDIRECT_MIDDLEWARE_ENABLED else None,
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -145,7 +152,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'csp.middleware.CSPMiddleware',
-]
+]))
 
 ROOT_URLCONF = 'donate.urls'
 
