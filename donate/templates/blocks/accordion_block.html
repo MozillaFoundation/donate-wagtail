@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-    
+
     <div class="accordion" >
 
         <h2 class="accordion__heading">{{ value.title }}</h2>
@@ -18,7 +18,7 @@
                         tabindex="0"
                         id="question-{{ accordion_id }}-{{ forloop.counter }}"
                     >
-                        <h3 class="accordion-item__heading">{{ item.title }}</h3>
+                        <h3 class="accordion-item__heading">{{ item.value.title }}</h3>
                         <div class="accordion-item__icons">
                             <svg class="accordion-item__icon accordion-item__icon--add" width="24" height="24">
                                 <use xlink:href="#add"></use>
@@ -37,11 +37,11 @@
                         aria-labelledby="question-{{ accordion_id }}-{{ forloop.counter }}"
                         aria-hidden="false"
                     >
-                        {{ item.content|richtext }}
+                        {{ item.value.content|richtext }}
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-        
+
 </div>
