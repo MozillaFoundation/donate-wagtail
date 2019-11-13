@@ -43,7 +43,7 @@ CURRENCIES = {
         'code': 'aed',
         'minAmount': 8,
         'symbol': 'د.إ.‏',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1100, 'value': 100},
             {'min': 734, 'value': 70},
@@ -61,7 +61,7 @@ CURRENCIES = {
         'code': 'all',
         'minAmount': 230,
         'symbol': 'L',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 32000, 'value': 3000},
             {'min': 21800, 'value': 2000},
@@ -79,6 +79,7 @@ CURRENCIES = {
         'code': 'aud',
         'minAmount': 3,
         'symbol': '$',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 0.30,
             'micro': 0.05
@@ -118,7 +119,7 @@ CURRENCIES = {
         'code': 'azn',
         'minAmount': 4,
         'symbol': '₼',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 500, 'value': 50},
             {'min': 340, 'value': 30},
@@ -136,7 +137,7 @@ CURRENCIES = {
         'code': 'bam',
         'minAmount': 4,
         'symbol': 'KM',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 500, 'value': 50},
             {'min': 350, 'value': 30},
@@ -154,7 +155,7 @@ CURRENCIES = {
         'code': 'bdt',
         'minAmount': 170,
         'symbol': '৳',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 25000, 'value': 2500},
             {'min': 16892, 'value': 1600},
@@ -194,6 +195,7 @@ CURRENCIES = {
         'code': 'cad',
         'minAmount': 3,
         'symbol': '$',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 0.30,
             'micro': 0.05
@@ -215,6 +217,7 @@ CURRENCIES = {
         'code': 'chf',
         'minAmount': 2,
         'symbol': 'Fr.',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 0.55,
             'micro': 0.09
@@ -254,7 +257,7 @@ CURRENCIES = {
         'code': 'cny',
         'minAmount': 14,
         'symbol': '¥',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 2000, 'value': 200},
             {'min': 1376, 'value': 130},
@@ -294,6 +297,7 @@ CURRENCIES = {
         'code': 'dkk',
         'minAmount': 13,
         'symbol': 'kr',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 2.60,
             'micro': 0.43
@@ -315,7 +319,7 @@ CURRENCIES = {
         'code': 'dzd',
         'minAmount': 240,
         'symbol': 'د.ج.‏',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 36000, 'value': 3600},
             {'min': 24000, 'value': 2400},
@@ -333,7 +337,7 @@ CURRENCIES = {
         'code': 'egp',
         'minAmount': 36,
         'symbol': 'ج.م.‏',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 5000, 'value': 500},
             {'min': 3310, 'value': 300},
@@ -351,6 +355,7 @@ CURRENCIES = {
         'code': 'eur',
         'minAmount': 2,
         'symbol': '€',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 0.35,
             'micro': 0.05
@@ -371,6 +376,7 @@ CURRENCIES = {
         'code': 'gbp',
         'minAmount': 2,
         'symbol': '£',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 0.20,
             'micro': 0.05
@@ -392,7 +398,7 @@ CURRENCIES = {
         'code': 'gel',
         'minAmount': 5,
         'symbol': '₾',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 888, 'value': 90},
             {'min': 592, 'value': 60},
@@ -428,6 +434,7 @@ CURRENCIES = {
         'code': 'hkd',
         'minAmount': 15,
         'symbol': '$',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 2.35,
             'micro': 0.39
@@ -449,7 +456,7 @@ CURRENCIES = {
         'code': 'hrk',
         'minAmount': 13,
         'symbol': 'kn',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1992, 'value': 200},
             {'min': 1328, 'value': 130},
@@ -490,7 +497,7 @@ CURRENCIES = {
         'code': 'idr',
         'minAmount': 30000,
         'symbol': 'Rp',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 4208100, 'value': 400000},
             {'min': 2805400, 'value': 250000},
@@ -508,6 +515,7 @@ CURRENCIES = {
         'code': 'ils',
         'minAmount': 8,
         'symbol': '₪',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 1.20,
             'micro': 0.20
@@ -547,6 +555,7 @@ CURRENCIES = {
         'code': 'jpy',
         'minAmount': 230,
         'symbol': '¥',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 40,
             'micro': 7
@@ -569,7 +578,7 @@ CURRENCIES = {
         'code': 'krw',
         'minAmount': 2300,
         'symbol': '₩',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 354900, 'value': 35000},
             {'min': 236600, 'value': 23000},
@@ -605,7 +614,7 @@ CURRENCIES = {
         'code': 'lbp',
         'minAmount': 3016,
         'symbol': 'ل.ل.‎',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 452100, 'value': 45000},
             {'min': 301400, 'value': 30000},
@@ -623,7 +632,7 @@ CURRENCIES = {
         'code': 'mad',
         'minAmount': 20,
         'symbol': 'MAD',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 2883, 'value': 300},
             {'min': 1922, 'value': 180},
@@ -641,7 +650,7 @@ CURRENCIES = {
         'code': 'myr',
         'minAmount': 9,
         'symbol': 'RM',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1236, 'value': 120},
             {'min': 824, 'value': 80},
@@ -681,6 +690,7 @@ CURRENCIES = {
         'code': 'nok',
         'minAmount': 17,
         'symbol': 'kr',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 2.80,
             'micro': 0.47
@@ -702,6 +712,7 @@ CURRENCIES = {
         'code': 'nzd',
         'minAmount': 3,
         'symbol': '$',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 0.45,
             'micro': 0.08
@@ -723,6 +734,7 @@ CURRENCIES = {
         'code': 'php',
         'minAmount': 110,
         'symbol': '₱',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 15.00,
             'micro': 2.50
@@ -744,6 +756,7 @@ CURRENCIES = {
         'code': 'pln',
         'minAmount': 7,
         'symbol': 'zł',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 1.35,
             'micro': 0.23
@@ -765,7 +778,7 @@ CURRENCIES = {
         'code': 'qar',
         'minAmount': 8,
         'symbol': 'ر.ق.‏',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1092, 'value': 100},
             {'min': 728, 'value': 70},
@@ -783,7 +796,7 @@ CURRENCIES = {
         'code': 'ron',
         'minAmount': 8,
         'symbol': 'lei',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1275, 'value': 125},
             {'min': 850, 'value': 85},
@@ -801,6 +814,7 @@ CURRENCIES = {
         'code': 'rub',
         'minAmount': 130,
         'symbol': '₽',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 10,
             'micro': 2
@@ -822,7 +836,7 @@ CURRENCIES = {
         'code': 'sar',
         'minAmount': 8,
         'symbol': 'ر.س.‏',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1125, 'value': 100},
             {'min': 750, 'value': 75},
@@ -840,6 +854,7 @@ CURRENCIES = {
         'code': 'sek',
         'minAmount': 18,
         'symbol': 'kr',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 3.25,
             'micro': 0.54
@@ -861,7 +876,7 @@ CURRENCIES = {
         'code': 'sgd',
         'minAmount': 3,
         'symbol': '$SG',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 411, 'value': 40},
             {'min': 274, 'value': 25},
@@ -879,6 +894,7 @@ CURRENCIES = {
         'code': 'thb',
         'minAmount': 70,
         'symbol': '฿',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 11.00,
             'micro': 1.80
@@ -900,7 +916,7 @@ CURRENCIES = {
         'code': 'try',
         'minAmount': 11,
         'symbol': '₺',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 1665, 'value': 150},
             {'min': 1110, 'value': 100},
@@ -918,6 +934,7 @@ CURRENCIES = {
         'code': 'twd',
         'minAmount': 62,
         'symbol': 'NT$',
+        'disabled': ['amex'],
         'paypalFixedFee': {
             'macro': 10.00,
             'micro': 2.00
@@ -940,7 +957,7 @@ CURRENCIES = {
         'code': 'uah',
         'minAmount': 60,
         'symbol': '₴',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 7530, 'value': 750},
             {'min': 5020, 'value': 500},
@@ -958,7 +975,7 @@ CURRENCIES = {
         'code': 'yer',
         'minAmount': 500,
         'symbol': 'ر.ي.‏',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 75000, 'value': 7500},
             {'min': 50000, 'value': 5000},
@@ -976,7 +993,7 @@ CURRENCIES = {
         'code': 'zar',
         'minAmount': 28,
         'symbol': 'R',
-        'disabled': ['paypal'],
+        'disabled': ['paypal', 'amex'],
         'monthlyUpgrade': [
             {'min': 4260, 'value': 400},
             {'min': 2840, 'value': 275},
