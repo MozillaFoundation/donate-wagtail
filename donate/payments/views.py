@@ -396,12 +396,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 payment_method = result.customer.payment_methods[0]
                 success_kwargs['payment_method'] = payment_method
             else:
-                sentry_logger.error(
-                    'Failed to create Braintree customer: {}'.format(result.message),
-                    extra={'result': result},
-                    exc_info=True
-                )
-                return self.form_invalid(form)
+                return self.form_invalid(form, result=result)
 
             # Create a subcription against the payment method
             result = gateway.subscription.create({
@@ -431,15 +426,16 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
 
         if result.is_success:
             return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
-        else:
+
+        return self.form_invalid(form, result=result)
+
+    def form_invalid(self, form, result=None):
+        if result:
             sentry_logger.error(
                 'Failed Braintree transaction: {}'.format(result.message),
                 extra={'result': result},
                 exc_info=True
             )
-            return self.form_invalid(form)
-
-    def form_invalid(self, form):
         messages.error(self.request, self.generic_error_message)
         return self.redirect_to_source_url()
 
@@ -651,7 +647,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             )
             return self.process_braintree_error_result(result, form)
 
-        # Create a subcription against the payment method
+        # Create a subscription against the payment method
         start_date = now().date() + relativedelta(months=1)     # Start one month from today
         result = gateway.subscription.create({
             'plan_id': get_plan_id(self.currency),
@@ -702,7 +698,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         default_error_message = _('Sorry there was an error processing your payment. '
                                   'Please try again later.')
         form.add_error(None, default_error_message)
-        return self.form_invalid(form)
+        return self.form_invalid(form, result=result)
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -713,6 +709,16 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             ),
         })
         return ctx
+
+    def form_invalid(self, form, result=None):
+        if result:
+            sentry_logger.error(
+                'Failed Braintree transaction: {}'.format(result.message),
+                extra={'result': result},
+                exc_info=True
+            )
+
+        return super(PaypalUpsellView, self).form_invalid(form)
 
 
 class NewsletterSignupView(TransactionRequiredMixin, FormView):
