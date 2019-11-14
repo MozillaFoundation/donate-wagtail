@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-13 14:48+0000\n"
+"PO-Revision-Date: 2019-11-14 10:26+0000\n"
 "Last-Translator: Lidya Christina <id.lidya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: id\n"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: donate/payments/forms.py:49
 msgid "Last name"
-msgstr ""
+msgstr "Nama belakang"
 
 #: donate/payments/forms.py:50 donate/payments/forms.py:95
 msgid "Email"
@@ -49,7 +49,7 @@ msgstr "Surel"
 
 #: donate/payments/forms.py:51
 msgid "Street"
-msgstr ""
+msgstr "Jalan"
 
 #: donate/payments/forms.py:52
 msgid "City"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: donate/payments/views.py:127 donate/payments/views.py:128
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Kode CVV yang Anda masukkan tidak valid."
 
 #: donate/payments/views.py:129
 msgid "The expiration date you entered was invalid."
@@ -107,11 +107,11 @@ msgstr ""
 
 #: donate/templates/404.html:4
 msgid "Page not found"
-msgstr ""
+msgstr "Laman tidak ditemukan"
 
 #: donate/templates/404.html:12
 msgid "Uh oh!"
-msgstr ""
+msgstr "Uh oh!"
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
@@ -124,15 +124,15 @@ msgstr ""
 #: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
 msgctxt "Page title"
 msgid "Donate to Mozilla"
-msgstr ""
+msgstr "Donasi ke Mozilla"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr ""
+msgstr "SEKALI"
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
-msgstr ""
+msgstr "BULANAN"
 
 #: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
