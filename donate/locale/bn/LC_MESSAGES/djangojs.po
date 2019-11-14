@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"POT-Creation-Date: 2019-11-14 16:38+0000\n"
 "PO-Revision-Date: 2019-11-03 09:39+0000\n"
 "Last-Translator: Ahsun Mahmud Riad <ahsunriad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Pontoon\n"
 
 #: donate/frontend/_js/main.compiled.js:16
-#: source/js/components/currency-selector.js:85
+#: source/js/components/currency-selector.js:88
 msgid "per month"
 msgstr "প্রতি মাসে"
 
@@ -31,24 +31,24 @@ msgstr "অন্যান্য পরিমাণ"
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:12 source/js/payments-card.js:14
+#: source/js/components/paypal.js:13 source/js/payments-card.js:15
 msgid "An error occurred. Please reload the page or try again later."
 msgstr "একটি ত্রুটি ঘটেছে। দয়া করে পৃষ্ঠাটি পুনরায় লোড করুন বা পরে আবার চেষ্টা করুন।"
 
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:15 source/js/payments-card.js:124
+#: source/js/components/paypal.js:16 source/js/payments-card.js:125
 msgid "There was an error processing your payment. Please try again."
 msgstr "আপনার পেমেন্ট প্রক্রিয়া করার সময় একটি ত্রুটি হয়েছিল। অনুগ্রহপূর্বক আবার চেষ্টা করু।"
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:140
+#: source/js/payments-card.js:146
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "নিচের কিছু ক্ষেত্র অবৈধ। দয়া করে অবৈধ ক্ষেত্রগুলি সংশোধন করুন এবং আবার চেষ্টা করুন।"
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:87
+#: source/js/components/paypal.js:88
 msgid "Payment cancelled"
 msgstr "পেমেন্ট বাতিল করা হয়েছে"

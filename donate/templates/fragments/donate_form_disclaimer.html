@@ -12,9 +12,9 @@
     <p>
         <b>
             {% if thunderbird %}
-                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}
+                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}
             {% else %}
-                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' bitcoin_url='https://wiki.mozilla.org/Donate_Bitcoin' %}Other ways to give: <a href="{{ wire_transfer_url }}">Wire Transfer or SEPA</a> | <a href="{{ check_url }}">Check</a> | <a href="{{ bitcoin_url }}">Bitcoin</a>{% endblocktrans %}
+                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' bitcoin_url='https://wiki.mozilla.org/Donate_Bitcoin' %}Other ways to give: <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | <a href="{{ check_url }}">Check</a> | <a href="{{ bitcoin_url }}">Bitcoin</a>{% endblocktrans %}
             {% endif %}
         </b>
     </p>

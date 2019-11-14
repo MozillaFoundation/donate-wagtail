@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"POT-Creation-Date: 2019-11-14 16:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: donate/frontend/_js/main.compiled.js:16
-#: source/js/components/currency-selector.js:85
+#: source/js/components/currency-selector.js:88
 msgid "per month"
 msgstr ""
 
@@ -30,24 +30,24 @@ msgstr ""
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:12 source/js/payments-card.js:14
+#: source/js/components/paypal.js:13 source/js/payments-card.js:15
 msgid "An error occurred. Please reload the page or try again later."
 msgstr ""
 
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:15 source/js/payments-card.js:124
+#: source/js/components/paypal.js:16 source/js/payments-card.js:125
 msgid "There was an error processing your payment. Please try again."
 msgstr ""
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:140
+#: source/js/payments-card.js:146
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr ""
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:87
+#: source/js/components/paypal.js:88
 msgid "Payment cancelled"
 msgstr ""

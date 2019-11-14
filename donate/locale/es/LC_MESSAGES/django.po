@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"POT-Creation-Date: 2019-11-14 16:38+0000\n"
 "PO-Revision-Date: 2019-10-13 11:53+0000\n"
 "Last-Translator: avelper <avelper@mozilla-hispano.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,35 +74,35 @@ msgstr "País"
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr ""
 
-#: donate/payments/views.py:126
+#: donate/payments/views.py:148
 msgid "The type of card you used is not accepted."
 msgstr ""
 
-#: donate/payments/views.py:127 donate/payments/views.py:128
+#: donate/payments/views.py:149 donate/payments/views.py:150
 msgid "The CVV code you entered was invalid."
 msgstr ""
 
-#: donate/payments/views.py:129
+#: donate/payments/views.py:151
 msgid "The expiration date you entered was invalid."
 msgstr ""
 
-#: donate/payments/views.py:130
+#: donate/payments/views.py:152
 msgid "The credit card number you entered was invalid."
 msgstr ""
 
-#: donate/payments/views.py:139 donate/payments/views.py:140
+#: donate/payments/views.py:161 donate/payments/views.py:162
 msgid "The post code you provided is not valid."
 msgstr ""
 
-#: donate/payments/views.py:154
+#: donate/payments/views.py:176
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr ""
 
-#: donate/payments/views.py:296
+#: donate/payments/views.py:350
 msgid "Something went wrong. We were unable to process your payment."
 msgstr ""
 
-#: donate/payments/views.py:499 donate/payments/views.py:589
+#: donate/payments/views.py:594 donate/payments/views.py:697
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr ""
 
@@ -181,12 +181,12 @@ msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
 #, python-format
-msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
 msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
 #, python-format
-msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
@@ -498,7 +498,6 @@ msgstr "Copiado"
 msgid "Back"
 msgstr "Atrás"
 
-#, python-format
 #~ msgid "Thank you! Your transaction reference is: %(id)s"
 #~ msgstr "¡Gracias! La referencia de tu transacción es: %(id)s"
 
