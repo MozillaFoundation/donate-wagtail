@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-04 08:28+0000\n"
+"POT-Creation-Date: 2019-11-14 16:38+0000\n"
 "PO-Revision-Date: 2019-10-09 14:55+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Pontoon\n"
 
 #: donate/frontend/_js/main.compiled.js:16
-#: source/js/components/currency-selector.js:85
+#: source/js/components/currency-selector.js:88
 msgid "per month"
 msgstr "per månad"
 
@@ -31,24 +31,24 @@ msgstr "Annat belopp"
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:12 source/js/payments-card.js:14
+#: source/js/components/paypal.js:13 source/js/payments-card.js:15
 msgid "An error occurred. Please reload the page or try again later."
 msgstr "Ett fel uppstod. Ladda om sidan igen eller försök igen senare."
 
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:15 source/js/payments-card.js:124
+#: source/js/components/paypal.js:16 source/js/payments-card.js:125
 msgid "There was an error processing your payment. Please try again."
 msgstr "Det gick inte att bearbeta din betalning. Var god försök igen."
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:140
+#: source/js/payments-card.js:146
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "Vissa av fälten nedan är ogiltiga. Rätta till ogiltiga fält och försök igen."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:87
+#: source/js/components/paypal.js:88
 msgid "Payment cancelled"
 msgstr "Betalning avbruten"
