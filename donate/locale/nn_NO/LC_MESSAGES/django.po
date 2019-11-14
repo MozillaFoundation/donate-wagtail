@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-04 08:28+0000\n"
-"PO-Revision-Date: 2019-11-07 08:32+0000\n"
+"PO-Revision-Date: 2019-11-14 00:38+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -221,7 +221,7 @@ msgstr "Vern om internett som ein global offentleg ressurs"
 
 #: donate/templates/pages/base_page.html:78
 msgid "Join our email list to take action and stay updated!"
-msgstr "Bli med på e-postlista vår for å setje i gang tiltak og halde deg oppdatert!"
+msgstr "Ver med på e-postlista vår for å setje i gang tiltak og halde deg oppdatert!"
 
 #: donate/templates/pages/base_page.html:79
 msgid "Enter email address"
@@ -434,7 +434,7 @@ msgstr "Til slutt, du kan auke påverknaden din gjennom å dele det viktige arbe
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr "Eg donerte til @mozilla i dag fordi eg #lovetheweb. Bli med meg og kjemp for eit betre og sunnare internett for alle."
+msgstr "Eg donerte til @mozilla i dag fordi eg #lovetheweb. Ver med meg og kjemp for eit betre og sunnare internett for alle."
 
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
