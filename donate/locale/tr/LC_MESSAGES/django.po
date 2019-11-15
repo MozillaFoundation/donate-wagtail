@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-14 16:38+0000\n"
-"PO-Revision-Date: 2019-11-15 18:52+0000\n"
+"PO-Revision-Date: 2019-11-15 19:01+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
@@ -166,24 +166,24 @@ msgstr ""
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "Aylık bağışlar her ayın aynı günü (bugün) çekilir ve iptal edilinceye kadar devam eder. İptal etmek isterseniz <a href=\"mailto:%(email)s\">%(email)s</a> adresine yazabilirsiniz."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "Diğer bağış yöntemleri: <a href=\"%(wire_transfer_url)s\">Banka transferi veya SEPA</a> | <a href=\"%(check_url)s\">Çek</a>"
+msgstr "Diğer bağış yöntemleri: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Çek</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr "Diğer bağış yöntemleri: <a href=\"%(wire_transfer_url)s\">Banka transferi veya SEPA</a> | <a href=\"%(check_url)s\">Çek</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+msgstr "Diğer bağış yöntemleri: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Çek</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "Bağış yapmayla ilgili sorularınız mı var? Sık sorulan sorular için <a href=\"%(faq_url)s\">SSS</a>'ye bakabilirsiniz. Başka bir sorunuz var mı? <a href=\"mailto:%(email)s\">Bize e-posta gönderin</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
 msgid ""
@@ -377,15 +377,15 @@ msgstr "Bağışınız için teşekkür ederiz"
 
 #: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Sizi Mozilla'nın sürekli destekçisi olarak görmeyi çok isteriz. <b>Gelecek aydan itibaren aylık bağış yapmak ister misiniz?</b>"
 
 #: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "Olur. Yapmak istediğim bağış miktarı:"
 
 #: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
-msgstr ""
+msgstr "/ her ay"
 
 #: donate/templates/payment/card_upsell.html:39
 msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -426,12 +426,12 @@ msgstr "Bağış makbuzunuzu e-postayla gönderdik. Gelmediyse lütfen önemsiz/
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr ""
+msgstr "Son olarak, Mozilla’nın yaptığı önemli çalışmaları paylaşmamıza yardımcı olur musunuz? Tekrar teşekkürler!"
 
 #: donate/templates/payment/thank_you.html:18
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Bugün @mozilla'ya bağış yaptım çünkü web'i seviyorum. Daha iyi ve sağlıklı bir interneti birlikte savunalım. #lovetheweb"
 
 #: donate/templates/payment/thank_you.html:19
 msgctxt "Email subject line"
@@ -441,7 +441,7 @@ msgstr "Bugün Mozilla'ya bağış yaptım"
 #: donate/templates/payment/thank_you.html:20
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Bugün @mozthunderbird'e bağış yaptım, gelen kutumu özgür bıraktım. İletişimde gizliliği birlikte destekleyelim. #freetheinbox"
 
 #: donate/templates/payment/thank_you.html:21
 msgctxt "Email subject line"
