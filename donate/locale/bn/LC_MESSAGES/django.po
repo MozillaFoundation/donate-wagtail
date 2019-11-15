@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-14 16:38+0000\n"
-"PO-Revision-Date: 2019-11-08 08:03+0000\n"
+"PO-Revision-Date: 2019-11-15 15:10+0000\n"
 "Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bn\n"
@@ -31,8 +31,7 @@ msgstr "একটি নম্বর লিখুন।"
 msgid "Enter a valid email address."
 msgstr "একটি বৈধ ইমেইল অ্যাড্রেস দিন।"
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr "পরিমাণ"
 
@@ -122,9 +121,7 @@ msgstr "দুঃখিত, পৃষ্ঠাটি বিদ্যমান �
 msgid "Go to our home page"
 msgstr "আমাদের হোম পেজে যান"
 
-#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
-#: donate/templates/pages/base_page.html:13
-#: donate/templates/pages/base_page.html:14
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
 msgctxt "Page title"
 msgid "Donate to Mozilla"
 msgstr "Mozilla তে দান করুন"
@@ -137,27 +134,19 @@ msgstr "এককালীন"
 msgid "MONTHLY"
 msgstr "মাসিক"
 
-#: donate/templates/fragments/donate_form.html:39
-#: donate/templates/fragments/donate_form.html:40
-#: donate/templates/fragments/donate_form.html:99
-#: donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "অন্যান্য পরিমাণ"
 
-#: donate/templates/fragments/donate_form.html:46
-#: donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "পেমেন্ট নির্বাচন করুন"
 
-#: donate/templates/fragments/donate_form.html:52
-#: donate/templates/fragments/donate_form.html:112
-#: donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "নিরাপদ"
 
-#: donate/templates/fragments/donate_form.html:58
-#: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:127
+#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:127
 msgid "Donate"
 msgstr "অনুদান"
 
@@ -167,8 +156,12 @@ msgstr "প্রতি মাসে"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
-msgstr "আপনাদের পেমেন্টের বিবরণ <a href=\"%(braintree_url)s\"></a> Braintree দ্বারা (ক্রেডিট/ডেবিট কার্ডের জন্য) অথবা <a href=\"%(paypal_url)s\">PayPal</a>দ্বারা প্রক্রিয়াকরণ করা হবে, এবং আপনার অনুদানের একটি রেকর্ড Mozilla সংরক্ষণ করবে।"
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
+"by Mozilla."
+msgstr ""
+"আপনাদের পেমেন্টের বিবরণ <a href=\"%(braintree_url)s\"></a> Braintree দ্বারা (ক্রেডিট/ডেবিট কার্ডের জন্য) অথবা <a href=\"%(paypal_url)s\">PayPal</a>দ্বারা প্রক্রিয়াকরণ করা হবে, এবং আপনার অনুদানের "
+"একটি রেকর্ড Mozilla সংরক্ষণ করবে।"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
@@ -176,16 +169,16 @@ msgid "Monthly donations are charged each month on the same day that you donate 
 msgstr "আপনি আজ যে দিন অনুদান দিয়েছেন প্রতিমাসের সেইদিনই মাসিক অনুদান চার্জ করা হয় এবং আপনি বাতিল না করা পর্যন্ত চলবে। বাতিল করতে আমাদের <a href=\"mailto:%(email)s\">%(email)s</a>এ ইমেইল করুন।"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "দানের অন্যান্য উপায়: <a href=\"%(wire_transfer_url)s\">ওয়্যার ট্রান্সফার বা SEPA</a> | <a href=\"%(check_url)s\">চেক</a>"
+msgstr "দানের অন্যান্য উপায়: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">চেক</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr "দানের অন্যান্য উপায়: <a href=\"%(wire_transfer_url)s\">ওয়্যার ট্রান্সফার বা SEPA</a> | <a href=\"%(check_url)s\">চেক</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+msgstr "দানের অন্যান্য উপায়: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">চেক</a> | <a href=\"%(bitcoin_url)s\">বিটকয়েন</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
@@ -193,8 +186,12 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr "দান করতে সমস্যা? সর্বাধিক সাধারণ প্রশ্নের উত্তরের জন্য আমাদের <a href=\"%(faq_url)s\">FAQ</a> দেখুন। এখনও সমস্যা আছে? <a href=\"mailto:%(email)s\">আমাদের ইমেইল করুন</a>।"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
-msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
-msgstr "মাউন্টেন ভিউ, ক্যালিফোর্নিয়া ভিত্তিক Mozilla ফাউন্ডেশন একটি 501(c)(3) সংগঠন, সকল প্রকার গৃহীত অনুদান, বিচক্ষণতার সহিত দাতব্য উদ্দেশ্যে খরচ করে থাকে। যুক্তরাষ্ট্রের আইন অনুযায়ী, সংগঠনের সকল অনুদান সম্পূর্ণরূপে আয়কর মুক্ত। Mozilla অনুদানের বিপরীতে কোনপ্রকার পন্য কিংবা সেবা প্রদান করে না।"
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
+msgstr ""
+"মাউন্টেন ভিউ, ক্যালিফোর্নিয়া ভিত্তিক Mozilla ফাউন্ডেশন একটি 501(c)(3) সংগঠন, সকল প্রকার গৃহীত অনুদান, বিচক্ষণতার সহিত দাতব্য উদ্দেশ্যে খরচ করে থাকে। যুক্তরাষ্ট্রের আইন অনুযায়ী, সংগঠনের সকল অনুদান "
+"সম্পূর্ণরূপে আয়কর মুক্ত। Mozilla অনুদানের বিপরীতে কোনপ্রকার পন্য কিংবা সেবা প্রদান করে না।"
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
@@ -244,8 +241,7 @@ msgstr "আপনি যদি পূর্বে Mozilla-সম্পর্ক�
 msgid "More about us"
 msgstr "আমাদের সম্পর্কে আরও"
 
-#: donate/templates/pages/base_page.html:106
-#: donate/templates/payment/thank_you.html:34
+#: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you.html:34
 msgid "Twitter"
 msgstr "টুইটার"
 
@@ -275,23 +271,22 @@ msgstr "লাইসেন্স"
 
 #: donate/templates/pages/base_page.html:153
 #, python-format
-msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
-msgstr "Mozilla হ'ল একটি বিশ্বব্যাপী অলাভজনক যা আপনার অনলাইন অভিজ্ঞতার নিয়ন্ত্রণে রাখার জন্য এবং ওয়েবের সার্বজনীন ভবিষ্যতের জন্য রূপদানের জন্য নিবেদিত। দেখুন <a %(link_attributes)s>%(site_url)s</a>।"
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
+msgstr ""
+"Mozilla হ'ল একটি বিশ্বব্যাপী অলাভজনক যা আপনার অনলাইন অভিজ্ঞতার নিয়ন্ত্রণে রাখার জন্য এবং ওয়েবের সার্বজনীন ভবিষ্যতের জন্য রূপদানের জন্য নিবেদিত। দেখুন <a %(link_attributes)s>%(site_url)s</a>।"
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "এখনি দান করুন"
 
-#: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page.html:33
-#: donate/templates/payment/card.html:151
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "চ্যারিটি নেভিগেটর 4-স্টার সীল"
 
-#: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page.html:36
-#: donate/templates/payment/card.html:154
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
 msgstr "GuideStar গোল্ড 2019 এর সীল"
 
@@ -330,10 +325,7 @@ msgstr "নিশ্চিত"
 msgid "Your Details"
 msgstr "আপনার বৃত্তান্ত"
 
-#: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell.html:29
-#: donate/templates/payment/newsletter_signup.html:26
-#: donate/templates/payment/paypal_upsell.html:29
+#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr "আপনার ফরমটিতে কিছু ভুল ছিলো। দয়া করে নিচের হাইলাইট করা ক্ষেত্রগুলোকে সংশোধন করুন।"
 
@@ -374,31 +366,23 @@ msgstr "অনুদান করুন <span class=\"%(span_class)s\">%(formatt
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr "আপনার অনুদান ওয়েবকে উন্মুক্ত এবং বিনামূল্যে রাখতে সহায়তা করে। আপনার উপহারের জন্য অগ্রিম ধন্যবাদ।"
 
-#: donate/templates/payment/card_upsell.html:4
-#: donate/templates/payment/paypal_upsell.html:4
-#: donate/templates/payment/thank_you.html:4
+#: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
 msgstr "আপনাকে ধন্যবাদ"
 
-#: donate/templates/payment/card_upsell.html:13
-#: donate/templates/payment/newsletter_signup.html:12
-#: donate/templates/payment/paypal_upsell.html:13
-#: donate/templates/payment/thank_you.html:12
+#: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
 msgstr "আপনার উপহারের জন্য আপনাকে ধন্যবাদ"
 
-#: donate/templates/payment/card_upsell.html:15
-#: donate/templates/payment/paypal_upsell.html:15
+#: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "আমরা আপনাকে মজিলার টেকসই সমর্থক হিসাবে রাখতে চাই। <b>আপনি কি পরের মাস থেকে শুরু করে একটি মাসিক অনুদান যোগ করতে পারেন?</b>"
 
-#: donate/templates/payment/card_upsell.html:16
-#: donate/templates/payment/paypal_upsell.html:16
+#: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
 msgstr "হ্যাঁ, আমি দেব:"
 
-#: donate/templates/payment/card_upsell.html:35
-#: donate/templates/payment/paypal_upsell.html:36
+#: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
 msgstr "/ মাসিক"
 
@@ -410,8 +394,7 @@ msgstr "আমি মজিলা ফাউন্ডেশনকে উপরে
 msgid "Yes"
 msgstr "হ্যাঁ"
 
-#: donate/templates/payment/card_upsell.html:47
-#: donate/templates/payment/paypal_upsell.html:47
+#: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
 msgstr "না"
 
