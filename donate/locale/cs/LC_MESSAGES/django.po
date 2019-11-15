@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-14 16:38+0000\n"
-"PO-Revision-Date: 2019-11-05 06:22+0000\n"
+"PO-Revision-Date: 2019-11-15 06:42+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -31,8 +31,7 @@ msgstr "Zadejte číslo."
 msgid "Enter a valid email address."
 msgstr "Zadejte platnou e-mailovou adresu."
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr "Částka"
 
@@ -122,9 +121,7 @@ msgstr "Je nám líto, tato stránka neexistuje"
 msgid "Go to our home page"
 msgstr "Přejít na domovskou stránku"
 
-#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
-#: donate/templates/pages/base_page.html:13
-#: donate/templates/pages/base_page.html:14
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
 msgctxt "Page title"
 msgid "Donate to Mozilla"
 msgstr "Darujte Mozille"
@@ -137,27 +134,19 @@ msgstr "JEDNOU"
 msgid "MONTHLY"
 msgstr "MĚSÍČNĚ"
 
-#: donate/templates/fragments/donate_form.html:39
-#: donate/templates/fragments/donate_form.html:40
-#: donate/templates/fragments/donate_form.html:99
-#: donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "Jiná částka"
 
-#: donate/templates/fragments/donate_form.html:46
-#: donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "Způsob platby"
 
-#: donate/templates/fragments/donate_form.html:52
-#: donate/templates/fragments/donate_form.html:112
-#: donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "ZABEZPEČENO"
 
-#: donate/templates/fragments/donate_form.html:58
-#: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:127
+#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:127
 msgid "Donate"
 msgstr "Darovat"
 
@@ -167,34 +156,44 @@ msgstr "měsíčně"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:5
 #, python-format
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
+"by Mozilla."
 msgstr "Informace o vaší platbě zpracuje <a href=\"%(braintree_url)s\">Braintree</a> (pro platební karty) nebo <a href=\"%(paypal_url)s\">PayPal</a> a záznam o vašem daru si Mozilla uloží."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:8
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr "Pravidelné dary budou strhávány každý měsíc ve stejný den v měsíci, jako je dnes, až do jejich zrušení. Pro zrušení pravidelného posílání darů, napište nám prosím na adresu <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Pravidelné dary budou strhávány každý měsíc ve stejný den v měsíci, jako je dnes, až do jejich zrušení. Pro zrušení pravidelného posílání darů, napište nám prosím na adresu <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "Další způsoby darování: <a href=\"%(wire_transfer_url)s\">bankovní převod nebo SEPA</a> | <a href=\"%(check_url)s\">šek</a>"
+msgstr "Další způsoby darování: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">šek</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:17
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr "Další způsoby darování: <a href=\"%(wire_transfer_url)s\">bankovní převod nebo SEPA</a> | <a href=\"%(check_url)s\">šek</a> | <a href=\"%(bitcoin_url)s\">Bitcoiny</a>"
+msgstr "Další způsoby darování: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">šek</a> | <a href=\"%(bitcoin_url)s\">Bitcoiny</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer.html:22
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr "Nedaří se vám dar odeslat? Podívejte se do <a href=\"%(faq_url)s\">často kladených otázek</a>, kde najdete odpovědi na nejčastější otázky. Nepomohlo? <a href=\"mailto:%(email)s\">Pošlete nám email</a>."
+msgstr ""
+"Nedaří se vám dar odeslat? Podívejte se do <a href=\"%(faq_url)s\">často kladených otázek</a>, kde najdete odpovědi na nejčastější otázky. Nepomohlo? <a href=\"mailto:%(email)s\">Pošlete nám "
+"email</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer.html:27
-msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
-msgstr "Dary putují na účet neziskové organizace Mozilla Foundation, podle 501(c)(3), sídlící v Mountain View v Kalifornii, a dle uvážení budou použity pro dobročinné účely. Darované částky jsou dle daňového systému USA odečitatelné z daní v maximálním rozsahu povoleném zákonem."
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
+msgstr ""
+"Dary putují na účet neziskové organizace Mozilla Foundation, podle 501(c)(3), sídlící v Mountain View v Kalifornii, a dle uvážení budou použity pro dobročinné účely. Darované částky jsou dle "
+"daňového systému USA odečitatelné z daní v maximálním rozsahu povoleném zákonem."
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
@@ -238,14 +237,14 @@ msgstr "Děkujeme!"
 
 #: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr "Pokud jste dříve nepotvrdili odběr zpravodaje Mozilly, budete tak muset učinit nyní. Podívejte se prosím do vaší e-mailové schránky a případně i nevyžádané pošty, jestli tam není e-mail od nás."
+msgstr ""
+"Pokud jste dříve nepotvrdili odběr zpravodaje Mozilly, budete tak muset učinit nyní. Podívejte se prosím do vaší e-mailové schránky a případně i nevyžádané pošty, jestli tam není e-mail od nás."
 
 #: donate/templates/pages/base_page.html:103
 msgid "More about us"
 msgstr "Více o nás"
 
-#: donate/templates/pages/base_page.html:106
-#: donate/templates/payment/thank_you.html:34
+#: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you.html:34
 msgid "Twitter"
 msgstr "Twitter"
 
@@ -275,7 +274,9 @@ msgstr "Licence"
 
 #: donate/templates/pages/base_page.html:153
 #, python-format
-msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
 msgstr "Mozilla je mezinárodní nezisková organizace s cílem vám dát kontrolu nad vlastním online prožitkem a nad utvářením budoucnosti webu. Podívejte se na <a %(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
@@ -283,15 +284,11 @@ msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "DAROVAT"
 
-#: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page.html:33
-#: donate/templates/payment/card.html:151
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:151
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "Seal of Charity Navigator 4-Star"
 
-#: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page.html:36
-#: donate/templates/payment/card.html:154
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:154
 msgid "Seal of GuideStar Gold 2019"
 msgstr "Seal of GuideStar Gold 2019"
 
@@ -330,10 +327,7 @@ msgstr "Potvrdit"
 msgid "Your Details"
 msgstr "Vaše údaje"
 
-#: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell.html:29
-#: donate/templates/payment/newsletter_signup.html:26
-#: donate/templates/payment/paypal_upsell.html:29
+#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell.html:29 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell.html:29
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr "Ve vyplněném formuláři jsme našli chyby. Upravte prosím níže vyznačená pole."
 
@@ -374,31 +368,23 @@ msgstr "Darovat <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr "Pomáháte nám udržet web otevřený a svobodný. Předem děkujeme za váš dar."
 
-#: donate/templates/payment/card_upsell.html:4
-#: donate/templates/payment/paypal_upsell.html:4
-#: donate/templates/payment/thank_you.html:4
+#: donate/templates/payment/card_upsell.html:4 donate/templates/payment/paypal_upsell.html:4 donate/templates/payment/thank_you.html:4
 msgid "Thank you"
 msgstr "Děkujeme"
 
-#: donate/templates/payment/card_upsell.html:13
-#: donate/templates/payment/newsletter_signup.html:12
-#: donate/templates/payment/paypal_upsell.html:13
-#: donate/templates/payment/thank_you.html:12
+#: donate/templates/payment/card_upsell.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell.html:13 donate/templates/payment/thank_you.html:12
 msgid "Thank you for your generous gift"
 msgstr "Děkujeme za váš dar"
 
-#: donate/templates/payment/card_upsell.html:15
-#: donate/templates/payment/paypal_upsell.html:15
+#: donate/templates/payment/card_upsell.html:15 donate/templates/payment/paypal_upsell.html:15
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Budeme moc rádi, pokud se rozhodnete Mozillu podporovat dlouhodobě. <b>Na této stránce můžete zadat pravidelnou měsíční platbu počínaje příštím měsícem.</b>"
 
-#: donate/templates/payment/card_upsell.html:16
-#: donate/templates/payment/paypal_upsell.html:16
+#: donate/templates/payment/card_upsell.html:16 donate/templates/payment/paypal_upsell.html:16
 msgid "Yes, I will give:"
 msgstr "Ano, chci darovat:"
 
-#: donate/templates/payment/card_upsell.html:35
-#: donate/templates/payment/paypal_upsell.html:36
+#: donate/templates/payment/card_upsell.html:35 donate/templates/payment/paypal_upsell.html:36
 msgid "/ Monthly"
 msgstr "měsíčně"
 
@@ -410,8 +396,7 @@ msgstr "Souhlasím s tím, aby Mozilla Foundation strhla z mé platební karty v
 msgid "Yes"
 msgstr "Ano"
 
-#: donate/templates/payment/card_upsell.html:47
-#: donate/templates/payment/paypal_upsell.html:47
+#: donate/templates/payment/card_upsell.html:47 donate/templates/payment/paypal_upsell.html:47
 msgid "No"
 msgstr "Ne"
 
@@ -438,7 +423,8 @@ msgstr "Váš dar využijeme přímo na ochranu webu jako otevřeného zdroje do
 #: donate/templates/payment/thank_you.html:13
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr "Potvrzení o daru jsme vám poslali e-mailem. Pokud ho ve své schránce nenajdete, zkontrolujte prosím složku se spamem a případně nás kontaktujte na adrese <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Potvrzení o daru jsme vám poslali e-mailem. Pokud ho ve své schránce nenajdete, zkontrolujte prosím složku se spamem a případně nás kontaktujte na adrese <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/payment/thank_you.html:15
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
