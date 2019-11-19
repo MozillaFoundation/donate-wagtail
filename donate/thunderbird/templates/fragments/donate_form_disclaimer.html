@@ -1,0 +1,19 @@
+{% extends "fragments/donate_Form_disclaimer_master.html" %}
+
+{% load i18n %}
+
+{% block other_options %}
+    <b>
+    {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}
+    </b>
+{% endblock %}
+
+{% block faq_contact %}
+    {% blocktrans with faq_url='/faq' email='thunderbird-donate@mozilla.org' trimmed %}
+    Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.
+    {% endblocktrans %}
+{% endblock %}
+
+{% block contribution_statement %}
+    {% blocktrans %}Contributions go towards the Thunderbird project.{% endblocktrans %}
+{% endblock %}

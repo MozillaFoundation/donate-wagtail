@@ -61,6 +61,8 @@ env = environ.Env(
     RECAPTCHA_ENABLED=(bool, False),
     SENTRY_DSN=(str, None),
     HEROKU_RELEASE_VERSION=(str, None),
+    # Instance vars
+    THUNDERBIRD_INSTANCE=(bool, True),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
@@ -101,7 +103,13 @@ if HEROKU_APP_NAME:
 DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')
 TARGET_DOMAINS = env('TARGET_DOMAINS')
 
-INSTALLED_APPS = [
+
+# Which type of instances are we running?
+THUNDERBIRD_INSTANCE = env('THUNDERBIRD_INSTANCE')
+
+INSTALLED_APPS = list(filter(None, [
+    'donate.thunderbird' if THUNDERBIRD_INSTANCE else None,
+
     'donate.users',
     'donate.core',
     'donate.payments',
@@ -136,7 +144,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
-]
+]))
 
 MIDDLEWARE = list(filter(None, [
     'donate.utility.middleware.TargetDomainRedirectMiddleware' if DOMAIN_REDIRECT_MIDDLEWARE_ENABLED else None,
@@ -160,9 +168,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
-        'DIRS': [
+        'DIRS': list(filter(None, [
+            app('thunderbird/templates') if THUNDERBIRD_INSTANCE else None,
             app('templates'),
-        ],
+        ])),
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
