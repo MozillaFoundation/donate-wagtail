@@ -63,9 +63,10 @@ function setupBraintree() {
       var options = {
         client: clientInstance,
         styles: {
-          'input':{
-            'font-size': '16px',
-            'font-family': '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+          input: {
+            "font-size": "16px",
+            "font-family":
+              "'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"
           }
         },
         fields: {
