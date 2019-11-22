@@ -62,7 +62,13 @@ function setupBraintree() {
 
       var options = {
         client: clientInstance,
-        styles: {},
+        styles: {
+          input: {
+            "font-size": "16px",
+            "font-family":
+              "'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"
+          }
+        },
         fields: {
           number: {
             selector: "#card-number"

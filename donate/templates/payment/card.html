@@ -121,11 +121,13 @@
                                 </div>
                             </div>
 
-                            {% if payment_frequency == 'monthly' %}
-                            <footer class="donate-form__footer">
-                                <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel." %}</p>
+                            <footer class="donate-form__authorization">
+                                {% if payment_frequency == 'monthly' %}
+                                    <p>{% blocktrans with email='donate@mozilla.org' %}I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:{{ email }}'>{{ email }}</a>, and that I may only request a refund within 15 days from the date of a donation.{% endblocktrans %}</p>
+                                {% else %}
+                                    <p>{% trans "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation." %}</p>
+                                {% endif %}
                             </footer>
-                            {% endif %}
 
                         </div>
 
@@ -137,7 +139,11 @@
                                 </svg>
                                 <div class="button__label">
                                     {% format_currency currency_info.code form.amount.value as formatted_amount %}
-                                    {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }}</span>{% endblocktrans %}
+                                    {% if payment_frequency == 'monthly' %}
+                                        {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }} per month</span>{% endblocktrans %}
+                                    {% else %}
+                                        {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }}</span>{% endblocktrans %}
+                                    {% endif %}
                                 </div>
                             </button>
 

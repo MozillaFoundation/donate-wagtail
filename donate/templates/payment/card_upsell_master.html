@@ -37,19 +37,19 @@
 
                         <div class="form__group form__group--additional-info">
                             <span class="form-item__input-additional-info form-item__input-additional-info--left" data-donation-currency>{% get_localized_currency_symbol currency_info.code %}</span>
-                            <span class="form-item__input-additional-info">{% trans "/ Monthly" %}</span>
+                            <span class="form-item__input-additional-info">{% trans "Monthly" %}</span>
                             {% render_form_field form.amount %}
                         </div>
 
-                        <p><small>{% trans "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel." %}</small></p>
+                        <p class="donate-form__authorization">{% blocktrans with email='donate@mozilla.org' %}I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to {{ email }}, and that I may only request a refund within 15 days from the date of a donation.{% endblocktrans %}</p>
                     </div>
 
                     <div class="form__section form__section--actions form__section--bottom-margin button__group">
                         <button value="yes" class="button button--large button--primary" type="submit">
-                            {% trans "Yes" %}
+                            {% trans "Donate Monthly" %}
                         </button>
                         <a href="{% url 'payments:newsletter_signup' %}" class="button button--large button--secondary js-ga-track-click" data-ga-category="User Flow" data-ga-action="Monthly Upgrade Click" data-ga-label="No">
-                            {% trans "No" %}
+                            {% trans "No Thanks" %}
                         </a>
                     </div>
                 </div>

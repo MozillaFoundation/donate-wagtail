@@ -22,14 +22,14 @@
                     {% trans "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all." as twitter_text context "Used as a tweet" %}
                     {% trans "I donated to Mozilla today" as email_subject context "Email subject line" %}
 
-                    <a class="button button--outline button--icon js-ga-track-click" href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}" title="{% trans 'Share on Facebook' %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Facebook">
+                    <a class="button button--outline button--icon js-ga-track-click" href="https://www.facebook.com/sharer/sharer.php?u=https://foundation.mozilla.org" title="{% trans 'Share on Facebook' %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Facebook">
                         <svg class="button__icon button__icon--facebook" width="16" height="16">
                             <use xlink:href="#facebook"></use>
                         </svg>
                         <div class="button__label">{% trans "Facebook" %}</div>
                     </a>
                     {# see https://dev.twitter.com/web/tweet-button/web-intent #}
-                    <a class="button button--outline button--icon js-ga-track-click" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url={{ request.scheme }}://{{ request.get_host }}/{% get_locale %}&amp;via=mozilla" title="{% trans 'Share on Twitter' %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Twitter">
+                    <a class="button button--outline button--icon js-ga-track-click" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url=https://foundation.mozilla.org&amp;via=mozilla" title="{% trans 'Share on Twitter' %}" data-ga-category="Social" data-ga-action="Clicked on Button" data-ga-label="Twitter">
                         <svg class="button__icon button__icon--twitter" width="16" height="16">
                             <use xlink:href="#twitter"></use>
                         </svg>

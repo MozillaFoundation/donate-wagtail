@@ -28,6 +28,11 @@
     }
   }
 
+  &__authorization {
+    margin-bottom: ($gutter * 2);
+    font-weight: bold;
+  }
+
   &__footer {
     @include font-size(xxs);
     margin-bottom: ($gutter * 2);
