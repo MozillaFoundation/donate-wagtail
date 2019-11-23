@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:20+0000\n"
+"POT-Creation-Date: 2019-11-23 00:47+0000\n"
 "PO-Revision-Date: 2019-11-14 20:30+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,7 +377,7 @@ msgstr "Awtorizuju Mozilla, moju kartu z horjeka podatej sumu poćežić a to k�
 #: donate/templates/payment/card.html:143
 #, fuzzy, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
 msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> darić"
 
 #: donate/templates/payment/card.html:145
@@ -541,6 +541,11 @@ msgstr "Sym dźensa @mozthunderbird darił, za swobodu #dochadpósta. Podpěraj�
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "Sym dźensa Thunderbird darił"
+
+#, fuzzy
+#~| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+#~ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+#~ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> darić"
 
 #~ msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
 #~ msgstr "Awtorizuju Mozilla, moju kartu z deleka podatej sumu poćežić a to kóždy měsać činić, doniž njewupowědźu."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:20+0000\n"
+"POT-Creation-Date: 2019-11-23 00:47+0000\n"
 "PO-Revision-Date: 2019-11-15 19:01+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,7 +377,7 @@ msgstr "Yukarıda belirtilen miktarı kartımdan çekmesi ve ben iptal edene dek
 #: donate/templates/payment/card.html:143
 #, fuzzy, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
 msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> bağış yap"
 
 #: donate/templates/payment/card.html:145
@@ -541,6 +541,11 @@ msgstr "Bugün @mozthunderbird'e bağış yaptım, gelen kutumu özgür bırakt�
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "Bugün Thunderbird'e bağış yaptım"
+
+#, fuzzy
+#~| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+#~ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+#~ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> bağış yap"
 
 #~ msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
 #~ msgstr "Mozilla Foundation’a aşağıdaki tutarı kartımdan çekmesi ve ben iptal edene kadar her ay çekmeye devam etmesi için yetki veriyorum."
