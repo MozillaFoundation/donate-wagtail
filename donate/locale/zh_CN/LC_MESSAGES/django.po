@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 01:30+0000\n"
+"PO-Revision-Date: 2019-11-23 01:52+0000\n"
 "Last-Translator: passionforlife <eloli@foxmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -355,7 +355,7 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
 "donation."
-msgstr ""
+msgstr "我授权 Mozilla 基金会每月自动向我的卡收取如上显示的金额，从今天开始，并在每月的今天持续扣款，直到本人取消为止。对于取消捐款，我已了解须在下一次定期捐款前至少 5 日完成向 <a href='mailto:%(email)s'>%(email)s</a> 的邮件发送，并知悉本人只可在捐款之日起 15 天内要求退款。"
 
 #: donate/templates/payment/card.html:128
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -404,7 +404,7 @@ msgstr "每月"
 msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
-msgstr ""
+msgstr "我授权 Mozilla 基金会每月自动向我的卡收取如上显示的金额，从下月开始，每月的今天扣款，并直到本人取消为止。对于取消捐款，我已了解须在下一次定期捐款前至少 5 日完成向 %(email)s 的邮件发送，并知悉本人只可在捐款之日起 15 天内要求退款。"
 
 #: donate/templates/payment/card_upsell_master.html:49
 #| msgid "/ Monthly"
@@ -490,7 +490,7 @@ msgstr "返回"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid "Contributions go towards the Thunderbird project."
-msgstr ""
+msgstr "用于 Thunderbird 项目的捐款。"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
