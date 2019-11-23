@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 02:02+0000\n"
+"PO-Revision-Date: 2019-11-23 03:28+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -155,7 +155,7 @@ msgid "per month"
 msgstr "por mês"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 #| "by Mozilla."
@@ -163,8 +163,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"Os detalhes do seu pagamento serão processados por <a href=\"%(braintree_url)s\">Braintree</a> (cartões de crédito/débito) ou <a href=\"%(paypal_url)s\">PayPal</a> e um registro de sua doação será "
-"armazenado pela Mozilla."
+"Os detalhes do seu pagamento serão processados por <a href=\"%(braintree_url)s\">Braintree</a>, uma empresa do PayPal, (para cartões de crédito/débito) ou pelo <a href=\"%(paypal_url)s\">PayPal</a> e um registro de sua doação será armazenado pela Mozilla.\n"
+"\n"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -368,16 +368,15 @@ msgstr ""
 "pelo menos 5 dias antes da próxima doação agendada, por e-mail para <a href='mailto:%(email)s'>%(email)s</a>, e que só posso solicitar devolução de uma doação até 15 dias após sua data."
 
 #: donate/templates/payment/card.html:128
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Autorizo a Fundação Mozilla cobrar no meu cartão o valor mostrado acima e continuar fazendo isso todo mês até eu cancelar."
+msgstr "Autorizo à Fundação Mozilla cobrar do meu cartão o valor indicado acima. Compreendo que só posso solicitar devolução de uma doação até 15 dias após sua data."
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "Doar <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Doar <span class=\"%(span_class)s\">%(formatted_amount)s</span> por mês"
 
 #: donate/templates/payment/card.html:145
 #, python-format
@@ -406,10 +405,9 @@ msgid "Yes, I will give:"
 msgstr "Sim, farei uma doação:"
 
 #: donate/templates/payment/card_upsell_master.html:40
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Monthly"
-msgstr "/ Mensalmente"
+msgstr "Mensalmente"
 
 #: donate/templates/payment/card_upsell_master.html:44
 #, python-format
@@ -417,12 +415,13 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Autorizo à Fundação Mozilla cobrar automaticamente meu cartão todo mês o valor indicado acima, iniciando mês que vem no mesmo dia de hoje e continuando a partir daí cada mês até que eu cancele. "
+"Compreendo que devo cancelar pelo menos 5 dias antes da próxima doação agendada, por e-mail para %(email)s, e que só posso solicitar devolução de uma doação até 15 dias após sua data."
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
-msgstr "/ Mensalmente"
+msgstr "Doação mensal"
 
 #: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
@@ -506,16 +505,14 @@ msgid "Contributions go towards the Thunderbird project."
 msgstr "As contribuições vão para o projeto Thunderbird."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
-#, fuzzy
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "Adoraríamos ter você como um apoiador permanente da Mozilla. <b>Aceitaria adicionar uma doação mensal a partir do mês que vem?</b>"
+msgstr "Adoraríamos ter você como um apoiador permanente do Thunderbird. <b>Aceitaria adicionar uma doação mensal a partir do mês que vem?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "Por fim, você poderia multiplicar seu impacto compartilhando o importante trabalho que a Mozilla está fazendo? Mais uma vez obrigado!"
+msgstr "Por fim, você poderia multiplicar seu impacto compartilhando o importante trabalho que o Thunderbird está fazendo? Mais uma vez obrigado!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
