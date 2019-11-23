@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 00:40+0000\n"
+"PO-Revision-Date: 2019-11-23 00:54+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -374,10 +374,10 @@ msgid "I authorize Mozilla Foundation to charge my card in the amount indicated 
 msgstr ""
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "Faire un don de <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Faire un don mensuel de <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:145
 #, python-format
@@ -406,10 +406,9 @@ msgid "Yes, I will give:"
 msgstr "Oui, je fais un don :"
 
 #: donate/templates/payment/card_upsell_master.html:40
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Monthly"
-msgstr "/ mois"
+msgstr "par mois"
 
 #: donate/templates/payment/card_upsell_master.html:44
 #, python-format
@@ -419,10 +418,9 @@ msgid ""
 msgstr ""
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
-msgstr "/ mois"
+msgstr "Faire un don mensuel"
 
 #: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
@@ -508,16 +506,14 @@ msgid "Contributions go towards the Thunderbird project."
 msgstr ""
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
-#, fuzzy
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "Nous serions ravis de vous compter parmi les soutiens réguliers de Mozilla. <b>Acceptez-vous d’ajouter un don mensuel débutant le mois prochain ?</b>"
+msgstr "Nous serions ravis de vous compter parmi les soutiens réguliers de Thunderbird. <b>Acceptez-vous d’ajouter un don mensuel débutant le mois prochain ?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "Enfin, pourriez-vous multiplier votre impact en faisant connaitre l’important travail accompli par Mozilla ? Merci encore !"
+msgstr "Enfin, pourriez-vous multiplier votre impact en faisant connaitre l’important travail accompli par Thunderbird ? Merci encore !"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
