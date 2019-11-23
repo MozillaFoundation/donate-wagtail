@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-14 16:38+0000\n"
+"POT-Creation-Date: 2019-11-23 00:20+0000\n"
 "PO-Revision-Date: 2019-10-22 22:55+0000\n"
 "Last-Translator: Ian Neal <iann_bugzilla@blueyonder.co.uk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr "An error occurred. Please reload the page or try again later."
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:16 source/js/payments-card.js:125
+#: source/js/components/paypal.js:16 source/js/payments-card.js:131
 msgid "There was an error processing your payment. Please try again."
 msgstr "There was an error processing your payment. Please try again."
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:146
+#: source/js/payments-card.js:152
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "Some of the fields below are invalid. Please correct the invalid fields and try again."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-14 16:38+0000\n"
+"POT-Creation-Date: 2019-11-23 00:20+0000\n"
 "PO-Revision-Date: 2019-10-18 11:53+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr "Nastala chyba. Obnovte, prosím, túto stránku alebo to skúste neskôr
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:16 source/js/payments-card.js:125
+#: source/js/components/paypal.js:16 source/js/payments-card.js:131
 msgid "There was an error processing your payment. Please try again."
 msgstr "Pri spracovávaní platby došlo k chybe. Skúste to, prosím, znova."
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:146
+#: source/js/payments-card.js:152
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "Niektoré z polí sú neplatné. Prosím, vyplňte ich správne a skúste to znova."
 

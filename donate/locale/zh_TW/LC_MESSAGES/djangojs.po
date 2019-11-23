@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-14 16:38+0000\n"
+"POT-Creation-Date: 2019-11-23 00:20+0000\n"
 "PO-Revision-Date: 2019-10-09 13:10+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr "發生錯誤。請重新載入頁面或稍後再試。"
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:16 source/js/payments-card.js:125
+#: source/js/components/paypal.js:16 source/js/payments-card.js:131
 msgid "There was an error processing your payment. Please try again."
 msgstr "處理款項時發生錯誤，請再試一次。"
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:146
+#: source/js/payments-card.js:152
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "下方某些欄位內容無效，請修正後再試一次。"
 

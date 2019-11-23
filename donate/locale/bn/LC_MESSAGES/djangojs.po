@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-14 16:38+0000\n"
+"POT-Creation-Date: 2019-11-23 00:20+0000\n"
 "PO-Revision-Date: 2019-11-03 09:39+0000\n"
 "Last-Translator: Ahsun Mahmud Riad <ahsunriad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr "একটি ত্রুটি ঘটেছে। দয়া করে �
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
 #: donate/frontend/_js/payments-paypal.compiled.js:1
-#: source/js/components/paypal.js:16 source/js/payments-card.js:125
+#: source/js/components/paypal.js:16 source/js/payments-card.js:131
 msgid "There was an error processing your payment. Please try again."
 msgstr "আপনার পেমেন্ট প্রক্রিয়া করার সময় একটি ত্রুটি হয়েছিল। অনুগ্রহপূর্বক আবার চেষ্টা করু।"
 
 #: donate/frontend/_js/payments-card.compiled.js:1
-#: source/js/payments-card.js:146
+#: source/js/payments-card.js:152
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
 msgstr "নিচের কিছু ক্ষেত্র অবৈধ। দয়া করে অবৈধ ক্ষেত্রগুলি সংশোধন করুন এবং আবার চেষ্টা করুন।"
 
