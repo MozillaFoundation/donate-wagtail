@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-14 23:18+0000\n"
+"PO-Revision-Date: 2019-11-23 01:30+0000\n"
 "Last-Translator: passionforlife <eloli@foxmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -31,8 +31,7 @@ msgstr "请输入数字。"
 msgid "Enter a valid email address."
 msgstr "请输入有效的电子邮件地址。"
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:21 donate/payments/forms.py:35 donate/payments/forms.py:81 donate/payments/forms.py:89
 msgid "Amount"
 msgstr "金额"
 
@@ -122,9 +121,7 @@ msgstr "抱歉，该页面不存在"
 msgid "Go to our home page"
 msgstr "前往我们的主页"
 
-#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
-#: donate/templates/pages/base_page.html:13
-#: donate/templates/pages/base_page.html:14
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
 msgctxt "Page title"
 msgid "Donate to Mozilla"
 msgstr "捐款给 Mozilla"
@@ -137,27 +134,19 @@ msgstr "单次"
 msgid "MONTHLY"
 msgstr "每月"
 
-#: donate/templates/fragments/donate_form.html:39
-#: donate/templates/fragments/donate_form.html:40
-#: donate/templates/fragments/donate_form.html:99
-#: donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "其他金额"
 
-#: donate/templates/fragments/donate_form.html:46
-#: donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "选择付款方式"
 
-#: donate/templates/fragments/donate_form.html:52
-#: donate/templates/fragments/donate_form.html:112
-#: donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "安全"
 
-#: donate/templates/fragments/donate_form.html:58
-#: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:127
+#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:127
 msgid "Donate"
 msgstr "捐款"
 
@@ -166,18 +155,21 @@ msgid "per month"
 msgstr "每月"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
-#| msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
-msgstr "您的付款信息将由 <a href=\"%(braintree_url)s\">Braintree</a>（适用于信用卡/借记卡）或 <a href=\"%(paypal_url)s\">PayPal</a> 处理， 而您的捐款记录将被 Mozilla 存储。"
+#, python-format
+#| msgid ""
+#| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
+#| "by Mozilla."
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
+"donation will be stored by Mozilla."
+msgstr "您的付款信息将由 PayPal 子公司 <a href=\"%(braintree_url)s\">Braintree</a>（适用于信用卡/借记卡）或 <a href=\"%(paypal_url)s\">PayPal</a> 处理， 而您的捐款记录将被 Mozilla 存储。"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr "每月捐款会在每月的今天（或捐款日）收款一次，并将持续到您主动取消为止。如要取消，请通过 <a href=\"mailto:%(email)s\">%(email)s</a> 给我们发电子邮件。"
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:18
-#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
+#: donate/templates/fragments/donate_form_disclaimer_master.html:18 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
 msgstr "其他捐款方式：<a href=\"%(wire_transfer_url)s\">单一欧元支付区付款（SEPA）/ 英国银行自动支付清算服务（BACS）</a> | <a href=\"%(check_url)s\">支票</a>"
@@ -187,14 +179,15 @@ msgstr "其他捐款方式：<a href=\"%(wire_transfer_url)s\">单一欧元支�
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgstr "其他捐款方式：<a href=\"%(wire_transfer_url)s\">单一欧元支付区付款（SEPA）/ 英国银行自动支付清算服务（BACS）</a> | <a href=\"%(check_url)s\">支票</a> | <a href=\"%(bitcoin_url)s\">比特币（Bitcoin）</a>"
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:27
-#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
+#: donate/templates/fragments/donate_form_disclaimer_master.html:27 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr "捐款遇到问题？访问我们的<a href=\"%(faq_url)s\">常见问题</a>解决最常见的问题。仍有问题？<a href=\"mailto:%(email)s\">给我们发电子邮件</a>。"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:34
-msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
 msgstr "Mozilla 基金会是在美国加利福尼亚州山景城登记的 501(c)(3) 免税机构。向 Mozilla 所捐的款项，将可由其依照慈善目的自由使用，捐款人亦可依照法律规定抵扣美国国内税款。"
 
 #: donate/templates/pages/base_page.html:26
@@ -245,9 +238,7 @@ msgstr "如果您以前没有成功订阅过 Mozilla 相关的新闻通讯，您
 msgid "More about us"
 msgstr "关于我们的更多信息"
 
-#: donate/templates/pages/base_page.html:106
-#: donate/templates/payment/thank_you_master.html:36
-#: donate/thunderbird/templates/payment/thank_you.html:25
+#: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you_master.html:36 donate/thunderbird/templates/payment/thank_you.html:25
 msgid "Twitter"
 msgstr "Twitter"
 
@@ -277,7 +268,9 @@ msgstr "许可协议"
 
 #: donate/templates/pages/base_page.html:153
 #, python-format
-msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
 msgstr "Mozilla 是一个全球性的的非营利组织，致力于让您掌控自己的网络体验，并为了公众利益塑造 Web 的未来。欢迎访问 <a %(link_attributes)s>%(site_url)s</a> 了解更多信息。"
 
 #: donate/templates/pages/core/campaign_page.html:38
@@ -285,15 +278,11 @@ msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "立即捐款"
 
-#: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page.html:33
-#: donate/templates/payment/card.html:157
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:157
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "四星慈善航海家徽章"
 
-#: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page.html:36
-#: donate/templates/payment/card.html:160
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:160
 msgid "Seal of GuideStar Gold 2019"
 msgstr "2019 航海家金质徽章"
 
@@ -332,10 +321,7 @@ msgstr "确认"
 msgid "Your Details"
 msgstr "您的详细信息"
 
-#: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell_master.html:34
-#: donate/templates/payment/newsletter_signup.html:26
-#: donate/templates/payment/paypal_upsell_master.html:34
+#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell_master.html:34 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell_master.html:34
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr "您的表单存在若干错误。请修改下方高亮显示的字段。"
 
@@ -365,20 +351,22 @@ msgstr "安全码（CVV）"
 
 #: donate/templates/payment/card.html:126
 #, python-format
-msgid "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a donation."
+msgid ""
+"I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
+"I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
+"donation."
 msgstr ""
 
 #: donate/templates/payment/card.html:128
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "我授权 Mozilla 基金会向我的卡收取如上显示的金额，并每月持续收款直到我主动取消为止。"
+msgstr "我授权 Mozilla 基金会向我的卡收取如上显示的金额，并知悉本人只可在捐款之日起 15 天内要求退款。"
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "捐款 <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "每月捐款 <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:145
 #, python-format
@@ -389,48 +377,41 @@ msgstr "捐款 <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr "您的捐款将有助于保持网络的自由和开放。在此先行致谢您的馈礼。"
 
-#: donate/templates/payment/card_upsell_master.html:4
-#: donate/templates/payment/paypal_upsell_master.html:4
-#: donate/templates/payment/thank_you_master.html:4
+#: donate/templates/payment/card_upsell_master.html:4 donate/templates/payment/paypal_upsell_master.html:4 donate/templates/payment/thank_you_master.html:4
 msgid "Thank you"
 msgstr "感谢您"
 
-#: donate/templates/payment/card_upsell_master.html:13
-#: donate/templates/payment/newsletter_signup.html:12
-#: donate/templates/payment/paypal_upsell_master.html:13
+#: donate/templates/payment/card_upsell_master.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell_master.html:13
 #: donate/templates/payment/thank_you_master.html:12
 msgid "Thank you for your generous gift"
 msgstr "感谢您的慷慨捐款"
 
-#: donate/templates/payment/card_upsell_master.html:17
-#: donate/templates/payment/paypal_upsell_master.html:17
+#: donate/templates/payment/card_upsell_master.html:17 donate/templates/payment/paypal_upsell_master.html:17
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "我们希望您能成为 Mozilla 的支持者。<b>您愿意从下个月起，每月持续捐款吗？</b>"
 
-#: donate/templates/payment/card_upsell_master.html:21
-#: donate/templates/payment/paypal_upsell_master.html:21
+#: donate/templates/payment/card_upsell_master.html:21 donate/templates/payment/paypal_upsell_master.html:21
 msgid "Yes, I will give:"
 msgstr "是的，我要捐："
 
 #: donate/templates/payment/card_upsell_master.html:40
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Monthly"
-msgstr "/ 每月"
+msgstr "每月"
 
 #: donate/templates/payment/card_upsell_master.html:44
 #, python-format
-msgid "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
+msgid ""
+"I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
+"cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
-msgstr "/ 每月"
+msgstr "每月捐款"
 
-#: donate/templates/payment/card_upsell_master.html:52
-#: donate/templates/payment/newsletter_signup.html:38
+#: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
 msgstr "不了，谢谢"
 
@@ -454,13 +435,11 @@ msgstr "/ 每月"
 msgid "No"
 msgstr "否"
 
-#: donate/templates/payment/thank_you_master.html:15
-#: donate/thunderbird/templates/payment/thank_you.html:6
+#: donate/templates/payment/thank_you_master.html:15 donate/thunderbird/templates/payment/thank_you.html:6
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
 msgstr "您的捐款将完全用于保护网络的开放，并让所有人可用。"
 
-#: donate/templates/payment/thank_you_master.html:15
-#: donate/thunderbird/templates/payment/thank_you.html:6
+#: donate/templates/payment/thank_you_master.html:15 donate/thunderbird/templates/payment/thank_you.html:6
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr "我们已将捐款收据发送给您。未收到的话请检查广告/垃圾邮件箱，若还是未找到，可发邮件到 <a href=\"mailto:%(email)s\">%(email)s</a> 联系我们。"
@@ -479,35 +458,29 @@ msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
 msgstr "我今天捐款给 Mozilla"
 
-#: donate/templates/payment/thank_you_master.html:25
-#: donate/thunderbird/templates/payment/thank_you.html:14
+#: donate/templates/payment/thank_you_master.html:25 donate/thunderbird/templates/payment/thank_you.html:14
 msgid "Share on Facebook"
 msgstr "分享到 Facebook"
 
-#: donate/templates/payment/thank_you_master.html:29
-#: donate/thunderbird/templates/payment/thank_you.html:18
+#: donate/templates/payment/thank_you_master.html:29 donate/thunderbird/templates/payment/thank_you.html:18
 msgid "Facebook"
 msgstr "Facebook"
 
-#: donate/templates/payment/thank_you_master.html:32
-#: donate/thunderbird/templates/payment/thank_you.html:21
+#: donate/templates/payment/thank_you_master.html:32 donate/thunderbird/templates/payment/thank_you.html:21
 msgid "Share on Twitter"
 msgstr "分享到 Twitter"
 
-#: donate/templates/payment/thank_you_master.html:42
-#: donate/thunderbird/templates/payment/thank_you.html:31
+#: donate/templates/payment/thank_you_master.html:42 donate/thunderbird/templates/payment/thank_you.html:31
 msgctxt "Share button"
 msgid "Email"
 msgstr "电子邮件"
 
-#: donate/templates/payment/thank_you_master.html:52
-#: donate/thunderbird/templates/payment/thank_you.html:41
+#: donate/templates/payment/thank_you_master.html:52 donate/thunderbird/templates/payment/thank_you.html:41
 msgctxt "Share button"
 msgid "Link"
 msgstr "链接"
 
-#: donate/templates/payment/thank_you_master.html:53
-#: donate/thunderbird/templates/payment/thank_you.html:42
+#: donate/templates/payment/thank_you_master.html:53 donate/thunderbird/templates/payment/thank_you.html:42
 msgid "Copied"
 msgstr "已复制"
 
@@ -519,18 +492,15 @@ msgstr "返回"
 msgid "Contributions go towards the Thunderbird project."
 msgstr ""
 
-#: donate/thunderbird/templates/payment/card_upsell.html:6
-#: donate/thunderbird/templates/payment/paypal_upsell.html:6
-#, fuzzy
+#: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "我们希望您能成为 Mozilla 的支持者。<b>您愿意从下个月起，每月持续捐款吗？</b>"
+msgstr "我们希望您能成为 Thunderbird 的支持者。<b>您愿意从下个月起，每月持续捐款吗？</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "最后，您愿意帮助我们分享 Mozilla 在做的壮举来扩大影响吗？再次感谢您！"
+msgstr "最后，您愿意帮助我们分享 Thunderbird 在做的壮举来扩大影响吗？再次感谢您！"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
@@ -542,8 +512,6 @@ msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "我今天捐款给 Thunderbird"
 
-#, fuzzy
-#~| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 #~ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
 #~ msgstr "捐款 <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
