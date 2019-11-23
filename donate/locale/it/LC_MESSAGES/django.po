@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 13:06+0000\n"
-"Last-Translator: Davide Quaranta <dvd.forty@gmail.com>\n"
+"PO-Revision-Date: 2019-11-23 14:19+0000\n"
+"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -368,6 +368,9 @@ msgid ""
 "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
 "donation."
 msgstr ""
+"Autorizzo Mozilla Foundation ad addebitare automaticamente sulla carta l’importo mensile indicato, a partire da oggi e continuando ogni mese allo stesso giorno, fino alla mia revoca. Sono "
+"consapevole che devo revocare il pagamento almeno 5 giorni prima della successiva donazione pianificata, inviando un’email a <a href='mailto:%(email)s'>%(email)s</a> e che posso richiedere un "
+"rimborso unicamente entro 15 giorni dalla data di una donazione."
 
 #: donate/templates/payment/card.html:128
 #, fuzzy
@@ -419,6 +422,9 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Autorizzo Mozilla Foundation ad addebitare automaticamente sulla carta l’importo mensile indicato, a partire dal prossimo mese nello stesso giorno di oggi, continuando ogni mese fino alla mia "
+"revoca. Sono consapevole che devo revocare il pagamento almeno 5 giorni prima della successiva donazione pianificata, inviando un’email a %(email)s e che posso richiedere un rimborso unicamente "
+"entro 15 giorni dalla data di una donazione."
 
 #: donate/templates/payment/card_upsell_master.html:49
 #, fuzzy
