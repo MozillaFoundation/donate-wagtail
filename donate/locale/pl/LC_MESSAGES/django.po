@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 12:12+0000\n"
+"PO-Revision-Date: 2019-11-23 12:21+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -364,6 +364,9 @@ msgid ""
 "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
 "donation."
 msgstr ""
+"Upoważniam Fundację Mozilla do obciążenia mojej karty w wysokości podanej powyżej i robienia tego co miesiąc, tego samego dnia miesiąca od dzisiaj aż do czasu anulowania. Rozumiem, że muszę anulować"
+" co najmniej 5 dni przed następnym zaplanowanym datkiem pisząc wiadomość na adres <a href='mailto:%(email)s'>%(email)s</a>, oraz że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty "
+"przekazania datku."
 
 #: donate/templates/payment/card.html:128
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -413,6 +416,8 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Upoważniam Fundację Mozilla do obciążenia mojej karty w wysokości podanej powyżej i robienia tego co miesiąc, od tego samego dnia następnego miesiąca aż do czasu anulowania. Rozumiem, że muszę "
+"anulować co najmniej 5 dni przed następnym zaplanowanym datkiem pisząc wiadomość na adres %(email)s, oraz że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty przekazania datku."
 
 #: donate/templates/payment/card_upsell_master.html:49
 #| msgid "/ Monthly"
@@ -500,7 +505,7 @@ msgstr "Wstecz"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid "Contributions go towards the Thunderbird project."
-msgstr ""
+msgstr "Datki są przekazywane na rzecz projektu Thunderbird."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
@@ -510,7 +515,7 @@ msgstr "Mamy nadzieję, że to dopiero początek naszej współpracy. <b>Może o
 #: donate/thunderbird/templates/payment/thank_you.html:7
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "Czy możesz pomnożyć swój udział, opowiadając o ważnej pracy, jaką wykonuje zespół Thunderbirda? Jeszcze raz dziękujemy!"
+msgstr "Czy możesz pomnożyć swój udział, opowiadając o ważnej pracy, jaką wykonuje projekt Thunderbird? Jeszcze raz dziękujemy!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
