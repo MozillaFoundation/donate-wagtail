@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:20+0000\n"
+"POT-Creation-Date: 2019-11-23 00:47+0000\n"
 "PO-Revision-Date: 2019-11-10 10:34+0000\n"
 "Last-Translator: Selyan Slimane Amiri <selyan.kab@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -373,7 +373,7 @@ msgstr ""
 
 #: donate/templates/payment/card.html:143
 #, python-format
-msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
 msgstr ""
 
 #: donate/templates/payment/card.html:145

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:20+0000\n"
+"POT-Creation-Date: 2019-11-23 00:47+0000\n"
 "PO-Revision-Date: 2019-11-15 15:10+0000\n"
 "Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,7 +377,7 @@ msgstr "আমি মজিলা ফাউন্ডেশনকে উপরে
 #: donate/templates/payment/card.html:143
 #, fuzzy, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
 msgstr "অনুদান করুন <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:145
@@ -541,6 +541,11 @@ msgstr "আমি আজ @mozthunderbird কে #freetheinbox এ অনুদ�
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "আমি আজ Thunderbird কে অনুদান দিয়েছি"
+
+#, fuzzy
+#~| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+#~ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+#~ msgstr "অনুদান করুন <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #~ msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
 #~ msgstr "আমি Mozilla Foundation কে নীচে দেখানো পরিমাণে আমার কার্ডটি চার্জ করতে এবং আমি বাতিল না করা পর্যন্ত প্রতি মাসে এটি চালিয়ে যাওয়ার অনুমতি দিচ্ছি।"

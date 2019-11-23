@@ -140,7 +140,7 @@
                                 <div class="button__label">
                                     {% format_currency currency_info.code form.amount.value as formatted_amount %}
                                     {% if payment_frequency == 'monthly' %}
-                                        {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }} per month</span>{% endblocktrans %}
+                                        {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }}</span> per month{% endblocktrans %}
                                     {% else %}
                                         {% blocktrans with formatted_amount=formatted_amount span_class='button__value js-donation-value' %}Donate <span class="{{ span_class }}">{{ formatted_amount }}</span>{% endblocktrans %}
                                     {% endif %}
