@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 00:50+0000\n"
+"PO-Revision-Date: 2019-11-23 01:03+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -371,10 +371,10 @@ msgid "I authorize Mozilla Foundation to charge my card in the amount indicated 
 msgstr "Jeg gir Mozilla Foundation fullmakt til å belaste kortet mitt i det beløpet som er vist ovenfor. Jeg forstår at jeg bare kan be om refusjon innen 15 dager fra donasjonsdatoen."
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "Doner <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Doner <span class=\"%(span_class)s\">%(formatted_amount)s</span> per måned"
 
 #: donate/templates/payment/card.html:145
 #, python-format
