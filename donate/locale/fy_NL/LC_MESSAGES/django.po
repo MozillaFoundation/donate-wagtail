@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-24 16:32+0000\n"
+"PO-Revision-Date: 2019-11-24 16:34+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fy_NL\n"
@@ -418,6 +418,9 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Ik machtigje Mozilla Foundation om myn kaart elke moanne automatysk te belêsten mei it hjirboppe oanjûne bedrach, fan de folgjende moanne ôf op deselde dei as hjoed, oant ik annulearje. Ik begryp "
+"dat ik op syn minst 5 dagen foar de folgjende plande donaasje per e-mail oan %(email)s annulearje moat en dat ik allinnich in werombetelling oanfreegje kin binnen 15 dagen nei de datum fan in "
+"donaasje."
 
 #: donate/templates/payment/card_upsell_master.html:49
 #| msgid "/ Monthly"
@@ -505,7 +508,7 @@ msgstr "Tebek"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid "Contributions go towards the Thunderbird project."
-msgstr ""
+msgstr "Bydragen gean nei it Thunderbird-projekt."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
