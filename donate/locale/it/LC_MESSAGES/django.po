@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-24 16:31+0000\n"
-"Last-Translator: chiara.gambone <chiara.gambone@outlook.it>\n"
+"PO-Revision-Date: 2019-11-24 17:02+0000\n"
+"Last-Translator: Michele Rodaro <michele.rodaro@mozillaitalia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -155,7 +155,7 @@ msgid "per month"
 msgstr "al mese"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 #| "by Mozilla."
@@ -163,8 +163,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"I tuoi dati di pagamento saranno elaborati da <a href=\"%(braintree_url)s\">Braintree</a> (per carte di credito o debito) o <a href=\"%(paypal_url)s\">PayPal</a>. Mozilla conserverà in registro "
-"traccia della tua donazione."
+"I tuoi dati di pagamento saranno elaborati da <a href=\"%(braintree_url)s\">Braintree</a>, una società che fa parte di PayPal (per carte di credito o debito) o da <a "
+"href=\"%(paypal_url)s\">PayPal</a>. Mozilla conserverà in registro traccia della tua donazione."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -425,10 +425,9 @@ msgstr ""
 "entro 15 giorni dalla data di una donazione."
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
-msgstr "/ Mensile"
+msgstr "Donazione mensile"
 
 #: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
