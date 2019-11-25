@@ -42,10 +42,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:826fd1f664ac8629505582966d16c3844e9d438f873904ab0bf6ac559db15e31",
-                "sha256:8979ac048eb3b4fbc3be27534c8c6743fb399432d4d88f2b729403e726182353"
+                "sha256:9fefb42c6d4fa0079a52b49e5491fa0738cca63649f68be180b3ed6c253d2622",
+                "sha256:ee55ce128056c5120680d25c8e8dfa3a08dbe7ac3445dc16997daaa68ae4060e"
             ],
-            "version": "==1.13.25"
+            "version": "==1.13.26"
         },
         "braintree": {
             "hashes": [
@@ -523,11 +523,11 @@
         },
         "wagtail-localize": {
             "hashes": [
-                "sha256:0a79c858ad03ce6f17207cd860af2489c0d96cab5266821437e65a6483dc899c",
-                "sha256:f88bc3450e9df40d397adf8094ab45198cd800f2f3ff988c29802c033cf4729f"
+                "sha256:188a71257dcf8ce14cafc50698527ee5787eb55e2f653e539d3aa85de124c99f",
+                "sha256:c82daeba7c0ffab972ae923818eff6ab6eb37050fefdafdbef8157c1aa552daa"
             ],
             "index": "pypi",
-            "version": "==0.3.2"
+            "version": "==0.3.3"
         },
         "wagtail-localize-pontoon": {
             "hashes": [
