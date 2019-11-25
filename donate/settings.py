@@ -62,7 +62,7 @@ env = environ.Env(
     SENTRY_DSN=(str, None),
     HEROKU_RELEASE_VERSION=(str, None),
     # Instance vars
-    THUNDERBIRD_INSTANCE=(bool, True),
+    THUNDERBIRD_INSTANCE=(bool, False),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
