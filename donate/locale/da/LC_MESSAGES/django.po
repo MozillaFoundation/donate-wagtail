@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-25 13:14+0000\n"
-"Last-Translator: Mikkel Herold <mikkel@mzh.dk>\n"
+"PO-Revision-Date: 2019-11-25 15:03+0000\n"
+"Last-Translator: Joergen <joergenr@stofanet.dk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -163,8 +163,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"Dine betalingsoplysninger vil blive behandlet af <a href=\"%(braintree_url)s\">Braintree</a> (kredit-/debitkort) eller <a href=\"%(paypal_url)s\">PayPal</a>, og oplysninger om dit bidrag vil bive "
-"gemt hos Mozilla."
+"Dine betalingsoplysninger vil blive behandlet af <a href=\"%(braintree_url)s\">Braintree</a>, et PayPal-firma, (kredit-/debitkort) eller <a href=\"%(paypal_url)s\">PayPal</a>, og oplysninger om dit "
+"bidrag vil bive gemt hos Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -517,10 +517,9 @@ msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Coul
 msgstr "Det ville betyde meget for os, hvis du støttede Mozilla regelmæssigt. <b>Kunne du tænke dig at hjælp med et fast beløb hver måned?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "Vi håber, at du vil gøre os en sidste tjeneste. Nemlig at fortælle andre om Mozillas arbejde. Tak på forhånd!"
+msgstr "Vi håber, at du vil gøre os en sidste tjeneste, nemlig at fortælle andre om Thunderbirds arbejde. Tak på forhånd!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
