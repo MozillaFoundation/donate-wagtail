@@ -34,7 +34,7 @@ def send_stripe_transaction_to_basket(subscription, charge, metadata,
     send_to_sqs({
         'data': {
             'event_type': 'donation',
-            'last_name': subscription.customer.sources.data[0].name,
+            'last_name': subscription.customer.sources.data[0]['name'],
             'email': subscription.customer.email,
             'donation_amount': zero_decimal_currency_fix(charge.amount, charge.currency),
             'currency': charge.currency,
@@ -47,7 +47,7 @@ def send_stripe_transaction_to_basket(subscription, charge, metadata,
             'donation_url': donation_url,
             'project': project,
             'locale': subscription.metadata.locale,
-            'last_4': subscription.customer.sources.data[0].last4,
+            'last_4': subscription.customer.sources.data[0]['last4'],
             'conversion_amount': conversion_amount,
             'net_amount': net_amount,
             'transaction_fee': transaction_fee
@@ -174,7 +174,11 @@ class StripeWebhookProcessor:
         # Stripe event types use dot-notation, so convert periods to underscores
         event_type = event.type.replace('.', '_')
 
-        process_method = getattr(self, f'process_{event_type}')
+        try:
+            process_method = getattr(self, f'process_{event_type}')
+        except AttributeError:
+            logger.info(f'An unsupported Stripe event was not processed: {event_type}')
+            return
 
         if process_method is not None:
             return process_method(event)
@@ -187,7 +191,7 @@ class StripeWebhookProcessor:
                 expand=['invoice', 'balance_transaction']
             )
         except stripe.error.StripeError as e:
-            logger.error(f'Error fetching Stripe Charge: {e._message}')
+            logger.error(f'Error fetching Stripe Charge: {e._message}', exc_info=True)
             return
 
         if not charge.invoice or not charge.invoice.subscription:
@@ -197,17 +201,14 @@ class StripeWebhookProcessor:
         balance_transaction = charge.balance_transaction
         conversion_amount = balance_transaction.amount / 100
         net_amount = balance_transaction.net / 100
-
-        transaction_fee = 0
-        for fee in balance_transaction.fee_details:
-            transaction_fee += (fee.amount / 100)
+        transaction_fee = balance_transaction.fee / 100
 
         subscription_id = charge.invoice.subscription
 
         try:
             subscription = stripe.Subscription.retrieve(subscription_id)
         except stripe.error.StripeError as e:
-            logger.error(f'Error fetching Stripe Subscription: {e._message}')
+            logger.error(f'Error fetching Stripe Subscription: {e._message}', exc_info=True)
             return
 
         metadata = subscription.metadata
@@ -225,9 +226,9 @@ class StripeWebhookProcessor:
             update_data['description'] = 'Mozilla Foundation Monthly Donation'
 
         try:
-            stripe.Charge.update(charge_id, update_data)
+            stripe.Charge.modify(charge_id, update_data)
         except stripe.error.StripeError as e:
-            logger.error(f'Error updating Stripe Charge description and metadata: {e._message}')
+            logger.error(f'Error updating Stripe Charge description and metadata: {e._message}', exc_info=True)
             return
 
         send_stripe_transaction_to_basket(
@@ -239,6 +240,39 @@ class StripeWebhookProcessor:
             net_amount,
             transaction_fee,
         )
+
+        # queue.enqueue(self.upgrade_stripe_subscription_to_braintree, {
+        #     'charge': charge,
+        #     'subscription': subscription,
+        # })
+
+    # def upgrade_stripe_subscription_to_braintree(self, charge_data):
+    #     charge = charge_data['charge']
+    #     subscription = charge_data['subscription']
+    #
+    #     try:
+    #         customer = stripe.Customer.retrieve(charge.customer)
+    #     except stripe.error.StripeError as e:
+    #         logger.error(f'Error fetching Stripe Subscription: {e._message}', exc_info=True)
+    #         return
+    #
+    #     try:
+    #         payment_method = stripe.PaymentMethod.retrieve(charge.payment_method)
+    #     except stripe.error.StripeError as e:
+    #         logger.error(f'Error fetching payment method: {e._message}', exc_info=True)
+
+        # 1. Grab customer ID
+        # 2. Lookup in logs what token is associated with customer ID
+        # 3. Create a new sub in BT starting the next month for the same currency and amount, using the PMT
+        # 4. Once successfully created, Cancel the Stripe Subscription (optional quest: update subscription metadata with note about the migration, include the BT subscription ID)
+        # 5. If #3 fails, do not do 4; if 4 fails, CANCEL 3; if that fails, SOUND THE ALARM
+        # 6. Possible other cleanup tasks, not sure. DO NOT DELETE CUSTOMER OBJ
+
+        # gateway.subscription.create({
+        #     'payment_method_token': 'PLACEHOLDER',
+        #     'plan_id': 'PLACEHOLDER'
+        # })
+
 
 
 def process_webhook(form_data):

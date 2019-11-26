@@ -1,13 +1,14 @@
 from decimal import Decimal
 from unittest import mock
+import stripe
 
 from django.test import TestCase, override_settings
 
 from freezegun import freeze_time
 
 from ..tasks import (
-    BraintreeWebhookProcessor, send_newsletter_subscription_to_basket, send_transaction_to_basket
-)
+    BraintreeWebhookProcessor, send_newsletter_subscription_to_basket, send_transaction_to_basket,
+    StripeWebhookProcessor)
 
 
 class NewsletterSignupTestCase(TestCase):
@@ -254,3 +255,67 @@ class ProcessWebhookTestCase(TestCase):
                 'failure_code': 'fraud',
             }
         })
+
+class ProcessStripeWebhookTestCase(TestCase):
+
+    def test_processor_calls_method_based_on_kind(self):
+        event = mock.Mock()
+        event.type = 'charge.succeeded'
+        with mock.patch.object(
+                StripeWebhookProcessor, 'process_charge_succeeded'
+        ) as mock_process_method:
+            StripeWebhookProcessor().process(event)
+
+        mock_process_method.assert_called_once_with(event)
+
+    def test_processor_does_not_call_method(self):
+        event = mock.Mock()
+        event.type = 'charge.failed'
+        with mock.patch.object(
+                StripeWebhookProcessor, 'process_charge_succeeded'
+        ) as mock_process_method:
+            StripeWebhookProcessor().process(event)
+
+        mock_process_method.assert_not_called()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_process_charge_succeeded(self):
+        mock_event = mock.Mock()
+        mock_event.type = 'charge.succeeded'
+        mock_event.data = mock.Mock()
+        mock_event.data.object = mock.Mock()
+        mock_event.data.object.id = 'test-charge-id'
+
+        mock_charge = mock.Mock()
+        mock_charge.id = mock_event.data.object.id
+        mock_charge.invoice = mock.Mock()
+        mock_charge.amount = 10.00
+        mock_charge.currency = 'usd'
+        mock_charge.created = 1574801715
+        mock_charge.balance_transaction = mock.Mock()
+        mock_charge.balance_transaction.amount = 1000
+        mock_charge.balance_transaction.net = 950
+        mock_charge.balance_transaction.fee = 50
+        mock_charge.invoice.subscription = 'test-subscription-id'
+
+        mock_subscription = mock.Mock()
+        mock_subscription.id = mock_charge.invoice.subscription
+        mock_subscription.metadata.email = 'donor@example.com'
+        mock_subscription.metadata.locale = 'en-US'
+        mock_subscription.metadata.donation_url = 'donate.mozilla.org'
+        mock_subscription.customer.sources.data = [dict(name='Firstname Lastname', last4='4242')]
+        mock_subscription.customer.email = mock_subscription.metadata.email
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.return_value = mock_charge
+                mock_stripe.Charge.modify = mock.Mock()
+                mock_stripe.Subscription.retrieve.return_value = mock_subscription
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_send.assert_called_once()
+
+
+
+
+
