@@ -63,6 +63,9 @@ env = environ.Env(
     HEROKU_RELEASE_VERSION=(str, None),
     # Instance vars
     THUNDERBIRD_INSTANCE=(bool, False),
+    # Review App slack webhook
+    GITHUB_TOKEN=(str, ''),
+    SLACK_WEBHOOK_RA=(str, ''),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
@@ -561,3 +564,7 @@ RQ_QUEUES = {
 
 # This name is displayed in the Wagtail admin.
 WAGTAIL_SITE_NAME = "donate"
+
+# Review apps' slack bot
+GITHUB_TOKEN = env('GITHUB_TOKEN')
+SLACK_WEBHOOK_RA = env('SLACK_WEBHOOK_RA')

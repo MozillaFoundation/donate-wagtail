@@ -5,6 +5,7 @@ Creates an admin account and share the credentials and link to Review App on Sla
 import re
 import requests
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from factory import Faker
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
@@ -20,7 +21,7 @@ class Command(BaseCommand):
         try:
             User.objects.get(username='admin')
             print('super user already exists')
-        except User.ObjectDoesNotExist:
+        except ObjectDoesNotExist:
             password = Faker(
                 'password',
                 length=16,
@@ -80,8 +81,6 @@ class Command(BaseCommand):
                     }
                 ]
             }
-
-            print(slack_payload)
 
             slack_webhook = settings.SLACK_WEBHOOK_RA
             r = requests.post(f'{slack_webhook}',
