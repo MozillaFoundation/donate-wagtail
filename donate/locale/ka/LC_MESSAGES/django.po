@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-26 00:30+0000\n"
+"PO-Revision-Date: 2019-11-26 00:44+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ka\n"
@@ -155,7 +155,7 @@ msgid "per month"
 msgstr "ყოველთვიურად"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 #| "by Mozilla."
@@ -163,8 +163,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"თქვენი ანგარიშის მონაცემებს ამუშავებს <a href=\"%(braintree_url)s\">Braintree</a> (საკრედიტო/სადებეტო ბარათების შემთხვევაში) ან <a href=\"%(paypal_url)s\">Paypal</a>, ხოლო თქვენს შემოწირულობებს "
-"აღრიცხავს Mozilla."
+"თქვენი ანგარიშის მონაცემებს ამუშავებს <a href=\"%(braintree_url)s\">Braintree</a>, PayPal-ის შვილობილი კომპანია (საკრედიტო/სადებეტო ბარათების შემთხვევაში) ან <a href=\"%(paypal_url)s\">Paypal</a>, "
+"ხოლო თქვენს შემოწირულობებს აღრიცხავს Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -365,20 +365,19 @@ msgid ""
 "donation."
 msgstr ""
 "ვანიჭებ Mozilla-ფონდს უფლებას, თავად ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა დღეიდან ყოველთვიურად ამავე დღეს, სანამ არ გავაუქმებ. ვითვალისწინებ, რომ შემოწირულობის გასაუქმებლად "
-"მოთხოვნა, დაგეგმილ მომდევნო თარიღამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე <a href='mailto:%(email)s'>%(email)s</a> და შემოწირულობის ჩარიცხვიდან, 15 დღის განმავლობაში შემეძლება თანხის "
-"დაბრუნების მოთხოვნა."
+"მოთხოვნა, დაგეგმილ მომდევნო გადარიცხვამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე <a href='mailto:%(email)s'>%(email)s</a>, ხოლო თანხის დაბრუნების მოთხოვნა, შემოწირულობის ჩამოჭრიდან, 15 დღის "
+"განმავლობაში შემეძლება."
 
 #: donate/templates/payment/card.html:128
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "ვანიჭებ Mozilla-ფონდს უფლებას, ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა ყოველთვიურად, სანამ არ გავაუქმებ."
+msgstr "ვანიჭებ Mozilla-ფონდს უფლებას, ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა. ვითვალისწინებ, რომ თანხის დაბრუნების მოთხოვნა, შემოწირულობის გაკეთებიდან 15 დღის განმავლობაში შემეძლება."
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "შემოწირულობა <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "შემოწირულობა <span class=\"%(span_class)s\">%(formatted_amount)s</span> ყოველთვიურად"
 
 #: donate/templates/payment/card.html:145
 #, python-format
@@ -400,17 +399,16 @@ msgstr "გმადლობთ, გულუხვი საჩუქრის
 
 #: donate/templates/payment/card_upsell_master.html:17 donate/templates/payment/paypal_upsell_master.html:17
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "მეტად მოხარულები ვიქნებით, თუ Mozilla-ს მტკიცე და მუდმივი მხარდამჭერი გახდებით. <b>გაქვთ, სურვილი ყოველთვიური შემოწირულობის დაწყების მომდევნო თვიდან?</b>"
+msgstr "მეტად მოხარულები ვიქნებით, თუ Mozilla-ს მტკიცე და მუდმივი მხარდამჭერი გახდებით. <b>გაქვთ სურვილი მომდევნო თვიდან, გაიღოთ შემოწირულობა ყოველთვიურად?</b>"
 
 #: donate/templates/payment/card_upsell_master.html:21 donate/templates/payment/paypal_upsell_master.html:21
 msgid "Yes, I will give:"
 msgstr "დიახ, შემიძლია გავიღო:"
 
 #: donate/templates/payment/card_upsell_master.html:40
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Monthly"
-msgstr "/ ყოველთვიურად"
+msgstr "ყოველთვიური"
 
 #: donate/templates/payment/card_upsell_master.html:44
 #, python-format
@@ -418,12 +416,14 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"ვანიჭებ Mozilla-ფონდს უფლებას, თავად ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა ყოველთვიურად, დაწყებული მომდევნო თვიდან ამავე დღეს, სანამ არ გავაუქმებ. ვითვალისწინებ, რომ შემოწირულობის "
+"გასაუქმებლად მოთხოვნა, დაგეგმილ მომდევნო გადარიცხვამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე %(email)s, ხოლო თანხის დაბრუნების მოთხოვნა, შემოწირულობის ჩამოჭრიდან, 15 დღის განმავლობაში "
+"შემეძლება."
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
-msgstr "/ ყოველთვიურად"
+msgstr "შემოწირულობა ყოველთვიურად"
 
 #: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
@@ -505,19 +505,17 @@ msgstr "უკან"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid "Contributions go towards the Thunderbird project."
-msgstr ""
+msgstr "შემოწირულობა გადაერიცხება Thunderbird-პროექტს."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
-#, fuzzy
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "მეტად მოხარულები ვიქნებით, თუ Mozilla-ს მტკიცე და მუდმივი მხარდამჭერი გახდებით. <b>გაქვთ, სურვილი ყოველთვიური შემოწირულობის დაწყების მომდევნო თვიდან?</b>"
+msgstr "მეტად მოხარულები ვიქნებით, თუ Thunderbird-ის მტკიცე და მუდმივი მხარდამჭერი გახდებით. <b>გაქვთ სურვილი მომდევნო თვიდან, გაიღოთ შემოწირულობა ყოველთვიურად?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "და ბოლოს, შეგიძლიათ დაგვეხმაროთ იმ მნიშვნელოვანი საქმის გაზიარებაში, რომელსაც Mozilla აკეთებს? გმადლობთ, კიდევ ერთხელ!"
+msgstr "და ბოლოს, შეგიძლიათ დაგვეხმაროთ იმ მნიშვნელოვანი საქმის გაზიარებაში, რომელსაც Thunderbird აკეთებს? გმადლობთ, კიდევ ერთხელ!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
