@@ -34,6 +34,7 @@ class MockBraintreeTransaction:
     disbursement_details = mock.MagicMock()
     disbursement_details.settlement_amount = Decimal(10)
     paypal_details = MockPaypalDetails()
+    payment_instrument_type = 'credit_card'
     credit_card_details = mock.MagicMock()
 
 
