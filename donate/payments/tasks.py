@@ -241,39 +241,6 @@ class StripeWebhookProcessor:
             transaction_fee,
         )
 
-        # queue.enqueue(self.upgrade_stripe_subscription_to_braintree, {
-        #     'charge': charge,
-        #     'subscription': subscription,
-        # })
-
-    # def upgrade_stripe_subscription_to_braintree(self, charge_data):
-    #     charge = charge_data['charge']
-    #     subscription = charge_data['subscription']
-    #
-    #     try:
-    #         customer = stripe.Customer.retrieve(charge.customer)
-    #     except stripe.error.StripeError as e:
-    #         logger.error(f'Error fetching Stripe Subscription: {e._message}', exc_info=True)
-    #         return
-    #
-    #     try:
-    #         payment_method = stripe.PaymentMethod.retrieve(charge.payment_method)
-    #     except stripe.error.StripeError as e:
-    #         logger.error(f'Error fetching payment method: {e._message}', exc_info=True)
-
-        # 1. Grab customer ID
-        # 2. Lookup in logs what token is associated with customer ID
-        # 3. Create a new sub in BT starting the next month for the same currency and amount, using the PMT
-        # 4. Once successfully created, Cancel the Stripe Subscription (optional quest: update subscription metadata with note about the migration, include the BT subscription ID)
-        # 5. If #3 fails, do not do 4; if 4 fails, CANCEL 3; if that fails, SOUND THE ALARM
-        # 6. Possible other cleanup tasks, not sure. DO NOT DELETE CUSTOMER OBJ
-
-        # gateway.subscription.create({
-        #     'payment_method_token': 'PLACEHOLDER',
-        #     'plan_id': 'PLACEHOLDER'
-        # })
-
-
 
 def process_webhook(form_data):
     notification = gateway.webhook_notification.parse(form_data['bt_signature'], form_data['bt_payload'])
