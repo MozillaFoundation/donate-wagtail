@@ -51,6 +51,7 @@ def send_transaction_to_basket(data):
             'transaction_id': data['transaction_id'],
             'subscription_id': data.get('subscription_id', None),
             'project': data['project'],
+            'credit_card': data['credit_card'],
             'last_4': data.get('last_4', None),
             'donation_url': data['landing_url'],
             'locale': data['locale'],
