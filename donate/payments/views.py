@@ -329,12 +329,22 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             return self.process_braintree_error_result(result, form)
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
+        card_type = 'None'
+
+        # Given that this is the CardPaymentView, we should be able to
+        # assume that we're dealing with credit card data, but it can't
+        # hurt to make sure:
+        if result.transaction.payment_instrument_type == "credit_card":
+            credit_card_details = result.transaction.credit_card_details
+            card_type = credit_card_details.card_type
+
         details = form.cleaned_data.copy()
         details.update({
             'transaction_id': kwargs['transaction_id'],
             'settlement_amount': kwargs.get('settlement_amount', None),
             'last_4': kwargs['last_4'],
             'payment_method': constants.METHOD_CARD,
+            'card_type': card_type,
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
             'payment_method_token': kwargs.get('payment_method_token'),
