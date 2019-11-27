@@ -36,9 +36,6 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
-
-    print(data)
-
     send_to_sqs({
         'data': {
             'event_type': 'donation',
