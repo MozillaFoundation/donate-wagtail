@@ -329,14 +329,19 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             return self.process_braintree_error_result(result, form)
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
-        card_type = 'Unknown'
+        card_type = kwargs.get('card_type', 'Unknown')
 
-        # Given that this is the CardPaymentView, we should be able to
-        # assume that we're dealing with credit card data, but it can't
-        # hurt to make sure:
-        if result.transaction.payment_instrument_type == "credit_card":
-            credit_card_details = result.transaction.credit_card_details
-            card_type = credit_card_details.card_type
+        if card_type == 'Unknown':
+            # "result" not having a property "transaction" seems to occur during testing,
+            # in the test_get_transaction_details_for_session and test_ga_transaction_and_event
+            # tests in donate.payments.tests.test_views.MonthlyCardPaymentViewTestCase
+            try:
+                transaction = result.transaction
+                if transaction.payment_instrument_type == "credit_card":
+                    credit_card_details = result.transaction.credit_card_details
+                    card_type = credit_card_details.card_type
+            except AttributeError:
+                pass
 
         details = form.cleaned_data.copy()
         details.update({

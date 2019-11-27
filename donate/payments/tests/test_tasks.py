@@ -55,6 +55,7 @@ class BasketTransactionTestCase(TestCase):
             'transaction_id': 'transaction-1',
             'landing_url': 'http://localhost',
             'project': 'mozillafoundation',
+            'card_type': 'Visa',
             'last_4': '1234',
             'locale': 'en-US',
             'settlement_amount': Decimal(10),
@@ -75,6 +76,7 @@ class BasketTransactionTestCase(TestCase):
                 'transaction_id': 'transaction-1',
                 'subscription_id': None,
                 'project': 'mozillafoundation',
+                'card_type': 'Visa',
                 'last_4': '1234',
                 'donation_url': 'http://localhost',
                 'locale': 'en-US',
@@ -126,6 +128,7 @@ class ProcessWebhookTestCase(TestCase):
         tx.currency_iso_code = 'USD'
         tx.payment_instrument_type = 'credit_card'
         tx.credit_card_details = mock.Mock()
+        tx.credit_card_details.card_type = 'Visa'
         tx.credit_card_details.last_4 = '1234'
         tx.disbursement_details = mock.Mock()
         tx.disbursement_details.settlement_amount = Decimal(10)
@@ -160,6 +163,7 @@ class ProcessWebhookTestCase(TestCase):
                 'transaction_id': 'test-id',
                 'subscription_id': 'test-subscription-id',
                 'project': 'mozillafoundation',
+                'card_type': 'Visa',
                 'last_4': '1234',
                 'donation_url': '',
                 'locale': 'en-US',
@@ -213,6 +217,7 @@ class ProcessWebhookTestCase(TestCase):
                 'transaction_id': 'test-id',
                 'subscription_id': 'test-subscription-id',
                 'project': 'mozillafoundation',
+                'card_type': 'Unknown',
                 'last_4': None,
                 'donation_url': '',
                 'locale': 'en-US',

@@ -36,6 +36,7 @@ class MockBraintreeTransaction:
     paypal_details = MockPaypalDetails()
     payment_instrument_type = 'credit_card'
     credit_card_details = mock.MagicMock()
+    credit_card_details.card_type = 'Visa'
 
 
 class MockBraintreeResult:
@@ -395,7 +396,8 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             form,
             payment_method_token='token-1',
             transaction_id='transaction-id-1',
-            last_4='1234',
+            card_type='Mastercard',
+            last_4='5678',
             settlement_amount=Decimal(10),
         )
 
@@ -406,7 +408,8 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             'payment_frequency': 'single',
             'payment_method_token': 'token-1',
             'currency': 'usd',
-            'last_4': '1234',
+            'card_type': 'Mastercard',
+            'last_4': '5678',
             'settlement_amount': Decimal(10),
         })
         self.assertEqual(details, expected_details)
@@ -498,7 +501,8 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             form,
             payment_method_token='token-1',
             transaction_id='subscription-id-1',
-            last_4='1234',
+            card_type='Mastercard',
+            last_4='5678',
         )
 
         expected_details = self.form_data.copy()
@@ -508,7 +512,8 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             'payment_frequency': 'monthly',
             'payment_method_token': 'token-1',
             'currency': 'usd',
-            'last_4': '1234',
+            'card_type': 'Mastercard',
+            'last_4': '5678',
             'settlement_amount': None,
         })
         self.assertEqual(details, expected_details)
