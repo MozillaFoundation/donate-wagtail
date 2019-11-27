@@ -68,6 +68,12 @@
     "BRAINTREE_PRIVATE_KEY": {
       "required": true
     },
+    "GITHUB_TOKEN": {
+      "required": true
+    },
+    "SLACK_WEBHOOK_RA": {
+      "required": true
+    },
     "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
     "CORS_WHITELIST": "*",

@@ -32,6 +32,7 @@ django-rq = "*"
 redlock = {git = "https://github.com/glasslion/redlock.git",ref = "7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}
 django-csp = "*"
 sentry-sdk = "==0.13.2"
+requests= "*"
 
 [requires]
 python_version = "3.7"
