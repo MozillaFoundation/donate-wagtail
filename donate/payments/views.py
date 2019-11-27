@@ -329,7 +329,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             return self.process_braintree_error_result(result, form)
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
-        card_type = 'None'
+        card_type = 'Unknown'
 
         # Given that this is the CardPaymentView, we should be able to
         # assume that we're dealing with credit card data, but it can't
