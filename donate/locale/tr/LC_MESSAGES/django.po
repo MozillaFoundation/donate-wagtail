@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-27 16:44+0000\n"
+"PO-Revision-Date: 2019-11-29 12:56+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
@@ -155,7 +155,7 @@ msgid "per month"
 msgstr "her ay"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 #| "by Mozilla."
@@ -163,8 +163,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"Ödeme bilgileriniz <a href=\"%(braintree_url)s\">Braintree</a> (kredi/banka kartları için) veya <a href=\"%(paypal_url)s\">PayPal</a> tarafından işlenecektir ve bağışınızın kaydı Mozilla tarafından "
-"saklanacaktır."
+"Ödeme bilgileriniz PayPal şirketi olan <a href=\"%(braintree_url)s\">Braintree</a> (kredi/banka kartları için) veya <a href=\"%(paypal_url)s\">PayPal</a> tarafından işlenecektir ve bağışınızın kaydı"
+" Mozilla tarafından saklanacaktır."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -366,16 +366,15 @@ msgstr ""
 "<a href='mailto:%(email)s'>%(email)s</a> adresine e-posta göndererek iptal edebileceğimi, bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
 
 #: donate/templates/payment/card.html:128
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Yukarıda belirtilen miktarı kartımdan çekmesi ve ben iptal edene dek bu miktarı her ay çekmeye devam etmesi için Mozilla Foundation’a yetki veriyorum."
+msgstr "Yukarıda belirtilen miktarı kartımdan çekmesi için Mozilla Foundation’a yetki veriyorum. Bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> bağış yap"
+msgstr "Her ay <span class=\"%(span_class)s\">%(formatted_amount)s</span> bağış yap"
 
 #: donate/templates/payment/card.html:145
 #, python-format
@@ -404,10 +403,9 @@ msgid "Yes, I will give:"
 msgstr "Olur. Yapmak istediğim bağış miktarı:"
 
 #: donate/templates/payment/card_upsell_master.html:40
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Monthly"
-msgstr "/ her ay"
+msgstr "Her ay"
 
 #: donate/templates/payment/card_upsell_master.html:44
 #, python-format
@@ -419,10 +417,9 @@ msgstr ""
 "%(email)s adresine e-posta göndererek iptal edebileceğimi, bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
-msgstr "/ her ay"
+msgstr "Aylık bağış"
 
 #: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
@@ -506,16 +503,14 @@ msgid "Contributions go towards the Thunderbird project."
 msgstr "Bağışlarınız Thunderbird projesine gider."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
-#, fuzzy
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "Sizi Mozilla'nın sürekli destekçisi olarak görmeyi çok isteriz. <b>Gelecek aydan itibaren aylık bağış yapmak ister misiniz?</b>"
+msgstr "Sizi Thunderbird’ün sürekli destekçisi olarak görmeyi çok isteriz. <b>Gelecek aydan itibaren aylık bağış yapmak ister misiniz?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "Son olarak, Mozilla’nın yaptığı önemli çalışmaları paylaşmamıza yardımcı olur musunuz? Tekrar teşekkürler!"
+msgstr "Son olarak, Thunderbird’ün yaptığı önemli çalışmaları paylaşmamıza yardımcı olur musunuz? Tekrar teşekkürler!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
