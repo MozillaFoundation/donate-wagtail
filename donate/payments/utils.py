@@ -3,7 +3,20 @@ from decimal import Decimal
 
 from django.conf import settings
 
-from .constants import CURRENCIES, LOCALE_CURRENCY_MAP, PAYPAL_ACCOUNT_MACRO, PAYPAL_ACCOUNT_MICRO
+from .constants import (
+    CURRENCIES,
+    LOCALE_CURRENCY_MAP,
+    PAYPAL_ACCOUNT_MACRO,
+    PAYPAL_ACCOUNT_MICRO,
+    ZERO_DECIMAL_CURRENCIES,
+)
+
+
+def zero_decimal_currency_fix(amount, currency):
+    if currency.upper() not in ZERO_DECIMAL_CURRENCIES:
+        return amount / 100
+
+    return amount
 
 
 def freeze_transaction_details_for_session(details):

@@ -1,13 +1,14 @@
 from decimal import Decimal
 from unittest import mock
+import stripe
 
 from django.test import TestCase, override_settings
 
 from freezegun import freeze_time
 
 from ..tasks import (
-    BraintreeWebhookProcessor, send_newsletter_subscription_to_basket, send_transaction_to_basket
-)
+    BraintreeWebhookProcessor, send_newsletter_subscription_to_basket, send_transaction_to_basket,
+    StripeWebhookProcessor)
 
 
 class NewsletterSignupTestCase(TestCase):
@@ -254,3 +255,140 @@ class ProcessWebhookTestCase(TestCase):
                 'failure_code': 'fraud',
             }
         })
+
+
+class ProcessStripeWebhookTestCase(TestCase):
+
+    def get_mock_event(self, type='charge.succeeded'):
+        mock_event = mock.Mock()
+        mock_event.type = type
+        mock_event.data.object.id = 'test-charge-id'
+        return mock_event
+
+    def get_mock_charge(self):
+        mock_charge = mock.Mock()
+        mock_charge.id = 'test-charge-id'
+        mock_charge.amount = 10.00
+        mock_charge.currency = 'usd'
+        mock_charge.created = 1574801715
+        mock_charge.balance_transaction.amount = 1000
+        mock_charge.balance_transaction.net = 950
+        mock_charge.balance_transaction.fee = 50
+        mock_charge.invoice.subscription = 'test-subscription-id'
+        return mock_charge
+
+    def get_mock_subscription(self):
+        mock_subscription = mock.Mock()
+        mock_subscription.id = 'test-subscription-id'
+        mock_subscription.metadata.email = 'donor@example.com'
+        mock_subscription.metadata.locale = 'en-US'
+        mock_subscription.metadata.donation_url = 'donate.mozilla.org'
+        mock_subscription.customer.sources.data = [dict(name='Firstname Lastname', last4='4242')]
+        mock_subscription.customer.email = mock_subscription.metadata.email
+        return mock_subscription
+
+    def test_processor_calls_method_based_on_kind(self):
+        event = self.get_mock_event()
+
+        with mock.patch.object(
+                StripeWebhookProcessor, 'process_charge_succeeded'
+        ) as mock_process_method:
+            StripeWebhookProcessor().process(event)
+
+        mock_process_method.assert_called_once_with(event)
+
+    def test_processor_does_not_call_method(self):
+        event = self.get_mock_event('charge.failed')
+
+        with mock.patch.object(
+                StripeWebhookProcessor, 'process_charge_succeeded'
+        ) as mock_process_method:
+            StripeWebhookProcessor().process(event)
+
+        mock_process_method.assert_not_called()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_process_charge_succeeded(self):
+        mock_event = self.get_mock_event()
+        mock_charge = self.get_mock_charge()
+        mock_subscription = self.get_mock_subscription()
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.return_value = mock_charge
+                mock_stripe.Charge.modify = mock.Mock()
+                mock_stripe.Subscription.retrieve.return_value = mock_subscription
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_retrieve_failed(self):
+        mock_event = self.get_mock_event()
+
+        with mock.patch('donate.payments.tasks.logger') as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.side_effect = stripe.error.StripeError
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_logger.error.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_no_invoice(self):
+        mock_event = self.get_mock_event()
+        mock_charge = self.get_mock_charge()
+
+        # Have the invoice attribute on the mock charge return no value
+        mock_charge.invoice = None
+
+        with mock.patch('donate.payments.tasks.logger') as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.return_value = mock_charge
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_logger.info.assert_called_once_with('This charge is not associated with a subscription')
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_no_invoice_subscription(self):
+        mock_event = self.get_mock_event()
+        mock_charge = self.get_mock_charge()
+
+        # Have the invoice.subscription on the mock charge return no value
+        mock_charge.invoice.subscription = None
+
+        with mock.patch('donate.payments.tasks.logger') as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.return_value = mock_charge
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_logger.info.assert_called_once_with('This charge is not associated with a subscription')
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_subscription_retrieve_failed(self):
+        mock_event = self.get_mock_event()
+        mock_charge = self.get_mock_charge()
+
+        with mock.patch('donate.payments.tasks.logger', autospec=True) as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.return_value = mock_charge
+                mock_stripe.Charge.modify = mock.Mock()
+                mock_stripe.Subscription.retrieve.side_effect = stripe.error.StripeError
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_logger.error.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_modify_failed(self):
+        mock_event = self.get_mock_event()
+        mock_charge = self.get_mock_charge()
+        mock_subscription = self.get_mock_subscription()
+
+        with mock.patch('donate.payments.tasks.logger', autospec=True) as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Charge.retrieve.return_value = mock_charge
+                mock_stripe.Subscription.retrieve.return_value = mock_subscription
+                mock_stripe.Charge.modify = mock.Mock()
+                mock_stripe.Charge.modify.side_effect = stripe.error.StripeError
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_logger.error.assert_called_once()
