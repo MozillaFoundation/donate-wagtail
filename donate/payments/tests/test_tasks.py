@@ -257,6 +257,13 @@ class ProcessWebhookTestCase(TestCase):
         })
 
 
+class DotDict(dict):
+    # Stripe uses a class internally that allows for dot notation references to dictionary attributes.
+    # To allow this to work in our mocks, this little helper method does the same trick
+    def __getattr__(self, attr):
+        return self.get(attr)
+
+
 class ProcessStripeWebhookTestCase(TestCase):
 
     def get_mock_event(self, type='charge.succeeded'):
@@ -278,13 +285,16 @@ class ProcessStripeWebhookTestCase(TestCase):
         return mock_charge
 
     def get_mock_subscription(self):
+        email = 'donor@example.com'
         mock_subscription = mock.Mock()
         mock_subscription.id = 'test-subscription-id'
-        mock_subscription.metadata.email = 'donor@example.com'
-        mock_subscription.metadata.locale = 'en-US'
-        mock_subscription.metadata.donation_url = 'donate.mozilla.org'
+        mock_subscription.metadata = DotDict(
+            email=email,
+            locale='en-US',
+            donation_url='donate.mozilla.org'
+        )
         mock_subscription.customer.sources.data = [dict(name='Firstname Lastname', last4='4242')]
-        mock_subscription.customer.email = mock_subscription.metadata.email
+        mock_subscription.customer.email = email
         return mock_subscription
 
     def test_processor_calls_method_based_on_kind(self):
