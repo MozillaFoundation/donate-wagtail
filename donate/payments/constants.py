@@ -1081,3 +1081,21 @@ LOCALE_CURRENCY_MAP = {
     'zh-CN': 'cny',
     'zh-TW': 'twd'
 }
+
+ZERO_DECIMAL_CURRENCIES = [
+  'BIF',
+  'CLP',
+  'DJF',
+  'GNF',
+  'JPY',
+  'KMF',
+  'KRW',
+  'MGA',
+  'PYG',
+  'RWF',
+  'VND',
+  'VUV',
+  'XAF',
+  'XOF',
+  'XPF'
+]
