@@ -1,6 +1,5 @@
 import logging
 import time
-import json
 from django.conf import settings
 
 import django_rq
@@ -26,9 +25,9 @@ def send_stripe_transaction_to_basket(subscription, charge, metadata,
                                       net_amount, transaction_fee):
     project = 'mozillafoundation'
 
-    if metadata.thunderbird:
+    if 'thunderbird' in metadata:
         project = 'thunderbird'
-    elif metadata.glassroomnyc:
+    elif 'glassroomnyc' in metadata:
         project = 'glassroomnyc'
 
     send_to_sqs({
@@ -206,27 +205,26 @@ class StripeWebhookProcessor:
         subscription_id = charge.invoice.subscription
 
         try:
-            subscription = stripe.Subscription.retrieve(subscription_id)
+            subscription = stripe.Subscription.retrieve(subscription_id, expand=['customer'])
         except stripe.error.StripeError as e:
             logger.error(f'Error fetching Stripe Subscription: {e._message}', exc_info=True)
             return
 
         metadata = subscription.metadata
-        update_data = {'metadata': metadata}
         donation_url = None
 
-        if metadata.donation_url:
-            donation_url = metadata.donation_url
+        if 'donation_url' in metadata:
+            donation_url = metadata['donation_url']
 
-        if metadata.thunderbird:
-            update_data['description'] = 'Thunderbird monthly'
-        elif metadata.glassroomnyc:
-            update_data['description'] = 'glassroomnyc monthly'
+        if 'thunderbird' in metadata:
+            description = 'Thunderbird monthly'
+        elif 'glassroomnyc' in metadata:
+            description = 'glassroomnyc monthly'
         else:
-            update_data['description'] = 'Mozilla Foundation Monthly Donation'
+            description = 'Mozilla Foundation Monthly Donation'
 
         try:
-            stripe.Charge.modify(charge_id, update_data)
+            stripe.Charge.modify(charge_id, metadata=metadata, description=description)
         except stripe.error.StripeError as e:
             logger.error(f'Error updating Stripe Charge description and metadata: {e._message}', exc_info=True)
             return
@@ -248,13 +246,9 @@ def process_webhook(form_data):
 
 
 def process_stripe_webhook(form_data, signature=None):
-    if not signature:
-        logger.error('No signature provided', exc_info=True)
-        return
-
     try:
         event = stripe.Event.construct_from(
-            json.loads(form_data),
+            form_data,
             signature,
             STRIPE_WEBHOOK_SECRET
         )
