@@ -389,7 +389,6 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         )
 
     def test_get_transaction_details_for_session(self):
-        self.maxDiff = None
         form = BraintreeCardPaymentForm(self.form_data)
         assert form.is_valid()
         details = self.view.get_transaction_details_for_session(
