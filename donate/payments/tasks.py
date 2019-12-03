@@ -63,11 +63,15 @@ def send_transaction_to_basket(data):
 class BraintreeWebhookProcessor:
 
     def process(self, notification):
-        process_method = getattr(self, 'process_{}'.format(notification.kind), None)
-        if process_method is not None:
-            return process_method(notification)
+        kind = notification.kind
+        if kind == 'subscription_charged_successfully':
+            self.subscription_charged_successfully(notification)
+        elif kind == 'subscription_charged_unsuccessfully':
+            self.subscription_charged_unsuccessfully(notification)
+        elif kind == 'dispute_lost':
+            self.dispute_lost(notification)
 
-    def process_subscription_charged_successfully(self, notification):
+    def subscription_charged_successfully(self, notification):
         last_tx = notification.subscription.transactions[0]
         is_paypal = last_tx.payment_instrument_type == 'paypal_account'
 
@@ -113,7 +117,7 @@ class BraintreeWebhookProcessor:
             'settlement_amount': last_tx.disbursement_details.settlement_amount,
         })
 
-    def process_subscription_charged_unsuccessfully(self, notification):
+    def subscription_charged_unsuccessfully(self, notification):
         send_to_sqs({
             'data': {
                 'event_type': 'charge.failed',
@@ -122,7 +126,7 @@ class BraintreeWebhookProcessor:
             }
         })
 
-    def process_dispute_lost(self, notification):
+    def dispute_lost(self, notification):
         send_to_sqs({
             'data': {
                 'event_type': 'charge.dispute.closed',
@@ -134,5 +138,9 @@ class BraintreeWebhookProcessor:
 
 
 def process_webhook(form_data):
+    """
+    Called in response to a BrainTree webhook for successful subscription transaction
+    (e.g. monthy / monthly upsell)
+    """
     notification = gateway.webhook_notification.parse(form_data['bt_signature'], form_data['bt_payload'])
     BraintreeWebhookProcessor().process(notification)

@@ -314,13 +314,10 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Monthly',
                 }
             ])
-            return self.success(
-                result,
-                form,
-                transaction_id=result.subscription.id,
-                last_4=payment_method.last_4,
-                send_data_to_basket=False,
-            )
+            # Bypass self.success, as this is not a transaction but a subscription:
+            # we won't be posting anything to basket immediately, instead relying on
+            # the webhook over in the 'process_webhook' task.
+            return HttpResponseRedirect(self.get_success_url())
         else:
             logger.error(
                 'Failed to create Braintree subscription: {}'.format(result.message),
@@ -328,28 +325,24 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             )
             return self.process_braintree_error_result(result, form)
 
+    def get_card_type(self, result):
+        card_type = 'Unknown'
+        transaction = result.transaction
+
+        if transaction.payment_instrument_type == "credit_card":
+            credit_card_details = transaction.credit_card_details
+            card_type = credit_card_details.card_type
+
+        return card_type
+
     def get_transaction_details_for_session(self, result, form, **kwargs):
-        card_type = kwargs.get('card_type', 'Unknown')
-
-        if card_type == 'Unknown':
-            # "result" not having a property "transaction" seems to occur during testing,
-            # in the test_get_transaction_details_for_session and test_ga_transaction_and_event
-            # tests in donate.payments.tests.test_views.MonthlyCardPaymentViewTestCase
-            try:
-                transaction = result.transaction
-                if transaction.payment_instrument_type == "credit_card":
-                    credit_card_details = result.transaction.credit_card_details
-                    card_type = credit_card_details.card_type
-            except AttributeError:
-                pass
-
         details = form.cleaned_data.copy()
         details.update({
             'transaction_id': kwargs['transaction_id'],
             'settlement_amount': kwargs.get('settlement_amount', None),
             'last_4': kwargs['last_4'],
             'payment_method': constants.METHOD_CARD,
-            'card_type': card_type,
+            'card_type': self.get_card_type(result),
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
             'payment_method_token': kwargs.get('payment_method_token'),

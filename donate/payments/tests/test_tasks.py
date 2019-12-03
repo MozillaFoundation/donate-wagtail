@@ -108,14 +108,14 @@ class ProcessWebhookTestCase(TestCase):
         notification = mock.Mock()
         notification.kind = 'subscription_charged_unsuccessfully'
         with mock.patch.object(
-            BraintreeWebhookProcessor, 'process_subscription_charged_unsuccessfully'
+            BraintreeWebhookProcessor, 'subscription_charged_unsuccessfully'
         ) as mock_process_method:
             BraintreeWebhookProcessor().process(notification)
 
         mock_process_method.assert_called_once_with(notification)
 
     @freeze_time("2019-08-08 00:00:00", tz_offset=0)
-    def test_process_subscription_charged_successfully_credit(self):
+    def test_subscription_charged_successfully_credit(self):
         notification = mock.Mock()
         notification.kind = 'subscription_charged_successfully'
         tx = mock.Mock()
@@ -147,7 +147,7 @@ class ProcessWebhookTestCase(TestCase):
                     'locale': 'en-US',
                 }
                 mock_gateway.customer.find.return_value = mock_customer
-                BraintreeWebhookProcessor().process_subscription_charged_successfully(notification)
+                BraintreeWebhookProcessor().subscription_charged_successfully(notification)
         mock_send.assert_called_once_with({
             'data': {
                 'event_type': 'donation',
@@ -201,7 +201,7 @@ class ProcessWebhookTestCase(TestCase):
                     'locale': 'en-US',
                 }
                 mock_gateway.customer.find.return_value = mock_customer
-                BraintreeWebhookProcessor().process_subscription_charged_successfully(notification)
+                BraintreeWebhookProcessor().subscription_charged_successfully(notification)
         mock_send.assert_called_once_with({
             'data': {
                 'event_type': 'donation',
@@ -225,7 +225,7 @@ class ProcessWebhookTestCase(TestCase):
             }
         })
 
-    def test_process_subscription_charged_unsuccessfully(self):
+    def test_subscription_charged_unsuccessfully(self):
         notification = mock.Mock()
         notification.kind = 'subscription_charged_unsuccessfully'
         notification.subscription.id = 'test-id'
@@ -234,7 +234,7 @@ class ProcessWebhookTestCase(TestCase):
         notification.subscription.transactions = [tx]
 
         with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
-            BraintreeWebhookProcessor().process_subscription_charged_unsuccessfully(notification)
+            BraintreeWebhookProcessor().subscription_charged_unsuccessfully(notification)
         mock_send.assert_called_once_with({
             'data': {
                 'event_type': 'charge.failed',
@@ -243,14 +243,14 @@ class ProcessWebhookTestCase(TestCase):
             }
         })
 
-    def test_process_dispute_lost(self):
+    def test_dispute_lost(self):
         notification = mock.Mock()
         notification.kind = 'dispute_lost'
         notification.dispute.transaction.id = 'test-id'
         notification.dispute.reason = 'fraud'
 
         with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
-            BraintreeWebhookProcessor().process_dispute_lost(notification)
+            BraintreeWebhookProcessor().dispute_lost(notification)
         mock_send.assert_called_once_with({
             'data': {
                 'event_type': 'charge.dispute.closed',
