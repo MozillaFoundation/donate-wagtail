@@ -59,10 +59,16 @@ env = environ.Env(
     RECAPTCHA_SITE_KEY=(str, ''),
     RECAPTCHA_SECRET_KEY=(str, ''),
     RECAPTCHA_ENABLED=(bool, False),
+    # Stripe
+    STRIPE_API_KEY=(str, ''),
+    STRIPE_WEBHOOK_SECRET=(str, ''),
     SENTRY_DSN=(str, None),
     HEROKU_RELEASE_VERSION=(str, None),
     # Instance vars
     THUNDERBIRD_INSTANCE=(bool, False),
+    # Review App slack webhook
+    GITHUB_TOKEN=(str, ''),
+    SLACK_WEBHOOK_RA=(str, ''),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
@@ -543,6 +549,10 @@ RECAPTCHA_SITE_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_SECRET_KEY = env('RECAPTCHA_SECRET_KEY')
 RECAPTCHA_ENABLED = env('RECAPTCHA_ENABLED')
 
+# Stripe
+STRIPE_API_KEY = env('STRIPE_API_KEY')
+STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
+
 # Django-rq
 RQ_QUEUES = {
     'default': {
@@ -561,3 +571,7 @@ RQ_QUEUES = {
 
 # This name is displayed in the Wagtail admin.
 WAGTAIL_SITE_NAME = "donate"
+
+# Review apps' slack bot
+GITHUB_TOKEN = env('GITHUB_TOKEN')
+SLACK_WEBHOOK_RA = env('SLACK_WEBHOOK_RA')
