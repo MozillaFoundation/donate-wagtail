@@ -93,7 +93,7 @@ class BraintreeMixinTestCase(TestCase):
             'campaign_id': 'piday',
         }
         view.request.LANGUAGE_CODE = 'en-US'
-        view.success(MockBraintreeResult(), form, send_data_to_basket=False)
+        view.handle_successful_transaction(MockBraintreeResult(), form, send_data_to_basket=False)
 
         self.assertEqual(view.request.session['completed_transaction_details'], {
             'amount': '50',

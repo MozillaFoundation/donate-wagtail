@@ -64,7 +64,7 @@ class BraintreePaymentMixin:
         data.update(details)
         return freeze_transaction_details_for_session(data)
 
-    def success(self, result, form, send_data_to_basket=True, **kwargs):
+    def handle_successful_transaction(self, result, form, send_data_to_basket=True, **kwargs):
         # Store details of the transaction in a session variable
         details = self.get_transaction_details_for_session(result, form, **kwargs)
         details = self.prepare_session_data(details)
@@ -266,7 +266,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Single',
                 }
             ])
-            return self.success(
+            return self.handle_successful_transaction(
                 result,
                 form,
                 payment_method_token=payment_method.token,
@@ -314,9 +314,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Monthly',
                 }
             ])
-            # Bypass self.success, as this is not a transaction but a subscription:
-            # we won't be posting anything to basket immediately, instead relying on
-            # the webhook over in the 'process_webhook' task.
+            # Bypass self.handle_successful_transaction, as this is not a transaction
+            # but a subscription: we won't be posting anything to basket immediately,
+            # instead relying on the webhook over in the 'process_webhook' task.
             return HttpResponseRedirect(self.get_success_url())
         else:
             logger.error(
@@ -433,7 +433,12 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 ])
 
         if result.is_success:
-            return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
+            return self.handle_successful_transaction(
+                result,
+                form,
+                send_data_to_basket=send_data_to_basket,
+                **success_kwargs
+            )
 
         return self.form_invalid(form, result=result)
 
@@ -578,7 +583,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
                     'eventLabel': 'Yes',
                 }
             ])
-            return self.success(result, form, currency=currency, send_data_to_basket=False)
+            return self.handle_successful_transaction(result, form, currency=currency, send_data_to_basket=False)
         else:
             logger.error(
                 'Failed to create Braintree subscription: {}'.format(result.message),
@@ -681,7 +686,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
                     'eventLabel': 'Yes',
                 }
             ])
-            return self.success(result, form, send_data_to_basket=False)
+            return self.handle_successful_transaction(result, form, send_data_to_basket=False)
         else:
             logger.error(
                 'Failed Braintree transaction: {}'.format(result.message),
