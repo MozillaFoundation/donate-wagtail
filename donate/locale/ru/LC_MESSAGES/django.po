@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-24 13:09+0000\n"
+"PO-Revision-Date: 2019-11-30 20:44+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -366,12 +366,14 @@ msgid ""
 "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
 "donation."
 msgstr ""
+"Я разрешаю Mozilla Foundation автоматически снимать средства с моей карты каждый месяц в указанном выше размере, начиная с сегодняшнего дня и каждый месяц того же числа, пока я это не отменю. Я "
+"понимаю, что я смогу отменить запланированное пожертвование только за как минимум 5 дней до даты его совершения, написав по адресу <a href='mailto:%(email)s'>%(email)s</a>, и то, что я смогу "
+"запросить возврат средств только в течение 15 дней с даты пожертвования."
 
 #: donate/templates/payment/card.html:128
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Я разрешаю Mozilla Foundation снимать средства с моей карты в указанном выше размере и продолжать делать это каждый месяц, пока я это не отменю."
+msgstr "Я разрешаю Mozilla Foundation снимать средства с моей карты в указанном выше размере. Я понимаю, что я смогу запросить возврат средств только в течение 15 дней с даты пожертвования."
 
 #: donate/templates/payment/card.html:143
 #, python-format
@@ -416,6 +418,9 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Я разрешаю Mozilla Foundation автоматически снимать средства с моей карты каждый месяц в указанном выше размере, начиная со следующего месяца, такого же числа, как и сегодня, и продолжая каждый "
+"следующий месяц, пока я это не отменю. Я понимаю, что я смогу отменить запланированное пожертвование только за как минимум 5 дней до даты его совершения, написав по адресу %(email)s, и то, что я "
+"смогу запросить возврат средств только в течение 15 дней с даты пожертвования."
 
 #: donate/templates/payment/card_upsell_master.html:49
 #| msgid "/ Monthly"
@@ -501,7 +506,7 @@ msgstr "Назад"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid "Contributions go towards the Thunderbird project."
-msgstr ""
+msgstr "Пожертвования пойдут проекту Thunderbird."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"

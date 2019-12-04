@@ -35,8 +35,8 @@ CURRENCIES = {
             {'min': 15, 'value': 3},
         ],
         'presets': {
-            'single': [50, 25, 10, 3],
-            'monthly': [10, 5, 3, 2]
+            'single': [85, 35, 15, 5],
+            'monthly': [20, 10, 5, 3]
         }
     },
     'aed': {
@@ -368,8 +368,8 @@ CURRENCIES = {
             {'min': 32, 'value': 5},
         ],
         'presets': {
-            'single': [50, 25, 10, 3],
-            'monthly': [10, 5, 3, 2]
+            'single': [85, 35, 15, 5],
+            'monthly': [20, 10, 5, 3]
         }
     },
     'gbp': {
@@ -1081,3 +1081,21 @@ LOCALE_CURRENCY_MAP = {
     'zh-CN': 'cny',
     'zh-TW': 'twd'
 }
+
+ZERO_DECIMAL_CURRENCIES = [
+  'BIF',
+  'CLP',
+  'DJF',
+  'GNF',
+  'JPY',
+  'KMF',
+  'KRW',
+  'MGA',
+  'PYG',
+  'RWF',
+  'VND',
+  'VUV',
+  'XAF',
+  'XOF',
+  'XPF'
+]

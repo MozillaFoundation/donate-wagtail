@@ -157,6 +157,7 @@ def docker_new_env(ctx):
         ctx.run("docker-compose down --volumes")
         print("* Building Docker images")
         ctx.run("docker-compose build --no-cache backend watch-static-files", **PLATFORM_ARG)
+        ctx.run("docker-compose build backend-worker", **PLATFORM_ARG)
         print("* Applying database migrations.")
         docker_migrate(ctx)
         print("* Creating fake data")

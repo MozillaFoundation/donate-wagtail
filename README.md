@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-- [How to setup your dev environment with Docker](#how-to-setup-your-dev-environment-with-docker),
+- [How to setup your dev environment with Docker](#setup-your-dev-environment-with-docker),
 - [How to use Invoke tasks](#invoke-tasks),
 - [Basket donations queue](#basket)
 
@@ -148,3 +148,9 @@ There's a webhook endpoint for processing Braintree events. The events it suppor
 * `dispute_lost`
 
 The endpoint accepts requests on `/braintree/webhook/` and will verify the payload signature to ensure it's a legitimate event. [Documentation for Braintree webhooks can be found here](https://developers.braintreepayments.com/guides/webhooks/overview).
+
+### Review App
+
+Opening a PR will automatically create a Review App in the `donate-wagtail` pipeline. A slack bot posts credentials and links to Review Apps in to the `mofo-ra-donate-wagtail` channel.
+
+This only work for Mo-Fo staff: you will need to manually open a Review App on Heroku for PRs opened by external contributors.

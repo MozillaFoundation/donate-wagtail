@@ -1,13 +1,14 @@
 import logging
 import time
-
 from django.conf import settings
 
 import django_rq
 import requests
+import stripe
 
 from . import constants, gateway
 from .sqs import send_to_sqs
+from .utils import zero_decimal_currency_fix
 
 
 logger = logging.getLogger(__name__)
@@ -15,6 +16,42 @@ logger = logging.getLogger(__name__)
 queue = django_rq.get_queue('default')
 
 BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
+STRIPE_WEBHOOK_SECRET = settings.STRIPE_WEBHOOK_SECRET
+stripe.api_key = settings.STRIPE_API_KEY
+
+
+def send_stripe_transaction_to_basket(subscription, charge, metadata,
+                                      donation_url, conversion_amount,
+                                      net_amount, transaction_fee):
+    project = 'mozillafoundation'
+
+    if 'thunderbird' in metadata:
+        project = 'thunderbird'
+    elif 'glassroomnyc' in metadata:
+        project = 'glassroomnyc'
+
+    send_to_sqs({
+        'data': {
+            'event_type': 'donation',
+            'last_name': subscription.customer.sources.data[0]['name'],
+            'email': subscription.customer.email,
+            'donation_amount': zero_decimal_currency_fix(charge.amount, charge.currency),
+            'currency': charge.currency,
+            'created': charge.created,
+            'recurring': True,
+            'frequency': 'monthly',
+            'service': 'stripe',
+            'transaction_id': charge.id,
+            'subscription_id': subscription.id,
+            'donation_url': donation_url,
+            'project': project,
+            'locale': subscription.metadata.locale,
+            'last_4': subscription.customer.sources.data[0]['last4'],
+            'conversion_amount': conversion_amount,
+            'net_amount': net_amount,
+            'transaction_fee': transaction_fee
+        }
+    })
 
 
 def send_newsletter_subscription_to_basket(data):
@@ -137,6 +174,78 @@ class BraintreeWebhookProcessor:
         })
 
 
+class StripeWebhookProcessor:
+    def process(self, event):
+        # Stripe event types use dot-notation, so convert periods to underscores
+        event_type = event.type.replace('.', '_')
+
+        try:
+            process_method = getattr(self, f'process_{event_type}')
+        except AttributeError:
+            logger.info(f'An unsupported Stripe event was not processed: {event_type}')
+            return
+
+        if process_method is not None:
+            return process_method(event)
+
+    def process_charge_succeeded(self, event):
+        charge_id = event.data.object.id
+        try:
+            charge = stripe.Charge.retrieve(
+                charge_id,
+                expand=['invoice', 'balance_transaction']
+            )
+        except stripe.error.StripeError as e:
+            logger.error(f'Error fetching Stripe Charge: {e._message}', exc_info=True)
+            return
+
+        if not charge.invoice or not charge.invoice.subscription:
+            logger.info('This charge is not associated with a subscription')
+            return
+
+        balance_transaction = charge.balance_transaction
+        conversion_amount = balance_transaction.amount / 100
+        net_amount = balance_transaction.net / 100
+        transaction_fee = balance_transaction.fee / 100
+
+        subscription_id = charge.invoice.subscription
+
+        try:
+            subscription = stripe.Subscription.retrieve(subscription_id, expand=['customer'])
+        except stripe.error.StripeError as e:
+            logger.error(f'Error fetching Stripe Subscription: {e._message}', exc_info=True)
+            return
+
+        metadata = subscription.metadata
+        donation_url = None
+
+        if 'donation_url' in metadata:
+            donation_url = metadata['donation_url']
+
+        if 'thunderbird' in metadata:
+            description = 'Thunderbird monthly'
+        elif 'glassroomnyc' in metadata:
+            description = 'glassroomnyc monthly'
+        else:
+            description = 'Mozilla Foundation Monthly Donation'
+
+        try:
+            stripe.Charge.modify(charge_id, metadata=metadata, description=description)
+        except stripe.error.StripeError as e:
+            logger.error(f'Error updating Stripe Charge description and metadata: {e._message}', exc_info=True)
+            return
+
+        send_stripe_transaction_to_basket(
+            subscription,
+            charge,
+            metadata,
+            donation_url,
+            conversion_amount,
+            net_amount,
+            transaction_fee,
+        )
+
+
 def process_webhook(form_data):
     """
     Called in response to a BrainTree webhook for successful subscription transaction
@@ -144,3 +253,20 @@ def process_webhook(form_data):
     """
     notification = gateway.webhook_notification.parse(form_data['bt_signature'], form_data['bt_payload'])
     BraintreeWebhookProcessor().process(notification)
+
+
+def process_stripe_webhook(form_data, signature=None):
+    try:
+        event = stripe.Event.construct_from(
+            form_data,
+            signature,
+            STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError:
+        logger.error('Request payload invalid', exc_info=True)
+        return
+    except stripe.error.SignatureVerificationError:
+        logger.error('Request signature invalid', exc_info=True)
+        return
+
+    StripeWebhookProcessor().process(event)

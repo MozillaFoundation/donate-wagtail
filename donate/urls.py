@@ -13,6 +13,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
+from donate.payments.stripe_webhooks import StripeWebhookView
 
 # Patterns not subject to i18n
 urlpatterns = [
@@ -21,6 +22,7 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
     path('django-rq/', include('django_rq.urls')),
     path('braintree/webhook/', BraintreeWebhookView.as_view(), name='braintree_webhook'),
+    path('stripe/webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
 ]
 
 urlpatterns += i18n_patterns(
