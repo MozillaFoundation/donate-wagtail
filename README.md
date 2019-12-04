@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-- [How to setup your dev environment with Docker](#how-to-setup-your-dev-environment-with-docker),
+- [How to setup your dev environment with Docker](#setup-your-dev-environment-with-docker),
 - [How to use Invoke tasks](#invoke-tasks),
 - [Basket donations queue](#basket)
 
