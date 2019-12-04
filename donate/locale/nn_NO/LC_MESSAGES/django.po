@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-12-03 11:35+0000\n"
+"PO-Revision-Date: 2019-12-04 13:22+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -377,10 +377,10 @@ msgid "I authorize Mozilla Foundation to charge my card in the amount indicated 
 msgstr "Eg gir Mozilla Foundation fullmakt til å belaste kortet mitt med det beløpet som er vist ovanfor og fortsetje å gjere det kvar månad til eg avbryt."
 
 #: donate/templates/payment/card.html:143
-#, fuzzy, python-format
+#, python-format
 #| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr "Doner <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Doner <span class=\"%(span_class)s\">%(formatted_amount)s</span> per månad"
 
 #: donate/templates/payment/card.html:145
 #, python-format
@@ -509,16 +509,14 @@ msgid "Contributions go towards the Thunderbird project."
 msgstr "Bidraga går mot Thunderbird-prosjektet."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
-#, fuzzy
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr "Vi vil gjerne ha deg som støttande tilhengar av Mozilla. <b>Kan du leggje til ein månadleg donasjon som byrjar neste månad?</b>"
+msgstr "Vi vil gjerne ha deg som støttande tilhengar av Thunderbird. <b>Kan du leggje til ein månadleg donasjon som byrjar neste månad?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#, fuzzy
 #| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr "Til slutt, du kan auke påverknaden din gjennom å dele det viktige arbeidet Mozilla gjer? Takk igjen!"
+msgstr "Til slutt, kan du auke påverknaden din gjennom å dele det viktige arbeidet Thunderbird gjer? Takk igjen!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
