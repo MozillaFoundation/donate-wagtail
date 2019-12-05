@@ -46,4 +46,6 @@ class Command(BaseCommand):
 
             # Raise if post request was a 4xx or 5xx
             r.raise_for_status()
-            print('Done!')
+
+            # Raise exception to make travis run fail
+            raise
