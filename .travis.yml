@@ -1,46 +1,44 @@
 dist: xenial
 language: python
-
-python: "3.7"
-
+python: '3.7'
 addons:
-  postgresql: "10"
-
+  postgresql: '10'
 env:
   global:
-    - ALLOWED_HOSTS=localhost
-    - CONTENT_TYPE_NO_SNIFF=True
-    - CORS_WHITELIST="*"
-    - DATABASE_URL=postgres://postgres@localhost:5432/donate
-    - DEBUG=False
-    - DJANGO_SECRET_KEY=secret
-    - SET_HSTS=False
-    - SSL_REDIRECT=False
-    - USE_S3=False
-    - X_FRAME_OPTIONS=DENY
-    - XSS_PROTECTION=True
-    - PIPENV_VERBOSITY=-1
+  - ALLOWED_HOSTS=localhost
+  - CONTENT_TYPE_NO_SNIFF=True
+  - CORS_WHITELIST="*"
+  - DATABASE_URL=postgres://postgres@localhost:5432/donate
+  - DEBUG=False
+  - DJANGO_SECRET_KEY=secret
+  - SET_HSTS=False
+  - SSL_REDIRECT=False
+  - USE_S3=False
+  - X_FRAME_OPTIONS=DENY
+  - XSS_PROTECTION=True
+  - PIPENV_VERBOSITY=-1
+  - secure: dtqWjYqwTzTwO52kC8KzvzNVtJoQ32N+epFQntnQf3tVIOLJzkg3RzA4d13ADJ6NfF5CjJ0QQfkMAiobB8yaDSV2eJhx8yEkls8j+40pTijK3GmaOS9VPSW5dtsbo4ZaI0Qwx8B1/O7J/uhBNUsSB/7jEklPUcWzuBCMXZP/Tz44s1wRWBfcft/1YpSzs2Y0tpoNvwCQtKPp3FheW5IuELr8zyc7s5RV82aY1Z1lpPmAVrEBs3XqFtyFRAvaGpRf2qOQmZ2Q9zMxJqNTCFQ8zh3AKoQx9tr9wwcWj3ZCS2mA81X4DeaLwcYgNA1GcE67AgESScpHzWnFyZZORZOWK8J0VOg748rp60l4OZ5JGxH9JIrPmnATF1CU8gG9p8KsVQQA+eIz4l8I7I77iYc2diFk7hNFyWdB2eCkD914iyxWslk+XBu6+IrWSOeHqQlg1y8gGKjSCMYl2BjQrhNSllSBHY8QSLEk13E1ryknNumpitLYGG3zWd9DsX9CPC7pjcR9PxoJLomOehC0UK0Z/AtXQsSltrFhpb0yKDpzAgvHTrPceUsl+2wvjIkvi1CkpAfWacE3JhVxwDLg9h5LcPEZQXbJH83UZ2PgjguR6As2Ie0CURFgIK86gJi66zZqYCG7wo3cJcsFV9yhmgS5CX7VTRG8de3IOuNJHUVEFJc=
 
 cache:
   pip: true
   directories:
-    - "$HOME/.npm"
-    - "$HOME/.cache/pipenv"
-
+  - "$HOME/.npm"
+  - "$HOME/.cache/pipenv"
 matrix:
   include:
-    - name: Python tests
-      install: "./travis-scripts/python-install.sh"
-      before_script:
-        - psql -c 'create database donate;' -U postgres
-      script:
-        - pipenv run flake8 donate/
-        - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings_test
-      after_success:
-        - coveralls
-    - name: npm tests
-      before_install:
-        - nvm install --lts=carbon
-        - nvm use --lts=carbon
-      install: "./travis-scripts/npm-install.sh"
-      script: npm run test
+  - name: Python tests
+    install: "./travis-scripts/python-install.sh"
+    before_script:
+    - psql -c 'create database donate;' -U postgres
+    script:
+    - pipenv run flake8 donate/
+    - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings_test
+    - pipenv run manange.py test_compilemessages_ci
+    after_success:
+    - coveralls
+  - name: npm tests
+    before_install:
+    - nvm install --lts=carbon
+    - nvm use --lts=carbon
+    install: "./travis-scripts/npm-install.sh"
+    script: npm run test
