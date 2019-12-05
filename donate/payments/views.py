@@ -64,7 +64,7 @@ class BraintreePaymentMixin:
         data.update(details)
         return freeze_transaction_details_for_session(data)
 
-    def success(self, result, form, send_data_to_basket=True, **kwargs):
+    def handle_successful_transaction(self, result, form, send_data_to_basket=True, **kwargs):
         # Store details of the transaction in a session variable
         details = self.get_transaction_details_for_session(result, form, **kwargs)
         details = self.prepare_session_data(details)
@@ -266,7 +266,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Single',
                 }
             ])
-            return self.success(
+            return self.handle_successful_transaction(
                 result,
                 form,
                 payment_method_token=payment_method.token,
@@ -314,19 +314,26 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Monthly',
                 }
             ])
-            return self.success(
-                result,
-                form,
-                transaction_id=result.subscription.id,
-                last_4=payment_method.last_4,
-                send_data_to_basket=False,
-            )
+            # Bypass self.handle_successful_transaction, as this is not a transaction
+            # but a subscription: we won't be posting anything to basket immediately,
+            # instead relying on the webhook over in the 'process_webhook' task.
+            return HttpResponseRedirect(self.get_success_url())
         else:
             logger.error(
                 'Failed to create Braintree subscription: {}'.format(result.message),
                 extra={'result': result}
             )
             return self.process_braintree_error_result(result, form)
+
+    def get_card_type(self, result):
+        card_type = 'Unknown'
+        transaction = result.transaction
+
+        if transaction.payment_instrument_type == "credit_card":
+            credit_card_details = transaction.credit_card_details
+            card_type = credit_card_details.card_type
+
+        return card_type
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
         details = form.cleaned_data.copy()
@@ -335,6 +342,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'settlement_amount': kwargs.get('settlement_amount', None),
             'last_4': kwargs['last_4'],
             'payment_method': constants.METHOD_CARD,
+            'card_type': self.get_card_type(result),
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
             'payment_method_token': kwargs.get('payment_method_token'),
@@ -425,7 +433,12 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 ])
 
         if result.is_success:
-            return self.success(result, form, send_data_to_basket=send_data_to_basket, **success_kwargs)
+            return self.handle_successful_transaction(
+                result,
+                form,
+                send_data_to_basket=send_data_to_basket,
+                **success_kwargs
+            )
 
         return self.form_invalid(form, result=result)
 
@@ -570,7 +583,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
                     'eventLabel': 'Yes',
                 }
             ])
-            return self.success(result, form, currency=currency, send_data_to_basket=False)
+            return self.handle_successful_transaction(result, form, currency=currency, send_data_to_basket=False)
         else:
             logger.error(
                 'Failed to create Braintree subscription: {}'.format(result.message),
@@ -673,7 +686,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
                     'eventLabel': 'Yes',
                 }
             ])
-            return self.success(result, form, send_data_to_basket=False)
+            return self.handle_successful_transaction(result, form, send_data_to_basket=False)
         else:
             logger.error(
                 'Failed Braintree transaction: {}'.format(result.message),
