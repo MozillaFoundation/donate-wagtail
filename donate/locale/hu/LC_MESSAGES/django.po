@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-24 20:24+0000\n"
+"PO-Revision-Date: 2019-12-05 19:34+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -367,6 +367,9 @@ msgid ""
 "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
 "donation."
 msgstr ""
+"Felhatalmazom a Mozilla Alapítványt, hogy havonta automatikusan megterhelje a kártyámat a fent megadott összeggel, a mai nappal kezdve, és azt követően minden hónapban ugyanezen a napon, amíg le nem"
+" mondom. Megértettem, hogy legalább 5 nappal a következő ütemezett adományozás előtt kell lemondanom a(z) <a href='mailto:%(email)s'>%(email)s</a> címre küldött e-mailben, és csak az adományozástól "
+"számított 15 napon belül kérhetek visszatérítést."
 
 #: donate/templates/payment/card.html:128
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
@@ -416,6 +419,9 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Felhatalmazom a Mozilla Alapítványt, hogy havonta automatikusan megterhelje a kártyámat a fent megadott összeggel, a következő hónappal kezdve ugyanazon a napon, mint ma, és azt követően minden "
+"hónapban, amíg le nem mondom. Megértettem, hogy legalább 5 nappal a következő ütemezett adományozás előtt kell lemondanom a(z) %(email)s címre küldött e-mailben, és csak az adományozástól számított "
+"15 napon belül kérhetek visszatérítést."
 
 #: donate/templates/payment/card_upsell_master.html:49
 #| msgid "/ Monthly"
@@ -501,7 +507,7 @@ msgstr "Vissza"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid "Contributions go towards the Thunderbird project."
-msgstr ""
+msgstr "A hozzájárulások a Thunderbird projekt felé irányulnak."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 #| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
