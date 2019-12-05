@@ -69,6 +69,8 @@ env = environ.Env(
     # Review App slack webhook
     GITHUB_TOKEN=(str, ''),
     SLACK_WEBHOOK_RA=(str, ''),
+    SLACK_WEBHOOK_PONTOON=(str, ''),
+    TRAVIS_LOGS_URL=(str, ''),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
@@ -575,3 +577,7 @@ WAGTAIL_SITE_NAME = "donate"
 # Review apps' slack bot
 GITHUB_TOKEN = env('GITHUB_TOKEN')
 SLACK_WEBHOOK_RA = env('SLACK_WEBHOOK_RA')
+
+# Pontoon check slack bot
+SLACK_WEBHOOK_PONTOON = env('SLACK_WEBHOOK_PONTOON')
+TRAVIS_LOGS_URL = env('TRAVIS_JOB_WEB_URL')
