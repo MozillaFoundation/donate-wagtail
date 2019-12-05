@@ -33,7 +33,7 @@ matrix:
     script:
     - pipenv run flake8 donate/
     - pipenv run coverage run --source './donate' ./manage.py test --settings=donate.settings_test
-    - pipenv run python manage.py test_compilemessages_ci
+    - pipenv run python manage.py test_compilemessages_ci --settings=donate.settings_test
     after_success:
     - coveralls
   - name: npm tests
