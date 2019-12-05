@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -164,7 +164,7 @@ msgid ""
 "donation will be stored by Mozilla."
 msgstr ""
 "Os detalhes do seu pagamento serão processados por <a href=\"%(braintree_url)s\">Braintree</a>, uma empresa do PayPal, (para cartões de crédito/débito) ou pelo <a href=\"%(paypal_url)s\">PayPal</a> "
-"e um registro de sua doação será armazenado pela Mozilla."
+"e um registro de sua doação será armazenado pela Mozilla.\n"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
