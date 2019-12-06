@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-06 11:34+0000\n"
+"PO-Revision-Date: 2019-12-06 12:10+0000\n"
 "Last-Translator: Mahtab Alam <mahtab.ceh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi_IN\n"
@@ -412,11 +412,10 @@ msgid ""
 msgstr ""
 
 #: donate/templates/payment/card_upsell_master.html:49
-#, fuzzy
 #| msgctxt "Header"
 #| msgid "Donate now"
 msgid "Donate Monthly"
-msgstr "अभी दान दें"
+msgstr "प्रति माह दान दें"
 
 #: donate/templates/payment/card_upsell_master.html:52 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
