@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-12-04 13:22+0000\n"
-"Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
+"PO-Revision-Date: 2019-12-06 11:28+0000\n"
+"Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
 "MIME-Version: 1.0\n"
@@ -172,16 +172,16 @@ msgid "Monthly donations are charged each month on the same day that you donate 
 msgstr "Månadlege donasjonar vert belasta kvar månad på same dag som du donerer i dag, og vil fortsette til du avbryt. For å avbryte, send oss ein e-post på <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:18 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "Andre måtar å gje bidrag på: <a href=\"%(wire_transfer_url)s\">Bankoverføring eller SEPA</a> | <a href=\"%(check_url)s\">Sjekk</a>"
+msgstr "Andre måtar å gje bidrag på: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Sjekk</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:20
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr "Andre måtar å gi bidrag på: <a href=\"%(wire_transfer_url)s\">Bankoverføring eller SEPA</a> | <a href=\"%(check_url)s\">Sjekk</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+msgstr "Andre måtar å gi bidrag på: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Sjekk</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:27 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
