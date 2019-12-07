@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-23 21:21+0000\n"
+"PO-Revision-Date: 2019-12-07 23:39+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
@@ -75,19 +75,19 @@ msgstr "Ο τύπος κάρτας που χρησιμοποιήσατε δεν 
 
 #: donate/payments/views.py:152 donate/payments/views.py:153
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Ο κωδικός CVV που καταχωρίσατε δεν ήταν έγκυρος."
 
 #: donate/payments/views.py:154
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Η ημερομηνία λήξης που καταχωρίσατε δεν ήταν έγκυρη."
 
 #: donate/payments/views.py:155
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "Ο αριθμός πιστωτικής κάρτας που καταχωρίσατε δεν ήταν έγκυρος."
 
 #: donate/payments/views.py:164 donate/payments/views.py:165
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Ο ταχυδρομικός κώδικας που καταχωρίσατε δεν είναι έγκυρος."
 
 #: donate/payments/views.py:179
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
