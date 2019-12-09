@@ -706,7 +706,7 @@ class CardUpsellViewTestCase(TestCase):
 
     @freeze_time('2019-07-26')
     def test_subscription_data_submitted_to_braintree(self):
-        form = UpsellForm({'amount': Decimal(15)})
+        form = UpsellForm({'amount': Decimal(15), 'currency': 'usd'}, initial={'currency': 'usd'})
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
@@ -738,8 +738,9 @@ class CardUpsellViewTestCase(TestCase):
         )
 
     def test_failed_customer_creation_calls_error_processor(self):
-        form = UpsellForm({'amount': Decimal(15)})
+        form = UpsellForm({'amount': Decimal(15), 'currency': 'usd'}, initial={'currency': 'usd'})
         assert form.is_valid()
+        self.view.currency = 'usd'
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
             mock_gateway.subscription.create.return_value.is_success = False
@@ -749,7 +750,7 @@ class CardUpsellViewTestCase(TestCase):
         self.assertTrue(response.status_code, 200)
 
     def test_get_transaction_details_for_session(self):
-        form = UpsellForm({'amount': Decimal(17)})
+        form = UpsellForm({'amount': Decimal(17), 'currency': 'usd'}, initial={'currency': 'usd'})
         assert form.is_valid()
 
         mock_result = MockBraintreeSubscriptionResult()
@@ -811,8 +812,9 @@ class PaypalUpsellViewTestCase(TestCase):
     def test_subscription_data_submitted_to_braintree(self):
         form = BraintreePaypalUpsellForm({
             'amount': Decimal(15), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
-        })
+        }, initial={'currency': 'usd'})
         assert form.is_valid()
+        self.view.currency = 'usd'
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
             mock_gateway.customer.create.return_value.is_success = True
@@ -851,8 +853,9 @@ class PaypalUpsellViewTestCase(TestCase):
     def test_failed_customer_creation_calls_error_processor(self):
         form = BraintreePaypalUpsellForm({
             'amount': Decimal(15), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
-        })
+        }, initial={'currency': 'usd'})
         assert form.is_valid()
+        self.view.currency = 'usd'
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:
             mock_gateway.subscription.create.return_value.is_success = False
@@ -864,7 +867,7 @@ class PaypalUpsellViewTestCase(TestCase):
     def test_get_transaction_details_for_session(self):
         form = BraintreePaypalUpsellForm({
             'amount': Decimal(17), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
-        })
+        }, initial={'currency': 'usd'})
         assert form.is_valid()
 
         self.view.currency = 'usd'
