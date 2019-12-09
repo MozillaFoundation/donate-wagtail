@@ -14,11 +14,7 @@
     <p>
         {% block other_options %}
         <b>
-                {% if thunderbird %}
-                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' %}Other ways to give: <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | <a href="{{ check_url }}">Check</a>{% endblocktrans %}
-            {% else %}
-                {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' bitcoin_url='https://wiki.mozilla.org/Donate_Bitcoin' %}Other ways to give: <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | <a href="{{ check_url }}">Check</a> | <a href="{{ bitcoin_url }}">Bitcoin</a>{% endblocktrans %}
-            {% endif %}
+            {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' bitcoin_url='https://wiki.mozilla.org/Donate_Bitcoin' %}Other ways to give: <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | <a href="{{ check_url }}">Check</a> | <a href="{{ bitcoin_url }}">Bitcoin</a>{% endblocktrans %}
         </b>
         {% endblock %}
     </p>
@@ -31,7 +27,7 @@
     </p>
     <p>
         {% block contribution_statement %}
-        {% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}
+            {% blocktrans %}Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}
         {% endblock %}
     </p>
 </footer>
