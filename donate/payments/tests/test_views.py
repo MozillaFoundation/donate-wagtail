@@ -34,7 +34,9 @@ class MockBraintreeTransaction:
     disbursement_details = mock.MagicMock()
     disbursement_details.settlement_amount = Decimal(10)
     paypal_details = MockPaypalDetails()
+    payment_instrument_type = 'credit_card'
     credit_card_details = mock.MagicMock()
+    credit_card_details.card_type = 'Visa'
 
 
 class MockBraintreeResult:
@@ -91,7 +93,7 @@ class BraintreeMixinTestCase(TestCase):
             'campaign_id': 'piday',
         }
         view.request.LANGUAGE_CODE = 'en-US'
-        view.success(MockBraintreeResult(), form, send_data_to_basket=False)
+        view.handle_successful_transaction(MockBraintreeResult(), form, send_data_to_basket=False)
 
         self.assertEqual(view.request.session['completed_transaction_details'], {
             'amount': '50',
@@ -394,7 +396,7 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             form,
             payment_method_token='token-1',
             transaction_id='transaction-id-1',
-            last_4='1234',
+            last_4='5678',
             settlement_amount=Decimal(10),
         )
 
@@ -405,7 +407,8 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             'payment_frequency': 'single',
             'payment_method_token': 'token-1',
             'currency': 'usd',
-            'last_4': '1234',
+            'card_type': 'Visa',
+            'last_4': '5678',
             'settlement_amount': Decimal(10),
         })
         self.assertEqual(details, expected_details)
@@ -488,34 +491,6 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             self.view.get_success_url(),
             reverse('payments:newsletter_signup')
         )
-
-    def test_get_transaction_details_for_session(self):
-        form = BraintreeCardPaymentForm(self.form_data)
-        assert form.is_valid()
-        details = self.view.get_transaction_details_for_session(
-            MockBraintreeSubscriptionResult(),
-            form,
-            payment_method_token='token-1',
-            transaction_id='subscription-id-1',
-            last_4='1234',
-        )
-
-        expected_details = self.form_data.copy()
-        expected_details.update({
-            'transaction_id': 'subscription-id-1',
-            'payment_method': 'Braintree_Card',
-            'payment_frequency': 'monthly',
-            'payment_method_token': 'token-1',
-            'currency': 'usd',
-            'last_4': '1234',
-            'settlement_amount': None,
-        })
-        self.assertEqual(details, expected_details)
-
-        # Ensure that the details are valid for what the basket task expects
-        with mock.patch('donate.payments.tasks.send_to_sqs') as mock_send:
-            send_transaction_to_basket(self.view.prepare_session_data(details))
-        mock_send.assert_called_once()
 
 
 class PaypalPaymentViewTestCase(TestCase):

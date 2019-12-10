@@ -34,16 +34,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $color--grey-40;
+    background-color: transparent;
     text-align: center;
-    color: $color--white;
-    transition: background-color $transition;
+    color: $color--black;
+    border: 2px solid $color--black;
+    transition: all 0.2s ease-in-out;
 
     &:hover,
     &:active,
     &:focus {
       color: $color--white;
-      background-color: darken($color--grey-40, 5%);
+      background-color: $color--black;
     }
   }
 

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-10 10:21+0000\n"
-"Last-Translator: Selyan Slimane Amiri <selyan.kab@gmail.com>\n"
+"POT-Creation-Date: 2019-12-09 12:17+0000\n"
+"PO-Revision-Date: 2019-12-08 19:23+0000\n"
+"Last-Translator: Linda DIB <lynda.dib@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "yal aggur"
 
 #: donate/frontend/_js/main.compiled.js:16
 msgid "Other amount"
-msgstr ""
+msgstr "Tallayt-nniḍen"
 
 #: donate/frontend/_js/payments-card.compiled.js:1
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
@@ -51,4 +51,4 @@ msgstr ""
 #: donate/frontend/_js/payments-paypal.compiled.js:1
 #: source/js/components/paypal.js:88
 msgid "Payment cancelled"
-msgstr ""
+msgstr "Asellek yettwasefsex"

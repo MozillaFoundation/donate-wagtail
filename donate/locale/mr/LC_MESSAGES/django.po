@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:47+0000\n"
+"POT-Creation-Date: 2019-12-09 12:17+0000\n"
 "PO-Revision-Date: 2019-11-06 14:06+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,11 +94,11 @@ msgstr "आपण प्रदान केलेला पोस्ट को�
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "क्षमस्व, आपल्या देयकावर प्रक्रिया करताना त्रुटी आली. कृपया नंतर पुन्हा प्रयत्न करा किंवा भिन्न देय पद्धत वापरा."
 
-#: donate/payments/views.py:353
+#: donate/payments/views.py:361
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "काहीतरी चूक झाली. आम्ही आपल्या देयकावर प्रक्रिया करू शकत नाही."
 
-#: donate/payments/views.py:595 donate/payments/views.py:698
+#: donate/payments/views.py:608 donate/payments/views.py:711
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "क्षमस्व, आपल्या देयकावर प्रक्रिया करताना त्रुटी आली. कृपया पुन्हा प्रयत्न करा."
 
@@ -176,26 +176,19 @@ msgstr "आपल्या देय तपशीलांवर (क्रे�
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgstr "आपण आज दान करता त्याच दिवशी दरमहा देणग्या आकारल्या जातात आणि आपण रद्द करेपर्यंत चालूच राहतील. रद्द करण्यासाठी, आम्हाला <a href=\"mailto:%(email)s\">%(email)s</a> वर ईमेल करा."
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:18
-#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
-#, fuzzy, python-format
-#| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
-msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "देण्याचे अन्य मार्गः <a href=\"%(wire_transfer_url)s\">वायर ट्रान्सफर किंवा SEPA</a> | <a href=\"%(check_url)s\">तपासा</a>"
-
-#: donate/templates/fragments/donate_form_disclaimer_master.html:20
+#: donate/templates/fragments/donate_form_disclaimer_master.html:17
 #, fuzzy, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgstr "देण्याचे अन्य मार्गः <a href=\"%(wire_transfer_url)s\">वायर ट्रान्सफर किंवा SEPA</a> | <a href=\"%(check_url)s\">तपासा</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:27
+#: donate/templates/fragments/donate_form_disclaimer_master.html:23
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr "देणगी देण्यात समस्या? बर्‍याच सामान्य प्रश्नांच्या उत्तरांसाठी आमच्या <a href=\"%(faq_url)s\">FAQ</a> वर भेट द्या. अद्याप समस्या आहे? <a href=\"mailto:%(email)s\">आम्हाला ईमेल पाठवा</a>."
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:34
+#: donate/templates/fragments/donate_form_disclaimer_master.html:30
 msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
 msgstr "देणग्या माउंटन व्ह्यू, कॅलिफोर्निया येथे स्थायिक 501(c)(3) Mozilla फाऊंडेशन ला जातात, त्यांच्या समाजसेवेच्या कार्यासाठी, ते यु.एस. मध्ये नियमाप्रमाणे पूर्णतः करपात्र आहेत."
 
@@ -517,8 +510,14 @@ msgstr "प्रत बनवली"
 msgid "Back"
 msgstr "मागे"
 
+#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
+#, fuzzy, python-format
+#| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
+msgstr "देण्याचे अन्य मार्गः <a href=\"%(wire_transfer_url)s\">वायर ट्रान्सफर किंवा SEPA</a> | <a href=\"%(check_url)s\">तपासा</a>"
+
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
-msgid "Contributions go towards the Thunderbird project."
+msgid "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not tax-deductible as charitable contributions."
 msgstr ""
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6

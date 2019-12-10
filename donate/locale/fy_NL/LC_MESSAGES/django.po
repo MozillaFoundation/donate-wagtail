@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-23 00:47+0000\n"
-"PO-Revision-Date: 2019-11-24 16:34+0000\n"
+"POT-Creation-Date: 2019-12-09 12:17+0000\n"
+"PO-Revision-Date: 2019-12-10 09:51+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fy_NL\n"
@@ -93,11 +93,11 @@ msgstr "De opjûne postkoade is ûnjildich."
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
 msgstr "Sorry, der is in flater bard by it ferwurkjen fan jo betelling. Probearje it letter opnij of brûk in oare betelmetoade."
 
-#: donate/payments/views.py:353
+#: donate/payments/views.py:361
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "Der is wat mis gien. Wy koene jo betelling net ferwurkje."
 
-#: donate/payments/views.py:595 donate/payments/views.py:698
+#: donate/payments/views.py:608 donate/payments/views.py:711
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "Sorry, der is in flater bard by it ferwurkjen fan jo betelling. Probearje it letter nochris."
 
@@ -156,9 +156,6 @@ msgstr "per moanne"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
 #, python-format
-#| msgid ""
-#| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
-#| "by Mozilla."
 msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
@@ -173,24 +170,19 @@ msgstr ""
 "Moanlikse donaasjes wurde elke moanne yn rekkening brocht op de dei fan jo hjoeddeistige donaasje en rinne troch oant jo annulearje. Stjoer in e-mailberjocht nei <a "
 "href=\"mailto:%(email)s\">%(email)s</a> om te annulearjen."
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:18 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
-#, python-format
-msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "Oare manieren om te jaan: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Sjek</a>"
-
-#: donate/templates/fragments/donate_form_disclaimer_master.html:20
+#: donate/templates/fragments/donate_form_disclaimer_master.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgstr "Oare manieren om te jaan: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Sjek</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:27 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
+#: donate/templates/fragments/donate_form_disclaimer_master.html:23 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr ""
 "Problemen mei donearjen? Gean nei ús <a href=\"%(faq_url)s\">FAQ</a> foar antwurden op de meast stelde fragen. Hawwe jo noch hieltyd problemen? <a href=\"mailto:%(email)s\">Stjoer ús in "
 "e-mailberjocht</a>."
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:34
+#: donate/templates/fragments/donate_form_disclaimer_master.html:30
 msgid ""
 "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
 " to the fullest extent permitted by law."
@@ -371,13 +363,11 @@ msgstr ""
 "de datum fan in donaasje."
 
 #: donate/templates/payment/card.html:128
-#| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgstr "Ik machtigje Mozilla Foundation om myn kaart te belêsten mei it boppesteande bedrach. Ik begryp dat ik allinnich om werombetelling fersykje kin binnen 15 dagen nei de datum fan de donaasje."
 
 #: donate/templates/payment/card.html:143
 #, python-format
-#| msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
 msgstr "Doneare <span class=\"%(span_class)s\">%(formatted_amount)s</span> yn 'e moanne"
 
@@ -408,7 +398,6 @@ msgid "Yes, I will give:"
 msgstr "Ja, ik jou:"
 
 #: donate/templates/payment/card_upsell_master.html:40
-#| msgid "/ Monthly"
 msgid "Monthly"
 msgstr "Moanliks"
 
@@ -423,7 +412,6 @@ msgstr ""
 "donaasje."
 
 #: donate/templates/payment/card_upsell_master.html:49
-#| msgid "/ Monthly"
 msgid "Donate Monthly"
 msgstr "Moanliks donearje"
 
@@ -506,17 +494,24 @@ msgstr "Kopiearre"
 msgid "Back"
 msgstr "Tebek"
 
+#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
+#, python-format
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
+msgstr "Oare manieren om te jaan: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Sjek</a>"
+
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
-msgid "Contributions go towards the Thunderbird project."
-msgstr "Bydragen gean nei it Thunderbird-projekt."
+msgid ""
+"Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
+"tax-deductible as charitable contributions."
+msgstr ""
+"Bydragen gean nei de MZLA Technologies Corporation, in bedriuw yn Kalifornië dat folslein eigendom is fan de Mozilla Foundation. Fûnsen wurde reservearre foar gebrûk yn it Thunderbird-projekt. "
+"Bydragen binne net ôf te lûken foar de belesting as donaasjes oan goede doelen."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
-#| msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Wy wolle jo graach hawwe as fêste supporter fan Thunderbird. <b>Soene jo mei yngong fan folgjende moanne in moanlikse donaasje dwaan wolle?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
-#| msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
 msgstr "Dan noch dit, wolle jo ús helpe it wichtige wurk dat Thunderbird docht te dielen? Nochris tige tank!"
 
@@ -529,6 +524,9 @@ msgstr "Ik haw hjoed oan @mozthunderbird donearre foar frijheid fan it postfek. 
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
 msgstr "Ik haw hjoed oan Thunderbird donearre"
+
+#~ msgid "Contributions go towards the Thunderbird project."
+#~ msgstr "Bydragen gean nei it Thunderbird-projekt."
 
 #~ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
 #~ msgstr "<span class=\"%(span_class)s\">%(formatted_amount)s</span> donearje"
