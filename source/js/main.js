@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // Initialize Sentry error reporting
   Sentry.init({
     dsn: __SENTRY_DSN__,
-    release: __HEROKU_RELEASE_VERSION__
+    release: __HEROKU_RELEASE_VERSION__,
+    environment: __SENTRY_ENVIRONMENT__
   });
 
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {
