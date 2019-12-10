@@ -7,7 +7,7 @@ import requests
 
 
 class Command(BaseCommand):
-    help = 'Delete all Page and Image objects from the database along with associated media files.'
+    help = 'Send a message to Slack if compilemessages returns an error.'
 
     def handle(self, *args, **options):
         try:
@@ -48,4 +48,4 @@ class Command(BaseCommand):
             r.raise_for_status()
 
             # Raise exception to make travis run fail
-            raise
+            raise err
