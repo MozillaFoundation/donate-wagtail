@@ -191,20 +191,24 @@ class CurrencySelect {
 
       const radio = input.parentNode.querySelector("[data-other-amount-radio]");
       input.addEventListener("click", _ => (radio.checked = true));
-      radio.addEventListener("change", _ => radio.checked ? this.updateValue(input) : false);
+      radio.addEventListener("change", _ =>
+        radio.checked ? this.updateValue(input) : false
+      );
     });
 
     // Because we are using minimum amount validation on the other amount,
     // we need to make sure that this amount is emptied if the user
     // selects a preset amount. Otherwise the browser will fail to validate the form.
-    const presets = document.querySelectorAll(".donation-amount__radio:not([data-other-amount-radio])")
+    const presets = document.querySelectorAll(
+      ".donation-amount__radio:not([data-other-amount-radio])"
+    );
     presets.forEach(input => {
-        input.addEventListener("change", _ => {
-          if (input.checked) {
-            otherAmountInputs.forEach(other => (other.value = ""));
-          }
-        });
+      input.addEventListener("change", _ => {
+        if (input.checked) {
+          otherAmountInputs.forEach(other => (other.value = ""));
+        }
       });
+    });
   }
 
   bindAnalyticsEvents() {
