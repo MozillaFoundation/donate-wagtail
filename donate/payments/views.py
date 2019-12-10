@@ -654,6 +654,8 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         return kwargs
 
     def form_valid(self, form, send_data_to_basket=True):
+        self.currency = form.cleaned_data['currency']
+
         # Create a customer and payment method for this customer
         result = gateway.customer.create({
             'payment_method_nonce': form.cleaned_data['braintree_nonce'],

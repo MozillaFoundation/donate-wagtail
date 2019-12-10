@@ -184,45 +184,24 @@ class CurrencySelect {
   }
 
   bindOtherAmountEvents() {
-    var otherAmountInputs = document.querySelectorAll("[data-other-amount]");
-    var otherAmountRadios = document.querySelectorAll(
-      "[data-other-amount-radio]"
-    );
+    const otherAmountInputs = document.querySelectorAll("[data-other-amount]");
     otherAmountInputs.forEach(input => {
-      input.addEventListener(
-        "click",
-        event =>
-          (input.parentNode.querySelector(
-            "[data-other-amount-radio]"
-          ).checked = true)
-      );
-      input.addEventListener("change", event => this.updateValue(input));
-      input.addEventListener("focusin", event => this.updateValue(input));
-    });
+      input.addEventListener("change", _ => this.updateValue(input));
+      input.addEventListener("focusin", _ => this.updateValue(input));
 
-    otherAmountRadios.forEach(input => {
-      input.addEventListener("change", event => {
-        if (input.checked) {
-          this.updateValue(
-            input.parentNode.querySelector("[data-other-amount]")
-          );
-        }
-      });
+      const radio = input.parentNode.querySelector("[data-other-amount-radio]");
+      input.addEventListener("click", _ => (radio.checked = true));
+      radio.addEventListener("change", _ => radio.checked ? this.updateValue(input) : false);
     });
 
     // Because we are using minimum amount validation on the other amount,
     // we need to make sure that this amount is emptied if the user
     // selects a preset amount. Otherwise the browser will fail to validate the form.
-    document
-      .querySelectorAll(
-        ".donation-amount__radio:not([data-other-amount-radio])"
-      )
-      .forEach(input => {
-        input.addEventListener("change", e => {
+    const presets = document.querySelectorAll(".donation-amount__radio:not([data-other-amount-radio])")
+    presets.forEach(input => {
+        input.addEventListener("change", _ => {
           if (input.checked) {
-            otherAmountInputs.forEach(
-              input => (input.value = input.checkValidity() ? input.value : "")
-            );
+            otherAmountInputs.forEach(other => (other.value = ""));
           }
         });
       });

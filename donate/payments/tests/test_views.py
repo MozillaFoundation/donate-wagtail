@@ -721,7 +721,7 @@ class CardUpsellViewTestCase(TestCase):
         })
 
     def test_ga_transaction(self):
-        form = UpsellForm({'amount': Decimal(15)})
+        form = UpsellForm({'amount': Decimal(15), 'currency': 'usd'}, initial={'currency': 'usd'})
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway', autospec=True) as mock_gateway:
@@ -831,8 +831,10 @@ class PaypalUpsellViewTestCase(TestCase):
 
     def test_ga_transaction(self):
         form = BraintreePaypalUpsellForm({
-            'amount': Decimal(15), 'braintree_nonce': 'hello-braintree', 'currency': 'usd'
-        })
+            'amount': Decimal(15),
+            'braintree_nonce': 'hello-braintree',
+            'currency': 'usd'
+        }, initial={'currency': 'usd'})
         assert form.is_valid()
 
         with mock.patch('donate.payments.views.gateway') as mock_gateway:

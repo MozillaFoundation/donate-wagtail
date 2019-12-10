@@ -35,13 +35,15 @@ class MinimumCurrencyAmountMixin():
 
     def clean(self):
         cleaned_data = super().clean()
-        if cleaned_data.get('amount') and cleaned_data.get('currency'):
-            currency_info = get_currency_info(cleaned_data['currency'])
+        amount = cleaned_data.get('amount', False)
+        currency = cleaned_data.get('currency', False)
+        if amount and currency:
+            currency_info = get_currency_info(currency)
             min_amount = currency_info['minAmount']
-            if cleaned_data['amount'] < min_amount:
+            if amount < min_amount:
                 raise forms.ValidationError({
                     'amount': _('Donations must be %(amount)s or more') % {'amount': format_currency(
-                        get_language(), cleaned_data['currency'], min_amount
+                        get_language(), currency, min_amount
                     )}
                 })
 
