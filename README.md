@@ -61,6 +61,16 @@ The following environment variables are required to configure payment processing
 - `BRAINTREE_TOKENIZATION_KEY`: Tokenization key provided by Braintree.
 - `BRAINTREE_USE_SANDBOX`: Boolean to configure whether or not to use the Braintree sandbox.
 
+### Webhook Configuration
+
+There's a webhook endpoint for processing Braintree events. The events it supports are:
+
+* `subscription_charged_successfully`
+* `subscription_charged_unsuccessfully`
+* `dispute_lost`
+
+The endpoint accepts requests on `/braintree/webhook/` and will verify the payload signature to ensure it's a legitimate event. [Documentation for Braintree webhooks can be found here](https://developers.braintreepayments.com/guides/webhooks/overview).
+
 ## Basket
 
 [Basket](https://github.com/mozmeao/basket) is a tool run by MoCo to manage newsletter subscriptions and donations. It's listening for messages (JSON) sent to a SQS queue.
@@ -139,18 +149,18 @@ Example from donate.mozilla.org:
 
 _Notes_: We want to keep the `trigger_welcome` at `N` and the `format` to `html`. We don't have the country info for now, but from what I understood, it's something we want to change.
 
-### Webhook Configuration
-
-There's a webhook endpoint for processing Braintree events. The events it supports are:
-
-* `subscription_charged_successfully`
-* `subscription_charged_unsuccessfully`
-* `dispute_lost`
-
-The endpoint accepts requests on `/braintree/webhook/` and will verify the payload signature to ensure it's a legitimate event. [Documentation for Braintree webhooks can be found here](https://developers.braintreepayments.com/guides/webhooks/overview).
-
-### Review App
+## Review App
 
 Opening a PR will automatically create a Review App in the `donate-wagtail` pipeline. A slack bot posts credentials and links to Review Apps in to the `mofo-ra-donate-wagtail` channel.
 
 This only work for Mo-Fo staff: you will need to manually open a Review App on Heroku for PRs opened by external contributors.
+
+## SSO and admin logins
+
+The default for admin login is Mozilla SSO via OpenID Connect.
+
+If you have a Mozilla SSO account, create a Django superuser with the same email address using:
+
+```shell
+docker-compose exec app python manage.py createsuperuser
+```
