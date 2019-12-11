@@ -46,6 +46,7 @@ class CurrencySelect {
     // Create arrays for monthly and one off based on data
     var oneOffValues = selectedData.presets.single;
     var monthlyValue = selectedData.presets.monthly;
+    var minAmount = selectedData.minAmount;
     var formatter = new Intl.NumberFormat(this.locale, {
       style: "currency",
       currency: selectedData.code.toUpperCase(),
@@ -55,12 +56,14 @@ class CurrencySelect {
     // Create buttons
     this.outputOptions(
       oneOffValues,
+      minAmount,
       "one-time-amount",
       formatter,
       this.oneOffContainer
     );
     this.outputOptions(
       monthlyValue,
+      minAmount,
       "monthly-amount",
       formatter,
       this.monthlyContainer
@@ -73,7 +76,7 @@ class CurrencySelect {
   }
 
   // Output donation form buttons
-  outputOptions(data, type, formatter, container) {
+  outputOptions(data, minAmount, type, formatter, container) {
     var container = container;
 
     container.innerHTML = data
@@ -95,7 +98,7 @@ class CurrencySelect {
     var otherAmountString = window.gettext("Other amount");
     container.insertAdjacentHTML(
       "beforeend",
-      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='text' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount></div>`
+      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='number' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount min="${minAmount}" max="10000000"></div>`
     );
   }
 
@@ -152,24 +155,18 @@ class CurrencySelect {
     }
   }
 
-  // Update Radio to checked
-  selectRadio(event) {
-    this.otherAmountRadio.forEach(radio => {
-      radio.checked = true;
-    });
-    gaEvent({
-      eventCategory: "User Flow",
-      eventAction: "Changed Amount",
-      eventLabel: "Other"
-    });
-  }
-
   // Updated radio value based on custom input
-  updateValue(event) {
-    const value = parseFloat(event.target.value).toFixed(2);
-    this.otherAmountRadio.forEach(radiovalue => {
-      radiovalue.value = value;
-    });
+  updateValue(input) {
+    var radio = input.parentNode.querySelector("[data-other-amount-radio]");
+    if (input.reportValidity()) {
+      radio.value = parseFloat(event.target.value).toFixed(2);
+    } else {
+      // If the value is not acceptable, set the radio's value to 0
+      // so that Paypal payments will fail if the user attempts to start one. We have no way to
+      // stop the paypal modal loading once that button is clicked.
+      // See https://github.com/paypal/paypal-checkout-components/issues/139
+      radio.value = "0";
+    }
   }
 
   bindEvents() {
@@ -187,20 +184,31 @@ class CurrencySelect {
   }
 
   bindOtherAmountEvents() {
-    // Other amount vars
-    this.otherAmountInput = document.querySelectorAll("[data-other-amount]");
-    this.otherAmountLabel = document.querySelectorAll("[data-currency]");
-    this.otherAmountRadio = document.querySelectorAll(
-      "[data-other-amount-radio]"
+    const otherAmountInputs = document.querySelectorAll("[data-other-amount]");
+    otherAmountInputs.forEach(input => {
+      input.addEventListener("change", _ => this.updateValue(input));
+      input.addEventListener("focusin", _ => this.updateValue(input));
+
+      const radio = input.parentNode.querySelector("[data-other-amount-radio]");
+      input.addEventListener("click", _ => (radio.checked = true));
+      radio.addEventListener("change", _ =>
+        radio.checked ? this.updateValue(input) : false
+      );
+    });
+
+    // Because we are using minimum amount validation on the other amount,
+    // we need to make sure that this amount is emptied if the user
+    // selects a preset amount. Otherwise the browser will fail to validate the form.
+    const presets = document.querySelectorAll(
+      ".donation-amount__radio:not([data-other-amount-radio])"
     );
-    for (var i = 0; i < this.otherAmountInput.length; i++) {
-      this.otherAmountInput[i].addEventListener("click", event =>
-        this.selectRadio(event)
-      );
-      this.otherAmountInput[i].addEventListener("change", event =>
-        this.updateValue(event)
-      );
-    }
+    presets.forEach(input => {
+      input.addEventListener("change", _ => {
+        if (input.checked) {
+          otherAmountInputs.forEach(other => (other.value = ""));
+        }
+      });
+    });
   }
 
   bindAnalyticsEvents() {

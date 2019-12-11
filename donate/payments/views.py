@@ -538,6 +538,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         self.suggested_upgrade = get_suggested_monthly_upgrade(
             last_transaction['currency'], last_transaction['amount']
         )
+        self.currency = last_transaction['currency']
         if self.suggested_upgrade is None:
             return HttpResponseRedirect(self.get_success_url())
 
@@ -545,19 +546,23 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
 
     def get_initial(self):
         return {
-            'amount': self.suggested_upgrade
+            'amount': self.suggested_upgrade,
+            'currency': self.currency,
         }
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['currency'] = self.currency
+        return kwargs
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx['currency_info'] = get_currency_info(
-            self.request.session['completed_transaction_details']['currency']
-        )
+        ctx['currency_info'] = get_currency_info(self.currency)
         return ctx
 
     def form_valid(self, form):
         payment_method_token = self.request.session['completed_transaction_details']['payment_method_token']
-        currency = self.request.session['completed_transaction_details']['currency']
+        currency = form.cleaned_data['currency']
 
         # Create a subcription against the payment method
         start_date = now().date() + relativedelta(months=1)     # Start one month from today
@@ -631,6 +636,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         self.suggested_upgrade = get_suggested_monthly_upgrade(
             last_transaction['currency'], last_transaction['amount']
         )
+        self.currency = self.request.session['completed_transaction_details']['currency']
         if self.suggested_upgrade is None:
             return HttpResponseRedirect(self.get_success_url())
 
@@ -638,11 +644,16 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
 
     def get_initial(self):
         return {
-            'currency': self.request.session['completed_transaction_details']['currency'],
+            'currency': self.currency,
             'amount': self.suggested_upgrade
         }
 
-    def form_valid(self, form):
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['currency'] = self.currency
+        return kwargs
+
+    def form_valid(self, form, send_data_to_basket=True):
         self.currency = form.cleaned_data['currency']
 
         # Create a customer and payment method for this customer
@@ -717,9 +728,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
         ctx = super().get_context_data(**kwargs)
         ctx.update({
             'braintree_params': settings.BRAINTREE_PARAMS,
-            'currency_info': get_currency_info(
-                self.request.session['completed_transaction_details']['currency']
-            ),
+            'currency_info': get_currency_info(self.currency),
         })
         return ctx
 
