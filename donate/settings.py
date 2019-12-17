@@ -73,7 +73,7 @@ env = environ.Env(
     SLACK_WEBHOOK_PONTOON=(str, ''),
     TRAVIS_LOGS_URL=(str, ''),
     # Mozilla OIDC
-    USE_CONVENTIONAL_AUTH=(bool, False),
+    USE_CONVENTIONAL_AUTH=(bool, True),
     OIDC_RP_CLIENT_ID=(str, None),
     OIDC_RP_CLIENT_SECRET=(str, None),
 )
