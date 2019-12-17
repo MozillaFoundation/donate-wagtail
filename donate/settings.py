@@ -76,6 +76,11 @@ env = environ.Env(
     USE_CONVENTIONAL_AUTH=(bool, True),
     OIDC_RP_CLIENT_ID=(str, None),
     OIDC_RP_CLIENT_SECRET=(str, None),
+    OIDC_OP_AUTHORIZATION_ENDPOINT=(str, "https://auth.mozilla.auth0.com/authorize"),
+    OIDC_OP_TOKEN_ENDPOINT=(str, "https://auth.mozilla.auth0.com/oauth/token"),
+    OIDC_OP_USER_ENDPOINT=(str, "https://auth.mozilla.auth0.com/userinfo"),
+    OIDC_OP_DOMAIN=(str, "auth.mozilla.auth0.com"),
+    OIDC_OP_JWKS_ENDPOINT=(str, "https://auth.mozilla.auth0.com/.well-known/jwks.json"),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
