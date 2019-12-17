@@ -26,7 +26,7 @@
                 <div class="donate-form__fields" id="js-donate-form-single" role="radiogroup">
                     {% for amount in initial_currency_info.presets.single %}
                     <div class="donation-amount">
-                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off" {% if forloop.first %}checked{% endif %}>
+                        <input type="radio" class="donation-amount__radio" name="amount" value="{{ amount }}" id="one-time-amount-{{ forloop.counter0 }}" autocomplete="off">
                         <label for="one-time-amount-{{ forloop.counter0 }}" class="donation-amount__label">
                             {% format_currency request.LANGUAGE_CODE initial_currency_info.code amount %}
                         </label>
