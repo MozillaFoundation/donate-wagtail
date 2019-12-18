@@ -65,6 +65,7 @@ env = environ.Env(
     STRIPE_WEBHOOK_SECRET=(str, ''),
     SENTRY_DSN=(str, None),
     HEROKU_RELEASE_VERSION=(str, None),
+    SENTRY_ENVIRONMENT=(str, None),
     # Instance vars
     THUNDERBIRD_INSTANCE=(bool, False),
     # Review App slack webhook
@@ -85,6 +86,7 @@ env = environ.Env(
 
 SENTRY_DSN = env('SENTRY_DSN')
 HEROKU_RELEASE_VERSION = env('HEROKU_RELEASE_VERSION')
+SENTRY_ENVIRONMENT = env('SENTRY_ENVIRONMENT')
 
 if SENTRY_DSN:
     import sentry_sdk
@@ -92,7 +94,8 @@ if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
         integrations=[DjangoIntegration()],
-        release=HEROKU_RELEASE_VERSION
+        release=HEROKU_RELEASE_VERSION,
+        environment=SENTRY_ENVIRONMENT
     )
 
 # Read in the environment
