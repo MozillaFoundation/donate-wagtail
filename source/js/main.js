@@ -19,7 +19,7 @@ function fetchEnv(callback) {
   });
 
   envReq.open("GET", "/environment.json");
-  envReq.send()
+  envReq.send();
 }
 
 // Manage tab index for primary nav
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Initialize Sentry error reporting
 
   fetchEnv(envData => {
-    if (!envData.SENTRY_DSN){
+    if (!envData.SENTRY_DSN) {
       return;
     }
 
