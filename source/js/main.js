@@ -15,7 +15,13 @@ function fetchEnv(callback) {
   let envReq = new XMLHttpRequest();
 
   envReq.addEventListener("load", () => {
-    callback.call(this, JSON.parse(envReq.response));
+    let data = {};
+    try {
+      data = JSON.parse(envReq.response);
+    } catch (e) {
+      // discard
+    }
+    callback(data);
   });
 
   envReq.open("GET", "/environment.json");
