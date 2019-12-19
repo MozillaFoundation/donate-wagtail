@@ -155,12 +155,18 @@ Opening a PR will automatically create a Review App in the `donate-wagtail` pipe
 
 This only work for Mo-Fo staff: you will need to manually open a Review App on Heroku for PRs opened by external contributors.
 
-## SSO and admin logins
+## SSO and admin logins for local development
 
-The default for admin login is Mozilla SSO via OpenID Connect.
+The default for admin login for local development is the standard Django login. To use Mozilla SSO via OpenID Connect, set the `USE_CONVENTIONAL_AUTH` environment variable to `False`.
 
-If you have a Mozilla SSO account, create a Django superuser with the same email address using:
+To make sure you can log in using your Mozilla SSO credentials, your will need to create a Django superuser with your mozilla email address, using:
 
 ```shell
 docker-compose exec app python manage.py createsuperuser
 ```
+
+## Adding users to the system
+
+The security model currently requires that an existing admin creates an account for a new user first, tied to that user's Mozilla email account, before that user can can log in using SSO.
+
+Further more, in order for SSO authentication to succeed, their account must be a member of the donate user group. To request that an account be added to this group, please file [an SSO request bug](https://bugzilla.mozilla.org/enter_bug.cgi?product=Infrastructure%20%26%20Operations&component=SSO:%20Requests), making sure to also `cc` a donate admin in the bug.
