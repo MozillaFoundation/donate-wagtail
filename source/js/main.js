@@ -11,6 +11,17 @@ import CopyURL from "./components/copy-url";
 import Accordion from "./components/accordion";
 import "./components/newsletter";
 
+function fetchEnv(callback) {
+  let envReq = new XMLHttpRequest();
+
+  envReq.addEventListener("load", () => {
+    callback.call(this, JSON.parse(envReq.response));
+  });
+
+  envReq.open("GET", "/environment.json");
+  envReq.send()
+}
+
 // Manage tab index for primary nav
 function tabIndexer() {
   document.querySelectorAll("[data-nav-tab-index]").forEach(navLink => {
@@ -34,10 +45,17 @@ function closeMenu() {
 
 document.addEventListener("DOMContentLoaded", function() {
   // Initialize Sentry error reporting
-  Sentry.init({
-    dsn: __SENTRY_DSN__,
-    release: __HEROKU_RELEASE_VERSION__,
-    environment: __SENTRY_ENVIRONMENT__
+
+  fetchEnv(envData => {
+    if (!envData.SENTRY_DSN){
+      return;
+    }
+
+    Sentry.init({
+      dsn: envData.SENTRY_DSN,
+      release: envData.RELEASE_VERSION,
+      environment: envData.SENTRY_ENVIRONMENT
+    });
   });
 
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {

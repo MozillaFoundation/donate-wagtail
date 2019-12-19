@@ -162,6 +162,10 @@ class Base(object):
     CSP_STYLE_SRC = env('CSP_STYLE_SRC')
     CSP_WORKER_SRC = env('CSP_WORKER_SRC')
 
+    FRONTEND = {
+        'RELEASE_VERSION': env('HEROKU_RELEASE_VERSION')
+    }
+
     @classmethod
     def post_setup(cls):
         logging.config.dictConfig(cls.LOGGING)
