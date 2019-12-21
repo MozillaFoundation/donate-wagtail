@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2019-12-21 22:11+0000\n"
+"PO-Revision-Date: 2019-12-21 22:12+0000\n"
 "Last-Translator: Muhend Belkacem <taqbaylitassa@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: kab\n"
@@ -39,7 +39,7 @@ msgstr "Teḍra-d tuccḍa deg usesfer n uxelleɣ-ik. Ma ulac aɣilif ɛreḍ ti
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:152
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "Kra n wurtan dagi mačči d imeɣta. Ma ulac aɣilif, seɣti yir urtan sakin ɛreḍ tikkelt-nniḍen."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:88
 msgid "Payment cancelled"

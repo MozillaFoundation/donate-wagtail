@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2019-12-21 22:09+0000\n"
+"PO-Revision-Date: 2019-12-21 22:15+0000\n"
 "Last-Translator: Muhend Belkacem <taqbaylitassa@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: kab\n"
@@ -71,23 +71,23 @@ msgstr "Qebleɣ akken Mozilla ad tesseqdec talɣut-inu akken tella deg <a href='
 
 #: donate/payments/views.py:151
 msgid "The type of card you used is not accepted."
-msgstr ""
+msgstr "Anaw n tkarḍa i tesqedceḍ ur yettwaqbal ara."
 
 #: donate/payments/views.py:152 donate/payments/views.py:153
 msgid "The CVV code you entered was invalid."
-msgstr ""
+msgstr "Tangalt CVV i teskecmeḍ mačči d tameɣtut."
 
 #: donate/payments/views.py:154
 msgid "The expiration date you entered was invalid."
-msgstr ""
+msgstr "Azemz n taggar i teskecmeḍ mačči d ameɣtu."
 
 #: donate/payments/views.py:155
 msgid "The credit card number you entered was invalid."
-msgstr ""
+msgstr "Uṭṭun n tkarḍa n usmad i teskecmeḍ mačči d ameɣtu."
 
 #: donate/payments/views.py:164 donate/payments/views.py:165
 msgid "The post code you provided is not valid."
-msgstr ""
+msgstr "Tangalt n lpusṭa i teskecmeḍ mačči d tameɣtut."
 
 #: donate/payments/views.py:179
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
