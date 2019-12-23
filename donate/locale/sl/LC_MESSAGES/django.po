@@ -328,7 +328,7 @@ msgstr "Obrazec vsebuje nekaj napak. Popravite polja, označena spodaj."
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "Plačila nismo mogli izvesti, ker je bila v procesu plačila prijavljena napaka s podatki o vašem naslovu:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
