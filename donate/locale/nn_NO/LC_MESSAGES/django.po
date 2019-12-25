@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2019-12-25 17:11+0000\n"
+"PO-Revision-Date: 2019-12-25 17:15+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -155,7 +155,7 @@ msgid "per month"
 msgstr "per månad"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 #| "by Mozilla."
@@ -163,8 +163,8 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"Betalingsopplysningane blir behandla av <a href=\"%(braintree_url)s\">Braintree</a> (for kreditt-/debetkort) eller <a href=\"%(paypal_url)s\">Paypal</a>, og ei oversikt over donasjonen din blir "
-"lagra hos Mozilla."
+"Betalingsopplysningane blir behandla av <a href=\"%(braintree_url)s\">Braintree</a>, eit PayPal-selskap (for kreditt-/debetkort) eller <a href=\"%(paypal_url)s\">Paypal</a>, og ei oversikt over "
+"donasjonen din blir lagra hos Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -364,10 +364,9 @@ msgstr ""
 "avbryte minst 5 dagar før neste planlagde donasjon via e-post til <a href='mailto:%(email)s'>%(email)s</a>, og at eg berre kan be om refusjon innan 15 dagar frå donasjonsdatoen."
 
 #: donate/templates/payment/card.html:128
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount shown above and to continue doing so each month until I cancel."
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Eg gir Mozilla Foundation fullmakt til å belaste kortet mitt med det beløpet som er vist ovanfor og fortsetje å gjere det kvar månad til eg avbryt."
+msgstr "Eg gir Mozilla Foundation fullmakt til å belaste kortet mitt med det beløpet som er vist ovanfor. Eg forstår at eg berre kan be om refusjon innan 15 dagar frå donasjonsdatoen."
 
 #: donate/templates/payment/card.html:143
 #, python-format
