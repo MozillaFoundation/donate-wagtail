@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2019-12-21 22:15+0000\n"
-"Last-Translator: Muhend Belkacem <taqbaylitassa@gmail.com>\n"
+"PO-Revision-Date: 2019-12-26 10:44+0000\n"
+"Last-Translator: Selyan Slimane Amiri <selyan.kab@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:103
 msgid "More about us"
-msgstr ""
+msgstr "Ugar fell-aɣ"
 
 #: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you_master.html:36 donate/thunderbird/templates/payment/thank_you.html:25
 msgid "Twitter"
