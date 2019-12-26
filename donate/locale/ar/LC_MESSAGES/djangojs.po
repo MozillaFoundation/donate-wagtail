@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2019-12-09 18:48+0000\n"
+"PO-Revision-Date: 2019-12-26 16:12+0000\n"
 "Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ar\n"
@@ -39,7 +39,7 @@ msgstr "حدث عُطل أثناء معالجة عملية الدفع. من فض
 
 #: donate/frontend/_js/payments-card.compiled.js:1 source/js/payments-card.js:152
 msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
-msgstr ""
+msgstr "بعض الحقول في الاستمارة غير صالحة. من فضلك أصلِحها وأعِد المحاولة."
 
 #: donate/frontend/_js/payments-paypal-upsell.compiled.js:1 donate/frontend/_js/payments-paypal.compiled.js:1 source/js/components/paypal.js:88
 msgid "Payment cancelled"
