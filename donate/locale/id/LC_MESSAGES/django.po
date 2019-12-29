@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2019-12-14 07:37+0000\n"
-"Last-Translator: Ringgo <armen.ringgo@yahoo.de>\n"
+"PO-Revision-Date: 2019-12-29 11:50+0000\n"
+"Last-Translator: Lidya Christina <id.lidya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
-msgstr ""
+msgstr "Inisiatif"
 
 #: donate/templates/pages/base_page.html:29
 msgid "Participate"
@@ -192,15 +192,15 @@ msgstr ""
 
 #: donate/templates/pages/base_page.html:32
 msgid "Internet Health"
-msgstr ""
+msgstr "Kesehatan Internet"
 
 #: donate/templates/pages/base_page.html:35
 msgid "About Us"
-msgstr ""
+msgstr "Tentang Kami"
 
 #: donate/templates/pages/base_page.html:46
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: donate/templates/pages/base_page.html:70
 msgid "Protect the internet as a global public resource"
@@ -264,6 +264,8 @@ msgid ""
 "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
 "%(link_attributes)s>%(site_url)s</a>."
 msgstr ""
+"Mozilla adalah organisasi nirlaba global yang berdedikasi untuk menempatkan Anda dalam kendali pengalaman daring Anda dan membentuk masa depan web untuk kebaikan semua. Kunjungi kami di "
+"<a%(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
