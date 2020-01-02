@@ -128,7 +128,7 @@ msgstr "Mudd tawsa i Mozilla"
 
 #: donate/templates/fragments/donate_form.html:11
 msgid "ONE TIME"
-msgstr "ONE TIME"
+msgstr ""
 
 #: donate/templates/fragments/donate_form.html:17
 msgid "MONTHLY"
