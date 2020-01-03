@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2020-01-03 06:12+0000\n"
+"PO-Revision-Date: 2020-01-03 06:17+0000\n"
 "Last-Translator: marsf <chimantaea_mirabilis@yahoo.co.jp>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ja\n"
@@ -164,17 +164,17 @@ msgstr "お支払いの詳細は PayPal の子会社である <a href=\"%(braint
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr ""
+msgstr "毎月の寄付は、あなたが今日寄付したのと同じ日に毎月請求され、キャンセルするまで継続されます。キャンセルするには、<a href=\"mailto:%(email)s\">%(email)s</a> 宛にメールを送信してください。"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr ""
+msgstr "他の寄付方法: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:23 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
-msgstr ""
+msgstr "寄付で問題が起こった時は、<a href=\"%(faq_url)s\">FAQ</a> のページでよくある質問を確認してください。まだ問題が解決できない場合は、<a href=\"mailto:%(email)s\">メールでお問い合わせください</a>。"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:30
 msgid ""
@@ -184,7 +184,7 @@ msgstr "あなたの寄付は 501(c)(3) に該当する非営利法人であり�
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
-msgstr ""
+msgstr "取り組み"
 
 #: donate/templates/pages/base_page.html:29
 msgid "Participate"
@@ -204,11 +204,11 @@ msgstr "メニュー"
 
 #: donate/templates/pages/base_page.html:70
 msgid "Protect the internet as a global public resource"
-msgstr ""
+msgstr "グローバルな公共リソースとしてインターネットを保護する"
 
 #: donate/templates/pages/base_page.html:78
 msgid "Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "メーリングリストに参加して行動を起こし、最新情報を入手してください！"
 
 #: donate/templates/pages/base_page.html:79
 msgid "Enter email address"
@@ -216,7 +216,7 @@ msgstr "メールアドレスを入力してください"
 
 #: donate/templates/pages/base_page.html:82
 msgid "Sign up"
-msgstr ""
+msgstr "ユーザー登録"
 
 #: donate/templates/pages/base_page.html:90
 msgid "Thanks!"
@@ -224,7 +224,7 @@ msgstr "ありがとうございます!"
 
 #: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr ""
+msgstr "これまでに Mozilla 関連のニュースレターを購読したことがない場合、購読開始の確認が必要となります。お送りした確認メールを受信トレイもしくは迷惑メールフィルタから探してください。"
 
 #: donate/templates/pages/base_page.html:103
 msgid "More about us"
