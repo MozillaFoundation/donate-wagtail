@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-09 12:17+0000\n"
-"PO-Revision-Date: 2020-01-05 09:32+0000\n"
+"PO-Revision-Date: 2020-01-05 09:45+0000\n"
 "Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: th\n"
@@ -95,19 +95,19 @@ msgstr "รหัสไปรษณีย์ที่คุณระบุไม
 
 #: donate/payments/views.py:179
 msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
-msgstr ""
+msgstr "ขออภัย เกิดข้อผิดพลาดในการประมวลผลการชำระเงินของคุณ โปรดลองอีกครั้งในภายหลังหรือใช้วิธีการชำระเงินอื่น"
 
 #: donate/payments/views.py:361
 msgid "Something went wrong. We were unable to process your payment."
-msgstr ""
+msgstr "มีบางอย่างผิดปกติ เราไม่สามารถประมวลผลการชำระเงินของคุณ"
 
 #: donate/payments/views.py:608 donate/payments/views.py:711
 msgid "Sorry there was an error processing your payment. Please try again later."
-msgstr ""
+msgstr "ขออภัย มีข้อผิดพลาดในการประมวลผลการชำระเงินของคณ โปรดลองอีกครั้งในภายหลัง"
 
 #: donate/recaptcha/fields.py:18
 msgid "Captcha was invalid. Please try again."
-msgstr ""
+msgstr "Captcha ไม่ถูกต้อง โปรดลองอีกครั้ง"
 
 #: donate/templates/404.html:4
 msgid "Page not found"
@@ -119,7 +119,7 @@ msgstr ""
 
 #: donate/templates/404.html:13
 msgid "Sorry, the page does not exist"
-msgstr ""
+msgstr "ขออภัย ไม่มีหน้านี้"
 
 #: donate/templates/404.html:14
 msgid "Go to our home page"
