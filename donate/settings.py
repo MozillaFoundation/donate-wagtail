@@ -536,9 +536,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-AUTHENTICATION_BACKENDS = (
-    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
-)
+
+# If True (which should only be done in settings.local), then show username and
+# password fields. You'll also need to enable the model backend in local settings
+USE_CONVENTIONAL_AUTH = env('USE_CONVENTIONAL_AUTH')
+
+if USE_CONVENTIONAL_AUTH is False:
+    AUTHENTICATION_BACKENDS = (
+        'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    )
 
 RANDOM_SEED = env('RANDOM_SEED')
 
@@ -623,10 +629,6 @@ OIDC_OP_JWKS_ENDPOINT = "https://auth.mozilla.auth0.com/.well-known/jwks.json"
 
 LOGIN_REDIRECT_URL = "/admin/"
 LOGOUT_REDIRECT_URL = "/"
-
-# If True (which should only be done in settings.local), then show username and
-# password fields. You'll also need to enable the model backend in local settings
-USE_CONVENTIONAL_AUTH = env('USE_CONVENTIONAL_AUTH')
 
 # Extra Wagtail config to disable password usage (SSO should be the only way in)
 # https://docs.wagtail.io/en/v2.6.3/advanced_topics/settings.html#password-management
