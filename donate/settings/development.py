@@ -1,5 +1,6 @@
 from configurations import Configuration
 from .environment import env
+from .oidc import OIDC
 from .database import Database
 from .base import Base
 from .redis import Redis
@@ -8,7 +9,7 @@ from .s3 import S3
 from .thunderbird import ThunderbirdOverrides
 
 
-class Development(Base, Database, Redis, S3, Braintree, Configuration):
+class Development(Base, OIDC, Database, Redis, S3, Braintree, Configuration):
     DEBUG = env('DEBUG')
     DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
 

@@ -1,10 +1,11 @@
 from configurations import Configuration
 from .base import Base
+from .oidc import OIDC
 from .database import Database
 from .braintree import Braintree
 
 
-class Testing(Base, Database, Braintree, Configuration):
+class Testing(Base, OIDC, Database, Braintree, Configuration):
     SECRET_KEY = 'test'
 
     RECAPTCHA_ENABLED = False

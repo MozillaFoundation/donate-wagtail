@@ -2,6 +2,7 @@ from configurations import Configuration
 from .environment import env
 from .base import Base
 from .secure import Secure
+from .oidc import OIDC
 from .database import Database
 from .redis import Redis
 from .s3 import S3
@@ -10,7 +11,7 @@ from .sentry import Sentry
 from .thunderbird import ThunderbirdOverrides
 
 
-class Staging(Base, Secure, Database, Redis, S3, Braintree, Sentry, Configuration):
+class Staging(Base, Secure, OIDC, Database, Redis, S3, Braintree, Sentry, Configuration):
     DEBUG = False
     SECRET_KEY = env('DJANGO_SECRET_KEY')
     BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL')

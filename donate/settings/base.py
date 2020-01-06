@@ -98,6 +98,8 @@ class Base(object):
 
         'django.contrib.admin',
         'django.contrib.auth',
+        'mozilla_django_oidc',
+
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
@@ -122,6 +124,8 @@ class Base(object):
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
             'wagtail.core.middleware.SiteMiddleware',
             'csp.middleware.CSPMiddleware',
+            # Make sure to check for deauthentication during a session:
+            'mozilla_django_oidc.middleware.SessionRefresh'
         ]))
 
     ROOT_URLCONF = 'donate.urls'
