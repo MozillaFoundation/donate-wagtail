@@ -1,5 +1,6 @@
 from .environment import env
 
+
 # Mozilla OpenID Connect/Auth0 configuration
 class OIDC(object):
     # disable user creating during authentication
