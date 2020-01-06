@@ -155,7 +155,7 @@ msgid "per month"
 msgstr "प्रति माह"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a> (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored "
 #| "by Mozilla."
@@ -163,8 +163,6 @@ msgid ""
 "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
 "donation will be stored by Mozilla."
 msgstr ""
-"आपके भुगतान की जानकारी <a href=\"%(braintree_url)s\">Braintree</a> (क्रेडिट/डेबिट कार्डों के लिए) या <a href=\"%(paypal_url)s\">PayPal</a> द्वारा पूरी की जाएगी, और Mozilla द्वारा आपके दान का एक "
-"रिकॉर्ड रखा जाएगा।"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
@@ -174,10 +172,10 @@ msgstr ""
 "हमें ईमेल करें।"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:17
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
-msgstr "दान देने के अन्य माध्यम: <a href=\"%(wire_transfer_url)s\"> वायर ट्रांसफर या SEPA</a> | <a href=\"%(check_url)s\">चेक</a> | <a href=\"%(bitcoin_url)s\">बिटकॉइन</a>"
+msgstr ""
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:23 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
@@ -487,10 +485,10 @@ msgid "Back"
 msgstr "वापस जाएँ"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
-#, fuzzy, python-format
+#, python-format
 #| msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">Wire Transfer or SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr "दान देने के अन्य माध्यम: <a href=\"%(wire_transfer_url)s\"> वायर ट्रांसफर या SEPA</a> | <a href=\"%(check_url)s\">चेक</a>"
+msgstr ""
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid ""
