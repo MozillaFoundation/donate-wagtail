@@ -6,6 +6,7 @@ import environ
 import logging.config
 
 import django
+from django.utils.log import DEFAULT_LOGGING
 import dj_database_url
 
 app = environ.Path(__file__) - 1
@@ -72,6 +73,15 @@ env = environ.Env(
     SLACK_WEBHOOK_RA=(str, ''),
     SLACK_WEBHOOK_PONTOON=(str, ''),
     TRAVIS_LOGS_URL=(str, ''),
+    # Mozilla OIDC
+    USE_CONVENTIONAL_AUTH=(bool, True),
+    OIDC_RP_CLIENT_ID=(str, None),
+    OIDC_RP_CLIENT_SECRET=(str, None),
+    OIDC_OP_AUTHORIZATION_ENDPOINT=(str, "https://auth.mozilla.auth0.com/authorize"),
+    OIDC_OP_TOKEN_ENDPOINT=(str, "https://auth.mozilla.auth0.com/oauth/token"),
+    OIDC_OP_USER_ENDPOINT=(str, "https://auth.mozilla.auth0.com/userinfo"),
+    OIDC_OP_DOMAIN=(str, "auth.mozilla.auth0.com"),
+    OIDC_OP_JWKS_ENDPOINT=(str, "https://auth.mozilla.auth0.com/.well-known/jwks.json"),
 )
 
 SENTRY_DSN = env('SENTRY_DSN')
@@ -150,12 +160,15 @@ INSTALLED_APPS = list(filter(None, [
 
     'django.contrib.admin',
     'django.contrib.auth',
+    'mozilla_django_oidc',  # Load after auth
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
 ]))
+
 
 MIDDLEWARE = list(filter(None, [
     'donate.utility.middleware.TargetDomainRedirectMiddleware' if DOMAIN_REDIRECT_MIDDLEWARE_ENABLED else None,
@@ -171,6 +184,8 @@ MIDDLEWARE = list(filter(None, [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'csp.middleware.CSPMiddleware',
+    # Make sure to check for deauthentication during a session:
+    'mozilla_django_oidc.middleware.SessionRefresh',
 ]))
 
 ROOT_URLCONF = 'donate.urls'
@@ -239,21 +254,6 @@ else:
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
         }
     }
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
 
 LANGUAGE_CODE = 'en-US'
 TIME_ZONE = 'UTC'
@@ -522,6 +522,23 @@ X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
 REFERRER_POLICY = 'no-referrer-when-downgrade'
 
 AUTH_USER_MODEL = 'users.User'
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+AUTHENTICATION_BACKENDS = (
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+)
 
 RANDOM_SEED = env('RANDOM_SEED')
 
@@ -584,3 +601,45 @@ SLACK_WEBHOOK_RA = env('SLACK_WEBHOOK_RA')
 # Pontoon check slack bot
 SLACK_WEBHOOK_PONTOON = env('SLACK_WEBHOOK_PONTOON')
 TRAVIS_LOGS_URL = env('TRAVIS_JOB_WEB_URL', default='')
+
+# Mozilla OpenID Connect/Auth0 configuration
+
+# disable user creating during authentication
+OIDC_CREATE_USER = False
+
+# How frequently do we check with the provider that the user still exists.
+OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 15 * 60
+
+OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_CLIENT_ID = env("OIDC_RP_CLIENT_ID")
+OIDC_RP_CLIENT_SECRET = env("OIDC_RP_CLIENT_SECRET")
+
+# These values should be overwritten by thunderbird/other instances:
+OIDC_OP_AUTHORIZATION_ENDPOINT = "https://auth.mozilla.auth0.com/authorize"
+OIDC_OP_TOKEN_ENDPOINT = "https://auth.mozilla.auth0.com/oauth/token"
+OIDC_OP_USER_ENDPOINT = "https://auth.mozilla.auth0.com/userinfo"
+OIDC_OP_DOMAIN = "auth.mozilla.auth0.com"
+OIDC_OP_JWKS_ENDPOINT = "https://auth.mozilla.auth0.com/.well-known/jwks.json"
+
+LOGIN_REDIRECT_URL = "/admin/"
+LOGOUT_REDIRECT_URL = "/"
+
+# If True (which should only be done in settings.local), then show username and
+# password fields. You'll also need to enable the model backend in local settings
+USE_CONVENTIONAL_AUTH = env('USE_CONVENTIONAL_AUTH')
+
+# Extra Wagtail config to disable password usage (SSO should be the only way in)
+# https://docs.wagtail.io/en/v2.6.3/advanced_topics/settings.html#password-management
+# Don't let users change or reset their password
+WAGTAIL_PASSWORD_MANAGEMENT_ENABLED = False
+WAGTAIL_PASSWORD_RESET_ENABLED = False
+
+# Don't require a password when creating a user,
+# and blank password means cannot log in unless SSO
+WAGTAILUSERS_PASSWORD_ENABLED = False
+
+# EXTRA LOGGING
+DEFAULT_LOGGING["loggers"]["mozilla_django_oidc"] = {
+    "handlers": ["console"],
+    "level": "INFO",
+}

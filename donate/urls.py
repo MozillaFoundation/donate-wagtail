@@ -17,6 +17,7 @@ from donate.payments.stripe_webhooks import StripeWebhookView
 
 # Patterns not subject to i18n
 urlpatterns = [
+    path('auth/', include('mozilla_django_oidc.urls')),
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
