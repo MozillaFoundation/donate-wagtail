@@ -37,18 +37,14 @@ class OIDC(object):
     # and blank password means cannot log in unless SSO
     WAGTAILUSERS_PASSWORD_ENABLED = False
 
-    # EXTRA LOGGING
-    DEFAULT_LOGGING = {
-        "loggers": {
-            "mozilla_django_oidc": {
-                "handlers": ["console"],
-                "level": "INFO",
-            }
-        }
-    }
-
     @classmethod
     def setup(cls):
+        # EXTRA LOGGING
+        cls.LOGGING['loggers']['mozilla_django_oidc'] = {
+            'handlers': ['debug'],
+            'level': 'INFO',
+        }
+
         if cls.USE_CONVENTIONAL_AUTH is False:
             cls.AUTHENTICATION_BACKENDS = (
                 'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
