@@ -1,5 +1,5 @@
 {% extends "wagtailadmin/login.html" %}
-{% load i18n auth_tags %}
+{% load auth_tags %}
 
 {% block login_form %}
 
@@ -12,10 +12,10 @@
   {% else %}
 
     <h1>Admin</h1>
-    <a href="{% url 'oidc_authentication_init' %}" class="button button-longrunning" data-clicked-text="{% trans 'Signing in…' %}">
+    <a href="{% url 'oidc_authentication_init' %}" class="button button-longrunning" data-clicked-text="Signing in…">
       <span class="icon icon-spinner"></span>
       <em>
-        {% trans 'Sign in with Mozilla SSO' %}
+        Sign in with Mozilla SSO
       </em>
     </a>
     <h3>If you lack SSO access, please ask your contact within Mozilla.</h3>

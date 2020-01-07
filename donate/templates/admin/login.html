@@ -1,5 +1,5 @@
 {% extends "admin/login.html" %}
-{% load i18n auth_tags %}
+{% load auth_tags %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
 
     {% if form.errors and not form.non_field_errors %}
     <p class="errornote">
-    {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+    {% if form.errors.items|length == 1 %}Please correct the error below.{% else %}Please correct the errors below.{% endif %}
     </p>
     {% endif %}
 
@@ -27,7 +27,7 @@
 
     <p class="module">
       <a class="button" href="{% url 'oidc_authentication_init' %}">
-        {% trans 'Sign in with Mozilla SSO' %}
+        Sign in with Mozilla SSO
       </a>
     </p>
     <p>
