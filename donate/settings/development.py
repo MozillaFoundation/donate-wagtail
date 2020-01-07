@@ -1,15 +1,9 @@
-from configurations import Configuration
 from .environment import env
-from .oidc import OIDC
-from .database import Database
-from .base import Base
-from .redis import Redis
-from .braintree import Braintree
-from .s3 import S3
+from .shared_settings import SharedSettings
 from .thunderbird import ThunderbirdOverrides
 
 
-class Development(Base, OIDC, Database, Redis, S3, Braintree, Configuration):
+class Development(SharedSettings):
     DEBUG = env('DEBUG')
     DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
 
@@ -40,7 +34,7 @@ class Development(Base, OIDC, Database, Redis, S3, Braintree, Configuration):
         super().post_setup()
 
 
-class ThunderbirdDevelopment(Development, ThunderbirdOverrides, Configuration):
+class ThunderbirdDevelopment(Development, ThunderbirdOverrides):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Development.INSTALLED_APPS
 
     @property

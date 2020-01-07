@@ -1,17 +1,9 @@
-from configurations import Configuration
 from .environment import env
-from .base import Base
-from .secure import Secure
-from .oidc import OIDC
-from .database import Database
-from .redis import Redis
-from .s3 import S3
-from .braintree import Braintree
-from .sentry import Sentry
+from .shared_settings import SharedSettingsDeployment
 from .thunderbird import ThunderbirdOverrides
 
 
-class Staging(Base, Secure, OIDC, Database, Redis, S3, Braintree, Sentry, Configuration):
+class Staging(SharedSettingsDeployment):
     DEBUG = False
     SECRET_KEY = env('DJANGO_SECRET_KEY')
     BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL')
@@ -32,7 +24,7 @@ class Staging(Base, Secure, OIDC, Database, Redis, S3, Braintree, Sentry, Config
         super().post_setup()
 
 
-class ThunderbirdStaging(Staging, ThunderbirdOverrides, Configuration):
+class ThunderbirdStaging(Staging, ThunderbirdOverrides):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Staging.INSTALLED_APPS
 
     @property

@@ -2,14 +2,14 @@ from .environment import env
 from .base import Base
 from .braintree import Braintree
 from .database import Database
+from .development import Development, ThunderbirdDevelopment
+from .production import Production, ThunderbirdProduction
 from .redis import Redis
+from .review_app import ReviewApp
 from .secure import Secure
 from .sentry import Sentry
-from .testing import Testing
-from .development import Development, ThunderbirdDevelopment
-from .review_app import ReviewApp
 from .staging import Staging, ThunderbirdStaging
-from .production import Production, ThunderbirdProduction
+from .testing import Testing
 
 # Exported Django Configuration objects
 __all__ = [
@@ -17,15 +17,15 @@ __all__ = [
     'Base',
     'Braintree',
     'Database',
+    'Development',
+    'Production',
     'Redis',
+    'ReviewApp',
     'Secure',
     'Sentry',
-    'Testing',
-    'Development',
     'Staging',
-    'ReviewApp',
-    'Production',
+    'Testing',
     'ThunderbirdDevelopment',
-    'ThunderbirdStaging',
     'ThunderbirdProduction',
+    'ThunderbirdStaging',
 ]
