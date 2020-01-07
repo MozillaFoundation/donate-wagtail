@@ -10,9 +10,6 @@ class Sentry(object):
     def setup(cls):
         super().setup()
 
-        cls.FRONTEND['SENTRY_DSN'] = cls.SENTRY_DSN
-        cls.FRONTEND['SENTRY_ENVIRONMENT'] = cls.SENTRY_ENVIRONMENT
-
         import sentry_sdk
         from sentry_sdk.integrations.django import DjangoIntegration
         sentry_sdk.init(
