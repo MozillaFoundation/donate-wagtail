@@ -24,7 +24,7 @@ class CustomSyncManager(SyncManager):
     def lock(self):
         return RedLock("lock:wagtail_localize_pontoon.sync", connection_details=[
             {
-                'url': settings.REDIS_URL or 'redis://localhost:6379/0',
+                'url': settings.REDIS_URL,
             }
         ])
 

@@ -54,7 +54,7 @@ if settings.DEBUG:
             path('__debug__/', include(debug_toolbar.urls)),
         ] + urlpatterns
 
-    if settings.SENTRY_DSN:
+    if hasattr(settings, 'SENTRY_DSN'):
         urlpatterns = [
             path('sentry-debug', lambda r:  1 / 0)
         ] + urlpatterns

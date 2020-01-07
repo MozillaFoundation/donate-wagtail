@@ -2,7 +2,6 @@ import factory
 import random
 
 from django.core.management.base import BaseCommand
-from django.core.management import call_command
 from django.conf import settings
 
 import donate.core.factory as core_factory
@@ -17,13 +16,6 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--delete',
-            action='store_true',
-            dest='delete',
-            help="Delete previously created pages from the database",
-        )
-
-        parser.add_argument(
             '--seed',
             action='store',
             dest='seed',
@@ -31,9 +23,6 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-
-        if options['delete']:
-            call_command('flush_models')
 
         faker = factory.faker.Faker._get_faker(locale='en-US')
 
