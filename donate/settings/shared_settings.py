@@ -22,7 +22,7 @@ class SharedSettings(Base, OIDC, Database, Redis, S3, Braintree, Configuration):
         super().post_setup()
 
 
-class SharedSettingsDeployment(Secure, Sentry, SharedSettings):
+class SharedSettingsDeployment(SharedSettings, Secure, Sentry):
     @classmethod
     def pre_setup(cls):
         super().pre_setup()
