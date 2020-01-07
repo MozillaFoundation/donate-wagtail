@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 12:17+0000\n"
+"POT-Creation-Date: 2020-01-07 16:14+0000\n"
 "PO-Revision-Date: 2019-11-22 04:47+0000\n"
 "Last-Translator: Aman Alam <amanpreet.alam@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,41 +31,46 @@ msgstr "ਨੰਬਰ ਦਿਓ।"
 msgid "Enter a valid email address."
 msgstr "ਠੀਕ ਈਮੇਲ ਸਿਰਨਾਵਾਂ ਦਿਓ।"
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:45
+#, python-format
+msgid "Donations must be %(amount)s or more"
+msgstr ""
+
+#: donate/payments/forms.py:52 donate/payments/forms.py:66
+#: donate/payments/forms.py:113
 msgid "Amount"
 msgstr "ਰਕਮ"
 
-#: donate/payments/forms.py:48
+#: donate/payments/forms.py:79
 msgid "First name"
 msgstr "ਨਾਂ ਦਾ ਪਹਿਲਾਂ ਹਿੱਸਾ"
 
-#: donate/payments/forms.py:49
+#: donate/payments/forms.py:80
 msgid "Last name"
 msgstr "ਨਾਂ ਦਾ ਆਖਰੀ ਹਿੱਸਾ"
 
-#: donate/payments/forms.py:50 donate/payments/forms.py:95
+#: donate/payments/forms.py:81 donate/payments/forms.py:123
 msgid "Email"
 msgstr "ਈਮੇਲ"
 
-#: donate/payments/forms.py:51
+#: donate/payments/forms.py:82
 msgid "Street"
 msgstr "ਸੜਕ"
 
-#: donate/payments/forms.py:52
+#: donate/payments/forms.py:83
 msgid "City"
 msgstr "ਸ਼ਹਿਰ"
 
-#: donate/payments/forms.py:56
+#: donate/payments/forms.py:87
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
 msgstr "ਜ਼ਿਪ ਕੋਡ"
 
-#: donate/payments/forms.py:59
+#: donate/payments/forms.py:90
 msgid "Country"
 msgstr "ਦੇਸ਼"
 
-#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:86
+#: donate/payments/forms.py:131 donate/templates/pages/base_page.html:86
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "ਮੈਂ ਮੋਜ਼ੀਲਾ ਵਲੋਂ ਮੇਰੀ ਜਾਣਕਾਰੀ ਨੂੰ ਇਸ <a href='%(url)s'>ਪਰਦੇਦਾਰੀ ਨੀਤੀ</a> ਦੇ ਤਹਿਤ ਨਿਪਟਣ ਲਈ ਸਹਿਮਤ ਹਾਂ।"
@@ -98,7 +103,7 @@ msgstr "ਅਫ਼ਸੋਸ, ਤੁਹਾਡੇ ਭੁਗਤਾਨ ਉੱਤੇ �
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "ਕੁਝ ਗਲਤ ਹੋਇਆ ਹੈ। ਅਸੀਂ ਤੁਹਾਡੇ ਭੁਗਤਾਨ ਉੱਤੇ ਕਾਰਵਾਈ ਕਰਨ ਲਈ ਅਸਮਰੱਥ ਸਾਂ।"
 
-#: donate/payments/views.py:608 donate/payments/views.py:711
+#: donate/payments/views.py:613 donate/payments/views.py:722
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "ਅਫ਼ਸੋਸ, ਤੁਹਾਡੇ ਭੁਗਤਾਨ ਉੱਤੇ ਕਾਰਵਾਈ ਦੌਰਾਨ ਗਲਤੀ ਸੀ। ਬਾਅਦ ‘ਚ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
@@ -412,18 +417,18 @@ msgstr "ਹਾਂ, ਮੈਂ ਦੇਵਾਂਗਾ/ਦੇਵਾਂਗੀ:"
 msgid "Monthly"
 msgstr "/ ਮਹੀਨੇਵਾਰ"
 
-#: donate/templates/payment/card_upsell_master.html:44
+#: donate/templates/payment/card_upsell_master.html:48
 #, python-format
 msgid "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
 
-#: donate/templates/payment/card_upsell_master.html:49
+#: donate/templates/payment/card_upsell_master.html:53
 #, fuzzy
 #| msgid "/ Monthly"
 msgid "Donate Monthly"
 msgstr "/ ਮਹੀਨੇਵਾਰ"
 
-#: donate/templates/payment/card_upsell_master.html:52
+#: donate/templates/payment/card_upsell_master.html:56
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
 msgstr "ਨਹੀਂ ਜੀ ਧੰਨਵਾਦ"

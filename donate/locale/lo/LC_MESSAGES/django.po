@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 12:17+0000\n"
+"POT-Creation-Date: 2020-01-07 16:14+0000\n"
 "PO-Revision-Date: 2019-12-09 02:19+0000\n"
 "Last-Translator: Saikeo <kavhanxay@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,41 +31,46 @@ msgstr "ປ້ອນຕົວເລກ."
 msgid "Enter a valid email address."
 msgstr "ປ້ອນທີ່ຢູ່ອີເມວທີ່ຖືກຕ້ອງ."
 
-#: donate/payments/forms.py:21 donate/payments/forms.py:35
-#: donate/payments/forms.py:81 donate/payments/forms.py:89
+#: donate/payments/forms.py:45
+#, python-format
+msgid "Donations must be %(amount)s or more"
+msgstr ""
+
+#: donate/payments/forms.py:52 donate/payments/forms.py:66
+#: donate/payments/forms.py:113
 msgid "Amount"
 msgstr "ຈຳນວນ"
 
-#: donate/payments/forms.py:48
+#: donate/payments/forms.py:79
 msgid "First name"
 msgstr "ຊື່​ແທ້"
 
-#: donate/payments/forms.py:49
+#: donate/payments/forms.py:80
 msgid "Last name"
 msgstr "ນາມ​ສະ​ກຸນ"
 
-#: donate/payments/forms.py:50 donate/payments/forms.py:95
+#: donate/payments/forms.py:81 donate/payments/forms.py:123
 msgid "Email"
 msgstr "ອີເມລ"
 
-#: donate/payments/forms.py:51
+#: donate/payments/forms.py:82
 msgid "Street"
 msgstr "ຖະໜົນ"
 
-#: donate/payments/forms.py:52
+#: donate/payments/forms.py:83
 msgid "City"
 msgstr "ເມືອງ"
 
-#: donate/payments/forms.py:56
+#: donate/payments/forms.py:87
 msgctxt "Feel free to replace with “Postal code” or equivalent"
 msgid "ZIP Code"
 msgstr "ລະຫັດໄປສະນີ"
 
-#: donate/payments/forms.py:59
+#: donate/payments/forms.py:90
 msgid "Country"
 msgstr "ປະເທດ"
 
-#: donate/payments/forms.py:103 donate/templates/pages/base_page.html:86
+#: donate/payments/forms.py:131 donate/templates/pages/base_page.html:86
 #, python-format
 msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
 msgstr "ຂ້ອຍອະນຸຍາດໃຫ້ Mozilla ຮອງຮັບຂໍ້ມູນຂອງຂ້ອຍຕາມທີ່ໄດ້ຮ່າງໄວ້ຢູ່ໃນ <a href='%(url)s'>ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</a>."
@@ -98,7 +103,7 @@ msgstr "ຂໍອະໄພ, ເກີດມີຂໍ້ຜິດພາດໃນ�
 msgid "Something went wrong. We were unable to process your payment."
 msgstr "ມີບາງຢ່າງຜິດປົກກະຕິ. ພວກເຮົາບໍ່ສາມາດດຳເນີນການຈ່າຍເງິນຂອງທ່ານໄດ້."
 
-#: donate/payments/views.py:608 donate/payments/views.py:711
+#: donate/payments/views.py:613 donate/payments/views.py:722
 msgid "Sorry there was an error processing your payment. Please try again later."
 msgstr "ຂໍອະໄພ, ເກີດມີຂໍ້ຜິດພາດໃນການດຳເນີນການຈ່າຍເງິນຂອງທ່ານ. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ."
 
@@ -406,16 +411,16 @@ msgstr "ແມ່ນແລ້ວ, ຂ້ອຍຈະໃຫ້:"
 msgid "Monthly"
 msgstr "ລາຍເດືອນ"
 
-#: donate/templates/payment/card_upsell_master.html:44
+#: donate/templates/payment/card_upsell_master.html:48
 #, python-format
 msgid "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
 
-#: donate/templates/payment/card_upsell_master.html:49
+#: donate/templates/payment/card_upsell_master.html:53
 msgid "Donate Monthly"
 msgstr "ບໍລິຈາກລາຍເດືອນ"
 
-#: donate/templates/payment/card_upsell_master.html:52
+#: donate/templates/payment/card_upsell_master.html:56
 #: donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
 msgstr "ບໍ່, ຂອບໃຈ"

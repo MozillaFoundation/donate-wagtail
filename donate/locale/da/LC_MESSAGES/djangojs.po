@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-09 12:17+0000\n"
+"POT-Creation-Date: 2020-01-07 16:14+0000\n"
 "PO-Revision-Date: 2019-10-28 14:10+0000\n"
 "Last-Translator: Joergen <joergenr@stofanet.dk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Pontoon\n"
 
 #: donate/frontend/_js/main.compiled.js:16
-#: source/js/components/currency-selector.js:88
+#: source/js/components/currency-selector.js:91
 msgid "per month"
 msgstr "pr. måned"
 
