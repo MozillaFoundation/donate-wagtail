@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-07 16:14+0000\n"
-"PO-Revision-Date: 2020-01-08 06:06+0000\n"
+"PO-Revision-Date: 2020-01-08 07:33+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -333,11 +333,11 @@ msgstr "Au fost câteva erori cu formularul tău. Te rugăm să modifici câmpur
 
 #: donate/templates/payment/card.html:64
 msgid "We were unable to take payment because the payment processor reported an error with your address information:"
-msgstr ""
+msgstr "Nu am reușit să preluăm plata deoarece procesatorul de plăți a raportat o eroare legată de adresa ta:"
 
 #: donate/templates/payment/card.html:68
 msgid "Please correct these errors and try again."
-msgstr ""
+msgstr "Te rugăm să corectezi aceste erori și să încerci din nou."
 
 #: donate/templates/payment/card.html:91
 msgid "Payment"
@@ -362,24 +362,27 @@ msgid ""
 "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
 "donation."
 msgstr ""
+"Autorizez Fundația Mozilla să tragă automat din contul meu de card, în fiecare lună, suma indicată mai sus, începând cu data de astăzi și continuând în fiecare lună la aceeași dată, până la anularea"
+" de către mine. Înțeleg că anularea trebuie efectuată cu cel puțin 5 zile înainte de următoarea donație planificată, prin mesaj pe e-mail trimis la <a href='mailto:%(email)s'>%(email)s</a> și că pot"
+" solicita o rambursare numai în termen de 15 zile de la data unei donații."
 
 #: donate/templates/payment/card.html:128
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr ""
+msgstr "Autorizez Fundația Mozilla să îmi tragă din contul de card suma indicată mai sus. Înțeleg că pot solicita o rambursare numai în termen de 15 zile de la data la care a fost efectuată donația."
 
 #: donate/templates/payment/card.html:143
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
-msgstr ""
+msgstr "Donează <span class=\"%(span_class)s\">%(formatted_amount)s</span> pe lună"
 
 #: donate/templates/payment/card.html:145
 #, python-format
 msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
-msgstr ""
+msgstr "Donează <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 
 #: donate/templates/payment/card.html:153
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
-msgstr ""
+msgstr "Donația ta ajută la menținerea Webului deschis și liber. Îți mulțumim cu anticipație."
 
 #: donate/templates/payment/card_upsell_master.html:4 donate/templates/payment/paypal_upsell_master.html:4 donate/templates/payment/thank_you_master.html:4
 msgid "Thank you"
