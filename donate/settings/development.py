@@ -22,7 +22,7 @@ class Development(Base, Secure, OIDC, Database, Redis, S3, Braintree, Configurat
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 
     # In dev, lets not worry about enforcing password changes
-    AUTH_PASSWORD_VALIDATORS =[]
+    AUTH_PASSWORD_VALIDATORS = []
 
     @classmethod
     def pre_setup(cls):
