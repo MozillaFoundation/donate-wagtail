@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-07 16:14+0000\n"
-"PO-Revision-Date: 2020-01-08 07:33+0000\n"
+"PO-Revision-Date: 2020-01-08 07:41+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -395,15 +395,15 @@ msgstr "Îți mulțumim pentru darul tău generos!"
 
 #: donate/templates/payment/card_upsell_master.html:17 donate/templates/payment/paypal_upsell_master.html:17
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Ne-ar bucura foarte mult să fii susținător permanent Mozilla. <b>Ai putea adăuga o donație lunară începând de luna viitoare?</b>"
 
 #: donate/templates/payment/card_upsell_master.html:21 donate/templates/payment/paypal_upsell_master.html:21
 msgid "Yes, I will give:"
-msgstr ""
+msgstr "Da, voi da:"
 
 #: donate/templates/payment/card_upsell_master.html:40
 msgid "Monthly"
-msgstr ""
+msgstr "Lunar"
 
 #: donate/templates/payment/card_upsell_master.html:48
 #, python-format
@@ -411,10 +411,13 @@ msgid ""
 "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
 msgstr ""
+"Autorizez Fundația Mozilla să tragă automat din contul meu de card, în fiecare lună, suma indicată mai sus, începând cu luna viitoare, la aceeași dată cu ziua de astăzi și continuând în fiecare lună"
+" după aceea până la anularea de către mine. Înțeleg că anularea trebuie efectuată cu cel puțin 5 zile înainte de următoarea donație planificată, prin mesaj pe e-mail trimis la %(email)s și că pot "
+"solicita o rambursare numai în termen de 15 zile de la data unei donații."
 
 #: donate/templates/payment/card_upsell_master.html:53
 msgid "Donate Monthly"
-msgstr ""
+msgstr "Donează lunar"
 
 #: donate/templates/payment/card_upsell_master.html:56 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
@@ -426,7 +429,7 @@ msgstr "Păstrează legătura"
 
 #: donate/templates/payment/newsletter_signup.html:13
 msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
-msgstr ""
+msgstr "Protejează internetul ca resursă publică globală. Înscrie-te pe lista noastră de corespondență pentru acțiuni și pentru a te ține la curent!"
 
 #: donate/templates/payment/newsletter_signup.html:36
 msgid "Sign Up"
@@ -451,17 +454,17 @@ msgstr "Ți-am trimis prin e-mail o chitanță de donație; dacă lipsește, te 
 
 #: donate/templates/payment/thank_you_master.html:17
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr ""
+msgstr "La final, poți să-ți amplifici impactul prin împărtășirea muncii importante pe care o depune Mozilla? Îți mulțumim din nou!"
 
 #: donate/templates/payment/thank_you_master.html:22
 msgctxt "Used as a tweet"
 msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
-msgstr ""
+msgstr "Am donat la @mozilla astăzi deoarece #lovetheweb. Vino alături de mine și hai să ajutăm în lupta pentru un internet mai bun și mai sănătos pentru noi toți."
 
 #: donate/templates/payment/thank_you_master.html:23
 msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
-msgstr ""
+msgstr "Am făcut azi o donație către Mozilla"
 
 #: donate/templates/payment/thank_you_master.html:25 donate/thunderbird/templates/payment/thank_you.html:14
 msgid "Share on Facebook"
@@ -496,28 +499,30 @@ msgstr "Înapoi"
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
-msgstr ""
+msgstr "Alte modalități pentru donații: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Cec</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
 msgid ""
 "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 "tax-deductible as charitable contributions."
 msgstr ""
+"Contribuțiile merg la MZLA Technologies Corporation, o corporație californiană deținută integral de Fundația Mozilla. Fondurile vor fi rezervate pentru utilizarea în proiectul Thunderbird. "
+"Contribuțiile nu sunt deductibile drept contribuții caritabile în calcularea impozitelor."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Ne-ar bucura foarte mult să fii susținător permanent Thunderbird. <b>Ai putea adăuga o donație lunară începând de luna viitoare?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr ""
+msgstr "La final, poți să-ți amplifici impactul prin împărtășirea muncii importante pe care o depune Thunderbird? Îți mulțumim din nou!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:11
 msgctxt "Used as a tweet"
 msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
-msgstr ""
+msgstr "Am donat azi la @mozthunderbird pentru #freetheinbox. Donați și voi ca să susținem confidențialitatea comunicațiilor."
 
 #: donate/thunderbird/templates/payment/thank_you.html:12
 msgctxt "Email subject line"
 msgid "I donated to Thunderbird today"
-msgstr ""
+msgstr "Am făcut astăzi o donație pentru Thunderbird"
