@@ -12,17 +12,15 @@ from .languages import LANGUAGES
 
 
 class Base(object):
-    SECRET_KEY = 'CHANGE ME OUTSIDE OF DEV'
+    SECRET_KEY = env('DJANGO_SECRET_KEY')
     WAGTAIL_SITE_NAME = 'donate'
     WSGI_APPLICATION = 'donate.wsgi.application'
-    RECAPTCHA_ENABLED = False
     LANGUAGE_CODE = 'en-US'
     TIME_ZONE = 'UTC'
     USE_I18N = True
     USE_L10N = True
     USE_TZ = True
     AUTH_USER_MODEL = 'users.User'
-    DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
     ALLOWED_HOSTS = env('ALLOWED_HOSTS')
     RANDOM_SEED = env('RANDOM_SEED')
 
@@ -30,7 +28,7 @@ class Base(object):
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')
     TARGET_DOMAINS = env('TARGET_DOMAINS')
 
-    # Initialize these attributes to None
+    # Basket Configuration
     BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL')
     BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL')
 
@@ -38,6 +36,8 @@ class Base(object):
     WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
     WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
     WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
+    SSH_KEY = env('SSH_KEY')
+    SSH_CONFIG = env('SSH_CONFIG')
 
     # Static content settings
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -48,7 +48,7 @@ class Base(object):
     MEDIA_ROOT = root('media/')
     MEDIA_URL = '/media/'
 
-    # Stripe
+    # Stripe webhook credentials
     STRIPE_API_KEY = env('STRIPE_API_KEY')
     STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 
@@ -131,15 +131,6 @@ class Base(object):
     ROOT_URLCONF = 'donate.urls'
 
     TEMPLATES = defaults.TEMPLATES
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': root('db.sqlite3'),
-        }
-    }
-
-    RQ_QUEUES = defaults.RQ_QUEUES
 
     LANGUAGES = LANGUAGES
 

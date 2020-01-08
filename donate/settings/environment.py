@@ -9,7 +9,6 @@ from . import defaults
 # we error out first.
 env = environ.Env(
     ALLOWED_HOSTS=(list, '*'),
-    AUTH_PASSWORD_VALIDATORS=(list, []),
     AWS_ACCESS_KEY_ID=(str, ''),
     AWS_LOCATION=(str, ''),
     AWS_REGION=(str, ''),
@@ -26,8 +25,6 @@ env = environ.Env(
     BRAINTREE_PUBLIC_KEY=(str, 'test'),
     BRAINTREE_TOKENIZATION_KEY=(str, ''),
     BRAINTREE_USE_SANDBOX=(bool, True),
-    CONTENT_TYPE_NO_SNIFF=(bool, True),
-    CSRF_COOKIE_SECURE=(bool, False),
     CSP_BASE_URI=(tuple, defaults.CSP_BASE_URI),
     CSP_CONNECT_SRC=(tuple, defaults.CSP_CONNECT_SRC),
     CSP_DEFAULT_SRC=(tuple, defaults.CSP_DEFAULT_SRC),
@@ -58,7 +55,6 @@ env = environ.Env(
     REVIEW_APP=(bool, False),
     SENTRY_DSN=(str, None),
     SENTRY_ENVIRONMENT=(str, None),
-    SESSION_COOKIE_SECURE=(bool, False),
     SET_HSTS=(bool, False),
     SLACK_WEBHOOK_RA=(str, ''),
     SLACK_WEBHOOK_PONTOON=(str, ''),
@@ -70,12 +66,8 @@ env = environ.Env(
     TARGET_DOMAINS=(list, []),
     TRAVIS_LOGS_URL=(str, ''),
     USE_S3=(bool, False),
-    USE_X_FORWARDED_FOR=(bool, False),
-    USE_X_FORWARDED_HOST=(bool, False),
     WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
     WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
-    X_FRAME_OPTIONS=(str, 'DENY'),
-    XSS_PROTECTION=(bool, True),
     # Mozilla OIDC
     USE_CONVENTIONAL_AUTH=(bool, True),
     OIDC_RP_CLIENT_ID=(str, None),

@@ -1,5 +1,4 @@
 from configurations import Configuration
-from .environment import env
 from .base import Base
 from .secure import Secure
 from .oidc import OIDC
@@ -13,9 +12,6 @@ from .thunderbird import ThunderbirdOverrides
 
 class Staging(Base, Secure, OIDC, Database, Redis, S3, Braintree, Sentry, Configuration):
     DEBUG = False
-    SECRET_KEY = env('DJANGO_SECRET_KEY')
-    BASKET_API_ROOT_URL = env('BASKET_API_ROOT_URL')
-    BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL')
 
     @classmethod
     def pre_setup(cls):

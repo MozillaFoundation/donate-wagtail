@@ -2,7 +2,6 @@ from .environment import env
 
 
 class Secure(object):
-    DEBUG = False
     USE_X_FORWARDED_HOST = True
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
