@@ -1,0 +1,12 @@
+.support-form {
+  max-width: 500px;
+
+  p {
+    @include font-size(l);
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+}
