@@ -1,5 +1,6 @@
 from configurations import Configuration
 from .environment import env
+from .secure import Secure
 from .oidc import OIDC
 from .database import Database
 from .base import Base
@@ -9,23 +10,19 @@ from .s3 import S3
 from .thunderbird import ThunderbirdOverrides
 
 
-class Development(Base, OIDC, Database, Redis, S3, Braintree, Configuration):
+class Development(Base, Secure, OIDC, Database, Redis, S3, Braintree, Configuration):
     DEBUG = env('DEBUG')
     DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
 
-    SECRET_KEY = env('DJANGO_SECRET_KEY')
-    ALLOWED_HOSTS = env('ALLOWED_HOSTS')
-
-    CONTENT_TYPE_NO_SNIFF = env('CONTENT_TYPE_NO_SNIFF')
-    SSL_REDIRECT = env('SSL_REDIRECT')
-    USE_X_FORWARDED_FOR = env('USE_X_FORWARDED_FOR')
-    X_FRAME_OPTIONS = env('X_FRAME_OPTIONS')
-    XSS_PROTECTION = env('XSS_PROTECTION')
-    CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE')
-    SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE')
+    RECAPTCHA_ENABLED = False
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    USE_X_FORWARDED_HOST = False
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 
     # In dev, lets not worry about enforcing password changes
-    AUTH_PASSWORD_VALIDATORS = env('AUTH_PASSWORD_VALIDATORS')
+    AUTH_PASSWORD_VALIDATORS =[]
 
     @classmethod
     def pre_setup(cls):

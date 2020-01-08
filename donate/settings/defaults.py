@@ -218,16 +218,3 @@ TEMPLATES = [
         },
     },
 ]
-
-RQ_QUEUES = {
-    'default': {
-        'URL': 'redis://redis:6379/0',
-        'DEFAULT_TIMEOUT': 500,
-    },
-
-    # Must be a separate queue as it's limited to one item at a time
-    'wagtail_localize_pontoon.sync': {
-        'URL': 'redis://redis:6379/0',
-        'DEFAULT_TIMEOUT': 500,
-    },
-}
