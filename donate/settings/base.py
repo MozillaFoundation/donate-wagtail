@@ -48,7 +48,7 @@ class Base(object):
     MEDIA_ROOT = root('media/')
     MEDIA_URL = '/media/'
 
-    # Stripe Webhook credentials
+    # Stripe webhook credentials
     STRIPE_API_KEY = env('STRIPE_API_KEY')
     STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 
