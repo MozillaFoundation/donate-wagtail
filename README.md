@@ -37,7 +37,7 @@ To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For e
 |  Staging              | Staging configuration.                                                                                             |
 | Production            | Production configuration.                                                                                          |
 | ReviewApp             | Review App configuration. Use this configuration for Heroku Review apps.                                           |
-| ThuderbirdDevelopment | Base configuration that enables all the Thunderbird template and string overrides. Suitable for local development. |
+| ThunderbirdDevelopment | Base configuration that enables all the Thunderbird template and string overrides. Suitable for local development. |
 | ThunderbirdStaging    | Staging configuration for Thunderbird donation configurations.                                                     |
 | ThunderbirdProduction | Production configuration for Thunderbird donation configurations.                                                  |
 
