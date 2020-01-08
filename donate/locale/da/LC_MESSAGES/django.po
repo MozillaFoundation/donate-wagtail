@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-07 16:14+0000\n"
-"PO-Revision-Date: 2019-12-10 11:28+0000\n"
+"PO-Revision-Date: 2020-01-07 18:54+0000\n"
 "Last-Translator: Joergen <joergenr@stofanet.dk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -34,10 +34,9 @@ msgstr "Indtast en gyldig mailadresse."
 #: donate/payments/forms.py:45
 #, python-format
 msgid "Donations must be %(amount)s or more"
-msgstr ""
+msgstr "Bidrag skal være på %(amount)s eller mere"
 
-#: donate/payments/forms.py:52 donate/payments/forms.py:66
-#: donate/payments/forms.py:113
+#: donate/payments/forms.py:52 donate/payments/forms.py:66 donate/payments/forms.py:113
 msgid "Amount"
 msgstr "Beløb"
 
@@ -127,9 +126,7 @@ msgstr "Beklager, men siden findes ikke"
 msgid "Go to our home page"
 msgstr "Gå til vores startside"
 
-#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6
-#: donate/templates/pages/base_page.html:13
-#: donate/templates/pages/base_page.html:14
+#: donate/templates/base.html:8 donate/templates/pages/base_page.html:6 donate/templates/pages/base_page.html:13 donate/templates/pages/base_page.html:14
 msgctxt "Page title"
 msgid "Donate to Mozilla"
 msgstr "Giv et bidrag til Mozilla"
@@ -142,27 +139,19 @@ msgstr "Én gang"
 msgid "MONTHLY"
 msgstr "Månedligt"
 
-#: donate/templates/fragments/donate_form.html:39
-#: donate/templates/fragments/donate_form.html:40
-#: donate/templates/fragments/donate_form.html:99
-#: donate/templates/fragments/donate_form.html:100
+#: donate/templates/fragments/donate_form.html:39 donate/templates/fragments/donate_form.html:40 donate/templates/fragments/donate_form.html:99 donate/templates/fragments/donate_form.html:100
 msgid "Other amount"
 msgstr "Andet beløb"
 
-#: donate/templates/fragments/donate_form.html:46
-#: donate/templates/fragments/donate_form.html:106
+#: donate/templates/fragments/donate_form.html:46 donate/templates/fragments/donate_form.html:106
 msgid "Choose Payment"
 msgstr "Vælg betalingsmulighed"
 
-#: donate/templates/fragments/donate_form.html:52
-#: donate/templates/fragments/donate_form.html:112
-#: donate/templates/payment/card.html:97
+#: donate/templates/fragments/donate_form.html:52 donate/templates/fragments/donate_form.html:112 donate/templates/payment/card.html:97
 msgid "SECURE"
 msgstr "SIKKER"
 
-#: donate/templates/fragments/donate_form.html:58
-#: donate/templates/fragments/donate_form.html:118
-#: donate/templates/pages/base_page.html:127
+#: donate/templates/fragments/donate_form.html:58 donate/templates/fragments/donate_form.html:118 donate/templates/pages/base_page.html:127
 msgid "Donate"
 msgstr "Donér"
 
@@ -172,28 +161,37 @@ msgstr "pr. måned"
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:6
 #, python-format
-msgid "Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your donation will be stored by Mozilla."
-msgstr "Dine betalingsoplysninger vil blive behandlet af <a href=\"%(braintree_url)s\">Braintree</a>, et PayPal-firma, (kredit-/debitkort) eller <a href=\"%(paypal_url)s\">PayPal</a>, og oplysninger om dit bidrag vil bive gemt hos Mozilla."
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
+"donation will be stored by Mozilla."
+msgstr ""
+"Dine betalingsoplysninger vil blive behandlet af <a href=\"%(braintree_url)s\">Braintree</a>, et PayPal-firma, (kredit-/debitkort) eller <a href=\"%(paypal_url)s\">PayPal</a>, og oplysninger om dit "
+"bidrag vil bive gemt hos Mozilla."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:9
 #, python-format
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr "Månedlige bidrag opkræves hver måned på samme månedsdag som den, du donerer på i dag, og opkrævningerne vil fortsætte, indtil du annullerer betalingen. Hvis du vil annullere dine månedlige bidrag, så send en mail til os på adressen <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Månedlige bidrag opkræves hver måned på samme månedsdag som den, du donerer på i dag, og opkrævningerne vil fortsætte, indtil du annullerer betalingen. Hvis du vil annullere dine månedlige bidrag, "
+"så send en mail til os på adressen <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:17
 #, python-format
 msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 msgstr "Andre måder at give bidrag på: <a href=\"%(wire_transfer_url)s\">Pengeoverførsel eller SEPA</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
 
-#: donate/templates/fragments/donate_form_disclaimer_master.html:23
-#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
+#: donate/templates/fragments/donate_form_disclaimer_master.html:23 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
 #, python-format
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgstr "Problemer med dit bidrag? Se vores <a href=\"%(faq_url)s\">FAQ</a> med svar på de oftest stillede spørgsmål. Stadig problemer? <a href=\"mailto:%(email)s\">Send os en mail</a>."
 
 #: donate/templates/fragments/donate_form_disclaimer_master.html:30
-msgid "Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law."
-msgstr "Bidrag går til Mozilla Foundation, en 501(c)(3)-organisation beliggende i Mountain View, Californien og anvendes til deres velgørende formål. Bidrag er fradragsberettigede i USA i henhold til gældende lovgivning."
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
+msgstr ""
+"Bidrag går til Mozilla Foundation, en 501(c)(3)-organisation beliggende i Mountain View, Californien og anvendes til deres velgørende formål. Bidrag er fradragsberettigede i USA i henhold til "
+"gældende lovgivning."
 
 #: donate/templates/pages/base_page.html:26
 msgid "Initiatives"
@@ -237,15 +235,14 @@ msgstr "Tak!"
 
 #: donate/templates/pages/base_page.html:91
 msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
-msgstr "Hvis du ikke tidligere har bekræftet et abonnement på et Mozilla-relateret nyhedsbrev, skal du muligvis gøre det nu. Tjek din indbakke eller dit spamfilter for at se, om du har fået en mail fra os."
+msgstr ""
+"Hvis du ikke tidligere har bekræftet et abonnement på et Mozilla-relateret nyhedsbrev, skal du muligvis gøre det nu. Tjek din indbakke eller dit spamfilter for at se, om du har fået en mail fra os."
 
 #: donate/templates/pages/base_page.html:103
 msgid "More about us"
 msgstr "Mere om os"
 
-#: donate/templates/pages/base_page.html:106
-#: donate/templates/payment/thank_you_master.html:36
-#: donate/thunderbird/templates/payment/thank_you.html:25
+#: donate/templates/pages/base_page.html:106 donate/templates/payment/thank_you_master.html:36 donate/thunderbird/templates/payment/thank_you.html:25
 msgid "Twitter"
 msgstr "Twitter"
 
@@ -275,23 +272,23 @@ msgstr "Licens"
 
 #: donate/templates/pages/base_page.html:153
 #, python-format
-msgid "Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a %(link_attributes)s>%(site_url)s</a>."
-msgstr "Mozilla er en verdensomspændende nonprofit-organisation. Vores mål er at give dig kontrollen over din oplevelse på nettet, samtidig med at vi arbejder på at forme fremtidens internet for det fælles bedste. Besøg os på <a %(link_attributes)s>%(site_url)s</a>."
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
+msgstr ""
+"Mozilla er en verdensomspændende nonprofit-organisation. Vores mål er at give dig kontrollen over din oplevelse på nettet, samtidig med at vi arbejder på at forme fremtidens internet for det fælles "
+"bedste. Besøg os på <a %(link_attributes)s>%(site_url)s</a>."
 
 #: donate/templates/pages/core/campaign_page.html:38
 msgctxt "Button"
 msgid "DONATE NOW"
 msgstr "Giv et bidrag nu"
 
-#: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page.html:33
-#: donate/templates/payment/card.html:157
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page.html:33 donate/templates/payment/card.html:157
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "Emblem for fire-stjernet Charity Navigator"
 
-#: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page.html:36
-#: donate/templates/payment/card.html:160
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page.html:36 donate/templates/payment/card.html:160
 msgid "Seal of GuideStar Gold 2019"
 msgstr "Emblem for GuideStar Gold 2019"
 
@@ -330,10 +327,7 @@ msgstr "Bekræft"
 msgid "Your Details"
 msgstr "Dine betalingsoplysninger"
 
-#: donate/templates/payment/card.html:60
-#: donate/templates/payment/card_upsell_master.html:34
-#: donate/templates/payment/newsletter_signup.html:26
-#: donate/templates/payment/paypal_upsell_master.html:34
+#: donate/templates/payment/card.html:60 donate/templates/payment/card_upsell_master.html:34 donate/templates/payment/newsletter_signup.html:26 donate/templates/payment/paypal_upsell_master.html:34
 msgid "There were some errors with your form. Please amend the fields highlighted below."
 msgstr "Der var nogle fejl i din formular. Ret felterne som er fremhævet nedenfor."
 
@@ -363,12 +357,20 @@ msgstr "CVV"
 
 #: donate/templates/payment/card.html:126
 #, python-format
-msgid "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a donation."
-msgstr "Jeg bemyndiger Mozilla Foundation til automatisk at hæve det ovenfor anførte beløb på mit kort hver måned fra og med i dag, og gøre det hver måned på samme månedsdag, indtil jeg annullerer betalingen. Jeg er indforstået med, at jeg skal annullere betalingen mindst 5 dage før den næste planlagte betaling via mail til <a href='mailto:%(email)s'>%(email)s</a>, og at jeg kun kan anmode om at få refunderet beløbet inden for 15 dage fra dagen for en donation."
+msgid ""
+"I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
+"I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
+"donation."
+msgstr ""
+"Jeg bemyndiger Mozilla Foundation til automatisk at hæve det ovenfor anførte beløb på mit kort hver måned fra og med i dag, og gøre det hver måned på samme månedsdag, indtil jeg annullerer "
+"betalingen. Jeg er indforstået med, at jeg skal annullere betalingen mindst 5 dage før den næste planlagte betaling via mail til <a href='mailto:%(email)s'>%(email)s</a>, og at jeg kun kan anmode om"
+" at få refunderet beløbet inden for 15 dage fra dagen for en donation."
 
 #: donate/templates/payment/card.html:128
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Jeg bemyndiger Mozilla Foundation til at hæve det ovenfor anførte beløb på mit kort. Jeg er indforstået med, at jeg kun kan anmode om at få refunderet beløbet inden for 15 dage fra dagen for min donation."
+msgstr ""
+"Jeg bemyndiger Mozilla Foundation til at hæve det ovenfor anførte beløb på mit kort. Jeg er indforstået med, at jeg kun kan anmode om at få refunderet beløbet inden for 15 dage fra dagen for min "
+"donation."
 
 #: donate/templates/payment/card.html:143
 #, python-format
@@ -384,26 +386,20 @@ msgstr "Donér <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
 msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
 msgstr "Dit bidrag hjælper med at holde internettet frit og åbent. På forhånd mange tak for dit bidrag."
 
-#: donate/templates/payment/card_upsell_master.html:4
-#: donate/templates/payment/paypal_upsell_master.html:4
-#: donate/templates/payment/thank_you_master.html:4
+#: donate/templates/payment/card_upsell_master.html:4 donate/templates/payment/paypal_upsell_master.html:4 donate/templates/payment/thank_you_master.html:4
 msgid "Thank you"
 msgstr "Tak"
 
-#: donate/templates/payment/card_upsell_master.html:13
-#: donate/templates/payment/newsletter_signup.html:12
-#: donate/templates/payment/paypal_upsell_master.html:13
+#: donate/templates/payment/card_upsell_master.html:13 donate/templates/payment/newsletter_signup.html:12 donate/templates/payment/paypal_upsell_master.html:13
 #: donate/templates/payment/thank_you_master.html:12
 msgid "Thank you for your generous gift"
 msgstr "Mange tak for dit generøse bidrag"
 
-#: donate/templates/payment/card_upsell_master.html:17
-#: donate/templates/payment/paypal_upsell_master.html:17
+#: donate/templates/payment/card_upsell_master.html:17 donate/templates/payment/paypal_upsell_master.html:17
 msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Det ville betyde meget for os, hvis du støttede Mozilla regelmæssigt. <b>Kunne du tænke dig at hjælp med et fast beløb hver måned?</b>"
 
-#: donate/templates/payment/card_upsell_master.html:21
-#: donate/templates/payment/paypal_upsell_master.html:21
+#: donate/templates/payment/card_upsell_master.html:21 donate/templates/payment/paypal_upsell_master.html:21
 msgid "Yes, I will give:"
 msgstr "Ja, jeg vil give:"
 
@@ -413,15 +409,19 @@ msgstr "Månedligt"
 
 #: donate/templates/payment/card_upsell_master.html:48
 #, python-format
-msgid "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
-msgstr "Jeg bemyndiger Mozilla Foundation til automatisk at hæve det ovenfor anførte beløb på mit kort hver måned fra og med næste måned på den samme månedsdag som i dag, og fortsætte hver måned indtil jeg annullerer betalingen. Jeg er indforstået med, at jeg skal annullere betalingen mindst 5 dage før den næste planlagte betaling via mail til %(email)s, og at jeg kun kan anmode om at få refunderet beløbet inden for 15 dage fra dagen for en donation."
+msgid ""
+"I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
+"cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
+msgstr ""
+"Jeg bemyndiger Mozilla Foundation til automatisk at hæve det ovenfor anførte beløb på mit kort hver måned fra og med næste måned på den samme månedsdag som i dag, og fortsætte hver måned indtil jeg "
+"annullerer betalingen. Jeg er indforstået med, at jeg skal annullere betalingen mindst 5 dage før den næste planlagte betaling via mail til %(email)s, og at jeg kun kan anmode om at få refunderet "
+"beløbet inden for 15 dage fra dagen for en donation."
 
 #: donate/templates/payment/card_upsell_master.html:53
 msgid "Donate Monthly"
 msgstr "Donér månedligt"
 
-#: donate/templates/payment/card_upsell_master.html:56
-#: donate/templates/payment/newsletter_signup.html:38
+#: donate/templates/payment/card_upsell_master.html:56 donate/templates/payment/newsletter_signup.html:38
 msgid "No Thanks"
 msgstr "Nej tak"
 
@@ -445,16 +445,16 @@ msgstr "/ Månedligt"
 msgid "No"
 msgstr "Nej"
 
-#: donate/templates/payment/thank_you_master.html:15
-#: donate/thunderbird/templates/payment/thank_you.html:6
+#: donate/templates/payment/thank_you_master.html:15 donate/thunderbird/templates/payment/thank_you.html:6
 msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
 msgstr "Dit bidrag støtter arbejdet for at beskytte internettet og holde det åbent og tilgængeligt for alle."
 
-#: donate/templates/payment/thank_you_master.html:15
-#: donate/thunderbird/templates/payment/thank_you.html:6
+#: donate/templates/payment/thank_you_master.html:15 donate/thunderbird/templates/payment/thank_you.html:6
 #, python-format
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
-msgstr "Vi har sendt dig en mail med kvittering for dit bidrag. Tjek din spam-mappe, hvis mailen ikke er dukket op - og skriv til os på <a href=\"mailto:%(email)s\">%(email)s</a>, hvis den heller ikke er dér."
+msgstr ""
+"Vi har sendt dig en mail med kvittering for dit bidrag. Tjek din spam-mappe, hvis mailen ikke er dukket op - og skriv til os på <a href=\"mailto:%(email)s\">%(email)s</a>, hvis den heller ikke er "
+"dér."
 
 #: donate/templates/payment/thank_you_master.html:17
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
@@ -470,35 +470,29 @@ msgctxt "Email subject line"
 msgid "I donated to Mozilla today"
 msgstr "Jeg gav et bidrag til Mozilla i dag"
 
-#: donate/templates/payment/thank_you_master.html:25
-#: donate/thunderbird/templates/payment/thank_you.html:14
+#: donate/templates/payment/thank_you_master.html:25 donate/thunderbird/templates/payment/thank_you.html:14
 msgid "Share on Facebook"
 msgstr "Del på Facebook"
 
-#: donate/templates/payment/thank_you_master.html:29
-#: donate/thunderbird/templates/payment/thank_you.html:18
+#: donate/templates/payment/thank_you_master.html:29 donate/thunderbird/templates/payment/thank_you.html:18
 msgid "Facebook"
 msgstr "Facebook"
 
-#: donate/templates/payment/thank_you_master.html:32
-#: donate/thunderbird/templates/payment/thank_you.html:21
+#: donate/templates/payment/thank_you_master.html:32 donate/thunderbird/templates/payment/thank_you.html:21
 msgid "Share on Twitter"
 msgstr "Del på Twitter"
 
-#: donate/templates/payment/thank_you_master.html:42
-#: donate/thunderbird/templates/payment/thank_you.html:31
+#: donate/templates/payment/thank_you_master.html:42 donate/thunderbird/templates/payment/thank_you.html:31
 msgctxt "Share button"
 msgid "Email"
 msgstr "Send mail"
 
-#: donate/templates/payment/thank_you_master.html:52
-#: donate/thunderbird/templates/payment/thank_you.html:41
+#: donate/templates/payment/thank_you_master.html:52 donate/thunderbird/templates/payment/thank_you.html:41
 msgctxt "Share button"
 msgid "Link"
 msgstr "Link"
 
-#: donate/templates/payment/thank_you_master.html:53
-#: donate/thunderbird/templates/payment/thank_you.html:42
+#: donate/templates/payment/thank_you_master.html:53 donate/thunderbird/templates/payment/thank_you.html:42
 msgid "Copied"
 msgstr "Kopieret"
 
@@ -512,11 +506,14 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Andre måder at give bidrag på: <a href=\"%(wire_transfer_url)s\">Pengeoverførsel eller SEPA</a> | <a href=\"%(check_url)s\">Check</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:18
-msgid "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not tax-deductible as charitable contributions."
-msgstr "Bidrag går til MZLA Technologies Corporation, et selskab i Californien, der ejes 100% af Mozilla Foundation. Midlerne vil være reserveret til brug i Thunderbird-projektet. Bidrag er ikke fradragsberettigede som velgørende bidrag."
+msgid ""
+"Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
+"tax-deductible as charitable contributions."
+msgstr ""
+"Bidrag går til MZLA Technologies Corporation, et selskab i Californien, der ejes 100% af Mozilla Foundation. Midlerne vil være reserveret til brug i Thunderbird-projektet. Bidrag er ikke "
+"fradragsberettigede som velgørende bidrag."
 
-#: donate/thunderbird/templates/payment/card_upsell.html:6
-#: donate/thunderbird/templates/payment/paypal_upsell.html:6
+#: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Det ville betyde meget for os, hvis du støttede Mozilla regelmæssigt. <b>Kunne du tænke dig at hjælp med et fast beløb hver måned?</b>"
 
