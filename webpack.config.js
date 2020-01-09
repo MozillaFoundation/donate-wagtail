@@ -13,48 +13,25 @@ let rules = [
   }
 ];
 
-let main = {
-  entry: `./source/js/main.js`,
-  output: {
-    path: frontendPath,
-    filename: `main.compiled.js`
-  },
-  module: {
-    rules
-  }
-};
+function generate(name) {
+  return {
+    entry: `./source/js/${name}.js`,
+    output: {
+      path: frontendPath,
+      filename: `${name}.compiled.js`
+    },
+    module: {
+      rules
+    },
+    devtool: `none` // see https://webpack.js.org/configuration/devtool/
+  };
+}
 
-let paymentsCard = {
-  entry: `./source/js/payments-card.js`,
-  output: {
-    path: frontendPath,
-    filename: `payments-card.compiled.js`
-  },
-  module: {
-    rules
-  }
-};
+let configs = [
+  `main`,
+  `payments-card`,
+  `payments-paypal`,
+  `payments-paypal-upsell`
+];
 
-let paymentsPaypal = {
-  entry: `./source/js/payments-paypal.js`,
-  output: {
-    path: frontendPath,
-    filename: `payments-paypal.compiled.js`
-  },
-  module: {
-    rules
-  }
-};
-
-let paymentsPaypalUpsell = {
-  entry: `./source/js/payments-paypal-upsell.js`,
-  output: {
-    path: frontendPath,
-    filename: `payments-paypal-upsell.compiled.js`
-  },
-  module: {
-    rules
-  }
-};
-
-module.exports = [main, paymentsCard, paymentsPaypal, paymentsPaypalUpsell];
+module.exports = configs.map(name => generate(name));
