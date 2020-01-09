@@ -1,4 +1,5 @@
 import logging
+from urllib import request, parse
 from sentry_sdk.integrations.django import ignore_logger
 
 from django.conf import settings
@@ -9,6 +10,7 @@ from django.utils.http import is_safe_url
 from django.utils.timezone import now
 from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
+
 
 from braintree import ErrorCodes
 from dateutil.relativedelta import relativedelta
@@ -763,9 +765,11 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         data = form.cleaned_data.copy()
 
         if hasattr(settings, 'THUNDERBIRD'):
-            # TODO: post to mailchimp
-            # TODO: add test coverage
-            pass
+            newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
+            data = parse.urlencode({'EMAIL': data['email']}).encode()
+            req =  request.Request(newsletter_url, data=data)
+            res = request.urlopen(req)
+            # Do we want Sentry logging for res.status here, in case it's not 200?
 
         elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()

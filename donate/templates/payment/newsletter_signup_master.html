@@ -10,8 +10,10 @@
     <div class="layout__container">
         <div class="layout__full-col">
             {% block thank-you %}
-            <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
-            <p>{% blocktrans %}Protect the internet as a global public resource. Join our email list to take action and stay updated!{% endblocktrans %}</p>
+                <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
+                <p>{% blocktrans %}
+                    Protect the internet as a global public resource. Join our email list to take action and stay updated!
+                {% endblocktrans %}</p>
             {% endblock %}
 
             <form method="post" class="form">

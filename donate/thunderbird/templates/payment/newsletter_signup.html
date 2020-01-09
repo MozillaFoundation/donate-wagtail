@@ -1,6 +1,10 @@
 {% extends "payment/newsletter_signup_master.html" %}
 
+{% load i18n %}
+
 {% block thank-you %}
     <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
-    <p>{% blocktrans %}Protect the internet as a global public resource. Join our email list to take action and stay updated!{% endblocktrans %}</p>
+    <p>{% blocktrans %}
+        Protect the internet as a global public resource. Join our email list to take action and stay updated!
+    {% endblocktrans %}</p>
 {% endblock %}
