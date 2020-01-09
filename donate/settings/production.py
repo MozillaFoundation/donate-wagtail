@@ -17,7 +17,7 @@ class Production(Base, Secure, OIDC, Database, Redis, S3, Braintree, Sentry, Con
     def pre_setup(cls):
         super().pre_setup()
         # production forces debug to be False, so the rq worker will never log donor data with the config below.
-        cls.LOGGING['loggers']['rq.worker']['handlers'] = ['DEBUG']
+        cls.LOGGING['loggers']['rq.worker']['handlers'] = ['debug']
         cls.LOGGING['loggers']['rq.worker']['level'] = 'DEBUG'
 
     @classmethod
