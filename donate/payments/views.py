@@ -760,8 +760,14 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         return initial
 
     def form_valid(self, form, send_data_to_basket=True):
-        if send_data_to_basket:
-            data = form.cleaned_data.copy()
+        data = form.cleaned_data.copy()
+
+        if hasattr(settings, 'THUNDERBIRD'):
+            # TODO: post to mailchimp
+            # TODO: add test coverage
+            pass
+
+        elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
@@ -771,6 +777,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                     'eventLabel': 'Email',
                 }
             ])
+
         return super().form_valid(form)
 
 
