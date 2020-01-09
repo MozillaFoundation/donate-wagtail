@@ -30,8 +30,13 @@ A scheduled task runs every 20 minutes to sync the donate platform with the `moz
 
 The initial sync needs to be run manually:
 
+- **If the content repo is empty:** `touch README.md` and push this file to the master branch of the content repo.
 - run `heroku login`.
 - run `heroku run bash -a donate-wagtail-production`.
 - run `python manage.py sync_languages`: creates `Language` objects for all languages defined in the `LANGUAGES` section of `settings.py`.
 - run `python manage.py submit_whole_site_to_pontoon`: generates submissions for all live translatable pages.
 - run `python manage.py sync_pontoon`: pushes the source strings to `mozilla-donate-content`.
+
+## Thunderbird donate website
+
+Thunderbird donate stack is also using Pontoon. The configuration is the same as Mozilla donate, the only difference being the content repo: [thunderbird-donate-content](https://github.com/mozilla-l10n/thunderbird-donate-content).
