@@ -767,8 +767,8 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         if hasattr(settings, 'THUNDERBIRD'):
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({'EMAIL': data['email']}).encode()
-            req =  request.Request(newsletter_url, data=data)
-            res = request.urlopen(req)
+            req = request.Request(newsletter_url, data=data)
+            request.urlopen(req)
             # Do we want Sentry logging for res.status here, in case it's not 200?
 
         elif send_data_to_basket:
