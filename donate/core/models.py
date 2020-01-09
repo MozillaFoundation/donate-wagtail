@@ -172,7 +172,7 @@ class LandingPage(TranslatablePageRoutingMixin, DonationPage):
 
 class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
-    parent_page_types = ['core.LandingPage']
+    parent_page_types = ['core.LandingPage', 'core.CampaignPage']
     subpage_types = ['core.CampaignPage']
 
     hero_image = models.ForeignKey(
