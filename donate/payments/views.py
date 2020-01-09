@@ -765,11 +765,17 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         data = form.cleaned_data.copy()
 
         if hasattr(settings, 'THUNDERBIRD'):
+<<<<<<< HEAD
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({'EMAIL': data['email']}).encode()
             req =  request.Request(newsletter_url, data=data)
             res = request.urlopen(req)
             # Do we want Sentry logging for res.status here, in case it's not 200?
+=======
+            # TODO: post to mailchimp
+            # TODO: add test coverage
+            pass
+>>>>>>> 751e326a08b77962b26883b2957528323cee954d
 
         elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()
