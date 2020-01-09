@@ -1,7 +1,7 @@
 
 {% extends "pages/core/landing_page_master.html" %}
 
-{% block notice_banner %}
+{% block notice_bar %}
 {% if request.GET.tbdownload == 'true' %}
     <h3>(Pending design changes) Your download should have begun automatically. If it didn’t work, <a href="https://www.thunderbird.net/download/">try downloading again here</a>.</h3>
 {% endif %}
