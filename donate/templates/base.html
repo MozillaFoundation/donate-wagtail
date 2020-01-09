@@ -33,6 +33,10 @@
 
                 {% include "fragments/svg-sprites.html" %}
 
+                <div class="app__notice-bar">
+                    {% block notice_banner %}{% endblock %}
+                </div>
+
                 <header class="app__header">
                     {% block header %}{% endblock %}
                 </header>

@@ -2,4 +2,13 @@
   &--rtl {
     direction: rtl;
   }
+
+  &&__notice-bar {
+    background: gold;
+    text-align: center;
+
+    h3 {
+      margin: 0;
+    }
+  }
 }
