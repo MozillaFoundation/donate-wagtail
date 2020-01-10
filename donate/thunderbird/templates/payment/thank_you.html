@@ -20,13 +20,13 @@
         <div class="button__label">{% trans "Facebook" %}</div>
     </a>
     {# see https://dev.twitter.com/web/tweet-button/web-intent #}
-    <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url={{ page_link }}&amp;via=mozthunderbird" title="{% trans 'Share on Twitter' %}">
+    <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&url={{ page_link }}&via=mozthunderbird" title="{% trans 'Share on Twitter' %}">
         <svg class="button__icon button__icon--twitter" width="16" height="16">
             <use xlink:href="#twitter"></use>
         </svg>
         <div class="button__label">{% trans "Twitter" %}</div>
     </a>
-    <a class="button button--outline button--icon" href="mailto:?&amp;subject={{ email_subject|urlencode }}&amp;body={{ page_link }}">
+    <a class="button button--outline button--icon" href="mailto:?&subject={{ email_subject|urlencode }}&body={{ page_link }}">
         <svg class="button__icon button__icon--email" width="16" height="16">
             <use xlink:href="#email"></use>
         </svg>
