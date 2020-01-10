@@ -4,10 +4,11 @@
   }
 
   &__notice-bar {
-    background: $color--red;
+    background: $color--grey-05;
     text-align: center;
 
     h3 {
+      font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
       margin: 0;
     }
   }
