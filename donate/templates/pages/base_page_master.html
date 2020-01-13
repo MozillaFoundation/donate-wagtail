@@ -2,18 +2,18 @@
 {% load i18n static util_tags %}
 
 {% block meta_tags %}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}" />
-    <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}" />
-    <meta name="twitter:image" content="https://assets.mofoprod.net/images/og.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
+    <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
+    <meta name="twitter:image" content="https://assets.mofoprod.net/images/og.png">
 
     {# facebook opengraph tags #}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-    <meta property="og:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}" />
-    <meta property="og:site_name" content="{% if request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}" />
-    <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}" />
-    <meta property="og:image" content="https://assets.mofoprod.net/images/og.png" />
+    <meta property="og:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
+    <meta property="og:site_name" content="{% if request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
+    <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
+    <meta property="og:image" content="https://assets.mofoprod.net/images/og.png">
 {% endblock meta_tags %}
 
 {% block body_top %}
