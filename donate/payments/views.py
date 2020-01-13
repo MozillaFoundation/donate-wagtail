@@ -11,7 +11,6 @@ from django.utils.timezone import now
 from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
 
-
 from braintree import ErrorCodes
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
