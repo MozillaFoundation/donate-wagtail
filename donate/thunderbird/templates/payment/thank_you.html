@@ -10,21 +10,23 @@
 {% block buttons %}
     {% trans "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy." as twitter_text context "Used as a tweet" %}
     {% trans "I donated to Thunderbird today" as email_subject context "Email subject line" %}
+    {% get_current_language as LANGUAGE_CODE %}
+    {% with page_link="https://donate.mozilla.org/"|add:LANGUAGE_CODE|add:"/thunderbird/"%}
 
-    <a class="button button--outline button--icon" href="https://www.facebook.com/sharer/sharer.php?u=https://donate.mozilla.org/{% get_locale %}/thunderbird/" title="{% trans 'Share on Facebook' %}">
+    <a class="button button--outline button--icon" href="https://www.facebook.com/sharer/sharer.php?u={{ page_link }}" title="{% trans 'Share on Facebook' %}">
         <svg class="button__icon button__icon--facebook" width="16" height="16">
             <use xlink:href="#facebook"></use>
         </svg>
         <div class="button__label">{% trans "Facebook" %}</div>
     </a>
     {# see https://dev.twitter.com/web/tweet-button/web-intent #}
-    <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;url=https://donate.mozilla.org/{% get_locale %}/thunderbird/&amp;via=mozthunderbird" title="{% trans 'Share on Twitter' %}">
+    <a class="button button--outline button--icon" href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&url={{ page_link }}&via=mozthunderbird" title="{% trans 'Share on Twitter' %}">
         <svg class="button__icon button__icon--twitter" width="16" height="16">
             <use xlink:href="#twitter"></use>
         </svg>
         <div class="button__label">{% trans "Twitter" %}</div>
     </a>
-    <a class="button button--outline button--icon" href="mailto:?&amp;subject={{ email_subject|urlencode }}&amp;body=https://donate.mozilla.org/{% get_locale %}/thunderbird/">
+    <a class="button button--outline button--icon" href="mailto:?&subject={{ email_subject|urlencode }}&body={{ page_link }}">
         <svg class="button__icon button__icon--email" width="16" height="16">
             <use xlink:href="#email"></use>
         </svg>
@@ -41,6 +43,7 @@
             <span class="button__initial">{% trans "Link" context "Share button" %}</span>
             <span class="button__copied">{% trans "Copied" %}</span>
         </div>
-        <input class="button__hidden" type="text" value="https://donate.mozilla.org/{% get_locale %}/thunderbird/" data-copy-value>
+        <input class="button__hidden" type="text" value="{{ page_link }}" data-copy-value>
     </a>
+    {% endwith %}
 {% endblock %}
