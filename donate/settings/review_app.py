@@ -8,6 +8,7 @@ from .thunderbird import ThunderbirdOverrides
 class ReviewApp(Staging, Configuration):
     ALLOWED_HOSTS = [f'{Secure.HEROKU_APP_NAME}.herokuapp.com']
     DEBUG = env('DEBUG')
+    RECAPTCHA_ENABLED = False
 
     @classmethod
     def pre_setup(cls):
