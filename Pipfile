@@ -24,7 +24,7 @@ django-storages = "*"
 factory-boy = "*"
 freezegun = "*"
 gunicorn = "*"
-mozilla-django-oidc = "==1.2.2"
+mozilla-django-oidc = "==1.2.3"
 # Need to install a pre-release in order to get the RedLock.locked() method
 redlock = {git = "https://github.com/glasslion/redlock.git",ref = "7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}
 requests= "*"
