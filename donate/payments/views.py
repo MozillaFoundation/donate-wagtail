@@ -767,16 +767,13 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         if hasattr(settings, 'POST_DONATE_NEWSLETTER_URL'):
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({'EMAIL': data['email']}).encode()
-            req =  request.Request(newsletter_url, data=data)
-            try:
-                res = request.urlopen(req)
-                res.raise_for_status()
-            except requests.exceptions.HTTPError as error:
+            req = request.Request(newsletter_url, data=data)
+            res = request.urlopen(req)
+            if res.status != 200:
                 sentry_logger.error(
                     'Thunderbird newsletter POST failed',
-                    extra={'error': error},
+                    extra={'status': res.status},
                     exc_info=True
-                )
 
         elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()
