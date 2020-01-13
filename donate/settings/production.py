@@ -5,19 +5,20 @@ from .oidc import OIDC
 from .database import Database
 from .redis import Redis
 from .s3 import S3
+from .salesforce import Salesforce
 from .braintree import Braintree
 from .sentry import Sentry
 from .thunderbird import ThunderbirdOverrides
 
 
-class Production(Base, Secure, OIDC, Database, Redis, S3, Braintree, Sentry, Configuration):
+class Production(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Sentry, Configuration):
     DEBUG = False
 
     @classmethod
     def pre_setup(cls):
         super().pre_setup()
         # production forces debug to be False, so the rq worker will never log donor data with the config below.
-        cls.LOGGING['loggers']['rq.worker']['handlers'] = ['DEBUG']
+        cls.LOGGING['loggers']['rq.worker']['handlers'] = ['debug']
         cls.LOGGING['loggers']['rq.worker']['level'] = 'DEBUG'
 
     @classmethod
