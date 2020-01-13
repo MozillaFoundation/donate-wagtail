@@ -1,0 +1,82 @@
+{% extends "pages/base_page.html" %}
+{% load form_tags static wagtailcore_tags wagtailimages_tags i18n %}
+
+{% block content %}
+
+<header class="page-header">
+    <div class="page-header__container">
+        <h1 class="page-header__heading">{{ page.title }}</h1>
+    </div>
+</header>
+
+<div class="layout">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            <div class="page-body support-form">
+            {% if 'submitted' in request.GET %}
+                <h1 class="heading heading--primary">
+                    {% trans "Thank you for contacting us." %}
+                </h1>
+
+                <br>
+
+                <div>
+                    <p class="rich-text">{% trans "We will get back to you soon." %}</p>
+                </div>
+            {% else %}
+                <form class="" action="https://mozillasalescloud--mkl.cs4.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+                    <p class="rich-text">{% blocktrans %}
+                        If you need help with a contribution, fill out this form and we'll get back to you soon.
+                    {% endblocktrans %}</p>
+
+                    <input type=hidden name="orgid" value="{{ orgid }}">
+                    <input type=hidden name="retURL" value="{{ page.full_url }}?submitted=true">
+
+                    {% block custom-hidden-fields %}
+                        <input type=hidden name="type" value="Donation">
+                    {% endblock %}
+
+                    <fieldset class="form-item">
+                        <label for="name">{% trans "Contact Name" %}</label>
+                        <input id="name" maxlength="80" name="name" size="20" type="text">
+                    </fieldset>
+
+                    <fieldset class="form-item">
+                        <label for="email">{% trans "Email" %}</label>
+                        <input id="email" maxlength="80" name="email" size="20" type="text">
+                    </fieldset>
+
+                    <fieldset class="form-item">
+                        <label for="00N0B000006X3fw">{% trans "Language" %}</label>
+                        <div class="form-item__wrapper form-custom-select">
+                            <select id="00N0B000006X3fw" name="00N0B000006X3fw" title="Language">
+                                <option value="">--{% trans "None" %}--</option>
+                                <option value="English">{% trans "English" %}</option>
+                                <option value="French">{% trans "French" %}</option>
+                                <option value="German">{% trans "German" %}</option>
+                                <option value="Spanish">{% trans "Spanish" %}</option>
+                                <option value="Polish">{% trans "Polish" %}</option>
+                                <option value="Portuguese">{% trans "Portuguese" %}</option>
+                                <option value="Other">{% trans "Other" %}</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-item">
+                        <label for="subject">{% trans "Subject" %}</label>
+                        <input id="subject" maxlength="80" name="subject" size="20" type="text">
+                    </fieldset>
+
+                    <fieldset class="form-item">
+                        <label for="description">{% trans "Description" %}</label>
+                        <textarea name="description"></textarea>
+                    </fieldset>
+
+                    <input class="button button--medium button--primary" type="submit" name="submit" value="{% trans "Submit" %}">
+                </form>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
