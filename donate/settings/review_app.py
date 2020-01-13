@@ -24,11 +24,11 @@ class ReviewApp(Staging, Configuration):
 
 
 class ThunderbirdReviewApp(ReviewApp, ThunderbirdOverrides, Configuration):
-    INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Staging.INSTALLED_APPS
+    INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + ReviewApp.INSTALLED_APPS
 
     @property
     def TEMPLATES(self):
-        config = Staging.TEMPLATES
+        config = ReviewApp.TEMPLATES
         config[0]['DIRS'] = ThunderbirdOverrides.TEMPLATES_DIR + config[0]['DIRS']
         return config
 
