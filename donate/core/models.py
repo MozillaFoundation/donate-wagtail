@@ -172,7 +172,8 @@ class LandingPage(TranslatablePageRoutingMixin, DonationPage):
 
 class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
-    parent_page_types = ['core.LandingPage']
+    parent_page_types = ['core.LandingPage', 'core.CampaignPage']
+    subpage_types = ['core.CampaignPage']
 
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -257,8 +258,8 @@ class CampaignPageDonationAmount(models.Model):
 
 class ContentPage(TranslatablePageMixin, Page):
     template = 'pages/core/content_page.html'
-    parent_page_types = ['LandingPage']
-    subpage_types = ['ContentPage']
+    parent_page_types = ['core.LandingPage']
+    subpage_types = ['core.ContentPage']
 
     call_to_action_text = models.CharField(max_length=255, blank=True)
     call_to_action_url = models.URLField(blank=True)
