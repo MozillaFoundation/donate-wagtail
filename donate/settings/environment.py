@@ -53,6 +53,7 @@ env = environ.Env(
     RECAPTCHA_SITE_KEY=(str, ''),
     REDIS_URL=(str, 'redis://redis:6397/0'),
     REVIEW_APP=(bool, False),
+    SALESFORCE_ORGID=(str, ''),
     SENTRY_DSN=(str, None),
     SENTRY_ENVIRONMENT=(str, None),
     SET_HSTS=(bool, False),

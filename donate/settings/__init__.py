@@ -7,7 +7,7 @@ from .secure import Secure
 from .sentry import Sentry
 from .testing import Testing
 from .development import Development, ThunderbirdDevelopment
-from .review_app import ReviewApp
+from .review_app import ReviewApp, ThunderbirdReviewApp
 from .staging import Staging, ThunderbirdStaging
 from .production import Production, ThunderbirdProduction
 
@@ -27,5 +27,6 @@ __all__ = [
     'Production',
     'ThunderbirdDevelopment',
     'ThunderbirdStaging',
+    'ThunderbirdReviewApp',
     'ThunderbirdProduction',
 ]

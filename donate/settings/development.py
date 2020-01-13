@@ -7,10 +7,11 @@ from .base import Base
 from .redis import Redis
 from .braintree import Braintree
 from .s3 import S3
+from .salesforce import Salesforce
 from .thunderbird import ThunderbirdOverrides
 
 
-class Development(Base, Secure, OIDC, Database, Redis, S3, Braintree, Configuration):
+class Development(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Configuration):
     DEBUG = env('DEBUG')
     DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
 

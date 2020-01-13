@@ -1,0 +1,13 @@
+.support-form {
+  max-width: 500px;
+  min-height: 30vh;
+
+  p {
+    @include font-size(l);
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+}

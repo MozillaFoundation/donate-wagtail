@@ -133,7 +133,12 @@ class LandingPage(TranslatablePageRoutingMixin, DonationPage):
 
     # Only allow creating landing pages at the root level
     parent_page_types = ['wagtailcore.Page']
-    subpage_types = ['core.CampaignPage', 'core.ContentPage']
+
+    subpage_types = [
+        'core.CampaignPage',
+        'core.ContentPage',
+        'core.ContributorSupportPage',
+    ]
 
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -280,3 +285,23 @@ class ContentPage(TranslatablePageMixin, Page):
         SynchronizedField('call_to_action_url'),
         TranslatableField('body'),
     ]
+
+
+class ContributorSupportPage(TranslatablePageMixin, Page):
+    template = 'pages/core/contributor_support_page.html'
+    parent_page_types = ['core.LandingPage']
+
+    # This page does not have subpages
+
+    translatable_fields = [
+        TranslatableField('title'),
+        TranslatableField('seo_title'),
+        TranslatableField('search_description'),
+    ]
+
+    def get_context(self, request):
+        ctx = super().get_context(request)
+        ctx.update({
+            'orgid': settings.SALESFORCE_ORGID,
+        })
+        return ctx
