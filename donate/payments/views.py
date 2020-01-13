@@ -766,7 +766,9 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
 
         if hasattr(settings, 'POST_DONATE_NEWSLETTER_URL'):
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
-            data = parse.urlencode({'EMAIL': data['email']}).encode()
+            data = parse.urlencode({
+                'EMAIL': data['email']
+            }).encode()
             req = request.Request(newsletter_url, data=data)
             res = request.urlopen(req)
             if res.status != 200:
@@ -774,6 +776,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                     'Thunderbird newsletter POST failed',
                     extra={'status': res.status},
                     exc_info=True
+                )
 
         elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()
