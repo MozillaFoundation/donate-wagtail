@@ -764,12 +764,19 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         data = form.cleaned_data.copy()
 
-        if hasattr(settings, 'THUNDERBIRD'):
+        if hasattr(settings, 'POST_DONATE_NEWSLETTER_URL'):
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({'EMAIL': data['email']}).encode()
             req =  request.Request(newsletter_url, data=data)
-            res = request.urlopen(req)
-            # Do we want Sentry logging for res.status here, in case it's not 200?
+            try:
+                res = request.urlopen(req)
+                res.raise_for_status()
+            except requests.exceptions.HTTPError as error:
+                sentry_logger.error(
+                    'Thunderbird newsletter POST failed',
+                    extra={'error': error},
+                    exc_info=True
+                )
 
         elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()
