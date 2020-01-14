@@ -3,6 +3,6 @@
 
 {% block notice_bar %}
 {% if request.GET.tbdownload == 'true' %}
-    <h3>Your download should have begun automatically. If it didn’t work, <a href="https://www.thunderbird.net/download/">try downloading again here</a>.</h3>
+    <h3>{% blocktrans with url='https://www.thunderbird.net/download/' %}Your download should have begun automatically. If it didn’t work, <a href="{{ url }}">try downloading again here</a>.{% endblocktrans %}</h3>
 {% endif %}
 {% endblock %}
