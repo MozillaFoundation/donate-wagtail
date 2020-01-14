@@ -2,4 +2,15 @@
   &--rtl {
     direction: rtl;
   }
+
+  &__notice-bar {
+    background: $color--grey-05;
+    text-align: center;
+
+    h3 {
+      font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 8px 0;
+    }
+  }
 }
