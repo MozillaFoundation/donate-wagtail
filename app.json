@@ -20,59 +20,8 @@
     }
   },
   "env": {
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
-    },
-    "AWS_ACCESS_KEY_ID": {
-      "required": true
-    },
-    "AWS_LOCATION": {
-      "required": true
-    },
-    "AWS_REGION": {
-      "required": true
-    },
-    "AWS_S3_CUSTOM_DOMAIN": {
-      "required": true
-    },
-    "AWS_SECRET_ACCESS_KEY": {
-      "required": true
-    },
-    "AWS_STORAGE_BUCKET_NAME": {
-      "required": true
-    },
-    "BASKET_SQS_QUEUE_URL": {
-      "required": true
-    },
-    "BASKET_API_ROOT_URL": {
-      "required": true
-    },
-    "BRAINTREE_MERCHANT_ID": {
-      "required": true
-    },
-    "BRAINTREE_MERCHANT_ACCOUNTS": {
-      "required": true
-    },
-    "BRAINTREE_PLANS": {
-      "required": true
-    },
-    "BRAINTREE_TOKENIZATION_KEY": {
-      "required": true
-    },
-    "BRAINTREE_PUBLIC_KEY": {
-      "required": true
-    },
-    "BRAINTREE_PRIVATE_KEY": {
-      "required": true
-    },
-    "GITHUB_TOKEN": {
-      "required": true
-    },
-    "SLACK_WEBHOOK_RA": {
-      "required": true
     },
     "DJANGO_CONFIGURATION": "ReviewApp",
     "DJANGO_SETTINGS_MODULE": "donate.settings",
@@ -95,7 +44,7 @@
     "CSP_CONNECT_SRC": "'self' api.sandbox.braintreegateway.com client-analytics.sandbox.braintreegateway.com api.braintreegateway.com client-analytics.braintreegateway.com *.braintree-api.com www.paypal.com www.google-analytics.com https://www.mozilla.org/en-US/newsletter/"
   },
   "scripts": {
-    "postdeploy": "python manage.py load_fake_data && python manage.py review_app_admin",
+    "postdeploy": "python manage.py load_fake_data",
     "pr-predestroy": "python manage.py clear_fake_data"
   }
 }
