@@ -14,7 +14,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView
+from donate.views import EnvVariablesView, ThunderbirdRedirectView
 
 # Patterns not subject to i18n
 urlpatterns = [
@@ -34,6 +34,11 @@ urlpatterns += i18n_patterns(
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
 )
+
+if settings.ENABLE_THUNDERBIRD_REDIRECT:
+    urlpatterns = [
+        path('thunderbird/', ThunderbirdRedirectView.as_view()),
+    ] + urlpatterns
 
 if settings.DEBUG:
     from django.conf.urls.static import static

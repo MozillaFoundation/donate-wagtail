@@ -32,6 +32,7 @@ class Production(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree,
 
 class ThunderbirdProduction(Production, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Production.INSTALLED_APPS
+    ENABLE_THUNDERBIRD_REDIRECT = False
 
     @property
     def TEMPLATES(self):

@@ -31,6 +31,7 @@ class Staging(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Se
 
 class ThunderbirdStaging(Staging, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Staging.INSTALLED_APPS
+    ENABLE_THUNDERBIRD_REDIRECT = False
 
     @property
     def TEMPLATES(self):
