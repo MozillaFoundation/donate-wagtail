@@ -763,7 +763,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         data = form.cleaned_data.copy()
 
-        if hasattr(settings, 'POST_DONATE_NEWSLETTER_URL'):
+        if settings.POST_DONATE_NEWSLETTER_URL is not None:
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({
                 'EMAIL': data['email']
