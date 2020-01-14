@@ -74,7 +74,7 @@
       }
 
       &:invalid {
-        box-shadow: red inset 0px 0px 1.5px 1px;
+        box-shadow: $color--warning inset 0px 0px 1.5px 1px;
       }
     }
   }
