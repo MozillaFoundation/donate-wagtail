@@ -28,6 +28,11 @@ urlpatterns = [
     path('environment.json', EnvVariablesView.as_view()),
 ]
 
+if settings.ENABLE_THUNDERBIRD_REDIRECT:
+    urlpatterns = i18n_patterns(
+        path('thunderbird/', ThunderbirdRedirectView.as_view(), name='thunderbird')
+    ) + urlpatterns
+
 urlpatterns += i18n_patterns(
     # TODO we may want to version this cache, or pre-compile the catalog at build time
     # See https://django-statici18n.readthedocs.io
@@ -35,10 +40,6 @@ urlpatterns += i18n_patterns(
     path('', include(payments_urls)),
 )
 
-if settings.ENABLE_THUNDERBIRD_REDIRECT:
-    urlpatterns = [
-        path('thunderbird/', ThunderbirdRedirectView.as_view()),
-    ] + urlpatterns
 
 if settings.DEBUG:
     from django.conf.urls.static import static

@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views import View
 from django.views.generic.base import RedirectView
 
+
 class EnvVariablesView(View):
     """
     A view that permits a GET to expose whitelisted environment
@@ -19,5 +20,5 @@ class ThunderbirdRedirectView(RedirectView):
     """
 
     url = 'https://give.thunderbird.net/'
-    permanent = False # True
+    permanent = False
     query_string = True
