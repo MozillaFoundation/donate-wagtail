@@ -72,6 +72,10 @@
         -webkit-appearance: none;
         margin: 0;
       }
+
+      &:invalid {
+        box-shadow: red inset 0px 0px 1.5px 1px;
+      }
     }
   }
 }
