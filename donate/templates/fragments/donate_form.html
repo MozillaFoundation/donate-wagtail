@@ -35,7 +35,7 @@
 
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
-                        <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
+                        <label for="one-time-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                         <input type="number" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
                     </div>
@@ -71,7 +71,11 @@
                                 </svg>
                             </div>
                         </button>
-                        <div id="payments__paypal-button--single" class="payments__button payments__button--paypal"></div>
+                        <div id="payments__paypal-button--single" class="payments__button payments__button--paypal">
+                            <div id="payments__paypal-button--single--overlay" class="payments__button--paypal--overlay">
+                                {# this overlay captures click events, and only allows them through if the amount is not 0 #}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -95,7 +99,7 @@
 
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
-                        <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
+                        <label for="monthly-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                         <input type="number" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" min="{{ initial_currency_info.minAmount }}" max="10000000" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
@@ -131,7 +135,11 @@
                                 </svg>
                             </div>
                         </button>
-                        <div id="payments__paypal-button--monthly" class="payments__button payments__button--paypal"></div>
+                        <div id="payments__paypal-button--monthly" class="payments__button payments__button--paypal">
+                            <div id="payments__paypal-button--monthly--overlay" class="payments__button--paypal--overlay">
+                                {# this overlay captures click events, and only allows them through if the amount is not 0 #}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

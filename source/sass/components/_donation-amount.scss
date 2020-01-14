@@ -16,7 +16,7 @@
 
   &__label {
     position: relative;
-    z-index: 1;
+    @include z-index(base);
     display: block;
     border: 1px solid $color--border;
     padding: 20px 5px;
@@ -49,7 +49,7 @@
 
   &__radio {
     position: absolute;
-    z-index: -1;
+    @include z-index(hidden);
 
     &:checked + #{$root}__label,
     &:focus + #{$root}__label {
@@ -71,6 +71,10 @@
       &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
+      }
+
+      &:invalid {
+        box-shadow: $color--warning inset 0px 0px 1.5px 1px;
       }
     }
   }

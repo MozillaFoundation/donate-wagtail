@@ -73,6 +73,45 @@ function setupBraintree() {
   });
 }
 
+function toggle(overlay, input) {
+  let value = parseFloat(input.value);
+  let valid = input.reportValidity() && !isNaN(value);
+
+  overlay.style.display = valid ? "none" : "block";
+}
+
+function setupPaypalOverlays() {
+  let overlays = document.querySelectorAll(
+    ".payments__button--paypal--overlay"
+  );
+  overlays.forEach(overlay => {
+    let form = overlay.closest("form");
+    let inputs = Array.from(
+      form.querySelectorAll("[type=radio][name=amount],[type=number]")
+    );
+
+    inputs.forEach(input => {
+      // Anytime an input is selected, check whether that means we need to "lock" the
+      // paypal button with a click-intercepting overlay.
+      input.addEventListener("input", _ => toggle(overlay, input));
+      input.addEventListener("focus", _ => toggle(overlay, input));
+    });
+
+    // also get the currency label, because it's "clickable".
+    let otherLabel = form.querySelector(".donation-amount-other__label");
+    let otherInput = document.getElementById(otherLabel.getAttribute("for"));
+    console.log(otherLabel, otherInput);
+    otherLabel.addEventListener("click", _ => toggle(overlay, otherInput));
+
+    overlay.addEventListener("click", () => {
+      // The fact that this function fires at all means the current value is not a
+      // valid value. Force the form to report this the same way it reports everything else.
+      form.reportValidity();
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   setupBraintree();
+  setupPaypalOverlays();
 });
