@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.http import JsonResponse
 from django.views import View
+from django.views.generic.base import RedirectView
 
 
 class EnvVariablesView(View):
@@ -11,3 +12,13 @@ class EnvVariablesView(View):
 
     def get(self, request):
         return JsonResponse(settings.FRONTEND)
+
+
+class ThunderbirdRedirectView(RedirectView):
+    """
+    A view that redirects requests to give.thunderbird.net, preserving query params
+    """
+
+    url = 'https://give.thunderbird.net/'
+    permanent = False
+    query_string = True
