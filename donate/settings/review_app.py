@@ -10,6 +10,7 @@ class ReviewApp(Staging, Configuration):
     DEBUG = env('DEBUG')
     RECAPTCHA_ENABLED = False
     HEROKU_PR_NUMBER = env('HEROKU_PR_NUMBER')
+    HEROKU_BRANCH = env('HEROKU_BRANCH')
 
     @classmethod
     def pre_setup(cls):

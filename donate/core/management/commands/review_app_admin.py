@@ -31,39 +31,53 @@ class Command(BaseCommand):
             ).generate({})
             User.objects.create_superuser('admin', 'admin@example.com', password)
 
-            reviewapp_name = settings.HEROKU_APP_NAME
             pr_number = settings.HEROKU_PR_NUMBER
+            reviewapp_name = settings.HEROKU_APP_NAME
+            branch_name = settings.HEROKU_BRANCH
 
-            print("PR NUMBER")
-            print(pr_number)
+            # As 01/2020 we can only get the PR number is the review app was automatically created
+            # (https://devcenter.heroku.com/articles/github-integration-review-apps#injected-environment-variables).
+            # For review app manually created, we can use the branch name instead.
+            if pr_number:
+                # Get PR's title from Github
+                token = settings.GITHUB_TOKEN
+                org = 'mozilla'
+                repo = 'donate-wagtail'
+                r = requests.get(f'https://api.github.com/repos/{org}/{repo}/pulls/{pr_number}&access_token={token}')
+                try:
+                    pr_title = ': ' + r.json()['title']
+                except KeyError:
+                    pr_title = ''
 
-            # Get PR's title from Github
-            token = settings.GITHUB_TOKEN
-            org = 'mozilla'
-            repo = 'donate-wagtail'
-            r = requests.get(f'https://api.github.com/repos/{org}/{repo}/pulls/{pr_number}&access_token={token}')
-            try:
-                pr_title = ': ' + r.json()['title']
-            except KeyError:
-                pr_title = ''
-
-            for l in r.json()['labels']:
-                if l['name'] == 'dependencies':
-                    color = '#BA55D3'
-                    break
+                for l in r.json()['labels']:
+                    if l['name'] == 'dependencies':
+                        color = '#BA55D3'
+                        break
+                else:
+                    color = '#7CD197'
+                fallback_text = f'''New review app deployed: It will be ready in a minute!\n
+                                PR {pr_number}{pr_title}\n
+                                Login: admin\n
+                                Password: {password}\n
+                                URL: https://{reviewapp_name}.herokuapp.com'''
+                message_title = f'PR {pr_number}{pr_title}\n'
+                github_url = f'https://github.com/mozilla/donate-wagtail/pull/{pr_number}'
             else:
                 color = '#7CD197'
+                fallback_text = f'''New review app deployed: It will be ready in a minute!\n
+                                Review app from branch {branch_name}\n
+                                Login: admin\n
+                                Password: {password}\n
+                                URL: https://{reviewapp_name}.herokuapp.com'''
+                message_title = f'Review app from branch {branch_name}\n'
+                github_url = f'https://github.com/mozilla/donate-wagtail/tree/{branch_name}'
 
             slack_payload = {
                 'attachments': [
                     {
-                        'fallback': 'New review app deployed: It will be ready in a minute!\n'
-                                    f'PR {pr_number}{pr_title}\n'
-                                    f'Login: admin\n'
-                                    f'Password: {password}\n'
-                                    f'URL: https://{reviewapp_name}.herokuapp.com',
+                        'fallback': f'{fallback_text}',
                         'pretext':  'New review app deployed. It will be ready in a minute!',
-                        'title':    f'PR {pr_number}{pr_title}\n',
+                        'title':    f'{message_title}',
                         'text':     'Login: admin\n'
                                     f'Password: {password}\n',
                         'color':    f'{color}',
@@ -76,7 +90,7 @@ class Command(BaseCommand):
                             {
                                 'type': 'button',
                                 'text': 'View PR on Github',
-                                'url': f'https://github.com/mozilla/donate-wagtail/pull/{pr_number}'
+                                'url': f'{github_url}'
                             }
                         ]
                     }

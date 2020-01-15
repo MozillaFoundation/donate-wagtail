@@ -46,6 +46,7 @@ env = environ.Env(
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED=(bool, False),
     GITHUB_TOKEN=(str, ''),
     HEROKU_PR_NUMBER=(str, ''),
+    HEROKU_BRANCH=(str, ''),
     HEROKU_APP_NAME=(str, ''),
     HEROKU_RELEASE_VERSION=(str, 'Development'),
     RANDOM_SEED=(int, None),
