@@ -34,6 +34,9 @@ class Command(BaseCommand):
             reviewapp_name = settings.HEROKU_APP_NAME
             pr_number = settings.HEROKU_PR_NUMBER
 
+            print("PR NUMBER")
+            print(pr_number)
+
             # Get PR's title from Github
             token = settings.GITHUB_TOKEN
             org = 'mozilla'
