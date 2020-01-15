@@ -2,7 +2,6 @@
 Management command called during the Heroku Review App post-deployment phase.
 Creates an admin account and share the credentials and link to Review App on Slack.
 """
-import re
 import requests
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
@@ -33,8 +32,7 @@ class Command(BaseCommand):
             User.objects.create_superuser('admin', 'admin@example.com', password)
 
             reviewapp_name = settings.HEROKU_APP_NAME
-            m = re.search(r'\d+', reviewapp_name)
-            pr_number = m.group()
+            pr_number = settings.HEROKU_PR_NUMBER
 
             # Get PR's title from Github
             token = settings.GITHUB_TOKEN
