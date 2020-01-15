@@ -65,11 +65,11 @@ class Command(BaseCommand):
             else:
                 color = '#7CD197'
                 fallback_text = f'''New review app deployed: It will be ready in a minute!\n
-                                Review app from branch {branch_name}\n
+                                Branch: {branch_name}\n
                                 Login: admin\n
                                 Password: {password}\n
                                 URL: https://{reviewapp_name}.herokuapp.com'''
-                message_title = f'Review app from branch {branch_name}\n'
+                message_title = f'Branch: {branch_name}\n'
                 github_url = f'https://github.com/mozilla/donate-wagtail/tree/{branch_name}'
 
             slack_payload = {
@@ -89,7 +89,7 @@ class Command(BaseCommand):
                             },
                             {
                                 'type': 'button',
-                                'text': 'View PR on Github',
+                                'text': 'View branch on Github',
                                 'url': f'{github_url}'
                             }
                         ]
