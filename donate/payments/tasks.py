@@ -10,7 +10,6 @@ from . import constants, gateway
 from .sqs import send_to_sqs
 from .utils import zero_decimal_currency_fix
 
-
 logger = logging.getLogger(__name__)
 
 queue = django_rq.get_queue('default')
@@ -18,40 +17,6 @@ queue = django_rq.get_queue('default')
 BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
 STRIPE_WEBHOOK_SECRET = settings.STRIPE_WEBHOOK_SECRET
 stripe.api_key = settings.STRIPE_API_KEY
-
-
-def send_stripe_transaction_to_basket(subscription, charge, metadata,
-                                      donation_url, conversion_amount,
-                                      net_amount, transaction_fee):
-    project = 'mozillafoundation'
-
-    if 'thunderbird' in metadata:
-        project = 'thunderbird'
-    elif 'glassroomnyc' in metadata:
-        project = 'glassroomnyc'
-
-    send_to_sqs({
-        'data': {
-            'event_type': 'donation',
-            'last_name': subscription.customer.sources.data[0]['name'],
-            'email': subscription.customer.email,
-            'donation_amount': zero_decimal_currency_fix(charge.amount, charge.currency),
-            'currency': charge.currency,
-            'created': charge.created,
-            'recurring': True,
-            'frequency': 'monthly',
-            'service': 'stripe',
-            'transaction_id': charge.id,
-            'subscription_id': subscription.id,
-            'donation_url': donation_url,
-            'project': project,
-            'locale': subscription.metadata.locale,
-            'last_4': subscription.customer.sources.data[0]['last4'],
-            'conversion_amount': conversion_amount,
-            'net_amount': net_amount,
-            'transaction_fee': transaction_fee
-        }
-    })
 
 
 def send_newsletter_subscription_to_basket(data):
@@ -93,6 +58,18 @@ def send_transaction_to_basket(data):
             'donation_url': data['landing_url'],
             'locale': data['locale'],
             'conversion_amount': data.get('settlement_amount', None),
+        }
+    })
+
+
+def process_dispute(event):
+    dispute = event.data.object
+    send_to_sqs({
+        'data': {
+            'event_type': event.type,
+            'transaction_id': dispute.charge,
+            'reason': dispute.reason,
+            'status': dispute.status
         }
     })
 
@@ -188,7 +165,8 @@ class StripeWebhookProcessor:
         if process_method is not None:
             return process_method(event)
 
-    def process_charge_succeeded(self, event):
+    @staticmethod
+    def process_charge_succeeded(event):
         charge_id = event.data.object.id
         try:
             charge = stripe.Charge.retrieve(
@@ -235,15 +213,122 @@ class StripeWebhookProcessor:
             logger.error(f'Error updating Stripe Charge description and metadata: {e._message}', exc_info=True)
             return
 
-        send_stripe_transaction_to_basket(
-            subscription,
-            charge,
-            metadata,
-            donation_url,
-            conversion_amount,
-            net_amount,
-            transaction_fee,
-        )
+        project = 'mozillafoundation'
+
+        if 'thunderbird' in metadata:
+            project = 'thunderbird'
+        elif 'glassroomnyc' in metadata:
+            project = 'glassroomnyc'
+
+        send_to_sqs({
+            'data': {
+                'event_type': 'donation',
+                'last_name': subscription.customer.sources.data[0]['name'],
+                'email': subscription.customer.email,
+                'donation_amount': zero_decimal_currency_fix(charge.amount, charge.currency),
+                'currency': charge.currency,
+                'created': charge.created,
+                'recurring': True,
+                'frequency': 'monthly',
+                'service': 'stripe',
+                'transaction_id': charge.id,
+                'subscription_id': subscription.id,
+                'donation_url': donation_url,
+                'project': project,
+                'locale': subscription.metadata.locale,
+                'last_4': subscription.customer.sources.data[0]['last4'],
+                'conversion_amount': conversion_amount,
+                'net_amount': net_amount,
+                'transaction_fee': transaction_fee
+            }
+        })
+
+    @staticmethod
+    def process_charge_dispute_closed(event):
+        process_dispute(event)
+
+    @staticmethod
+    def process_charge_dispute_created(event):
+        dispute = event.data.object
+        if settings.AUTO_CLOSE_STRIPE_DISPUTES and dispute.status != 'lost':
+            try:
+                stripe.Dispute.close(dispute.id)
+            except stripe.error.StripeError as e:
+                logger.error(f'Error closing dispute {dispute.id}: {e._message}', exc_info=True)
+
+        process_dispute(event)
+
+    @staticmethod
+    def process_charge_dispute_updated(event):
+        process_dispute(event)
+
+    @staticmethod
+    def process_charge_refunded(event):
+        charge = event.data.object
+        refund = charge.refunds.data[0]
+        reason = refund.reason
+
+        # If there's no reason, we can assume the refund was made by donor care via the Stripe Dashboard
+        if not reason:
+            reason = 'requested_by_customer'
+
+        send_to_sqs({
+            'data': {
+                'event_type': event.type,
+                'transaction_id': charge.id,
+                'reason': reason,
+                'status': refund.status
+            }
+        })
+
+    @staticmethod
+    def process_charge_failed(event):
+        charge = event.data.object
+
+        if not charge.invoice:
+            logger.info('This charge is not associated with a subscription')
+            return
+
+        try:
+            invoice = stripe.Invoice.retrieve(charge.invoice, expand=['subscription', 'customer'])
+        except stripe.error.StripeError as e:
+            logger.error(f'Error fetching Stripe Invoice: {e._message}', exc_info=True)
+            return
+
+        subscription = invoice.subscription
+        metadata = subscription.metadata
+        failure_code = charge.failure_code
+
+        donation_url = None
+        if 'donation_url' in metadata:
+            donation_url = metadata['donation_url']
+
+        project = 'mozillafoundation'
+        if 'thunderbird' in metadata:
+            project = 'thunderbird'
+        elif 'glassroomnyc' in metadata:
+            project = 'glassroomnyc'
+
+        send_to_sqs({
+            'data': {
+                'transaction_id': charge.id,
+                'subscription_id': subscription.id,
+                'event_type': event.type,
+                'last_name': subscription.customer.sources.data[0]['name'],
+                'email': subscription.customer.email,
+                'donation_amount': zero_decimal_currency_fix(charge.amount, charge.currency),
+                'currency': charge.currency,
+                'created': charge.created,
+                'recurring': True,
+                'frequency': 'monthly',
+                'service': 'stripe',
+                'donation_url': donation_url,
+                'project': project,
+                'locale': subscription.metadata.locale,
+                'last_4': subscription.customer.sources.data[0]['last4'],
+                'failure_code': failure_code
+            }
+        })
 
 
 def process_webhook(form_data):

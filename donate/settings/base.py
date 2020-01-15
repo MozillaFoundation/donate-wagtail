@@ -52,6 +52,7 @@ class Base(object):
     # Stripe webhook credentials
     STRIPE_API_KEY = env('STRIPE_API_KEY')
     STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
+    AUTO_CLOSE_STRIPE_DISPUTES = env('AUTO_CLOSE_STRIPE_DISPUTES')
 
     LOCALE_PATHS = [
         app('locale'),

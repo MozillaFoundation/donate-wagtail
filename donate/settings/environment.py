@@ -9,6 +9,7 @@ from . import defaults
 # we error out first.
 env = environ.Env(
     ALLOWED_HOSTS=(list, '*'),
+    AUTO_CLOSE_STRIPE_DISPUTES=(bool, False),
     AWS_ACCESS_KEY_ID=(str, ''),
     AWS_LOCATION=(str, ''),
     AWS_REGION=(str, ''),
