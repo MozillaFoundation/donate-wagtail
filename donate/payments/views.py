@@ -1,4 +1,5 @@
 import logging
+from urllib import request, parse
 from sentry_sdk.integrations.django import ignore_logger
 
 from django.conf import settings
@@ -760,8 +761,23 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         return initial
 
     def form_valid(self, form, send_data_to_basket=True):
-        if send_data_to_basket:
-            data = form.cleaned_data.copy()
+        data = form.cleaned_data.copy()
+
+        if settings.POST_DONATE_NEWSLETTER_URL is not None:
+            newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
+            data = parse.urlencode({
+                'EMAIL': data['email']
+            }).encode()
+            req = request.Request(newsletter_url, data=data)
+            res = request.urlopen(req)
+            if res.status != 200:
+                sentry_logger.error(
+                    'Thunderbird newsletter POST failed',
+                    extra={'status': res.status},
+                    exc_info=True
+                )
+
+        elif send_data_to_basket:
             data['source_url'] = self.request.build_absolute_uri()
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
@@ -771,6 +787,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                     'eventLabel': 'Email',
                 }
             ])
+
         return super().form_valid(form)
 
 
