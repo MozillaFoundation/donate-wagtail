@@ -35,7 +35,7 @@ class Command(BaseCommand):
             reviewapp_name = settings.HEROKU_APP_NAME
             branch_name = settings.HEROKU_BRANCH
 
-            # As 01/2020 we can only get the PR number if the review app was automatically created
+            # As of 01/2020 we can only get the PR number if the review app was automatically created
             # (https://devcenter.heroku.com/articles/github-integration-review-apps#injected-environment-variables).
             # For review app manually created, we have to use the branch name instead.
             if pr_number:
