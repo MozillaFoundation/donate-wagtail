@@ -23,7 +23,7 @@
     "DJANGO_SECRET_KEY": {
       "generator": "secret"
     },
-    "DJANGO_CONFIGURATION": "ReviewApp",
+    "DJANGO_CONFIGURATION": "ThunderbirdReviewApp",
     "DJANGO_SETTINGS_MODULE": "donate.settings",
     "BRAINTREE_USE_SANDBOX": "True",
     "CONTENT_TYPE_NO_SNIFF": "True",
