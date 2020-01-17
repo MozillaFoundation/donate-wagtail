@@ -5,6 +5,7 @@
 <div class="donate-form__content" id="js-donate-form" data-locale="{% get_locale %}">
     <div class="donate-form__tabs tabs js-tabs">
         <form class="donate-form__tab-options tabs__container">
+        {% block donate_form_options %}
             <div class="tabs__option" role="presentation">
                 <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" aria-controls="tab-panel-1" aria-selected="true" id="tab-1" data-label="Single">
                     <input type="radio" class="tabs__radio-option" name="donation_frequency" id="one-time" value="one-time" {% if initial_frequency == 'single' %}checked{% endif %}>
@@ -17,6 +18,7 @@
                     <span class="tabs__label-text">{% trans "MONTHLY" %}</span>
                 </label>
             </div>
+        {% endblock %}
         </form>
         <div class="tabs__panel js-tab-panel {% if initial_frequency == 'monthly' %}tabs__panel--hidden{% endif %}" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
             <form method="GET" id="donate-form--single">
@@ -35,7 +37,7 @@
 
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
-                        <label for="one-time-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
+                        <label for="one-time-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                         <input type="number" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
                     </div>
@@ -71,7 +73,11 @@
                                 </svg>
                             </div>
                         </button>
-                        <div id="payments__paypal-button--single" class="payments__button payments__button--paypal"></div>
+                        <div id="payments__paypal-button--single" class="payments__button payments__button--paypal">
+                            <div id="payments__paypal-button--single--overlay" class="payments__button--paypal--overlay">
+                                {# this overlay captures click events, and only allows them through if the amount is not 0 #}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -95,7 +101,7 @@
 
                     <div class="donation-amount donation-amount--two-col donation-amount--other">
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
-                        <label for="monthly-amount-other" class="donation-amount__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
+                        <label for="monthly-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                         <input type="number" class="donation-amount__input" name="monthly-amount-other-input" id="monthly-amount-other-input" min="{{ initial_currency_info.minAmount }}" max="10000000" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                     </div>
@@ -131,7 +137,11 @@
                                 </svg>
                             </div>
                         </button>
-                        <div id="payments__paypal-button--monthly" class="payments__button payments__button--paypal"></div>
+                        <div id="payments__paypal-button--monthly" class="payments__button payments__button--paypal">
+                            <div id="payments__paypal-button--monthly--overlay" class="payments__button--paypal--overlay">
+                                {# this overlay captures click events, and only allows them through if the amount is not 0 #}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -33,8 +33,8 @@ sentry-sdk = "==0.13.5"
 stripe = ">=2.40.0,<3"
 wagtail = "==2.6.3"
 wagtail-factories = "*"
-wagtail-localize = ">=0.3.2"
-wagtail-localize-pontoon = ">=0.1.4"
+wagtail-localize = ">=0.4,<0.5"
+wagtail-localize-pontoon = ">=0.2,<0.3"
 whitenoise = "*"
 
 [requires]

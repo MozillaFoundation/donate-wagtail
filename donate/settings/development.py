@@ -40,6 +40,7 @@ class Development(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree
 
 class ThunderbirdDevelopment(Development, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Development.INSTALLED_APPS
+    ENABLE_THUNDERBIRD_REDIRECT = False
 
     @property
     def TEMPLATES(self):

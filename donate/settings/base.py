@@ -23,6 +23,7 @@ class Base(object):
     AUTH_USER_MODEL = 'users.User'
     ALLOWED_HOSTS = env('ALLOWED_HOSTS')
     RANDOM_SEED = env('RANDOM_SEED')
+    ENABLE_THUNDERBIRD_REDIRECT = env('ENABLE_THUNDERBIRD_REDIRECT')
 
     # Domain Redirects
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')
@@ -76,7 +77,8 @@ class Base(object):
 
         'wagtail_localize',
         'wagtail_localize.admin.language_switch',
-        'wagtail_localize.translation_memory',
+        'wagtail_localize.deprecated.translation_memory',
+        'wagtail_localize.translation',
         'wagtail_localize_pontoon',
 
         'wagtail.contrib.settings',

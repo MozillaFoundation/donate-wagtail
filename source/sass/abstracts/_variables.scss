@@ -79,7 +79,8 @@ $breakpoints: (
 */
 
 $z-index: (
-  1: 10,
+  hidden: -1,
+  base: 1,
   to-do: 20,
   search: 30,
   nav: 40,
@@ -87,8 +88,8 @@ $z-index: (
   nav-desktop: 60,
   ui-overlay: 70,
   sticky-message: 80,
-  9: 90,
-  modal: 100
+  modal: 100,
+  overlay: 200
 );
 
 // --------------------------------- Grid Dimensions --------------------------------------

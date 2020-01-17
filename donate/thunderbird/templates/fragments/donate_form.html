@@ -1,0 +1,11 @@
+{% extends "fragments/donate_form.html" %}
+{% load i18n util_tags %}
+
+{% block donate_form_options %}
+<div style="display: none" class="tabs__option" role="presentation">
+    <label for="one-time" class="tabs__label tabs__item--selected js-tab-item" aria-controls="tab-panel-1" aria-selected="true" id="tab-1" data-label="Single">
+        <input type="radio" class="tabs__radio-option" name="donation_frequency" id="one-time" value="one-time" {% if initial_frequency == 'single' %}checked{% endif %}>
+        <span class="tabs__label-text">{% trans "ONE TIME" %}</span>
+    </label>
+</div>
+{% endblock %}

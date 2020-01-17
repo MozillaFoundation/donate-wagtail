@@ -14,7 +14,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView
+from donate.views import EnvVariablesView, ThunderbirdRedirectView
+
+from donate.thunderbird.payments import urls as thunderbird_urls
 
 # Patterns not subject to i18n
 urlpatterns = [
@@ -28,12 +30,24 @@ urlpatterns = [
     path('environment.json', EnvVariablesView.as_view()),
 ]
 
+if settings.ENABLE_THUNDERBIRD_REDIRECT:
+    urlpatterns = i18n_patterns(
+        path('thunderbird/', ThunderbirdRedirectView.as_view(), name='thunderbird')
+    ) + urlpatterns
+
+# To skip the monthly upsell in Thunderbird for the time being
+if 'donate.thunderbird' in settings.INSTALLED_APPS:
+    urlpatterns += i18n_patterns(
+        path('', include(thunderbird_urls)),
+    )
+
 urlpatterns += i18n_patterns(
     # TODO we may want to version this cache, or pre-compile the catalog at build time
     # See https://django-statici18n.readthedocs.io
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
 )
+
 
 if settings.DEBUG:
     from django.conf.urls.static import static

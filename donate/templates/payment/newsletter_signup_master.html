@@ -1,0 +1,49 @@
+{% extends "pages/base_page.html" %}
+{% load i18n form_tags %}
+
+{% block title %}{% trans "Stay in touch" %}{% endblock %}
+
+{% block template_name %}app--newsletter-signup{% endblock %}
+
+{% block content %}
+<div class="layout layout--narrow">
+    <div class="layout__container">
+        <div class="layout__full-col">
+            {% block thank-you %}
+                <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
+                <p>{% blocktrans trimmed %}
+                    Protect the internet as a global public resource. Join our email list to take action and stay updated!
+                {% endblocktrans %}</p>
+            {% endblock %}
+
+            <form method="post" class="form">
+                <div class="form__container">
+                    <div class="form__section">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <div class="form__errors">{{ error }}</div>
+                            {% endfor %}
+                        {% elif form.errors %}
+                            <div class="form__errors">
+                                {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
+                            </div>
+                        {% endif %}
+
+                        {% render_form_field form.email %}
+                        {% render_form_field form.privacy %}
+                    </div>
+
+                    <div class="form__section form__section--actions form__section--bottom-margin button__group">
+                        <button class="button button--large button--full button--primary" type="submit">
+                            {% trans "Sign Up" %}
+                        </button>
+                        <a class="button button--large button--secondary" href="{% url 'payments:completed' %}">{% trans "No Thanks" %}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

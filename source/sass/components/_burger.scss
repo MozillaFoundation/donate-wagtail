@@ -7,7 +7,7 @@
   height: 28px;
   padding: 0;
   position: relative;
-  z-index: 1;
+  @include z-index(base);
   outline: 0;
   transition: background-color $transition;
 
