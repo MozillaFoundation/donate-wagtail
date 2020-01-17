@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views import View
 from django.views.generic.base import RedirectView
+from django.shortcuts import render
 
 
 class EnvVariablesView(View):
@@ -12,6 +13,15 @@ class EnvVariablesView(View):
 
     def get(self, request):
         return JsonResponse(settings.FRONTEND)
+
+
+class WaysToGiveView(View):
+    """
+    A view for "ways to give" page
+    """
+
+    def get(self, request):
+        return render(request, 'pages/core/ways_to_give_page.html')
 
 
 class ThunderbirdRedirectView(RedirectView):

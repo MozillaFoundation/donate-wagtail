@@ -14,12 +14,13 @@ from wagtail.documents import urls as wagtaildocs_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView, ThunderbirdRedirectView
+from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView
 
 from donate.thunderbird.payments import urls as thunderbird_urls
 
 # Patterns not subject to i18n
 urlpatterns = [
+    path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
     path('auth/', include('mozilla_django_oidc.urls')),
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
