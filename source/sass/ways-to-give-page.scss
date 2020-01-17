@@ -1,0 +1,27 @@
+.app--ways-to-give {
+  .app__header {
+    background: $color--black;
+    color: $color--white;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 48px;
+      margin: 0 0 10px;
+    }
+
+    .button {
+      display: inline-block;
+    }
+  }
+
+  .container {
+    padding: 2em 10px;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
