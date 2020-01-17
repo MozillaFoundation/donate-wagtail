@@ -9,11 +9,12 @@
 {% endblock %}
 
 {% block faq_contact %}
-    {% blocktrans with faq_url='/faq' email='give@thunderbird.net' trimmed %}
+    {% blocktrans with faq_url='/faq' email='thunderbird-donate@mozilla.org' trimmed %}
     Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="mailto:{{ email }}">Send us an email</a>.
     {% endblocktrans %}
 {% endblock %}
 
 {% block contribution_statement %}
-    {% blocktrans %}Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not tax-deductible as charitable contributions.{% endblocktrans %}
+    <!--{% blocktrans %}Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not tax-deductible as charitable contributions.{% endblocktrans %}-->
+    Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to support Thunderbird. Mozilla reserves the right to find another use for the funds if it determines that Thunderbird is no longer furthering Mozilla’s mission. They are tax-deductible in the U.S. to the fullest extent permitted by law.
 {% endblock %}
