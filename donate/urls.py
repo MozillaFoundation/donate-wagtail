@@ -20,7 +20,6 @@ from donate.thunderbird.payments import urls as thunderbird_urls
 
 # Patterns not subject to i18n
 urlpatterns = [
-    path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
     path('auth/', include('mozilla_django_oidc.urls')),
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
@@ -47,6 +46,7 @@ urlpatterns += i18n_patterns(
     # See https://django-statici18n.readthedocs.io
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
+    path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
 )
 
 
