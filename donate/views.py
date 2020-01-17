@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views import View
 from django.views.generic.base import RedirectView
 from django.shortcuts import render
+from donate.payments import constants
 
 
 class EnvVariablesView(View):
@@ -21,7 +22,9 @@ class WaysToGiveView(View):
     """
 
     def get(self, request):
-        return render(request, 'pages/core/ways_to_give_page.html')
+        return render(request, 'pages/core/ways_to_give_page.html', {
+            'currencies': constants.CURRENCIES
+        })
 
 
 class ThunderbirdRedirectView(RedirectView):
