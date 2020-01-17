@@ -77,7 +77,8 @@ class Base(object):
 
         'wagtail_localize',
         'wagtail_localize.admin.language_switch',
-        'wagtail_localize.translation_memory',
+        'wagtail_localize.deprecated.translation_memory',
+        'wagtail_localize.translation',
         'wagtail_localize_pontoon',
 
         'wagtail.contrib.settings',

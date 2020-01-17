@@ -3,7 +3,7 @@
 {% load i18n util_tags %}
 
 {% block thank_you_description %}
-    <p>{% blocktrans %}Your donation will go right to work protecting the web, keeping it open and available to all.{% endblocktrans %} {% blocktrans with email='give@thunderbird.net' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
+    <p>{% comment %}{% blocktrans %}Your donation will go right to work protecting the web, keeping it open and available to all.{% endblocktrans %} {% endcomment %}{% blocktrans with email='thunderbird-donate@mozilla.org' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
     <p>{% trans "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!" %}</p>
 {% endblock %}
 
