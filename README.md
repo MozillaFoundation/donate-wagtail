@@ -167,9 +167,25 @@ _Notes_: We want to keep the `trigger_welcome` at `N` and the `format` to `html`
 
 ## Review App
 
-Opening a PR will automatically create a Review App in the `donate-wagtail` pipeline. A slack bot posts credentials and links to Review Apps in to the `mofo-ra-donate-wagtail` channel.
+### Environment variables
 
-This only work for Mo-Fo staff: you will need to manually open a Review App on Heroku for PRs opened by external contributors.
+Non-secret envs can be added to the `app.json` file. Secrets must be set on Heroku in the `Review Apps` section of the pipelines' `settings` tab.
+
+### Review App for PRs
+
+Opening a PR will automatically create a Review App in the `donate-wagtail` and `thunderbird-donate` pipelines. A slack bot posts credentials and links to Review Apps in to the `mofo-ra-donate-wagtail` and `mofo-ra-thunderbird-donate-wagtail` channels.
+
+*Note:* This only work for Mo-Fo staff: you will need to manually open a Review App on Heroku for PRs opened by external contributors.
+
+### Review App for branches
+
+You can manually create a review app for any branch pushed to this repo. It's useful if you want to test your code on Heroku without opening a PR yet.
+To create one:
+- log into Heroku.
+- Go in the `donate-wagtail` or `thunderbird-donate` pipeline.
+- Click on `+ New app` and select the branch you want to use.
+
+The review app slack bot will post a message in either the `mofo-ra-donate-wagtail` or `mofo-ra-thunderbird-donate-wagtail` with links and credentials as soon as the review app is ready.
 
 ## SSO and admin logins for local development
 
