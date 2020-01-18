@@ -24,7 +24,9 @@ class WaysToGiveView(View):
     def get(self, request):
         return render(request, 'pages/core/ways_to_give_page.html', {
             'currencies': constants.CURRENCIES,
-            'ways_to_give_link': request.scheme + "://" + request.get_host() + "/" + request.LANGUAGE_CODE + "/?utm_content=Ways_to_Give",
+            'ways_to_give_link':
+                request.scheme + "://" + request.get_host() + "/" + request.LANGUAGE_CODE
+                + "/?utm_content=Ways_to_Give",
         })
 
 
