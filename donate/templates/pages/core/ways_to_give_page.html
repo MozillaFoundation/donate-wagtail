@@ -8,14 +8,13 @@
 {% block header %}
 <div class="app__header">
     <h1>{% trans "Ways to Give" %}</h1>
-    <div><a class="button button--outline button--dark-bg">{% trans "donate now" %}</a></div>
+    <div><a href="{{ways_to_give_link}}" class="button button--outline button--dark-bg">{% trans "donate now" %}</a></div>
 </div>
 {% endblock %}
 
 {% block navigation %}{% endblock %}
 
 {% block content %}
-{% with ways_to_give_link=request.scheme|add:"://"|add:request.get_host|add:"/?utm_content=Ways_to_Give" %}
 <div class="container">
     <h2>{% trans "Credit / Debit and PayPal" %}</h2>
     <p>
@@ -24,7 +23,7 @@
         {% endblocktrans %}
     </p>
 
-    <h2>{% trans "" %}Bank Transfer / SEPA</h2>
+    <h2>{% trans "Bank Transfer / SEPA" %}</h2>
     <p><strong>{% trans "New!" %}</strong> {% trans "We are now able to accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
     <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
     <p>
@@ -92,5 +91,4 @@
         {% endblocktrans %}
     </p>
 </div>
-{% endwith %}
 {% endblock %}
