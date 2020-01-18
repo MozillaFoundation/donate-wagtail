@@ -8,11 +8,6 @@
     justify-content: center;
     align-items: center;
 
-    h1 {
-      font-size: 48px;
-      margin: 0 0 20px;
-    }
-
     .button {
       display: inline-block;
       text-transform: uppercase;
@@ -24,6 +19,19 @@
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  h1 {
+    @include font-size(xxxl);
+    margin: 0 0 20px;
+  }
+
+  h2 {
+    @include font-size(xxl);
+  }
+
+  h3 {
+    @include font-size(xl);
   }
 
   ul {
