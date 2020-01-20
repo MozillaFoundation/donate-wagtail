@@ -37,7 +37,7 @@
 
     .currency-list {
       list-style: initial;
-      padding-left: 40px;
+      padding-left: 1rem;
       column-count: 2;
 
       @include media-query(mob-landscape) {
@@ -45,7 +45,7 @@
       }
 
       @include media-query(tablet-landscape) {
-        column-count: 5;
+        column-count: 4;
       }
     }
   }
