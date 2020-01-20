@@ -62,6 +62,7 @@ class Command(BaseCommand):
                                 URL: https://{reviewapp_name}.herokuapp.com'''
                 message_title = f'PR {pr_number}{pr_title}\n'
                 github_url = f'https://github.com/mozilla/donate-wagtail/pull/{pr_number}'
+                github_button_text = 'View PR on Github'
             else:
                 color = '#7CD197'
                 fallback_text = f'''New review app deployed: It will be ready in a minute!\n
@@ -71,6 +72,7 @@ class Command(BaseCommand):
                                 URL: https://{reviewapp_name}.herokuapp.com'''
                 message_title = f'Branch: {branch_name}\n'
                 github_url = f'https://github.com/mozilla/donate-wagtail/tree/{branch_name}'
+                github_button_text = 'View branch on Github'
 
             slack_payload = {
                 'attachments': [
@@ -89,7 +91,7 @@ class Command(BaseCommand):
                             },
                             {
                                 'type': 'button',
-                                'text': 'View branch on Github',
+                                'text': f'{github_button_text}',
                                 'url': f'{github_url}'
                             }
                         ]
