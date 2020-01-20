@@ -31,32 +31,32 @@
 
     <h3>{% trans "Euros:" %}</h3>
     <p>
-        <b>Account Currency:</b> Euro (EUR)<br>
-        <b>Receiving Bank (Pay to):</b> Standard Chartered Bank<br>
-        <b>City & Country/Region:</b> Frankfurt, Germany<br>
-        <b>SWIFT/BIC Code:</b> SCBLDEFX<br>
-        <b>Beneficiary Name (For credit to):</b> SVB-Mozilla Foundation<br>
-        <b>IBAN:</b> DE67512305000500136802
+        <b>{% trans "Account Currency" %}:</b> {% trans "Euro (EUR)" %}<br>
+        <b>{% trans "Receiving Bank (Pay to)" %}:</b> Standard Chartered Bank<br>
+        <b>{% trans "City & Country/Region" %}:</b> {% trans "Frankfurt, Germany" %}<br>
+        <b>{% trans "SWIFT/BIC Code" %}:</b> SCBLDEFX<br>
+        <b>{% trans "Beneficiary Name (For credit to)" %}:</b> SVB-Mozilla Foundation<br>
+        <b>{% trans "IBAN" %}:</b> DE67512305000500136802
     </p>
 
     <h3>{% trans "British Pound Sterling:" %}</h3>
     <p>
-        <b>Account Currency:</b> British Pound Sterling (GBP)<br>
-        <b>Receiving Bank (Pay to):</b> National Westminster Bank<br>
-        <b>City & Country/Region:</b> London, United Kingdom<br>
-        <b>Bank Sort Code:</b> 60-00-04<br>
-        <b>Account Number (8 digits):</b> 10017496<br>
-        <b>Beneficiary Name (For credit to):</b> SVB RE Mozilla Foundation
+        <b>{% trans "Account Currency" %}:</b> {% trans "British Pound Sterling (GBP)" %}<br>
+        <b>{% trans "Receiving Bank (Pay to)" %}:</b> National Westminster Bank<br>
+        <b>{% trans "City & Country/Region" %}:</b> {% trans "London, United Kingdom" %}<br>
+        <b>{% trans "Bank Sort Code" %}:</b> 60-00-04<br>
+        <b>{% trans "Account Number (8 digits)" %}:</b> 10017496<br>
+        <b>{% trans "Beneficiary Name (For credit to)" %}:</b> SVB RE Mozilla Foundation
     </p>
     <p>
-        <b>SWIFT/BIC Code:</b> NWBKGB2L<br>
-        <b>IBAN:</b> GB77NWBK60000410017496
+        <b>{% trans "SWIFT/BIC Code" %}:</b> NWBKGB2L<br>
+        <b>{% trans "IBAN" %}:</b> GB77NWBK60000410017496
     </p>
 
     <h2 id="check">{% trans "Check (via postal service)" %}</h2>
     <p>
-        {% blocktrans trimmed %}
-        Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “Mozilla Foundation”. Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
+        {% blocktrans with payee='Mozilla Foundation' trimmed %}
+        Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “{{payee}}”. Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
         {% endblocktrans %}
     </p>
     <address>
@@ -68,7 +68,7 @@
 
     <h2>{% trans "Currencies" %}</h2>
     <p>{% trans "Select your currency to make a secure online donation:" %}</p>
-    <ul>
+    <ul class="currency-list">
         {% for key, value in currencies.items %}
         <li><a href="{{ways_to_give_link}}&currency={{key}}">
             {{ key|upper }} {{ value.symbol }}
