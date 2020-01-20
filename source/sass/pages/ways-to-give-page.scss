@@ -1,5 +1,5 @@
 .app--ways-to-give {
-  .app__header {
+  .banner {
     background: $color--black;
     color: $color--white;
     height: 300px;
@@ -8,9 +8,15 @@
     justify-content: center;
     align-items: center;
 
+    h1 {
+      @include font-size(xxxl);
+      margin: 0;
+    }
+
     .button {
       display: inline-block;
       text-transform: uppercase;
+      margin: 1rem 0;
     }
   }
 
@@ -21,22 +27,19 @@
     margin: 0 auto;
   }
 
-  h1 {
-    @include font-size(xxxl);
-    margin: 0 0 20px;
-  }
+  .content {
+    h2 {
+      @include font-size(xxl);
+    }
 
-  h2 {
-    @include font-size(xxl);
-  }
+    h3 {
+      @include font-size(xl);
+    }
 
-  h3 {
-    @include font-size(xl);
-  }
-
-  ul {
-    list-style: initial;
-    padding-left: 40px;
-    text-transform: uppercase;
+    ul {
+      list-style: initial;
+      padding-left: 40px;
+      text-transform: uppercase;
+    }
   }
 }
