@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 16:04+0000\n"
-"PO-Revision-Date: 2020-01-21 18:32+0000\n"
+"PO-Revision-Date: 2020-01-21 18:47+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -306,7 +306,7 @@ msgstr "Vi kommer snart tilbake til deg."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr "Om du trenger hjelp med et bidrag, fyll ut dette skjemaet så kommer vi snart tilbake til deg."
+msgstr "Om du trenger hjelp med et bidrag, fyll ut dette skjemaet så tar vi snart kontakt med deg."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
@@ -458,6 +458,8 @@ msgid ""
 "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”. Please note that the Mozilla Foundation can only accept checks in US dollars "
 "drawn on a US bank. Please do <strong>not</strong> send cash."
 msgstr ""
+"Send en sjekk <strong>inkludert e-postadressen din på notatlinjen</strong>, og betales (betalingsmottaker) til «%(payee)s». Vær oppmerksom på at Mozilla Foundation bare kan godta sjekker i "
+"amerikanske dollar trukket fra en amerikansk bank. <strong>Ikke send</strong> kontanter."
 
 #: donate/templates/pages/core/ways_to_give_page.html:69
 msgid "Currencies"
@@ -688,12 +690,11 @@ msgstr "Tilbake"
 
 #: donate/thunderbird/templates/base.html:5 donate/thunderbird/templates/pages/base_page.html:7 donate/thunderbird/templates/pages/base_page.html:14
 #: donate/thunderbird/templates/pages/base_page.html:15
-#, fuzzy
 #| msgctxt "Email subject line"
 #| msgid "I donated to Thunderbird today"
 msgctxt "Page title"
 msgid "Donate to Thunderbird"
-msgstr "Jeg donerte til Thunderbird i dag"
+msgstr "Doner til Thunderbird"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
@@ -711,7 +712,7 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Nedlastingen din burde ha startet automatisk. Om det ikke fungerte, <a href=\"%(url)s\">prøv å laste ned på nytt her</a>."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
