@@ -2487,4 +2487,5 @@ small {
   width: 100%;
   min-width: auto;
   max-width: 320px;
+  margin-bottom: 20vh;
 }
