@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 16:04+0000\n"
+"POT-Creation-Date: 2020-01-21 21:12+0000\n"
 "PO-Revision-Date: 2019-10-02 11:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,12 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.2\n"
 
-#: donate/frontend/_js/main.compiled.js:16
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
 #: source/js/components/currency-selector.js:91
 msgid "per month"
 msgstr "par mois"
 
-#: donate/frontend/_js/main.compiled.js:16
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
 msgid "Other amount"
 msgstr "Montant libre"
 

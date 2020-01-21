@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 16:04+0000\n"
+"POT-Creation-Date: 2020-01-21 21:12+0000\n"
 "PO-Revision-Date: 2020-01-05 09:23+0000\n"
 "Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:16
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
 #: source/js/components/currency-selector.js:91
 msgid "per month"
 msgstr "ต่อเดือน"
 
-#: donate/frontend/_js/main.compiled.js:16
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
 msgid "Other amount"
 msgstr "จำนวนอื่น"
 
