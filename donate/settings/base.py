@@ -53,6 +53,9 @@ class Base(object):
     STRIPE_API_KEY = env('STRIPE_API_KEY')
     STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
 
+    # Override URL for posting newsletter subscriptions
+    POST_DONATE_NEWSLETTER_URL = env('POST_DONATE_NEWSLETTER_URL')
+
     LOCALE_PATHS = [
         app('locale'),
     ]
