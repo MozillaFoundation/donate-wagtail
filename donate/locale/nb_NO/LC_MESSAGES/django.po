@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 16:04+0000\n"
-"PO-Revision-Date: 2020-01-21 18:03+0000\n"
+"PO-Revision-Date: 2020-01-21 18:32+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -298,7 +298,7 @@ msgstr "Doner nå"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr ""
+msgstr "Takk for at du kontaktet oss. Det er opprettet en sak om spørsmålet ditt, og vi vil ta kontakt om kort tid."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
@@ -306,7 +306,7 @@ msgstr "Vi kommer snart tilbake til deg."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr ""
+msgstr "Om du trenger hjelp med et bidrag, fyll ut dette skjemaet så kommer vi snart tilbake til deg."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
@@ -422,35 +422,35 @@ msgstr "SWIFT-/BIC-kode:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:38 donate/templates/pages/core/ways_to_give_page.html:49
 msgid "Beneficiary Name (For credit to):"
-msgstr ""
+msgstr "Navn på mottaker (for å kreditere):"
 
 #: donate/templates/pages/core/ways_to_give_page.html:39 donate/templates/pages/core/ways_to_give_page.html:53
 msgid "IBAN:"
-msgstr ""
+msgstr "IBAN:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:42
 msgid "British Pound Sterling:"
-msgstr ""
+msgstr "Britiske pund:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:44
 msgid "British Pound Sterling (GBP)"
-msgstr ""
+msgstr "Britisk pund (GBP)"
 
 #: donate/templates/pages/core/ways_to_give_page.html:46
 msgid "London, United Kingdom"
-msgstr ""
+msgstr "London, Storbritannia"
 
 #: donate/templates/pages/core/ways_to_give_page.html:47
 msgid "Bank Sort Code:"
-msgstr ""
+msgstr "Bank-sorteringskode:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:48
 msgid "Account Number (8 digits):"
-msgstr ""
+msgstr "Kontonummer (8 siffer):"
 
 #: donate/templates/pages/core/ways_to_give_page.html:56
 msgid "Check (via postal service)"
-msgstr ""
+msgstr "Sjekk (via postgang)"
 
 #: donate/templates/pages/core/ways_to_give_page.html:58
 #, python-format
@@ -461,15 +461,15 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page.html:69
 msgid "Currencies"
-msgstr ""
+msgstr "Valutaer"
 
 #: donate/templates/pages/core/ways_to_give_page.html:70
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Velg valutatype for å utføre en sikker nettbasert donasjon:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:79
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: donate/templates/pages/core/ways_to_give_page.html:81
 msgid ""
@@ -478,11 +478,15 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Stiftelsen Mozilla er i California et ideelt selskap unntatte fra amerikansk føderal inntektskatt ifølge IRC 501(c)(3) og en offentlig veldedighet som er klassifisert under IRC avsnitt 170(b)(1)(A) "
+"og 509(a)(1). Bitcoin-donasjoner Mozilla mottar betraktes som veldedige bidrag i henhold til amerikanske føderale skattelover, som skal brukes etter eget skjønn for sine veldedige formål. Ettersom "
+"IRS har indikert at det vil behandle Bitcoin som eiendom for amerikanske skattemessige formål (se IRS notis 2014-21), kan donasjoner av Bitcoin være underlagt spesielle regler angående summen av "
+"ditt veldedige fradrag, dokumentasjonen som må gis for å kreve skattefradrag eller andre forhold."
 
 #: donate/templates/pages/core/ways_to_give_page.html:86
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Les mer om bitcoin-donasjoner <a href=\"%(bitcoin_wiki)s\">her</a>. For å donere bitcoin, <a href=\"%(bitcoin_donate)s\">gå til denne lenken.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
