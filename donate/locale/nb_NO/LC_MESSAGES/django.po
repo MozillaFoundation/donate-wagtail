@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 16:04+0000\n"
-"PO-Revision-Date: 2020-01-21 18:47+0000\n"
+"PO-Revision-Date: 2020-01-21 19:36+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -306,7 +306,7 @@ msgstr "Vi kommer snart tilbake til deg."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr "Om du trenger hjelp med et bidrag, fyll ut dette skjemaet så tar vi snart kontakt med deg."
+msgstr "Om du trenger hjelp med en donasjon, fyll ut dette skjemaet så tar vi snart kontakt med deg."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
