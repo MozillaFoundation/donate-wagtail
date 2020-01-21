@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 16:04+0000\n"
+"POT-Creation-Date: 2020-01-21 21:12+0000\n"
 "PO-Revision-Date: 2019-10-09 21:17+0000\n"
 "Last-Translator: Kohei Yoshino <kohei.yoshino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: donate/frontend/_js/main.compiled.js:16
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
 #: source/js/components/currency-selector.js:91
 msgid "per month"
 msgstr "per month"
 
-#: donate/frontend/_js/main.compiled.js:16
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
 msgid "Other amount"
 msgstr "Other amount"
 
