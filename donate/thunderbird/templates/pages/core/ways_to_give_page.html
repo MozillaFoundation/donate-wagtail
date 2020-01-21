@@ -1,0 +1,21 @@
+{% extends "pages/core/ways_to_give_page_master.html" %}
+
+{% load i18n %}
+
+{% block tb_memo_eur %}<br><b>{% trans "Memo field:" %}</b> Thunderbird{% endblock %}
+{% block tb_memo_gbp %}<br><b>{% trans "Memo field:" %}</b> Thunderbird{% endblock %}
+
+{% block check_payee %}
+    {% blocktrans with thunderbird='Thunderbird' payee='Mozilla Foundation' trimmed %}
+    Please send a check <strong>including “{{thunderbird}}” on the memo line</strong>, and payable (payee) to “{{payee}}”.
+    {% endblocktrans %}
+{% endblock %}
+
+{% block check_address %}
+    Mozilla Foundation attn: Thunderbird Donor Care<br>
+    2 Harrison Street, #175<br>
+    San Francisco CA 94105<br>
+    USA
+{% endblock %}
+
+{% block bitcoin %}{% endblock %}
