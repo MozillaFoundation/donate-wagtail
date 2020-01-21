@@ -1,4 +1,4 @@
-from .environment import app, env
+from .environment import app
 
 
 class ThunderbirdOverrides(object):
