@@ -61,12 +61,11 @@
             {% blocktrans with payee='Mozilla Foundation' trimmed %}
             Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “{{payee}}”.
             {% endblocktrans %}
-            {% blocktrans trimmed %}
-            Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
-            {% endblocktrans %}
         {% endblock %}
 
-
+        {% blocktrans trimmed %}
+        Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
+        {% endblocktrans %}
     </p>
     <address>
         {% block check_address %}

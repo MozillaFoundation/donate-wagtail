@@ -7,11 +7,7 @@
 
 {% block check_payee %}
     {% blocktrans with thunderbird='Thunderbird' payee='Mozilla Foundation' trimmed %}
-    Please send a check <strong>with a separate note marked “{{thunderbird}}”</strong>, and payable (payee) to “{{payee}}”.
-    {% endblocktrans %}
-    <br>
-    {% blocktrans with phoneNumber='(650) 903-0800' trimmed %}
-    If required by your bank, add receiver phone number {{phoneNumber}}.
+    Please send a check <strong>including “{{thunderbird}}” on the memo line</strong>, and payable (payee) to “{{payee}}”.
     {% endblocktrans %}
 {% endblock %}
 
