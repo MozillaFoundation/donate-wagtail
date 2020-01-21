@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 16:04+0000\n"
-"PO-Revision-Date: 2020-01-21 16:31+0000\n"
+"PO-Revision-Date: 2020-01-21 16:44+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -298,19 +298,19 @@ msgstr "Wspomóż teraz"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr ""
+msgstr "Dziękujemy za kontakt. Utworzyliśmy zgłoszenie i wkrótce się do Ciebie odezwiemy."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
-msgstr ""
+msgstr "Niedługo wyślemy odpowiedź."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr ""
+msgstr "Jeśli potrzebujesz pomocy z przekazaniem datku, wypełnij ten formularz, a wkrótce się z Tobą skontaktujemy."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
-msgstr ""
+msgstr "Imię i nazwisko"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:50
 msgid "Language"
@@ -373,7 +373,7 @@ msgstr "Karta płatnicza i PayPal"
 #: donate/templates/pages/core/ways_to_give_page.html:18
 #, python-format
 msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
-msgstr ""
+msgstr "<a href=\"%(ways_to_give_link)s\">Na tej stronie</a> można szybko i bezpiecznie przekazać datek przez Internet."
 
 #: donate/templates/pages/core/ways_to_give_page.html:23
 msgid "Bank Transfer / SEPA"
@@ -458,18 +458,20 @@ msgid ""
 "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”. Please note that the Mozilla Foundation can only accept checks in US dollars "
 "drawn on a US bank. Please do <strong>not</strong> send cash."
 msgstr ""
+"Prosimy wysłać czek <strong>z adresem e-mail w wierszu notatki</strong> i odbiorcą „%(payee)s”. Prosimy pamiętać, że Fundacja Mozilla może przyjmować tylko czeki w dolarach amerykańskich wystawione "
+"w banku amerykańskim. Prosimy <strong>nie</strong> wysyłać gotówki."
 
 #: donate/templates/pages/core/ways_to_give_page.html:69
 msgid "Currencies"
-msgstr ""
+msgstr "Waluty"
 
 #: donate/templates/pages/core/ways_to_give_page.html:70
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Wybierz walutę, aby w bezpieczny sposób przekazać datek przez Internet:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:79
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: donate/templates/pages/core/ways_to_give_page.html:81
 msgid ""
@@ -478,11 +480,16 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Fundacja Mozilla to spółka non-profit z siedzibą w Kalifornii, zwolniona z federalnego podatku dochodowego Stanów Zjednoczonych według sekcji 501(c)(3) kodeksu podatkowego oraz publiczna organizacja"
+" charytatywna sklasyfikowana według sekcji 170(b)(1)(A) i 509(a)(1) kodeksu podatkowego. Datki w formie bitcoinów otrzymywane przez Mozillę są traktowane jako wpłaty charytatywne według federalnego "
+"prawa podatkowego Stanów Zjednoczonych, do użytku według jej uznania w jej celach charytatywnych. Ponieważ Urząd skarbowy oświadczył, że w kwestiach podatkowych Stanów Zjednoczonych będzie on "
+"traktował bitcoiny jako mienie (patrz: Zawiadomienie 2014-21 Urzędu skarbowego), datki w formie bitcoinów mogą być przedmiotem specjalnych zasad w zakresie kwoty odliczonej od podatku, dokumentów "
+"wymaganych do odliczenia i innych kwestii."
 
 #: donate/templates/pages/core/ways_to_give_page.html:86
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "<a href=\"%(bitcoin_wiki)s\">Ta strona</a> zawiera więcej informacji o datkach w bitcoinach. <a href=\"%(bitcoin_donate)s\">Na tej stronie</a> można wykonać taki datek."
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -709,7 +716,7 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Pobieranie powinno rozpocząć się samoczynnie. Jeśli nie, to <a href=\"%(url)s\">spróbuj jeszcze raz</a>."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
