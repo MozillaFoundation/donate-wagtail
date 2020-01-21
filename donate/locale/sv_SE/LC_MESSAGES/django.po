@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 16:04+0000\n"
-"PO-Revision-Date: 2020-01-21 17:30+0000\n"
-"Last-Translator: Andreas Pettersson <az@kth.se>\n"
+"PO-Revision-Date: 2020-01-21 17:48+0000\n"
+"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
@@ -397,7 +397,7 @@ msgstr "Euro:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:34 donate/templates/pages/core/ways_to_give_page.html:44
 msgid "Account Currency:"
-msgstr ""
+msgstr "Kontovaluta:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:34
 msgid "Euro (EUR)"
@@ -417,7 +417,7 @@ msgstr "Frankfurt, Tyskland"
 
 #: donate/templates/pages/core/ways_to_give_page.html:37 donate/templates/pages/core/ways_to_give_page.html:52
 msgid "SWIFT/BIC Code:"
-msgstr ""
+msgstr "SWIFT/BIC-kod:"
 
 #: donate/templates/pages/core/ways_to_give_page.html:38 donate/templates/pages/core/ways_to_give_page.html:49
 msgid "Beneficiary Name (For credit to):"
@@ -445,11 +445,11 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page.html:48
 msgid "Account Number (8 digits):"
-msgstr ""
+msgstr "Kontonummer (8 siffror):"
 
 #: donate/templates/pages/core/ways_to_give_page.html:56
 msgid "Check (via postal service)"
-msgstr ""
+msgstr "Check (via posttjänst)"
 
 #: donate/templates/pages/core/ways_to_give_page.html:58
 #, python-format
