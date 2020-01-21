@@ -476,6 +476,10 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Mozilla Vakfı, IRC 501(c)(3)'e göre kâr amacı gütmeyen bir Kaliforniya şirketidir ve IRC bölümleri 170(b)(1)(A) ve 509(a)(1)a'ya göre bir kamusal hayır cemiyetidir. Mozilla'nın aldığı bitcoin "
+"bağışları ABD federal vergi yasalarına göre hayır amacı taşıyan katkılardır ve vakfın uygun gördüğü şekilde hayır işleri için kullanılacaktır. IRS bitcoin para birimini ABD vergi yasalarında bir "
+"mülk olarak değerlendireceğinden (bkz. IRS 2014-21 sayılı duyurusu); söz konusu bitcoin bağışları; hayırlı işe konu olan gelirin vergi muafiyeti, vergi muafiyeti için zorunlu olan belgeler ve diğer "
+"meseleler bağlamında özel kurallara tâbi olabilir."
 
 #: donate/templates/pages/core/ways_to_give_page.html:86
 #, python-format
