@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 03:32+0000\n"
+"PO-Revision-Date: 2020-01-22 03:38+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_TW\n"
@@ -459,7 +459,7 @@ msgstr "貨幣"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:80
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "請選擇您要進行線上安全捐款的貨幣幣別:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:89
 msgid "Bitcoin"
@@ -472,11 +472,13 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Mozilla Foundation 是依照美國國內稅收法 501(c)(3) 條款登記設立於美國加州，並依照 170(b)(1)(A) 及 509(a)(1) 條款認定的非營利企業。根據美國聯邦稅法，Mozilla 收到的比特幣捐款可視為慈善捐助，供其自行依慈善目的運用。由於美國國稅局已表明將比特幣視為可課稅之財產（請參考 IRS 的 2014-21 "
+"號公告），對您以比特幣捐助的金額可能有特別規定，例如必須提供特別文件方可扣抵稅額。"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "可<a href=\"%(bitcoin_wiki)s\">在此</a>了解以比特幣捐款的更多資訊。您可到<a href=\"%(bitcoin_donate)s\">此鏈結</a>使用比特幣捐款。"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -694,7 +696,7 @@ msgstr "捐款將交由 Mozilla Foundation 的登記於美國加州全資子公�
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "將自動開始下載，若沒有的話請<a href=\"%(url)s\">點擊此處再試一次</a>。"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
@@ -703,7 +705,7 @@ msgstr "記事欄:"
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "請發送受款人為「%(payee)s」的支票，<strong>並在記事欄註明「%(thunderbird)s」</strong>。"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
