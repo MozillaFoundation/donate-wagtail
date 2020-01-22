@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 06:54+0000\n"
+"PO-Revision-Date: 2020-01-22 14:02+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -301,180 +301,180 @@ msgstr "Nu doneren"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr ""
+msgstr "Bedankt dat u contact met ons hebt opgenomen. Er is een case voor uw probleem gemaakt en we nemen binnenkort contact met u op."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
-msgstr ""
+msgstr "We nemen binnenkort contact op."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr ""
+msgstr "Als u hulp nodig hebt met een bijdrage, vul dan dit formulier in en we nemen spoedig contact met u op."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
-msgstr ""
+msgstr "Contactnaam"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:50
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:53
 msgctxt "Option in 'Language' dropdown"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:54
 msgid "English"
-msgstr ""
+msgstr "Engels"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:55
 msgid "French"
-msgstr ""
+msgstr "Frans"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:56
 msgid "German"
-msgstr ""
+msgstr "Duits"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:57
 msgid "Spanish"
-msgstr ""
+msgstr "Spaans"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:58
 msgid "Polish"
-msgstr ""
+msgstr "Pools"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:59
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugees"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:60
 msgctxt "Option in 'Language' dropdown"
 msgid "Other"
-msgstr ""
+msgstr "Overig"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:66
 msgid "Subject"
-msgstr ""
+msgstr "Onderwerp"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:71
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:75
 msgid "Submit"
-msgstr ""
+msgstr "Indienen"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:4 donate/templates/pages/core/ways_to_give_page_master.html:11
 msgid "Ways to Give"
-msgstr ""
+msgstr "Donatiemethoden"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:16
 msgid "Credit / Debit and PayPal"
-msgstr ""
+msgstr "Creditcard / bankpas en PayPal"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:18
 #, python-format
 msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
-msgstr ""
+msgstr "<a href=\"%(ways_to_give_link)s\">Gebruik deze koppeling</a> om direct een veilige online donatie te doen."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:23
 msgid "Bank Transfer / SEPA"
-msgstr ""
+msgstr "Bankoverschrijving / SEPA"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:24
 msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "We accepteren donaties in euro’s via een Single European Payment Area (SEPA)-overschrijving, en Britse ponden via een BACS-overschrijving."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:25
 msgid "Please remember that donations are deductible for U.S. income tax purposes only."
-msgstr ""
+msgstr "Houd er rekening mee dat donaties alleen voor de inkomstenbelasting in de VS aftrekbaar zijn."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:27
 #, python-format
 msgid "If your bank requests our physical address, it is %(address)s."
-msgstr ""
+msgstr "Als uw bank ons fysieke adres vereist, is dit %(address)s."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:32
 msgid "Euros:"
-msgstr ""
+msgstr "Euro’s:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:34 donate/templates/pages/core/ways_to_give_page_master.html:45
 msgid "Account Currency:"
-msgstr ""
+msgstr "Accountvaluta:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:34
 msgid "Euro (EUR)"
-msgstr ""
+msgstr "Euro (EUR)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:35 donate/templates/pages/core/ways_to_give_page_master.html:46
 msgid "Receiving Bank (Pay to):"
-msgstr ""
+msgstr "Ontvangende bank (Betalen aan):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:36 donate/templates/pages/core/ways_to_give_page_master.html:47
 msgid "City & Country/Region:"
-msgstr ""
+msgstr "Stad en land/regio:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:36
 msgid "Frankfurt, Germany"
-msgstr ""
+msgstr "Frankfurt, Duitsland"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:37 donate/templates/pages/core/ways_to_give_page_master.html:53
 msgid "SWIFT/BIC Code:"
-msgstr ""
+msgstr "SWIFT-/BIC-code:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:38 donate/templates/pages/core/ways_to_give_page_master.html:50
 msgid "Beneficiary Name (For credit to):"
-msgstr ""
+msgstr "Naam van begunstigde (Crediteren aan):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:39 donate/templates/pages/core/ways_to_give_page_master.html:54
 msgid "IBAN:"
-msgstr ""
+msgstr "IBAN:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:43
 msgid "British Pound Sterling:"
-msgstr ""
+msgstr "Britse pond sterling:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:45
 msgid "British Pound Sterling (GBP)"
-msgstr ""
+msgstr "Britse pond sterling (GBP)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:47
 msgid "London, United Kingdom"
-msgstr ""
+msgstr "Londen, Verenigd Koninkrijk"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:48
 msgid "Bank Sort Code:"
-msgstr ""
+msgstr "Bankcode:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:49
 msgid "Account Number (8 digits):"
-msgstr ""
+msgstr "Rekeningnummer (8 cijfers):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:58
 msgid "Check (via postal service)"
-msgstr ""
+msgstr "Cheque (via post)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Stuur een cheque <strong>met daarop uw e-mailadres in de opmerkingenregel</strong>, en betaalbaar (begunstigde) aan “%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Merk op dat de Mozilla Foundation alleen cheques in Amerikaanse dollars accepteert die zijn uitgegeven door een Amerikaanse bank. Stuur <strong>geen</strong> contanten."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
-msgstr ""
+msgstr "Valuta"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:80
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Selecteer uw valuta om een beveiligde onlinedonatie te doen:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:89
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:91
 msgid ""
@@ -483,11 +483,15 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"De Mozilla Foundation is een Californische non-profitorganisatie die in de VS is uitgezonderd van federale inkomstenbelasting onder IRC 501(c)(3) en een instelling van algemeen belang onder IRC-"
+"secties 170(b)(1)(A) en 509(a)(1). Door Mozilla ontvangen bitcoindonaties worden onder federale belastingwetten in de VS beschouwd als bijdragen aan een goed doel, naar eigen inzicht te gebruiken "
+"voor goede doelen. Omdat de IRS heeft aangegeven dat bitcoins voor Amerikaanse belastingdoeleinden als ‘property’ worden beschouwd (zie IRS Notice 2014-21), kunnen donaties van Bitcoin onderhevig "
+"zijn aan speciale regels met betrekking tot het bedrag van uw aftrek voor goede doelen, de documentatie die moet worden opgegeven om belastingaftrek te verkrijgen, of andere zaken."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Lees <a href=\"%(bitcoin_wiki)s\">hier</a> meer over bitcoindonaties. <a href=\"%(bitcoin_donate)s\">Volg deze koppeling</a> om bitcoins te doneren."
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -714,16 +718,16 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Het downloaden zou automatisch moeten zijn begonnen. Als het niet werkte, <a href=\"%(url)s\">probeer dan hier opnieuw te downloaden</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Memoveld:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Stuur een cheque <strong>met daarop “%(thunderbird)s” in de opmerkingenregel</strong>, en betaalbaar (begunstigde) aan “%(payee)s”."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
