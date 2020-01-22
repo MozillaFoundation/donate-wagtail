@@ -1,6 +1,9 @@
 import logging
 import time
+
+import braintree
 from django.conf import settings
+from django.utils.timezone import datetime
 
 import django_rq
 import requests
@@ -8,7 +11,11 @@ import stripe
 
 from . import constants, gateway
 from .sqs import send_to_sqs
-from .utils import zero_decimal_currency_fix
+from .utils import (
+    zero_decimal_currency_fix,
+    get_plan_id,
+    get_merchant_account_id_for_card
+)
 
 logger = logging.getLogger(__name__)
 
@@ -329,6 +336,74 @@ class StripeWebhookProcessor:
                 'failure_code': failure_code
             }
         })
+
+        # disabled for now
+        # if 'thunderbird' not in metadata:
+        #     # MigrateStripeSubscription().process(charge, subscription.customer)
+        #     MigrateStripeSubscription().process(
+        #         charge,
+        #         subscription
+        #     )
+
+
+class MigrateStripeSubscription:
+    def process(self, charge, subscription):
+        last4 = subscription.customer.sources.data[0].last4
+        BT_customers = gateway.customer.search(
+            braintree.TransactionSearch.customer_email == charge.customer_email,
+            braintree.TransactionSearch.credit_card_number.ends_with(last4)
+        )
+
+        if len(BT_customers) == 0:
+            logger.error(f'No Customer record exists in Braintree '
+                         f'for the Stripe customer attached to this charge object:'
+                         f'{charge.id}', exc_info=True)
+            return
+
+        BT_customer = BT_customers[0]
+
+        if len(BT_customer.payment_methods) == 0:
+            logger.error(f'The Braintree customer does not have an associated PaymentMethod')
+            return
+
+        payment_method_token = BT_customer.payment_methods[0].token
+
+        BT_plan_id = get_plan_id(subscription.plan.currency)
+        BT_merchant_account = get_merchant_account_id_for_card(subscription.plan.currency)
+        BT_price = zero_decimal_currency_fix(charge.amount, subscription.plan.currency)
+        BT_first_billing_date = datetime.utcfromtimestamp(subscription.current_period_end)
+
+        BT_create_subscription_result = gateway.subscription.create({
+            'payment_method_token': payment_method_token,
+            'plan_id': BT_plan_id,
+            'merchant_account_id': BT_merchant_account,
+            'price': BT_price,
+            'first_billing_date': BT_first_billing_date
+        })
+
+        if not BT_create_subscription_result.is_success:
+            logger.error(f'Failed to create a Braintree subscription from Stripe subscription {subscription.id}')
+            return
+
+        # Cancel Stripe subscription
+        try:
+            stripe.Subscription.delete(subscription.id)
+        except stripe.error.StripeError:
+            logger.error(f'Failed to cancel the stripe subscription '
+                         f'{subscription.id}, cancelling the Braintree subscription')
+
+            BT_cancel_subscription_result = gateway.subscription.cancel(
+                BT_create_subscription_result.subscription.id
+            )
+
+            if not BT_cancel_subscription_result.is_success:
+                logger.critical(f'Failed to cancel the Braintree Subscription, '
+                                f'customer now has two active subscriptions - '
+                                f'Braintree: {BT_create_subscription_result.subscription.id}, '
+                                f'Stripe: {subscription.id}')
+
+        finally:
+            return
 
 
 def process_webhook(form_data):
