@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 09:30+0000\n"
+"PO-Revision-Date: 2020-01-22 09:38+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -373,7 +373,7 @@ msgstr "Kredit / Debit dhe PayPal"
 #: donate/templates/pages/core/ways_to_give_page_master.html:18
 #, python-format
 msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
-msgstr ""
+msgstr "<a href=\"%(ways_to_give_link)s\">Shkoni te kjo lidhje</a> që të bëni që tani një dhurim të sigurt <em>online</em>."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:23
 msgid "Bank Transfer / SEPA"
@@ -455,11 +455,11 @@ msgstr "Çek (përmes shërbimit postar)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Ju lutemi, dërgoni një çek <strong>përfshi adresën tuaj email te rreshti kujtesë</strong>, dhe të pagueshëm (përfituesi) për “%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Ju lutemi, kini parasysh që Mozilla Foundation mund të pranojë vetëm çeqe në dollarë amerikanë të tërheqshëm në një bankë amerikane. Ju lutemi, <strong>mos</strong> dërgoni para të thata."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
@@ -489,7 +489,7 @@ msgstr ""
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Mësoni më tepër rreth dhurimesh në bitkoin <a href=\"%(bitcoin_wiki)s\">këtu</a>. Për të dhuruar në bitkoin, <a href=\"%(bitcoin_donate)s\">ju lutemi, vizitoni këtë lidhje.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -716,16 +716,16 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Shkarkimi juaj do të duhej të fillonte vetvetiu. Nëse s’ndodhi, <a href=\"%(url)s\">provoni ta shkarkoni nga këtu</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Fushë memo:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Ju lutemi, dërgoni një çek <strong>duke përfshirë “%(thunderbird)s” te rreshti kujtesë</strong>, dhe të pagueshëm (përfituesi) për “%(payee)s”."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
