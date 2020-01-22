@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 12:38+0000\n"
-"Last-Translator: Philipp Fischbeck <pfischbeck@googlemail.com>\n"
+"PO-Revision-Date: 2020-01-22 19:11+0000\n"
+"Last-Translator: Michael Köhler <michael.koehler1@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -725,12 +725,12 @@ msgstr "Ihr Download sollte automatisch beginnen. Wenn dies nicht funktioniert, 
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Verwendungszweck:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Bitte senden Sie einen Scheck <strong>mit „%(thunderbird)s“ im Verwendungszweck</strong> und zahlbar an (Zahlungsempfänger) „%(payee)s“."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
