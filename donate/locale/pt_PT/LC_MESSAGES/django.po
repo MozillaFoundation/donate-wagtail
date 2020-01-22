@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 13:52+0000\n"
+"PO-Revision-Date: 2020-01-22 13:56+0000\n"
 "Last-Translator: Cláudio Esperança <cesperanc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_PT\n"
@@ -457,7 +457,7 @@ msgstr "Cheque (via serviço postal)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr "Por favor, envie um cheque <strong>incluindo seu endereço de e-mail na linha de notas</strong> e endereçado (beneficiário) a “%(payee)s”."
+msgstr "Por favor, envie um cheque <strong>incluindo seu endereço de e-mail na linha de notas</strong> e endossado (beneficiário) a “%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
@@ -653,7 +653,7 @@ msgstr ""
 
 #: donate/templates/payment/thank_you_master.html:17
 msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
-msgstr "Por fim, pode multiplicar o seu impacto partilhando informações sobre o importante trabalho que a Mozilla está fazer? Mais uma vez obrigado!"
+msgstr "Por fim, pode multiplicar o seu impacto partilhando informações sobre o importante trabalho que a Mozilla está a fazer? Mais uma vez obrigado!"
 
 #: donate/templates/payment/thank_you_master.html:22
 msgctxt "Used as a tweet"
@@ -713,28 +713,30 @@ msgid ""
 "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 "tax-deductible as charitable contributions."
 msgstr ""
+"As contribuições são para a MZLA Technologies Corporation, uma empresa da Califórnia que pertence à fundação Mozilla. Os fundos serão reservados para uso no Projeto Thunderbird. As contribuições não"
+" são dedutíveis nos impostos como contribuições de caridade."
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "A sua transferência devia ter começado automaticamente. Se não funcionou, <a href=\"%(url)s\">tente transferir novamente aqui</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Campo de notas:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Por favor, envie um cheque <strong>incluindo “%(thunderbird)s” na linha de notas</strong> e endossado (beneficiário) a “%(payee)s”."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
-msgstr ""
+msgstr "Gostaríamos muito de tê-lo como um apoiante recorrente do Thunderbird. <b>Pode fazer um donativo mensal a partir do próximo mês?</b>"
 
 #: donate/thunderbird/templates/payment/thank_you.html:8
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
-msgstr ""
+msgstr "Por fim, pode multiplicar o seu impacto partilhando informações sobre o importante trabalho que o Thunderbird está a fazer? Mais uma vez obrigado!"
 
 #: donate/thunderbird/templates/payment/thank_you.html:12
 msgctxt "Used as a tweet"
