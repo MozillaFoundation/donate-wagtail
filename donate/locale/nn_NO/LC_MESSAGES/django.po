@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 09:17+0000\n"
+"PO-Revision-Date: 2020-01-22 09:46+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nn_NO\n"
@@ -386,12 +386,12 @@ msgstr "Vi godkjenner donasjonar i euro overført via Single European Payment Ar
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:25
 msgid "Please remember that donations are deductible for U.S. income tax purposes only."
-msgstr ""
+msgstr "Hugs at donasjonar berre har frådragsrett for amerikanske inntektsskatteformål."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:27
 #, python-format
 msgid "If your bank requests our physical address, it is %(address)s."
-msgstr ""
+msgstr "Om banken din krev ei fysisk adresse, brukar du %(address)s."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:32
 msgid "Euros:"
@@ -435,7 +435,7 @@ msgstr "Britiske pund:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:45
 msgid "British Pound Sterling (GBP)"
-msgstr ""
+msgstr "Britisk pund (GBP)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:47
 msgid "London, United Kingdom"
@@ -464,11 +464,11 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
-msgstr ""
+msgstr "Valutaar"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:80
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Vel valutatype for å utføre ein sikker nettbasert donasjon:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:89
 msgid "Bitcoin"
@@ -485,7 +485,7 @@ msgstr ""
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Les meir om bitcoin-donasjonar <a href=\"%(bitcoin_wiki)s\">her</a>. For å donere bitcoin, <a href=\"%(bitcoin_donate)s\">gå til denne lenka.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -707,11 +707,11 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Nedlastingea din burde ha startea automatisk. Om det ikkj fungerte, <a href=\"%(url)s\">prøv å laste ned på nytt her</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Memo-felt:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
