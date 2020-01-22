@@ -349,30 +349,42 @@ class StripeWebhookProcessor:
 class MigrateStripeSubscription:
     def process(self, charge, subscription):
         last4 = subscription.customer.sources.data[0].last4
+
+        # Fetch the Customer object that was migrated to Braintree from Stripe
+        # along with associated payment information
         BT_customers = gateway.customer.search(
             braintree.TransactionSearch.customer_email == charge.customer_email,
             braintree.TransactionSearch.credit_card_number.ends_with(last4)
         )
 
+        # Ensure we found a customer record, if not, report it to Sentry as an error
         if len(BT_customers) == 0:
             logger.error(f'No Customer record exists in Braintree '
                          f'for the Stripe customer attached to this charge object:'
                          f'{charge.id}', exc_info=True)
             return
 
+        # There should be a single Customer/Card combo on Braintree
         BT_customer = BT_customers[0]
 
+        # Ensure there is a PaymentMethod associated with the customer.
+        # If not, report the error to Sentry
         if len(BT_customer.payment_methods) == 0:
-            logger.error(f'The Braintree customer does not have an associated PaymentMethod')
+            logger.error(f'The Braintree customer ({BT_customer.id}) does not have '
+                         f'an associated PaymentMethod', exc_info=True)
             return
 
+        # Grab the Payment Method token that represents the customers payment information in the Braintree Vault
         payment_method_token = BT_customer.payment_methods[0].token
 
+        # Determine the Braintree plan, merchant account, and price for the subscription
+        # based on the Stripe subscription
         BT_plan_id = get_plan_id(subscription.plan.currency)
         BT_merchant_account = get_merchant_account_id_for_card(subscription.plan.currency)
         BT_price = zero_decimal_currency_fix(charge.amount, subscription.plan.currency)
         BT_first_billing_date = datetime.utcfromtimestamp(subscription.current_period_end)
 
+        # Create the Braintree subscription and record the result for analysis
         BT_create_subscription_result = gateway.subscription.create({
             'payment_method_token': payment_method_token,
             'plan_id': BT_plan_id,
@@ -381,6 +393,7 @@ class MigrateStripeSubscription:
             'first_billing_date': BT_first_billing_date
         })
 
+        # If the subscription creation failed, record the error in Sentry
         if not BT_create_subscription_result.is_success:
             logger.error(f'Failed to create a Braintree subscription from Stripe subscription {subscription.id}')
             return
@@ -392,18 +405,18 @@ class MigrateStripeSubscription:
             logger.error(f'Failed to cancel the stripe subscription '
                          f'{subscription.id}, cancelling the Braintree subscription')
 
+            # Cancel the subscription that we just created since the Stripe subscription cancellation failed.
             BT_cancel_subscription_result = gateway.subscription.cancel(
                 BT_create_subscription_result.subscription.id
             )
 
+            # if this fails, we're really screwed, so make it a critical log now that the
+            # customer has two active subscriptions
             if not BT_cancel_subscription_result.is_success:
                 logger.critical(f'Failed to cancel the Braintree Subscription, '
                                 f'customer now has two active subscriptions - '
                                 f'Braintree: {BT_create_subscription_result.subscription.id}, '
                                 f'Stripe: {subscription.id}')
-
-        finally:
-            return
 
 
 def process_webhook(form_data):
