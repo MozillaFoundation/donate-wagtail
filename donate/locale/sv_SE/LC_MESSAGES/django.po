@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 01:51+0000\n"
+"PO-Revision-Date: 2020-01-22 02:00+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv_SE\n"
@@ -454,11 +454,11 @@ msgstr "Check (via posttjänst)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Skicka en check <strong>inklusive din e-postadress på memoraden</strong> och betalas (betalningsmottagare) till “%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Observera att Mozilla Foundation endast kan acceptera checkar i amerikanska dollar som dras från en amerikansk bank. Skicka <strong>inte</strong> kontanter."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
@@ -479,11 +479,15 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Mozilla Foundation är ett ideellt företag i Kalifornien som är undantaget från USA:s federala inkomstbeskattning enligt IRC 501(c)(3) och en offentlig välgörenhet klassificerad under IRC avsnitt "
+"170(b)(1)(A) och 509(a)(1). Bitcoin-donationer som Mozilla får betraktas som välgörenhetsbidrag enligt amerikanska federala skatteregler, som ska användas efter eget gottfinnande för sina "
+"välgörenhetsändamål. Eftersom IRS har angett att den kommer att behandla bitcoin som egendom i USA:s skatteändamål (se IRS-meddelande 2014-21), kan donationer av bitcoin vara föremål för särskilda "
+"regler för beloppet av ditt välgörenhetsavdrag, den dokumentation som måste lämnas för att kräva skatteavdrag eller andra frågor."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Läs mer om bitcoin-donationer <a href=\"%(bitcoin_wiki)s\">här</a>. För att donera bitcoin, <a href=\"%(bitcoin_donate)s\">besök denna länk.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -711,12 +715,12 @@ msgstr "Din hämtning borde ha börjat automatiskt. Om det inte fungerade, <a hr
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Memo-fält:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Skicka en check <strong>inklusive “%(thunderbird)s” på memoraden</strong> och betalas (betalningsmottagare) till “%(payee)s”."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
