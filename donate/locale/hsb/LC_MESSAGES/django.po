@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 20:03+0000\n"
+"PO-Revision-Date: 2020-01-23 11:43+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -298,7 +298,7 @@ msgstr "Nětko darić"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr "Dźakujemy so, zo sće nas skontaktował. Pad je so za waš problem wutworił a damy so bórze wot nas syłšeć."
+msgstr "Dźakujemy so, zo sće nas skontaktował. Pad je so za waš problem wutworił a damy so bórze wot nas słyšeć."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
