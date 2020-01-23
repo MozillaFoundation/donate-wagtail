@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-22 20:18+0000\n"
+"PO-Revision-Date: 2020-01-23 11:49+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -300,15 +300,15 @@ msgstr "Něnto pósćiś"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr ""
+msgstr "Źěkujomy se, až sćo nas skontaktěrował. Pad jo se napórał za waš problem a dajomy se skóro wót nas słyšaś."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
-msgstr ""
+msgstr "Stajijomy se skóro z wami do zwiska."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr ""
+msgstr "Jolic pomoc z darom trjebaśo, wupołniśo toś ten formular a dajomy se skóro wót nas słyšaś."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
@@ -375,7 +375,7 @@ msgstr "Kreditowa/Debitowa kórta a PayPal"
 #: donate/templates/pages/core/ways_to_give_page_master.html:18
 #, python-format
 msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
-msgstr ""
+msgstr "<a href=\"%(ways_to_give_link)s\">Slědujśo toś tomu wótkazoju</a>, aby ned wěsty dar online dał."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:23
 msgid "Bank Transfer / SEPA"
@@ -457,7 +457,7 @@ msgstr "Šek (pśez post)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Pšosym sćelśo šek <strong>z wašeju e-mailowej adresu w noticowej smužce</strong>, ma se zapłaśiś na „%(payee)s“ (płaśeński dostawaŕ)."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
