@@ -51,6 +51,7 @@ env = environ.Env(
     HEROKU_BRANCH=(str, ''),
     HEROKU_APP_NAME=(str, ''),
     HEROKU_RELEASE_VERSION=(str, 'Development'),
+    MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED=(bool, False),
     POST_DONATE_NEWSLETTER_URL=(str, None),
     RANDOM_SEED=(int, None),
     RECAPTCHA_ENABLED=(bool, False),

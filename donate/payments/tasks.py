@@ -337,13 +337,12 @@ class StripeWebhookProcessor:
             }
         })
 
-        # disabled for now
-        # if 'thunderbird' not in metadata:
-        #     # MigrateStripeSubscription().process(charge, subscription.customer)
-        #     MigrateStripeSubscription().process(
-        #         charge,
-        #         subscription
-        #     )
+        if settings.MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED and 'thunderbird' not in metadata:
+            # MigrateStripeSubscription().process(charge, subscription.customer)
+            MigrateStripeSubscription().process(
+                charge,
+                subscription
+            )
 
 
 class MigrateStripeSubscription:
