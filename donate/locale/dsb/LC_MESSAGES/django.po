@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 21:11+0000\n"
-"PO-Revision-Date: 2020-01-23 11:49+0000\n"
+"PO-Revision-Date: 2020-01-23 11:55+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -457,11 +457,11 @@ msgstr "Šek (pśez post)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr "Pšosym sćelśo šek <strong>z wašeju e-mailowej adresu w noticowej smužce</strong>, ma se zapłaśiś na „%(payee)s“ (płaśeński dostawaŕ)."
+msgstr "Pšosym sćelśo šek <strong>z wašeju e-mailowej adresu w noticowej smužce</strong>, a ma se zapłaśiś na „%(payee)s“ (płaśeński dostawaŕ)."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Pšosym źiwajśo na to, až załožba Mozilla Foundation móžo jano šeki akceptěrowaś, kótarež su w US-dolarach na US-banku wustajone. Pšosym <strong>nje</strong>sćelśo gótowe pjenjeze."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
@@ -490,7 +490,7 @@ msgstr ""
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Zgóńśo <a href=\"%(bitcoin_wiki)s\">how</a> wěcej wó bitcoinowych darach. Aby bitcoiny pósćił, <a href=\"%(bitcoin_donate)s\">slědujśo pšosym toś tomu wótkazoju.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -723,7 +723,7 @@ msgstr "Pólo za zapiski:"
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Pšosym sćelśo šek <strong>z „%(thunderbird)s“ we wužywańskem zaměrje</strong>, a ma se zapłaśiś na „%(payee)s“ (płaśeński dostawaŕ)."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
