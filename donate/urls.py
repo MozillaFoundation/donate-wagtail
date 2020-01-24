@@ -16,8 +16,6 @@ from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
 from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView
 
-from donate.thunderbird.payments import urls as thunderbird_urls
-
 # Patterns not subject to i18n
 urlpatterns = [
     path('auth/', include('mozilla_django_oidc.urls')),
@@ -34,12 +32,6 @@ if settings.ENABLE_THUNDERBIRD_REDIRECT:
     urlpatterns = i18n_patterns(
         path('thunderbird/', ThunderbirdRedirectView.as_view(), name='thunderbird')
     ) + urlpatterns
-
-# To skip the monthly upsell in Thunderbird for the time being
-if 'donate.thunderbird' in settings.INSTALLED_APPS:
-    urlpatterns += i18n_patterns(
-        path('', include(thunderbird_urls)),
-    )
 
 urlpatterns += i18n_patterns(
     # TODO we may want to version this cache, or pre-compile the catalog at build time

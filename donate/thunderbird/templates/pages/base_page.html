@@ -1,6 +1,6 @@
 {% extends "pages/base_page_master.html" %}
 
-{% load i18n %}
+{% load static i18n %}
 
 {% block meta_tags %}
     <meta name="twitter:card" content="summary_large_image">
@@ -16,6 +16,20 @@
     <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
     <meta property="og:image" content="https://assets.mofoprod.net/images/thunderbird_team.jpg">
 {% endblock meta_tags %}
+
+{% block navigation %}
+{% endblock navigation %}
+
+{% block header %}
+    <div class="header">
+        <div class="header__container">
+            <a class="header__logo-link" href="/">
+                <img class="header__logo header__logo--mobile" src="{% static '_images/mozilla-logo-m.svg' %}" alt="Mozilla">
+                <img class="header__logo header__logo--desktop" src="{% static '_images/mozilla-logo-white.svg' %}" alt="Mozilla">
+            </a>
+        </div>
+    </div>
+{% endblock header %}
 
 {% block footerSignup %}
 <div class="footer__nav footer-links layout__half-col"></div>
