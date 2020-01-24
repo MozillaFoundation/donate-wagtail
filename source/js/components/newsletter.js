@@ -125,5 +125,8 @@ import gaEvent from "./analytics";
     return false;
   }
 
-  newsletterForm.addEventListener("submit", newsletterSubscribe, false);
+  // Check if the form exists in case it's removed in a template override like Thunderbird
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", newsletterSubscribe, false);
+  }
 })();
