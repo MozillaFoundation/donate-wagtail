@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-24 11:40+0000\n"
-"PO-Revision-Date: 2020-01-26 08:08+0000\n"
+"PO-Revision-Date: 2020-01-26 08:25+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -34,7 +34,7 @@ msgstr "Zadejte platnou e-mailovou adresu."
 #: donate/payments/forms.py:45
 #, python-format
 msgid "Donations must be %(amount)s or more"
-msgstr "Příspěvek musí být nejméně %(amount)s"
+msgstr "Dar musí být nejméně %(amount)s"
 
 #: donate/payments/forms.py:52 donate/payments/forms.py:66 donate/payments/forms.py:113
 msgid "Amount"
@@ -299,15 +299,15 @@ msgstr "Chci poslat dar"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr ""
+msgstr "Děkujeme, že jste nás kontaktovali. Uložili jsme záznam o vašem problému a brzy vás kontaktujeme."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
-msgstr ""
+msgstr "Brzy se vám ozveme."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr ""
+msgstr "Pokud potřebujete pomoci se zasláním daru, vyplňte tento formulář a my se vám ozveme zpět."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
@@ -365,7 +365,7 @@ msgstr "Odeslat"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:4 donate/templates/pages/core/ways_to_give_page_master.html:11
 msgid "Ways to Give"
-msgstr "Možnosti zaslání příspěvků"
+msgstr "Možnosti zasílání darů"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:16
 msgid "Credit / Debit and PayPal"
@@ -374,7 +374,7 @@ msgstr "Kreditní / Debetní karta a PayPal"
 #: donate/templates/pages/core/ways_to_give_page_master.html:18
 #, python-format
 msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
-msgstr ""
+msgstr "<a href=\"%(ways_to_give_link)s\">Prostřednictvím tohoto odkazu</a> můžete poslat svůj dar bezpečně, rychle a online."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:23
 msgid "Bank Transfer / SEPA"
@@ -456,11 +456,11 @@ msgstr "Šek (pozemní poštou)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Šeky prosím posílejte <strong>s poznámkou obsahující vaši e-mailovou adresu</strong> a splatné pro příjemce „%(payee)s“."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Mozilla Foundation může přijímat pouze šeky v amerických dolarech splatných u americké banky. <strong>Neposílejte</strong> nám prosím hotovost."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
@@ -468,7 +468,7 @@ msgstr "Měny"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:80
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Vyberte prosím měnu, ve které chcete zaslat svůj dar:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:89
 msgid "Bitcoin"
@@ -481,15 +481,14 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
-"Mozilla Foundation je kalifornská nezisková organizace osvobozená ve Spojených státech od daně podle IRC 501(c)(3) a veřejně prospěšná organizace uznaná podle IRC 170(b)(1)(A) a 509(a)(1). Příspěvky"
-" v Bitcoinech, které Mozilla obdrží, jsou považovány jako dobročinné příspěvky podle federálních zákonů Spojených států o daních, a budou použity na dobročinné účely podle uvážení. Protože je "
-"bitcoin pro daňové účely v USA považovaný za nemovitost (IRS Notice 2014-21), mohou se na tyto příspěvky vztahovat zvláštní pravidla pro výšku odpočtu nebo dokumentů které je třeba pro odpočet daně "
-"poskytnout."
+"Mozilla Foundation je kalifornská nezisková organizace osvobozená ve Spojených státech od daně podle IRC 501(c)(3) a veřejně prospěšná organizace uznaná podle IRC 170(b)(1)(A) a 509(a)(1). Dary v "
+"Bitcoinech, které Mozilla obdrží, jsou považovány jako dobročinné dary podle federálních zákonů Spojených států o daních, a budou použity na dobročinné účely podle uvážení. Protože je bitcoin pro "
+"daňové účely v USA považovaný za nemovitost (IRS Notice 2014-21), mohou se na tyto dary vztahovat zvláštní pravidla pro výšku odpočtu nebo dokumentů které je třeba pro odpočet daně poskytnout."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Zjistěte více o darech v bitcoinech <a href=\"%(bitcoin_wiki)s\">zde</a>. Pro zaslání daru v bitcoinech <a href=\"%(bitcoin_donate)s\">prosím navštivte tento odkaz</a>."
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -696,7 +695,7 @@ msgstr "Zpět"
 #| msgid "I donated to Thunderbird today"
 msgctxt "Page title"
 msgid "Give to Thunderbird"
-msgstr "Přispějte Thunderbirdu"
+msgstr "Pošlete Thunderbirdu dar"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
@@ -723,7 +722,7 @@ msgstr "Pole pro poznámku:"
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Šeky prosím zasílejte <strong>včetně poznámky „%(thunderbird)s“</strong> a splatný pro „%(payee)s“."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
