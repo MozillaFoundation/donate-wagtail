@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-24 11:40+0000\n"
-"PO-Revision-Date: 2020-01-27 21:32+0000\n"
+"PO-Revision-Date: 2020-01-27 21:51+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ka\n"
@@ -402,7 +402,7 @@ msgstr "ანგარიშის ვალუტა:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:34
 msgid "Euro (EUR)"
-msgstr "Euro (EUR)"
+msgstr "ევრო (EUR)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:35 donate/templates/pages/core/ways_to_give_page_master.html:46
 msgid "Receiving Bank (Pay to):"
@@ -438,40 +438,40 @@ msgstr "ბრიტანული გირვანქა სტერლი�
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:47
 msgid "London, United Kingdom"
-msgstr ""
+msgstr "ლონდონი, გაერთიანებული სამეფო"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:48
 msgid "Bank Sort Code:"
-msgstr ""
+msgstr "საბანკო (Sort) კოდი:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:49
 msgid "Account Number (8 digits):"
-msgstr ""
+msgstr "ანგარიშის ნომერი (8 ციფრი):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:58
 msgid "Check (via postal service)"
-msgstr ""
+msgstr "ჩეკი (ფოსტის საშუალებით)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:61
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "გთხოვთ, გამოგზავნისას ჩეკს <strong>სამახსოვრო არეში დაურთოთ თქვენი ელფოსტა</strong>, ასევე მიმღები (payee) „%(payee)s“."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:66
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "გთხოვთ გაითვალისწინოთ, რომ Mozilla-ფონდს შეუძლია მიიღოს მხოლოდ აშშ დოლარში გამოწერილი ჩეკები, ამერიკული ბანკების მიერ. გთხოვთ, <strong>არ</strong> გამოგზავნოთ ნაღდი ფული."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:79
 msgid "Currencies"
-msgstr ""
+msgstr "ვალუტა"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:80
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "მიუთითეთ ვალუტა, ინტერნეტით შემოწირულობის უსაფრთხოდ გასაკეთებლად:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:89
 msgid "Bitcoin"
-msgstr ""
+msgstr "ბიტკოინი"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:91
 msgid ""
@@ -480,11 +480,16 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Mozilla-ს ფონდი არის კალიფორნიაში მდებარე, არამომგებიანი დაწესებულება, რომელიც შეერთებული შტატების ფედერალური საშემოსავლო გადასახადებისგან გათავისუფლებულია IRC 501(c)(3)-სა და საზოგადოებრივი "
+"ქველმოქმედების შესახებ IRC კოდექსის 170(b)(1)(A) და 509(a)(1) ნაწილებით გათვალისწინებული დებულებების შესაბამისად. აშშ-ს ფედერალური საგადასახადო კანონმდებლობის შესაბამისად, ბიტკოინით მიღებული "
+"შემოწირულობა, განიხილება ქველმოქმედებად, რომელიც გამოყენებული უნდა იყოს კეთილგონივრულად და დანიშნულებისამებრ. ვინაიდან, IRS მიუთითებს, რომ ბიტკოინი განისაზღვრება როგორც კერძო საკუთრება და იბეგრება "
+"აშშ-ს საგადასახადო კოდექსის შესაბამისად (იხილეთ IRS-დანართი 2014-21), შემოწირულობები ბიტკოინის საშუალებით შეიძლება დაექვემდებაროს გარკვეულ წესებს, საქველმოქმედო გამოქვითვის რაოდენობიდან, საშემოსავლო"
+" გამოქვითვის შესახებ საჭირო საბუთებიდან ან სხვა გარემოებებიდან გამომდინარე."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "ვრცლად, ბიტკოინით შემოწირულობების შესახებ <a href=\"%(bitcoin_wiki)s\">იხილეთ აქ</a>. ბიტკონის შემოსაწირად, <a href=\"%(bitcoin_donate)s\">გთხოვთ, ეწვიოთ ამ ბმულს.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -712,11 +717,11 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "თქვენი ჩამოტვირთვა თავისით დაიწყება. თუ არ იმუშავა, <a href=\"%(url)s\">ხელახლა სცადეთ აქედან</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "სამახსოვრო ველი:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
