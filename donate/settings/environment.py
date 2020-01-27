@@ -58,6 +58,7 @@ env = environ.Env(
     REDIS_URL=(str, 'redis://redis:6397/0'),
     REVIEW_APP=(bool, False),
     SALESFORCE_ORGID=(str, ''),
+    SALESFORCE_FORM_URL=(str, ''),
     SENTRY_DSN=(str, None),
     SENTRY_ENVIRONMENT=(str, None),
     SET_HSTS=(bool, False),
