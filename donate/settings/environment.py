@@ -59,6 +59,7 @@ env = environ.Env(
     REVIEW_APP=(bool, False),
     SALESFORCE_ORGID=(str, ''),
     SALESFORCE_FORM_URL=(str, ''),
+    SALESFORCE_CASE_RECORD_TYPE_ID=(str, ''),
     SENTRY_DSN=(str, None),
     SENTRY_ENVIRONMENT=(str, None),
     SET_HSTS=(bool, False),
