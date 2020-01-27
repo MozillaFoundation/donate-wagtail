@@ -31,6 +31,40 @@
     </div>
 {% endblock header %}
 
+{% block footer_social_links %}
+    <a class="link link--icon link--dark-bg" href="https://twitter.com/mozthunderbird" target="_blank" rel="noopener">
+        <div class="link__svg-title">{% trans "Twitter" %}</div>
+        <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
+            <use xlink:href="#twitter"></use>
+        </svg>
+    </a>
+    <a class="link link--icon link--dark-bg" href="https://www.facebook.com/Thunderbird/" target="_blank" rel="noopener">
+        <div class="link__svg-title">{% trans "Facebook" %}</div>
+        <svg class="footer-links__social-icon footer-links__social-icon--facebook" width="24" height="24">
+            <use xlink:href="#facebook"></use>
+        </svg>
+    </a>
+{% endblock %}
+
+{% block footer_links %}
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/legal/terms/mozilla/" target="_blank" rel="noopener">{% trans "Legal" %}</a>
+    </li>
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/websites" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
+    </li>
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/en-US/privacy/websites/#things-you-should-know" target="_blank" rel="noopener">{% trans "Cookies" %}</a>
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
+    </li>
+{% endblock %}
+
 {% block footerSignup %}
 <div class="footer__nav footer-links layout__half-col"></div>
+{% endblock %}
+
+{% block footer_legal %}
+    {% blocktrans with link_attributes='class="link" href="https://www.mozilla.org/foundation/licensing/website-content/"' trimmed %}
+    Portions of this content are ©1998–2020 by individual contributors. Content available under a <a {{ link_attributes }}>Creative Commons license</a>{% endblocktrans %}
 {% endblock %}
