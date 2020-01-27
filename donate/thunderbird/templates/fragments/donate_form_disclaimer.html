@@ -8,9 +8,18 @@
     </b>
 {% endblock %}
 
+{% block donation_information %}
+    {% blocktrans with braintree_url='https://www.braintreepayments.com/legal/braintree-privacy-policy' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' trimmed %}
+        Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a>, a PayPal company (for credit/debit cards) or <a href="{{ paypal_url }}">PayPal</a>, and a record of your donation will be stored by Mozilla.
+    {% endblocktrans %}
+    {% if monthly %}{% blocktrans with help_url='/help' trimmed %}
+        Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href="{{help_url}}">contact us</a>.
+    {% endblocktrans %}{% endif %}
+{% endblock %}
+
 {% block faq_contact %}
     {% blocktrans with faq_url='/faq' help_url='/help' trimmed %}
-    Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="{{ help_url }}">Send us an email</a>.
+    Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="{{ help_url }}">Contact us</a>.
     {% endblocktrans %}
 {% endblock %}
 

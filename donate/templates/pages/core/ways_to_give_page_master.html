@@ -19,7 +19,7 @@
         <a href="{{ways_to_give_link}}">Go to this link</a> to make a secure online donation right now.
         {% endblocktrans %}
     </p>
-
+    {% block SEPA %}
     <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
     <p>{% trans "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
     <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
@@ -28,7 +28,8 @@
         If your bank requests our physical address, it is {{address}}.
         {% endblocktrans %}
     </p>
-
+    {% endblock %}
+    {% block euros %}
     <h3>{% trans "Euros:" %}</h3>
     <p>
         <b>{% trans "Account Currency:" %}</b> {% trans "Euro (EUR)" %}<br>
@@ -39,7 +40,9 @@
         <b>{% trans "IBAN:" %}</b> DE67512305000500136802
         {% block tb_memo_eur %}{% endblock %}
     </p>
+    {% endblock %}
 
+    {% block british_pound %}
     <h3>{% trans "British Pound Sterling:" %}</h3>
     <p>
         <b>{% trans "Account Currency:" %}</b> {% trans "British Pound Sterling (GBP)" %}<br>
@@ -54,6 +57,7 @@
         <b>{% trans "IBAN:" %}</b> GB77NWBK60000410017496
         {% block tb_memo_gbp %}{% endblock %}
     </p>
+    {% endblock %}
 
     <h2 id="check">{% trans "Check (via postal service)" %}</h2>
     <p>
@@ -61,11 +65,10 @@
             {% blocktrans with payee='Mozilla Foundation' trimmed %}
             Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “{{payee}}”.
             {% endblocktrans %}
+            {% blocktrans trimmed %}
+            Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
+            {% endblocktrans %}
         {% endblock %}
-
-        {% blocktrans trimmed %}
-        Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
-        {% endblocktrans %}
     </p>
     <address>
         {% block check_address %}
@@ -75,16 +78,17 @@
             USA
         {% endblock %}
     </address>
-
-    <h2>{% trans "Currencies" %}</h2>
-    <p>{% trans "Select your currency to make a secure online donation:" %}</p>
-    <ul class="currency-list">
-        {% for key, value in currencies.items %}
-        <li><a href="{{ways_to_give_link}}&currency={{key}}">
-            {{ key|upper }} {{ value.symbol }}
-        </a></li>
-        {% endfor %}
-    </ul>
+    {% block currencies %}
+        <h2>{% trans "Currencies" %}</h2>
+        <p>{% trans "Select your currency to make a secure online donation:" %}</p>
+        <ul class="currency-list">
+            {% for key, value in currencies.items %}
+            <li><a href="{{ways_to_give_link}}&currency={{key}}">
+                {{ key|upper }} {{ value.symbol }}
+            </a></li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
     {% block bitcoin %}
     <h2>{% trans "Bitcoin" %}</h2>
     <p>
