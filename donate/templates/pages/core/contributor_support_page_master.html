@@ -24,7 +24,7 @@
                     <p class="rich-text">{% trans "We will get back to you soon." %}</p>
                 </div>
             {% else %}
-                <form class="" action="https://mozillasalescloud--mkl.cs4.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+                <form class="" action="{{ salesforce_form_url }}" method="POST">
                     <p class="rich-text">{% blocktrans trimmed %}
                         If you need help with a contribution, fill out this form and we’ll get back to you soon.
                     {% endblocktrans %}</p>

@@ -303,5 +303,7 @@ class ContributorSupportPage(TranslatablePageMixin, Page):
         ctx = super().get_context(request)
         ctx.update({
             'orgid': settings.SALESFORCE_ORGID,
+            'record_type_id': settings.SALESFORCE_CASE_RECORD_TYPE_ID,
+            'salesforce_form_url': settings.SALESFORCE_FORM_URL,
         })
         return ctx
