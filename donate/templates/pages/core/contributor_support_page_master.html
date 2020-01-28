@@ -71,7 +71,9 @@
                         <label for="description">{% trans "Description" %}</label>
                         <textarea name="description"></textarea>
                     </fieldset>
-                    <div class="privacy-notice">{% blocktrans with privacy_policy="https://www.mozilla.org/privacy/websites/" %}Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href="{{ privacy_policy }}">privacy policy</a> for further information.{% endblocktrans %}</div>
+                    <div class="privacy-notice">
+                        {% blocktrans with privacy_policy="https://www.mozilla.org/privacy/websites/" %}Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href="{{ privacy_policy }}">privacy policy</a> for further information.{% endblocktrans %}
+                    </div>
                     <input class="button button--medium button--primary" type="submit" name="submit" value='{% trans "Submit" %}'>
                 </form>
             {% endif %}
