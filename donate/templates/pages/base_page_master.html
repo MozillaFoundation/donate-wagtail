@@ -96,64 +96,74 @@
             {% endblock %}
             <div class="footer__nav footer-links layout__half-col">
                 <div class="footer__logo footer__logo--mobile layout__half-col">
+                    {% block footer_logo_mobile %}
                     <a class="footer__logo-link" href="https://foundation.mozilla.org">
                         <img class="footer__logo-image" src="{% static '_images/mozilla-logo-black.svg' %}" alt="Mozilla">
                     </a>
+                    {% endblock %}
                 </div>
                 <div class="footer-links__container">
                     <div class="footer-links__header">
                         <h2 id="about-us-heading" class="footer-links__heading heading heading--bottom-margin heading--dark-bg heading--secondary">{% trans "More about us" %}</h2>
                         <div class="footer-links__social" aria-labelledby="about-us-heading">
-                            <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
-                                <div class="link__svg-title">{% trans "Twitter" %}</div>
-                                <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
-                                    <use xlink:href="#twitter"></use>
-                                </svg>
-                            </a>
-                            <a class="link link--icon link--dark-bg" href="https://www.instagram.com/mozilla/" target="_blank" rel="noopener">
-                                <div class="link__svg-title">{% trans "Instagram" %}</div>
-                                <svg class="footer-links__social-icon footer-links__social-icon--instagram" width="24" height="24">
-                                    <use xlink:href="#instagram"></use>
-                                </svg>
-                            </a>
-                            <a class="link link--icon link--dark-bg" href="https://github.com/mozilla" target="_blank" rel="noopener">
-                                <div class="link__svg-title">{% trans "GitHub" %}</div>
-                                <svg class="footer-links__social-icon footer-links__social-icon--github" width="24" height="24">
-                                    <use xlink:href="#github"></use>
-                                </svg>
-                            </a>
+                            {% block footer_social_links %}
+                                <a class="link link--icon link--dark-bg" href="https://twitter.com/mozilla" target="_blank" rel="noopener">
+                                    <div class="link__svg-title">{% trans "Twitter" %}</div>
+                                    <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
+                                        <use xlink:href="#twitter"></use>
+                                    </svg>
+                                </a>
+                                <a class="link link--icon link--dark-bg" href="https://www.instagram.com/mozilla/" target="_blank" rel="noopener">
+                                    <div class="link__svg-title">{% trans "Instagram" %}</div>
+                                    <svg class="footer-links__social-icon footer-links__social-icon--instagram" width="24" height="24">
+                                        <use xlink:href="#instagram"></use>
+                                    </svg>
+                                </a>
+                                <a class="link link--icon link--dark-bg" href="https://github.com/mozilla" target="_blank" rel="noopener">
+                                    <div class="link__svg-title">{% trans "GitHub" %}</div>
+                                    <svg class="footer-links__social-icon footer-links__social-icon--github" width="24" height="24">
+                                        <use xlink:href="#github"></use>
+                                    </svg>
+                                </a>
+                            {% endblock %}
                         </div>
                     </div>
                     <ul class="footer-links__group" aria-labelledby="about-us-heading">
-                        <li class="footer-links__item">
-                            <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
-                        </li>
-                        <li class="footer-links__item">
-                            <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
-                        </li>
-                        <li class="footer-links__item">
-                            <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">{% trans "Legal" %}</a>
-                        </li>
-                        <li class="footer-links__item">
-                            <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
-                        </li>
-                        <li class="footer-links__item">
-                            <a class="footer-links__link link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">{% trans "License" %}</a>
-                        </li>
+                        {% block footer_links %}
+                            <li class="footer-links__item">
+                                <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
+                            </li>
+                            <li class="footer-links__item">
+                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
+                            </li>
+                            <li class="footer-links__item">
+                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">{% trans "Legal" %}</a>
+                            </li>
+                            <li class="footer-links__item">
+                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
+                            </li>
+                            <li class="footer-links__item">
+                                <a class="footer-links__link link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">{% trans "License" %}</a>
+                            </li>
+                        {% endblock %}
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer__info layout__container">
             <div class="footer__logo footer__logo--desktop layout__half-col">
-                <a class="footer__logo-link" href="https://foundation.mozilla.org">
-                    <img class="footer__logo-image" src="{% static '_images/mozilla-logo-black.svg' %}" alt="Mozilla">
-                </a>
+                {% block footer_logo %}
+                    <a class="footer__logo-link" href="https://foundation.mozilla.org">
+                        <img class="footer__logo-image" src="{% static '_images/mozilla-logo-black.svg' %}" alt="Mozilla">
+                    </a>
+                {% endblock %}
             </div>
             <div class="footer__legal layout__half-col">
                 <p class="footer__legal-license">
-                    {% blocktrans with link_attributes='class="link" href="https://foundation.mozilla.org/"' site_url='foundation.mozilla.org' trimmed %}
-                    Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ link_attributes }}>{{ site_url }}</a>.{% endblocktrans %}
+                    {% block footer_legal %}
+                        {% blocktrans with link_attributes='class="link" href="https://foundation.mozilla.org/"' site_url='foundation.mozilla.org' trimmed %}
+                        Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ link_attributes }}>{{ site_url }}</a>.{% endblocktrans %}
+                    {% endblock %}
                 </p>
             </div>
         </div>

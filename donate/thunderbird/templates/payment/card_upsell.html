@@ -5,3 +5,7 @@
 {% block sustaining_supporter %}
     {% trans "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>" %}
 {% endblock %}
+
+{% block form_authorization %}
+    {% blocktrans with help_url='/help' %}I authorize MZLA Technologies Corporation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href="{{help_url}}">submitting this form</a>, and that I may only request a refund within 15 days from the date of a donation.{% endblocktrans %}
+{% endblock %}
