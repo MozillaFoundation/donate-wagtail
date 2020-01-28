@@ -13,7 +13,6 @@ from .thunderbird import ThunderbirdOverrides
 
 class Production(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Sentry, Configuration):
     DEBUG = False
-    SALESFORCE_FORM_URL = "https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
 
     @classmethod
     def pre_setup(cls):
