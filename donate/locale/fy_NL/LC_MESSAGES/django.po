@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-24 11:40+0000\n"
-"PO-Revision-Date: 2020-01-28 08:52+0000\n"
+"PO-Revision-Date: 2020-01-28 10:20+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fy_NL\n"
@@ -482,11 +482,15 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"De Mozilla Foundation is in Kalifornyske non-profitorganisaasje dy't yn de FS útsûndere is fan federale ynkomstebelesting ûnder IRC 501(c)(3) en in ynstelling fan algemien belang ûnder IRC-seksjes "
+"170(b)(1)(A) en 509(a)(1). Troch Mozilla ûntfongen bitcoindonaasjes wurde ûnder federale belestingwetten yn de FS beskôge as bydragen oan in goed doel, nei eigen ynsicht te brûken foar goede doelen."
+" Omdat de IRS oanjûn hat dat bitcoins foar Amerikaanske belestingdoeleinen as ‘property’ beskôge wurde (sjoch IRS Notice 2014-21), kinne donaasjes fan Bitcoin ûnderhavich wêze oan spesjale rigels "
+"mei betrekking ta it bedrach fan jo ôftrek foar goede doelen, de dokumintaasje dy't opjûn wurde moatte om belestingôftrek te krijen, of oare saken."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:96
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Lês <a href=\"%(bitcoin_wiki)s\">hjir</a> mear oer bitcoindonaasjes. <a href=\"%(bitcoin_donate)s\">Folgje dizze keppeling</a> om bitcoins te donearjen."
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -714,16 +718,16 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "It downloaden soe automatysk begûn wêze moatte. As it net wurke, <a href=\"%(url)s\">probearje dan hjir opnij te downloaden</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:5 donate/thunderbird/templates/pages/core/ways_to_give_page.html:6
 msgid "Memo field:"
-msgstr ""
+msgstr "Memofjild:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:9
 #, python-format
 msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Stjoer in sjek <strong>mei dêrop “%(thunderbird)s” yn de opmerkingenrigel</strong>, en betelber (begeunstige) oan “%(payee)s”."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
