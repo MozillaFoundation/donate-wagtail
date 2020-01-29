@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 21:57+0000\n"
+"PO-Revision-Date: 2020-01-29 23:33+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -752,29 +752,27 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "Nedlastingen din burde ha startet automatisk. Om det ikke fungerte, <a href=\"%(url)s\">prøv å laste ned på nytt her</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr "Vi aksepterer donasjoner i euro overført via Single European Payment Area (SEPA), og britiske pund overført via BACS."
+msgstr "Vi aksepterer bidrag i euro overført via Single European Payment Area (SEPA), og britiske pund overført via BACS."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
 msgstr "Memo-felt:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
-#, fuzzy, python-format
+#, python-format
 #| msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr "Send en sjekk <strong>inkludert «%(thunderbird)s» i memo-feltet</strong>, og betales (betalingsmottaker) til «%(payee)s»."
+msgstr "Send en sjekk <strong>med «%(thunderbird)s» i memo-feltet</strong>, og betales (betalingsmottaker) til «%(payee)s»."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
-#, fuzzy
 #| msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr "Vær oppmerksom på at Mozilla Foundation bare kan godta sjekker i amerikanske dollar trukket fra en amerikansk bank. <strong>Ikke send</strong> kontanter."
+msgstr "Vær oppmerksom på at vi bare kan godta sjekker i amerikanske dollar trukket fra en amerikansk bank. <strong>Ikke send</strong> kontanter."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -784,14 +782,13 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Jeg autoriserer Mozilla Foundation til å automatisk belaste kortet mitt hver måned i det angitte beløpet, fra i dag og fortsetter hver måned på samme dag, inntil jeg avbryter. Jeg forstår at jeg må "
-"avbryte minst 5 dager før neste planlagte donasjon via e-post til <a href='mailto:%(email)s'>%(email)s</a>, og at jeg bare kan be om refusjon innen 15 dager fra donasjonsdatoen."
+"Jeg autoriserer MZLA Technologies Corporation til å automatisk belaste kortet mitt hver måned i det angitte beløpet, fra i dag og fortsetter hver måned på samme dag, inntil jeg avbryter. Jeg forstår"
+" at jeg må avbryte minst 5 dager før neste planlagte donasjon ved å <a href='%(help_url)s'>sende en forespørsel</a>, og at jeg bare kan be om refusjon innen 15 dager fra donasjonsdatoen."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Jeg gir Mozilla Foundation fullmakt til å belaste kortet mitt i det beløpet som er vist ovenfor. Jeg forstår at jeg bare kan be om refusjon innen 15 dager fra donasjonsdatoen."
+msgstr "Jeg gir MZLA Technologies Corporation fullmakt til å belaste kortet mitt i det beløpet som er vist ovenfor. Jeg forstår at jeg bare kan be om refusjon innen 15 dager fra donasjonsdatoen."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
