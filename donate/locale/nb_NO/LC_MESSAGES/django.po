@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 23:33+0000\n"
+"PO-Revision-Date: 2020-01-29 23:35+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb_NO\n"
@@ -795,7 +795,7 @@ msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Coul
 msgstr "Vi vil gjerne ha deg som en støttende tilhenger av Thunderbird. <b>Kan du legge til en månedlig donasjon som begynner neste måned?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -805,13 +805,15 @@ msgid ""
 "refund within 15 days from the date of a donation."
 msgstr ""
 "Jeg autoriserer Mozilla Foundation til å automatisk belaste kortet mitt hver måned i det angitte beløpet, fra neste måned på samme dato som i dag og videre hver måned, inntil jeg avbryter. Jeg "
-"forstår at jeg må avbryte minst 5 dager før neste planlagte donasjon via e-post til %(email)s, og at jeg bare kan be om refusjon innen 15 dager fra donasjonsdatoen."
+"forstår at jeg må avbryte minst 5 dager før neste planlagte donasjon ved å <a href=\"%(help_url)s\">sende inn dette skjemaet</a>, og at jeg bare kan be om refusjon innen 15 dager fra "
+"donasjonsdatoen."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
-msgstr "Vi har sendt deg en e-post med kvittering for donasjonen; hvis den mangler, kan du sjekke mappen for søppelpost eller spam, kontakt oss senere på <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Vi har sendt deg en e-post med kvittering for donasjonen; hvis den mangler, kan du sjekke mappen for søppelpost eller spam, så kan du kontakte oss ved å bruke <a href=\"%(url)s\">dette skjemaet</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
