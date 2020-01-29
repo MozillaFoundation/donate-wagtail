@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 15:41+0000\n"
+"PO-Revision-Date: 2020-01-29 15:49+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_TW\n"
@@ -354,7 +354,7 @@ msgstr "描述"
 #: donate/templates/pages/core/contributor_support_page_master.html:75
 #, python-format
 msgid "Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href=\"%(privacy_policy)s\">privacy policy</a> for further information."
-msgstr ""
+msgstr "Mozilla 僅將您提供的資訊用於聯繫處理您的要求。若需更多資訊，請參考我們的<a href=\"%(privacy_policy)s\">隱私權保護政策</a>。"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:77
 msgid "Submit"
@@ -707,7 +707,7 @@ msgstr "若採每月定期捐款，將於每月的同一日進行扣款，直到
 #, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
-msgstr "捐款時遇到問題嗎？請到我們的 <a href=\"%(faq_url)s\">FAQ</a> 尋求常見問題的解答。還有問題嗎？<a href=\"%(help_url)s\">歡迎寄信給我們</a>。"
+msgstr "捐款時遇到問題嗎？請到我們的 <a href=\"%(faq_url)s\">FAQ</a> 尋求常見問題的解答。還有問題嗎？<a href=\"%(help_url)s\">歡迎聯絡我們</a>。"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
 #| msgid ""
@@ -725,7 +725,7 @@ msgstr "Cookie"
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "本頁的部分內容著作權為 ©1998–%(current_year)s 由個別貢獻者所有，使用 <a %(link_attributes)s>創用 CC 授權條款</a>授權大眾使用"
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
