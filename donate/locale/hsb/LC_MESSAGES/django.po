@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 18:03+0000\n"
+"PO-Revision-Date: 2020-01-29 18:07+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hsb\n"
@@ -796,7 +796,7 @@ msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Coul
 msgstr "Bychmy was rady jako stajneho podpěraćela za Thunderbird měli. <b>Móhł wy kóždy měsac započinajo z přichodnym měsacom darić?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -805,14 +805,15 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Awtorizuju załožbu Mozilla Foundation, moju kartu kóždy měsac z horjeka podatej sumu awtomatisce poćežić. To so na samsnym dnju w přichodnym měsacu započina a wospjetuje so kóždy měsac, doniž swoju "
-"dowolnosć njewotwołam. Rozumju, zo dyrbju znajmjeńša 5 dnjow před přichodnym planowanym darom přez mejlku na %(email)s wotwołać a móžu zarunanje jenož w běhu 15 dnjow wot datuma dara požadać."
+"Awtorizuju předewzaće MZLA Technologies Corporation, moju kartu kóždy měsac z horjeka podatej sumu awtomatisce poćežić. To so dźensa započina a wospjetuje so kóždy měsac na samsnym dnju, doniž swoju"
+" dowolnosć njewotwołam. Rozumju, zo dyrbju znajmjeńša 5 dnjow před přichodnym planowanym darom přez na <a href=\"%(help_url)s\">słanje naprašowanja</a> wotwołać a móžu zarunanje jenož w běhu 15 "
+"dnjow wot datuma dara požadać."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
-msgstr "Smy wam darjensku kwitowanku přez e-mejl pósćeli; jeli faluje, hladajće do swojeho čaporoweho rjadowaka a stajće so přez <a href=\"mailto:%(email)s\">%(email)s</a> do zwiska."
+msgstr "Smy wam darjensku kwitowanku přez e-mejl pósćeli; jeli faluje, hladajće do swojeho čaporoweho rjadowaka a stajće so přez <a href=\"%(url)s\">tutón fomular</a> do zwiska."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
