@@ -65,6 +65,7 @@
 {% endblock %}
 
 {% block footer_legal %}
+    {% now "Y" as current_year %}
     {% blocktrans with link_attributes='class="link" href="https://www.mozilla.org/foundation/licensing/website-content/"' trimmed %}
-    Portions of this content are ©1998–2020 by individual contributors. Content available under a <a {{ link_attributes }}>Creative Commons license</a>{% endblocktrans %}
+    Portions of this content are ©1998–{{ current_year }} by individual contributors. Content available under a <a {{ link_attributes }}>Creative Commons license</a>{% endblocktrans %}
 {% endblock %}
