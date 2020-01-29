@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 16:57+0000\n"
+"PO-Revision-Date: 2020-01-29 18:09+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -716,12 +716,12 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Dalšne móžnosći pósćiwanja: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">šek</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
 msgstr ""
-"Mjasecne dary se kuždy mjasec na tom samskem dnju wuběraju, na kótaremž źinsa pósćiwaśo, a pókšacuju se tak dłujko, až je njepśetergnjośo. Aby pśeterhnuł, sćelśo nam mejlku na <a "
-"href=\"mailto:%(email)s\">%(email)s</a>."
+"Mjasecne dary se kuždy mjasec na tom samskem dnju wuběraju, na kótaremž źinsa pósćiwaśo, a pókšacuju se tak dłujko, až je njepśetergnjośo. Aby pśeterhnuł, wupołniśo <a href=\"%(help_url)s\">toś ten "
+"formular</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
 #, fuzzy, python-format
