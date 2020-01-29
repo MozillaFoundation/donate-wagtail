@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 18:09+0000\n"
+"PO-Revision-Date: 2020-01-29 18:20+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -724,15 +724,12 @@ msgstr ""
 "formular</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
-msgstr ""
-"Maśo problemy pś pósćiwanju? Woglědajś se k našym <a href=\"%(faq_url)s\">Cestym pšašanjam</a> za wótegrona na nejcesćejše pšašanja. Maśo hyšći problemy? <a href=\"mailto:%(email)s\">Sćelśo nam "
-"mejlku</a>."
+msgstr "Maśo problemy pś pósćiwanju? Woglědajś se k našym <a href=\"%(faq_url)s\">CSP</a> za wótegrona na nejcesćejše pšašanja. Maśo hyšći problemy? <a href=\"%(help_url)s\">Stajśo z nami do zwiska</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
@@ -758,7 +755,6 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "Wašo ześěgnjenjo dejało se awtomatiski zachopiś. Jolic to njefunkcioněrujo, <a href=\"%(url)s\">wopytajśo how znowego ześěgnuś</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgstr "Akceptěrujomy něnto pósćiwanki w eurach pśez pśepokazanje Single European Payment Area (SEPA) a w Britiskich puntach pśez přepokazanje BACS."
@@ -768,19 +764,18 @@ msgid "Memo field:"
 msgstr "Pólo za zapiski:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
-#, fuzzy, python-format
+#, python-format
 #| msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgstr "Pšosym sćelśo šek <strong>z „%(thunderbird)s“ we wužywańskem zaměrje</strong>, a ma se zapłaśiś na „%(payee)s“ (płaśeński dostawaŕ)."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
-#, fuzzy
 #| msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr "Pšosym źiwajśo na to, až załožba Mozilla Foundation móžo jano šeki akceptěrowaś, kótarež su w US-dolarach na US-banku wustajone. Pšosym <strong>nje</strong>sćelśo gótowe pjenjeze."
+msgstr "Pšosym źiwajśo na to, až móžomy jano šeki akceptěrowaś, kótarež su w US-dolarach na US-banku wustajone. Pšosym <strong>nje</strong>sćelśo gótowe pjenjeze."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -790,22 +785,21 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Awtorizěrujom załožbu Mozilla Foundation, móju kórtu kuždy mjasec z górjejce pódaneju sumu awtomatiski wobśěžyś. To se źinsa zachopina a wóspjetujo se kuždy mjasec na tom samskem dnju, daniž swóju "
-"dowólnosć slědk njewzejom. Rozměju, až musym najemjenjej 5 dnjow pśed pśiducym planowanym darom pśez mejlku na <a href='mailto:%(email)s'>%(email)s</a> slědk wześ a mógu zarownanje jano w běgu 15 "
-"dnjow wót datuma dara pominaś."
+"Awtorizěrujom pśedewześe MZLA Technologies Corporation, móju kórtu kuždy mjasec z górjejce pódaneju sumu awtomatiski wobśěžyś. To se źinsa zachopina a wóspjetujo se kuždy mjasec na tom samskem dnju,"
+" daniž swóju dowólnosć slědk njewzejom. Rozměju, až musym najemjenjej 5 dnjow pśed pśiducym planowanym darom pśez <a href='%(help_url)s'>słanje napšašowanja</a> slědk wześ a mógu zarownanje jano w "
+"běgu 15 dnjow wót datuma dara pominaś."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Awtorizěrujom Mozilla, móju kórtu z górjejce pódaneju sumu wobśěžyś. Rozměju, až mógi jano za 15 dnjow wót pósćiwańskego datuma wó wopłaśenje pšosyś."
+msgstr "Awtorizěrujom pśedwześe MZLA Technologies Corporation, móju kórtu z górjejce pódaneju sumu wobśěžyś. Rozměju, až mógi jano za 15 dnjow wót pósćiwańskego datuma wó wopłaśenje pšosyś."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "By my was rady měli ako stawnego pódpěrarja za Thunderbird. <b>Mógał wy kuždy mjasec zachopinajucy z pśiducym mjasecom pósćiwaś?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -815,14 +809,14 @@ msgid ""
 "refund within 15 days from the date of a donation."
 msgstr ""
 "Awtorizěrujom załožbu Mozilla Foundation, móju kórtu kuždy mjasec z górjejce pódaneju sumu awtomatiski wobśěžyś. To se pśiducy mjasec na tom samskem dnju ako źinsa zachopijo a wóspjetujo se kuždy "
-"mjasec, daniž swóju dowólnosć slědk njewzejom. Rozměju, až musym najejmjenjej 5 dnjow pśed pśiducym planowanym darom pśez mejlku na %(email)s slědk wześ a mógu zarownanje jano w běgu 15 dnjow wót "
-"datuma dara pominaś."
+"mjasec, daniž swóju dowólnosć slědk njewzejom. Rozměju, až musym najejmjenjej 5 dnjow pśed pśiducym planowanym darom pśez <a href=\"%(help_url)s\">słanje toś togo formulara</a> slědk wześ a mógu "
+"zarownanje jano w běgu 15 dnjow wót datuma dara pominaś."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
-msgstr "Smy wam pósćiwańsku kwitowanku pśez e-mail pósćeli; jolic felujo, glědajśo do swójogo papjernika a stajśo se pśez <a href=\"mailto:%(email)s\">%(email)s</a> do zwiska."
+msgstr "Smy wam pósćiwańsku kwitowanku pśez e-mail pósćeli; jolic felujo, glědajśo do swójogo papjernika a stajśo se z pomocu <a href=\"%(url)s\">toś togo formulara</a> z nami do zwiska."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
