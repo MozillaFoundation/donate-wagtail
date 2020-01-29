@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 18:20+0000\n"
+"PO-Revision-Date: 2020-01-29 18:33+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: dsb\n"
@@ -576,7 +576,7 @@ msgstr ""
 
 #: donate/templates/payment/card_master.html:128
 msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Awtorizěrujom Mozilla, móju kórtu z górjejce pódaneju sumu wobśěžyś. Rozměju, až mógi jano za 15 dnjow wót pósćiwańskego datuma wó wopłaśenje pšosyś."
+msgstr "Awtorizěrujom załožbu Mozilla, móju kórtu z górjejce pódaneju sumu wobśěžyś. Rozměju, až mógi jano za 15 dnjow wót pósćiwańskego datuma wó wopłaśenje pšosyś."
 
 #: donate/templates/payment/card_master.html:144
 #, python-format
@@ -808,9 +808,9 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Awtorizěrujom załožbu Mozilla Foundation, móju kórtu kuždy mjasec z górjejce pódaneju sumu awtomatiski wobśěžyś. To se pśiducy mjasec na tom samskem dnju ako źinsa zachopijo a wóspjetujo se kuždy "
-"mjasec, daniž swóju dowólnosć slědk njewzejom. Rozměju, až musym najejmjenjej 5 dnjow pśed pśiducym planowanym darom pśez <a href=\"%(help_url)s\">słanje toś togo formulara</a> slědk wześ a mógu "
-"zarownanje jano w běgu 15 dnjow wót datuma dara pominaś."
+"Awtorizěrujom pśedewześe MZLA Technologies Corporation, móju kórtu kuždy mjasec z górjejce pódaneju sumu awtomatiski wobśěžyś. To se pśiducy mjasec na tom samskem dnju ako źinsa zachopijo a "
+"wóspjetujo se kuždy mjasec, daniž swóju dowólnosć slědk njewzejom. Rozměju, až musym najejmjenjej 5 dnjow pśed pśiducym planowanym darom pśez <a href=\"%(help_url)s\">słanje toś togo formulara</a> "
+"slědk wześ a mógu zarownanje jano w běgu 15 dnjow wót datuma dara pominaś."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
 #, python-format
