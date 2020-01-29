@@ -30,7 +30,7 @@
                     {% endblocktrans %}</p>
 
                     <input type=hidden name="orgid" value="{{ orgid }}">
-                    <input type=hidden name="retURL" value="{{ page.full_url }}?submitted=true">
+                    <input type=hidden name="retURL" value="{{ page.get_full_url }}?submitted=true">
 
                     {% block custom_hidden_fields %}
                         <input type=hidden name="type" value="Donation">
