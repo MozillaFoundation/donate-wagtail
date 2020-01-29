@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 15:34+0000\n"
+"PO-Revision-Date: 2020-01-29 15:37+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -366,6 +366,8 @@ msgstr "Description"
 #, python-format
 msgid "Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href=\"%(privacy_policy)s\">privacy policy</a> for further information."
 msgstr ""
+"Mozilla utilisera les informations soumises uniquement pour communiquer avec vous au sujet de votre demande. Veuillez consulter notre <a href=\"%(privacy_policy)s\">politique de confidentialité</a> "
+"pour plus d’informations."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:77
 msgid "Submit"
@@ -720,23 +722,22 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Autres façons de faire un don : <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">chèque</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
 msgstr ""
-"Les dons mensuels sont prélevés chaque mois, le même jour que votre don d’aujourd’hui. Les prélèvements continueront jusqu’à ce que vous les arrêtiez. Pour les arrêter, contactez-nous via <a "
-"href=\"mailto:%(email)s\">%(email)s</a>."
+"Les dons mensuels sont prélevés chaque mois, le même jour que votre don d’aujourd’hui. Les prélèvements continueront jusqu’à ce que vous les arrêtiez. Pour les arrêter, renseignez <a "
+"href=\"%(help_url)s\">ce formulaire</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
 msgstr ""
 "Des problèmes pour faire un don ? <a href=\"%(faq_url)s\">Consultez notre FAQ</a> pour trouver les réponses aux questions les plus courantes. Cela n’a pas résolu vos problèmes ? <a "
-"href=\"mailto:%(email)s\">Envoyez-nous un courrier électronique</a>."
+"href=\"%(help_url)s\">Contactez-nous</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
