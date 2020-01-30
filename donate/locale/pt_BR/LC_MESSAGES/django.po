@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-30 21:22+0000\n"
+"PO-Revision-Date: 2020-01-30 21:30+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -303,7 +303,7 @@ msgstr "Obrigado por entrar em contato conosco. Foi criado um caso para seu prob
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
-msgstr ""
+msgstr "Em breve entraremos em contato."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
@@ -496,7 +496,7 @@ msgstr ""
 #: donate/templates/pages/core/ways_to_give_page_master.html:102
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Saiba mais sobre doações de bitcoin <a href=\"%(bitcoin_wiki)s\">aqui</a>. Para doar bitcoin, <a href=\"%(bitcoin_donate)s\">visite este link</a>."
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -734,16 +734,16 @@ msgstr "Cookies"
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "Partes deste conteúdo são ©1998–%(current_year)s de colaboradores individuais. O conteúdo está disponível sob uma <a href=\"%(url)s\">Licença Creative Commons</a>."
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Seu download deve ter começado automaticamente. Se não funcionou, <a href=\"%(url)s\">tente baixar novamente aqui</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "Aceitamos contribuições em euros através de transferência via Single European Payment Area (SEPA) e libras esterlinas via transferência BACS."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
@@ -756,10 +756,9 @@ msgstr "Envie um cheque <strong>com “%(thunderbird)s” na linha de anotação
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Observe que só podemos aceitar cheques em dólares americanos sacados em um banco americano. <strong>Não</strong> envie dinheiro."
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
 msgstr "Obrigado por sua generosidade"
