@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 15:24+0000\n"
-"Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
+"PO-Revision-Date: 2020-01-30 07:03+0000\n"
+"Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -365,7 +365,7 @@ msgstr "Beschrijving"
 #: donate/templates/pages/core/contributor_support_page_master.html:75
 #, python-format
 msgid "Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href=\"%(privacy_policy)s\">privacy policy</a> for further information."
-msgstr ""
+msgstr "Mozilla zal uw ingediende informatie alleen gebruiken ten behoeve van communicatie met u over uw aanvraag. Lees ons <a href=\"%(privacy_policy)s\">privacybeleid</a> voor meer informatie."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:77
 msgid "Submit"
@@ -721,13 +721,13 @@ msgstr "Andere manieren om te geven: <a href=\"%(wire_transfer_url)s\">SEPA/BACS
 #, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
-msgstr ""
+msgstr "Maandelijkse donaties worden elke maand in rekening gebracht op de dag van uw huidige donatie en lopen door totdat u annuleert. Vul <a href=\"%(help_url)s\">dit formulier</a> in om te annuleren."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
 #, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
-msgstr ""
+msgstr "Problemen met doneren? Ga naar onze <a href=\"%(faq_url)s\">FAQ</a> voor antwoorden op de meest gestelde vragen. Hebt u nog steeds problemen? <a href=\"%(help_url)s\">Neem dan contact op</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
 #| msgid ""
@@ -747,7 +747,7 @@ msgstr "Cookies"
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "Delen van deze inhoud zijn ©1998–%(current_year)s door individuele medewerkers. Inhoud is beschikbaar onder een <a %(link_attributes)s>Creative Commons-licentie</a>"
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
@@ -755,23 +755,21 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "Het downloaden zou automatisch moeten zijn begonnen. Als het niet werkte, <a href=\"%(url)s\">probeer dan hier opnieuw te downloaden</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr "We accepteren donaties in euro’s via een Single European Payment Area (SEPA)-overschrijving, en Britse ponden via een BACS-overschrijving."
+msgstr "We accepteren donaties in euro’s via een Single European Payment Area (SEPA)-overschrijving en Britse ponden via een BACS-overschrijving."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
 msgstr "Memoveld:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
-#, fuzzy, python-format
+#, python-format
 #| msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgstr "Stuur een cheque <strong>met daarop “%(thunderbird)s” in de opmerkingenregel</strong>, en betaalbaar (begunstigde) aan “%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
-#, fuzzy
 #| msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgstr "Merk op dat de Mozilla Foundation alleen cheques in Amerikaanse dollars accepteert die zijn uitgegeven door een Amerikaanse bank. Stuur <strong>geen</strong> contanten."
