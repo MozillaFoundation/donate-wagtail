@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-29 15:24+0000\n"
-"Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
+"PO-Revision-Date: 2020-01-30 07:25+0000\n"
+"Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -757,7 +757,7 @@ msgstr "Het downloaden zou automatisch moeten zijn begonnen. Als het niet werkte
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr "We accepteren donaties in euro’s via een Single European Payment Area (SEPA)-overschrijving, en Britse ponden via een BACS-overschrijving."
+msgstr "We accepteren donaties in euro’s via een Single European Payment Area (SEPA)-overschrijving en Britse ponden via een BACS-overschrijving."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
@@ -767,12 +767,12 @@ msgstr "Memoveld:"
 #, python-format
 #| msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr "Stuur een cheque <strong>met daarop “%(thunderbird)s” in de opmerkingenregel</strong>, en betaalbaar (begunstigde) aan “%(payee)s”."
+msgstr "Stuur een cheque <strong>met daarop “%(thunderbird)s” in de opmerkingenregel</strong> en betaalbaar (begunstigde) aan “%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 #| msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr "Merk op dat de Mozilla Foundation alleen cheques in Amerikaanse dollars accepteert die zijn uitgegeven door een Amerikaanse bank. Stuur <strong>geen</strong> contanten."
+msgstr "Merk op dat we alleen cheques in Amerikaanse dollars accepteren die zijn uitgegeven door een Amerikaanse bank. Stuur <strong>geen</strong> contanten."
 
 #: donate/thunderbird/templates/payment/card.html:12
 #, python-format
