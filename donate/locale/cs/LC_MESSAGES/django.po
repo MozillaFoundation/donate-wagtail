@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-26 08:25+0000\n"
+"PO-Revision-Date: 2020-01-29 15:24+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -725,7 +725,6 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr ""
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
@@ -751,7 +750,6 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "Vaše stahování by mělo začít automaticky. Pokud ne, <a href=\"%(url)s\">klikněte zde</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgstr "Přijímáme dary v eurech pomocí Single European Payment Area (SEPA) převodů a v librách pomocí BACS převodů."
@@ -772,7 +770,7 @@ msgid "Please note that we can only accept checks in US dollars drawn on a US ba
 msgstr ""
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -782,21 +780,18 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Souhlasím s tím, aby Mozilla Foundation strhla z mé platební karty výše uvedenou částku a nadále tak činila s měsíční pravidelností, dokud tento souhlas nezruším. Uvědomuji si, že opakování platby "
-"je třeba zrušit alespoň 5 dní před jejím provedení zasláním žádosti na adresu <a href='mailto:%(email)s'>%(email)s</a>, a že o vrácení peněz mohu požádat pouze do uplynutí 15 dní od zaslání daru."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Souhlasím s tím, aby Mozilla Foundation strhla z mé platební karty výše uvedenou částku. Uvědomuji si, že o vrácení peněz mohu požádat pouze do uplynutí 15 dní od zaslání daru."
+msgstr ""
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Budeme moc rádi, pokud se rozhodnete Thunderbird podporovat dlouhodobě. <b>Na této stránce můžete zadat pravidelnou měsíční platbu počínaje příštím měsícem.</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -805,15 +800,12 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Souhlasím s tím, aby Mozilla Foundation strhla z mé platební karty výše uvedenou částku a nadále tak činila s měsíční pravidelností, dokud tento souhlas nezruším. Uvědomuji si, že opakování platby "
-"je třeba zrušit alespoň 5 dní před jejím provedení zasláním žádosti na adresu %(email)s, a že o vrácení peněz mohu požádat pouze do uplynutí 15 dní od zaslání daru."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
 msgstr ""
-"Potvrzení o daru jsme vám poslali e-mailem. Pokud ho ve své schránce nenajdete, zkontrolujte prosím složku se spamem a případně nás kontaktujte na adrese <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
