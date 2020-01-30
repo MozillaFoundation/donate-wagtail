@@ -728,8 +728,6 @@ msgstr "A havi adományok minden hónapban ugyanakkor kerülnek levonásra, és 
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
 msgstr ""
-"Problémái vannak az adományozással? A leggyakoribb kérdésekre vonatkozó válaszokért keresse fel a <a href=\"%(faq_url)s\">GYIK-ot</a>. Még mindig vannak problémái? <a "
-"href=\"mailto:%(email)s\">Küldjön nekünk egy e-mailt</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
 #, fuzzy
