@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 15:19+0000\n"
+"POT-Creation-Date: 2020-01-30 21:05+0000\n"
 "PO-Revision-Date: 2020-01-21 15:30+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,13 +291,13 @@ msgid "DONATE NOW"
 msgstr "DONAR AHORA"
 
 #: donate/templates/pages/core/campaign_page.html:52
-#: donate/templates/pages/core/landing_page_master.html:34
+#: donate/templates/pages/core/landing_page_master.html:36
 #: donate/templates/payment/card_master.html:159
 msgid "Seal of Charity Navigator 4-Star"
 msgstr "Sello de Charity Navigator 4-Star"
 
 #: donate/templates/pages/core/campaign_page.html:55
-#: donate/templates/pages/core/landing_page_master.html:37
+#: donate/templates/pages/core/landing_page_master.html:39
 #: donate/templates/payment/card_master.html:162
 msgid "Seal of GuideStar Gold 2019"
 msgstr "Sello de GuideStar Gold 2019"
@@ -798,6 +798,12 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgstr ""
+
+#: donate/thunderbird/templates/payment/card.html:6
+#, fuzzy
+#| msgid "Thank you for your generous gift"
+msgid "Thank you in advance for your gift."
+msgstr "Gracias por tu generosa donación"
 
 #: donate/thunderbird/templates/payment/card.html:12
 #, fuzzy, python-format
