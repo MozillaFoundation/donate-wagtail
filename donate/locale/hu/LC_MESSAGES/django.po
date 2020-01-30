@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-30 17:24+0000\n"
+"PO-Revision-Date: 2020-01-30 18:28+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -743,12 +743,12 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
-msgstr ""
+msgstr "Sütik"
 
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "A tartalom egy részét ©1998–%(current_year)s egyéni közreműködők készítették. A tartalom <a %(link_attributes)s>Creative Commons licenc</a> alatt érhető el"
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
@@ -756,10 +756,9 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "A letöltése automatikusan el kellett induljon. Ha nem működött, <a href=\"%(url)s\">próbálja meg itt újra letölteni</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr "Most már el tudjuk fogadni az euróban érkező adományokat Single European Payment Area (SEPA) átutalással, valamint brit fontot BACS átutalással."
+msgstr "Elfogadjuk az euróban érkező adományokat Single European Payment Area (SEPA) átutalással, valamint brit fontot BACS átutalással."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
@@ -772,13 +771,12 @@ msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</
 msgstr "A csekket úgy küldje el, hogy <strong>a jegyzet sorban „%(thunderbird)s” legyen</strong>, a fizetendő (kedvezményezett) pedig ez legyen: „%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
-#, fuzzy
 #| msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr "Felhívjuk figyelmét, hogy a Mozilla Alapítvány kizárólag amerikai dollárban készített csekkeket fogadhat el, egy amerikai bankon keresztül. Kérjük, <strong>ne</strong> küldjön készpénzt."
+msgstr "Felhívjuk figyelmét, hogy kizárólag amerikai dollárban kiállított csekkeket fogadhatunk el, egy amerikai bankon keresztül. Kérjük, <strong>ne</strong> küldjön készpénzt."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -788,22 +786,21 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Felhatalmazom a Mozilla Alapítványt, hogy havonta automatikusan megterhelje a kártyámat a fent megadott összeggel, a mai nappal kezdve, és azt követően minden hónapban ugyanezen a napon, amíg le nem"
-" mondom. Megértettem, hogy legalább 5 nappal a következő ütemezett adományozás előtt kell lemondanom a(z) <a href='mailto:%(email)s'>%(email)s</a> címre küldött e-mailben, és csak az adományozástól "
-"számított 15 napon belül kérhetek visszatérítést."
+"Felhatalmazom a MZLA Technologies Corporationt, hogy havonta automatikusan megterhelje a kártyámat a fent megadott összeggel, a mai nappal kezdve, és azt követően minden hónapban ugyanezen a napon, "
+"amíg le nem mondom. Megértettem, hogy legalább 5 nappal a következő ütemezett adományozás előtt kell lemondanom <a href='%(help_url)s'>erre vonatkozó kérés beküldésével</a>, és csak az "
+"adományozástól számított 15 napon belül kérhetek visszatérítést."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Felhatalmazom a Mozilla Alapítványt, hogy terhelje meg a kártyámat a fent látott összeggel. Megértettem, hogy csak a felajánlás utáni 15 napban kérhetek visszatérítést."
+msgstr "Felhatalmazom a MZLA Technologies Corporationt, hogy terhelje meg a kártyámat a fent látott összeggel. Megértettem, hogy csak a felajánlás utáni 15 napban kérhetek visszatérítést."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Szeretnénk, ha Ön a Thunderbird tartós támogatója lenne. <b>Be tudna állítani egy havi adományt a következő hónaptól kezdve?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -812,15 +809,15 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Felhatalmazom a Mozilla Alapítványt, hogy havonta automatikusan megterhelje a kártyámat a fent megadott összeggel, a következő hónappal kezdve ugyanazon a napon, mint ma, és azt követően minden "
-"hónapban, amíg le nem mondom. Megértettem, hogy legalább 5 nappal a következő ütemezett adományozás előtt kell lemondanom a(z) %(email)s címre küldött e-mailben, és csak az adományozástól számított "
-"15 napon belül kérhetek visszatérítést."
+"Felhatalmazom a MZLA Technologies Corporationt, hogy havonta automatikusan megterhelje a kártyámat a fent megadott összeggel, a következő hónappal kezdve ugyanazon a napon, mint ma, és azt követően "
+"minden hónapban, amíg le nem mondom. Megértettem, hogy legalább 5 nappal a következő ütemezett adományozás előtt kell lemondanom <a href=\"%(help_url)s\">az erre vonatkozó kérés beküldésével</a>, és"
+" csak az adományozástól számított 15 napon belül kérhetek visszatérítést."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
-msgstr "Elküldtük Önnek az adományozás nyugtáját; ha hiányzik, akkor ellenőrizze a levélszemét mappákat, majd vegye fel velünk a kapcsolatot a(z) <a href=\"mailto:%(email)s\">%(email)s</a> címen."
+msgstr "Elküldtük Önnek az adományozás nyugtáját; ha hiányzik, akkor ellenőrizze a levélszemét mappákat, majd vegye fel velünk a kapcsolatot <a href=\"%(url)s\">ezen űrlap</a> kitöltésével."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
