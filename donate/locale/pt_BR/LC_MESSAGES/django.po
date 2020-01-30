@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-30 14:42+0000\n"
+"PO-Revision-Date: 2020-01-30 16:32+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -299,7 +299,7 @@ msgstr "Faça uma doação"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:18
 msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
-msgstr ""
+msgstr "Obrigado por entrar em contato conosco. Foi criado um caso para seu problema. Retornaremos o contato em breve."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:24
 msgid "We will get back to you soon."
