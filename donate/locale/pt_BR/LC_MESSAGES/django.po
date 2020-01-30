@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-30 21:30+0000\n"
-"Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
+"PO-Revision-Date: 2020-01-30 21:38+0000\n"
+"Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -492,6 +492,10 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"A Fundação Mozilla é uma corporação sem fins lucrativos situada na Califórnia, isenta de impostos federais dos Estados Unidos sob a IRC 501(c)(3) e classificada como uma instituição pública de "
+"caridade sob IRC seções 170(b)(1)(A) e 509(a)(1). As doações recebidas em bitcoin pela Mozilla são consideradas contribuições para caridade sob lei federal de impostos dos EUA, para ser usadas a seu"
+" critério com propósitos de caridade. Como o IRS indicou que tratará o bitcoin como propriedade para fins de impostos dos EUA (ver o aviso do IRS 2014-21), as doações de bitcoin podem estar sujeitas"
+" a regras especiais em função do valor de sua dedução de caridade, da documentação que deve ser fornecida para reivindicar uma dedução fiscal, ou outros assuntos."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:102
 #, python-format
@@ -734,7 +738,7 @@ msgstr "Cookies"
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr "Partes deste conteúdo são ©1998–%(current_year)s de colaboradores individuais. O conteúdo está disponível sob uma <a href=\"%(url)s\">Licença Creative Commons</a>."
+msgstr "Partes deste conteúdo são ©1998–%(current_year)s de colaboradores individuais. O conteúdo está disponível sob uma <a %(link_attributes)s>Licença Creative Commons</a>."
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
