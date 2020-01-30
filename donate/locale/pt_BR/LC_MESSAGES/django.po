@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-30 16:32+0000\n"
+"PO-Revision-Date: 2020-01-30 16:58+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
@@ -307,7 +307,7 @@ msgstr ""
 
 #: donate/templates/pages/core/contributor_support_page_master.html:28
 msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
-msgstr ""
+msgstr "Se precisar de ajuda com uma contribuição, preencha este formulário e entraremos em contato com você em breve."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
@@ -362,7 +362,7 @@ msgstr "Descrição"
 #: donate/templates/pages/core/contributor_support_page_master.html:75
 #, python-format
 msgid "Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href=\"%(privacy_policy)s\">privacy policy</a> for further information."
-msgstr ""
+msgstr "A Mozilla só usará as informações enviadas para fins de comunicação com você sobre sua solicitação. Consulte mais informações na nossa <a href=\"%(privacy_policy)s\">política de privacidade</a>."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:77
 msgid "Submit"
@@ -379,7 +379,7 @@ msgstr "Crédito / Débito e PayPal"
 #: donate/templates/pages/core/ways_to_give_page_master.html:18
 #, python-format
 msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
-msgstr ""
+msgstr "<a href=\"%(ways_to_give_link)s\">Acesse este link</a> para fazer uma doação online segura agora mesmo."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:23 donate/thunderbird/templates/pages/core/ways_to_give_page.html:7
 msgid "Bank Transfer / SEPA"
@@ -387,7 +387,7 @@ msgstr "Transferência bancária / SEPA"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:24
 msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "Aceitamos doações em euros através de transferência via Single European Payment Area (SEPA) e libras esterlinas via transferência BACS."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:25
 msgid "Please remember that donations are deductible for U.S. income tax purposes only."
