@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-30 06:34+0000\n"
+"PO-Revision-Date: 2020-01-29 15:24+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -718,23 +718,18 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Andere manieren om te geven: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Cheque</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
 msgstr ""
-"Maandelijkse donaties worden elke maand in rekening gebracht op de dag van uw huidige donatie en lopen door totdat u annuleert. Stuur een e-mailbericht naar <a "
-"href=\"mailto:%(email)s\">%(email)s</a> om te annuleren."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
 msgstr ""
-"Problemen met doneren? Ga naar onze <a href=\"%(faq_url)s\">FAQ</a> voor antwoorden op de meest gestelde vragen. Hebt u nog steeds problemen? <a href=\"mailto:%(email)s\">Stuur ons een "
-"e-mailbericht</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
