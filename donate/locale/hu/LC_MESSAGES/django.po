@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:19+0000\n"
-"PO-Revision-Date: 2020-01-30 17:23+0000\n"
+"PO-Revision-Date: 2020-01-30 17:24+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -724,11 +724,11 @@ msgid "Monthly donations are charged each month on the same day that you donate 
 msgstr "A havi adományok minden hónapban ugyanakkor kerülnek levonásra, és ez addig folytatódik, amíg le nem mondja. A lemondáshoz töltse ki <a href=\"%(help_url)s\">ezt az űrlapot</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
 msgstr ""
-"Problémái vannak az adományozással? Keresse fel a <a href=\"%(faq_url)s\">GYIK-ot</a> a leggyakoribb kérdésekre vonatkozásó válaszokért. Még mindig vannak problémái? <a "
+"Problémái vannak az adományozással? A leggyakoribb kérdésekre vonatkozó válaszokért keresse fel a <a href=\"%(faq_url)s\">GYIK-ot</a>. Még mindig vannak problémái? <a "
 "href=\"mailto:%(email)s\">Küldjön nekünk egy e-mailt</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
