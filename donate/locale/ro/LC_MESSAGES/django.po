@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-31 05:13+0000\n"
+"PO-Revision-Date: 2020-01-31 05:32+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -470,7 +470,7 @@ msgstr "Cec (prin serviciu poștal)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:67
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Te rugăm să trimiți un cec <strong>incluzând adresa ta de e-mail pe rândul de mențiuni</strong>, de plată (beneficiar) către „%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:70
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
@@ -708,12 +708,11 @@ msgstr "Înapoi"
 
 #: donate/thunderbird/templates/base.html:5 donate/thunderbird/templates/pages/base_page.html:7 donate/thunderbird/templates/pages/base_page.html:14
 #: donate/thunderbird/templates/pages/base_page.html:15
-#, fuzzy
 #| msgctxt "Email subject line"
 #| msgid "I donated to Thunderbird today"
 msgctxt "Page title"
 msgid "Give to Thunderbird"
-msgstr "Am făcut astăzi o donație pentru Thunderbird"
+msgstr "Donează pentru Thunderbird"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
@@ -721,18 +720,16 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Alte modalități pentru donații: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Cec</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
-msgstr "Donațiile lunare sunt percepute în fiecare lună la aceeași dată cu donația de astăzi și vor continua până ce le anulezi. Pentru anulare, scrie-ne la <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr "Donațiile lunare sunt trase în fiecare lună, în aceeași zi cu data donației de astăzi, și vor continua până ce le anulezi. Pentru anulare, completează acest <a href=\"%(help_url)s\">formular</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
-msgstr ""
-"Probleme cu donațiile? Intră pe <a href=\"%(faq_url)s\">Întrebări frecvente</a> și caută răspunsuri la cele mai frecvente întrebări. Tot mai ai probleme? <a href=\"mailto:%(email)s\">Scrie-ne pe "
-"e-mail</a>."
+msgstr "Probleme cu donațiile? Intră pe <a href=\"%(faq_url)s\">Întrebări frecvente</a> și caută răspunsuri la cele mai frecvente întrebări. Tot mai ai probleme? <a href=\"%(help_url)s\">Contactează-ne</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
 #, fuzzy
@@ -753,20 +750,20 @@ msgstr "Cookie-uri"
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "O parte din acest conținut este ©1998–%(current_year)s realizată de colaboratori individuali. Conținut disponibil sub o <a %(link_attributes)s>licență Creative Commons</a>"
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Descărcarea trebuia să înceapă automat. Dacă nu a funcționat,<a href=\"%(url)s\">încearcă să descarci iar de aici</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "Acceptăm contribuții în euro prin viramente SEPA (Zona unică de plăți în euro) și în lire sterline prin viramente BACS."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
-msgstr ""
+msgstr "Câmp de mențiuni:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
 #, python-format
@@ -784,7 +781,7 @@ msgid "Thank you in advance for your gift."
 msgstr "Îți mulțumim pentru darul tău generos!"
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -794,9 +791,9 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Autorizez Fundația Mozilla să tragă automat din contul meu de card, în fiecare lună, suma indicată mai sus, începând cu data de astăzi și continuând în fiecare lună la aceeași dată, până la anularea"
-" de către mine. Înțeleg că anularea trebuie efectuată cu cel puțin 5 zile înainte de următoarea donație planificată, prin mesaj pe e-mail trimis la <a href='mailto:%(email)s'>%(email)s</a> și că pot"
-" solicita o rambursare numai în termen de 15 zile de la data unei donații."
+"Autorizez MZLA Technologies Corporation să tragă automat din contul meu de card, în fiecare lună, suma indicată mai sus, începând cu data de astăzi și continuând în fiecare lună la aceeași dată, "
+"până la anularea de către mine. Înțeleg că anularea trebuie efectuată cu cel puțin 5 zile înainte de următoarea donație planificată, prin trimiterea <a href='%(help_url)s'>cererii</a>e și că pot "
+"solicita o rambursare numai în termen de 15 zile de la data unei donații."
 
 #: donate/thunderbird/templates/payment/card.html:14
 #, fuzzy
