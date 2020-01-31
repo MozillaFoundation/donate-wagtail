@@ -747,24 +747,24 @@ msgstr "Portions of this content are ©1998–%(current_year)s by individual con
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
-msgstr ""
+msgstr "Memo field:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
 #, python-format
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Please send a cheque <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Please note that we can only accept cheques in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 
 #: donate/thunderbird/templates/payment/card.html:6
 #| msgid "Thank you for your generous gift"
