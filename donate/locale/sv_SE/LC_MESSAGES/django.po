@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-31 15:50+0000\n"
+"PO-Revision-Date: 2020-01-31 15:57+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv_SE\n"
@@ -761,13 +761,12 @@ msgstr "Om du skickar en check anger du <strong>\"%(thunderbird)s\" på memorade
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "Observera att vi endast kan acceptera checkar i amerikanska dollar som dras från en amerikansk bank. Skicka <strong>inte</strong> kontanter."
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "Tack för din generösa gåva"
+msgstr "Tack i förväg för din generösa donation."
 
 #: donate/thunderbird/templates/payment/card.html:12
 #, python-format
