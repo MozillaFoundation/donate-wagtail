@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-31 05:32+0000\n"
+"PO-Revision-Date: 2020-01-31 05:42+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -470,11 +470,11 @@ msgstr "Cec (prin serviciu poștal)"
 #: donate/templates/pages/core/ways_to_give_page_master.html:67
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr "Te rugăm să trimiți un cec <strong>incluzând adresa ta de e-mail pe rândul de mențiuni</strong>, de plată (beneficiar) către „%(payee)s”."
+msgstr "Te rugăm să trimiți un cec <strong>incluzând adresa ta de e-mail pe rândul de mențiuni</strong>, de plată către (beneficiar) „%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:70
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr "Te rugăm să reții că Fundația Mozilla poate accepta doar cecuri în dolari SUA încasate de o bancă americană. Te rugăm să <strong>nu</strong> trimiți numerar."
+msgstr "De reținut că Fundația Mozilla poate accepta doar cecuri în dolari americani, trase de o bancă americană. Te rugăm să <strong>nu</strong> ne trimiți numerar."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:84
 msgid "Currencies"
@@ -732,7 +732,6 @@ msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers 
 msgstr "Probleme cu donațiile? Intră pe <a href=\"%(faq_url)s\">Întrebări frecvente</a> și caută răspunsuri la cele mai frecvente întrebări. Tot mai ai probleme? <a href=\"%(help_url)s\">Contactează-ne</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
@@ -740,8 +739,8 @@ msgid ""
 "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird project. Contributions are not "
 "tax-deductible as charitable contributions."
 msgstr ""
-"Contribuțiile merg la MZLA Technologies Corporation, o corporație californiană deținută integral de Fundația Mozilla. Fondurile vor fi rezervate pentru utilizarea în proiectul Thunderbird. "
-"Contribuțiile nu sunt deductibile drept contribuții caritabile în calcularea impozitelor."
+"Contribuțiile merg la Corporația MZLA Technologies, o corporație californiană deținută integral de Fundația Mozilla. Fondurile vor fi rezervate pentru utilizarea în proiectul Thunderbird. "
+"Contribuțiile nu sunt deductibile drept contribuții caritabile la calcularea impozitului."
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
@@ -768,17 +767,16 @@ msgstr "Câmp de mențiuni:"
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
 #, python-format
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Te rugăm să trimiți un cec <strong>incluzând „%(thunderbird)s” pe rândul de mențiuni</strong>, de plată către (beneficiar) „%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr ""
+msgstr "De reținut că putem accepta numai cecuri în dolari americani, trase de o bancă americană. Te rugăm să nu ne trimiți<strong>not</strong> numerar."
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "Îți mulțumim pentru darul tău generos!"
+msgstr "Îți mulțumim anticipat pentru donație."
 
 #: donate/thunderbird/templates/payment/card.html:12
 #, python-format
@@ -796,17 +794,18 @@ msgstr ""
 "solicita o rambursare numai în termen de 15 zile de la data unei donații."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Autorizez Fundația Mozilla să îmi tragă din contul de card suma indicată mai sus. Înțeleg că pot solicita o rambursare numai în termen de 15 zile de la data la care a fost efectuată donația."
+msgstr ""
+"Autorizez MZLA Technologies Corporation să tragă din contul meu de card suma indicată mai sus. Înțeleg că pot solicita o rambursare numai în termen de 15 zile de la data la care a fost efectuată "
+"donația."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Ne-ar bucura foarte mult să fii susținător permanent Thunderbird. <b>Ai putea adăuga o donație lunară începând de luna viitoare?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -815,15 +814,15 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Autorizez Fundația Mozilla să tragă automat din contul meu de card, în fiecare lună, suma indicată mai sus, începând cu luna viitoare, la aceeași dată cu ziua de astăzi și continuând în fiecare lună"
-" după aceea până la anularea de către mine. Înțeleg că anularea trebuie efectuată cu cel puțin 5 zile înainte de următoarea donație planificată, prin mesaj pe e-mail trimis la %(email)s și că pot "
-"solicita o rambursare numai în termen de 15 zile de la data unei donații."
+"Autorizez MZLA Technologies Corporation să tragă automat din contul meu de card, în fiecare lună, suma indicată mai sus, începând cu luna viitoare, în aceeași zi cu data donației de astăzi, și "
+"continuând în fiecare lună după aceea până la anularea de către mine. Înțeleg că anularea trebuie efectuată cu cel puțin 5 zile înainte de următoarea donație planificată, prin trimiterea <a "
+"href=\"%(help_url)s\">formularului</a> și că pot solicita o rambursare numai în termen de 15 zile de la data unei donații."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
-msgstr "Ți-am trimis prin e-mail o chitanță de donație; dacă lipsește, te rugăm să verifici dosarele de junk/spam, apoi contactează-ne la <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr "Ți-am trimis prin e-mail o chitanță pentru donație; dacă nu o găsești, te rugăm să verifici dosarele de mesaje nedorite/spam, apoi contactează-ne folosind acest <a href=\"%(url)s\">formular</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
