@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-31 07:12+0000\n"
+"PO-Revision-Date: 2020-01-31 07:18+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fy_NL\n"
@@ -782,7 +782,7 @@ msgid "Thank you in advance for your gift."
 msgstr "Tige tank yn it foar foar jo donaasje."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -792,22 +792,23 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Ik machtigje Mozilla Foundation om myn kaart elke moanne automatysk te belêsten mei it hjirboppe oanjûne bedrach, fan hjoed ôf en elke moanne op deselde dei, oant ik annulearje. Ik begryp dat ik op "
-"syn minst 5 dagen foar de folgjende plande donaasje per e-mail oan <a href='mailto:%(email)s'>%(email)s</a> annulearje moat en dat ik allinnich in werombetelling oanfreegje kin binnen 15 dagen nei "
-"de datum fan in donaasje."
+"Ik machtigje MZLA Technologies Corporation om myn kaart elke moanne automatysk te belêsten mei it hjirboppe oanjûne bedrach, fan hjoed ôf en elke moanne op deselde dei, oant ik annulearje. Ik begryp"
+" dat ik op syn minst 5 dagen foar de folgjende plande donaasje fia <a href='%(help_url)s'>in fersyk dernei</a> annulearje moat en dat ik allinnich in werombetelling oanfreegje kin binnen 15 dagen "
+"nei de datum fan in donaasje."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Ik machtigje Mozilla Foundation om myn kaart te belêsten mei it boppesteande bedrach. Ik begryp dat ik allinnich om werombetelling fersykje kin binnen 15 dagen nei de datum fan de donaasje."
+msgstr ""
+"Ik machtigje MZLA Technologies Corporation om myn kaart te belêsten mei it boppesteande bedrach. Ik begryp dat ik allinnich om werombetelling fersykje kin binnen 15 dagen nei de datum fan de "
+"donaasje."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Wy wolle jo graach hawwe as fêste supporter fan Thunderbird. <b>Soene jo mei yngong fan folgjende moanne in moanlikse donaasje dwaan wolle?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -816,17 +817,17 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Ik machtigje Mozilla Foundation om myn kaart elke moanne automatysk te belêsten mei it hjirboppe oanjûne bedrach, fan de folgjende moanne ôf op deselde dei as hjoed, oant ik annulearje. Ik begryp "
-"dat ik op syn minst 5 dagen foar de folgjende plande donaasje per e-mail oan %(email)s annulearje moat en dat ik allinnich in werombetelling oanfreegje kin binnen 15 dagen nei de datum fan in "
-"donaasje."
+"Ik machtigje MZLA Technologies Corporation om myn kaart elke moanne automatysk te belêsten mei it hjirboppe oanjûne bedrach, fan de folgjende moanne ôf op deselde dei as hjoed, oant ik annulearje. "
+"Ik begryp dat ik op syn minst 5 dagen foar de folgjende plande donaasje <a href=\"%(help_url)s\">dit formulier yn te tsjinjen</a> annulearje moat en dat ik allinnich in werombetelling oanfreegje kin"
+" binnen 15 dagen nei de datum fan in donaasje."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
 msgstr ""
-"Wy hawwe jo in e-mailberjocht mei donaasjebewiis stjoerd; as dit ûntbrekt, kontrolearje dan jo mappen mei net winske e-mail / spam, en nim dêrnei kontakt mei ús op fia <a "
-"href=\"mailto:%(email)s\">%(email)s</a>."
+"Wy hawwe jo in e-mailberjocht mei donaasjebewiis stjoerd; as dit ûntbrekt, kontrolearje dan jo mappen mei net winske e-mail / spam, en nim dêrnei kontakt mei ús op fia <a href=\"%(url)s\">dit "
+"formulier</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
