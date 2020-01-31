@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-31 05:09+0000\n"
+"PO-Revision-Date: 2020-01-31 05:13+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -495,11 +495,16 @@ msgid ""
 "indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
 "the documentation that must be provided to claim a tax deduction, or other matters."
 msgstr ""
+"Fundația Mozilla este o corporație nonprofit din California, scutită de impozit federal pe venit în temeiul secțiunii 501(c)(3) IRC (Codul Fiscal privind Veniturile Interne din S.U.A.) și este o "
+"organizație caritabilă publică, clasificată sub secțiunile 170(b)(1)(A) și 509(a)(1) IRC. Donațiile primite de Mozilla în bitcoin sunt considerate contribuții caritabile în temeiul legislației "
+"fiscale federale S.U.A., de utilizat la libera sa alegere în scopuri caritabile. Deoarece Agenția de Administrare Fiscală a Statelor Unite (IRS) a indicat faptul că va trata bitcoinul ca proprietate"
+" în scopuri fiscale în S.U.A. (a se vedea Notificarea IRS 2014-21), donațiile în bitcoin pot face obiectul unor reguli speciale privind sumele deductibile aplicabile donațiilor în scopuri caritabile"
+" și documentația justificativă necesară pentru deducerile din impozit sau alte aspecte."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:102
 #, python-format
 msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
-msgstr ""
+msgstr "Află mai multe despre donațiile în bitcoin <a href=\"%(bitcoin_wiki)s\">aici</a>. Pentru a dona în bitcoin, <a href=\"%(bitcoin_donate)s\">accesează acest link.</a>"
 
 #: donate/templates/payment/card_master.html:4
 msgid "Your information"
@@ -743,7 +748,7 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
-msgstr ""
+msgstr "Cookie-uri"
 
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
