@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-01-13 07:58+0000\n"
+"PO-Revision-Date: 2020-01-29 15:25+0000\n"
 "Last-Translator: chiara.gambone <chiara.gambone@outlook.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -718,23 +718,18 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Metodi di versamento alternativi: <a href=\"%(wire_transfer_url)s\">bonifico SEPA o BACS</a> | <a href=\"%(check_url)s\">assegno</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
 msgstr ""
-"Le donazioni mensili vengono addebitate ogni mese, lo stesso giorno del mese in cui hai autorizzato la prima donazione, e si ripetono finché tu stesso non revochi l’autorizzazione di pagamento. Per "
-"interrompere le donazioni mensili, invia un’email all’indirizzo <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
 msgstr ""
-"Problemi con la donazione? Consulta le risposte alle domande più comuni nella pagina <a href=\"%(faq_url)s\">FAQ</a>. Non hai trovato la soluzione al tuo problema? <a "
-"href=\"mailto:%(email)s\">Inviaci un’email</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
