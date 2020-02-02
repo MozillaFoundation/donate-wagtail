@@ -772,13 +772,12 @@ msgid "Please note that we can only accept checks in US dollars drawn on a US ba
 msgstr ""
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "Grazie per il tuo generoso regalo"
+msgstr ""
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -788,22 +787,18 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Autorizzo Mozilla Foundation ad addebitare automaticamente sulla carta l’importo mensile indicato, a partire da oggi e continuando ogni mese allo stesso giorno, fino alla mia revoca. Sono "
-"consapevole che devo revocare il pagamento almeno 5 giorni prima della successiva donazione pianificata, inviando un’email a <a href='mailto:%(email)s'>%(email)s</a> e che posso richiedere un "
-"rimborso unicamente entro 15 giorni dalla data di una donazione."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Autorizzo Mozilla Foundation ad addebitare sulla mia carta l’importo sopraindicato. Sono consapevole che posso richiedere un rimborso unicamente entro 15 giorni dalla data di una donazione."
+msgstr ""
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Ci piacerebbe invitarti a diventare un sostenitore fisso di Thunderbird. <b>Vuoi aggiungere una donazione mensile a partire dal mese prossimo?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -812,17 +807,12 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Autorizzo Mozilla Foundation ad addebitare automaticamente sulla carta l’importo mensile indicato, a partire dal prossimo mese nello stesso giorno di oggi, continuando ogni mese fino alla mia "
-"revoca. Sono consapevole che devo revocare il pagamento almeno 5 giorni prima della successiva donazione pianificata, inviando un’email a %(email)s e che posso richiedere un rimborso unicamente "
-"entro 15 giorni dalla data di una donazione."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
 msgstr ""
-"Ti abbiamo inviato via email una ricevuta della donazione. Se non la trovi, controlla che non sia finita accidentalmente nelle cartelle della posta eliminata o indesiderata, se non è neanche lì "
-"contattaci all’indirizzo <a href=\"mailto:%(email)s\">%(email)s</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
