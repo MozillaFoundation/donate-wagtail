@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-02 10:09+0000\n"
+"PO-Revision-Date: 2020-02-02 10:59+0000\n"
 "Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -374,7 +374,7 @@ msgstr "Invia"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:4 donate/templates/pages/core/ways_to_give_page_master.html:11
 msgid "Ways to Give"
-msgstr ""
+msgstr "Modalità di donazione"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:16
 msgid "Credit / Debit and PayPal"
@@ -391,48 +391,48 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:24
 msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "Accettiamo donazioni in euro tramite bonifico Single European Payment Area (SEPA) e in sterline britanniche attraverso trasferimento BACS."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:25
 msgid "Please remember that donations are deductible for U.S. income tax purposes only."
-msgstr ""
+msgstr "Ricordiamo che le donazioni sono fiscalmente deducibili solo negli Stati Uniti."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:27 donate/thunderbird/templates/pages/core/ways_to_give_page.html:10
 #, python-format
 msgid "If your bank requests our physical address, it is %(address)s."
-msgstr ""
+msgstr "In caso la tua banca lo richieda, il nostro indirizzo fisico è %(address)s."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:33 donate/thunderbird/templates/pages/core/ways_to_give_page.html:17
 msgid "Euros:"
-msgstr ""
+msgstr "Euro:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:35 donate/templates/pages/core/ways_to_give_page_master.html:48 donate/thunderbird/templates/pages/core/ways_to_give_page.html:19
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:32
 msgid "Account Currency:"
-msgstr ""
+msgstr "Valuta del conto:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:35 donate/thunderbird/templates/pages/core/ways_to_give_page.html:19
 msgid "Euro (EUR)"
-msgstr ""
+msgstr "Euro (EUR)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:36 donate/templates/pages/core/ways_to_give_page_master.html:49 donate/thunderbird/templates/pages/core/ways_to_give_page.html:20
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:33
 msgid "Receiving Bank (Pay to):"
-msgstr ""
+msgstr "Banca ricevente (Paga a):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:37 donate/templates/pages/core/ways_to_give_page_master.html:50 donate/thunderbird/templates/pages/core/ways_to_give_page.html:21
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:34
 msgid "City & Country/Region:"
-msgstr ""
+msgstr "Città e nazione/regione:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:37 donate/thunderbird/templates/pages/core/ways_to_give_page.html:21
 msgid "Frankfurt, Germany"
-msgstr ""
+msgstr "Francoforte, Germania"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:38 donate/templates/pages/core/ways_to_give_page_master.html:56 donate/thunderbird/templates/pages/core/ways_to_give_page.html:22
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:40
 msgid "SWIFT/BIC Code:"
-msgstr ""
+msgstr "Codice SWIFT/BIC:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:39 donate/templates/pages/core/ways_to_give_page_master.html:53 donate/thunderbird/templates/pages/core/ways_to_give_page.html:23
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:37
@@ -442,19 +442,19 @@ msgstr ""
 #: donate/templates/pages/core/ways_to_give_page_master.html:40 donate/templates/pages/core/ways_to_give_page_master.html:57 donate/thunderbird/templates/pages/core/ways_to_give_page.html:24
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:41
 msgid "IBAN:"
-msgstr ""
+msgstr "IBAN:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:46 donate/thunderbird/templates/pages/core/ways_to_give_page.html:30
 msgid "British Pound Sterling:"
-msgstr ""
+msgstr "Sterlina britannica:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:48 donate/thunderbird/templates/pages/core/ways_to_give_page.html:32
 msgid "British Pound Sterling (GBP)"
-msgstr ""
+msgstr "Sterlina britannica (GBP)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:50 donate/thunderbird/templates/pages/core/ways_to_give_page.html:34
 msgid "London, United Kingdom"
-msgstr ""
+msgstr "Londra, Regno Unito"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:51 donate/thunderbird/templates/pages/core/ways_to_give_page.html:35
 msgid "Bank Sort Code:"
@@ -462,16 +462,16 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:52 donate/thunderbird/templates/pages/core/ways_to_give_page.html:36
 msgid "Account Number (8 digits):"
-msgstr ""
+msgstr "Numero di conto (8 cifre):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:63
 msgid "Check (via postal service)"
-msgstr ""
+msgstr "Assegno (tramite posta ordinaria)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:67
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Nell’assegno <strong>scrivi il tuo indirizzo email nel campo della causale</strong> e specifica come beneficiario “%(payee)s”."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:70
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
@@ -479,15 +479,15 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:84
 msgid "Currencies"
-msgstr ""
+msgstr "Valute"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:85
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Seleziona una valuta per effettuare la tua donazione online in modo sicuro:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:95
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:97
 msgid ""
@@ -710,7 +710,7 @@ msgstr "Indietro"
 #| msgid "I donated to Thunderbird today"
 msgctxt "Page title"
 msgid "Give to Thunderbird"
-msgstr ""
+msgstr "Fai una donazione a Thunderbird"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
@@ -722,12 +722,16 @@ msgstr "Metodi di versamento alternativi: <a href=\"%(wire_transfer_url)s\">boni
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
 msgstr ""
+"Le donazioni mensili vengono addebitate ogni mese, lo stesso giorno del mese in cui hai autorizzato la prima donazione, e si ripetono finché tu stesso non revochi l’autorizzazione di pagamento. Per "
+"interrompere le donazioni mensili compila <a href=\"%(help_url)s\">questo modulo</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
 #, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
 msgstr ""
+"Problemi con la donazione? Consulta le risposte alle domande più comuni nella pagina <a href=\"%(faq_url)s\">FAQ</a>. Non hai trovato la soluzione al tuo problema? <a "
+"href=\"%(help_url)s\">Contattaci</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
 #| msgid ""
@@ -742,21 +746,21 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
-msgstr ""
+msgstr "Cookie"
 
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "Parte di questi contenuti sono ©1998–%(current_year)s di singoli collaboratori. I contenuti sono disponibili secondo la <a %(link_attributes)s>licenza Creative Commons</a>"
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Il download dovrebbe avviarsi automaticamente. Se non funziona, <a href=\"%(url)s\">riprova utilizzando questo link</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "Accettiamo donazioni in euro tramite bonifico Single European Payment Area (SEPA) e in sterline britanniche attraverso trasferimento BACS."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
@@ -765,7 +769,7 @@ msgstr ""
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
 #, python-format
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Nell’assegno <strong>indica “%(thunderbird)s” nel campo della causale</strong> e specifica come beneficiario “%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
@@ -774,7 +778,7 @@ msgstr ""
 #: donate/thunderbird/templates/payment/card.html:6
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr ""
+msgstr "Grazie per la tua generosità."
 
 #: donate/thunderbird/templates/payment/card.html:12
 #, python-format
@@ -787,11 +791,16 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
+"Autorizzo MZLA Technologies Corporation ad addebitare automaticamente sulla carta l’importo mensile indicato, a partire da oggi e continuando ogni mese allo stesso giorno, fino alla mia revoca. Sono"
+" consapevole che devo revocare il pagamento almeno 5 giorni prima della successiva donazione pianificata, <a href='%(help_url)s'>inoltrando una richiesta</a>, e che posso richiedere un rimborso "
+"unicamente entro 15 giorni dalla data della donazione."
 
 #: donate/thunderbird/templates/payment/card.html:14
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgstr ""
+"Autorizzo MZLA Technologies Corporation ad addebitare sulla mia carta l’importo sopraindicato. Sono consapevole che posso richiedere un rimborso unicamente entro 15 giorni dalla data di una "
+"donazione."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
