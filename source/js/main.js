@@ -10,7 +10,7 @@ import DonationCurrencyWidth from "./components/donation-currency-width";
 import CopyURL from "./components/copy-url";
 import Accordion from "./components/accordion";
 import "./components/newsletter";
-import fetchEnv from "./components/env"
+import fetchEnv from "./components/env";
 
 // Manage tab index for primary nav
 function tabIndexer() {

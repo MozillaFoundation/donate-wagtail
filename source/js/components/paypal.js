@@ -42,77 +42,77 @@ export default function initPaypal(
         return;
       }
 
-      paypalCreate({
-        client: clientInstance,
-        merchantAccountId: envData.BRAINTREE_MERCHANT_ACCOUNTS[currency]
-      }, function(
-        paypalCheckoutErr,
-        paypalCheckoutInstance
-      ) {
-        if (paypalCheckoutErr) {
-          showErrorMessage(loadingErrorMsg);
-          return;
+      paypalCreate(
+        {
+          client: clientInstance,
+          merchantAccountId: envData.BRAINTREE_MERCHANT_ACCOUNTS[currency]
+        },
+        function(paypalCheckoutErr, paypalCheckoutInstance) {
+          if (paypalCheckoutErr) {
+            showErrorMessage(loadingErrorMsg);
+            return;
+          }
+
+          // Set up PayPal with the checkout.js library
+          window.paypal.Button.render(
+            {
+              env: braintreeParams.use_sandbox ? "sandbox" : "production",
+              commit: true,
+              style: {
+                size: "responsive",
+                color: "blue",
+                shape: "rect",
+                label: "paypal",
+                tagline: "false"
+              },
+
+              payment: function() {
+                return paypalCheckoutInstance.createPayment({
+                  flow: flow,
+                  amount: getAmount(),
+                  currency: getCurrency(),
+                  enableShippingAddress: false
+                });
+              },
+
+              onAuthorize: function(data) {
+                return paypalCheckoutInstance.tokenizePayment(data, function(
+                  err,
+                  payload
+                ) {
+                  if (err) {
+                    showErrorMessage(generalErrorMsg);
+                    return;
+                  }
+
+                  onAuthorize(payload);
+                });
+              },
+
+              onCancel: function() {
+                showErrorMessage(window.gettext("Payment cancelled"));
+                gaEvent({
+                  eventCategory: "User Flow",
+                  eventAction: "Paypal Payment Cancelled"
+                });
+              },
+
+              onError: function(err) {
+                showErrorMessage(generalErrorMsg);
+                gaEvent({
+                  eventCategory: "User Flow",
+                  eventAction: "PayPal Error"
+                });
+              }
+            },
+            buttonId
+          ).then(function() {
+            // The PayPal button will be rendered in an html element with the id
+            // specified in buttonId. This function will be called when the PayPal button
+            // is set up and ready to be used.
+          });
         }
-
-        // Set up PayPal with the checkout.js library
-        window.paypal.Button.render(
-          {
-            env: braintreeParams.use_sandbox ? "sandbox" : "production",
-            commit: true,
-            style: {
-              size: "responsive",
-              color: "blue",
-              shape: "rect",
-              label: "paypal",
-              tagline: "false"
-            },
-
-            payment: function() {
-              return paypalCheckoutInstance.createPayment({
-                flow: flow,
-                amount: getAmount(),
-                currency: getCurrency(),
-                enableShippingAddress: false
-              });
-            },
-
-            onAuthorize: function(data) {
-              return paypalCheckoutInstance.tokenizePayment(data, function(
-                err,
-                payload
-              ) {
-                if (err) {
-                  showErrorMessage(generalErrorMsg);
-                  return;
-                }
-
-                onAuthorize(payload);
-              });
-            },
-
-            onCancel: function() {
-              showErrorMessage(window.gettext("Payment cancelled"));
-              gaEvent({
-                eventCategory: "User Flow",
-                eventAction: "Paypal Payment Cancelled"
-              });
-            },
-
-            onError: function(err) {
-              showErrorMessage(generalErrorMsg);
-              gaEvent({
-                eventCategory: "User Flow",
-                eventAction: "PayPal Error"
-              });
-            }
-          },
-          buttonId
-        ).then(function() {
-          // The PayPal button will be rendered in an html element with the id
-          // specified in buttonId. This function will be called when the PayPal button
-          // is set up and ready to be used.
-        });
-      });
+      );
     });
   });
 }
