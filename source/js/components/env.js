@@ -1,4 +1,4 @@
-export default function fetchEnv(callback) {
+export default function fetchEnv(handleEnvData) {
   let envReq = new XMLHttpRequest();
 
   envReq.addEventListener("load", () => {
