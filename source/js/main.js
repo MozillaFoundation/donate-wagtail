@@ -10,23 +10,7 @@ import DonationCurrencyWidth from "./components/donation-currency-width";
 import CopyURL from "./components/copy-url";
 import Accordion from "./components/accordion";
 import "./components/newsletter";
-
-function fetchEnv(callback) {
-  let envReq = new XMLHttpRequest();
-
-  envReq.addEventListener("load", () => {
-    let data = {};
-    try {
-      data = JSON.parse(envReq.response);
-    } catch (e) {
-      // discard
-    }
-    callback(data);
-  });
-
-  envReq.open("GET", "/environment.json");
-  envReq.send();
-}
+import fetchEnv from "./components/env"
 
 // Manage tab index for primary nav
 function tabIndexer() {
@@ -62,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
       release: envData.RELEASE_VERSION,
       environment: envData.SENTRY_ENVIRONMENT
     });
+
+    window.BRAINTREE_MERCHANT_ACCOUNTS = envData.BRAINTREE_MERCHANT_ACCOUNTS;
   });
 
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {
