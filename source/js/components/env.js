@@ -10,7 +10,7 @@ export default function fetchEnv(handleEnvData) {
       // discard
     }
 
-    callback(envData);
+    handleEnvData(envData);
   });
 
   envReq.open("GET", "/environment.json");
