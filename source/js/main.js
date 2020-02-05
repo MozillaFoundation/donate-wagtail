@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
       release: envData.RELEASE_VERSION,
       environment: envData.SENTRY_ENVIRONMENT
     });
-
-    window.BRAINTREE_MERCHANT_ACCOUNTS = envData.BRAINTREE_MERCHANT_ACCOUNTS;
   });
 
   for (const menutoggle of document.querySelectorAll(MenuToggle.selector())) {
