@@ -65,11 +65,15 @@ class BraintreePaymentMixin:
         data.update(details)
         return freeze_transaction_details_for_session(data)
 
-    def handle_successful_transaction(self, result, form, send_data_to_basket=True, **kwargs):
+    def set_session_data(self, result, form, **kwargs):
         # Store details of the transaction in a session variable
         details = self.get_transaction_details_for_session(result, form, **kwargs)
         details = self.prepare_session_data(details)
         self.request.session['completed_transaction_details'] = details
+        return details
+
+    def handle_successful_transaction(self, result, form, send_data_to_basket=True, **kwargs):
+        details = self.set_session_data(result, form, **kwargs)
         if send_data_to_basket:
             queue.enqueue(send_transaction_to_basket, details)
         return HttpResponseRedirect(self.get_success_url())
@@ -292,7 +296,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         else:
             return self.process_braintree_error_result(result, form)
 
-        # Create a subcription against the payment method
+        # Create a subscription against the payment method
         result = gateway.subscription.create({
             'plan_id': get_plan_id(self.currency),
             'merchant_account_id': get_merchant_account_id_for_card(self.currency),
@@ -318,6 +322,14 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             # Bypass self.handle_successful_transaction, as this is not a transaction
             # but a subscription: we won't be posting anything to basket immediately,
             # instead relying on the webhook over in the 'process_webhook' task.
+            # We still must set the correct session data
+            self.set_session_data(
+                result,
+                form,
+                payment_method = payment_method,
+                transaction_id = result.subscription.id,
+                last_4 = payment_method.last_4,
+            )
             return HttpResponseRedirect(self.get_success_url())
         else:
             logger.error(
@@ -326,15 +338,19 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             )
             return self.process_braintree_error_result(result, form)
 
-    def get_card_type(self, result):
-        card_type = 'Unknown'
-        transaction = result.transaction
+    def get_card_type(self, result, **kwargs):
+        try:
+            transaction = result.transaction
+            if transaction.payment_instrument_type == "credit_card":
+                credit_card_details = transaction.credit_card_details
+                return credit_card_details.card_type
 
-        if transaction.payment_instrument_type == "credit_card":
-            credit_card_details = transaction.credit_card_details
-            card_type = credit_card_details.card_type
+        except AttributeError:
+            # check if 'payment_method' was passed as a kwarg
+            if 'payment_method' in kwargs:
+                return kwargs['payment_method'].card_type
 
-        return card_type
+        return 'Unknown'
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
         details = form.cleaned_data.copy()
@@ -343,7 +359,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'settlement_amount': kwargs.get('settlement_amount', None),
             'last_4': kwargs['last_4'],
             'payment_method': constants.METHOD_CARD,
-            'card_type': self.get_card_type(result),
+            'card_type': self.get_card_type(result, **kwargs),
             'currency': self.currency,
             'payment_frequency': self.payment_frequency,
             'payment_method_token': kwargs.get('payment_method_token'),
