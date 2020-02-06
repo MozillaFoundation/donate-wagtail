@@ -326,9 +326,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             self.set_session_data(
                 result,
                 form,
-                payment_method = payment_method,
-                transaction_id = result.subscription.id,
-                last_4 = payment_method.last_4,
+                payment_method=payment_method,
+                transaction_id=result.subscription.id,
+                last_4=payment_method.last_4,
             )
             return HttpResponseRedirect(self.get_success_url())
         else:
