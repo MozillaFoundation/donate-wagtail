@@ -2,7 +2,7 @@ export default function fetchEnv(handleEnvData) {
   let envReq = new XMLHttpRequest();
 
   envReq.addEventListener("load", () => {
-    let envData;
+    let envData = {};
 
     try {
       envData = JSON.parse(envReq.response);
