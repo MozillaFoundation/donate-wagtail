@@ -100,7 +100,7 @@ function setupPaypalOverlays() {
     // also get the currency label, because it's "clickable".
     let otherLabel = form.querySelector(".donation-amount-other__label");
     let otherInput = document.getElementById(otherLabel.getAttribute("for"));
-    console.log(otherLabel, otherInput);
+
     otherLabel.addEventListener("click", _ => toggle(overlay, otherInput));
 
     overlay.addEventListener("click", () => {
