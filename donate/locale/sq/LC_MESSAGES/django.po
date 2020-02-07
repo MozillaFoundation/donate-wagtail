@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-07 07:51+0000\n"
+"PO-Revision-Date: 2020-02-07 08:00+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sq\n"
@@ -747,7 +747,7 @@ msgstr "<em>Cookies</em>"
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "Pjesë të kësaj lënde janë ©1998–%(current_year)s nga kontribues individualë. Lëndë e passhme sipas një <a %(link_attributes)s>licence Creative Commons</a>."
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
@@ -755,35 +755,32 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "Shkarkimi juaj do të duhej të fillonte vetvetiu. Nëse s’ndodhi, <a href=\"%(url)s\">provoni ta shkarkoni nga këtu</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr "Pranojmë dhurime në euro, përmes dërgesash Single European Payment Area (SEPA), dhe në sterlina britanike përmes dërgesash BACS."
+msgstr "Pranojmë kontribute në euro, përmes dërgesash Single European Payment Area (SEPA), dhe në sterlina britanike përmes dërgesash BACS."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
 msgstr "Fushë memo:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
-#, fuzzy, python-format
+#, python-format
 #| msgid "Please send a check <strong>including “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
 msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr "Ju lutemi, dërgoni një çek <strong>duke përfshirë “%(thunderbird)s” te rreshti kujtesë</strong>, dhe të pagueshëm (përfituesi) për “%(payee)s”."
+msgstr "Ju lutemi, dërgoni një çek <strong>me “%(thunderbird)s” te rreshti kujtesë</strong>, dhe të pagueshëm (përfituesi) për “%(payee)s”."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
-#, fuzzy
 #| msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
 msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
-msgstr "Ju lutemi, kini parasysh që Mozilla Foundation mund të pranojë vetëm çeqe në dollarë amerikanë të tërheqshëm në një bankë amerikane. Ju lutemi, <strong>mos</strong> dërgoni para të thata."
+msgstr "Ju lutemi, kini parasysh që mund të pranojmë vetëm çeqe në dollarë amerikanë të tërheqshëm në një bankë amerikane. Ju lutemi, <strong>mos</strong> dërgoni para të thata."
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "Faleminderit për dhuratën tuaj bujare"
+msgstr "Faleminderit paraprakisht për dhuratën tuaj."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -793,22 +790,21 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"E autorizoj Mozilla Foundation të faturojë automatikisht në kartën time çdo muaj shumën e treguar më sipër, duke filluar nga sot dhe duke vazhduar çdo muaj në të njëjtën ditë, deri sa ta anuloj. E "
-"kuptoj se duhet ta anuloj të paktën 5 ditë përpara dhurimit të planifikuar, përmes një email-i te <a href='mailto:%(email)s'>%(email)s</a>, dhe se mund të kërkoj një rimbursim vetëm brenda 15 ditësh"
-" që nga data e një dhurimi."
+"E autorizoj MZLA Technologies Corporation të faturojë automatikisht në kartën time çdo muaj shumën e treguar më sipër, duke filluar nga sot dhe duke vazhduar çdo muaj në të njëjtën ditë, deri sa ta "
+"anuloj. E kuptoj se duhet ta anuloj të paktën 5 ditë përpara dhurimit të planifikuar, përmes <a href='%(help_url)s'>parashtrimit të një kërkese</a> dhe se mund të kërkoj një rimbursim vetëm brenda "
+"15 ditësh që nga data e një dhurimi."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "E autorizoj Mozilla Foundation të marrë përmes kartës time vlerën e treguar më sipër. E kuptoj se mund të kërkoj rimbursim vetëm brenda 15 ditëve prej datës së dhurimit."
+msgstr "E autorizoj MZLA Technologies Corporation të marrë përmes kartës time vlerën e treguar më sipër. E kuptoj se mund të kërkoj rimbursim vetëm brenda 15 ditëve prej datës së dhurimit."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Do të donim t’ju kishim një përkrahës të qëndrueshëm të Thunderbird-it. <b>A mund të shtoni një dhurim të përmuajshëm duke filluar nga muaji pasues?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -817,16 +813,17 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"E autorizoj Mozilla Foundation të faturojë automatikisht në kartën time çdo muaj shumën e treguar më sipër, duke filluar nga muaji pasues, në të njëjtën datë me të sotshmen dhe duke vazhduar çdo "
-"muaj më pas, deri sa ta anuloj. E kuptoj se duhet ta anuloj të paktën 5 ditë përpara dhurimit të planifikuar, përmes një email-i te %(email)s, dhe se mund të kërkoj një rimbursim vetëm brenda 15 "
-"ditësh që nga data e një dhurimi."
+"E autorizoj MZLA Technologies Corporation të faturojë automatikisht në kartën time çdo muaj shumën e treguar më sipër, duke filluar nga muaji pasues, në të njëjtën datë me të sotmen dhe duke "
+"vazhduar çdo muaj më pas, deri sa ta anuloj. E kuptoj se duhet ta anuloj të paktën 5 ditë përpara dhurimit të planifikuar, përmes <a href=\"%(help_url)s\">parashtrimit të një kërkese</a> dhe se mund"
+" të kërkoj një rimbursim vetëm brenda 15 ditësh që nga data e një dhurimi."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
 msgstr ""
-"Ju kemi dërguar me email një dëftesë dhurimi; nëse mungon, ju lutemi, kontrolloni dosjet tuaja hedhurinë/mesazhe të padëshiruar, mandej lidhuni me ne te <a href=\"mailto:%(email)s\">%(email)s</a>."
+"Ju kemi dërguar me email një dëftesë dhurimi; nëse mungon, ju lutemi, kontrolloni dosjet tuaja hedhurinë/mesazhe të padëshiruar, mandej lidhuni me ne duke përdorur <a href=\"%(url)s\">këtë "
+"formular</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
