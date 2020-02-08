@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-08 19:05+0000\n"
+"PO-Revision-Date: 2020-02-08 19:06+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -752,15 +752,15 @@ msgstr "Части этого содержимого созданы участн
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
 msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
-msgstr ""
+msgstr "Ваша загрузка должна начаться автоматически. Если это не сработало, <a href=\"%(url)s\">попробуйте загрузить отсюда снова</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr ""
+msgstr "Мы принимаем взносы в евро через Единую Зону Платежей в Евро (SEPA), а британские фунты через BACS."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
-msgstr ""
+msgstr "Примечание:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
 #, python-format
