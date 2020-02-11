@@ -52,6 +52,7 @@ class Base(object):
     # Stripe webhook credentials
     STRIPE_API_KEY = env('STRIPE_API_KEY')
     STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
+    AUTO_CLOSE_STRIPE_DISPUTES = env('AUTO_CLOSE_STRIPE_DISPUTES')
 
     # Override URL for posting newsletter subscriptions
     POST_DONATE_NEWSLETTER_URL = env('POST_DONATE_NEWSLETTER_URL')
@@ -161,7 +162,8 @@ class Base(object):
     FRONTEND = {
         'RELEASE_VERSION': env('HEROKU_RELEASE_VERSION'),
         'SENTRY_DSN': env('SENTRY_DSN'),
-        'SENTRY_ENVIRONMENT': env('SENTRY_ENVIRONMENT')
+        'SENTRY_ENVIRONMENT': env('SENTRY_ENVIRONMENT'),
+        'BRAINTREE_MERCHANT_ACCOUNTS': env('BRAINTREE_MERCHANT_ACCOUNTS')
     }
 
     @classmethod

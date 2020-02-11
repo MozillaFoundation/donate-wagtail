@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-02 12:11+0000\n"
+"PO-Revision-Date: 2020-02-02 12:15+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
@@ -696,7 +696,6 @@ msgstr "Nazaj"
 
 #: donate/thunderbird/templates/base.html:5 donate/thunderbird/templates/pages/base_page.html:7 donate/thunderbird/templates/pages/base_page.html:14
 #: donate/thunderbird/templates/pages/base_page.html:15
-#, fuzzy
 #| msgctxt "Email subject line"
 #| msgid "I donated to Thunderbird today"
 msgctxt "Page title"
@@ -725,6 +724,8 @@ msgid ""
 "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird project. Contributions are not "
 "tax-deductible as charitable contributions."
 msgstr ""
+"Prispevke prejme MZLA Technologies Corporation, kalifornijska družba v stoodstotni lasti Fundacije Mozilla. Sredstva bodo rezervirana za projekt Thunderbird. Prispevki niso oproščeni plačila davka "
+"kot dobrodelni prispevki."
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
