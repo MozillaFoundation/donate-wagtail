@@ -290,7 +290,7 @@ class StripeWebhookProcessor:
             return
 
         try:
-            invoice = stripe.Invoice.retrieve(charge.invoice, expand=['subscription', 'customer'])
+            invoice = stripe.Invoice.retrieve(charge.invoice, expand=['subscription.customer'])
         except stripe.error.StripeError as e:
             logger.error(f'Error fetching Stripe Invoice: {e._message}', exc_info=True)
             return
