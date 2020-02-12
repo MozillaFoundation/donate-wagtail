@@ -202,10 +202,16 @@ class CurrencySelect {
     const presets = document.querySelectorAll(
       ".donation-amount__radio:not([data-other-amount-radio])"
     );
+
+    const customAmounts = document.querySelectorAll(
+      "[data-other-amount-radio]"
+    );
+
     presets.forEach(input => {
       input.addEventListener("change", _ => {
         if (input.checked) {
           otherAmountInputs.forEach(other => (other.value = ""));
+          customAmounts.forEach(other => (other.value = ""));
         }
       });
     });

@@ -2,4 +2,4 @@
 
 {% load i18n %}
 
-{% block title_prefix %}{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Thunderbird' context 'Page title' %} | {% endif %}{% endblock %}{% block title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}{% block title_suffix %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Thunderbird' context 'Page title' %}{% endif %}{% endblock %}
+{% block title_suffix %} | {% trans 'Give to Thunderbird' context 'Page title' %}{% endblock %}

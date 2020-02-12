@@ -277,7 +277,7 @@ class ProcessStripeWebhookTestCase(TestCase):
         mock_event.data.object.id = 'test-charge-id'
         return mock_event
 
-    def get_mock_charge(self):
+    def get_mock_charge(self, failure_code=None):
         mock_charge = mock.Mock()
         mock_charge.id = 'test-charge-id'
         mock_charge.amount = 10.00
@@ -287,6 +287,10 @@ class ProcessStripeWebhookTestCase(TestCase):
         mock_charge.balance_transaction.net = 950
         mock_charge.balance_transaction.fee = 50
         mock_charge.invoice.subscription = 'test-subscription-id'
+
+        if failure_code:
+            mock_charge.failure_code = failure_code
+
         return mock_charge
 
     def get_mock_subscription(self):
@@ -301,6 +305,22 @@ class ProcessStripeWebhookTestCase(TestCase):
         mock_subscription.customer.sources.data = [dict(name='Firstname Lastname', last4='4242')]
         mock_subscription.customer.email = email
         return mock_subscription
+
+    def get_mock_invoice(self):
+        mock_invoice = mock.Mock()
+        mock_invoice.subscription = self.get_mock_subscription()
+        return mock_invoice
+
+    def get_mock_dispute_event(self, type, status='needs_response'):
+        mock_event = self.get_mock_event(type=type)
+        mock_dispute = mock.Mock()
+        mock_dispute.id = 'test-dispute-id'
+        mock_dispute.charge = 'test-dispute-id'
+        mock_dispute.reason = 'fraudulent'
+        mock_dispute.status = status
+        mock_event.data.object = mock_dispute
+
+        return mock_event
 
     def test_processor_calls_method_based_on_kind(self):
         event = self.get_mock_event()
@@ -406,4 +426,138 @@ class ProcessStripeWebhookTestCase(TestCase):
                 mock_stripe.Charge.modify.side_effect = stripe.error.StripeError
                 mock_stripe.error.StripeError = stripe.error.StripeError
                 StripeWebhookProcessor().process_charge_succeeded(mock_event)
+            mock_logger.error.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_dispute_closed_succeeded(self):
+        mock_dispute = self.get_mock_dispute_event('dispute.closed')
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            StripeWebhookProcessor().process_charge_dispute_closed(mock_dispute)
+            mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_dispute_updated_succeeded(self):
+        mock_dispute = self.get_mock_dispute_event('dispute.updatedY')
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            StripeWebhookProcessor().process_charge_dispute_updated(mock_dispute)
+            mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_dispute_created_no_auto_close_succeeded(self):
+        mock_dispute = self.get_mock_dispute_event('dispute.created')
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            StripeWebhookProcessor().process_charge_dispute_created(mock_dispute)
+            mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    @override_settings(AUTO_CLOSE_STRIPE_DISPUTES=True)
+    def test_charge_dispute_created_auto_closed(self):
+        mock_dispute = self.get_mock_dispute_event('dispute.created')
+
+        with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+            with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+                StripeWebhookProcessor().process_charge_dispute_created(mock_dispute)
+                mock_stripe.Dispute.close.assert_called_once()
+                mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    @override_settings(AUTO_CLOSE_STRIPE_DISPUTES=True)
+    def test_charge_dispute_created_auto_close_skipped_if_lost(self):
+        mock_dispute = self.get_mock_dispute_event('dispute.created', status='lost')
+
+        with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+            with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+                StripeWebhookProcessor().process_charge_dispute_created(mock_dispute)
+                mock_stripe.Dispute.close.assert_not_called()
+                mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    @override_settings(AUTO_CLOSE_STRIPE_DISPUTES=True)
+    def test_charge_dispute_created_auto_close_fails(self):
+        mock_dispute = self.get_mock_dispute_event('dispute.created')
+
+        with mock.patch('donate.payments.tasks.logger') as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Dispute.close.side_effect = stripe.error.StripeError
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+                    StripeWebhookProcessor().process_charge_dispute_created(mock_dispute)
+                    mock_stripe.Dispute.close.assert_called_once()
+                    mock_send.assert_called_once()
+                mock_logger.error.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_refunded(self):
+        mock_event = self.get_mock_event(type='charge.refunded')
+        mock_charge = self.get_mock_charge()
+        mock_charge.refunds.data = [DotDict(reason='duplicate', status='succeeded')]
+        mock_event.data.object = mock_charge
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            StripeWebhookProcessor().process_charge_refunded(mock_event)
+            mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_refunded_no_reason(self):
+        mock_event = self.get_mock_event(type='charge.refunded')
+        mock_charge = self.get_mock_charge()
+        mock_charge.refunds.data = [DotDict(reason=None, status='succeeded')]
+        mock_event.data.object = mock_charge
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            StripeWebhookProcessor().process_charge_refunded(mock_event)
+            mock_send.assert_called_once_with({
+                'data': {
+                    'event_type': 'charge.refunded',
+                    'transaction_id': 'test-charge-id',
+                    'reason': 'requested_by_customer',
+                    'status': 'succeeded'
+                }
+            })
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_failed(self):
+        mock_event = self.get_mock_event(type='charge.failed')
+        mock_charge = self.get_mock_charge(failure_code='processing_error')
+        mock_charge.invoice = 'test-invoice-id'
+        mock_invoice = self.get_mock_invoice()
+        mock_event.data.object = mock_charge
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Invoice.retrieve.return_value = mock_invoice
+                StripeWebhookProcessor().process_charge_failed(mock_event)
+            mock_send.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_failed_no_invoice(self):
+        mock_event = self.get_mock_event(type='charge.failed')
+        mock_charge = self.get_mock_charge(failure_code='processing_error')
+        mock_charge.invoice = None
+        mock_event.data.object = mock_charge
+
+        with mock.patch('donate.payments.tasks.logger', autospec=True) as mock_logger:
+            with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+                StripeWebhookProcessor().process_charge_failed(mock_event)
+                mock_send.assert_not_called()
+            mock_logger.info.assert_called_once()
+
+    @freeze_time('2019-11-26 00:00:00', tz_offset=0)
+    def test_charge_failed_error_fetching_invoice(self):
+        mock_event = self.get_mock_event(type='charge.failed')
+        mock_charge = self.get_mock_charge(failure_code='processing_error')
+        mock_charge.invoice = 'test-invoice-id'
+        mock_event.data.object = mock_charge
+
+        with mock.patch('donate.payments.tasks.logger', autospec=True) as mock_logger:
+            with mock.patch('donate.payments.tasks.stripe', autospec=True) as mock_stripe:
+                mock_stripe.Invoice.retrieve.side_effect = stripe.error.StripeError
+                mock_stripe.error.StripeError = stripe.error.StripeError
+                with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
+                    StripeWebhookProcessor().process_charge_failed(mock_event)
+                    mock_send.assert_not_called()
+                mock_stripe.Invoice.retrieve.assert_called_once()
             mock_logger.error.assert_called_once()

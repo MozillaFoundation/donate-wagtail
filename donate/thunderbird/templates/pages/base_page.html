@@ -1,18 +1,71 @@
 {% extends "pages/base_page_master.html" %}
 
-{% load i18n %}
+{% load static i18n %}
 
 {% block meta_tags %}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Thunderbird' context 'Page title' %} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Thunderbird' context 'Page title' %}{% endif %}">
+    <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Give to Thunderbird' context 'Page title' %}">
     <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
     <meta name="twitter:image" content="https://assets.mofoprod.net/images/thunderbird_team.jpg">
 
     {# facebook opengraph tags #}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
-    <meta property="og:title" content="{% if request.site and page.pk == request.site.root_page.pk and request.site.site_name %}{% trans 'Donate to Thunderbird' context 'Page title' %} | {% endif %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% if request.site and page.pk != request.site.root_page.pk and request.site.site_name %} | {% trans 'Donate to Thunderbird' context 'Page title' %}{% endif %}">
-    <meta property="og:site_name" content="{% if request.site.site_name %}{% trans 'Donate to Thunderbird' context 'Page title' %}{% endif %}">
+    <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Give to Thunderbird' context 'Page title' %}">
+    <meta property="og:site_name" content="{% if request.site.site_name %}{% trans 'Give to Thunderbird' context 'Page title' %}{% endif %}">
     <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
     <meta property="og:image" content="https://assets.mofoprod.net/images/thunderbird_team.jpg">
 {% endblock meta_tags %}
+
+{% block navigation %}
+{% endblock navigation %}
+
+{% block header %}
+    <div class="header">
+        <div class="header__container">
+            <a class="header__logo-link" href="/">
+                <img class="header__logo header__logo--mobile" src="{% static '_images/mozilla-logo-m.svg' %}" alt="Mozilla">
+                <img class="header__logo header__logo--desktop" src="{% static '_images/mozilla-logo-white.svg' %}" alt="Mozilla">
+            </a>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block footer_social_links %}
+    <a class="link link--icon link--dark-bg" href="https://twitter.com/mozthunderbird" target="_blank" rel="noopener">
+        <div class="link__svg-title">{% trans "Twitter" %}</div>
+        <svg class="footer-links__social-icon footer-links__social-icon--twitter" width="24" height="24">
+            <use xlink:href="#twitter"></use>
+        </svg>
+    </a>
+    <a class="link link--icon link--dark-bg" href="https://www.facebook.com/Thunderbird/" target="_blank" rel="noopener">
+        <div class="link__svg-title">{% trans "Facebook" %}</div>
+        <svg class="footer-links__social-icon footer-links__social-icon--facebook" width="24" height="24">
+            <use xlink:href="#facebook"></use>
+        </svg>
+    </a>
+{% endblock %}
+
+{% block footer_links %}
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/legal/terms/mozilla/" target="_blank" rel="noopener">{% trans "Legal" %}</a>
+    </li>
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/websites" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
+    </li>
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/en-US/privacy/websites/#things-you-should-know" target="_blank" rel="noopener">{% trans "Cookies" %}</a>
+    <li class="footer-links__item">
+        <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
+    </li>
+{% endblock %}
+
+{% block footerSignup %}
+<div class="footer__nav footer-links layout__half-col"></div>
+{% endblock %}
+
+{% block footer_legal %}
+    {% now "Y" as current_year %}
+    {% blocktrans with link_attributes='class="link" href="https://www.mozilla.org/foundation/licensing/website-content/"' trimmed %}
+    Portions of this content are ©1998–{{ current_year }} by individual contributors. Content available under a <a {{ link_attributes }}>Creative Commons license</a>{% endblocktrans %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "payment/card_master.html" %}
+{% load i18n %}
+
+
+{% block donate_footer %}
+    <p class="introduction">{% trans "Thank you in advance for your gift." %}</p>
+{% endblock %}
+
+{% block donateFormAuth %}
+    <footer class="donate-form__authorization">
+        {% if payment_frequency == 'monthly' %}
+            <p>{% blocktrans with help_url='/help' %}I authorize MZLA Technologies Corporation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href='{{help_url}}'>submitting a request</a>, and that I may only request a refund within 15 days from the date of a donation.{% endblocktrans %}</p>
+        {% else %}
+            <p>{% trans "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation." %}</p>
+        {% endif %}
+    </footer>
+{% endblock%}

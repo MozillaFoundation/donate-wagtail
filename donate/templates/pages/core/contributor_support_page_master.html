@@ -24,13 +24,13 @@
                     <p class="rich-text">{% trans "We will get back to you soon." %}</p>
                 </div>
             {% else %}
-                <form class="" action="https://mozillasalescloud--mkl.cs4.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
-                    <p class="rich-text">{% blocktrans %}
-                        If you need help with a contribution, fill out this form and we'll get back to you soon.
+                <form class="" action="{{ salesforce_form_url }}" method="POST">
+                    <p class="rich-text">{% blocktrans trimmed %}
+                        If you need help with a contribution, fill out this form and we’ll get back to you soon.
                     {% endblocktrans %}</p>
 
                     <input type=hidden name="orgid" value="{{ orgid }}">
-                    <input type=hidden name="retURL" value="{{ page.full_url }}?submitted=true">
+                    <input type=hidden name="retURL" value="{{ page.get_full_url }}?submitted=true">
 
                     {% block custom_hidden_fields %}
                         <input type=hidden name="type" value="Donation">
@@ -43,21 +43,21 @@
 
                     <fieldset class="form-item">
                         <label for="email">{% trans "Email" %}</label>
-                        <input id="email" maxlength="80" name="email" size="20" type="text">
+                        <input id="email" maxlength="80" name="email" size="20" type="text" required>
                     </fieldset>
 
                     <fieldset class="form-item">
                         <label for="00N0B000006X3fw">{% trans "Language" %}</label>
                         <div class="form-item__wrapper form-custom-select">
                             <select id="00N0B000006X3fw" name="00N0B000006X3fw" title="Language">
-                                <option value="">--{% trans "None" %}--</option>
+                                <option value="">--{% trans "None" context "Option in 'Language' dropdown" %}--</option>
                                 <option value="English">{% trans "English" %}</option>
                                 <option value="French">{% trans "French" %}</option>
                                 <option value="German">{% trans "German" %}</option>
                                 <option value="Spanish">{% trans "Spanish" %}</option>
                                 <option value="Polish">{% trans "Polish" %}</option>
                                 <option value="Portuguese">{% trans "Portuguese" %}</option>
-                                <option value="Other">{% trans "Other" %}</option>
+                                <option value="Other">{% trans "Other" context "Option in 'Language' dropdown" %}</option>
                             </select>
                         </div>
                     </fieldset>
@@ -71,8 +71,10 @@
                         <label for="description">{% trans "Description" %}</label>
                         <textarea name="description"></textarea>
                     </fieldset>
-
-                    <input class="button button--medium button--primary" type="submit" name="submit" value="{% trans "Submit" %}">
+                    <div class="privacy-notice">
+                        {% blocktrans with privacy_policy="https://www.mozilla.org/privacy/websites/" %}Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href="{{ privacy_policy }}">privacy policy</a> for further information.{% endblocktrans %}
+                    </div>
+                    <input class="button button--medium button--primary" type="submit" name="submit" value='{% trans "Submit" %}'>
                 </form>
             {% endif %}
             </div>

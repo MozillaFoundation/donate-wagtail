@@ -1,0 +1,52 @@
+.app--ways-to-give {
+  .banner {
+    background: $color--black;
+    color: $color--white;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      @include font-size(xxxl);
+      margin: 0;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 1rem 0;
+    }
+  }
+
+  .container {
+    padding: 2em 10px;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .content {
+    h2 {
+      @include font-size(xxl);
+    }
+
+    h3 {
+      @include font-size(xl);
+    }
+
+    .currency-list {
+      list-style: initial;
+      padding-left: 1rem;
+      column-count: 2;
+
+      @include media-query(mob-landscape) {
+        column-count: 3;
+      }
+
+      @include media-query(tablet-landscape) {
+        column-count: 4;
+      }
+    }
+  }
+}

@@ -56,6 +56,7 @@ class MockBraintreePaymentMethod:
         'first_name': 'Bob',
         'last_name': 'Jones'
     }
+    card_type = 'Visa'
 
 
 class MockBraintreeCustomer:

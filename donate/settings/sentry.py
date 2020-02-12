@@ -7,8 +7,8 @@ class Sentry(object):
     HEROKU_RELEASE_VERSION = env('HEROKU_RELEASE_VERSION')
 
     @classmethod
-    def setup(cls):
-        super().setup()
+    def pre_setup(cls):
+        super().pre_setup()
 
         import sentry_sdk
         from sentry_sdk.integrations.django import DjangoIntegration

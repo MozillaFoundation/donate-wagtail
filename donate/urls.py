@@ -14,7 +14,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView, ThunderbirdRedirectView
+from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView
 
 # Patterns not subject to i18n
 urlpatterns = [
@@ -38,6 +38,7 @@ urlpatterns += i18n_patterns(
     # See https://django-statici18n.readthedocs.io
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
+    path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
 )
 
 
