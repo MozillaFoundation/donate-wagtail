@@ -358,6 +358,9 @@ class MigrateStripeSubscription:
                          f'for the Stripe customer attached to this charge object:'
                          f'{charge.id}', exc_info=True)
             return
+        elif len(BT_customers) > 1:
+            logger.error(f'Multiple customer records in Braintree matched for Stripe charge {charge.id}', exc_info=True)
+            return
 
         # There should be a single Customer/Card combo on Braintree
         BT_customer = BT_customers[0]
