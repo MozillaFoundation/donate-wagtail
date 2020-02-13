@@ -34,6 +34,12 @@ function closeMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  const gaMeta = document.querySelector(`meta[name="ga-identifier"]`);
+  if (gaMeta) {
+    let gaIdentifier = gaMeta.getAttribute(`content`);
+    initializeGA(gaIdentifier);
+  }
+
   // Initialize Sentry error reporting
 
   fetchEnv(envData => {
@@ -88,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Google Analytics
-(function() {
+function initializeGA(trackingId) {
   var doNotTrack =
     navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack;
   if (!doNotTrack || doNotTrack === "no" || doNotTrack === "unspecified") {
@@ -113,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
     );
 
     if (typeof ga === "function") {
-      ga("create", "UA-49796218-32", "auto");
+      ga("create", trackingId, "auto");
 
       // Ensure we don't pass the email query param to Google Analytics
       var loc = window.location,
@@ -158,4 +164,4 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   }
-})();
+}
