@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-02 15:47+0000\n"
+"PO-Revision-Date: 2020-02-11 14:57+0000\n"
 "Last-Translator: Wannaphong Phatthiyaphaibun <wannaphong@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: th\n"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: donate/templates/pages/core/contributor_support_page_master.html:40
 msgid "Contact Name"
-msgstr ""
+msgstr "ชื่อผู้ติดต่อ"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:50
 msgid "Language"
@@ -321,7 +321,7 @@ msgstr "ภาษา"
 #: donate/templates/pages/core/contributor_support_page_master.html:53
 msgctxt "Option in 'Language' dropdown"
 msgid "None"
-msgstr ""
+msgstr "ไม่มี"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:54
 msgid "English"
@@ -354,11 +354,11 @@ msgstr "อื่น ๆ"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:66
 msgid "Subject"
-msgstr ""
+msgstr "หัวเรื่อง"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:71
 msgid "Description"
-msgstr ""
+msgstr "คำอธิบาย"
 
 #: donate/templates/pages/core/contributor_support_page_master.html:75
 #, python-format
@@ -552,7 +552,7 @@ msgstr "หมายเลขบัตร"
 
 #: donate/templates/payment/card_master.html:112
 msgid "Expiration date"
-msgstr ""
+msgstr "วันหมดอายุ"
 
 #: donate/templates/payment/card_master.html:117
 msgid "CVV"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
-msgstr ""
+msgstr "คุกกี้"
 
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
