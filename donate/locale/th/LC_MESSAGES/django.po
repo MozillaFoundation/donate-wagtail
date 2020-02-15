@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-11 14:57+0000\n"
+"PO-Revision-Date: 2020-02-11 15:00+0000\n"
 "Last-Translator: Wannaphong Phatthiyaphaibun <wannaphong@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: th\n"
@@ -204,7 +204,7 @@ msgstr "มีส่วนร่วม"
 
 #: donate/templates/pages/base_page_master.html:32
 msgid "Internet Health"
-msgstr ""
+msgstr "สุขภาพอินเทอร์เน็ต"
 
 #: donate/templates/pages/base_page_master.html:35
 msgid "About Us"
