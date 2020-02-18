@@ -49,7 +49,7 @@
     "postcss-cli": "^7.1.0",
     "scrollama": "^2.1.3",
     "shx": "^0.3.2",
-    "webpack": "^4.41.5",
+    "webpack": "^4.41.6",
     "webpack-cli": "^3.3.10"
   },
   "engines": {
