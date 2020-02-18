@@ -140,28 +140,26 @@ function initializeGA(trackingId) {
       ga("send", "pageview");
       ga("require", "ecommerce");
 
-      document.addEventListener("DOMContentLoaded", function() {
-        // Check for any events sent by the view, and fire them.
-        var gaEventsNode = document.getElementById("ga-events");
-        if (gaEventsNode) {
-          var events = JSON.parse(gaEventsNode.textContent);
-          events.forEach(eventArray => {
-            ga(...eventArray);
-          });
-        }
+      // Check for any events sent by the view, and fire them.
+      var gaEventsNode = document.getElementById("ga-events");
+      if (gaEventsNode) {
+        var events = JSON.parse(gaEventsNode.textContent);
+        events.forEach(eventArray => {
+          ga(...eventArray);
+        });
+      }
 
-        // Click events
-        for (const a of document.querySelectorAll(".js-ga-track-click")) {
-          a.addEventListener("click", e => {
-            ga("send", "event", {
-              eventCategory: a.getAttribute("data-ga-category"),
-              eventAction: a.getAttribute("data-ga-action"),
-              eventLabel: a.getAttribute("data-ga-label"),
-              transport: "beacon"
-            });
+      // Click events
+      for (const a of document.querySelectorAll(".js-ga-track-click")) {
+        a.addEventListener("click", e => {
+          ga("send", "event", {
+            eventCategory: a.getAttribute("data-ga-category"),
+            eventAction: a.getAttribute("data-ga-action"),
+            eventLabel: a.getAttribute("data-ga-label"),
+            transport: "beacon"
           });
-        }
-      });
+        });
+      }
     }
   }
 }
