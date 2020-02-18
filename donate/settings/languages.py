@@ -56,6 +56,7 @@ LANGUAGES = [
     ('ru', 'Russian'),
     ('sk', 'Slovak'),
     ('sl', 'Slovenian'),
+    ('sq', 'Albanian'),
     ('sv-SE', 'Swedish'),
     ('ta', 'Tamil'),
     ('te', 'Telugu'),
