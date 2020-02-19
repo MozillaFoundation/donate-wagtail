@@ -57,24 +57,6 @@ CURRENCIES = {
             'monthly': [37, 18, 11, 8]
         }
     },
-    'all': {
-        'code': 'all',
-        'minAmount': 230,
-        'symbol': 'L',
-        'disabled': ['paypal', 'amex'],
-        'monthlyUpgrade': [
-            {'min': 32000, 'value': 3000},
-            {'min': 21800, 'value': 2000},
-            {'min': 10900, 'value': 1000},
-            {'min': 7360, 'value': 750},
-            {'min': 3815, 'value': 500},
-            {'min': 1635, 'value': 300},
-        ],
-        'presets': {
-            'single': [2280, 1140, 570, 350],
-            'monthly': [1140, 570, 350, 230]
-        }
-    },
     'aud': {
         'code': 'aud',
         'minAmount': 3,
@@ -1071,7 +1053,6 @@ LOCALE_CURRENCY_MAP = {
     'ru': 'rub',
     'sk': 'eur',
     'sl': 'eur',
-    'sq': 'all',
     'sv-SE': 'sek',
     'ta': 'inr',
     'te': 'inr',

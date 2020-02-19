@@ -8,23 +8,5 @@
 {% endif %}
 {% endblock %}
 
-{% comment %} This should probably be fixed in the main template but it's getting a lot of comments and this seems like a reasonable quick fix. https://github.com/mozilla/donate-wagtail/issues/777 {% endcomment %}
-{% block featured_image %}
-    <div class="image-feature__container">
-        {% image page.featured_image fill-290x95 as imageMobile %}
-        {% image page.featured_image fill-690x183 as imageTablet %}
-        {% image page.featured_image fill-690x183 as imageDesktop %}
-        <img srcset="{{ imageMobile.url }} 290w,
-                        {{ imageTablet.url }} 690w,
-                        {{ imageDesktop.url }} 350w"
-                sizes="(max-width: 399px) 290px,
-                    (max-width: 1023px) and (min-width: 400px) 690px,
-                    (min-width: 1024px) 350px"
-                src="{{ imageDesktop.url }}"
-                alt="{{ image.alt }}"
-                class="image-feature__image">
-    </div>
-{% endblock %}
-
 {% block logo_showcase %}
 {% endblock %}

@@ -9,9 +9,9 @@
             <div class="image-feature column-spacing">
                 {% block featured_image %}
                     <div class="image-feature__container">
-                        {% image page.featured_image fill-290x95 as imageMobile %}
-                        {% image page.featured_image fill-690x183 as imageTablet %}
-                        {% image page.featured_image fill-350x197 as imageDesktop %}
+                        {% image page.featured_image width-290 as imageMobile %}
+                        {% image page.featured_image width-690 as imageTablet %}
+                        {% image page.featured_image width-350 as imageDesktop %}
                         <img srcset="{{ imageMobile.url }} 290w,
                                     {{ imageTablet.url }} 690w,
                                     {{ imageDesktop.url }} 350w"
