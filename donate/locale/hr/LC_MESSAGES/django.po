@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-19 00:29+0000\n"
+"PO-Revision-Date: 2020-02-19 00:43+0000\n"
 "Last-Translator: Milo <mail@milotype.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -448,20 +448,20 @@ msgstr "London, Ujedinjeno Kraljevstvo"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:51 donate/thunderbird/templates/pages/core/ways_to_give_page.html:35
 msgid "Bank Sort Code:"
-msgstr ""
+msgstr "Kod za identifikaciju banke:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:52 donate/thunderbird/templates/pages/core/ways_to_give_page.html:36
 msgid "Account Number (8 digits):"
-msgstr ""
+msgstr "Broj računa (8 znamenki):"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:63
 msgid "Check (via postal service)"
-msgstr ""
+msgstr "Ček (putem poštanske usluge)"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:67
 #, python-format
 msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
-msgstr ""
+msgstr "Pošalji ček koji <strong>sadrži tvoju e-adresu u retku bilješke</strong> i naplatu (primatelj) za „%(payee)s“."
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:70
 msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
@@ -469,15 +469,15 @@ msgstr ""
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:84
 msgid "Currencies"
-msgstr ""
+msgstr "Valute"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:85
 msgid "Select your currency to make a secure online donation:"
-msgstr ""
+msgstr "Odaberi valutu za sigurnu donaciju putem Interneta:"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:95
 msgid "Bitcoin"
-msgstr ""
+msgstr "Bitcoin"
 
 #: donate/templates/pages/core/ways_to_give_page_master.html:97
 msgid ""
@@ -718,7 +718,7 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
-msgstr ""
+msgstr "Kolačići"
 
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
@@ -736,7 +736,7 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
-msgstr ""
+msgstr "Polje bilješke:"
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
 #, python-format
