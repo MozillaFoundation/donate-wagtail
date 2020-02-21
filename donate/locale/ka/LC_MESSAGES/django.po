@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-21 18:12+0000\n"
+"PO-Revision-Date: 2020-02-21 18:20+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ka\n"
@@ -363,6 +363,8 @@ msgstr "აღწერა"
 #, python-format
 msgid "Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href=\"%(privacy_policy)s\">privacy policy</a> for further information."
 msgstr ""
+"Mozilla თქვენ მიერ გამოგზავნილ ინფორმაციას გამოიყენებს მხოლოდ თქვენთან დასაკავშირებლად, მოთხოვნის თაობაზე. იხილეთ <a href=\"%(privacy_policy)s\">პირადი მონაცემების დაცვის ჩვენი დებულება</a> "
+"დაწვრილებითი ინფორმაციისთვის."
 
 #: donate/templates/pages/core/contributor_support_page_master.html:77
 msgid "Submit"
@@ -742,12 +744,12 @@ msgstr ""
 
 #: donate/thunderbird/templates/pages/base_page.html:57
 msgid "Cookies"
-msgstr ""
+msgstr "ფუნთუშები"
 
 #: donate/thunderbird/templates/pages/base_page.html:69
 #, python-format
 msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
-msgstr ""
+msgstr "ამ შიგთავსის ნაწილები შექმნილია ცალკეული მოხალისეების მიერ ©1998–%(current_year)s. მასალა ვრცელდება <a %(link_attributes)s>Creative Commons ლიცენზიით</a>"
 
 #: donate/thunderbird/templates/pages/core/landing_page.html:7
 #, python-format
@@ -775,13 +777,12 @@ msgid "Please note that we can only accept checks in US dollars drawn on a US ba
 msgstr "გთხოვთ გაითვალისწინოთ, რომ Mozilla-ფონდს შეუძლია მიიღოს მხოლოდ აშშ-დოლარში გამოწერილი ჩეკები, ამერიკული ბანკების მიერ. გთხოვთ, <strong>არ</strong> გამოგზავნოთ ნაღდი ფული."
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "გმადლობთ, გულუხვი საჩუქრისთვის"
+msgstr "წინასწარ გმადლობთ, საჩუქრისთვის."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -791,22 +792,23 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"ვანიჭებ Mozilla-ფონდს უფლებას, თავად ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა დღეიდან ყოველთვიურად ამავე დღეს, სანამ არ გავაუქმებ. ვითვალისწინებ, რომ შემოწირულობის გასაუქმებლად "
-"მოთხოვნა, დაგეგმილ მომდევნო გადარიცხვამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე <a href='mailto:%(email)s'>%(email)s</a>, ხოლო თანხის დაბრუნების მოთხოვნა, შემოწირულობის ჩამოჭრიდან, 15 დღის "
-"განმავლობაში შემეძლება."
+"ვანიჭებ MZLA Technologies Corporation-ს უფლებას, თავად ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა დღეიდან ყოველთვიურად ამავე დღეს, სანამ არ გავაუქმებ. ვითვალისწინებ, რომ შემოწირულობის "
+"გასაუქმებლად, დაგეგმილ მომდევნო გადარიცხვამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე <a href='%(help_url)s'>მოთხოვნა</a>, ხოლო თანხის დაბრუნებაზე განაცხადის გაკეთება, შემოწირულობის "
+"ჩამოჭრიდან, 15 დღის განმავლობაში შემეძლება."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "ვანიჭებ Mozilla-ფონდს უფლებას, ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა. ვითვალისწინებ, რომ თანხის დაბრუნების მოთხოვნა, შემოწირულობის გაკეთებიდან 15 დღის განმავლობაში შემეძლება."
+msgstr ""
+"ვანიჭებ MZLA Technologies Corporation-ს უფლებას, ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა. ვითვალისწინებ, რომ თანხის დაბრუნების მოთხოვნა, შემოწირულობის გაკეთებიდან 15 დღის განმავლობაში "
+"შემეძლება."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "მეტად მოხარულები ვიქნებით, თუ Thunderbird-ის მტკიცე და მუდმივი მხარდამჭერი გახდებით. <b>გაქვთ სურვილი მომდევნო თვიდან, გაიღოთ შემოწირულობა ყოველთვიურად?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -815,16 +817,15 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"ვანიჭებ Mozilla-ფონდს უფლებას, თავად ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა ყოველთვიურად, დაწყებული მომდევნო თვიდან ამავე დღეს, სანამ არ გავაუქმებ. ვითვალისწინებ, რომ შემოწირულობის "
-"გასაუქმებლად მოთხოვნა, დაგეგმილ მომდევნო გადარიცხვამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე %(email)s, ხოლო თანხის დაბრუნების მოთხოვნა, შემოწირულობის ჩამოჭრიდან, 15 დღის განმავლობაში "
-"შემეძლება."
+"ვანიჭებ MZLA Technologies Corporation-ს უფლებას, თავად ჩამოჭრას ჩემი ბარათიდან ზემოთ მოცემული ოდენობის თანხა ყოველთვიურად, დაწყებული მომდევნო თვიდან ამავე დღეს, სანამ არ გავაუქმებ. ვითვალისწინებ, "
+"რომ შემოწირულობის გასაუქმებლად, დაგეგმილ მომდევნო გადარიცხვამდე არანაკლებ 5 დღით ადრე უნდა გავგზავნო ელფოსტაზე <a href=\"%(help_url)s\">მოთხოვნის ეს ფორმა</a>, ხოლო თანხის დაბრუნებაზე განაცხადის "
+"გაკეთება, შემოწირულობის ჩამოჭრიდან, 15 დღის განმავლობაში შემეძლება."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
-#, fuzzy, python-format
+#, python-format
 #| msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
-msgstr ""
-"ჩვენ გამოგიგზავნეთ შემოწირულების ქვითარი; თუ არ მიგიღიათ, გთხოვთ, ჯერ გადაამოწმოთ თქვენი ჯართის/სპამის საქაღალდეები, შემდეგ კი დაგვიკავშირდეთ მისამართზე <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr "ჩვენ გამოგიგზავნეთ შემოწირულების ქვითარი; თუ არ მიგიღიათ, გთხოვთ, ჯერ გადაამოწმოთ თქვენი ჯართის/სპამის საქაღალდეები, შემდეგ კი დაგვიკავშირდეთ <a href=\"%(url)s\">ამ ფორმის გამოყენებით</a>."
 
 #: donate/thunderbird/templates/payment/thank_you.html:7
 msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
