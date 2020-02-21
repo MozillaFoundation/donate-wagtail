@@ -180,6 +180,8 @@ class CampaignPage(DonationPage):
     parent_page_types = ['core.LandingPage', 'core.CampaignPage']
     subpage_types = ['core.CampaignPage']
 
+    submit_to_pontoon_on_publish = False
+
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
         models.PROTECT,
