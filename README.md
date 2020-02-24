@@ -210,7 +210,6 @@ Translations of UI strings from Django are stored in [the donate-l10n repository
 The latest source strings are regularly exposed to Pontoon by a Localization PM using the following process:
 
 ### Initial setup:
-- Set `DJANGO_CONFIGURATION` to `'Development'` in your `.env` file.
 - Clone the `donate-l10n` repository locally.
 - Set the `LOCAL_PATH_TO_L10N_REPO` variable in your `.env` file. Use the absolute path to your copy of the `donate-l10n` repository and include the trailing slash. E.g. `LOCAL_PATH_TO_L10N_REPO=/Users/username/Documents/GitHub/donate-l10n/`
 
