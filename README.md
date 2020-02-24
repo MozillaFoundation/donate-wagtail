@@ -202,3 +202,29 @@ docker-compose exec app python manage.py createsuperuser
 The security model currently requires that an existing admin creates an account for a new user first, tied to that user's Mozilla email account, before that user can can log in using SSO.
 
 Further more, in order for SSO authentication to succeed, their account must be a member of the donate user group. To request that an account be added to this group, please file [an SSO request bug](https://bugzilla.mozilla.org/enter_bug.cgi?product=Infrastructure%20%26%20Operations&component=SSO:%20Requests), making sure to also `cc` a donate admin in the bug.
+
+## Translations
+
+Translations of UI strings from Django are stored in [the donate-l10n repository](https://github.com/mozilla-l10n/donate-l10n). Translations are happening in Pontoon, in multiple projects: [Mozilla Foundation Donate](https://pontoon.mozilla.org/projects/mozilla-donate-website/), and [Thunderbird Donate](https://pontoon.mozilla.org/projects/donate-thunderbird-content/).
+
+The latest source strings are regularly exposed to Pontoon by a Localization PM using the following process:
+
+### Initial setup:
+- Set `DJANGO_CONFIGURATION` to `'Development'` in your `.env` file.
+- Clone the `donate-l10n` repository locally.
+- Set the `LOCAL_PATH_TO_L10N_REPO` variable in your `.env` file. Use the absolute path to your copy of the `donate-l10n` repository and include the trailing slash. E.g. `LOCAL_PATH_TO_L10N_REPO=/Users/username/Documents/GitHub/donate-l10n/`
+
+### Exposing latest source strings:
+- Make sure your local repositories of `donate-l10n` and `donate-wagtail` are matching the latest revision from master.
+- Run `inv docker-makemessages` from your `donate-wagtail` repository.
+- Files should have been updated in your `donate-l10n` repository. You can now create a pull-request.
+
+### Getting the latest translations for local dev
+
+Latest translations are uploaded to S3. To get them, run:
+- `curl -o translations.tar https://donate-wagtail-translations.s3.amazonaws.com/translations.tar`
+- `tar -C network-api -xvf translations.tar`
+
+You don't need to run `compilemessages`.
+
+The `translations_github_commit_[...]` file from the archive is only used for debug purposes on Heroku. It can be safely deleted if needed.

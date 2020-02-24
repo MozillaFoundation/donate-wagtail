@@ -21,6 +21,7 @@ class Development(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree
     CSRF_COOKIE_SECURE = False
     USE_X_FORWARDED_HOST = False
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    LOCAL_PATH_TO_L10N_REPO = env('LOCAL_PATH_TO_L10N_REPO')
 
     # In dev, lets not worry about enforcing password changes
     AUTH_PASSWORD_VALIDATORS = []
