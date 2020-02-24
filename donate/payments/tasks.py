@@ -1,7 +1,6 @@
 import logging
 import time
 
-import braintree
 from django.conf import settings
 from django.utils.timezone import datetime
 
