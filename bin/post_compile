@@ -7,6 +7,5 @@ cd $BUILD_DIR
 # Get the po files from S3
 curl -o translations.tar https://donate-wagtail-translations.s3.amazonaws.com/translations.tar
 
-# TODO CHECK WHEN THE TAR FILE IS UPLOADED THAT THE FILES ARE WHERE THEY ARE SUPPOSED TO BE
 # Untar the archive
 tar -C donate -xvf translations.tar
