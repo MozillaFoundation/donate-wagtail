@@ -343,49 +343,29 @@ class StripeWebhookProcessor:
 
 class MigrateStripeSubscription:
     def process(self, charge, subscription):
-        last4 = subscription.customer.sources.data[0].last4
+        # Grab the payment card ID from the subscription's payment source list (there will only be one)
+        card_id = subscription.customer.sources.data[0].id
 
-        # Fetch the Customer object that was migrated to Braintree from Stripe
-        # along with associated payment information
-        BT_customers = gateway.customer.search(
-            braintree.TransactionSearch.customer_email == charge.customer_email,
-            braintree.TransactionSearch.credit_card_number.ends_with(last4)
-        )
+        # Confirm the payment method was migrated to Braintree by looking up
+        # BT Payment Methods using the Stripe card ID
+        payment_method = gateway.payment_method.find(card_id)
 
-        # Ensure we found a customer record, if not, report it to Sentry as an error
-        if len(BT_customers) == 0:
-            logger.error(f'No Customer record exists in Braintree '
-                         f'for the Stripe customer attached to this charge object:'
-                         f'{charge.id}', exc_info=True)
-            return
-        elif len(BT_customers) > 1:
-            logger.error(f'Multiple customer records in Braintree '
-                         f'matched for Stripe charge {charge.id}', exc_info=True)
+        # Ensure we found a Payment Method, and if not, report it to Sentry as an error
+        if not payment_method:
+            logger.error(f'The payment method was not migrated to'
+                         f' Braintree for this charge: {charge.id}', exc_info=True)
             return
 
-        # There should be a single Customer/Card combo on Braintree
-        BT_customer = BT_customers[0]
-
-        # Ensure there is a PaymentMethod associated with the customer.
-        # If not, report the error to Sentry
-        if len(BT_customer.payment_methods) == 0:
-            logger.error(f'The Braintree customer ({BT_customer.id}) does not have '
-                         f'an associated PaymentMethod', exc_info=True)
-            return
-
-        # Grab the Payment Method token that represents the customers payment information in the Braintree Vault
-        payment_method_token = BT_customer.payment_methods[0].token
-
-        # Determine the Braintree plan, merchant account, and price for the subscription
-        # based on the Stripe subscription
-        BT_plan_id = get_plan_id(subscription.plan.currency)
-        BT_merchant_account = get_merchant_account_id_for_card(subscription.plan.currency)
-        BT_price = zero_decimal_currency_fix(charge.amount, subscription.plan.currency)
+        # Determine the Braintree plan, merchant account, and price
+        # for the subscription based on the subscription's attributes
+        BT_plan_id = get_plan_id(charge.currency)
+        BT_merchant_account = get_merchant_account_id_for_card(charge.currency)
+        BT_price = zero_decimal_currency_fix(charge.amount, charge.currency)
         BT_first_billing_date = datetime.utcfromtimestamp(subscription.current_period_end)
 
         # Create the Braintree subscription and record the result for analysis
         BT_create_subscription_result = gateway.subscription.create({
-            'payment_method_token': payment_method_token,
+            'payment_method_token': payment_method.token,
             'plan_id': BT_plan_id,
             'merchant_account_id': BT_merchant_account,
             'price': BT_price,
