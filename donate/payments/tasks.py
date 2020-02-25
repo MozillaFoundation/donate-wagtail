@@ -1,6 +1,9 @@
 import logging
 import time
+from decimal import Decimal
+
 from django.conf import settings
+from django.utils.timezone import datetime
 
 import django_rq
 import requests
@@ -8,7 +11,11 @@ import stripe
 
 from . import constants, gateway
 from .sqs import send_to_sqs
-from .utils import zero_decimal_currency_fix
+from .utils import (
+    zero_decimal_currency_fix,
+    get_plan_id,
+    get_merchant_account_id_for_card
+)
 
 logger = logging.getLogger(__name__)
 
@@ -243,6 +250,9 @@ class StripeWebhookProcessor:
             }
         })
 
+        if settings.MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED and 'thunderbird' not in metadata:
+            MigrateStripeSubscription().process(charge, subscription)
+
     @staticmethod
     def process_charge_dispute_closed(event):
         process_dispute(event)
@@ -329,6 +339,71 @@ class StripeWebhookProcessor:
                 'failure_code': failure_code
             }
         })
+
+
+class MigrateStripeSubscription:
+    def process(self, charge, subscription):
+        # Grab the payment card ID from the subscription's payment source list (there will only be one)
+        card_id = subscription.customer.sources.data[0].id
+
+        # Confirm the payment method was migrated to Braintree by looking up
+        # BT Payment Methods using the Stripe card ID
+        payment_method = gateway.payment_method.find(card_id)
+
+        # Ensure we found a Payment Method, and if not, report it to Sentry as an error
+        if not payment_method:
+            message = f'The payment method was not migrated to' \
+                      f' Braintree for this charge: {charge.id}'
+            print(message)
+            logger.error(message, exc_info=True)
+            return
+
+        # Determine the Braintree plan, merchant account, and price
+        # for the subscription based on the subscription's attributes
+        BT_plan_id = get_plan_id(charge.currency)
+        BT_merchant_account = get_merchant_account_id_for_card(charge.currency)
+        BT_price = Decimal(zero_decimal_currency_fix(charge.amount, charge.currency))
+        BT_first_billing_date = datetime.utcfromtimestamp(subscription.current_period_end)
+
+        # Create the Braintree subscription and record the result for analysis
+        BT_create_subscription_result = gateway.subscription.create({
+            'payment_method_token': payment_method.token,
+            'plan_id': BT_plan_id,
+            'merchant_account_id': BT_merchant_account,
+            'price': BT_price,
+            'first_billing_date': BT_first_billing_date
+        })
+
+        # If the subscription creation failed, record the error in Sentry
+        if not BT_create_subscription_result.is_success:
+            message = f'Failed to create a Braintree subscription from Stripe subscription {subscription.id}'
+            print(message)
+            logger.error(message, exc_info=True)
+            return
+
+        # Cancel Stripe subscription
+        try:
+            stripe.Subscription.delete(subscription.id)
+        except stripe.error.StripeError:
+            message = f'Failed to cancel the stripe subscription ' \
+                      f'{subscription.id}, cancelling the Braintree subscription'
+            print(message)
+            logger.error(message, exc_info=True)
+
+            # Cancel the subscription that we just created since the Stripe subscription cancellation failed.
+            BT_cancel_subscription_result = gateway.subscription.cancel(
+                BT_create_subscription_result.subscription.id
+            )
+
+            # if this fails, we're really screwed, so make it a critical log now that the
+            # customer has two active subscriptions
+            if not BT_cancel_subscription_result.is_success:
+                message = f'Failed to cancel the Braintree Subscription, ' \
+                          f'customer now has two active subscriptions - ' \
+                          f'Braintree: {BT_create_subscription_result.subscription.id}, ' \
+                          f'Stripe: {subscription.id}'
+                print(message)
+                logger.critical(message)
 
 
 def process_webhook(form_data):
