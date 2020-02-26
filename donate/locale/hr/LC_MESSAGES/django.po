@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-19 00:47+0000\n"
+"PO-Revision-Date: 2020-02-25 00:18+0000\n"
 "Last-Translator: Milo <mail@milotype.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr\n"
@@ -688,12 +688,11 @@ msgstr "Natrag"
 
 #: donate/thunderbird/templates/base.html:5 donate/thunderbird/templates/pages/base_page.html:7 donate/thunderbird/templates/pages/base_page.html:14
 #: donate/thunderbird/templates/pages/base_page.html:15
-#, fuzzy
 #| msgctxt "Email subject line"
 #| msgid "I donated to Thunderbird today"
 msgctxt "Page title"
 msgid "Give to Thunderbird"
-msgstr "Danas sam donirao Thunderbirdu"
+msgstr "Doniraj Thunderbirdu"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
 #, python-format
@@ -748,10 +747,9 @@ msgid "Please note that we can only accept checks in US dollars drawn on a US ba
 msgstr ""
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "Hvala Vam na velikodušnom daru"
+msgstr "Unaprijed ti se zahvaljujemo za donaciju."
 
 #: donate/thunderbird/templates/payment/card.html:12
 #, python-format

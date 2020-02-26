@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-30 21:05+0000\n"
-"PO-Revision-Date: 2020-02-06 14:44+0000\n"
+"PO-Revision-Date: 2020-02-25 14:58+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
@@ -710,19 +710,20 @@ msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a 
 msgstr "Diğer bağış yöntemleri: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Çek</a>"
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
-#, fuzzy, python-format
+#, python-format
 #| msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
 msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
-msgstr "Aylık bağışlar her ayın aynı günü (bugün) çekilir ve iptal edilinceye kadar devam eder. İptal etmek isterseniz <a href=\"mailto:%(email)s\">%(email)s</a> adresine yazabilirsiniz."
+msgstr "Aylık bağışlar her ayın aynı günü (bugün) çekilir ve iptal edilinceye kadar devam eder. İptal etmek isterseniz <a href=\"%(help_url)s\">bu formu</a> doldurun."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
-#, fuzzy, python-format
+#, python-format
 #| msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
 msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
-msgstr "Bağış yapmayla ilgili sorularınız mı var? Sık sorulan sorular için <a href=\"%(faq_url)s\">SSS</a>'ye bakabilirsiniz. Başka bir sorunuz var mı? <a href=\"mailto:%(email)s\">Bize e-posta gönderin</a>."
+msgstr ""
+"Bağış yapmayla ilgili sorularınız mı var? Sık sorulan sorular için <a href=\"%(faq_url)s\">SSS</a>'ye bakabilirsiniz. Başka bir sorun mu yaşıyorsunuz? <a href=\"%(help_url)s\">Bizimle iletişime "
+"geçin</a>."
 
 #: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
-#, fuzzy
 #| msgid ""
 #| "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird Project. Contributions are not "
 #| "tax-deductible as charitable contributions."
@@ -730,7 +731,7 @@ msgid ""
 "Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird project. Contributions are not "
 "tax-deductible as charitable contributions."
 msgstr ""
-"Bağışlarınız, tamamı Mozilla Foundation'a ait olan California merkezli MZLA Technologies Corporation'a gitmektedir. Bağışlar Thunderbird Projesi'nde kullanılmak üzere ayrılır. Bu bağışlar vergiden "
+"Bağışlarınız, tamamı Mozilla Foundation'a ait olan California merkezli MZLA Technologies Corporation'a gitmektedir. Bağışlar Thunderbird projesinde kullanılmak üzere ayrılır. Bu bağışlar vergiden "
 "düşülemez."
 
 #: donate/thunderbird/templates/pages/base_page.html:57
@@ -748,10 +749,9 @@ msgid "Your download should have begun automatically. If it didn’t work, <a hr
 msgstr "İndirme işleminiz otomatik olarak başlamış olmalı. Başlamadıysa <a href=\"%(url)s\">buradan yeniden indirmeyi deneyin</a>."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
-#, fuzzy
 #| msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
 msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
-msgstr "SEPA transferi yoluyla Euro bağışlarınızı ve BACS transferi yoluyla İngiliz sterlini bağışlarınızı kabul edebiliyoruz."
+msgstr "SEPA transferi yoluyla euro bağışlarınızı ve BACS transferi yoluyla İngiliz sterlini bağışlarınızı kabul edebiliyoruz."
 
 #: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
 msgid "Memo field:"
@@ -767,13 +767,12 @@ msgid "Please note that we can only accept checks in US dollars drawn on a US ba
 msgstr ""
 
 #: donate/thunderbird/templates/payment/card.html:6
-#, fuzzy
 #| msgid "Thank you for your generous gift"
 msgid "Thank you in advance for your gift."
-msgstr "Bağışınız için teşekkür ederiz"
+msgstr "Bağışınız için teşekkür ederiz."
 
 #: donate/thunderbird/templates/payment/card.html:12
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
 #| "I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
@@ -783,21 +782,20 @@ msgid ""
 "understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
 " of a donation."
 msgstr ""
-"Bugünden itibaren her ayın aynı gününde, ben iptal edene dek Mozilla Foundation'ın yukarıda belirtilen tutarı otomatik olarak kartımdan çekmesine izin veriyorum. Planlı bağışlarımı en az 5 gün önce "
-"<a href='mailto:%(email)s'>%(email)s</a> adresine e-posta göndererek iptal edebileceğimi, bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
+"Bugünden itibaren her ayın aynı gününde, ben iptal edene dek MZLA Technologies Corporation'ın yukarıda belirtilen tutarı otomatik olarak kartımdan çekmesine izin veriyorum. Planlı bağışlarımı en az "
+"5 gün önceden <a href='%(help_url)s'>talepte bulunarak</a> iptal edebileceğimi, bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
 
 #: donate/thunderbird/templates/payment/card.html:14
-#, fuzzy
 #| msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
 msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
-msgstr "Yukarıda belirtilen miktarı kartımdan çekmesi için Mozilla Foundation’a yetki veriyorum. Bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
+msgstr "Yukarıda belirtilen miktarı kartımdan çekmesi için MZLA Technologies Corporation’a yetki veriyorum. Bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
 
 #: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
 msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
 msgstr "Sizi Thunderbird’ün sürekli destekçisi olarak görmeyi çok isteriz. <b>Gelecek aydan itibaren aylık bağış yapmak ister misiniz?</b>"
 
 #: donate/thunderbird/templates/payment/card_upsell.html:10
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
 #| "cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
@@ -806,8 +804,8 @@ msgid ""
 "afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
 "refund within 15 days from the date of a donation."
 msgstr ""
-"Bugünden bir ay sonra başlamak üzere, ben iptal edene dek Mozilla Foundation'ın yukarıda belirtilen tutarı otomatik olarak kartımdan çekmesine izin veriyorum. Planlı bağışlarımı en az 5 gün önce "
-"%(email)s adresine e-posta göndererek iptal edebileceğimi, bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
+"Bugünden bir ay sonra başlayıp her ay devam etmek üzere, ben iptal edene dek MZLA Technologies Corporation'ın yukarıda belirtilen tutarı otomatik olarak kartımdan çekmesine izin veriyorum. Planlı "
+"bağışlarımı en az 5 gün önceden <a href=\"%(help_url)s\">bu formu doldurarak</a> iptal edebileceğimi, bağıştan sonraki 15 gün içinde iade talep edebileceğimi anladım."
 
 #: donate/thunderbird/templates/payment/thank_you.html:6
 #, fuzzy, python-format
