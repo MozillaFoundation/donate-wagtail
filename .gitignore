@@ -53,8 +53,6 @@ coverage.xml
 
 # Translations
 *.mo
-*.po
-*.pot
 *.ftl
 translations_github_commit_*
 translations.tar

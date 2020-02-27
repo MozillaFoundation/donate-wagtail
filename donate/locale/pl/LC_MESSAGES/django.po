@@ -1,0 +1,851 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-30 21:05+0000\n"
+"PO-Revision-Date: 2020-01-31 16:21+0000\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pontoon\n"
+
+#: donate/core/translation.py:12
+msgid "This field is required."
+msgstr "To pole jest wymagane."
+
+#: donate/core/translation.py:15
+msgid "Enter a number."
+msgstr "Wpisz liczbę."
+
+#: donate/core/translation.py:18
+msgid "Enter a valid email address."
+msgstr "Wpisz prawidłowy adres e-mail."
+
+#: donate/payments/forms.py:45
+#, python-format
+msgid "Donations must be %(amount)s or more"
+msgstr "Minimalna wielkość datku: %(amount)s"
+
+#: donate/payments/forms.py:52 donate/payments/forms.py:66 donate/payments/forms.py:113
+msgid "Amount"
+msgstr "Kwota"
+
+#: donate/payments/forms.py:79
+msgid "First name"
+msgstr "Imię"
+
+#: donate/payments/forms.py:80
+msgid "Last name"
+msgstr "Nazwisko"
+
+#: donate/payments/forms.py:81 donate/payments/forms.py:123 donate/templates/pages/core/contributor_support_page_master.html:45
+msgid "Email"
+msgstr "Adres e-mail"
+
+#: donate/payments/forms.py:82
+msgid "Street"
+msgstr "Ulica"
+
+#: donate/payments/forms.py:83
+msgid "City"
+msgstr "Miejscowość"
+
+#: donate/payments/forms.py:87
+msgctxt "Feel free to replace with “Postal code” or equivalent"
+msgid "ZIP Code"
+msgstr "Kod pocztowy"
+
+#: donate/payments/forms.py:90
+msgid "Country"
+msgstr "Kraj"
+
+#: donate/payments/forms.py:131 donate/templates/pages/base_page_master.html:87
+#, python-format
+msgid "I’m okay with Mozilla handling my info as explained in this <a href='%(url)s'>Privacy Notice</a>."
+msgstr "Pozwalam Mozilli wykorzystywać te informacje w sposób opisany w <a href='%(url)s'>zasadach ochrony prywatności</a>."
+
+#: donate/payments/views.py:152
+msgid "The type of card you used is not accepted."
+msgstr "Rodzaj użytej karty nie jest akceptowany."
+
+#: donate/payments/views.py:153 donate/payments/views.py:154
+msgid "The CVV code you entered was invalid."
+msgstr "Podany kod CVV jest nieprawidłowy."
+
+#: donate/payments/views.py:155
+msgid "The expiration date you entered was invalid."
+msgstr "Podana data ważności jest nieprawidłowa."
+
+#: donate/payments/views.py:156
+msgid "The credit card number you entered was invalid."
+msgstr "Podany numer karty płatniczej jest nieprawidłowy."
+
+#: donate/payments/views.py:165 donate/payments/views.py:166
+msgid "The post code you provided is not valid."
+msgstr "Podany kod pocztowy jest nieprawidłowy."
+
+#: donate/payments/views.py:180
+msgid "Sorry there was an error processing your payment. Please try again later or use a different payment method."
+msgstr "Wystąpił błąd podczas przetwarzania płatności. Proszę spróbować ponownie później lub skorzystać z innej metody płatności."
+
+#: donate/payments/views.py:362
+msgid "Something went wrong. We were unable to process your payment."
+msgstr "Coś się nie powiodło. Nie możemy przetworzyć płatności."
+
+#: donate/payments/views.py:614 donate/payments/views.py:723
+msgid "Sorry there was an error processing your payment. Please try again later."
+msgstr "Wystąpił błąd podczas przetwarzania płatności. Proszę spróbować ponownie później."
+
+#: donate/recaptcha/fields.py:18
+msgid "Captcha was invalid. Please try again."
+msgstr "Pole Captcha jest nieprawidłowe. Proszę spróbować ponownie."
+
+#: donate/templates/404.html:4
+msgid "Page not found"
+msgstr "Nie odnaleziono strony"
+
+#: donate/templates/404.html:12
+msgid "Uh oh!"
+msgstr "O nie!"
+
+#: donate/templates/404.html:13
+msgid "Sorry, the page does not exist"
+msgstr "Przepraszamy, strona nie istnieje"
+
+#: donate/templates/404.html:14
+msgid "Go to our home page"
+msgstr "Przejdź na stronę główną"
+
+#: donate/templates/base_master.html:8 donate/templates/pages/base_page_master.html:6 donate/templates/pages/base_page_master.html:13 donate/templates/pages/base_page_master.html:14
+msgctxt "Page title"
+msgid "Donate to Mozilla"
+msgstr "Wspomóż Mozillę"
+
+#: donate/templates/fragments/donate_form.html:12
+msgid "ONE TIME"
+msgstr "JEDNORAZOWO"
+
+#: donate/templates/fragments/donate_form.html:18
+msgid "MONTHLY"
+msgstr "COMIESIĘCZNIE"
+
+#: donate/templates/fragments/donate_form.html:41 donate/templates/fragments/donate_form.html:42 donate/templates/fragments/donate_form.html:105 donate/templates/fragments/donate_form.html:106
+msgid "Other amount"
+msgstr "Inna kwota"
+
+#: donate/templates/fragments/donate_form.html:48 donate/templates/fragments/donate_form.html:112
+msgid "Choose Payment"
+msgstr "Wybierz rodzaj płatności"
+
+#: donate/templates/fragments/donate_form.html:54 donate/templates/fragments/donate_form.html:118 donate/templates/payment/card_master.html:97
+msgid "SECURE"
+msgstr "ZABEZPIECZONE"
+
+#: donate/templates/fragments/donate_form.html:60 donate/templates/fragments/donate_form.html:124 donate/templates/pages/base_page_master.html:134
+msgid "Donate"
+msgstr "Przekaż datek"
+
+#: donate/templates/fragments/donate_form.html:97
+msgid "per month"
+msgstr "na miesiąc"
+
+#: donate/templates/fragments/donate_form_disclaimer_master.html:6 donate/thunderbird/templates/fragments/donate_form_disclaimer.html:12
+#, python-format
+msgid ""
+"Your payment details will be processed by <a href=\"%(braintree_url)s\">Braintree</a>, a PayPal company (for credit/debit cards) or <a href=\"%(paypal_url)s\">PayPal</a>, and a record of your "
+"donation will be stored by Mozilla."
+msgstr ""
+"Informacje o płatności będą przetwarzane przez firmę <a href=\"%(braintree_url)s\">Braintree</a>, będącą częścią firmy PayPal (w przypadku kart płatniczych), lub <a "
+"href=\"%(paypal_url)s\">PayPal</a>, a Mozilla będzie przechowywała jej zapis."
+
+#: donate/templates/fragments/donate_form_disclaimer_master.html:9
+#, python-format
+msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Comiesięczne datki są pobierane każdego miesiąca w ten sam dzień, w który przekazano datek dzisiaj, i będą kontynuowane do czasu anulowania. Aby anulować, wyślij wiadomość na adres <a "
+"href=\"mailto:%(email)s\">%(email)s</a>."
+
+#: donate/templates/fragments/donate_form_disclaimer_master.html:17
+#, python-format
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+msgstr "Inne sposoby wspomagania: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">czek</a> | <a href=\"%(bitcoin_url)s\">Bitcoin</a>"
+
+#: donate/templates/fragments/donate_form_disclaimer_master.html:23
+#, python-format
+msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"mailto:%(email)s\">Send us an email</a>."
+msgstr "Problemy? Zobacz <a href=\"%(faq_url)s\">najczęściej zadawane pytania</a>. Nie ma tam odpowiedzi? <a href=\"mailto:%(email)s\">Wyślij nam wiadomość</a>."
+
+#: donate/templates/fragments/donate_form_disclaimer_master.html:30
+msgid ""
+"Contributions go to the Mozilla Foundation, a 501(c)(3) organization based in Mountain View, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S."
+" to the fullest extent permitted by law."
+msgstr ""
+"Datki są przekazywane Fundacji Mozilla, organizacji non-profit z siedzibą w Mountain View, Kalifornia, do użytku według jej uznania w jej celach charytatywnych. Datki można odliczać od podatku "
+"w Stanach Zjednoczonych w najszerszym zakresie dozwolonym przez prawo."
+
+#: donate/templates/pages/base_page_master.html:26
+msgid "Initiatives"
+msgstr "Działania"
+
+#: donate/templates/pages/base_page_master.html:29
+msgid "Participate"
+msgstr "Weź udział"
+
+#: donate/templates/pages/base_page_master.html:32
+msgid "Internet Health"
+msgstr "Zdrowie Internetu"
+
+#: donate/templates/pages/base_page_master.html:35
+msgid "About Us"
+msgstr "O nas"
+
+#: donate/templates/pages/base_page_master.html:46
+msgid "Menu"
+msgstr "Menu"
+
+#: donate/templates/pages/base_page_master.html:71
+msgid "Protect the internet as a global public resource"
+msgstr "Chroń Internet jako globalny zasób publiczny"
+
+#: donate/templates/pages/base_page_master.html:79
+msgid "Join our email list to take action and stay updated!"
+msgstr "Dołącz do naszej listy, aby podjąć działania i być na bieżąco!"
+
+#: donate/templates/pages/base_page_master.html:80
+msgid "Enter email address"
+msgstr "Wpisz adres e-mail"
+
+#: donate/templates/pages/base_page_master.html:83
+msgid "Sign up"
+msgstr "Subskrybuj"
+
+#: donate/templates/pages/base_page_master.html:91
+msgid "Thanks!"
+msgstr "Dziękujemy!"
+
+#: donate/templates/pages/base_page_master.html:92
+msgid "If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us."
+msgstr "Jeśli jeszcze nigdy nie potwierdzono subskrypcji biuletynu Mozilli, to możesz musieć to zrobić. Sprawdź, czy w skrzynce odbiorczej lub spamie jest wiadomość od nas."
+
+#: donate/templates/pages/base_page_master.html:107
+msgid "More about us"
+msgstr "Więcej o nas"
+
+#: donate/templates/pages/base_page_master.html:111 donate/templates/payment/thank_you_master.html:38 donate/thunderbird/templates/pages/base_page.html:36
+#: donate/thunderbird/templates/payment/thank_you.html:27
+msgid "Twitter"
+msgstr "Twitter"
+
+#: donate/templates/pages/base_page_master.html:117
+msgid "Instagram"
+msgstr "Instagram"
+
+#: donate/templates/pages/base_page_master.html:123
+msgid "GitHub"
+msgstr "GitHub"
+
+#: donate/templates/pages/base_page_master.html:137 donate/thunderbird/templates/pages/base_page.html:59
+msgid "Participation Guidelines"
+msgstr "Wytyczne uczestnictwa"
+
+#: donate/templates/pages/base_page_master.html:140 donate/thunderbird/templates/pages/base_page.html:51
+msgid "Legal"
+msgstr "Podstawa prawna"
+
+#: donate/templates/pages/base_page_master.html:143 donate/thunderbird/templates/pages/base_page.html:54
+msgid "Privacy"
+msgstr "Prywatność"
+
+#: donate/templates/pages/base_page_master.html:146
+msgid "License"
+msgstr "Licencja"
+
+#: donate/templates/pages/base_page_master.html:164
+#, python-format
+msgid ""
+"Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a "
+"%(link_attributes)s>%(site_url)s</a>."
+msgstr ""
+"Mozilla to ogólnoświatowa organizacja non-profit, której celem jest oddanie użytkownikom kontroli nad Internetem i kształtowanie jego przyszłości dla wspólnego dobra. Odwiedź nas na <a "
+"%(link_attributes)s>%(site_url)s</a>."
+
+#: donate/templates/pages/core/campaign_page.html:38 donate/templates/pages/core/ways_to_give_page_master.html:12
+msgctxt "Button"
+msgid "DONATE NOW"
+msgstr "WSPOMÓŻ TERAZ"
+
+#: donate/templates/pages/core/campaign_page.html:52 donate/templates/pages/core/landing_page_master.html:36 donate/templates/payment/card_master.html:159
+msgid "Seal of Charity Navigator 4-Star"
+msgstr "Czterogwiazdkowa nagroda Seal of Charity Navigator"
+
+#: donate/templates/pages/core/campaign_page.html:55 donate/templates/pages/core/landing_page_master.html:39 donate/templates/payment/card_master.html:162
+msgid "Seal of GuideStar Gold 2019"
+msgstr "Złota nagroda Seal of GuideStar 2019"
+
+#: donate/templates/pages/core/campaign_page.html:65
+msgctxt "Header"
+msgid "Donate now"
+msgstr "Wspomóż teraz"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:18
+msgid "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly."
+msgstr "Dziękujemy za kontakt. Utworzyliśmy zgłoszenie i wkrótce się do Ciebie odezwiemy."
+
+#: donate/templates/pages/core/contributor_support_page_master.html:24
+msgid "We will get back to you soon."
+msgstr "Niedługo wyślemy odpowiedź."
+
+#: donate/templates/pages/core/contributor_support_page_master.html:28
+msgid "If you need help with a contribution, fill out this form and we’ll get back to you soon."
+msgstr "Jeśli potrzebujesz pomocy z przekazaniem datku, wypełnij ten formularz, a wkrótce się z Tobą skontaktujemy."
+
+#: donate/templates/pages/core/contributor_support_page_master.html:40
+msgid "Contact Name"
+msgstr "Imię i nazwisko"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:50
+msgid "Language"
+msgstr "Język"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:53
+msgctxt "Option in 'Language' dropdown"
+msgid "None"
+msgstr "Żaden"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:54
+msgid "English"
+msgstr "angielski"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:55
+msgid "French"
+msgstr "francuski"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:56
+msgid "German"
+msgstr "niemiecki"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:57
+msgid "Spanish"
+msgstr "hiszpański"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:58
+msgid "Polish"
+msgstr "polski"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:59
+msgid "Portuguese"
+msgstr "portugalski"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:60
+msgctxt "Option in 'Language' dropdown"
+msgid "Other"
+msgstr "Inny"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:66
+msgid "Subject"
+msgstr "Temat"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:71
+msgid "Description"
+msgstr "Opis"
+
+#: donate/templates/pages/core/contributor_support_page_master.html:75
+#, python-format
+msgid "Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href=\"%(privacy_policy)s\">privacy policy</a> for further information."
+msgstr ""
+"Mozilla będzie używać przesłanych informacji wyłącznie w celu komunikowania się z Tobą na temat podania. Nasze <a href=\"%(privacy_policy)s\">zasady ochrony prywatności</a> zawierają więcej "
+"informacji."
+
+#: donate/templates/pages/core/contributor_support_page_master.html:77
+msgid "Submit"
+msgstr "Wyślij"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:4 donate/templates/pages/core/ways_to_give_page_master.html:11
+msgid "Ways to Give"
+msgstr "Sposoby wsparcia"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:16
+msgid "Credit / Debit and PayPal"
+msgstr "Karta płatnicza i PayPal"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:18
+#, python-format
+msgid "<a href=\"%(ways_to_give_link)s\">Go to this link</a> to make a secure online donation right now."
+msgstr "<a href=\"%(ways_to_give_link)s\">Na tej stronie</a> można szybko i bezpiecznie przekazać datek przez Internet."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:23 donate/thunderbird/templates/pages/core/ways_to_give_page.html:7
+msgid "Bank Transfer / SEPA"
+msgstr "Przelew bankowy/SEPA"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:24
+msgid "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
+msgstr "Przyjmujemy datki w euro przez przelew SEPA (Jednolity obszar płatności w euro) i w funtach brytyjskich przez przelew BACS."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:25
+msgid "Please remember that donations are deductible for U.S. income tax purposes only."
+msgstr "Prosimy pamiętać, że datki można odliczać od podatku dochodowego tylko w Stanach Zjednoczonych."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:27 donate/thunderbird/templates/pages/core/ways_to_give_page.html:10
+#, python-format
+msgid "If your bank requests our physical address, it is %(address)s."
+msgstr "Jeśli bank wymaga adresu: %(address)s."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:33 donate/thunderbird/templates/pages/core/ways_to_give_page.html:17
+msgid "Euros:"
+msgstr "Euro:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:35 donate/templates/pages/core/ways_to_give_page_master.html:48 donate/thunderbird/templates/pages/core/ways_to_give_page.html:19
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:32
+msgid "Account Currency:"
+msgstr "Waluta konta:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:35 donate/thunderbird/templates/pages/core/ways_to_give_page.html:19
+msgid "Euro (EUR)"
+msgstr "Euro (EUR)"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:36 donate/templates/pages/core/ways_to_give_page_master.html:49 donate/thunderbird/templates/pages/core/ways_to_give_page.html:20
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:33
+msgid "Receiving Bank (Pay to):"
+msgstr "Bank odbiorcy (płatność do):"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:37 donate/templates/pages/core/ways_to_give_page_master.html:50 donate/thunderbird/templates/pages/core/ways_to_give_page.html:21
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:34
+msgid "City & Country/Region:"
+msgstr "Miasto i kraj/region:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:37 donate/thunderbird/templates/pages/core/ways_to_give_page.html:21
+msgid "Frankfurt, Germany"
+msgstr "Frankfurt, Niemcy"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:38 donate/templates/pages/core/ways_to_give_page_master.html:56 donate/thunderbird/templates/pages/core/ways_to_give_page.html:22
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:40
+msgid "SWIFT/BIC Code:"
+msgstr "Kod SWIFT/BIC:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:39 donate/templates/pages/core/ways_to_give_page_master.html:53 donate/thunderbird/templates/pages/core/ways_to_give_page.html:23
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:37
+msgid "Beneficiary Name (For credit to):"
+msgstr "Nazwa odbiorcy:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:40 donate/templates/pages/core/ways_to_give_page_master.html:57 donate/thunderbird/templates/pages/core/ways_to_give_page.html:24
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:41
+msgid "IBAN:"
+msgstr "IBAN:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:46 donate/thunderbird/templates/pages/core/ways_to_give_page.html:30
+msgid "British Pound Sterling:"
+msgstr "Funt szterling:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:48 donate/thunderbird/templates/pages/core/ways_to_give_page.html:32
+msgid "British Pound Sterling (GBP)"
+msgstr "Funt szterling (GBP)"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:50 donate/thunderbird/templates/pages/core/ways_to_give_page.html:34
+msgid "London, United Kingdom"
+msgstr "Londyn, Zjednoczone Królestwo"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:51 donate/thunderbird/templates/pages/core/ways_to_give_page.html:35
+msgid "Bank Sort Code:"
+msgstr "Kod banku:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:52 donate/thunderbird/templates/pages/core/ways_to_give_page.html:36
+msgid "Account Number (8 digits):"
+msgstr "Numer konta (8-cyfrowy):"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:63
+msgid "Check (via postal service)"
+msgstr "Czek (pocztą)"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:67
+#, python-format
+msgid "Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “%(payee)s”."
+msgstr "Prosimy wysłać czek <strong>z adresem e-mail w wierszu informacji</strong> i odbiorcą „%(payee)s”."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:70
+msgid "Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
+msgstr "Prosimy pamiętać, że Fundacja Mozilla może przyjmować tylko czeki w dolarach amerykańskich wystawione w banku amerykańskim. Prosimy <strong>nie</strong> wysyłać gotówki."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:84
+msgid "Currencies"
+msgstr "Waluty"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:85
+msgid "Select your currency to make a secure online donation:"
+msgstr "Wybierz walutę, aby w bezpieczny sposób przekazać datek przez Internet:"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:95
+msgid "Bitcoin"
+msgstr "Bitcoin"
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:97
+msgid ""
+"The Mozilla Foundation is a California non-profit corporation exempt from United States federal income taxation under IRC 501(c)(3) and a public charity classified under IRC sections 170(b)(1)(A) "
+"and 509(a)(1). Bitcoin donations Mozilla receives are considered charitable contributions under U.S. federal tax laws, to be used in its discretion for its charitable purposes. Because the IRS has "
+"indicated that it will treat bitcoin as property for U.S. tax purposes (see IRS Notice 2014-21), donations of bitcoin may be subject to special rules as to the amount of your charitable deduction, "
+"the documentation that must be provided to claim a tax deduction, or other matters."
+msgstr ""
+"Fundacja Mozilla to spółka non-profit z siedzibą w Kalifornii, zwolniona z federalnego podatku dochodowego Stanów Zjednoczonych według sekcji 501(c)(3) kodeksu podatkowego oraz publiczna organizacja"
+" charytatywna sklasyfikowana według sekcji 170(b)(1)(A) i 509(a)(1) kodeksu podatkowego. Datki w formie bitcoinów otrzymywane przez Mozillę są traktowane jako wpłaty charytatywne według federalnego "
+"prawa podatkowego Stanów Zjednoczonych, do użytku według jej uznania w jej celach charytatywnych. Ponieważ Urząd skarbowy oświadczył, że w kwestiach podatkowych Stanów Zjednoczonych będzie on "
+"traktował bitcoiny jako mienie (patrz: Zawiadomienie 2014-21 Urzędu skarbowego), datki w formie bitcoinów mogą być przedmiotem specjalnych zasad w zakresie kwoty odliczonej od podatku, dokumentów "
+"wymaganych do odliczenia i innych kwestii."
+
+#: donate/templates/pages/core/ways_to_give_page_master.html:102
+#, python-format
+msgid "Learn more about bitcoin donations <a href=\"%(bitcoin_wiki)s\">here</a>. To donate bitcoin, <a href=\"%(bitcoin_donate)s\">please visit this link.</a>"
+msgstr "<a href=\"%(bitcoin_wiki)s\">Ta strona</a> zawiera więcej informacji o datkach w bitcoinach. <a href=\"%(bitcoin_donate)s\">Na tej stronie</a> można wykonać taki datek."
+
+#: donate/templates/payment/card_master.html:4
+msgid "Your information"
+msgstr "Twoje informacje"
+
+#: donate/templates/payment/card_master.html:20
+#, python-format
+msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
+msgstr "Przekazujesz datek w wysokości <span class=\"%(span_class)s\">%(formatted_amount)s</span> na miesiąc"
+
+#: donate/templates/payment/card_master.html:22
+#, python-format
+msgid "You are donating <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Przekazujesz datek w wysokości <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+
+#: donate/templates/payment/card_master.html:26
+msgid "Change amount"
+msgstr "Zmień kwotę"
+
+#: donate/templates/payment/card_master.html:34
+msgid "Donation Amount"
+msgstr "Kwota datku"
+
+#: donate/templates/payment/card_master.html:39
+msgid "Confirm"
+msgstr "Potwierdź"
+
+#: donate/templates/payment/card_master.html:44
+msgid "Your Details"
+msgstr "Twoje informacje"
+
+#: donate/templates/payment/card_master.html:60 donate/templates/payment/card_upsell_master.html:34 donate/templates/payment/newsletter_signup_master.html:30
+#: donate/templates/payment/paypal_upsell_master.html:34
+msgid "There were some errors with your form. Please amend the fields highlighted below."
+msgstr "W formularzu wystąpiły błędy. Proszę poprawić wyżej wyróżnione pola."
+
+#: donate/templates/payment/card_master.html:64
+msgid "We were unable to take payment because the payment processor reported an error with your address information:"
+msgstr "Nie można przyjąć płatności, ponieważ firma przetwarzająca płatności zgłosiła błąd w danych adresowych:"
+
+#: donate/templates/payment/card_master.html:68
+msgid "Please correct these errors and try again."
+msgstr "Proszę poprawić te błędy i spróbować ponownie."
+
+#: donate/templates/payment/card_master.html:91
+msgid "Payment"
+msgstr "Płatność"
+
+#: donate/templates/payment/card_master.html:106
+msgid "Card number"
+msgstr "Numer karty"
+
+#: donate/templates/payment/card_master.html:112
+msgid "Expiration date"
+msgstr "Data ważności"
+
+#: donate/templates/payment/card_master.html:117
+msgid "CVV"
+msgstr "Kod CVV"
+
+#: donate/templates/payment/card_master.html:126
+#, python-format
+msgid ""
+"I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I understand that "
+"I must cancel at least 5 days before the next scheduled donation by email to <a href='mailto:%(email)s'>%(email)s</a>, and that I may only request a refund within 15 days from the date of a "
+"donation."
+msgstr ""
+"Upoważniam Fundację Mozilla do obciążenia mojej karty w wysokości podanej powyżej i robienia tego co miesiąc, tego samego dnia miesiąca od dzisiaj aż do czasu anulowania. Rozumiem, że muszę anulować"
+" co najmniej 5 dni przed następnym zaplanowanym datkiem pisząc wiadomość na adres <a href='mailto:%(email)s'>%(email)s</a>, oraz że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty "
+"przekazania datku."
+
+#: donate/templates/payment/card_master.html:128
+msgid "I authorize Mozilla Foundation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
+msgstr "Upoważniam Fundację Mozilla do obciążenia mojej karty w wysokości podanej powyżej. Rozumiem, że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty przekazania datku."
+
+#: donate/templates/payment/card_master.html:144
+#, python-format
+msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span> per month"
+msgstr "Przekaż datek w wysokości <span class=\"%(span_class)s\">%(formatted_amount)s</span> na miesiąc"
+
+#: donate/templates/payment/card_master.html:146
+#, python-format
+msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+msgstr "Przekaż datek w wysokości <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+
+#: donate/templates/payment/card_master.html:155
+msgid "Your donation helps keep the Web open and free. Thank you in advance for your gift."
+msgstr "Twój datek pomaga zachować otwarty i wolny Internet. Z góry dziękujemy za Twoją darowiznę."
+
+#: donate/templates/payment/card_upsell_master.html:4 donate/templates/payment/paypal_upsell_master.html:4 donate/templates/payment/thank_you_master.html:4
+msgid "Thank you"
+msgstr "Dziękujemy"
+
+#: donate/templates/payment/card_upsell_master.html:13 donate/templates/payment/newsletter_signup_master.html:13 donate/templates/payment/paypal_upsell_master.html:13
+#: donate/templates/payment/thank_you_master.html:12 donate/thunderbird/templates/payment/newsletter_signup.html:6
+msgid "Thank you for your generous gift"
+msgstr "Dziękuję za hojną darowiznę"
+
+#: donate/templates/payment/card_upsell_master.html:17 donate/templates/payment/paypal_upsell_master.html:17
+msgid "We’d love to have you as a sustaining supporter of Mozilla. <b>Could you add a monthly donation starting next month?</b>"
+msgstr "Mamy nadzieję, że to dopiero początek naszej współpracy. <b>Może od następnego miesiąca zaczniesz comiesięczny datek?</b>"
+
+#: donate/templates/payment/card_upsell_master.html:21 donate/templates/payment/paypal_upsell_master.html:21
+msgid "Yes, I will give:"
+msgstr "Tak, przekażę:"
+
+#: donate/templates/payment/card_upsell_master.html:40
+msgid "Monthly"
+msgstr "Comiesięcznie"
+
+#: donate/templates/payment/card_upsell_master.html:48
+#, python-format
+msgid ""
+"I authorize Mozilla Foundation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month afterwards until I "
+"cancel. I understand that I must cancel at least 5 days before the next scheduled donation by email to %(email)s, and that I may only request a refund within 15 days from the date of a donation."
+msgstr ""
+"Upoważniam Fundację Mozilla do obciążenia mojej karty w wysokości podanej powyżej i robienia tego co miesiąc, od tego samego dnia następnego miesiąca aż do czasu anulowania. Rozumiem, że muszę "
+"anulować co najmniej 5 dni przed następnym zaplanowanym datkiem pisząc wiadomość na adres %(email)s, oraz że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty przekazania datku."
+
+#: donate/templates/payment/card_upsell_master.html:53
+msgid "Donate Monthly"
+msgstr "Comiesięczny datek"
+
+#: donate/templates/payment/card_upsell_master.html:56 donate/templates/payment/newsletter_signup_master.html:42
+msgid "No Thanks"
+msgstr "Nie, dziękuję"
+
+#: donate/templates/payment/newsletter_signup_master.html:4
+msgid "Stay in touch"
+msgstr "Pozostań w kontakcie"
+
+#: donate/templates/payment/newsletter_signup_master.html:14
+msgid "Protect the internet as a global public resource. Join our email list to take action and stay updated!"
+msgstr "Chroń Internet jako globalny zasób publiczny. Dołącz do naszej listy, aby podjąć działania i być na bieżąco!"
+
+#: donate/templates/payment/newsletter_signup_master.html:40
+msgid "Sign Up"
+msgstr "Subskrybuj"
+
+#: donate/templates/payment/paypal_upsell_master.html:41
+msgid "/ Monthly"
+msgstr "/ miesięcznie"
+
+#: donate/templates/payment/paypal_upsell_master.html:52
+msgid "No"
+msgstr "Nie"
+
+#: donate/templates/payment/thank_you_master.html:15
+msgid "Your donation will go right to work protecting the web, keeping it open and available to all."
+msgstr "Twój datek od razu przyczyni się do ochrony Internetu, aby pozostał otwarty i dostępny dla wszystkich."
+
+#: donate/templates/payment/thank_you_master.html:15
+#, python-format
+msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href=\"mailto:%(email)s\">%(email)s</a>."
+msgstr ""
+"Wysłaliśmy potwierdzenie datku na Twój adres e-mail. Jeśli nie możesz go znaleźć, to prosimy sprawdzić w folderze z niechcianymi wiadomościami/spamem, a następnie skontaktować się z nami pod adresem"
+" <a href=\"mailto:%(email)s\">%(email)s</a>."
+
+#: donate/templates/payment/thank_you_master.html:17
+msgid "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!"
+msgstr "Czy możesz pomnożyć swój udział, opowiadając o ważnej pracy, jaką wykonuje Mozilla? Jeszcze raz dziękujemy!"
+
+#: donate/templates/payment/thank_you_master.html:22
+msgctxt "Used as a tweet"
+msgid "I donated to @mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
+msgstr "Wspomagam dzisiaj @mozilla, ponieważ #KochamInternet. Dołącz do mnie, aby pomóc w walce o lepszy i zdrowszy Internet dla wszystkich."
+
+#: donate/templates/payment/thank_you_master.html:23
+msgctxt "Email subject line"
+msgid "I donated to Mozilla today"
+msgstr "Wspomagam dzisiaj Mozillę"
+
+#: donate/templates/payment/thank_you_master.html:27 donate/thunderbird/templates/payment/thank_you.html:16
+msgid "Share on Facebook"
+msgstr "Udostępnij na Facebooku"
+
+#: donate/templates/payment/thank_you_master.html:31 donate/thunderbird/templates/pages/base_page.html:42 donate/thunderbird/templates/payment/thank_you.html:20
+msgid "Facebook"
+msgstr "Facebook"
+
+#: donate/templates/payment/thank_you_master.html:34 donate/thunderbird/templates/payment/thank_you.html:23
+msgid "Share on Twitter"
+msgstr "Udostępnij na Twitterze"
+
+#: donate/templates/payment/thank_you_master.html:44 donate/thunderbird/templates/payment/thank_you.html:33
+msgctxt "Share button"
+msgid "Email"
+msgstr "E-mail"
+
+#: donate/templates/payment/thank_you_master.html:54 donate/thunderbird/templates/payment/thank_you.html:43
+msgctxt "Share button"
+msgid "Link"
+msgstr "Odnośnik"
+
+#: donate/templates/payment/thank_you_master.html:55 donate/thunderbird/templates/payment/thank_you.html:44
+msgid "Copied"
+msgstr "Skopiowano"
+
+#: donate/templates/tags/primarynav.html:10
+msgid "Back"
+msgstr "Wstecz"
+
+#: donate/thunderbird/templates/base.html:5 donate/thunderbird/templates/pages/base_page.html:7 donate/thunderbird/templates/pages/base_page.html:14
+#: donate/thunderbird/templates/pages/base_page.html:15
+msgctxt "Page title"
+msgid "Give to Thunderbird"
+msgstr "Wspomóż Thunderbirda"
+
+#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:7
+#, python-format
+msgid "Other ways to give: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">Check</a>"
+msgstr "Inne sposoby wspomagania: <a href=\"%(wire_transfer_url)s\">SEPA/BACS</a> | <a href=\"%(check_url)s\">czek</a>"
+
+#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:15
+#, python-format
+msgid "Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, fill out <a href=\"%(help_url)s\">this form</a>."
+msgstr ""
+"Comiesięczne datki są pobierane każdego miesiąca w ten sam dzień, w który przekazano datek dzisiaj, i będą kontynuowane do czasu anulowania. Aby anulować, wypełnij <a href=\"%(help_url)s\">ten "
+"formularz</a>."
+
+#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:21
+#, python-format
+msgid "Problems donating? Visit our <a href=\"%(faq_url)s\">FAQ</a> for answers to most common questions. Still have problems? <a href=\"%(help_url)s\">Contact us</a>."
+msgstr "Problemy? Zobacz <a href=\"%(faq_url)s\">najczęściej zadawane pytania</a>. Nie ma tam odpowiedzi? <a href=\"%(help_url)s\">Skontaktuj się z nami</a>."
+
+#: donate/thunderbird/templates/fragments/donate_form_disclaimer.html:27
+msgid ""
+"Contributions go to MZLA Technologies Corporation, a California corporation wholly owned by the Mozilla Foundation. Funds will be reserved for use in the Thunderbird project. Contributions are not "
+"tax-deductible as charitable contributions."
+msgstr ""
+"Datki trafiają do MZLA Technologies Corporation, spółki z siedzibą w Kalifornii należącej w całości do Fundacji Mozilla. Środki zostaną zarezerwowane do wykorzystania w projekcie Thunderbird. Datków"
+" nie można odliczać od podatku jako datki na cele charytatywne."
+
+#: donate/thunderbird/templates/pages/base_page.html:57
+msgid "Cookies"
+msgstr "Ciasteczka"
+
+#: donate/thunderbird/templates/pages/base_page.html:69
+#, python-format
+msgid "Portions of this content are ©1998–%(current_year)s by individual contributors. Content available under a <a %(link_attributes)s>Creative Commons license</a>"
+msgstr "Fragmenty treści tej witryny: ©1998–%(current_year)s. Prawa autorskie należą do poszczególnych współtwórców. Treść strony dostępna na licencji <a %(link_attributes)s>Creative Commons</a>."
+
+#: donate/thunderbird/templates/pages/core/landing_page.html:7
+#, python-format
+msgid "Your download should have begun automatically. If it didn’t work, <a href=\"%(url)s\">try downloading again here</a>."
+msgstr "Pobieranie powinno rozpocząć się samoczynnie. Jeśli nie, to <a href=\"%(url)s\">spróbuj jeszcze raz</a>."
+
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:8
+msgid "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer."
+msgstr "Przyjmujemy datki w euro przez przelew SEPA (Jednolity obszar płatności w euro) i w funtach brytyjskich przez przelew BACS."
+
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:25 donate/thunderbird/templates/pages/core/ways_to_give_page.html:42
+msgid "Memo field:"
+msgstr "Pole informacji:"
+
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:47
+#, python-format
+msgid "Please send a check <strong>with “%(thunderbird)s” on the memo line</strong>, and payable (payee) to “%(payee)s”."
+msgstr "Prosimy wysłać czek <strong>z „%(thunderbird)s” w wierszu informacji</strong> i odbiorcą „%(payee)s”."
+
+#: donate/thunderbird/templates/pages/core/ways_to_give_page.html:50
+msgid "Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash."
+msgstr "Prosimy pamiętać, że możemy przyjmować tylko czeki w dolarach amerykańskich wystawione w banku amerykańskim. Prosimy <strong>nie</strong> wysyłać gotówki."
+
+#: donate/thunderbird/templates/payment/card.html:6
+#| msgid "Thank you for your generous gift"
+msgid "Thank you in advance for your gift."
+msgstr "Z góry dziękujemy za Twoją darowiznę."
+
+#: donate/thunderbird/templates/payment/card.html:12
+#, python-format
+msgid ""
+"I authorize MZLA Technologies Corporation to automatically charge my card every month in the amount indicated above, starting today and continuing each month on the same day, until I cancel. I "
+"understand that I must cancel at least 5 days before the next scheduled donation by <a href='%(help_url)s'>submitting a request</a>, and that I may only request a refund within 15 days from the date"
+" of a donation."
+msgstr ""
+"Upoważniam MZLA Technologies Corporation do obciążenia mojej karty w wysokości podanej powyżej i robienia tego co miesiąc, tego samego dnia miesiąca od dzisiaj aż do czasu anulowania. Rozumiem, że "
+"muszę anulować co najmniej 5 dni przed następnym zaplanowanym datkiem <a href='%(help_url)s'>wysyłając podanie</a>, oraz że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty przekazania"
+" datku."
+
+#: donate/thunderbird/templates/payment/card.html:14
+msgid "I authorize MZLA Technologies Corporation to charge my card in the amount indicated above. I understand that I may only request a refund within 15 days from the date of the donation."
+msgstr "Upoważniam MZLA Technologies Corporation do obciążenia mojej karty w wysokości podanej powyżej. Rozumiem, że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty przekazania datku."
+
+#: donate/thunderbird/templates/payment/card_upsell.html:6 donate/thunderbird/templates/payment/paypal_upsell.html:6
+msgid "We’d love to have you as a sustaining supporter of Thunderbird. <b>Could you add a monthly donation starting next month?</b>"
+msgstr "Mamy nadzieję, że to dopiero początek naszej współpracy. <b>Może od następnego miesiąca zaczniesz comiesięczny datek?</b>"
+
+#: donate/thunderbird/templates/payment/card_upsell.html:10
+#, python-format
+msgid ""
+"I authorize MZLA Technologies Corporation to automatically charge my card every month in the amount indicated above, starting next month on the same date as today, and continuing each month "
+"afterwards until I cancel. I understand that I must cancel at least 5 days before the next scheduled donation by <a href=\"%(help_url)s\">submitting this form</a>, and that I may only request a "
+"refund within 15 days from the date of a donation."
+msgstr ""
+"Upoważniam MZLA Technologies Corporation do obciążenia mojej karty w wysokości podanej powyżej i robienia tego co miesiąc, od tego samego dnia następnego miesiąca aż do czasu anulowania. Rozumiem, "
+"że muszę anulować co najmniej 5 dni przed następnym zaplanowanym datkiem <a href=\"%(help_url)s\">wysyłając ten formularz</a>, oraz że mogę zażądać zwrotu pieniędzy wyłącznie w ciągu 15 dni od daty "
+"przekazania datku."
+
+#: donate/thunderbird/templates/payment/thank_you.html:6
+#, python-format
+msgid "We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href=\"%(url)s\">this form</a>."
+msgstr ""
+"Wysłaliśmy potwierdzenie datku na Twój adres e-mail. Jeśli nie możesz go znaleźć, to prosimy sprawdzić w folderze z niechcianymi wiadomościami/spamem, a następnie skontaktować się z nami pod adresem"
+" za pomocą <a href=\"%(url)s\">tego formularza</a>."
+
+#: donate/thunderbird/templates/payment/thank_you.html:7
+msgid "Lastly, can you multiply your impact by sharing about the important work Thunderbird is doing? Thank you again!"
+msgstr "Czy możesz pomnożyć swój udział, opowiadając o ważnej pracy, jaką wykonuje projekt Thunderbird? Jeszcze raz dziękujemy!"
+
+#: donate/thunderbird/templates/payment/thank_you.html:11
+msgctxt "Used as a tweet"
+msgid "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy."
+msgstr "Wspomagam dzisiaj @mozthunderbird, aby #UwolnićSkrzynkę. Dołącz do mnie, aby wspierać prywatność komunikacji."
+
+#: donate/thunderbird/templates/payment/thank_you.html:12
+msgctxt "Email subject line"
+msgid "I donated to Thunderbird today"
+msgstr "Wspomagam dzisiaj Thunderbirda"
+
+#~ msgid "Contributions go towards the Thunderbird project."
+#~ msgstr "Datki są przekazywane na rzecz projektu Thunderbird."
+
+#~ msgid "Donate <span class=\"%(span_class)s\">%(formatted_amount)s per month</span>"
+#~ msgstr "Przekaż datek w wysokości <span class=\"%(span_class)s\">%(formatted_amount)s</span>"
+
+#~ msgid "I authorize Mozilla Foundation to charge my card in the amount shown below and to continue doing so each month until I cancel."
+#~ msgstr "Upoważniam Fundację Mozilla do obciążenia mojej karty w wysokości podanej poniżej i robienia tego co miesiąc, aż do czasu anulowania."
+
+#~ msgid "Yes"
+#~ msgstr "Tak"
+
+#~ msgctxt "Facebook post"
+#~ msgid "I donated to Mozilla today because I #lovetheweb. Join me and help fight for a better and healthier internet, for all."
+#~ msgstr "Wspomagam dzisiaj Mozillę, ponieważ #KochamInternet. Dołącz do mnie, aby pomóc w walce o lepszy i zdrowszy Internet dla wszystkich."
+
+#~ msgctxt "Facebook post"
+#~ msgid "I donated to Thunderbird today to #freetheinbox. Join me to support communication privacy."
+#~ msgstr "Wspomagam dzisiaj Thunderbirda, aby #UwolnićSkrzynkę. Dołącz do mnie, aby wspierać prywatność komunikacji."
+
+#~ msgid "Thank you! Your transaction reference is: %(id)s"
+#~ msgstr "Dziękujemy! Numer referencyjny transakcji: %(id)s"
+
+#~ msgid "One last thing…"
+#~ msgstr "Jeszcze jedno…"

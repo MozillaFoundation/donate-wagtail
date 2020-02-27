@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-30 21:06+0000\n"
+"PO-Revision-Date: 2019-10-09 13:11+0000\n"
+"Last-Translator: passionforlife <eloli@foxmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pontoon\n"
+
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
+#: source/js/components/currency-selector.js:91
+msgid "per month"
+msgstr "每月"
+
+#: donate/frontend/_js/main.compiled.js:16 maintenance/static/_js/main.js:16
+msgid "Other amount"
+msgstr "其他金额"
+
+#: donate/frontend/_js/payments-card.compiled.js:1
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
+#: donate/frontend/_js/payments-paypal.compiled.js:1
+#: source/js/components/paypal.js:13 source/js/payments-card.js:15
+msgid "An error occurred. Please reload the page or try again later."
+msgstr "遇到错误。请刷新页面或稍后重试。"
+
+#: donate/frontend/_js/payments-card.compiled.js:1
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
+#: donate/frontend/_js/payments-paypal.compiled.js:1
+#: source/js/components/paypal.js:16 source/js/payments-card.js:131
+msgid "There was an error processing your payment. Please try again."
+msgstr "在处理您付款时遇到错误，请重试。"
+
+#: donate/frontend/_js/payments-card.compiled.js:1
+#: source/js/payments-card.js:152
+msgid "Some of the fields below are invalid. Please correct the invalid fields and try again."
+msgstr "下方存在无效字段。请修正并重试。"
+
+#: donate/frontend/_js/payments-paypal-upsell.compiled.js:1
+#: donate/frontend/_js/payments-paypal.compiled.js:1
+#: source/js/components/paypal.js:88
+msgid "Payment cancelled"
+msgstr "已取消付款"
