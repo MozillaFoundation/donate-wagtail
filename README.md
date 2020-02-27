@@ -205,9 +205,15 @@ Further more, in order for SSO authentication to succeed, their account must be 
 
 ## Translations
 
-Translations of UI strings from Django are stored in [the donate-l10n repository](https://github.com/mozilla-l10n/donate-l10n). Translations are happening in Pontoon, in multiple projects: [Mozilla Foundation Donate](https://pontoon.mozilla.org/projects/mozilla-donate-website/), and [Thunderbird Donate](https://pontoon.mozilla.org/projects/donate-thunderbird-content/).
+Translation is happening on [Pontoon](https://pontoon.mozilla.org), in multiple projects where you can participate:
 
-The latest source strings are regularly exposed to Pontoon by a Localization PM using the following process:
+| Project on Pontoon                          | Source repository                  |
+|---------------------------------------------|------------------------------------|
+[Mozilla & Thunderbird UI strings (Django)](https://pontoon.mozilla.org/projects/mozilla-donate-website/) | [Repository on GitHub](https://github.com/mozilla-l10n/donate-l10n)
+[Mozilla (CMS content)](https://pontoon.mozilla.org/projects/mozilla-donate-website/) | [Repository on GitHub](https://github.com/mozilla-l10n/mozilla-donate-content)
+[Thunderbird (CMS content)](https://pontoon.mozilla.org/projects/donate-thunderbird-content/) | [Repository on GitHub](https://github.com/mozilla-l10n/thunderbird-donate-content)
+
+The latest UI source strings are regularly exposed to Pontoon by a Localization PM using the process below. The CMS strings are automatically synchronized with the repositories.
 
 ### Initial setup:
 - Clone the `donate-l10n` repository locally.
