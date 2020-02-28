@@ -52,6 +52,8 @@ coverage.xml
 .hypothesis/
 
 # Translations
+*.po
+*.pot
 *.mo
 *.ftl
 translations_github_commit_*
