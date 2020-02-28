@@ -210,7 +210,7 @@ Translation is happening on [Pontoon](https://pontoon.mozilla.org), in multiple 
 | Project on Pontoon                          | Source repository                  |
 |---------------------------------------------|------------------------------------|
 [Mozilla & Thunderbird UI strings (Django)](https://pontoon.mozilla.org/projects/mozilla-donate-website/) | [Repository on GitHub](https://github.com/mozilla-l10n/donate-l10n)
-[Mozilla (CMS content)](https://pontoon.mozilla.org/projects/mozilla-donate-website/) | [Repository on GitHub](https://github.com/mozilla-l10n/mozilla-donate-content)
+[Mozilla (CMS content)](https://pontoon.mozilla.org/projects/donate-mozilla-content/) | [Repository on GitHub](https://github.com/mozilla-l10n/mozilla-donate-content)
 [Thunderbird (CMS content)](https://pontoon.mozilla.org/projects/donate-thunderbird-content/) | [Repository on GitHub](https://github.com/mozilla-l10n/thunderbird-donate-content)
 
 The latest UI source strings are regularly exposed to Pontoon by a Localization PM using the process below. The CMS strings are automatically synchronized with the repositories.
