@@ -53,6 +53,9 @@ coverage.xml
 
 # Translations
 *.mo
+*.ftl
+translations_github_commit_*
+translations.tar
 
 # Django stuff:
 *.log
