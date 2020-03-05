@@ -29,7 +29,7 @@ mozilla-django-oidc = "==1.2.3"
 redlock = {git = "https://github.com/glasslion/redlock.git",ref = "7f873cc362eefa7f7adee8d4913e64f87c1fd1c9"}
 requests= "*"
 rq = "==1.2.0"
-sentry-sdk = "==0.14.2"
+sentry-sdk = "==0.14.1"
 stripe = ">=2.40.0,<3"
 wagtail = "==2.6.3"
 wagtail-factories = "*"
