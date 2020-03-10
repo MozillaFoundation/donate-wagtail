@@ -82,20 +82,24 @@ class DonationPage(TranslatablePageMixin, Page):
         if not custom_presets:
             return initial_currency_info
 
-        custom_presets.sort(reverse=True)
         initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
         return initial_currency_info
 
+    def get_initial_amount(self, request):
+        amount = request.GET.get('amount', 0)
+        return Decimal(amount).quantize(Decimal('0.01'))
+
     def get_context(self, request):
         ctx = super().get_context(request)
-        initial_currency = self.get_initial_currency(request)
         initial_frequency = self.get_initial_frequency(request)
+        initial_currency = self.get_initial_currency(request)
+        initial_currency_info = self.get_initial_currency_info(request, initial_currency, initial_frequency)
+        initial_amount = self.get_initial_amount(request)
         ctx.update({
             'currencies': self.currencies,
-            'initial_currency_info': self.get_initial_currency_info(
-                request, initial_currency, initial_frequency
-            ),
+            'initial_currency_info': initial_currency_info,
             'initial_frequency': initial_frequency,
+            'initial_amount': initial_amount,
             'braintree_params': settings.BRAINTREE_PARAMS,
             'braintree_form': BraintreePaypalPaymentForm(
                 initial={
