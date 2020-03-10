@@ -52,7 +52,12 @@ coverage.xml
 .hypothesis/
 
 # Translations
+*.po
+*.pot
 *.mo
+*.ftl
+translations_github_commit_*
+translations.tar
 
 # Django stuff:
 *.log
