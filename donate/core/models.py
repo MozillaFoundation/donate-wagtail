@@ -72,15 +72,37 @@ class DonationPage(TranslatablePageMixin, Page):
 
     def get_initial_currency_info(self, request, initial_currency, initial_frequency):
         initial_currency_info = self.currencies[initial_currency]
+
         # Check if presets have been specified in a query arg
         custom_presets = request.GET.get('presets', '').split(',')
         try:
-            custom_presets = [Decimal(p).quantize(Decimal('0.01')) for p in custom_presets]
+            min_amount = initial_currency_info.get('minAmount', 0)
+            custom_presets = [
+                amount for amount in
+                [
+                    Decimal(value).quantize(Decimal('0.01'))
+                    if float(value) >= min_amount else None
+                    for value in custom_presets
+                ]
+                if amount
+            ]
         except InvalidOperation:
+            return initial_currency_info
+        except ValueError:
             return initial_currency_info
 
         if not custom_presets:
             return initial_currency_info
+
+        if len(custom_presets) < 4:
+            return initial_currency_info
+
+        sorting = request.GET.get('sort', False)
+
+        if sorting == 'true':
+            custom_presets.sort()
+        elif sorting == 'reverse':
+            custom_presets.sort(reverse=True)
 
         initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
         return initial_currency_info
