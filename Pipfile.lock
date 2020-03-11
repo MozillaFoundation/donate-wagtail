@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "39ebf289e8e71b16d892322e5dacd29f1aff8946cf87aeccf20777bfb3e890fc"
+            "sha256": "6a8fcfa6305dd5d8f0f30c37e85d3370bec653c09940c08b9ea80c6fe4d83a87"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -42,10 +42,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:3319562f183f760f18f186914fc753f6a9c76c5783ba902fe75a934dd140bad8",
-                "sha256:cfb27bdf426b272d2bb336785eacb4860d8ba936ea9cc19f35fdab37f1eaa71e"
+                "sha256:1109f36e658de2097d1e466842d6634a6b66bb9d3779abe16698171360e1ae5f",
+                "sha256:39e903e1d1ae862e469b4d5f15dc6770a7c9c81da9fcffb1a40f551ea36acd35"
             ],
-            "version": "==1.15.6"
+            "version": "==1.15.16"
         },
         "braintree": {
             "hashes": [
@@ -411,9 +411,10 @@
         },
         "pycparser": {
             "hashes": [
-                "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
+                "sha256:2d475327684562c3a96cc71adf7dc8c4f0565175cf86b6d7a404ff4c771f15f0",
+                "sha256:7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"
             ],
-            "version": "==2.19"
+            "version": "==2.20"
         },
         "pygit2": {
             "hashes": [
@@ -431,6 +432,7 @@
                 "sha256:de6c170dc09878e98424430ed6ba2934c01d811fedbc4cdfd71ec1dcd98487e2",
                 "sha256:ed9d7a3f6695ecb7b304e5aa2b91e96a04c3cf2fe120a63b4f2eacdd8d2b065e"
             ],
+            "index": "pypi",
             "version": "==1.0.3"
         },
         "pyopenssl": {
@@ -512,10 +514,10 @@
         },
         "sqlparse": {
             "hashes": [
-                "sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177",
-                "sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873"
+                "sha256:022fb9c87b524d1f7862b3037e541f68597a730a8843245c349fc93e1643dc4e",
+                "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"
             ],
-            "version": "==0.3.0"
+            "version": "==0.3.1"
         },
         "stripe": {
             "hashes": [
