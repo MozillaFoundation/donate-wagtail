@@ -72,30 +72,56 @@ class DonationPage(TranslatablePageMixin, Page):
 
     def get_initial_currency_info(self, request, initial_currency, initial_frequency):
         initial_currency_info = self.currencies[initial_currency]
+
         # Check if presets have been specified in a query arg
         custom_presets = request.GET.get('presets', '').split(',')
         try:
-            custom_presets = [Decimal(p).quantize(Decimal('0.01')) for p in custom_presets]
+            min_amount = initial_currency_info.get('minAmount', 0)
+            custom_presets = [
+                amount for amount in
+                [
+                    Decimal(value).quantize(Decimal('0.01'))
+                    if float(value) >= min_amount else None
+                    for value in custom_presets
+                ]
+                if amount
+            ]
         except InvalidOperation:
+            return initial_currency_info
+        except ValueError:
             return initial_currency_info
 
         if not custom_presets:
             return initial_currency_info
 
-        custom_presets.sort(reverse=True)
+        if len(custom_presets) < 4:
+            return initial_currency_info
+
+        sorting = request.GET.get('sort', False)
+
+        if sorting == 'true':
+            custom_presets.sort()
+        elif sorting == 'reverse':
+            custom_presets.sort(reverse=True)
+
         initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
         return initial_currency_info
 
+    def get_initial_amount(self, request):
+        amount = request.GET.get('amount', 0)
+        return Decimal(amount).quantize(Decimal('0.01'))
+
     def get_context(self, request):
         ctx = super().get_context(request)
-        initial_currency = self.get_initial_currency(request)
         initial_frequency = self.get_initial_frequency(request)
+        initial_currency = self.get_initial_currency(request)
+        initial_currency_info = self.get_initial_currency_info(request, initial_currency, initial_frequency)
+        initial_amount = self.get_initial_amount(request)
         ctx.update({
             'currencies': self.currencies,
-            'initial_currency_info': self.get_initial_currency_info(
-                request, initial_currency, initial_frequency
-            ),
+            'initial_currency_info': initial_currency_info,
             'initial_frequency': initial_frequency,
+            'initial_amount': initial_amount,
             'braintree_params': settings.BRAINTREE_PARAMS,
             'braintree_form': BraintreePaypalPaymentForm(
                 initial={
