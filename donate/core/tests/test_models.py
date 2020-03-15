@@ -202,6 +202,14 @@ class CampaignPageTestCase(TestCase):
             DonationPage().currencies['usd']['presets']['single']
         )
 
+    def test_get_initial_amount_as_expected(self):
+        request = RequestFactory().get('/?amount=12.34')
+        self.assertEqual(DonationPage().get_initial_amount(request), Decimal(12.34).quantize(Decimal('0.01')))
+
+    def test_get_initial_amount_defaults_to_0(self):
+        request = RequestFactory().get('/?amount=not_a_number')
+        self.assertEqual(DonationPage().get_initial_amount(request), 0)
+
 
 class MissingMigrationsTests(TestCase):
 
