@@ -109,7 +109,10 @@ class DonationPage(TranslatablePageMixin, Page):
 
     def get_initial_amount(self, request):
         amount = request.GET.get('amount', 0)
-        return Decimal(amount).quantize(Decimal('0.01'))
+        try:
+            return Decimal(amount).quantize(Decimal('0.01'))
+        except InvalidOperation:
+            return 0
 
     def get_context(self, request):
         ctx = super().get_context(request)
