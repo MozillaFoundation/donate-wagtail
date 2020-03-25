@@ -1,7 +1,9 @@
 from decimal import Decimal
 import json
+from io import StringIO
 
 from django.conf import settings
+from django.core.management import call_command
 from django.test import TestCase, RequestFactory
 
 from wagtail.core.models import Page
@@ -199,3 +201,24 @@ class CampaignPageTestCase(TestCase):
             DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
             DonationPage().currencies['usd']['presets']['single']
         )
+
+    def test_get_initial_amount_as_expected(self):
+        request = RequestFactory().get('/?amount=12.34')
+        self.assertEqual(DonationPage().get_initial_amount(request), Decimal(12.34).quantize(Decimal('0.01')))
+
+    def test_get_initial_amount_defaults_to_0(self):
+        request = RequestFactory().get('/?amount=not_a_number')
+        self.assertEqual(DonationPage().get_initial_amount(request), 0)
+
+
+class MissingMigrationsTests(TestCase):
+
+    def test_no_migrations_missing(self):
+        """
+        Ensure we didn't forget a migration
+        """
+        output = StringIO()
+        call_command('makemigrations', interactive=False, dry_run=True, stdout=output)
+
+        if output.getvalue() != "No changes detected\n":
+            raise AssertionError("Missing migrations detected:\n" + output.getvalue())

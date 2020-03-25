@@ -127,8 +127,11 @@ class DonationPage(TranslatablePageMixin, Page):
         if amount is False or 'e' in amount:
             return self.default_initial_amount(initial_currency_info, initial_frequency)
 
-        value = Decimal(amount).quantize(Decimal('0.01'))
-
+        try:
+            value = Decimal(amount).quantize(Decimal('0.01'))
+        except InvalidOperation:
+          return self.default_initial_amount(initial_currency_info, initial_frequency)
+  
         if value in initial_currency_info['presets'][initial_frequency]:
             return value
 
@@ -228,6 +231,8 @@ class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
     parent_page_types = ['core.LandingPage', 'core.CampaignPage']
     subpage_types = ['core.CampaignPage']
+
+    submit_to_pontoon_on_publish = False
 
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
