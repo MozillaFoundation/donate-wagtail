@@ -107,16 +107,39 @@ class DonationPage(TranslatablePageMixin, Page):
         initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
         return initial_currency_info
 
-    def get_initial_amount(self, request):
-        amount = request.GET.get('amount', 0)
-        return Decimal(amount).quantize(Decimal('0.01'))
+    def default_initial_amount(self, initial_currency_info, initial_frequency):
+        """
+        The default donation amount is the second lowest amount in the list of amounts.
+        """
+        return sorted(initial_currency_info['presets'][initial_frequency])[1]
+
+    def get_initial_amount(self, request, initial_currency_info, initial_frequency):
+        """
+        When called with ?amount=..., that value will be preselected if:
+
+        1. it's a real number, and
+        2. that number can be found in the current list of possibles values.
+
+        If not, the default initial amount is used
+        """
+        amount = request.GET.get('amount', False)
+
+        if amount is False or 'e' in amount:
+            return self.default_initial_amount(initial_currency_info, initial_frequency)
+
+        value = Decimal(amount).quantize(Decimal('0.01'))
+
+        if value in initial_currency_info['presets'][initial_frequency]:
+            return value
+
+        return self.default_initial_amount(initial_currency_info, initial_frequency)
 
     def get_context(self, request):
         ctx = super().get_context(request)
         initial_frequency = self.get_initial_frequency(request)
         initial_currency = self.get_initial_currency(request)
         initial_currency_info = self.get_initial_currency_info(request, initial_currency, initial_frequency)
-        initial_amount = self.get_initial_amount(request)
+        initial_amount = self.get_initial_amount(request, initial_currency_info, initial_frequency)
         ctx.update({
             'currencies': self.currencies,
             'initial_currency_info': initial_currency_info,

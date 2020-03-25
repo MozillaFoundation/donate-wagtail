@@ -22,6 +22,7 @@ class CurrencySelect {
     ).value;
 
     this.bindEvents();
+    console.log(`Current value:`, this)
   }
 
   // Assign default options
