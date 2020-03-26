@@ -127,27 +127,34 @@ class DonationPage(TranslatablePageMixin, Page):
         if amount is False or 'e' in amount:
             return self.default_initial_amount(initial_currency_info, initial_frequency)
 
-        try:
-            value = Decimal(amount).quantize(Decimal('0.01'))
-        except InvalidOperation:
-          return self.default_initial_amount(initial_currency_info, initial_frequency)
-  
+        value = Decimal(amount).quantize(Decimal('0.01'))
+
         if value in initial_currency_info['presets'][initial_frequency]:
             return value
 
         return self.default_initial_amount(initial_currency_info, initial_frequency)
 
+    def get_initial_values(self, request):
+        frequency = self.get_initial_frequency(request)
+        currency = self.get_initial_currency(request)
+        currency_info = self.get_initial_currency_info(request, currency, frequency)
+        amount = self.get_initial_amount(request, currency_info, frequency)
+
+        return {
+            "frequency": frequency,
+            "currency": currency,
+            "currency_info": currency_info,
+            "amount": amount,
+        }
+
     def get_context(self, request):
         ctx = super().get_context(request)
-        initial_frequency = self.get_initial_frequency(request)
-        initial_currency = self.get_initial_currency(request)
-        initial_currency_info = self.get_initial_currency_info(request, initial_currency, initial_frequency)
-        initial_amount = self.get_initial_amount(request, initial_currency_info, initial_frequency)
+        values = self.get_initial_values(request)
         ctx.update({
             'currencies': self.currencies,
-            'initial_currency_info': initial_currency_info,
-            'initial_frequency': initial_frequency,
-            'initial_amount': initial_amount,
+            'initial_currency_info': values['currency_info'],
+            'initial_frequency': values['frequency'],
+            'initial_amount': values['amount'],
             'braintree_params': settings.BRAINTREE_PARAMS,
             'braintree_form': BraintreePaypalPaymentForm(
                 initial={
@@ -156,7 +163,7 @@ class DonationPage(TranslatablePageMixin, Page):
                     'campaign_id': self.campaign_id,
                 }
             ),
-            'currency_form': CurrencyForm(initial={'currency': initial_currency}),
+            'currency_form': CurrencyForm(initial={'currency': values['currency']}),
             'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.RECAPTCHA_ENABLED else None,
         })
         return ctx
@@ -231,8 +238,6 @@ class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
     parent_page_types = ['core.LandingPage', 'core.CampaignPage']
     subpage_types = ['core.CampaignPage']
-
-    submit_to_pontoon_on_publish = False
 
     hero_image = models.ForeignKey(
         'wagtailimages.Image',
