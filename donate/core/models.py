@@ -127,7 +127,10 @@ class DonationPage(TranslatablePageMixin, Page):
         if amount is False or 'e' in amount:
             return self.default_initial_amount(initial_currency_info, initial_frequency)
 
-        value = Decimal(amount).quantize(Decimal('0.01'))
+        try:
+            value = Decimal(amount).quantize(Decimal('0.01'))
+        except InvalidOperation:
+            return self.default_initial_amount(initial_currency_info, initial_frequency)
 
         if value in initial_currency_info['presets'][initial_frequency]:
             return value
