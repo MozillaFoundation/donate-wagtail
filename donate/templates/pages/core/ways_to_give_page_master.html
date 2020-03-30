@@ -63,6 +63,17 @@
         {% trans "Check (via postal service)" %}
     </h2>
     <p>
+        {% block covid_notice %}
+        <b>{% trans "UPDATE March 20, 2020:"%}</b>
+        {% blocktrans trimmed %}
+        Please note that due to the "shelter in place" order recently implemented for California,
+        processing and acknowledgment of check donations to the Mozilla Foundation will be indefinitely delayed.
+        Rather than sending us a check, please consider making an <a href="/">online donation</a> instead.
+        {% endblocktrans %}
+        {% endblock %}
+    </p>
+    <!--
+    <p>
         {% block check_payee %}
             {% blocktrans with payee='Mozilla Foundation' trimmed %}
             Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “{{payee}}”.
@@ -80,6 +91,7 @@
             USA
         {% endblock %}
     </address>
+    -->
     {% block currencies %}
         <h2>{% trans "Currencies" %}</h2>
         <p>{% trans "Select your currency to make a secure online donation:" %}</p>

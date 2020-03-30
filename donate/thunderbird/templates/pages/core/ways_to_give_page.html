@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-    
+
 {% block SEPA %}
     <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
     <p>{% trans "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
@@ -12,7 +12,7 @@
         {% endblocktrans %}
     </p>
 {% endblock %}
-    
+
 {% block euros %}
     <h3>{% trans "Euros:" %}</h3>
     <p>
@@ -41,6 +41,15 @@
         <b>{% trans "IBAN:" %}</b> GB42NWBK60000410020551
         {% block tb_memo_gbp %}<br><b>{% trans "Memo field:" %}</b> Thunderbird{% endblock %}
     </p>
+{% endblock %}
+
+{% block covid_notice %}
+    <b>{% trans "UPDATE March 20, 2020:"%}</b>
+    {% blocktrans trimmed %}
+    Please note that due to the "shelter in place" order recently implemented for California,
+    processing and acknowledgment of check donations to Thunderbird/MZLA Technologies will be indefinitely delayed.
+    Rather than sending us a check, please consider making an <a href="/">online donation</a> instead.
+    {% endblocktrans %}
 {% endblock %}
 
 {% block check_payee %}
