@@ -203,12 +203,36 @@ class CampaignPageTestCase(TestCase):
         )
 
     def test_get_initial_amount_as_expected(self):
-        request = RequestFactory().get('/?amount=12.34')
-        self.assertEqual(DonationPage().get_initial_amount(request), Decimal(12.34).quantize(Decimal('0.01')))
+        """
+        select the indicated value from our default list of presets (3,15,35,85)
+        """
+        request = RequestFactory().get('/?amount=85')
+        values = DonationPage().get_initial_values(request)
+        self.assertEqual(values['amount'], Decimal(85).quantize(Decimal('0.01')))
 
-    def test_get_initial_amount_defaults_to_0(self):
+    def test_select_second_lowest_on_unknown(self):
+        """
+        default to the second-lowest in (3,15,35,85)
+        """
+        request = RequestFactory().get('/?amount=4')
+        values = DonationPage().get_initial_values(request)
+        self.assertEqual(values['amount'], Decimal(15).quantize(Decimal('0.01')))
+
+    def test_select_second_lowest_on_bad_value(self):
+        """
+        default to the second-lowest in (3,15,35,85)
+        """
         request = RequestFactory().get('/?amount=not_a_number')
-        self.assertEqual(DonationPage().get_initial_amount(request), 0)
+        values = DonationPage().get_initial_values(request)
+        self.assertEqual(values['amount'], Decimal(15).quantize(Decimal('0.01')))
+
+    def test_ignore_scientific_notation(self):
+        """
+        default to the second-lowest in (3,15,35,85)
+        """
+        request = RequestFactory().get('/?amount=1e100')
+        values = DonationPage().get_initial_values(request)
+        self.assertEqual(values['amount'], Decimal(15).quantize(Decimal('0.01')))
 
 
 class MissingMigrationsTests(TestCase):
