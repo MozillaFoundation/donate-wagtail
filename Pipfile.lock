@@ -161,11 +161,11 @@
         },
         "django-countries": {
             "hashes": [
-                "sha256:1cefad9ec804d6a0318b91c5394b5aef00336755928f44d0a6420507719d65c8",
-                "sha256:22e96236101783cfe5222ef5174972242a7e8176336d119a4dc111aedce35897"
+                "sha256:2e852c9693818d64d28758a720a0cb8277673ac495af8b855c4dc64940703bd2",
+                "sha256:e2ae9b76f9a0b5f3f365b5b81fe4972df0a5878c930139586f43f7d6d50a9594"
             ],
             "index": "pypi",
-            "version": "==5.5"
+            "version": "==6.1.2"
         },
         "django-csp": {
             "hashes": [
