@@ -164,7 +164,8 @@ class Base(object):
         'RELEASE_VERSION': env('HEROKU_RELEASE_VERSION'),
         'SENTRY_DSN': env('SENTRY_DSN'),
         'SENTRY_ENVIRONMENT': env('SENTRY_ENVIRONMENT'),
-        'BRAINTREE_MERCHANT_ACCOUNTS': env('BRAINTREE_MERCHANT_ACCOUNTS')
+        'BRAINTREE_MERCHANT_ACCOUNTS': env('BRAINTREE_MERCHANT_ACCOUNTS'),
+        'PAYPAL_DISPLAY_NAME': 'Mozilla Foundation'
     }
 
     @classmethod
