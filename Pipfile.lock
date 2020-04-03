@@ -49,11 +49,11 @@
         },
         "braintree": {
             "hashes": [
-                "sha256:06d10c72ae42ee87d012189ae4972aec394788f14ed6d65b7649bcb449ce6d5c",
-                "sha256:d8134ef1d25fedd196df5f524f098ce71541c2bd7674e3d6178da7ab2dc5e821"
+                "sha256:25e4b3afc396724ea35afbd6f58e9a3bbe837a97e1ff3cfaa70c3a7eb8b542a5",
+                "sha256:b06a7989747ae7f36eceaae3499cab98f0e03d751681e2aa65af76405e041fd5"
             ],
             "index": "pypi",
-            "version": "==3.59.0"
+            "version": "==4.0.0"
         },
         "certifi": {
             "hashes": [
