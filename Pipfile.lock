@@ -42,10 +42,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:4fded7e18681bc9249c6ad930602a394819a5e70cb62dbec46ed92800c2fc701",
-                "sha256:69a0dc4c331d62307b1c09e78e7c6da84e112ab5b37625b966eada4ffc31527c"
+                "sha256:30055e9a3e313400d92ca4ad599e6506d71fb1addc75f075ab7179973ac52de6",
+                "sha256:51422695a5a39ca9320acd3edaf7b337bed75bbc7d260deb76c1d801adc0daa2"
             ],
-            "version": "==1.15.35"
+            "version": "==1.15.37"
         },
         "braintree": {
             "hashes": [
@@ -57,10 +57,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3",
-                "sha256:25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
+                "sha256:1d987a998c75633c40847cc966fcf5904906c920a7f17ef374f5aa4282abd304",
+                "sha256:51fcb31174be6e6664c5f69e3e1691a2d72a1a12e90f872cbdb1567eb47b6519"
             ],
-            "version": "==2019.11.28"
+            "version": "==2020.4.5.1"
         },
         "cffi": {
             "hashes": [
@@ -143,11 +143,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:65e2387e6bde531d3bb803244a2b74e0253550a9612c64a60c8c5be267b30f50",
-                "sha256:b51c9c548d5c3b3ccbb133d0bebc992e8ec3f14899bce8936e6fdda6b23a1881"
+                "sha256:69897097095f336d5aeef45b4103dceae51c00afa6d3ae198a2a18e519791b7a",
+                "sha256:6ecd229e1815d4fc5240fc98f1cca78c41e7a8cd3e3f2eefadc4735031077916"
             ],
             "index": "pypi",
-            "version": "==2.2.11"
+            "version": "==2.2.12"
         },
         "django-configurations": {
             "hashes": [
@@ -612,10 +612,10 @@
     "develop": {
         "certifi": {
             "hashes": [
-                "sha256:017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3",
-                "sha256:25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
+                "sha256:1d987a998c75633c40847cc966fcf5904906c920a7f17ef374f5aa4282abd304",
+                "sha256:51fcb31174be6e6664c5f69e3e1691a2d72a1a12e90f872cbdb1567eb47b6519"
             ],
-            "version": "==2019.11.28"
+            "version": "==2020.4.5.1"
         },
         "chardet": {
             "hashes": [
