@@ -198,11 +198,11 @@
         },
         "django-rq": {
             "hashes": [
-                "sha256:0c1a0e730dd71fdb6564ec830430148c2e26081fbb87c4553f8e205632e7dcc6",
-                "sha256:307308582b99dc41f663f48e587be9e7f843fa068a330577da8d415810868920"
+                "sha256:060bece17912c4188fc3166e79c8244dc0608fbacc68e1069a47ceb91759ffcf",
+                "sha256:70e4e4a6566c0c1449a2f08ad74865a2045d74659da63aeea66681015ae1bbdb"
             ],
             "index": "pypi",
-            "version": "==2.3.0"
+            "version": "==2.3.1"
         },
         "django-storages": {
             "hashes": [
