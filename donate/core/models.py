@@ -228,11 +228,12 @@ class LandingPage(TranslatablePageRoutingMixin, DonationPage):
     def save(self, *args, **kwargs):
         # This slug isn't used anywhere but it does need to be unique for each language
         language_code = self.locale.language.code.lower()
+        slug_value = 'mozilla-donate' if self.project == 'Mozilla Foundation' else 'thunderbird-donate'
         if language_code == 'en-us':
             # Needs to be something nice as translators will see it
-            self.slug = 'mozilla-donate'
+            self.slug = slug_value
         else:
-            self.slug = 'mozilla-donate-' + language_code
+            self.slug = f'{slug_value}-{language_code}'
 
         super().save(*args, **kwargs)
 
