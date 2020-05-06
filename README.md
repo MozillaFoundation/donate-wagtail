@@ -29,6 +29,8 @@ To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For e
 
 ### Debugging
 
+Ensure you have the official [python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for Visual Studio Code installed. It provides the debugging type required for the run configuration to work.
+
 1. Set the `VSCODE_DEBUGGER` value to `True` in your .env
 
 2. Rebuild your Docker containers: `inv docker-catchup`, then `docker-compose up`
