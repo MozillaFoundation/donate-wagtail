@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 "flake8" = "*"
 coveralls = "*"
+ptvsd = "*"
 
 [packages]
 "psycopg2-binary" = ">=2.8,<2.9"

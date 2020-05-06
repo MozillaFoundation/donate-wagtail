@@ -97,10 +97,12 @@ ENV/
 
 # Compiled Frontend
 donate/frontend/*
-/.vscode
 
 # PyCharm
 .idea/
 
 # Cypress visual regression testing
 cypress/videos
+
+# VSCode project config
+.vscode/settings.json
