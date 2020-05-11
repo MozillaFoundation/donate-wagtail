@@ -100,10 +100,29 @@ class BraintreeWebhookProcessor:
         # steps to get this object from Braintree
         payment_method = gateway.payment_method.find(notification.subscription.payment_method_token)
         customer = gateway.customer.find(payment_method.customer_id)
+
         custom_fields = customer.custom_fields or {}
 
-        # The details of a donor are in a different spot depending on the payment method
+        # If a customer record doesn't contain a project custom_field, update it to "mozillafoundation".
+        # The customer was imported into Braintree from Stripe during the transition in late 2019.
+        # Customers imported into Braintree in this way did not get the 'project' custom_field because it
+        # is stored on the subscription object in Stripe's APIs. We can safely assume this is a Mozilla
+        # Foundation recurring donation because we did not use the imported customers and their associated
+        # vault information to recreate Thunderbird donations, due to the creation of MZLA
+        if not custom_fields.get('project'):
+            custom_fields['project'] = 'mozillafoundation'
 
+            customer_update_result = gateway.customer.update(customer.id, {
+                'custom_fields': custom_fields
+            })
+
+            if not customer_update_result.is_success:
+                message = f'Failed to update a Braintree customer with a project custom_field: {customer.id}'
+                print(message)
+                logger.error(message, exc_info=True)
+                return
+
+        # The details of a donor are in a different spot depending on the payment method
         if is_paypal:
             donor_details = {
                 "last_name": last_tx.paypal_details.payer_last_name,
@@ -409,7 +428,7 @@ class MigrateStripeSubscription:
 def process_webhook(form_data):
     """
     Called in response to a BrainTree webhook for successful subscription transaction
-    (e.g. monthy / monthly upsell)
+    (e.g. monthly / monthly upsell)
     """
     notification = gateway.webhook_notification.parse(form_data['bt_signature'], form_data['bt_payload'])
     BraintreeWebhookProcessor().process(notification)
