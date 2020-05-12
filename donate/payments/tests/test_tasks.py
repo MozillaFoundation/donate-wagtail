@@ -173,6 +173,89 @@ class ProcessWebhookTestCase(TestCase):
         })
 
     @freeze_time("2019-08-08 00:00:00", tz_offset=0)
+    def test_subscription_without_project_update_fail(self):
+        notification = mock.Mock()
+        notification.kind = 'subscription_charged_successfully'
+        tx = mock.Mock()
+        tx.id = 'test-id'
+        tx.customer_details = mock.Mock()
+        tx.customer_details.first_name = 'Bob'
+        tx.customer_details.last_name = 'Geldof'
+        tx.customer_details.email = 'test@example.com'
+        tx.amount = Decimal(10)
+        tx.currency_iso_code = 'USD'
+        tx.payment_instrument_type = 'credit_card'
+        tx.credit_card_details = mock.Mock()
+        tx.credit_card_details.card_type = 'Visa'
+        tx.credit_card_details.last_4 = '1234'
+        tx.disbursement_details = mock.Mock()
+        tx.disbursement_details.settlement_amount = Decimal(10)
+        notification.subscription.transactions = [tx]
+        notification.subscription.id = 'test-subscription-id'
+
+        with mock.patch('donate.payments.tasks.logger') as mock_logger:
+            with mock.patch('donate.payments.tasks.gateway', autospec=True) as mock_gateway:
+                mock_payment_method = mock.Mock()
+                mock_payment_method.customer_id = 'customer-1'
+                mock_gateway.payment_method.find.return_value = mock_payment_method
+                mock_customer = mock.Mock()
+                mock_customer.id = 'test-customer-id'
+                mock_customer.custom_fields = {
+                    'campaign_id': 'PIDAY',
+                    'locale': 'en-US',
+                }
+                mock_gateway.customer.find.return_value = mock_customer
+                mock_gateway.customer.update.return_value = DotDict({
+                  'is_success': False
+                })
+                BraintreeWebhookProcessor().subscription_charged_successfully(notification)
+
+        mock_logger.error.assert_called_once()
+
+    @freeze_time("2019-08-08 00:00:00", tz_offset=0)
+    def test_subscription_without_project(self):
+        notification = mock.Mock()
+        notification.kind = 'subscription_charged_successfully'
+        tx = mock.Mock()
+        tx.id = 'test-id'
+        tx.customer_details = mock.Mock()
+        tx.customer_details.first_name = 'Bob'
+        tx.customer_details.last_name = 'Geldof'
+        tx.customer_details.email = 'test@example.com'
+        tx.amount = Decimal(10)
+        tx.currency_iso_code = 'USD'
+        tx.payment_instrument_type = 'credit_card'
+        tx.credit_card_details = mock.Mock()
+        tx.credit_card_details.card_type = 'Visa'
+        tx.credit_card_details.last_4 = '1234'
+        tx.disbursement_details = mock.Mock()
+        tx.disbursement_details.settlement_amount = Decimal(10)
+        notification.subscription.transactions = [tx]
+        notification.subscription.id = 'test-subscription-id'
+
+        with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send: # noqa
+            with mock.patch('donate.payments.tasks.gateway', autospec=True) as mock_gateway:
+                mock_payment_method = mock.Mock()
+                mock_payment_method.customer_id = 'customer-1'
+                mock_gateway.payment_method.find.return_value = mock_payment_method
+                mock_customer = mock.Mock()
+                mock_customer.id = 'test-customer-id'
+                mock_customer.custom_fields = {
+                    'campaign_id': 'PIDAY',
+                    'locale': 'en-US',
+                }
+                mock_gateway.customer.find.return_value = mock_customer
+                BraintreeWebhookProcessor().subscription_charged_successfully(notification)
+
+        mock_gateway.customer.update.assert_called_once_with('test-customer-id', {
+            'custom_fields': {
+                'campaign_id': 'PIDAY',
+                'locale': 'en-US',
+                'project': 'mozillafoundation'
+            }
+        })
+
+    @freeze_time("2019-08-08 00:00:00", tz_offset=0)
     def test_process_credit_subscription_charged_successfully_paypal(self):
         notification = mock.Mock()
         notification.kind = 'subscription_charged_successfully'
