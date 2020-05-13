@@ -27,6 +27,32 @@ It's possible to connect your IDE to the python virtual env available inside the
 
 To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend pipenv run python manage.py test --settings=donate.settings_test`. Since it's pretty long, most case are covered by Invoke commands.
 
+### Debugging
+
+Ensure you have the official [python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for Visual Studio Code installed. It provides the debugging type required for the run configuration to work.
+
+1. Set the `VSCODE_DEBUGGER` value to `True` in your .env
+
+2. Rebuild your Docker containers: `inv docker-catchup`, then `docker-compose up`
+
+3. Start the debug session from VS Code for the `[django:docker] runserver` configuration
+
+   1. Open up the debugger, or open the Command Palette and select
+      `View: Show Run and Debug`.
+
+   2. Select `[django:docker] runserver` from the dropdown near the Play button in the top left.
+
+   3. Hit the Play button or hit `F5` to start debugging
+
+      - Logs will redirect to your integrated terminal as well.
+
+4. Set some breakpoints!
+
+   - You can create a breakpoint by clicking to the left of a line number. When that code is
+     executed, the debugger will pause code execution so you can inspect the call stack and
+     variables. You can either resume code execution or manage code execution manually by stepping
+     into the next pieces of code, or over them.
+
 ## Configuration
 
 [Django Configurations](https://django-configurations.readthedocs.io/en/stable/) is used for application configuration. The following Configuration Classes are provided:
