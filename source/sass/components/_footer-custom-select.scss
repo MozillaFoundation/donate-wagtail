@@ -16,6 +16,13 @@
       padding: 5px $padding-right 5px $padding-x;
       color: $color--white;
       font-family: "Nunito Sans", sans-serif;
+
+      // Explicitly setting <option>'s color to black.
+      // Otherwise, certain browsers would inherit the text color we set for <select>, and
+      // we would end up having white text on white background in the dropdown.
+      option {
+        color: $color--black;
+      }
     }
   }
 }
