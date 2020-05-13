@@ -71,7 +71,8 @@ export default function initPaypal(
                   flow: flow,
                   amount: getAmount(),
                   currency: getCurrency(),
-                  enableShippingAddress: false
+                  enableShippingAddress: false,
+                  displayName: envData.PAYPAL_DISPLAY_NAME
                 });
               },
 

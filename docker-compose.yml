@@ -6,9 +6,12 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/Dockerfile.python
+    env_file: 
+      - ".env"
     command: pipenv run python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
+      - "8001:8001"
     volumes:
       - .:/app:delegated
     depends_on:
