@@ -11,12 +11,3 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /app/
-
-# Install pipenv
-RUN pip install pipenv
-
-# Copy Pipfiles in the container
-COPY Pipfile Pipfile.lock ./
-
-# Install app deps
-RUN pipenv install -d

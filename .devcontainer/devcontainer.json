@@ -7,7 +7,6 @@
 	],
 	"settings": {
 		"terminal.integrated.shell.linux": "bash",
-		"python.pipenvPath": "/usr/local/bin/pipenv",
 		"python.linting.flake8Path": "flake8"
 	}
 }

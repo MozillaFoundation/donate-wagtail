@@ -1,11 +1,8 @@
+import os
 from sys import platform
 import re
 
 from invoke import task
-
-# Workaround for homebrew installation of Python (https://bugs.python.org/issue22490)
-import os
-os.environ.pop('__PYVENV_LAUNCHER__', None)
 
 ROOT = os.path.dirname(os.path.realpath(__file__))
 
@@ -17,12 +14,12 @@ else:
     PLATFORM_ARG = dict(pty=True)
 
 
-def create_docker_env_file(env_file):
+def create_env_file(env_file):
     """Create or update an .env to work with a docker environment"""
     with open(env_file, 'r') as f:
         env_vars = f.read()
     # update the DATABASE_URL env
-    new_db_url = "DATABASE_URL=postgres://donate:mozilla@postgres:5432/donate"
+    new_db_url = "DATABASE_URL=postgres://donate@postgres:5432/donate"
     old_db_url = re.search('DATABASE_URL=.*', env_vars)
     env_vars = env_vars.replace(old_db_url.group(0), new_db_url)
     # update the ALLOWED_HOSTS env
@@ -39,131 +36,196 @@ def create_docker_env_file(env_file):
         f.write(env_vars)
 
 
-def docker_create_super_user(ctx):
-    # Windows doesn't support pty, skipping this step
-    if platform == 'win32':
-        print("\nPTY is not supported on Windows.\n"
-              "To create an admin user:\n"
-              "docker-compose run --rm backend pipenv run python manage.py createsuperuser\n")
-    else:
-        print("* Creating superuser.")
-        ctx.run(
-            "docker-compose run --rm backend pipenv run python manage.py createsuperuser",
-            pty=True
-        )
+def create_super_user(ctx):
+    preamble = "from django.contrib.auth import get_user_model;User = get_user_model();"
+    create = "User.objects.create_superuser('admin', 'admin@example.com', 'admin')"
+    manage(ctx, f'shell -c "{preamble} {create}"')
+    print("\nCreated superuser `admin` with password `admin`.")
 
-
-@task
-def docker_manage(ctx, command):
-    """Shorthand to manage.py. inv docker-manage \"[COMMAND] [ARG]\""""
-    with ctx.cd(ROOT):
-        ctx.run(f"docker-compose run --rm backend pipenv run python manage.py {command}", **PLATFORM_ARG)
-
-
-@task
-def docker_pipenv(ctx, command):
-    """Shorthand to pipenv. inv docker-pipenv \"[COMMAND] [ARG]\""""
-    with ctx.cd(ROOT):
-        ctx.run(f"docker-compose run --rm backend pipenv {command}")
-
-
-@task
-def docker_npm(ctx, command):
-    """Shorthand to npm. inv docker-npm \"[COMMAND] [ARG]\""""
-    with ctx.cd(ROOT):
-        ctx.run(f"docker-compose run --rm watch-static-files npm {command}")
-
-
-@task
-def docker_migrate(ctx):
-    """Updates database schema"""
-    docker_manage(ctx, "migrate --no-input")
-
-
-@task
-def docker_makemigrations(ctx):
-    """Creates new migration(s) for apps"""
-    docker_manage(ctx, "makemigrations")
-
-
-@task
-def docker_makemessages(ctx):
-    """Extract all template messages in .po files for localization"""
-    ctx.run("./translation-management.sh import")
-    docker_manage(ctx, "makemessages --keep-pot --no-wrap")
-    docker_manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules")
-    os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
-    os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
-    ctx.run("./translation-management.sh export")
-
-
-@task
-def docker_compilemessages(ctx):
-    """Compile the latest translations"""
-    docker_manage(ctx, "compilemessages")
-
-
-@task
-def docker_test_python(ctx):
-    """Run python tests"""
-    print("* Running flake8")
-    ctx.run("docker-compose run --rm backend pipenv run flake8 tasks.py donate/", **PLATFORM_ARG)
-    print("* Running tests")
-    docker_manage(ctx, "test --settings=donate.settings --configuration=Testing")
-
-
-@task
-def docker_test_node(ctx):
-    """Run node tests"""
-    print("* Running tests")
-    ctx.run("docker-compose run --rm watch-static-files npm run test", **PLATFORM_ARG)
-
-
-@task
-def docker_new_db(ctx):
+# Project setup and update
+@task(aliases=["docker-new-db"])
+def new_db(ctx):
     """Delete your database and create a new one with fake data"""
-    print("* Stopping services first")
-    ctx.run("docker-compose down")
-    print("* Deleting database")
-    ctx.run("docker volume rm donate-wagtail_postgres_data")
+    print("* Starting the postgres service")
+    ctx.run("docker-compose up -d postgres")
+    print("* Delete the database")
+    ctx.run("docker-compose run --rm postgres dropdb --if-exists donate -h postgres -U donate")
+    print("* Create the database")
+    ctx.run("docker-compose run --rm postgres createdb donate -h postgres -U donate")
     print("* Applying database migrations.")
-    docker_migrate(ctx)
+    migrate(ctx)
     print("* Creating fake data")
-    docker_manage(ctx, "load_fake_data")
-    docker_create_super_user(ctx)
+    manage(ctx, "load_fake_data")
+    create_super_user(ctx)
+    print("Stop postgres service")
+    ctx.run("docker-compose down")
 
 
-@task(aliases=["docker-catchup"])
-def docker_catch_up(ctx):
-    """Rebuild images and apply migrations"""
+@task(aliases=["docker-catchup", "docker-catch-up", "catchup"])
+def catch_up(ctx):
+    """Rebuild images, install dependencies, and apply migrations"""
     print("* Stopping services first")
     ctx.run("docker-compose down")
     print("* Rebuilding images and install dependencies")
     ctx.run("docker-compose build")
+    print("* Install Node dependencies")
+    npm_install(ctx)
+    print("* Sync Python dependencies")
+    pip_sync(ctx)
     print("* Applying database migrations.")
-    docker_migrate(ctx)
+    migrate(ctx)
+    print("\n* Start your dev server with:\n docker-compose up")
 
 
-@task
-def docker_new_env(ctx):
+@task(aliases=["docker-new-env, setup"])
+def new_env(ctx):
     """Get a new dev environment and a new database with fake data"""
     with ctx.cd(ROOT):
         print("* Setting default environment variables")
         if os.path.isfile(".env"):
             print("* Updating your .env")
-            create_docker_env_file(".env")
+            create_env_file(".env")
         else:
             print("* Creating a new .env")
-            create_docker_env_file("env.default")
+            create_env_file("env.default")
         print("* Stopping project's containers and delete volumes if necessary")
         ctx.run("docker-compose down --volumes")
         print("* Building Docker images")
-        ctx.run("docker-compose build --no-cache backend watch-static-files", **PLATFORM_ARG)
-        ctx.run("docker-compose build backend-worker", **PLATFORM_ARG)
+        ctx.run("docker-compose build backend watch-static-files")
+        ctx.run("docker-compose build backend-worker")
+        print("* Install Node dependencies")
+        npm_install(ctx)
+        print("* Creating a Python virtualenv")
+        ctx.run(
+            "docker-compose run --rm backend python -m venv dockerpythonvenv",
+            **PLATFORM_ARG,
+        )
+        print("Done!")
+        print("* Updating pip")
+        ctx.run(
+            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip install -U pip==20.0.2",
+            **PLATFORM_ARG,
+        )
+        print("* Installing pip-tools")
+        ctx.run(
+            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip install pip-tools",
+            **PLATFORM_ARG,
+        )
+        print("* Sync Python dependencies")
+        pip_sync(ctx)
         print("* Applying database migrations.")
-        docker_migrate(ctx)
+        migrate(ctx)
         print("* Creating fake data")
-        docker_manage(ctx, "load_fake_data")
-        docker_create_super_user(ctx)
+        manage(ctx, "load_fake_data")
+        create_super_user(ctx)
 
         print("\n* Start your dev server with:\n docker-compose up")
+
+# Django shorthands
+@task(aliases=["docker_manage"])
+def manage(ctx, command):
+    """Shorthand to manage.py. inv docker-manage \"[COMMAND] [ARG]\""""
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose run --rm backend ./dockerpythonvenv/bin/python manage.py {command}", **PLATFORM_ARG)
+
+
+@task(aliases=["docker_migrate"])
+def migrate(ctx):
+    """Updates database schema"""
+    manage(ctx, "migrate --no-input")
+
+
+@task(aliases=["docker_makemigrations"])
+def makemigrations(ctx):
+    """Creates new migration(s) for apps"""
+    manage(ctx, "makemigrations")
+
+# Javascript shorthands
+@task(aliases=["docker_npm"])
+def npm(ctx, command):
+    """Shorthand to npm. inv docker-npm \"[COMMAND] [ARG]\""""
+    with ctx.cd(ROOT):
+        ctx.run(f"docker-compose run --rm watch-static-files npm {command}")
+
+
+@task(aliases=["docker-npm-install"])
+def npm_install(ctx):
+    """Install Node dependencies"""
+    with ctx.cd(ROOT):
+        ctx.run("docker-compose run --rm watch-static-files npm install")
+
+# Localisation
+@task(aliases=["docker_makemessages"])
+def makemessages(ctx):
+    """Extract all template messages in .po files for localization"""
+    ctx.run("./translation-management.sh import")
+    manage(ctx, "makemessages --keep-pot --no-wrap")
+    manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules")
+    os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
+    os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
+    ctx.run("./translation-management.sh export")
+
+
+@task(aliases=["docker_compilemessages"])
+def compilemessages(ctx):
+    """Compile the latest translations"""
+    manage(ctx, "compilemessages")
+
+
+# Tests
+@task(aliases=["docker-test"])
+def test(ctx):
+    """Run both Node and Python tests"""
+    test_node(ctx)
+    test_python(ctx)
+
+
+@task(aliases=["docker_test_python"])
+def test_python(ctx):
+    """Run python tests"""
+    print("* Running flake8")
+    ctx.run("docker-compose run --rm backend ./dockerpythonvenv/bin/python -m flake8 tasks.py donate/", **PLATFORM_ARG)
+    print("* Running tests")
+    manage(ctx, "test --settings=donate.settings --configuration=Testing")
+
+
+@task(aliases=["docker_test_node"])
+def test_node(ctx):
+    """Run node tests"""
+    print("* Running tests")
+    ctx.run("docker-compose run --rm watch-static-files npm run test", **PLATFORM_ARG)
+
+# Pip-tools
+@task(aliases=["docker-pip-compile"])
+def pip_compile(ctx, command):
+    """Shorthand to pip-tools. inv pip-compile \"[COMMAND] [ARG]\""""
+    with ctx.cd(ROOT):
+        ctx.run(
+            f"docker-compose run --rm backend ./dockerpythonvenv/bin/pip-compile {command}",
+            **PLATFORM_ARG,
+        )
+
+
+@task(aliases=["docker-pip-compile-lock"])
+def pip_compile_lock(ctx):
+    """Lock prod and dev dependencies"""
+    with ctx.cd(ROOT):
+        ctx.run(
+            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-compile",
+            **PLATFORM_ARG,
+        )
+        ctx.run(
+            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-compile dev-requirements.in",
+            **PLATFORM_ARG,
+        )
+
+
+@task(aliases=["docker-pip-sync"])
+def pip_sync(ctx):
+    """Sync your python virtualenv"""
+    with ctx.cd(ROOT):
+        ctx.run(
+            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-sync requirements.txt dev-requirements.txt",
+            **PLATFORM_ARG,
+        )
+
