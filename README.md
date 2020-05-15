@@ -4,54 +4,29 @@
 
 ## Table of contents
 
-- [How to setup your dev environment with Docker](#setup-your-dev-environment-with-docker),
-- [How to use Invoke tasks](#invoke-tasks),
+- [How to setup your dev environment with Docker](#setup-your-dev-environment-with-docker)
 - [Basket donations queue](#basket)
 
 ## Documentation
 
 - [Pages](docs/pages.md)
 - [Pontoon Integration](docs/pontoon_integration.md)
+- [Local dev](./docs/local_dev.md)
 
 ## Setup your Dev Environment with Docker
 
-- Install [Docker Desktop](https://www.docker.com/products/docker-desktop) (macOS and Windows). For Linux users: install [Docker CE](https://docs.docker.com/install/#supported-platforms) and [Docker Compose](https://docs.docker.com/compose/install/). If you don't want to create a Docker account, direct links to download can be found [in this issue](https://github.com/docker/docker.github.io/issues/6910),
-- [Check your install](https://docs.docker.com/get-started/#test-docker-version) by running `docker run hello-world`,
-- [Install Invoke](https://www.pyinvoke.org/installing.html),
-- If relevant: delete your node_modules directory (`rm -rf node_modules`). It's not necessary, but it speeds up the install.
-- Run `inv docker-new-env`: it's building docker images, installing dependencies, setting up a populated DB, and configuring your environment variables.
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop) (macOS and Windows). For Linux users: install [Docker CE](https://docs.docker.com/install/#supported-platforms) and [Docker Compose](https://docs.docker.com/compose/install/).
+- [Check your install](https://docs.docker.com/get-started/#test-docker-version) by running `docker run hello-world`.
+- [Install Invoke](https://www.pyinvoke.org/installing.html). We recommend you use [pipx](https://pypi.org/project/pipx/)
+- Run `inv new-env`: it's building docker images, installing dependencies, setting up a populated DB, and configuring your environment variables.
 
-When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docker-compose down`. If you want a new dev environment, stop your containers and run `inv docker-new_env`.
+When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docker-compose down`. If you want a new dev environment, stop your containers and run `inv new_env`.
 
 It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
 
-To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend pipenv run python manage.py test --settings=donate.settings_test`. Since it's pretty long, most case are covered by Invoke commands.
+To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend ./dockerpythonvenv/bin/python manage.py test --settings=donate.settings_test`. Since it's pretty long, most case are covered by Invoke commands.
 
-### Debugging
-
-Ensure you have the official [python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for Visual Studio Code installed. It provides the debugging type required for the run configuration to work.
-
-1. Set the `VSCODE_DEBUGGER` value to `True` in your .env
-
-2. Rebuild your Docker containers: `inv docker-catchup`, then `docker-compose up`
-
-3. Start the debug session from VS Code for the `[django:docker] runserver` configuration
-
-   1. Open up the debugger, or open the Command Palette and select
-      `View: Show Run and Debug`.
-
-   2. Select `[django:docker] runserver` from the dropdown near the Play button in the top left.
-
-   3. Hit the Play button or hit `F5` to start debugging
-
-      - Logs will redirect to your integrated terminal as well.
-
-4. Set some breakpoints!
-
-   - You can create a breakpoint by clicking to the left of a line number. When that code is
-     executed, the debugger will pause code execution so you can inspect the call stack and
-     variables. You can either resume code execution or manage code execution manually by stepping
-     into the next pieces of code, or over them.
+More information on how to use Docker for local dev is available in the [Local dev](./docs/local_dev.md) documentation.
 
 ## Configuration
 
@@ -69,27 +44,7 @@ Ensure you have the official [python extension](https://marketplace.visualstudio
 | ThunderbirdReviewApp  | Review App configuration for Thunderbird donation configurations.                                                  |
 
 
-## Invoke tasks
 
-Invoke is a python tasks runner that creates shortcuts for commands we frequently use. For example, instead of `docker-compose run --rm backend pipenv manage.py migrate`, you can use `inv docker-migrate`. It can also be used to run management commands: `inv docker-manage load-fake-data`. If you need to add multiple args to an invoke commands, use quotes. ex: `invoke docker-npm "install moment"`
-
-Installation instructions: https://www.pyinvoke.org/installing.html
-
-### Invoke tasks available:
-
-Run `inv -l` in your terminal to get the list of available tasks.
-
-- `inv docker-catch-up (docker-catchup)`: Rebuild images and apply migrations
-- `inv docker-makemigrations`: Creates new migration(s)
-- `inv docker-manage`: Shorthand to manage.py. ex: `inv docker-manage "[COMMAND] [ARG]"`
-- `inv docker-makemessages`: Extract all template messages in .po files for localization
-- `inv docker-compilemessages`: Compile the latest translations
-- `inv docker-migrate`: Updates database schema
-- `inv docker-new-env`: Get a new dev environment and a new database with fake data
-- `inv docker-new-db`: Delete your database and create a new one with fake data
-- `inv docker-npm`: Shorthand to npm. ex: `inv docker-npm "[COMMAND] [ARG]"`
-- `inv docker-pipenv`: Shorthand to pipenv. ex: `inv docker-pipenv "[COMMAND] [ARG]"`
-- `inv docker-test-python`: Run python tests
 
 ## Braintree configuration
 
