@@ -42,6 +42,7 @@ def create_super_user(ctx):
     manage(ctx, f'shell -c "{preamble} {create}"')
     print("\nCreated superuser `admin` with password `admin`.")
 
+
 # Project setup and update
 @task(aliases=["docker-new-db"])
 def new_db(ctx):
@@ -121,6 +122,7 @@ def new_env(ctx):
 
         print("\n* Start your dev server with:\n docker-compose up")
 
+
 # Django shorthands
 @task(aliases=["docker_manage"])
 def manage(ctx, command):
@@ -140,6 +142,7 @@ def makemigrations(ctx):
     """Creates new migration(s) for apps"""
     manage(ctx, "makemigrations")
 
+
 # Javascript shorthands
 @task(aliases=["docker_npm"])
 def npm(ctx, command):
@@ -153,6 +156,7 @@ def npm_install(ctx):
     """Install Node dependencies"""
     with ctx.cd(ROOT):
         ctx.run("docker-compose run --rm watch-static-files npm install")
+
 
 # Localisation
 @task(aliases=["docker_makemessages"])
@@ -195,6 +199,7 @@ def test_node(ctx):
     print("* Running tests")
     ctx.run("docker-compose run --rm watch-static-files npm run test", **PLATFORM_ARG)
 
+
 # Pip-tools
 @task(aliases=["docker-pip-compile"])
 def pip_compile(ctx, command):
@@ -228,4 +233,3 @@ def pip_sync(ctx):
             "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-sync requirements.txt dev-requirements.txt",
             **PLATFORM_ARG,
         )
-
