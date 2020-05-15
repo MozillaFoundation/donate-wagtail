@@ -163,7 +163,7 @@ def npm_install(ctx):
 def makemessages(ctx):
     """Extract all template messages in .po files for localization"""
     ctx.run("./translation-management.sh import")
-    manage(ctx, "makemessages --keep-pot --no-wrap")
+    manage(ctx, "makemessages --keep-pot --no-wrap --ignore=dockerpythonvenv/*")
     manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules")
     os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
     os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
@@ -173,7 +173,11 @@ def makemessages(ctx):
 @task(aliases=["docker_compilemessages"])
 def compilemessages(ctx):
     """Compile the latest translations"""
-    manage(ctx, "compilemessages")
+    with ctx.cd(ROOT):
+        ctx.run("docker-compose run --rm -w /app/donate backend "
+                "../dockerpythonvenv/bin/python /app/manage.py compilemessages",
+                **PLATFORM_ARG
+                )
 
 
 # Tests
