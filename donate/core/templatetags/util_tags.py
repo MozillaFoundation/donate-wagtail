@@ -1,7 +1,8 @@
 from decimal import Decimal
 
 from django import template
-from django.utils.translation import to_locale
+from django.conf import settings
+from django.utils.translation import get_language_info, to_locale
 
 from babel.core import Locale
 from babel.numbers import (
@@ -17,6 +18,14 @@ register = template.Library()
 def to_known_locale(code):
     code = LOCALE_MAP.get(code, code)
     return to_locale(code)
+
+
+@register.simple_tag()
+def get_local_language_names():
+    languages = {}
+    for lang in settings.LANGUAGES:
+        languages[lang[0]] = get_language_info(lang[0])['name_local']
+    return languages
 
 
 @register.simple_tag(takes_context=True)
