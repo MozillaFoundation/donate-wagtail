@@ -24,7 +24,7 @@ When it's done, run `docker-compose up`, wait for the static files to be built, 
 
 It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
 
-To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend ./dockerpythonvenv/bin/python manage.py test --settings=donate.settings_test`. Since it's pretty long, most case are covered by Invoke commands.
+To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend ./dockerpythonvenv/bin/python manage.py test --settings=donate.settings_test`. Since it's pretty long, most cases are covered by Invoke commands.
 
 More information on how to use Docker for local dev is available in the [Local dev](./docs/local_dev.md) documentation.
 
