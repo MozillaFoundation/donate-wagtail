@@ -1,6 +1,6 @@
 # Local Dev Documentation
 
-This documentation is composed of three main sections:
+This documentation is composed of four main sections:
 - [How to install and use Docker for local development](./local_dev.md#how-to-use)
 - [Connecting Docker to your code editor](./local_dev.md#connecting-docker-to-your-code-editor)
 - [Debugging](./local_dev.md#debugging)
