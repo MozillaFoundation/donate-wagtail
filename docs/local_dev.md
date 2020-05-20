@@ -168,7 +168,7 @@ I would recommend watching [An Intro to Docker for Djangonauts](https://www.yout
 
 ### Project Structure
 
-All our containers run on Linux.
+All our containers run Linux.
 
 For local development, we have two Dockerfiles that define our images:
 - `Dockerfile.node`: use a node12 Debian Stretch slim base image from the Docker Hub and install node dependencies.
