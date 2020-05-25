@@ -16,7 +16,7 @@
     "optimize:jpg": "find source/images -type f -name '*.jpg' -print0 | xargs -0 -n 1 -P 6 -I '{}' guetzli --quality 93 '{}' '{}'",
     "optimize:png": "find source/images -type f -name '*.png' -print0 | xargs -0 -n 1 -P 6 optipng",
     "optimize": "run-p optimize:**",
-    "server": "pipenv run python manage.py runserver",
+    "server": "python manage.py runserver",
     "start": "run-p build-uncompressed server watch:**",
     "test:eslint": "eslint --config ./.eslintrc.json \"source/js/**/*.js\" webpack.config.js",
     "test:scss": "stylelint \"source/sass/**/*.scss\" \"source/js/**/*.scss\" --syntax scss",

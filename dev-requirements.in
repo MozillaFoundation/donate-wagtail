@@ -1,0 +1,5 @@
+-c requirements.txt
+coveralls
+flake8
+ipython
+ptvsd

@@ -107,3 +107,6 @@ cypress/videos
 # VSCode project config
 .vscode/*
 !.vscode/launch.json
+
+# Python virtualenv
+pythondockervenv/
