@@ -33,7 +33,7 @@ def get_local_language_names():
     languages = []
     for lang in settings.LANGUAGES:
         languages.append([lang[0], get_language_info(lang[0])['name_local']])
-    return sorted(languages, key=lambda x: locale.strxfrm(x[1]).casefold())
+    return sorted(languages, key=lambda x: locale.strxfrm(x[1]).lower())
 
 
 @register.simple_tag(takes_context=True)
