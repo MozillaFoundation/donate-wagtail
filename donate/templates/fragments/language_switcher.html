@@ -1,0 +1,22 @@
+{% load i18n util_tags %}
+
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+  <input name="next" type="hidden" value="{{ request.get_full_path }}">
+  <div class="footer__language-switcher">
+    <label class="heading heading--secondary footer__language-label" for="language-switcher">
+      <svg class="language-icon" width="24" height="24">
+          <use xlink:href="#globe"></use>
+      </svg>
+      {% trans "Language" %}
+    </label>
+    <select name="language" id="language-switcher" class="form-control" onchange="this.form.submit()">
+      {% get_current_language as language_code %}
+      {% get_local_language_names as languages %}
+      {% for code, name in languages %}
+        <option value="{{ code }}"{% if code == language_code %} selected{% endif %}>
+          {{ name | capfirst }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+</form>

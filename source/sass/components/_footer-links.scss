@@ -31,9 +31,9 @@
     margin-bottom: ($gutter * 2);
 
     @include media-query(tablet-landscape) {
-      flex-basis: 66.666%;
-      max-width: 66.666%;
-      min-width: 66.666%;
+      flex-basis: calc(66.666% - 16px);
+      max-width: calc(66.666% - 16px);
+      min-width: calc(66.666% - 16px);
     }
   }
 
