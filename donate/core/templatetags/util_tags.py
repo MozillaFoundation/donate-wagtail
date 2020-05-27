@@ -1,5 +1,4 @@
 import locale
-import unicodedata
 from decimal import Decimal
 
 from django import template
@@ -34,7 +33,7 @@ def get_local_language_names():
     languages = []
     for lang in settings.LANGUAGES:
         languages.append([lang[0], get_language_info(lang[0])['name_local']])
-    return sorted(languages, key=lambda x: locale.strxfrm(unicodedata.normalize('NFD', x[1])).casefold())
+    return sorted(languages, key=lambda x: locale.strxfrm(x[1]).casefold())
 
 
 @register.simple_tag(takes_context=True)

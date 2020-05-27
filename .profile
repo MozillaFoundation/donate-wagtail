@@ -21,3 +21,6 @@ EOF
   chmod 600 $SSH_DIR/config
   echo "Done!"
 fi
+
+# set a default LANG if it does not exist in the environment
+LANG=${LANG:-en_US.UTF-8}
