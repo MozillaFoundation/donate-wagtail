@@ -23,4 +23,4 @@ EOF
 fi
 
 # set a default LANG if it does not exist in the environment
-LANG=${LANG:-en_US.UTF-8}
+LANG=${LANG:-C.UTF-8}
