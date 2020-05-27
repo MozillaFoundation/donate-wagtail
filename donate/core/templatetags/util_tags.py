@@ -30,7 +30,7 @@ def to_known_locale(code):
 #   canonical equivalence (e.g. without diacritics)
 @register.simple_tag()
 def get_local_language_names():
-    locale.setlocale(locale.LC_ALL, "")
+    locale.setlocale(locale.LC_ALL, "C.UTF-8")
     languages = []
     for lang in settings.LANGUAGES:
         languages.append([lang[0], get_language_info(lang[0])['name_local']])
