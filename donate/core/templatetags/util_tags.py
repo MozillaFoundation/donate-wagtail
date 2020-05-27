@@ -1,7 +1,10 @@
+import locale
+import unicodedata
 from decimal import Decimal
 
 from django import template
-from django.utils.translation import to_locale
+from django.conf import settings
+from django.utils.translation import get_language_info, to_locale
 
 from babel.core import Locale
 from babel.numbers import (
@@ -17,6 +20,21 @@ register = template.Library()
 def to_known_locale(code):
     code = LOCALE_MAP.get(code, code)
     return to_locale(code)
+
+
+# Generates a sorted list of currently supported locales. For each locale, the list
+# contains the locale code and the local name of the locale.
+# To sort the list by local names, we use:
+# - Case folding, in order to do case-insensitive comparison, and more.
+# - String normalization using the Normalization Form Canonical Decomposition, to compare
+#   canonical equivalence (e.g. without diacritics)
+@register.simple_tag()
+def get_local_language_names():
+    locale.setlocale(locale.LC_ALL, "C.UTF-8")
+    languages = []
+    for lang in settings.LANGUAGES:
+        languages.append([lang[0], get_language_info(lang[0])['name_local']])
+    return sorted(languages, key=lambda x: locale.strxfrm(unicodedata.normalize('NFD', x[1])).casefold())
 
 
 @register.simple_tag(takes_context=True)
