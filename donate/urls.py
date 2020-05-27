@@ -39,6 +39,9 @@ urlpatterns += i18n_patterns(
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
     path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
+
+    # set up set language redirect view
+    path('i18n/', include('django.conf.urls.i18n')),
 )
 
 
