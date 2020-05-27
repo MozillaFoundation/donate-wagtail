@@ -1,0 +1,42 @@
+.footer-links {
+  select {
+    &.form-control {
+      $background-size: 24px;
+      $padding-x: 12px;
+      $padding-right: $padding-x * 2 + $background-size;
+
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 8l8.05 8.05L20.1 8' stroke='%23FFF' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: right $padding-x top 50%;
+      background-size: $background-size $background-size;
+      border-radius: 0;
+      border: 1px solid $color--white;
+      padding: 5px $padding-right 5px $padding-x;
+      color: $color--white;
+      font-family: "Nunito Sans", sans-serif;
+
+      // Explicitly setting <option>'s color to black.
+      // Otherwise, certain browsers would inherit the text color we set for <select>, and
+      // we would end up having white text on white background in the dropdown.
+      option {
+        color: $color--black;
+      }
+    }
+  }
+}
+
+.app--rtl {
+  .footer-links {
+    select {
+      &.form-control {
+        $background-size: 24px;
+        $padding-x: 12px;
+        $padding-left: $padding-x * 2 + $background-size;
+        background-position: left $padding-x top 50%;
+        padding: 5px $padding-x 5px $padding-left;
+      }
+    }
+  }
+}
