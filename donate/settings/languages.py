@@ -41,7 +41,6 @@ LANGUAGES = [
     ('lg', 'Luganda'),
     ('lo', 'Lao'),
     ('lv', 'Latvian'),
-    ('lg', 'Luganda'),
     ('ms', 'Malay'),
     ('ml', 'Malayalam'),
     ('mr', 'Marathi'),

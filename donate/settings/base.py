@@ -173,27 +173,93 @@ class Base(object):
         logging.config.dictConfig(cls.LOGGING)
 
         # Set some fallbacks in django.conf.locale.LANG_INFO, and add some that don't exist
-        django.conf.locale.LANG_INFO['es-ar']['fallback'] = ['es']
-        django.conf.locale.LANG_INFO['es-mx']['fallback'] = ['es']
-        django.conf.locale.LANG_INFO['es-cl'] = {
-            'bidi': False,
-            'code': 'es-cl',
-            'name': 'Chilean Spanish',
-            'name_local': 'español de Chile',
-            'fallback': ['es']
-        }
-        django.conf.locale.LANG_INFO['es-xl'] = {
-            'bidi': False,
-            'code': 'es-xl',
-            'name': 'Latin American Spanish',
-            'name_local': 'español',
-            'fallback': ['es']
-        }
         django.conf.locale.LANG_INFO['ach'] = {
             'bidi': False,
             'code': 'ach',
             'name': 'Acholi',
             'name_local': 'Acholi',
+        }
+        django.conf.locale.LANG_INFO['en-US'] = {
+            'bidi': False,
+            'code': 'en-US',
+            'name': 'English',
+            'name_local': 'English (USA)',
+        }
+        django.conf.locale.LANG_INFO['en-AU'] = {
+            'bidi': False,
+            'code': 'en-AU',
+            'name': 'English',
+            'name_local': 'English (Australia)',
+        }
+        django.conf.locale.LANG_INFO['en-CA'] = {
+            'bidi': False,
+            'code': 'en-CA',
+            'name': 'English',
+            'name_local': 'English (Canada)',
+        }
+        django.conf.locale.LANG_INFO['en-GB'] = {
+            'bidi': False,
+            'code': 'en-GB',
+            'name': 'English',
+            'name_local': 'English (United Kingdom)',
+        }
+        django.conf.locale.LANG_INFO['en-IN'] = {
+            'bidi': False,
+            'code': 'en-IN',
+            'name': 'English',
+            'name_local': 'English (India)',
+        }
+        django.conf.locale.LANG_INFO['en-NZ'] = {
+            'bidi': False,
+            'code': 'en-NZ',
+            'name': 'English',
+            'name_local': 'English (New Zealand)',
+        }
+        django.conf.locale.LANG_INFO['en-ZA'] = {
+            'bidi': False,
+            'code': 'en-ZA',
+            'name': 'English',
+            'name_local': 'English (South Africa)',
+        }
+        django.conf.locale.LANG_INFO['es'] = {
+            'bidi': False,
+            'code': 'es',
+            'name': 'Spain Spanish',
+            'name_local': 'español (de España)'
+        }
+        django.conf.locale.LANG_INFO['es-AR'] = {
+            'bidi': False,
+            'code': 'es-AR',
+            'name': 'Argentinian Spanish',
+            'name_local': 'español (de Argentina)',
+            'fallback': ['es']
+        }
+        django.conf.locale.LANG_INFO['es-CL'] = {
+            'bidi': False,
+            'code': 'es-CL',
+            'name': 'Chilean Spanish',
+            'name_local': 'español (de Chile)',
+            'fallback': ['es']
+        }
+        django.conf.locale.LANG_INFO['es-MX'] = {
+            'bidi': False,
+            'code': 'es-MX',
+            'name': 'Mexican Spanish',
+            'name_local': 'español (de Mexico)',
+            'fallback': ['es']
+        }
+        django.conf.locale.LANG_INFO['es-XL'] = {
+            'bidi': False,
+            'code': 'es-XL',
+            'name': 'Latin American Spanish',
+            'name_local': 'español (América Latina)',
+            'fallback': ['es']
+        }
+        django.conf.locale.LANG_INFO['gu-IN'] = {
+            'bidi': False,
+            'code': 'gu-IN',
+            'name': 'Gujarati',
+            'name_local': 'ગુજરાતી',
         }
         django.conf.locale.LANG_INFO['lg'] = {
             'bidi': False,
@@ -205,17 +271,47 @@ class Base(object):
             'bidi': False,
             'code': 'lo',
             'name': 'Lao',
-            'name_local': 'Lao',
+            'name_local': 'ລາວ',
         }
         django.conf.locale.LANG_INFO['ms'] = {
             'bidi': False,
             'code': 'ms',
             'name': 'Malay',
-            'name_local': 'Malay',
+            'name_local': 'Melayu',
+        }
+        django.conf.locale.LANG_INFO['pt-BR'] = {
+            'bidi': False,
+            'code': 'pt-BR',
+            'name': 'Brazilian Portuguese',
+            'name_local': 'português (do Brasil)',
+        }
+        django.conf.locale.LANG_INFO['pt-PT'] = {
+            'bidi': False,
+            'code': 'pt-PT',
+            'name': 'European Portuguese',
+            'name_local': 'português (Europeu)',
         }
         django.conf.locale.LANG_INFO['uk'] = {
             'bidi': False,
             'code': 'uk',
             'name': 'Ukrainian',
-            'name_local': 'Ukrainian',
+            'name_local': 'Українська',
+        }
+        django.conf.locale.LANG_INFO['uz'] = {
+            'bidi': False,
+            'code': 'uz',
+            'name': 'Uzbek',
+            'name_local': 'o‘zbek',
+        }
+        django.conf.locale.LANG_INFO['zh-CN'] = {
+            'bidi': False,
+            'code': 'zh-CN',
+            'name': 'Chinese (China)',
+            'name_local': '中文 (简体)',
+        }
+        django.conf.locale.LANG_INFO['zh-TW'] = {
+            'bidi': False,
+            'code': 'zh-TW',
+            'name': 'Chinese (Taiwan)',
+            'name_local': '正體中文 (繁體)',
         }
