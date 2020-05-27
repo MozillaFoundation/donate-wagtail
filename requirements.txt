@@ -67,7 +67,7 @@ wagtail-localize-pontoon==0.2.1  # via -r requirements.in
 wagtail-localize==0.4     # via -r requirements.in, wagtail-localize-pontoon
 wagtail==2.7.3            # via -r requirements.in, wagtail-factories, wagtail-localize
 webencodings==0.5.1       # via html5lib
-whitenoise==5.0.1         # via -r requirements.in
+whitenoise==5.1.0         # via -r requirements.in
 willow==1.3               # via wagtail
 
 # The following packages are considered to be unsafe in a requirements file:
