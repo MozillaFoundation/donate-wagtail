@@ -6,8 +6,8 @@
 #
 babel==2.8.0              # via -r requirements.in
 beautifulsoup4==4.6.0     # via wagtail
-boto3==1.13.16            # via -r requirements.in
-botocore==1.16.16         # via boto3, s3transfer
+boto3==1.13.19            # via -r requirements.in
+botocore==1.16.19         # via boto3, s3transfer
 braintree==4.1.0          # via -r requirements.in
 certifi==2020.4.5.1       # via requests, sentry-sdk
 cffi==1.14.0              # via cryptography, pygit2
@@ -20,7 +20,7 @@ django-countries==6.1.2   # via -r requirements.in
 django-csp==3.6           # via -r requirements.in
 django-environ==0.4.5     # via -r requirements.in
 django-modelcluster==5.0.1  # via wagtail
-django-redis==4.11.0      # via -r requirements.in
+django-redis==4.12.1      # via -r requirements.in
 django-rq==2.3.2          # via -r requirements.in
 django-storages==1.9.1    # via -r requirements.in
 django-taggit==1.2.0      # via wagtail
