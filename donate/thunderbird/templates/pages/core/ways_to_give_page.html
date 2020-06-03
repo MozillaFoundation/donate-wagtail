@@ -7,6 +7,11 @@
     <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
     <p>{% trans "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
     <p>
+        {% blocktrans trimmed %}
+        Please note that for smaller (under 10 EUR or equivalent) contributions, <strong>and especially for contributions under 5 EUR or equivalent</strong>, we request that you contribute via credit card or PayPal to help reduce our processing fees.
+        {% endblocktrans %}
+    </p>
+    <p>
         {% blocktrans with address="331 E. Evelyn Ave, Mountain View, CA 94041 USA" trimmed %}
         If your bank requests our physical address, it is {{address}}.
         {% endblocktrans %}
