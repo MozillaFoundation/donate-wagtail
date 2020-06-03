@@ -25,6 +25,10 @@ class Base(object):
     RANDOM_SEED = env('RANDOM_SEED')
     ENABLE_THUNDERBIRD_REDIRECT = env('ENABLE_THUNDERBIRD_REDIRECT')
 
+    # Kount custom field value (overridden by TBird config)
+    # https://github.com/mozilla/donate-wagtail/issues/934
+    FRAUD_DONATION_WEBSITE = 'mofo'
+
     # Domain Redirects
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')
     TARGET_DOMAINS = env('TARGET_DOMAINS')
