@@ -22,6 +22,11 @@
     {% block SEPA %}
         <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
         <p>{% trans "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
+        <p>
+            {% blocktrans trimmed %}
+            Note that for smaller (under 10 EUR or equivalent) donations, <strong>and especially for donations under 5 EUR or equivalent</strong>, we request that you donate via credit card or PayPal to help reduce Mozilla’s processing fees.
+            {% endblocktrans %}
+        </p>
         <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
         <p>
             {% blocktrans with address="331 E. Evelyn Ave, Mountain View, CA 94041 USA" trimmed %}
