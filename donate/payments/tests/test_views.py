@@ -290,6 +290,7 @@ class CardPaymentViewTestCase(TestCase):
             'campaign_id': '',
             'project': 'mozillafoundation',
             'locale': 'en-US',
+            'fraud_donation_website': 'mofo'
         })
 
     def test_get_address_info(self):
@@ -313,7 +314,12 @@ class CardPaymentViewTestCase(TestCase):
             'last_name': self.form_data['last_name'],
             'email': self.form_data['email'],
             'payment_method_nonce': 'hello-braintree',
-            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': '', 'locale': 'en-US'},
+            'custom_fields': {
+                'project': 'mozillafoundation',
+                'campaign_id': '',
+                'locale': 'en-US',
+                'fraud_donation_website': 'mofo'
+            },
             'credit_card': {
                 'billing_address': {
                     'street_address': self.form_data['address_line_1'],
@@ -522,7 +528,12 @@ class PaypalPaymentViewTestCase(TestCase):
 
         mock_gateway.transaction.sale.assert_called_once_with({
             'amount': 10,
-            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': '', 'locale': 'en-US'},
+            'custom_fields': {
+                'project': 'mozillafoundation',
+                'campaign_id': '',
+                'locale': 'en-US',
+                'fraud_donation_website': 'mofo'
+            },
             'payment_method_nonce': 'hello-braintree',
             'merchant_account_id': 'usd-ac',
             'options': {'submit_for_settlement': True}
@@ -569,7 +580,12 @@ class PaypalPaymentViewTestCase(TestCase):
 
         mock_gateway.customer.create.assert_called_once_with({
             'payment_method_nonce': 'hello-braintree',
-            'custom_fields': {'project': 'mozillafoundation', 'campaign_id': '', 'locale': 'en-US'},
+            'custom_fields': {
+                'project': 'mozillafoundation',
+                'campaign_id': '',
+                'locale': 'en-US',
+                'fraud_donation_website': 'mofo'
+            },
         })
 
         mock_gateway.subscription.create.assert_called_once_with({
