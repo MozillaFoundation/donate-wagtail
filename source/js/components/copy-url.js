@@ -20,7 +20,7 @@ class CopyURL {
   }
 
   bindEvents() {
-    this.button.addEventListener("click", e => {
+    this.button.addEventListener("click", (e) => {
       e.preventDefault();
       this.copyText();
       this.updateButton();

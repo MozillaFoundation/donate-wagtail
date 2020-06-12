@@ -4,7 +4,7 @@
 
 import gaEvent from "./analytics";
 
-(function() {
+(function () {
   "use strict";
 
   // !! this file assumes only one signup form per page !!
@@ -78,7 +78,7 @@ import gaEvent from "./analytics";
 
     var xhr = new XMLHttpRequest();
 
-    xhr.onload = function(r) {
+    xhr.onload = function (r) {
       if (r.target.status >= 200 && r.target.status < 300) {
         // response is null if handled by service worker
         if (response === null) {
@@ -102,7 +102,7 @@ import gaEvent from "./analytics";
       }
     };
 
-    xhr.onerror = function(e) {
+    xhr.onerror = function (e) {
       newsletterError(e);
     };
 
@@ -119,7 +119,7 @@ import gaEvent from "./analytics";
     gaEvent({
       eventCategory: "Signup",
       eventAction: "Submitted the Form",
-      eventLabel: "Email"
+      eventLabel: "Email",
     });
 
     return false;

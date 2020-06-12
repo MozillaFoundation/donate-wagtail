@@ -39,7 +39,7 @@ function setupBraintree() {
   }
 
   function initHostedFields() {
-    client.create({ authorization: braintreeParams.token }, function(
+    client.create({ authorization: braintreeParams.token }, function (
       clientErr,
       clientInstance
     ) {
@@ -48,7 +48,7 @@ function setupBraintree() {
         return;
       }
 
-      dataCollector.create({ client: clientInstance, kount: true }, function(
+      dataCollector.create({ client: clientInstance, kount: true }, function (
         clientErr,
         dataCollectorInstance
       ) {
@@ -66,23 +66,23 @@ function setupBraintree() {
           input: {
             "font-size": "16px",
             "font-family":
-              "'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"
-          }
+              "'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, 'sans-serif'",
+          },
         },
         fields: {
           number: {
-            selector: "#card-number"
+            selector: "#card-number",
           },
           cvv: {
-            selector: "#cvv"
+            selector: "#cvv",
           },
           expirationDate: {
-            selector: "#expiration-date"
-          }
-        }
+            selector: "#expiration-date",
+          },
+        },
       };
 
-      hostedFields.create(options, function(
+      hostedFields.create(options, function (
         hostedFieldsErr,
         hostedFieldsInstance
       ) {
@@ -94,7 +94,7 @@ function setupBraintree() {
 
         submitButton.removeAttribute("disabled");
 
-        hostedFieldsInstance.on("validityChange", function(event) {
+        hostedFieldsInstance.on("validityChange", function (event) {
           var field = event.fields[event.emittedBy];
 
           if (field.isValid || field.isPotentiallyValid) {
@@ -104,7 +104,7 @@ function setupBraintree() {
           }
         });
 
-        submitButton.addEventListener("click", function(e) {
+        submitButton.addEventListener("click", function (e) {
           // Trigger browser form validation
           if (
             typeof (paymentForm.reportValidity !== "undefined") &&
@@ -114,7 +114,7 @@ function setupBraintree() {
           }
           e.preventDefault();
           var state = hostedFieldsInstance.getState(),
-            formValid = Object.keys(state.fields).every(function(key) {
+            formValid = Object.keys(state.fields).every(function (key) {
               var isValid = state.fields[key].isValid;
               if (!isValid) {
                 showFieldError(state.fields[key].container);
@@ -124,7 +124,7 @@ function setupBraintree() {
 
           if (formValid) {
             clearErrorMessage("card");
-            hostedFieldsInstance.tokenize(function(tokenizeErr, payload) {
+            hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
               if (tokenizeErr) {
                 showErrorMessage(
                   window.gettext(
@@ -141,7 +141,7 @@ function setupBraintree() {
                 gaEvent({
                   eventCategory: "Signup",
                   eventAction: "Submitted the Form",
-                  eventLabel: "Donate"
+                  eventLabel: "Donate",
                 });
                 paymentForm.submit();
               }
@@ -167,14 +167,14 @@ function setupBraintree() {
         .getElementById("g-recaptcha")
         .getAttribute("data-public-key"),
       size: "invisible",
-      callback: token => {
+      callback: (token) => {
         captchaInput.value = token;
         paymentForm.submit();
-      }
+      },
     });
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   setupBraintree();
 });
