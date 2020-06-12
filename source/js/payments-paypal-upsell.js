@@ -10,7 +10,7 @@ function setupBraintree() {
     return amountInput.value;
   };
   var getCurrency = () => currencyInput.value;
-  var onAuthorize = payload => {
+  var onAuthorize = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmount();
     paymentForm.submit();
@@ -25,6 +25,6 @@ function setupBraintree() {
   );
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   setupBraintree();
 });
