@@ -16,7 +16,7 @@ class Tabs {
   }
 
   bindEvents() {
-    this.tab.addEventListener("click", e => {
+    this.tab.addEventListener("click", (e) => {
       for (let tab of this.allTabs) {
         tab.classList.remove("active");
         tab.setAttribute("aria-selected", "false");
@@ -32,7 +32,7 @@ class Tabs {
       gaEvent({
         eventCategory: "User Flow",
         eventAction: "Changed Frequency",
-        eventLabel: this.tab.getAttribute("data-label")
+        eventLabel: this.tab.getAttribute("data-label"),
       });
     });
   }

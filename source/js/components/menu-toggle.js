@@ -11,7 +11,7 @@ class MenuToggle {
     this.closeCb = closeCb;
 
     this.state = {
-      open: false
+      open: false,
     };
 
     this.bindEventListeners();

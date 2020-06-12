@@ -16,7 +16,7 @@ function setupBraintree() {
     var donateForm = document.getElementById("donate-form--single");
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
-  var onAuthorizeSingle = payload => {
+  var onAuthorizeSingle = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountSingle();
     frequencyInput.value = "single";
@@ -31,7 +31,7 @@ function setupBraintree() {
     var donateForm = document.getElementById("donate-form--monthly");
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
-  var onAuthorizeMonthly = payload => {
+  var onAuthorizeMonthly = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountMonthly();
     frequencyInput.value = "monthly";
@@ -65,10 +65,10 @@ function setupBraintree() {
         .getElementById("g-recaptcha")
         .getAttribute("data-public-key"),
       size: "invisible",
-      callback: token => {
+      callback: (token) => {
         captchaInput.value = token;
         paymentForm.submit();
-      }
+      },
     });
   });
 }
@@ -84,24 +84,24 @@ function setupPaypalOverlays() {
   let overlays = document.querySelectorAll(
     ".payments__button--paypal--overlay"
   );
-  overlays.forEach(overlay => {
+  overlays.forEach((overlay) => {
     let form = overlay.closest("form");
     let inputs = Array.from(
       form.querySelectorAll("[type=radio][name=amount],[type=number]")
     );
 
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       // Anytime an input is selected, check whether that means we need to "lock" the
       // paypal button with a click-intercepting overlay.
-      input.addEventListener("input", _ => toggle(overlay, input));
-      input.addEventListener("focus", _ => toggle(overlay, input));
+      input.addEventListener("input", (_) => toggle(overlay, input));
+      input.addEventListener("focus", (_) => toggle(overlay, input));
     });
 
     // also get the currency label, because it's "clickable".
     let otherLabel = form.querySelector(".donation-amount-other__label");
     let otherInput = document.getElementById(otherLabel.getAttribute("for"));
 
-    otherLabel.addEventListener("click", _ => toggle(overlay, otherInput));
+    otherLabel.addEventListener("click", (_) => toggle(overlay, otherInput));
 
     overlay.addEventListener("click", () => {
       // The fact that this function fires at all means the current value is not a
@@ -111,7 +111,7 @@ function setupPaypalOverlays() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   setupBraintree();
   setupPaypalOverlays();
 });
