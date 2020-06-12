@@ -14,7 +14,7 @@ import fetchEnv from "./components/env";
 
 // Manage tab index for primary nav
 function tabIndexer() {
-  document.querySelectorAll("[data-nav-tab-index]").forEach(navLink => {
+  document.querySelectorAll("[data-nav-tab-index]").forEach((navLink) => {
     navLink.tabIndex = "-1";
   });
 }
@@ -22,7 +22,7 @@ function tabIndexer() {
 // Open the mobile menu callback
 function openMenu() {
   document.querySelector("[data-primary-nav]").classList.add("is-visible");
-  document.querySelectorAll("[data-nav-tab-index]").forEach(navLink => {
+  document.querySelectorAll("[data-nav-tab-index]").forEach((navLink) => {
     navLink.removeAttribute("tabindex");
   });
 }
@@ -33,7 +33,7 @@ function closeMenu() {
   tabIndexer();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const gaMeta = document.querySelector(`meta[name="ga-identifier"]`);
   if (gaMeta) {
     let gaIdentifier = gaMeta.getAttribute(`content`);
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Initialize Sentry error reporting
 
-  fetchEnv(envData => {
+  fetchEnv((envData) => {
     if (!envData.SENTRY_DSN) {
       return;
     }
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     Sentry.init({
       dsn: envData.SENTRY_DSN,
       release: envData.RELEASE_VERSION,
-      environment: envData.SENTRY_ENVIRONMENT
+      environment: envData.SENTRY_ENVIRONMENT,
     });
   });
 
@@ -98,11 +98,11 @@ function initializeGA(trackingId) {
   var doNotTrack =
     navigator.doNotTrack || navigator.msDoNotTrack || window.doNotTrack;
   if (!doNotTrack || doNotTrack === "no" || doNotTrack === "unspecified") {
-    (function(i, s, o, g, r, a, m) {
+    (function (i, s, o, g, r, a, m) {
       i["GoogleAnalyticsObject"] = r;
       (i[r] =
         i[r] ||
-        function() {
+        function () {
           (i[r].q = i[r].q || []).push(arguments);
         }),
         (i[r].l = 1 * new Date());
@@ -129,7 +129,7 @@ function initializeGA(trackingId) {
         filteredQueryParams = loc.search
           .substring(1)
           .split("&")
-          .filter(param => !param.startsWith("email"))
+          .filter((param) => !param.startsWith("email"))
           .join("&");
 
       ga(
@@ -144,19 +144,19 @@ function initializeGA(trackingId) {
       var gaEventsNode = document.getElementById("ga-events");
       if (gaEventsNode) {
         var events = JSON.parse(gaEventsNode.textContent);
-        events.forEach(eventArray => {
+        events.forEach((eventArray) => {
           ga(...eventArray);
         });
       }
 
       // Click events
       for (const a of document.querySelectorAll(".js-ga-track-click")) {
-        a.addEventListener("click", e => {
+        a.addEventListener("click", (e) => {
           ga("send", "event", {
             eventCategory: a.getAttribute("data-ga-category"),
             eventAction: a.getAttribute("data-ga-action"),
             eventLabel: a.getAttribute("data-ga-label"),
-            transport: "beacon"
+            transport: "beacon",
           });
         });
       }

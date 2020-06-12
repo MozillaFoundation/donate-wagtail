@@ -50,7 +50,7 @@ class CurrencySelect {
     var formatter = new Intl.NumberFormat(this.locale, {
       style: "currency",
       currency: selectedData.code.toUpperCase(),
-      minimumFractionDigits: 0
+      minimumFractionDigits: 0,
     });
 
     // Create buttons
@@ -107,27 +107,29 @@ class CurrencySelect {
     // Default symbol
     var symbol = selectedData.symbol;
     // ... which we attempt to replace with a localised one
-    formattedParts.forEach(part => {
+    formattedParts.forEach((part) => {
       if (part["type"] === "currency") {
         symbol = part["value"];
       }
     });
 
     // Update currency symbol
-    document.querySelectorAll("[data-currency]").forEach(currencyitem => {
+    document.querySelectorAll("[data-currency]").forEach((currencyitem) => {
       currencyitem.innerHTML = symbol;
     });
 
     // Update hidden currency inputs
-    this.formContainer.querySelectorAll(".js-form-currency").forEach(input => {
-      input.value = selectedData.code;
-    });
+    this.formContainer
+      .querySelectorAll(".js-form-currency")
+      .forEach((input) => {
+        input.value = selectedData.code;
+      });
 
     gaEvent({
       eventCategory: "User Flow",
       eventAction: "Changed Currency",
       eventLabel:
-        selectedData.code[0].toUpperCase() + selectedData.code.slice(1) // GA expects format Usd, Gbp
+        selectedData.code[0].toUpperCase() + selectedData.code.slice(1), // GA expects format Usd, Gbp
     });
 
     this.bindOtherAmountEvents();
@@ -136,14 +138,14 @@ class CurrencySelect {
 
   // Add class to container if payment provider should be disabled
   addClassToContainer(items) {
-    items.forEach(item => {
+    items.forEach((item) => {
       this.formContainer.classList.add(`${item}-disabled`);
     });
   }
 
   checkDisabled(selectedData) {
     // Remove existing classes
-    Array.from(this.formContainer.classList).forEach(className => {
+    Array.from(this.formContainer.classList).forEach((className) => {
       if (className.endsWith("-disabled")) {
         this.formContainer.classList.remove(className);
       }
@@ -185,13 +187,13 @@ class CurrencySelect {
 
   bindOtherAmountEvents() {
     const otherAmountInputs = document.querySelectorAll("[data-other-amount]");
-    otherAmountInputs.forEach(input => {
-      input.addEventListener("change", _ => this.updateValue(input));
-      input.addEventListener("focusin", _ => this.updateValue(input));
+    otherAmountInputs.forEach((input) => {
+      input.addEventListener("change", (_) => this.updateValue(input));
+      input.addEventListener("focusin", (_) => this.updateValue(input));
 
       const radio = input.parentNode.querySelector("[data-other-amount-radio]");
-      input.addEventListener("click", _ => (radio.checked = true));
-      radio.addEventListener("change", _ =>
+      input.addEventListener("click", (_) => (radio.checked = true));
+      radio.addEventListener("change", (_) =>
         radio.checked ? this.updateValue(input) : false
       );
     });
@@ -207,11 +209,11 @@ class CurrencySelect {
       "[data-other-amount-radio]"
     );
 
-    presets.forEach(input => {
-      input.addEventListener("change", _ => {
+    presets.forEach((input) => {
+      input.addEventListener("change", (_) => {
         if (input.checked) {
-          otherAmountInputs.forEach(other => (other.value = ""));
-          customAmounts.forEach(other => (other.value = ""));
+          otherAmountInputs.forEach((other) => (other.value = ""));
+          customAmounts.forEach((other) => (other.value = ""));
         }
       });
     });
@@ -221,7 +223,7 @@ class CurrencySelect {
     for (const input of this.formContainer.querySelectorAll(
       ".donation-amount__radio"
     )) {
-      input.addEventListener("input", e => {
+      input.addEventListener("input", (e) => {
         if (
           e.target.checked &&
           !e.target.hasAttribute("data-other-amount-radio")
@@ -229,7 +231,7 @@ class CurrencySelect {
           gaEvent({
             eventCategory: "User Flow",
             eventAction: "Changed Amount",
-            eventLabel: e.target.value
+            eventLabel: e.target.value,
           });
         }
       });
