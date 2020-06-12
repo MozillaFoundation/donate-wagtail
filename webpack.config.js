@@ -8,9 +8,9 @@ let rules = [
     exclude: /node_modules/,
     loader: `babel-loader`,
     query: {
-      presets: [[`@babel/preset-env`, { targets: `> 1%, last 2 versions` }]]
-    }
-  }
+      presets: [[`@babel/preset-env`, { targets: `> 1%, last 2 versions` }]],
+    },
+  },
 ];
 
 function generate(name) {
@@ -18,12 +18,12 @@ function generate(name) {
     entry: `./source/js/${name}.js`,
     output: {
       path: frontendPath,
-      filename: `${name}.compiled.js`
+      filename: `${name}.compiled.js`,
     },
     module: {
-      rules
+      rules,
     },
-    devtool: `none` // see https://webpack.js.org/configuration/devtool/
+    devtool: `none`, // see https://webpack.js.org/configuration/devtool/
   };
 }
 
@@ -31,7 +31,7 @@ let configs = [
   `main`,
   `payments-card`,
   `payments-paypal`,
-  `payments-paypal-upsell`
+  `payments-paypal-upsell`,
 ];
 
-module.exports = configs.map(name => generate(name));
+module.exports = configs.map((name) => generate(name));

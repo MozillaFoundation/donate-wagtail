@@ -21,7 +21,7 @@ export default function initPaypal(
   );
   var errorDiv = document.getElementById("payments__braintree-errors-paypal");
 
-  var showErrorMessage = msg => {
+  var showErrorMessage = (msg) => {
     errorDiv.toggleAttribute("hidden", false);
     errorDiv.innerHTML = msg;
   };
@@ -31,9 +31,9 @@ export default function initPaypal(
     errorDiv.innerHTML = "";
   };
 
-  fetchEnv(envData => {
+  fetchEnv((envData) => {
     let currency = getCurrency().toLowerCase();
-    client.create({ authorization: braintreeParams.token }, function(
+    client.create({ authorization: braintreeParams.token }, function (
       clientErr,
       clientInstance
     ) {
@@ -45,9 +45,9 @@ export default function initPaypal(
       paypalCreate(
         {
           client: clientInstance,
-          merchantAccountId: envData.BRAINTREE_MERCHANT_ACCOUNTS[currency]
+          merchantAccountId: envData.BRAINTREE_MERCHANT_ACCOUNTS[currency],
         },
-        function(paypalCheckoutErr, paypalCheckoutInstance) {
+        function (paypalCheckoutErr, paypalCheckoutInstance) {
           if (paypalCheckoutErr) {
             showErrorMessage(loadingErrorMsg);
             return;
@@ -63,21 +63,21 @@ export default function initPaypal(
                 color: "blue",
                 shape: "rect",
                 label: "paypal",
-                tagline: "false"
+                tagline: "false",
               },
 
-              payment: function() {
+              payment: function () {
                 return paypalCheckoutInstance.createPayment({
                   flow: flow,
                   amount: getAmount(),
                   currency: getCurrency(),
                   enableShippingAddress: false,
-                  displayName: envData.PAYPAL_DISPLAY_NAME
+                  displayName: envData.PAYPAL_DISPLAY_NAME,
                 });
               },
 
-              onAuthorize: function(data) {
-                return paypalCheckoutInstance.tokenizePayment(data, function(
+              onAuthorize: function (data) {
+                return paypalCheckoutInstance.tokenizePayment(data, function (
                   err,
                   payload
                 ) {
@@ -90,24 +90,24 @@ export default function initPaypal(
                 });
               },
 
-              onCancel: function() {
+              onCancel: function () {
                 showErrorMessage(window.gettext("Payment cancelled"));
                 gaEvent({
                   eventCategory: "User Flow",
-                  eventAction: "Paypal Payment Cancelled"
+                  eventAction: "Paypal Payment Cancelled",
                 });
               },
 
-              onError: function(err) {
+              onError: function (err) {
                 showErrorMessage(generalErrorMsg);
                 gaEvent({
                   eventCategory: "User Flow",
-                  eventAction: "PayPal Error"
+                  eventAction: "PayPal Error",
                 });
-              }
+              },
             },
             buttonId
-          ).then(function() {
+          ).then(function () {
             // The PayPal button will be rendered in an html element with the id
             // specified in buttonId. This function will be called when the PayPal button
             // is set up and ready to be used.

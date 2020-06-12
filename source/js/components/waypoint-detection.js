@@ -8,12 +8,14 @@ function scrollamaInit() {
   // setup the instance, pass callback functions
   scroller
     .setup({
-      step: ".js-data-waypoint"
+      step: ".js-data-waypoint",
     })
-    .onStepEnter(response => {
-      document.querySelectorAll("[data-waypoint-element]").forEach(stepItem => {
-        stepItem.classList.add("hidden");
-      });
+    .onStepEnter((response) => {
+      document
+        .querySelectorAll("[data-waypoint-element]")
+        .forEach((stepItem) => {
+          stepItem.classList.add("hidden");
+        });
     });
 }
 

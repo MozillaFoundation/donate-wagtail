@@ -18,7 +18,7 @@ class AmountToggle {
     this.formatter = new Intl.NumberFormat(locale, {
       style: "currency",
       currency: currency,
-      minimumFractionDigits: 0
+      minimumFractionDigits: 0,
     });
 
     this.bindEvents();
@@ -37,11 +37,13 @@ class AmountToggle {
   }
 
   UpdatePageDonationAmount() {
-    document.querySelectorAll(".js-donation-value").forEach(donationAmount => {
-      donationAmount.textContent = this.formatter.format(
-        this.hiddenInput.value
-      );
-    });
+    document
+      .querySelectorAll(".js-donation-value")
+      .forEach((donationAmount) => {
+        donationAmount.textContent = this.formatter.format(
+          this.hiddenInput.value
+        );
+      });
   }
 
   toggleOptions(event) {
@@ -74,20 +76,22 @@ class AmountToggle {
       return;
     }
 
-    this.toggleButton.addEventListener("click", event =>
+    this.toggleButton.addEventListener("click", (event) =>
       this.toggleOptions(event)
     );
 
-    this.updateButton.addEventListener("click", event =>
+    this.updateButton.addEventListener("click", (event) =>
       this.UpdateHiddenInputFromInput(event)
     );
 
-    this.updateForm.addEventListener("input", evt => {
+    this.updateForm.addEventListener("input", (evt) => {
       this.validateForm(event);
     });
 
     // Don't submit the form
-    this.updateForm.addEventListener("submit", event => event.preventDefault());
+    this.updateForm.addEventListener("submit", (event) =>
+      event.preventDefault()
+    );
   }
 }
 
