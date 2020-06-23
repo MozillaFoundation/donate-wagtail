@@ -11,7 +11,7 @@ coverage==5.1             # via coveralls
 coveralls==2.0.0          # via -r dev-requirements.in
 decorator==4.4.2          # via ipython, traitlets
 docopt==0.6.2             # via coveralls
-flake8==3.8.2             # via -r dev-requirements.in
+flake8==3.8.3             # via -r dev-requirements.in
 idna==2.9                 # via -c requirements.txt, requests
 importlib-metadata==1.6.0  # via flake8
 ipython-genutils==0.2.0   # via traitlets
@@ -27,7 +27,7 @@ ptyprocess==0.6.0         # via pexpect
 pycodestyle==2.6.0        # via flake8
 pyflakes==2.2.0           # via flake8
 pygments==2.6.1           # via ipython
-requests==2.23.0          # via -c requirements.txt, coveralls
+requests==2.24.0          # via -c requirements.txt, coveralls
 six==1.14.0               # via -c requirements.txt, traitlets
 traitlets==4.3.3          # via ipython
 urllib3==1.25.9           # via -c requirements.txt, requests
