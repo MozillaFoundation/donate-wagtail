@@ -35,7 +35,7 @@ class ThunderbirdProduction(Production, ThunderbirdOverrides, Configuration):
     FRONTEND = ThunderbirdOverrides.FRONTEND
     ENABLE_THUNDERBIRD_REDIRECT = False
     SALESFORCE_CASE_RECORD_TYPE_ID = "0124O000000tDBO"
-    FRAUD_DONATION_WEBSITE = 'tbird'
+    FRAUD_SITE_ID = 'tbird'
 
     @property
     def TEMPLATES(self):

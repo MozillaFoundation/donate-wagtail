@@ -27,7 +27,8 @@ class Base(object):
 
     # Kount custom field value (overridden by TBird config)
     # https://github.com/mozilla/donate-wagtail/issues/934
-    FRAUD_DONATION_WEBSITE = 'mofo'
+    # https://github.com/mozilla/donate-wagtail/issues/1033
+    FRAUD_SITE_ID = 'mofo'
 
     # Domain Redirects
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED = env('DOMAIN_REDIRECT_MIDDLEWARE_ENABLED')

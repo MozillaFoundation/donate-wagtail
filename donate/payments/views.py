@@ -41,7 +41,7 @@ class BraintreePaymentMixin:
             'project': self.request.session.get('project', 'mozillafoundation'),
             'campaign_id': self.request.session.get('campaign_id', ''),
             'locale': self.request.LANGUAGE_CODE,
-            'fraud_donation_website': settings.FRAUD_DONATION_WEBSITE,
+            'fraud_site_id': settings.FRAUD_SITE_ID,
         }
 
     def get_transaction_details_for_session(self, result, form, **kwargs):
