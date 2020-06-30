@@ -290,7 +290,7 @@ class CardPaymentViewTestCase(TestCase):
             'campaign_id': '',
             'project': 'mozillafoundation',
             'locale': 'en-US',
-            'fraud_donation_website': 'mofo'
+            'fraud_site_id': 'mofo'
         })
 
     def test_get_address_info(self):
@@ -318,7 +318,7 @@ class CardPaymentViewTestCase(TestCase):
                 'project': 'mozillafoundation',
                 'campaign_id': '',
                 'locale': 'en-US',
-                'fraud_donation_website': 'mofo'
+                'fraud_site_id': 'mofo'
             },
             'credit_card': {
                 'billing_address': {
@@ -532,7 +532,7 @@ class PaypalPaymentViewTestCase(TestCase):
                 'project': 'mozillafoundation',
                 'campaign_id': '',
                 'locale': 'en-US',
-                'fraud_donation_website': 'mofo'
+                'fraud_site_id': 'mofo'
             },
             'payment_method_nonce': 'hello-braintree',
             'merchant_account_id': 'usd-ac',
@@ -584,7 +584,7 @@ class PaypalPaymentViewTestCase(TestCase):
                 'project': 'mozillafoundation',
                 'campaign_id': '',
                 'locale': 'en-US',
-                'fraud_donation_website': 'mofo'
+                'fraud_site_id': 'mofo'
             },
         })
 

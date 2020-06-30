@@ -42,7 +42,7 @@ class ThunderbirdDevelopment(Development, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Development.INSTALLED_APPS
     FRONTEND = ThunderbirdOverrides.FRONTEND
     ENABLE_THUNDERBIRD_REDIRECT = False
-    FRAUD_DONATION_WEBSITE = 'tbird'
+    FRAUD_SITE_ID = 'tbird'
 
     @property
     def TEMPLATES(self):

@@ -28,7 +28,7 @@ class ReviewApp(Staging, Configuration):
 class ThunderbirdReviewApp(ReviewApp, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + ReviewApp.INSTALLED_APPS
     FRONTEND = ThunderbirdOverrides.FRONTEND
-    FRAUD_DONATION_WEBSITE = 'tbird'
+    FRAUD_SITE_ID = 'tbird'
 
     @property
     def TEMPLATES(self):
