@@ -2,7 +2,7 @@ babel
 boto3
 braintree
 dj-database-url
-django==2.2.13
+django==2.2.14
 django-configurations
 django-countries
 django-csp
