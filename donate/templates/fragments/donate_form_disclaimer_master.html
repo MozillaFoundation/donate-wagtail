@@ -4,7 +4,7 @@
     <p>
         {% block donation_information %}
         {% blocktrans with braintree_url='https://www.braintreepayments.com/legal/braintree-privacy-policy' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' trimmed %}
-            Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a>, a PayPal company (for credit/debit cards) or <a href="{{ paypal_url }}">PayPal</a>, and a record of your donation will be stored by Mozilla.
+            Mozilla is committed to your privacy; please read our <a href="https://www.mozilla.org/privacy/websites/">privacy policy here</a>. Your payment details will be processed by <a href="{{ braintree_url }}">Braintree</a>, a PayPal company (for credit/debit cards) or <a href="{{ paypal_url }}">PayPal</a>, and a record of your donation will be stored by Mozilla.
         {% endblocktrans %}
         {% if monthly %}{% blocktrans with email='donate@mozilla.org' trimmed %}
             Monthly donations are charged each month on the same day that you donate today, and will continue until you cancel. To cancel, email us at <a href="mailto:{{ email }}">{{ email }}</a>.
