@@ -51,7 +51,7 @@ pytz==2020.1              # via babel, django, django-modelcluster, wagtail
 redis==3.5.1              # via django-redis, django-rq, redlock, rq
 git+git://github.com/glasslion/redlock.git@master#egg=redlock  # via -r requirements.in
 requests==2.24.0          # via -r requirements.in, braintree, mozilla-django-oidc, stripe, wagtail
-rq==1.2.0                 # via -r requirements.in, django-rq
+rq==1.5.0                 # via -r requirements.in, django-rq
 s3transfer==0.3.3         # via boto3
 sentry-sdk==0.15.1        # via -r requirements.in
 six==1.14.0               # via cryptography, django-configurations, freezegun, html5lib, josepy, mozilla-django-oidc, pyopenssl, python-dateutil, wagtail

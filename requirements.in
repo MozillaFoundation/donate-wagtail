@@ -19,7 +19,7 @@ psycopg2-binary
 # Need to install a pre-release in order to get the RedLock.locked() method
 git+git://github.com/glasslion/redlock.git@master#egg=redlock
 requests
-rq==1.2.0
+rq==1.5.0
 sentry-sdk
 stripe
 wagtail
