@@ -18,8 +18,17 @@ def create_env_file(env_file):
     """Create or update an .env to work with a docker environment"""
     with open(env_file, 'r') as f:
         env_vars = f.read()
-    # update the DATABASE_URL env
-    new_db_url = "DATABASE_URL=postgres://donate@postgres:5432/donate"
+
+        # We also need to make sure to use the correct db values based on our docker settings.
+    username = dbname = 'postgres'
+    with open('docker-compose.yml', 'r') as d:
+        docker_compose = d.read()
+        username = re.search('POSTGRES_USER=(.*)', docker_compose).group(1) or username
+        # password = re.search('POSTGRES_PASSWORD=(.*)', docker_compose).group(1) or password
+        dbname = re.search('POSTGRES_DB=(.*)', docker_compose).group(1) or dbname
+
+    # Update the DATABASE_URL env
+    new_db_url = f"DATABASE_URL=postgresql://{username}@postgres:5432/{dbname}"
     old_db_url = re.search('DATABASE_URL=.*', env_vars)
     env_vars = env_vars.replace(old_db_url.group(0), new_db_url)
     # update the ALLOWED_HOSTS env
