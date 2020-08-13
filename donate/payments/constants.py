@@ -127,24 +127,6 @@ CURRENCIES = {
             'monthly': [10, 5, 3, 2]
         }
     },
-    'clp': {
-        'code': 'clp',
-        'minAmount': 1350,
-        'symbol': '$',
-        'disabled': ['paypal', 'amex'],
-        'monthlyUpgrade': [
-            {'min': 200000, 'value': 20000},
-            {'min': 140160, 'value': 14000},
-            {'min': 70080, 'value': 7000},
-            {'min': 49056, 'value': 4500},
-            {'min': 24528, 'value': 3500},
-            {'min': 10512, 'value': 2000},
-        ],
-        'presets': {
-            'single': [13000, 6500, 3250, 2000],
-            'monthly': [6500, 3250, 2000, 1350]
-        }
-    },
     'czk': {
         'code': 'czk',
         'minAmount': 45,
