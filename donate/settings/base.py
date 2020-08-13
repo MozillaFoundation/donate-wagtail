@@ -91,6 +91,7 @@ class Base(object):
         'wagtail_localize.translation',
         'wagtail_localize_pontoon',
 
+        'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
         'wagtail.embeds',
         'wagtail.sites',
@@ -134,6 +135,7 @@ class Base(object):
             'django.contrib.auth.middleware.AuthenticationMiddleware',
             'django.contrib.messages.middleware.MessageMiddleware',
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
+            'wagtail.contrib.redirects.middleware.RedirectMiddleware',
             'wagtail.core.middleware.SiteMiddleware',
             'csp.middleware.CSPMiddleware',
             # Make sure to check for deauthentication during a session:
