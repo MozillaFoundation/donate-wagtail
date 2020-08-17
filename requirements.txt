@@ -17,7 +17,7 @@ cryptography==2.9.2       # via josepy, mozilla-django-oidc, pyopenssl
 dj-database-url==0.5.0    # via -r requirements.in
 django-configurations==2.2  # via -r requirements.in
 django-countries==6.1.2   # via -r requirements.in
-django-csp==3.6           # via -r requirements.in
+django-csp==3.7           # via -r requirements.in
 django-environ==0.4.5     # via -r requirements.in
 django-modelcluster==5.0.1  # via wagtail
 django-redis==4.12.1      # via -r requirements.in
