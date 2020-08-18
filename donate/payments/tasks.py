@@ -398,6 +398,10 @@ class MigrateStripeSubscription:
             message = f'Failed to create a Braintree subscription from Stripe subscription {subscription.id}'
             print(message)
             logger.error(message, exc_info=True)
+            logger.error(BT_create_subscription_result.message)
+            # this might not exist
+            if BT_create_subscription_result.errors:
+                logger.error(BT_create_subscription_result.errors)
             return
 
         # Cancel Stripe subscription
