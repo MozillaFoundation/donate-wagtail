@@ -91,6 +91,7 @@ class Base(object):
         'wagtail_localize.translation',
         'wagtail_localize_pontoon',
 
+        'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
         'wagtail.embeds',
         'wagtail.sites',
@@ -134,6 +135,7 @@ class Base(object):
             'django.contrib.auth.middleware.AuthenticationMiddleware',
             'django.contrib.messages.middleware.MessageMiddleware',
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
+            'wagtail.contrib.redirects.middleware.RedirectMiddleware',
             'wagtail.core.middleware.SiteMiddleware',
             'csp.middleware.CSPMiddleware',
             # Make sure to check for deauthentication during a session:
@@ -220,31 +222,11 @@ class Base(object):
             'name': 'English',
             'name_local': 'English (New Zealand)',
         }
-        django.conf.locale.LANG_INFO['en-ZA'] = {
-            'bidi': False,
-            'code': 'en-ZA',
-            'name': 'English',
-            'name_local': 'English (South Africa)',
-        }
         django.conf.locale.LANG_INFO['es'] = {
             'bidi': False,
             'code': 'es',
             'name': 'Spain Spanish',
             'name_local': 'español (de España)'
-        }
-        django.conf.locale.LANG_INFO['es-AR'] = {
-            'bidi': False,
-            'code': 'es-AR',
-            'name': 'Argentinian Spanish',
-            'name_local': 'español (de Argentina)',
-            'fallback': ['es']
-        }
-        django.conf.locale.LANG_INFO['es-CL'] = {
-            'bidi': False,
-            'code': 'es-CL',
-            'name': 'Chilean Spanish',
-            'name_local': 'español (de Chile)',
-            'fallback': ['es']
         }
         django.conf.locale.LANG_INFO['es-MX'] = {
             'bidi': False,
@@ -277,12 +259,6 @@ class Base(object):
             'code': 'lo',
             'name': 'Lao',
             'name_local': 'ລາວ',
-        }
-        django.conf.locale.LANG_INFO['ms'] = {
-            'bidi': False,
-            'code': 'ms',
-            'name': 'Malay',
-            'name_local': 'Melayu',
         }
         django.conf.locale.LANG_INFO['pt-BR'] = {
             'bidi': False,

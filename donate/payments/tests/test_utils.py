@@ -40,7 +40,7 @@ class UtilsTestCase(TestCase):
 
     def test_get_suggested_monthly_upgrade_small_single_amount(self):
         self.assertIsNone(get_suggested_monthly_upgrade('usd', Decimal(1)))
-        self.assertIsNone(get_suggested_monthly_upgrade('aed', Decimal(1)))
+        self.assertIsNone(get_suggested_monthly_upgrade('brl', Decimal(1)))
 
     def test_paypal_micro_fee(self):
         self.assertEqual(paypal_micro_fee('usd', Decimal(1)), Decimal('0.11'))
