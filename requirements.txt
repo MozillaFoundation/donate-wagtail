@@ -6,8 +6,8 @@
 #
 babel==2.8.0              # via -r requirements.in
 beautifulsoup4==4.6.0     # via wagtail
-boto3==1.14.16            # via -r requirements.in
-botocore==1.17.16         # via boto3, s3transfer
+boto3==1.14.52            # via -r requirements.in
+botocore==1.17.52         # via boto3, s3transfer
 braintree==4.1.0          # via -r requirements.in
 certifi==2020.4.5.1       # via requests, sentry-sdk
 cffi==1.14.0              # via cryptography, pygit2
