@@ -1,6 +1,7 @@
 import logging
-from urllib import request, parse
+from urllib import parse
 from sentry_sdk.integrations.django import ignore_logger
+import requests
 
 from django.conf import settings
 from django.contrib import messages
@@ -785,12 +786,11 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
             data = parse.urlencode({
                 'EMAIL': data['email']
             }).encode()
-            req = request.Request(newsletter_url, data=data)
-            res = request.urlopen(req)
-            if res.status != 200:
+            res = requests.post(newsletter_url, data=data)
+            if not res.ok:
                 sentry_logger.error(
                     'Thunderbird newsletter POST failed',
-                    extra={'status': res.status},
+                    extra={'status': res.status_code},
                     exc_info=True
                 )
 
