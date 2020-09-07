@@ -57,7 +57,7 @@ sentry-sdk==0.15.1        # via -r requirements.in
 six==1.14.0               # via cryptography, django-configurations, freezegun, html5lib, josepy, mozilla-django-oidc, pyopenssl, python-dateutil, wagtail
 smmap==3.0.4              # via gitdb
 sqlparse==0.3.1           # via django
-stripe==2.48.0            # via -r requirements.in
+stripe==2.51.0            # via -r requirements.in
 text-unidecode==1.3       # via faker
 toml==0.10.1              # via wagtail-localize-pontoon
 unidecode==1.1.1          # via wagtail
