@@ -152,7 +152,7 @@ class BraintreeWebhookProcessor:
             'project': custom_fields.get('project', ''),
             'card_type': 'Unknown' if is_paypal else last_tx.credit_card_details.card_type,
             'last_4': None if is_paypal else last_tx.credit_card_details.last_4,
-            'landing_url': '',
+            'landing_url': custom_fields.get('landing_url', ''),
             'locale': custom_fields.get('locale', ''),
             'settlement_amount': last_tx.disbursement_details.settlement_amount,
         })
