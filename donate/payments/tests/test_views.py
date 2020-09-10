@@ -290,7 +290,8 @@ class CardPaymentViewTestCase(TestCase):
             'campaign_id': '',
             'project': 'mozillafoundation',
             'locale': 'en-US',
-            'fraud_site_id': 'mofo'
+            'fraud_site_id': 'mofo',
+            'landing_url': 'http://localhost',
         })
 
     def test_get_address_info(self):
@@ -318,7 +319,8 @@ class CardPaymentViewTestCase(TestCase):
                 'project': 'mozillafoundation',
                 'campaign_id': '',
                 'locale': 'en-US',
-                'fraud_site_id': 'mofo'
+                'fraud_site_id': 'mofo',
+                'landing_url': 'http://localhost',
             },
             'credit_card': {
                 'billing_address': {
@@ -532,7 +534,8 @@ class PaypalPaymentViewTestCase(TestCase):
                 'project': 'mozillafoundation',
                 'campaign_id': '',
                 'locale': 'en-US',
-                'fraud_site_id': 'mofo'
+                'fraud_site_id': 'mofo',
+                'landing_url': 'http://localhost'
             },
             'payment_method_nonce': 'hello-braintree',
             'merchant_account_id': 'usd-ac',
@@ -584,7 +587,8 @@ class PaypalPaymentViewTestCase(TestCase):
                 'project': 'mozillafoundation',
                 'campaign_id': '',
                 'locale': 'en-US',
-                'fraud_site_id': 'mofo'
+                'fraud_site_id': 'mofo',
+                'landing_url': 'http://localhost',
             },
         })
 
@@ -734,7 +738,7 @@ class CardUpsellViewTestCase(TestCase):
             'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
             'price': Decimal(15),
-            'first_billing_date': FakeDate(2019, 8, 26)
+            'first_billing_date': FakeDate(2019, 8, 26),
         })
 
     def test_ga_transaction(self):

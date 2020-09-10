@@ -41,6 +41,7 @@ class BraintreePaymentMixin:
         return {
             'project': self.request.session.get('project', 'mozillafoundation'),
             'campaign_id': self.request.session.get('campaign_id', ''),
+            'landing_url': form.cleaned_data.get('landing_url', ''),
             'locale': self.request.LANGUAGE_CODE,
             'fraud_site_id': settings.FRAUD_SITE_ID,
         }
