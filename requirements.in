@@ -14,7 +14,7 @@ factory-boy
 freezegun
 gunicorn
 mozilla-django-oidc
-pygit2==1.0.3
+pygit2==1.3.0
 psycopg2-binary
 # Need to install a pre-release in order to get the RedLock.locked() method
 git+git://github.com/glasslion/redlock.git@master#egg=redlock
