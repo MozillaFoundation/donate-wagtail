@@ -6,8 +6,8 @@
 #
 babel==2.8.0              # via -r requirements.in
 beautifulsoup4==4.6.0     # via wagtail
-boto3==1.14.16            # via -r requirements.in
-botocore==1.17.16         # via boto3, s3transfer
+boto3==1.15.2             # via -r requirements.in
+botocore==1.18.2          # via boto3, s3transfer
 braintree==4.1.0          # via -r requirements.in
 certifi==2020.4.5.1       # via requests, sentry-sdk
 cffi==1.14.0              # via cryptography, pygit2
@@ -27,7 +27,6 @@ django-taggit==1.2.0      # via wagtail
 django-treebeard==4.3.1   # via wagtail
 django==2.2.13            # via -r requirements.in, django-csp, django-redis, django-rq, django-storages, django-taggit, django-treebeard, djangorestframework, mozilla-django-oidc, wagtail, wagtail-localize
 djangorestframework==3.11.0  # via wagtail
-docutils==0.15.2          # via botocore
 draftjs-exporter==2.1.7   # via wagtail
 factory-boy==2.12.0       # via -r requirements.in, wagtail-factories
 faker==4.1.0              # via factory-boy
