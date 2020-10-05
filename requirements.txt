@@ -62,7 +62,7 @@ text-unidecode==1.3       # via faker
 toml==0.10.1              # via wagtail-localize-pontoon
 unidecode==1.1.1          # via wagtail
 urllib3==1.25.9           # via botocore, requests, sentry-sdk
-wagtail-factories==2.0.0  # via -r requirements.in
+wagtail-factories==2.0.1  # via -r requirements.in
 wagtail-localize-pontoon==0.2.1  # via -r requirements.in
 wagtail-localize==0.4     # via -r requirements.in, wagtail-localize-pontoon
 wagtail==2.7.4            # via -r requirements.in, wagtail-factories, wagtail-localize
