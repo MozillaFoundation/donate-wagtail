@@ -29,7 +29,7 @@ django==2.2.13            # via -r requirements.in, django-csp, django-redis, dj
 djangorestframework==3.11.0  # via wagtail
 docutils==0.15.2          # via botocore
 draftjs-exporter==2.1.7   # via wagtail
-factory-boy==2.12.0       # via -r requirements.in, wagtail-factories
+factory-boy==3.1.0        # via -r requirements.in, wagtail-factories
 faker==4.1.0              # via factory-boy
 freezegun==0.3.15         # via -r requirements.in
 gitdb==4.0.5              # via gitpython
