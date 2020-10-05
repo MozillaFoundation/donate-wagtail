@@ -53,7 +53,7 @@ git+git://github.com/glasslion/redlock.git@master#egg=redlock  # via -r requirem
 requests==2.24.0          # via -r requirements.in, braintree, mozilla-django-oidc, stripe, wagtail
 rq==1.2.0                 # via -r requirements.in, django-rq
 s3transfer==0.3.3         # via boto3
-sentry-sdk==0.15.1        # via -r requirements.in
+sentry-sdk==0.18.0        # via -r requirements.in
 six==1.14.0               # via cryptography, django-configurations, freezegun, html5lib, josepy, mozilla-django-oidc, pyopenssl, python-dateutil, wagtail
 smmap==3.0.4              # via gitdb
 sqlparse==0.3.1           # via django
