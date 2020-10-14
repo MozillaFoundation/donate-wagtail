@@ -110,6 +110,11 @@
     padding: 15px 20px;
     border: 1px solid $color--border;
     width: 100%;
+
+    @media (prefers-color-scheme: dark) {
+      border-color: red;
+      color: red;
+    }
   }
 
   &__input-additional-info {
