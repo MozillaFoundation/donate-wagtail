@@ -39,7 +39,7 @@
   "dependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
-    "@sentry/browser": "^5.17.0",
+    "@sentry/browser": "^5.27.3",
     "autoprefixer": "^9.8.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
