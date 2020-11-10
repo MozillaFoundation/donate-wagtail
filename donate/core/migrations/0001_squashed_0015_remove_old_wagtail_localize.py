@@ -9,8 +9,6 @@ import uuid
 import wagtail.core.blocks
 import wagtail.core.fields
 import wagtail.images.blocks
-import wagtail_localize.bootstrap
-import wagtail_localize.models
 
 
 # Functions from the following migrations need manual copying.
@@ -26,7 +24,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailimages', '0001_squashed_0021'),
-        ('wagtail_localize', '0002_initial_data'),
         ('wagtailcore', '0041_group_collection_permissions_verbose_name_plural'),
     ]
 
@@ -37,10 +34,9 @@ class Migration(migrations.Migration):
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('lead_text', models.CharField(max_length=800)),
                 ('hero_image', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtailimages.Image')),
-                ('intro', wagtail.core.fields.RichTextField(default='')),
+                ('intro', wagtail.core.fields.RichTextField()),
                 ('campaign_id', models.CharField(blank=True, help_text='Used for analytics and reporting', max_length=255)),
                 ('project', models.CharField(choices=[('mozillafoundation', 'Mozilla Foundation'), ('thunderbird', 'Thunderbird')], default='mozillafoundation', help_text='The project that donations from this campaign should be associated with', max_length=25)),
-                ('locale', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_localize.Locale')),
                 ('translation_key', models.UUIDField(editable=False, null=True)),
             ],
             options={
@@ -69,7 +65,6 @@ class Migration(migrations.Migration):
                 ('featured_image', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtailimages.Image')),
                 ('campaign_id', models.CharField(blank=True, help_text='Used for analytics and reporting', max_length=255)),
                 ('project', models.CharField(choices=[('mozillafoundation', 'Mozilla Foundation'), ('thunderbird', 'Thunderbird')], default='mozillafoundation', help_text='The project that donations from this campaign should be associated with', max_length=25)),
-                ('locale', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_localize.Locale')),
                 ('translation_key', models.UUIDField(editable=False, null=True)),
             ],
             options={
@@ -84,7 +79,6 @@ class Migration(migrations.Migration):
                 ('call_to_action_text', models.CharField(blank=True, max_length=255)),
                 ('call_to_action_url', models.URLField(blank=True)),
                 ('body', wagtail.core.fields.StreamField([('heading', donate.core.blocks.HeadingBlock()), ('paragraph', wagtail.core.blocks.RichTextBlock(features=['bold', 'italic', 'ol', 'ul', 'link'])), ('image', wagtail.core.blocks.StructBlock([('image', wagtail.images.blocks.ImageChooserBlock()), ('caption', wagtail.core.blocks.CharBlock(required=False))])), ('accordion', wagtail.core.blocks.StructBlock([('title', wagtail.core.blocks.CharBlock()), ('items', wagtail.core.blocks.ListBlock(donate.core.blocks.AccordionItem))]))])),
-                ('locale', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_localize.Locale')),
                 ('translation_key', models.UUIDField(editable=False, null=True)),
             ],
             options={
@@ -92,53 +86,20 @@ class Migration(migrations.Migration):
             },
             bases=('wagtailcore.page',),
         ),
-        wagtail_localize.bootstrap.BootstrapTranslatableModel(
-        ),
-        wagtail_localize.bootstrap.BootstrapTranslatableModel(
-        ),
-        wagtail_localize.bootstrap.BootstrapTranslatableModel(
-        ),
-        migrations.AlterField(
-            model_name='campaignpage',
-            name='locale',
-            field=models.ForeignKey(default=wagtail_localize.models.default_locale_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_localize.Locale'),
-        ),
         migrations.AlterField(
             model_name='campaignpage',
             name='translation_key',
             field=models.UUIDField(default=uuid.uuid4, editable=False),
-        ),
-        migrations.AlterUniqueTogether(
-            name='campaignpage',
-            unique_together={('translation_key', 'locale')},
-        ),
-        migrations.AlterField(
-            model_name='landingpage',
-            name='locale',
-            field=models.ForeignKey(default=wagtail_localize.models.default_locale_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_localize.Locale'),
         ),
         migrations.AlterField(
             model_name='landingpage',
             name='translation_key',
             field=models.UUIDField(default=uuid.uuid4, editable=False),
         ),
-        migrations.AlterUniqueTogether(
-            name='landingpage',
-            unique_together={('translation_key', 'locale')},
-        ),
-        migrations.AlterField(
-            model_name='contentpage',
-            name='locale',
-            field=models.ForeignKey(default=wagtail_localize.models.default_locale_id, on_delete=django.db.models.deletion.PROTECT, related_name='+', to='wagtail_localize.Locale'),
-        ),
         migrations.AlterField(
             model_name='contentpage',
             name='translation_key',
             field=models.UUIDField(default=uuid.uuid4, editable=False),
-        ),
-        migrations.AlterUniqueTogether(
-            name='contentpage',
-            unique_together={('translation_key', 'locale')},
         ),
         migrations.AddField(
             model_name='campaignpage',
@@ -154,10 +115,6 @@ class Migration(migrations.Migration):
             model_name='landingpage',
             name='is_source_translation',
             field=models.BooleanField(default=True),
-        ),
-        migrations.RunPython(
-            code=donate.core.migrations.0011_refactor_accordion_block.empty_old_accordions,
-            reverse_code=django.db.migrations.operations.special.RunPython.noop,
         ),
         migrations.AlterField(
             model_name='contentpage',
@@ -192,19 +149,11 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='campaignpage',
-            name='locale',
-        ),
-        migrations.RemoveField(
-            model_name='campaignpage',
             name='translation_key',
         ),
         migrations.RemoveField(
             model_name='contentpage',
             name='is_source_translation',
-        ),
-        migrations.RemoveField(
-            model_name='contentpage',
-            name='locale',
         ),
         migrations.RemoveField(
             model_name='contentpage',
@@ -223,10 +172,6 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='landingpage',
             name='is_source_translation',
-        ),
-        migrations.RemoveField(
-            model_name='landingpage',
-            name='locale',
         ),
         migrations.RemoveField(
             model_name='landingpage',
