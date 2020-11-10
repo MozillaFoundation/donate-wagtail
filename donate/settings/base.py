@@ -87,6 +87,7 @@ class Base(object):
 
         'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
+        'wagtail.contrib.legacy.richtext',  # Must be before 'wagtail.core'
         'wagtail.embeds',
         'wagtail.sites',
         'wagtail.users',
