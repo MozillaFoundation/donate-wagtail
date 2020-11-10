@@ -24,6 +24,4 @@ sentry-sdk
 stripe
 wagtail
 wagtail-factories
-wagtail-localize
-wagtail-localize-pontoon
 whitenoise
