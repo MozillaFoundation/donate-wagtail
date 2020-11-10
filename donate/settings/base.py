@@ -85,12 +85,6 @@ class Base(object):
         'donate.payments',
         'donate.recaptcha',
 
-        'wagtail_localize',
-        'wagtail_localize.admin.language_switch',
-        'wagtail_localize.deprecated.translation_memory',
-        'wagtail_localize.translation',
-        'wagtail_localize_pontoon',
-
         'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
         'wagtail.embeds',
