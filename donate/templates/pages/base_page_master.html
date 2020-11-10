@@ -1,7 +1,9 @@
 {% extends "base.html" %}
-{% load i18n static util_tags %}
+{% load i18n static wagtailcore_tags util_tags %}
 
 {% block meta_tags %}
+    {% wagtail_site as current_site %}
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
     <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
@@ -11,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
     <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
-    <meta property="og:site_name" content="{% if request.site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
+    <meta property="og:site_name" content="{% if current_site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
     <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
     <meta property="og:image" content="https://assets.mofoprod.net/images/og.png">
 {% endblock meta_tags %}
