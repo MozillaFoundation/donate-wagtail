@@ -130,7 +130,6 @@ class Base(object):
             'django.contrib.messages.middleware.MessageMiddleware',
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
             'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-            'wagtail.core.middleware.SiteMiddleware',
             'csp.middleware.CSPMiddleware',
             # Make sure to check for deauthentication during a session:
             'mozilla_django_oidc.middleware.SessionRefresh'
