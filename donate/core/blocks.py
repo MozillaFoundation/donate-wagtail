@@ -5,7 +5,7 @@ from wagtail.images.blocks import ImageChooserBlock
 class HeadingBlock(blocks.CharBlock):
 
     class Meta:
-        classname = 'full title'
+        form_classname = 'full title'
         icon = 'title'
         template = 'blocks/heading_block.html'
 
