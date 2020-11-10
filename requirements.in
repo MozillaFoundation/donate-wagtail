@@ -22,6 +22,6 @@ requests
 rq==1.2.0
 sentry-sdk
 stripe
-wagtail
+wagtail==2.8.2
 wagtail-factories
 whitenoise
