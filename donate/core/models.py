@@ -12,6 +12,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.fields import ParentalKey
+from wagtail_localize.fields import SynchronizedField
 
 from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
@@ -43,6 +44,10 @@ class DonationPage(Page):
 
     settings_panels = Page.settings_panels + [
         FieldPanel('campaign_id'),
+    ]
+
+    override_translatable_fields = [
+        SynchronizedField('campaign_id'),
     ]
 
     @cached_property
