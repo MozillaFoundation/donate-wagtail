@@ -39,9 +39,9 @@ class Base(object):
     BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL')
 
     # Pontoon settings
-    WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
-    WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
-    WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
+    WAGTAILLOCALIZE_GIT_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
+    WAGTAILLOCALIZE_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
+    WAGTAILLOCALIZE_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
     SSH_KEY = env('SSH_KEY')
     SSH_CONFIG = env('SSH_CONFIG')
 
@@ -84,6 +84,10 @@ class Base(object):
         'donate.core',
         'donate.payments',
         'donate.recaptcha',
+
+        'wagtail_localize',
+        'wagtail_localize.locales',
+        'wagtail_localize_git',
 
         'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
@@ -141,6 +145,8 @@ class Base(object):
     TEMPLATES = defaults.TEMPLATES
 
     LANGUAGES = LANGUAGES
+    WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
+    WAGTAIL_I18N_ENABLED = True
 
     # Logging Config
     LOGGING_CONFIG = None
