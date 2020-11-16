@@ -69,34 +69,37 @@
     </h2>
     <p>
         {% block covid_notice %}
-        <b>{% trans "UPDATE March 20, 2020:"%}</b>
+        <b>{% trans "UPDATE October 2020:"%}</b>
         {% blocktrans trimmed %}
-        Please note that due to the “shelter in place” order recently implemented for California,
-        processing and acknowledgment of check donations to the Mozilla Foundation will be indefinitely delayed.
-        Rather than sending us a check, please consider making an <a href="/">online donation</a> instead.
+        The Mozilla Foundation is happy to accept your donation (made payable to "Mozilla Foundation") via check;
+        however please note that processing and acknowledgment of your gift may be delayed by changes to our office procedures
+        due to the COVID-19 pandemic. You can send checks to: <br>
+        {% endblocktrans %}
+        <address>
+            {% block check_address %}
+                Mozilla Foundation attn: Donor Care<br>
+                2 Harrison Street, #175<br>
+                San Francisco CA 94105<br>
+                USA
+            {% endblock %}
+        </address>
+        {% endblock %}
+    </p>
+    <p>
+        {% block covid_notice_memo_line %}
+        {% blocktrans trimmed %}
+        Please include your email address on the memo line of your check to help us track and attribute your gift.
         {% endblocktrans %}
         {% endblock %}
     </p>
-    <!--
     <p>
-        {% block check_payee %}
-            {% blocktrans with payee='Mozilla Foundation' trimmed %}
-            Please send a check <strong>including your email address on the memo line</strong>, and payable (payee) to “{{payee}}”.
-            {% endblocktrans %}
-            {% blocktrans trimmed %}
-            Please note that the Mozilla Foundation can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
-            {% endblocktrans %}
+        {% block covid_notice_end_note %}
+        {% blocktrans trimmed %}
+        Please also note that the Mozilla Foundation can <strong>only</strong> accept checks in U.S. dollars drawn on a U.S. bank, and <strong>cannot</strong> accept contributions for MZLA/Thunderbird.
+        (Contributions to MZLA/Thunderbird via check can be made by following <a href="https://give.thunderbird.net/en-US/ways-to-give/#check" target="_blank">these instructions</a>.)
+        {% endblocktrans %}
         {% endblock %}
     </p>
-    <address>
-        {% block check_address %}
-            Mozilla Foundation attn: Donor Care<br>
-            2 Harrison Street, #175<br>
-            San Francisco CA 94105<br>
-            USA
-        {% endblock %}
-    </address>
-    -->
     {% block currencies %}
         <h2>{% trans "Currencies" %}</h2>
         <p>{% trans "Select your currency to make a secure online donation:" %}</p>
