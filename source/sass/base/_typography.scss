@@ -60,7 +60,8 @@ blockquote {
   @include quote-text();
 }
 
-p {
+p,
+address {
   margin: 0 0 $gutter;
 }
 

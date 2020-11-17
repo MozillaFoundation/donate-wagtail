@@ -75,16 +75,16 @@
         however please note that processing and acknowledgment of your gift may be delayed by changes to our office procedures
         due to the COVID-19 pandemic. You can send checks to: <br>
         {% endblocktrans %}
-        <address>
-            {% block check_address %}
-                Mozilla Foundation attn: Donor Care<br>
-                2 Harrison Street, #175<br>
-                San Francisco CA 94105<br>
-                USA
-            {% endblock %}
-        </address>
         {% endblock %}
     </p>
+    <address>
+        {% block check_address %}
+            Mozilla Foundation attn: Donor Care<br>
+            2 Harrison Street, #175<br>
+            San Francisco CA 94105<br>
+            USA
+        {% endblock %}
+    </address>
     <p>
         {% block covid_notice_memo_line %}
         {% blocktrans trimmed %}
