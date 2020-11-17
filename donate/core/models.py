@@ -47,6 +47,7 @@ class DonationPage(Page):
     ]
 
     override_translatable_fields = [
+        SynchronizedField('slug'),
         SynchronizedField('campaign_id'),
     ]
 
@@ -297,10 +298,18 @@ class ContentPage(Page):
         StreamFieldPanel('body'),
     ]
 
+    override_translatable_fields = [
+        SynchronizedField('slug'),
+    ]
+
 
 class ContributorSupportPage(Page):
     template = 'pages/core/contributor_support_page.html'
     parent_page_types = ['core.LandingPage']
+
+    override_translatable_fields = [
+        SynchronizedField('slug'),
+    ]
 
     # This page does not have subpages
 
