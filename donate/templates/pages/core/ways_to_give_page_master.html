@@ -28,7 +28,7 @@
             {% endblocktrans %}
         </p>
         <p>
-            {% blocktrans with instruction_url="https://give.thunderbird.net/en-US/ways-to-give/#wire" trimmed %}
+            {% blocktrans with instruction_url="https://give.thunderbird.net/ways-to-give/#wire" trimmed %}
             Please also note that the Mozilla Foundation cannot accept SEPA or BACS transfers for MZLA/Thunderbird. To contribute to MZLA/Thunderbird via SEPA or BACS transfer, please follow <a href="{{instruction_url}}">these instructions</a>.
             {% endblocktrans %}
         </p>
@@ -78,8 +78,9 @@
         {% blocktrans trimmed %}
         The Mozilla Foundation is happy to accept your donation (made payable to “Mozilla Foundation”) via check;
         however please note that processing and acknowledgment of your gift may be delayed by changes to our office procedures
-        due to the COVID-19 pandemic. You can send checks to: <br>
+        due to the COVID-19 pandemic. You can send checks to:
         {% endblocktrans %}
+        <br>
         {% endblock %}
     </p>
     <address>
@@ -98,9 +99,9 @@
     </p>
     <p>
         {% block covid_notice_end_note %}
-        {% blocktrans trimmed %}
+        {% blocktrans with instruction_url="https://give.thunderbird.net/ways-to-give/#check" trimmed %}
         Please also note that the Mozilla Foundation can <strong>only</strong> accept checks in U.S. dollars drawn on a U.S. bank, and <strong>cannot</strong> accept contributions for MZLA/Thunderbird.
-        (Contributions to MZLA/Thunderbird via check can be made by following <a href="https://give.thunderbird.net/en-US/ways-to-give/#check" target="_blank">these instructions</a>.)
+        (Contributions to MZLA/Thunderbird via check can be made by following <a href="{{instruction_url}}" target="_blank">these instructions</a>.)
         {% endblocktrans %}
         {% endblock %}
     </p>
