@@ -27,6 +27,11 @@
             Note that for smaller (under 10 EUR or equivalent) donations, <strong>and especially for donations under 5 EUR or equivalent</strong>, we request that you donate via credit card or PayPal to help reduce Mozilla’s processing fees.
             {% endblocktrans %}
         </p>
+        <p>
+            {% blocktrans with instruction_url="https://give.thunderbird.net/en-US/ways-to-give/#wire" trimmed %}
+            Please also note that the Mozilla Foundation cannot accept SEPA or BACS transfers for MZLA/Thunderbird. To contribute to MZLA/Thunderbird via SEPA or BACS transfer, please follow <a href="{{instruction_url}}">these instructions</a>.
+            {% endblocktrans %}
+        </p>
         <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
         <p>
             {% blocktrans with address="331 E. Evelyn Ave, Mountain View, CA 94041 USA" trimmed %}
