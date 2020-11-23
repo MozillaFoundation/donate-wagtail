@@ -19,54 +19,67 @@
         <a href="{{ways_to_give_link}}">Go to this link</a> to make a secure online donation right now.
         {% endblocktrans %}
     </p>
+
     {% block SEPA %}
-        <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
-        <p>{% trans "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
-        <p>
-            {% blocktrans trimmed %}
-            Note that for smaller (under 10 EUR or equivalent) donations, <strong>and especially for donations under 5 EUR or equivalent</strong>, we request that you donate via credit card or PayPal to help reduce Mozilla’s processing fees.
-            {% endblocktrans %}
-        </p>
-        <p>
-            {% blocktrans with instruction_url="https://give.thunderbird.net/ways-to-give/#wire" trimmed %}
-            Please also note that the Mozilla Foundation cannot accept SEPA or BACS transfers for MZLA/Thunderbird. To contribute to MZLA/Thunderbird via SEPA or BACS transfer, please follow <a href="{{instruction_url}}">these instructions</a>.
-            {% endblocktrans %}
-        </p>
-        <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
-        <p>
-            {% blocktrans with address="331 E. Evelyn Ave, Mountain View, CA 94041 USA" trimmed %}
-            If your bank requests our physical address, it is {{address}}.
-            {% endblocktrans %}
-        </p>
+    <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
+    <p>{% trans "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
+    <p>
+        {% blocktrans trimmed %}
+        Note that for smaller (under 10 EUR or equivalent) donations, <strong>and especially for donations under 5 EUR or equivalent</strong>, we request that you donate via credit card or PayPal to help reduce Mozilla’s processing fees.
+        {% endblocktrans %}
+    </p>
+    <p>
+        {% blocktrans with instruction_url="https://give.thunderbird.net/ways-to-give/#wire" trimmed %}
+        Please also note that the Mozilla Foundation cannot accept SEPA or BACS transfers for MZLA/Thunderbird. To contribute to MZLA/Thunderbird via SEPA or BACS transfer, please follow <a href="{{instruction_url}}">these instructions</a>.
+        {% endblocktrans %}
+    </p>
+    <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
+    <p>
+        {% blocktrans with address="331 E. Evelyn Ave, Mountain View, CA 94041 USA" trimmed %}
+        If your bank requests our physical address, it is {{address}}.
+        {% endblocktrans %}
+    </p>
     {% endblock %}
+
     {% block euros %}
-        <h3>{% trans "Euros:" %}</h3>
-        <p>
-            <b>{% trans "Account Currency:" %}</b> {% trans "Euro (EUR)" %}<br>
-            <b>{% trans "Receiving Bank (Pay to):" %}</b> Standard Chartered Bank<br>
-            <b>{% trans "City & Country/Region:" %}</b> {% trans "Frankfurt, Germany" %}<br>
-            <b>{% trans "SWIFT/BIC Code:" %}</b> SCBLDEFX<br>
-            <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB-Mozilla Foundation<br>
-            <b>{% trans "IBAN:" %}</b> DE67512305000500136802
-            {% block tb_memo_eur %}{% endblock %}
-        </p>
+    <h3>{% trans "Euros:" %}</h3>
+    <p>
+        <b>{% trans "Account Currency:" %}</b> {% trans "Euro (EUR)" %}<br>
+        <b>{% trans "Receiving Bank (Pay to):" %}</b> Standard Chartered Bank<br>
+        <b>{% trans "City & Country/Region:" %}</b> {% trans "Frankfurt, Germany" %}<br>
+        <b>{% trans "SWIFT/BIC Code:" %}</b> SCBLDEFX<br>
+        <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB-Mozilla Foundation<br>
+        <b>{% trans "IBAN:" %}</b> DE67512305000500136802
+        {% block tb_memo_eur %}{% endblock %}
+    </p>
     {% endblock %}
 
     {% block british_pound %}
-        <h3>{% trans "British Pound Sterling:" %}</h3>
-        <p>
-            <b>{% trans "Account Currency:" %}</b> {% trans "British Pound Sterling (GBP)" %}<br>
-            <b>{% trans "Receiving Bank (Pay to):" %}</b> National Westminster Bank<br>
-            <b>{% trans "City & Country/Region:" %}</b> {% trans "London, United Kingdom" %}<br>
-            <b>{% trans "Bank Sort Code:" %}</b> 60-00-04<br>
-            <b>{% trans "Account Number (8 digits):" %}</b> 10017496<br>
-            <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB RE Mozilla Foundation
-        </p>
-        <p>
-            <b>{% trans "SWIFT/BIC Code:" %}</b> NWBKGB2L<br>
-            <b>{% trans "IBAN:" %}</b> GB77NWBK60000410017496
-            {% block tb_memo_gbp %}{% endblock %}
-        </p>
+    <h3>{% trans "British Pound Sterling:" %}</h3>
+    <p>
+        <b>{% trans "Account Currency:" %}</b> {% trans "British Pound Sterling (GBP)" %}<br>
+        <b>{% trans "Receiving Bank (Pay to):" %}</b> National Westminster Bank<br>
+        <b>{% trans "City & Country/Region:" %}</b> {% trans "London, United Kingdom" %}<br>
+        <b>{% trans "Bank Sort Code:" %}</b> 60-00-04<br>
+        <b>{% trans "Account Number (8 digits):" %}</b> 10017496<br>
+        <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB RE Mozilla Foundation
+    </p>
+    <p>
+        <b>{% trans "SWIFT/BIC Code:" %}</b> NWBKGB2L<br>
+        <b>{% trans "IBAN:" %}</b> GB77NWBK60000410017496
+        {% block tb_memo_gbp %}{% endblock %}
+    </p>
+    {% endblock %}
+
+    {% block stock_donations %}
+    <h2>{% trans "Donation of Stock/Securities:" %}</h2>
+    <p>
+        {% blocktrans with name="Jesse Ward" email="jessew@mozillafoundation.org" trimmed %}
+        The Mozilla Foundation is happy to accept your gift of publicly-traded stocks or bonds through
+        our brokerage account at Northern Trust Securities. Please contact Major Gift Officer {{name}}
+        at <a href="mailto:{{email}}">{{email}}</a> to initiate the process.
+        {% endblocktrans %}
+    </p>
     {% endblock %}
 
     <h2 id="check">
