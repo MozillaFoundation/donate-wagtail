@@ -39,9 +39,9 @@ class Base(object):
     BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL')
 
     # Pontoon settings
-    WAGTAILLOCALIZE_PONTOON_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
-    WAGTAILLOCALIZE_PONTOON_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
-    WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
+    WAGTAILLOCALIZE_GIT_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
+    WAGTAILLOCALIZE_GIT_URL = env('WAGTAILLOCALIZE_PONTOON_GIT_URL')
+    WAGTAILLOCALIZE_GIT_CLONE_DIR = env('WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR')
     SSH_KEY = env('SSH_KEY')
     SSH_CONFIG = env('SSH_CONFIG')
 
@@ -86,13 +86,12 @@ class Base(object):
         'donate.recaptcha',
 
         'wagtail_localize',
-        'wagtail_localize.admin.language_switch',
-        'wagtail_localize.deprecated.translation_memory',
-        'wagtail_localize.translation',
-        'wagtail_localize_pontoon',
+        'wagtail_localize.locales',
+        'wagtail_localize_git',
 
         'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
+        'wagtail.contrib.legacy.richtext',  # Must be before 'wagtail.core'
         'wagtail.embeds',
         'wagtail.sites',
         'wagtail.users',
@@ -136,7 +135,6 @@ class Base(object):
             'django.contrib.messages.middleware.MessageMiddleware',
             'django.middleware.clickjacking.XFrameOptionsMiddleware',
             'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-            'wagtail.core.middleware.SiteMiddleware',
             'csp.middleware.CSPMiddleware',
             # Make sure to check for deauthentication during a session:
             'mozilla_django_oidc.middleware.SessionRefresh'
@@ -147,6 +145,8 @@ class Base(object):
     TEMPLATES = defaults.TEMPLATES
 
     LANGUAGES = LANGUAGES
+    WAGTAIL_CONTENT_LANGUAGES = LANGUAGES
+    WAGTAIL_I18N_ENABLED = True
 
     # Logging Config
     LOGGING_CONFIG = None
