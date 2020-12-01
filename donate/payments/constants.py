@@ -466,6 +466,7 @@ LOCALE_CURRENCY_MAP = {
     'ast': 'eur',
     'ca': 'eur',
     'cs': 'czk',
+    'cy': 'gbp',
     'da': 'dkk',
     'de': 'eur',
     'dsb': 'eur',

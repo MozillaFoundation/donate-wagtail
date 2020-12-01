@@ -48,30 +48,27 @@
     </p>
 {% endblock %}
 
-{% block covid_notice %}
-    <b>{% trans "UPDATE March 20, 2020:"%}</b>
-    {% blocktrans trimmed %}
-    Please note that due to the “shelter in place” order recently implemented for California,
-    processing and acknowledgment of check donations to Thunderbird/MZLA Technologies will be indefinitely delayed.
-    Rather than sending us a check, please consider making an <a href="/">online donation</a> instead.
-    {% endblocktrans %}
-{% endblock %}
+{% block stock_donations %}{% endblock %}
 
-{% block check_payee %}
-    {% blocktrans with thunderbird='Thunderbird' payee='MZLA Technologies Corporation' trimmed %}
-    Please send a check <strong>with “{{thunderbird}}” on the memo line</strong>, and payable (payee) to “{{payee}}”.
-    {% endblocktrans %}
+{% block covid_notice %}
+    <b>{% trans "UPDATE October 2020:"%}</b>
     {% blocktrans trimmed %}
-    Please note that we can only accept checks in US dollars drawn on a US bank. Please do <strong>not</strong> send cash.
+    MZLA/Thunderbird is happy to accept your donation (made payable to “MZLA Technologies”) via check; however please note that processing and acknowledgment of your gift may be delayed by changes to our office procedures due to the COVID-19 pandemic. You can send checks to:
     {% endblocktrans %}
 {% endblock %}
 
 {% block check_address %}
-    Mozilla Foundation<br>
-    Attn: Thunderbird Donor Care<br>
+    Mozilla Foundation, attn: MZLA/Thunderbird Donor Care<br>
     2 Harrison Street, Suite 175<br>
-    San Francisco CA 94105<br>
-    USA
+    San Francisco, CA 94105
+{% endblock %}
+
+{% block covid_notice_memo_line %}
+    Please include your email address on the memo line of your check to help us track and attribute your gift.
+{% endblock %}
+
+{% block covid_notice_end_note %}
+    Please also note that MZLA/Thunderbird can <strong>only</strong> accept checks in U.S. dollars drawn on a U.S. bank.
 {% endblock %}
 
 {% block currencies %}

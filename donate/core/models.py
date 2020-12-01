@@ -12,8 +12,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from modelcluster.fields import ParentalKey
-from wagtail_localize.models import TranslatablePageMixin, TranslatablePageRoutingMixin, Locale
-from wagtail_localize.fields import TranslatableField, SynchronizedField
+from wagtail_localize.fields import SynchronizedField
 
 from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
@@ -22,7 +21,7 @@ from donate.payments.utils import get_default_currency
 from .blocks import ContentBlock
 
 
-class DonationPage(TranslatablePageMixin, Page):
+class DonationPage(Page):
 
     PROJECT_MOZILLAFOUNDATION = 'mozillafoundation'
     PROJECT_THUNDERBIRD = 'thunderbird'
@@ -45,6 +44,11 @@ class DonationPage(TranslatablePageMixin, Page):
 
     settings_panels = Page.settings_panels + [
         FieldPanel('campaign_id'),
+    ]
+
+    override_translatable_fields = [
+        SynchronizedField('slug'),
+        SynchronizedField('campaign_id'),
     ]
 
     @cached_property
@@ -171,26 +175,11 @@ class DonationPage(TranslatablePageMixin, Page):
         })
         return ctx
 
-    @classmethod
-    def can_create_at(cls, parent):
-        if not super().can_create_at(parent):
-            return False
-
-        # Prevent pages being created in translated sections
-        if issubclass(parent.specific_class, TranslatablePageMixin):
-            if parent.specific.locale_id != Locale.objects.default_id():
-                return False
-
-        return True
-
     class Meta:
-        unique_together = [
-            ('translation_key', 'locale'),
-        ]
         abstract = True
 
 
-class LandingPage(TranslatablePageRoutingMixin, DonationPage):
+class LandingPage(DonationPage):
     template = 'pages/core/landing_page.html'
 
     # Only allow creating landing pages at the root level
@@ -215,27 +204,6 @@ class LandingPage(TranslatablePageRoutingMixin, DonationPage):
         FieldPanel('intro'),
     ]
 
-    translatable_fields = [
-        TranslatableField('title'),
-        TranslatableField('seo_title'),
-        TranslatableField('search_description'),
-        SynchronizedField('project'),
-        SynchronizedField('campaign_id'),
-        SynchronizedField('featured_image'),
-        TranslatableField('intro'),
-    ]
-
-    def save(self, *args, **kwargs):
-        # This slug isn't used anywhere but it does need to be unique for each language
-        language_code = self.locale.language.code.lower()
-        if language_code == 'en-us':
-            # Needs to be something nice as translators will see it
-            self.slug = 'mozilla-donate'
-        else:
-            self.slug = 'mozilla-donate-' + language_code
-
-        super().save(*args, **kwargs)
-
 
 class CampaignPage(DonationPage):
     template = 'pages/core/campaign_page.html'
@@ -258,17 +226,6 @@ class CampaignPage(DonationPage):
         FieldPanel('lead_text'),
         FieldPanel('intro'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
-    ]
-
-    translatable_fields = [
-        TranslatableField('title'),
-        TranslatableField('seo_title'),
-        TranslatableField('search_description'),
-        SynchronizedField('project'),
-        SynchronizedField('campaign_id'),
-        SynchronizedField('hero_image'),
-        TranslatableField('lead_text'),
-        TranslatableField('intro'),
     ]
 
     @classmethod
@@ -325,7 +282,7 @@ class CampaignPageDonationAmount(models.Model):
         unique_together = (('campaign', 'currency'),)
 
 
-class ContentPage(TranslatablePageMixin, Page):
+class ContentPage(Page):
     template = 'pages/core/content_page.html'
     parent_page_types = ['core.LandingPage']
     subpage_types = ['core.ContentPage']
@@ -341,27 +298,20 @@ class ContentPage(TranslatablePageMixin, Page):
         StreamFieldPanel('body'),
     ]
 
-    translatable_fields = [
-        TranslatableField('title'),
-        TranslatableField('seo_title'),
-        TranslatableField('search_description'),
-        TranslatableField('call_to_action_text'),
-        SynchronizedField('call_to_action_url'),
-        TranslatableField('body'),
+    override_translatable_fields = [
+        SynchronizedField('slug'),
     ]
 
 
-class ContributorSupportPage(TranslatablePageMixin, Page):
+class ContributorSupportPage(Page):
     template = 'pages/core/contributor_support_page.html'
     parent_page_types = ['core.LandingPage']
 
-    # This page does not have subpages
-
-    translatable_fields = [
-        TranslatableField('title'),
-        TranslatableField('seo_title'),
-        TranslatableField('search_description'),
+    override_translatable_fields = [
+        SynchronizedField('slug'),
     ]
+
+    # This page does not have subpages
 
     def get_context(self, request):
         ctx = super().get_context(request)
