@@ -8,7 +8,7 @@ backcall==0.1.0           # via ipython
 certifi==2020.4.5.1       # via -c requirements.txt, requests
 chardet==3.0.4            # via -c requirements.txt, requests
 coverage==5.1             # via coveralls
-coveralls==2.0.0          # via -r dev-requirements.in
+coveralls==2.2.0          # via -r dev-requirements.in
 decorator==4.4.2          # via ipython, traitlets
 docopt==0.6.2             # via coveralls
 flake8==3.8.4             # via -r dev-requirements.in
