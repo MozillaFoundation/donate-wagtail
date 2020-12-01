@@ -10,18 +10,23 @@
                 <div class="hero">
                     <div class="hero__container">
                         <div class="hero__image">
-                            {% image page.hero_image width-420 as imageMobile %}
-                            {% image page.hero_image fill-768x433 as imageTablet %}
-                            {% image page.hero_image width-1200 as imageDesktop %}
-                            <img srcset="{{ imageMobile.url }} 290w,
-                                         {{ imageTablet.url }} 690w,
-                                         {{ imageDesktop.url }} 350w"
-                                 sizes="(max-width: 399px) 290px,
-                                        (max-width: 1023px) and (min-width: 400px) 690px,
-                                        (min-width: 1024px) 350px"
-                                 src="{{ imageDesktop.url }}"
-                                 alt="{{ image.alt }}"
-                                 class="hero__image-item">
+                            <picture>
+                            {% with alt_text=image.alt %}
+                                {% image page.hero_image width-1800 as imageDesktop %}
+                                {% image page.hero_image width-3600 as imageDesktop_2x %}
+                                <source media="(min-width: 1201px)" srcset="{{ imageDesktop.url }}, {{ imageDesktop_2x.url }} 2x"  alt="{{ alt_text }}">
+
+                                {% image page.hero_image width-1200 as imageTablet %}
+                                {% image page.hero_image width-2400 as imageTablet_2x %}
+                                <source media="(min-width: 768px)" srcset="{{ imageTablet.url }}, {{ imageTablet_2x.url }} 2x" alt="{{ alt_text }}">
+
+                                {% image page.hero_image width-768 as imageMobile %}
+                                {% image page.hero_image width-1536 as imageMobile_2x %}
+                                <source srcset="{{ imageMobile.url }}, {{ imageMobile_2x.url }} 2x" alt="{{ alt_text }}">
+
+                                <img src="{{ imageDesktop.url }}" class="hero__image-item" srcset="{{ imageMobile.url }} 768w, {{ imageTablet.url }} 1200w, {{ imageDesktop.url }} 1800w" alt="{{ alt_text }}"/>
+                            {% endwith %}
+                            </picture>
                         </div>
                         <div class="hero__content">
                             <div class="hero__content-container">
