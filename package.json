@@ -38,7 +38,7 @@
   "license": "MPL-2.0",
   "dependencies": {
     "@babel/core": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-env": "^7.12.7",
     "@sentry/browser": "^5.17.0",
     "autoprefixer": "^9.8.2",
     "babel-core": "^6.26.3",
@@ -52,17 +52,17 @@
     "postcss-cli": "^7.1.1",
     "scrollama": "^2.2.1",
     "shx": "^0.3.2",
-    "webpack": "^4.43.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "engines": {
     "node": "^14.4.0"
   },
   "devDependencies": {
-    "browserslist": "^4.12.0",
+    "browserslist": "^4.14.7",
     "chokidar-cli": "^2.1.0",
     "eslint": "^7.3.1",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
     "optipng-bin": "^7.0.0",
     "prettier": "^2.0.5",
