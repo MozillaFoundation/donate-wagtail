@@ -61,6 +61,7 @@ LANGUAGES = [
     ('tr', 'Turkish'),
     ('uk', 'Ukrainian'),
     ('uz', 'Uzbek'),
+    ('vi', 'Vietnamese'),
     ('zh-CN', 'Chinese (China)'),
     ('zh-TW', 'Chinese (Taiwan)'),
 ]
