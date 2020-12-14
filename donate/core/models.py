@@ -53,7 +53,12 @@ class DonationPage(Page):
 
     @cached_property
     def currencies(self):
-        return deepcopy(constants.CURRENCIES)
+        currencies = deepcopy(constants.CURRENCIES)
+        # Re-order currency `single` and `monthly` amounts
+        for currency in currencies:
+            currencies[currency]['presets']['single'].sort()
+            currencies[currency]['presets']['monthly'].sort()
+        return currencies
 
     def get_initial_currency(self, request):
         # Query argument takes first preference
@@ -90,9 +95,7 @@ class DonationPage(Page):
                 ]
                 if amount
             ]
-        except InvalidOperation:
-            return initial_currency_info
-        except ValueError:
+        except (InvalidOperation, ValueError):
             return initial_currency_info
 
         if not custom_presets:
