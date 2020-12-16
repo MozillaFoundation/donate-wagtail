@@ -88,7 +88,9 @@ class Base(object):
         'wagtail_localize',
         'wagtail_localize.locales',
         'wagtail_localize_git',
+        'wagtail_ab_testing',
 
+        'wagtail.contrib.forms',  # Temporarily needed as wagtail-ab-testing imports it
         'wagtail.contrib.redirects',
         'wagtail.contrib.settings',
         'wagtail.contrib.legacy.richtext',  # Must be before 'wagtail.core'
