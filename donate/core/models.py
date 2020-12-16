@@ -106,9 +106,7 @@ class DonationPage(Page):
 
         sorting = request.GET.get('sort', False)
 
-        if sorting == 'true':
-            custom_presets.sort()
-        elif sorting == 'reverse':
+        if sorting == 'reverse':
             custom_presets.sort(reverse=True)
 
         initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
