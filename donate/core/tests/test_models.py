@@ -153,13 +153,6 @@ class CampaignPageTestCase(TestCase):
             [Decimal(2), Decimal(9), Decimal(5), Decimal(3)]
         )
 
-    def test_get_initial_currency_info_sorted(self):
-        request = RequestFactory().get('/?presets=2,9,3,5&sort=true')
-        self.assertEqual(
-            DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
-            [Decimal(2), Decimal(3), Decimal(5), Decimal(9)]
-        )
-
     def test_get_initial_currency_info_reverse_sorted(self):
         request = RequestFactory().get('/?presets=2,9,5,3&sort=reverse')
         self.assertEqual(
@@ -206,17 +199,17 @@ class CampaignPageTestCase(TestCase):
         """
         select the indicated value from our default list of presets (3,15,35,85)
         """
-        request = RequestFactory().get('/?amount=85')
+        request = RequestFactory().get('/?amount=60')
         values = DonationPage().get_initial_values(request)
-        self.assertEqual(values['amount'], Decimal(85).quantize(Decimal('0.01')))
+        self.assertEqual(values['amount'], Decimal(60).quantize(Decimal('0.01')))
 
     def test_select_second_lowest_on_unknown(self):
         """
         default to the second-lowest in (3,15,35,85)
         """
-        request = RequestFactory().get('/?amount=4')
+        request = RequestFactory().get('/?amount=10')
         values = DonationPage().get_initial_values(request)
-        self.assertEqual(values['amount'], Decimal(15).quantize(Decimal('0.01')))
+        self.assertEqual(values['amount'], Decimal(10).quantize(Decimal('0.01')))
 
     def test_select_second_lowest_on_bad_value(self):
         """
@@ -224,7 +217,7 @@ class CampaignPageTestCase(TestCase):
         """
         request = RequestFactory().get('/?amount=not_a_number')
         values = DonationPage().get_initial_values(request)
-        self.assertEqual(values['amount'], Decimal(15).quantize(Decimal('0.01')))
+        self.assertEqual(values['amount'], Decimal(20).quantize(Decimal('0.01')))
 
     def test_ignore_scientific_notation(self):
         """
@@ -232,7 +225,7 @@ class CampaignPageTestCase(TestCase):
         """
         request = RequestFactory().get('/?amount=1e100')
         values = DonationPage().get_initial_values(request)
-        self.assertEqual(values['amount'], Decimal(15).quantize(Decimal('0.01')))
+        self.assertEqual(values['amount'], Decimal(20).quantize(Decimal('0.01')))
 
 
 class MissingMigrationsTests(TestCase):

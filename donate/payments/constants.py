@@ -35,8 +35,8 @@ CURRENCIES = {
             {'min': 15, 'value': 3},
         ],
         'presets': {
-            'single': [85, 35, 15, 5],
-            'monthly': [20, 10, 5, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20],
         }
     },
     'aud': {
@@ -57,8 +57,8 @@ CURRENCIES = {
             {'min': 22, 'value': 4},
         ],
         'presets': {
-            'single': [30, 15, 7, 4],
-            'monthly': [15, 7, 4, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20],
         }
     },
     'brl': {
@@ -101,8 +101,8 @@ CURRENCIES = {
             {'min': 20, 'value': 4},
         ],
         'presets': {
-            'single': [65, 30, 15, 4],
-            'monthly': [10, 7, 4, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20],
         }
     },
     'chf': {
@@ -123,8 +123,8 @@ CURRENCIES = {
             {'min': 15, 'value': 3},
         ],
         'presets': {
-            'single': [20, 10, 5, 3],
-            'monthly': [10, 5, 3, 2]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20],
         }
     },
     'czk': {
@@ -188,8 +188,8 @@ CURRENCIES = {
             {'min': 32, 'value': 5},
         ],
         'presets': {
-            'single': [85, 35, 15, 5],
-            'monthly': [20, 10, 5, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20],
         }
     },
     'gbp': {
@@ -210,8 +210,8 @@ CURRENCIES = {
             {'min': 12, 'value': 3},
         ],
         'presets': {
-            'single': [20, 10, 5, 3],
-            'monthly': [10, 5, 3, 2]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20]
         }
     },
     'hkd': {
@@ -362,8 +362,8 @@ CURRENCIES = {
             {'min': 23, 'value': 4},
         ],
         'presets': {
-            'single': [40, 20, 10, 4],
-            'monthly': [20, 10, 8, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20]
         }
     },
     'pln': {
