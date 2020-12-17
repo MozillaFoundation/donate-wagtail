@@ -153,13 +153,6 @@ class CampaignPageTestCase(TestCase):
             [Decimal(2), Decimal(9), Decimal(5), Decimal(3)]
         )
 
-    def test_get_initial_currency_info_sorted(self):
-        request = RequestFactory().get('/?presets=2,9,3,5&sort=true')
-        self.assertEqual(
-            DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
-            [Decimal(2), Decimal(3), Decimal(5), Decimal(9)]
-        )
-
     def test_get_initial_currency_info_reverse_sorted(self):
         request = RequestFactory().get('/?presets=2,9,5,3&sort=reverse')
         self.assertEqual(
