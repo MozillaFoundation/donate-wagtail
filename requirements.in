@@ -26,5 +26,5 @@ wagtail==2.11.2
 wagtail-factories
 wagtail-localize
 wagtail-localize-git==0.9.1
-wagtail-ab-testing==0.1.1
+wagtail-ab-testing==0.1.2
 whitenoise
