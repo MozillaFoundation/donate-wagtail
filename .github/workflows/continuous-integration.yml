@@ -41,6 +41,7 @@ jobs:
       DEBUG: False
       DJANGO_SECRET_KEY: secret
       SET_HSTS: False
+      SLACK_WEBHOOK_PONTOON: ${{ secrets.SLACK_WEBHOOK_PONTOON }}
       SSL_REDIRECT: False
       USE_S3: False
       X_FRAME_OPTIONS: DENY
