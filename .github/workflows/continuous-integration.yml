@@ -1,1 +1,62 @@
+name: Continuous Integration
 
+on:
+  push:
+    branches: [ 'master' ]
+  pull_request:
+    branches: [ 'master' ]
+
+jobs:
+  test_node:
+    name: Node CI
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Install Node Dependencies
+      run: npm ci
+    - name: Run Tests
+      run: npm test
+
+  test_python:
+    name: Python CI
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:10
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: donate
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      ALLOWED_HOSTS: localhost
+      CONTENT_TYPE_NO_SNIFF: True
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/donate
+      DEBUG: False
+      DJANGO_SECRET_KEY: secret
+      SET_HSTS: False
+      SSL_REDIRECT: False
+      USE_S3: False
+      X_FRAME_OPTIONS: DENY
+      XSS_PROTECTION: True
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Install Python Dependencies
+      run: pip install -r requirements.txt -r dev-requirements.txt
+    - name: Run Tests
+      run: |
+        flake8 donate/
+        coverage run --source './donate' ./manage.py test --settings=donate.settings --configuration=Testing
+        coveralls
