@@ -76,7 +76,7 @@ urllib3==1.25.9           # via botocore, requests, sentry-sdk
 user-agents==2.2.0        # via wagtail-ab-testing
 wagtail-ab-testing==0.1.2  # via -r requirements.in
 wagtail-factories==2.0.0  # via -r requirements.in
-wagtail-localize-git==0.9.1  # via -r requirements.in
+wagtail-localize-git==0.9.2  # via -r requirements.in
 wagtail-localize==0.9.3   # via -r requirements.in, wagtail-localize-git
 wagtail==2.11.2           # via -r requirements.in, wagtail-ab-testing, wagtail-factories, wagtail-localize, wagtail-localize-git
 webencodings==0.5.1       # via html5lib
