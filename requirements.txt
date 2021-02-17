@@ -215,7 +215,7 @@ wagtail-localize==0.9.3
     # via
     #   -r requirements.in
     #   wagtail-localize-git
-wagtail==2.11.2
+wagtail==2.11.4
     # via
     #   -r requirements.in
     #   wagtail-ab-testing
