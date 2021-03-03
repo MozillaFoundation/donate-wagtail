@@ -136,25 +136,25 @@
                     <ul class="footer-links__group" aria-labelledby="about-us-heading">
                         {% block footer_links %}
                             <li class="footer-links__item">
-                                <a class="link link--dark-bg" href="http://donate.mozilla.org" target="_blank" rel="noopener">{% trans "Donate" %}</a>
-                            </li>
-                            <li class="footer-links__item">
-                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
+                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/websites/#cookies" target="_blank" rel="noopener">{% trans "Cookie" %}</a>
                             </li>
                             <li class="footer-links__item">
                                 <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">{% trans "Legal" %}</a>
                             </li>
                             <li class="footer-links__item">
-                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
+                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/about/governance/policies/participation/" target="_blank" rel="noopener">{% trans "Participation Guidelines" %}</a>
                             </li>
                             <li class="footer-links__item">
-                                <a class="footer-links__link link link--dark-bg" href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">{% trans "License" %}</a>
+                                <a class="footer-links__link link link--dark-bg" href="https://foundation.mozilla.org/press-center/" target="_blank" rel="noopener">{% trans "Press Center" %}</a>
+                            </li>
+                            <li class="footer-links__item">
+                                <a class="footer-links__link link link--dark-bg" href="https://www.mozilla.org/privacy/" target="_blank" rel="noopener">{% trans "Privacy" %}</a>
                             </li>
                         {% endblock %}
                     </ul>
                 </div>
                 <div>
-                  {% include "../fragments/language_switcher.html %}
+                  {% include "../fragments/language_switcher.html" %}
                 </div>
             </div>
         </div>
@@ -169,8 +169,8 @@
             <div class="footer__legal layout__half-col">
                 <p class="footer__legal-license">
                     {% block footer_legal %}
-                        {% blocktrans with link_attributes='class="link" href="https://foundation.mozilla.org/"' site_url='foundation.mozilla.org' trimmed %}
-                        Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ link_attributes }}>{{ site_url }}</a>.{% endblocktrans %}
+                        {% blocktrans with fomo_link_attributes='class="link" href="https://foundation.mozilla.org/"' fomo_site_url='foundation.mozilla.org' cc_link_attributes='class="link" href="https://foundation.mozilla.org/about/website-licensing/"' trimmed %}
+                        Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at <a {{ fomo_link_attributes }}>{{ fomo_site_url }}</a>. Most content available under a <a {{ cc_link_attributes }}>Creative Commons license</a>.{% endblocktrans %}
                     {% endblock %}
                 </p>
             </div>
