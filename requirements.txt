@@ -211,7 +211,7 @@ wagtail-factories==2.0.0
     # via -r requirements.in
 wagtail-localize-git==0.9.2
     # via -r requirements.in
-wagtail-localize==0.9.3
+wagtail-localize==0.9.5
     # via
     #   -r requirements.in
     #   wagtail-localize-git
