@@ -39,8 +39,13 @@
                         <input type="radio" class="donation-amount__radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
                         <label for="one-time-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                         <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
-                        <input type="number" class="donation-amount__input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
+                        <input type="number" class="donation-amount__input one-time-amount-other-input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
                     </div>
+
+                    <p class='error-message hidden'>
+                        {% trans "Invalid amount entered." %}
+                    </p>
+
                 </div>
                 <input type="hidden" class="one-time-amount__total">
                 <div class="donate-form__actions">
