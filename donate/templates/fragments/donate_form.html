@@ -20,7 +20,7 @@
             </div>
         {% endblock %}
         </form>
-        <div class="tabs__panel js-tab-panel {% if initial_frequency == 'monthly' %}tabs__panel--hidden{% endif %}" id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
+        <div class="tabs__panel js-tab-panel {% if initial_frequency == 'monthly' %}tabs__panel--hidden{% endif %}" id="tab-panel-1" aria-labelledby="tab-1">
             <form method="GET" id="donate-form--single">
                 <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
@@ -89,7 +89,7 @@
 
             {% include "fragments/donate_form_disclaimer.html" with monthly=false %}
         </div>
-        <div class="js-tab-panel tabs__panel {% if initial_frequency == 'single' %}tabs__panel--hidden{% endif %}" id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2">
+        <div class="js-tab-panel tabs__panel {% if initial_frequency == 'single' %}tabs__panel--hidden{% endif %}" id="tab-panel-2" aria-labelledby="tab-2">
             <form method="GET" id="donate-form--monthly">
                 <input type="hidden" name="source_page_id" value="{{ page.pk }}">
                 <input type="hidden" name="currency" value="{{ initial_currency_info.code }}" class="js-form-currency">
