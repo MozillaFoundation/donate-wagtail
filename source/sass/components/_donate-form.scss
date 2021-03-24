@@ -36,6 +36,10 @@
   &__footer {
     @include font-size(xxs);
     margin-bottom: ($gutter * 2);
+
+    a {
+      color: $color--dark-blue;
+    }
   }
 
   &__actions-header {
