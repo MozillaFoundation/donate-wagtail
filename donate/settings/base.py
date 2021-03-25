@@ -80,6 +80,8 @@ class Base(object):
         return self.ALLOWED_HOSTS
 
     INSTALLED_APPS = [
+        'scout_apm.django',
+
         'donate.users',
         'donate.core',
         'donate.payments',
@@ -179,6 +181,11 @@ class Base(object):
 
     @classmethod
     def post_setup(cls):
+        if env("SCOUT_KEY"):
+            cls.SCOUT_MONITOR = True
+            cls.SCOUT_KEY = env("SCOUT_KEY")
+            cls.SCOUT_NAME = env("SCOUT_NAME", default="donate")
+
         logging.config.dictConfig(cls.LOGGING)
 
         # Set some fallbacks in django.conf.locale.LANG_INFO, and add some that don't exist
