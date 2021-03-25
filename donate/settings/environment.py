@@ -86,6 +86,7 @@ env = environ.Env(
     OIDC_OP_USER_ENDPOINT=(str, "https://auth.mozilla.auth0.com/userinfo"),
     OIDC_OP_DOMAIN=(str, "auth.mozilla.auth0.com"),
     OIDC_OP_JWKS_ENDPOINT=(str, "https://auth.mozilla.auth0.com/.well-known/jwks.json"),
+    SCOUT_KEY=(str, None),
 )
 
 
