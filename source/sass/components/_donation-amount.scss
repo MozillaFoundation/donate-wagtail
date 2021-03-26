@@ -81,6 +81,7 @@
       }
 
       &:invalid {
+        box-shadow: none;
         border-color: $color--warning;
       }
     }
