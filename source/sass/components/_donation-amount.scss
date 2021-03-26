@@ -8,6 +8,13 @@
   &--other {
     display: flex;
     flex-direction: row;
+
+    &--container {
+      @include media-query(tablet-portrait) {
+        height: 100%;
+        max-height: 90px;
+      }
+    }
   }
 
   &__container {
@@ -74,7 +81,7 @@
       }
 
       &:invalid {
-        box-shadow: $color--warning inset 0px 0px 1.5px 1px;
+        border-color: $color--warning;
       }
     }
   }

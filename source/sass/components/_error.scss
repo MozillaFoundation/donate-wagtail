@@ -16,5 +16,6 @@
 }
 
 .error-message {
-  color: $color--dark-red;
+  @include font-size(xxs);
+  color: $color--warning;
 }
