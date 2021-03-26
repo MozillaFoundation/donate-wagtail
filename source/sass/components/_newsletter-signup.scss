@@ -28,7 +28,7 @@
   }
   &__privacy-label {
     @include font-size(xs);
-    display: block;    // To keep label from wrapping underneath checkbox
+    display: block; // To keep label from wrapping underneath checkbox
     margin-top: -23px; //
     margin-left: 20px; //
 
