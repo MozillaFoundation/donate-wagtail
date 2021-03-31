@@ -28,7 +28,7 @@ function otherAmountInputValidation() {
 }
 
 function inputValueCheck(valueToCheck, messageToUpdate) {
-  const number = Number(valueToCheck);
+  const number = parseFloat(valueToCheck);
   // Checking if attempted value is a number and >= 2
   if (!isNaN(number) && number && number >= 2) {
     // hide error message
