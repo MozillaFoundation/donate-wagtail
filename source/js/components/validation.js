@@ -1,26 +1,27 @@
+// constants for "Other Amount" inputs and error messages
+const oneTimeOtherAmountInput = document.querySelector(
+  ".one-time-amount-other-input"
+);
+const monthlyOtherAmountInput = document.querySelector(
+  ".monthly-amount-other-input"
+);
+const oneTimeOtherAmountErrorMessage = document.querySelector(
+  ".error-message__one-time-other-amount"
+);
+const monthlyOtherAmountErrorMessage = document.querySelector(
+  ".error-message__monthly-other-amount"
+);
+
 // Handler for "other amount" inputs
 function otherAmountInputValidation() {
-  const oneTimeOtherAmountInput = document.querySelector(
-    ".one-time-amount-other-input"
-  );
-  const monthlyOtherAmountInput = document.querySelector(
-    ".monthly-amount-other-input"
-  );
-  const oneTimeOtherAmountErrorMessage = document.querySelector(
-    ".error-message__one-time-other-amount"
-  );
-  const monthlyOtherAmountErrorMessage = document.querySelector(
-    ".error-message__monthly-other-amount"
-  );
-
   oneTimeOtherAmountInput.addEventListener("blur", (e) => {
-    if (!document.querySelector(".donation-amount__radio:checked").length) {
+    if (document.querySelector(".one-time-donation-amount-radio:checked")) {
       const attemptedValue = oneTimeOtherAmountInput.value;
       inputValueCheck(attemptedValue, oneTimeOtherAmountErrorMessage);
     }
   });
   monthlyOtherAmountInput.addEventListener("blur", (e) => {
-    if (!document.querySelector(".donation-amount__radio:checked").length) {
+    if (document.querySelector(".monthly-donation-amount-radio:checked")) {
       const attemptedValue = monthlyOtherAmountInput.value;
       inputValueCheck(attemptedValue, monthlyOtherAmountErrorMessage);
     }
