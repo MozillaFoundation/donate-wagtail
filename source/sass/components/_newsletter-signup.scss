@@ -1,10 +1,10 @@
 .newsletter-signup {
   &__header {
-    margin-bottom: ($gutter * 1.5);
+    margin-bottom: ($gutter);
   }
   &__label {
     display: block;
-    margin-bottom: ($gutter * 1.5);
+    margin-bottom: ($gutter);
   }
   &__thanks {
     display: none; // toggled with js when email submitted
@@ -13,8 +13,14 @@
     height: 50px;
     font-weight: $weight--bold;
     padding: ($gutter / 4) $gutter;
-    margin-left: $gutter;
+    margin-left: 0;
     min-width: 90px; // prevent word wrapping
+    width: 100%;
+
+    @include media-query(tablet-portrait) {
+      margin-left: $gutter;
+      width: auto;
+    }
   }
   &__errors {
     color: $color--red;
@@ -22,6 +28,9 @@
   }
   &__privacy-label {
     @include font-size(xs);
+    display: block; // To keep label from wrapping underneath checkbox
+    margin-top: -23px; //
+    margin-left: 20px; //
 
     a {
       color: $color--light-blue;
@@ -33,6 +42,8 @@
   }
   &__form {
     .form-item {
+      width: 100%;
+
       input:not([type="checkbox"]) {
         height: 49px;
         border: 2px solid $color--white;
@@ -42,5 +53,19 @@
         }
       }
     }
+    .form__group--flex {
+      flex-direction: column;
+
+      @include media-query(tablet-portrait) {
+        flex-direction: row;
+        align-items: start;
+      }
+    }
+    p {
+      margin-bottom: $gutter;
+    }
+  }
+  &__input {
+    margin-bottom: $gutter;
   }
 }
