@@ -30,7 +30,7 @@ function inputValueCheck(inputObjectToValidate, messageToUpdate) {
   const number = parseFloat(inputObjectToValidate.value);
   const minimumAmount = parseFloat(inputObjectToValidate.min);
   const maximumAmount = parseFloat(inputObjectToValidate.max);
-  // Checking if attempted value is a number and greater the inputs minimum amount / less than the maximum amount
+  // We are getting the minimum and maximum amount for input above as these can change based on currency
   if (
     !isNaN(number) &&
     number &&
