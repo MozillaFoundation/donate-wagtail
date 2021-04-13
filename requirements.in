@@ -1,4 +1,5 @@
 babel
+basket-client==1.0.0
 boto3
 braintree
 dj-database-url

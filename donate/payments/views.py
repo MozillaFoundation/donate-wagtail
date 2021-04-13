@@ -3,6 +3,8 @@ from urllib import parse
 from sentry_sdk.integrations.django import ignore_logger
 import requests
 
+import basket
+
 from django.conf import settings
 from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
@@ -785,6 +787,8 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         data = form.cleaned_data.copy()
 
         if settings.POST_DONATE_NEWSLETTER_URL is not None:
+            # This will send the email address to Mailchimp for Thunderbird only.
+            # TODO: Check if this is even being used.
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({
                 'EMAIL': data['email']
@@ -797,7 +801,9 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                     exc_info=True
                 )
 
-        elif send_data_to_basket:
+        if send_data_to_basket:
+            basket.subscribe(data['email'], 'mozilla-foundation', lang=self.request.LANGUAGE_CODE)
+            # TODO: When going live we can remove the SQS commands below
             data['source_url'] = self.request.build_absolute_uri()
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
