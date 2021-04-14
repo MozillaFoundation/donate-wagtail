@@ -788,7 +788,6 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
 
         if settings.POST_DONATE_NEWSLETTER_URL is not None:
             # This will send the email address to Mailchimp for Thunderbird only.
-            # TODO: Check if this is even being used.
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({
                 'EMAIL': data['email']
@@ -802,17 +801,18 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                 )
 
         if send_data_to_basket:
-            basket.subscribe(data['email'], 'mozilla-foundation', lang=self.request.LANGUAGE_CODE)
-            # TODO: When going live we can remove the SQS commands below
-            data['source_url'] = self.request.build_absolute_uri()
-            data['lang'] = self.request.LANGUAGE_CODE
-            queue.enqueue(send_newsletter_subscription_to_basket, data)
-            queue_ga_event(self.request, ['send', 'event', {
-                    'eventCategory': 'Signup',
-                    'eventAction': 'Submitted the Form',
-                    'eventLabel': 'Email',
-                }
-            ])
+            if settings.USE_BASKET_OR_SQS.lower() == 'basket':
+                basket.subscribe(data['email'], 'mozilla-foundation', lang=self.request.LANGUAGE_CODE)
+            else:
+                data['source_url'] = self.request.build_absolute_uri()
+                data['lang'] = self.request.LANGUAGE_CODE
+                queue.enqueue(send_newsletter_subscription_to_basket, data)
+                queue_ga_event(self.request, ['send', 'event', {
+                        'eventCategory': 'Signup',
+                        'eventAction': 'Submitted the Form',
+                        'eventLabel': 'Email',
+                    }
+                ])
 
         return super().form_valid(form)
 
