@@ -801,7 +801,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                 )
 
         if send_data_to_basket:
-            if settings.USE_BASKET_OR_SQS.lower() == 'basket':
+            if settings.DONATE_NEWSLETTER_SUBSCRIBE_METHOD.lower() == 'basket':
                 basket.subscribe(data['email'], 'mozilla-foundation', lang=self.request.LANGUAGE_CODE)
             else:
                 data['source_url'] = self.request.build_absolute_uri()

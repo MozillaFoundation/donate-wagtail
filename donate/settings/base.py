@@ -40,7 +40,7 @@ class Base(object):
     # Basket client configuration
     BASKET_URL = env('BASKET_URL')
     BASKET_API_KEY = env('BASKET_API_KEY')
-    USE_BASKET_OR_SQS = env('USE_BASKET_OR_SQS')
+    DONATE_NEWSLETTER_SUBSCRIBE_METHOD = env('DONATE_NEWSLETTER_SUBSCRIBE_METHOD')
 
     # Pontoon settings
     WAGTAILLOCALIZE_GIT_SYNC_MANAGER_CLASS = 'donate.core.pontoon.CustomSyncManager'
