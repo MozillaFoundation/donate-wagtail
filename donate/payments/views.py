@@ -800,7 +800,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                     exc_info=True
                 )
 
-        if send_data_to_basket:
+        elif send_data_to_basket:
             if settings.DONATE_NEWSLETTER_SUBSCRIBE_METHOD.lower() == 'basket':
                 basket.subscribe(data['email'], 'mozilla-foundation', lang=self.request.LANGUAGE_CODE)
             else:
