@@ -786,7 +786,10 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         data = form.cleaned_data.copy()
 
-        if settings.POST_DONATE_NEWSLETTER_URL is not None:
+        if (
+            settings.POST_DONATE_NEWSLETTER_URL is not None
+            and settings.DONATE_NEWSLETTER_SUBSCRIBE_METHOD == "MAILCHIMP"
+        ):
             # This will send the email address to Mailchimp for Thunderbird only.
             newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
             data = parse.urlencode({
@@ -801,18 +804,22 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                 )
 
         elif send_data_to_basket:
-            if settings.DONATE_NEWSLETTER_SUBSCRIBE_METHOD.lower() == 'basket':
+            # We are switching from sending data to SQS, to sending data to Basket instead.
+            # During the switch phase, we're supporting both with an environment variable that
+            # determines where it should go.
+            if settings.DONATE_NEWSLETTER_SUBSCRIBE_METHOD == 'BASKET':
                 basket.subscribe(data['email'], 'mozilla-foundation', lang=self.request.LANGUAGE_CODE)
-            else:
+            elif settings.DONATE_NEWSLETTER_SUBSCRIBE_METHOD == "SQS":
                 data['source_url'] = self.request.build_absolute_uri()
                 data['lang'] = self.request.LANGUAGE_CODE
                 queue.enqueue(send_newsletter_subscription_to_basket, data)
-                queue_ga_event(self.request, ['send', 'event', {
-                        'eventCategory': 'Signup',
-                        'eventAction': 'Submitted the Form',
-                        'eventLabel': 'Email',
-                    }
-                ])
+
+        queue_ga_event(self.request, ['send', 'event', {
+                'eventCategory': 'Signup',
+                'eventAction': 'Submitted the Form',
+                'eventLabel': 'Email',
+            }
+        ])
 
         return super().form_valid(form)
 
