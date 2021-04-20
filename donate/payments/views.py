@@ -814,12 +814,12 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
                 data['lang'] = self.request.LANGUAGE_CODE
                 queue.enqueue(send_newsletter_subscription_to_basket, data)
 
-        queue_ga_event(self.request, ['send', 'event', {
-                'eventCategory': 'Signup',
-                'eventAction': 'Submitted the Form',
-                'eventLabel': 'Email',
-            }
-        ])
+            queue_ga_event(self.request, ['send', 'event', {
+                    'eventCategory': 'Signup',
+                    'eventAction': 'Submitted the Form',
+                    'eventLabel': 'Email',
+                }
+            ])
 
         return super().form_valid(form)
 

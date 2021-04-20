@@ -19,7 +19,6 @@ env = environ.Env(
     BASKET_API_ROOT_URL=(str, ''),
     BASKET_SQS_QUEUE_URL=(str, ''),
     BASKET_URL=(str, ''),
-    BASKET_API_KEY=(str, ''),
     BRAINTREE_MERCHANT_ACCOUNTS=(dict, defaults.BRAINTREE_MERCHANT_ACCOUNTS),
     BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO=(dict, {}),
     BRAINTREE_MERCHANT_ID=(str, 'test'),

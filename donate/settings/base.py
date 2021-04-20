@@ -39,7 +39,6 @@ class Base(object):
     BASKET_SQS_QUEUE_URL = env('BASKET_SQS_QUEUE_URL')
     # Basket client configuration
     BASKET_URL = env('BASKET_URL')
-    BASKET_API_KEY = env('BASKET_API_KEY')
     DONATE_NEWSLETTER_SUBSCRIBE_METHOD = env('DONATE_NEWSLETTER_SUBSCRIBE_METHOD')
 
     # Pontoon settings
