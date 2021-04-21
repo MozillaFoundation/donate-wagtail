@@ -18,6 +18,7 @@ env = environ.Env(
     AWS_STORAGE_BUCKET_NAME=(str, ''),
     BASKET_API_ROOT_URL=(str, ''),
     BASKET_SQS_QUEUE_URL=(str, ''),
+    BASKET_URL=(str, ''),
     BRAINTREE_MERCHANT_ACCOUNTS=(dict, defaults.BRAINTREE_MERCHANT_ACCOUNTS),
     BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO=(dict, {}),
     BRAINTREE_MERCHANT_ID=(str, 'test'),
@@ -75,6 +76,9 @@ env = environ.Env(
     TARGET_DOMAINS=(list, []),
     TRAVIS_LOGS_URL=(str, ''),
     USE_S3=(bool, False),
+    # DONATE_NEWSLETTER_SUBSCRIBE_METHOD should be 'BASKET' or 'SQS'.
+    # We're using SQS by default until we move to sending newsletter data directly to Basket.
+    DONATE_NEWSLETTER_SUBSCRIBE_METHOD=(str, 'BASKET'),
     WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
     WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
     # Mozilla OIDC
