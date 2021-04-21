@@ -3,12 +3,13 @@ import time
 from decimal import Decimal
 
 from django.conf import settings
-from django.utils.timezone import datetime
+from django.utils.timezone import datetime, timedelta
 
 import django_rq
 import requests
 import stripe
 
+from ..utility.acoustic.acoustic import acoustic_tx
 from . import constants, gateway
 from .sqs import send_to_sqs
 from .utils import (
@@ -24,6 +25,95 @@ queue = django_rq.get_queue('default')
 BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
 STRIPE_WEBHOOK_SECRET = settings.STRIPE_WEBHOOK_SECRET
 stripe.api_key = settings.STRIPE_API_KEY
+
+
+def mofo_donation_receipt_datetime(ts):
+    # convert unix timestamp to e.g. "Thursday, Feb 11, 2021 at 4:20pm (GMT-08:00)"
+    ds = datetime.utcfromtimestamp(float(ts))
+    return ds - timedelta(hours=8)
+
+
+def mofo_donation_receipt_time_string(ds):
+    """Return the date and time formatted as requested by MoFo"""
+    return ds.strftime("%Y-%m-%d %H:%M")
+
+
+def mofo_donation_receipt_day_of_month(ds):
+    """Return the day of the month"""
+    return ds.strftime("%d")
+
+
+def mofo_donation_receipt_number_format(amount):
+    return f"{float(amount):.2f}"
+
+
+DONATION_RECEIPT_FIELDS = [
+    "created",
+    "currency",
+    "donation_amount",
+    "email",
+    "first_name",
+    "last_name",
+    "recurring",
+    "transaction_id",
+    "card_type",
+    "last_4",
+    "locale",
+    "service",
+    "project",
+]
+# map of incoming field names -> email field names
+DONATION_RECEIPT_FIELDS_MAP = {
+    "card_type": "cc_type",
+    "last_4": "cc_last_4_digits",
+    "locale": "donation_locale",
+    "service": "payment_source",
+}
+
+LANGUAGE_IDS = {
+    "ja": "1621701",
+    "pl": "1621706",
+    "pt-BR": "1621708",
+    "cs": "1621689",
+    "de": "1621691",
+    "es": "1621695",
+    "fr": "1621697",
+    "en-US": "1621694",
+}
+
+
+# Acoustic receipt sending
+def process_donation_receipt(data):
+    # filter out any extra data
+    message_data = {k: v for k, v in data.items() if k in DONATION_RECEIPT_FIELDS}
+    email = message_data.pop("email")
+    created = message_data.pop("created")
+    created_dt = mofo_donation_receipt_datetime(created)
+    message_data["created"] = mofo_donation_receipt_time_string(created_dt)
+    message_data["day_of_month"] = mofo_donation_receipt_day_of_month(created_dt)
+    recurring = message_data.pop("recurring")
+    message_data["payment_frequency"] = "Recurring" if recurring else "One-Time"
+    message_data["donation_amount"] = mofo_donation_receipt_number_format(
+        message_data["donation_amount"],
+    )
+    message_data["friendly_from_name"] = (
+        "MZLA Thunderbird" if message_data["project"] == "thunderbird" else "Mozilla"
+    )
+
+    # convert some field names
+    send_data = {
+        DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
+    }
+    message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[data["locale"]], LANGUAGE_IDS["en-US"])
+    acoustic_tx.send_mail(
+        email,
+        message_id,
+        send_data,
+        # BCC is set to none because if you set it to anything else, you get a
+        # "BCC is not allowed for this campaign" response.
+        bcc=None,
+        save_to_db=True,
+    )
 
 
 def send_newsletter_subscription_to_basket(data):
@@ -45,8 +135,7 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
-    send_to_sqs({
-        'data': {
+    donation_data = {
             'event_type': 'donation',
             'last_name': data['last_name'],
             'first_name': data['first_name'],
@@ -65,7 +154,11 @@ def send_transaction_to_basket(data):
             'donation_url': data['landing_url'],
             'locale': data['locale'],
             'conversion_amount': data.get('settlement_amount', None),
-        }
+    }
+    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+        process_donation_receipt(donation_data)
+    send_to_sqs({
+        'data': donation_data
     })
 
 
@@ -82,7 +175,6 @@ def process_dispute(event):
 
 
 class BraintreeWebhookProcessor:
-
     def process(self, notification):
         kind = notification.kind
         if kind == 'subscription_charged_successfully':
@@ -137,7 +229,6 @@ class BraintreeWebhookProcessor:
             }
         else:
             logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
-
         send_transaction_to_basket({
             'last_name': donor_details.get('last_name', ''),
             'first_name': donor_details.get('first_name', ''),
@@ -246,6 +337,7 @@ class StripeWebhookProcessor:
         elif 'glassroomnyc' in metadata:
             project = 'glassroomnyc'
 
+        # TODO: Ask whether or not we send email receipts for these charges?
         send_to_sqs({
             'data': {
                 'event_type': 'donation',
