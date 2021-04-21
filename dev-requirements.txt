@@ -21,7 +21,7 @@ chardet==3.0.4
     #   requests
 coverage==5.1
     # via coveralls
-coveralls==2.0.0
+coveralls==3.0.1
     # via -r dev-requirements.in
 cryptography==2.9.2
     # via
