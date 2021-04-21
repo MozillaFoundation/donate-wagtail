@@ -47,7 +47,7 @@ importlib-metadata==3.10.1
     #   flake8
 ipython-genutils==0.2.0
     # via traitlets
-ipython==7.16.1
+ipython==7.22.0
     # via -r dev-requirements.in
 jedi==0.17.0
     # via ipython
