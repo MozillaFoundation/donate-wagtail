@@ -101,7 +101,7 @@ def process_donation_receipt(donation_data):
     recurring = message_data.get("recurring", False)
     message_data["payment_frequency"] = "Recurring" if recurring else "One-Time"
     # Getting the amount donated, and formatting it for email
-    donation_amount = message_data.get("donation_amount", donation_data['amount'])
+    donation_amount = message_data.get("donation_amount", donation_data.get('amount'))
     message_data["donation_amount"] = mofo_donation_receipt_number_format(donation_amount)
     message_data["friendly_from_name"] = (
         "MZLA Thunderbird" if message_data["project"] == "thunderbird" else "Mozilla"
@@ -115,6 +115,8 @@ def process_donation_receipt(donation_data):
     # using the LANGUAGE_IDS const, we are getting the correct localized version of the email
     # based on the users locality, if there is none, default to English.
     message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[message_data["locale"]], LANGUAGE_IDS["en-US"])
+    print("message_data")
+    print(message_data)
     acoustic_tx.send_mail(
         email,
         message_id,
@@ -346,7 +348,7 @@ class StripeWebhookProcessor:
         elif 'glassroomnyc' in metadata:
             project = 'glassroomnyc'
 
-        send_transaction_to_basket({
+        donation_data = {
                 'event_type': 'donation',
                 'last_name': subscription.customer.sources.data[0]['name'],
                 'email': subscription.customer.email,
@@ -366,7 +368,11 @@ class StripeWebhookProcessor:
                 'net_amount': net_amount,
                 'transaction_fee': transaction_fee
             }
+        send_to_sqs(
+            {'data': donation_data}
         )
+        if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+            process_donation_receipt(donation_data)
 
         if settings.MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED and 'thunderbird' not in metadata:
             MigrateStripeSubscription().process(charge, subscription)
