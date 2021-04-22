@@ -115,8 +115,6 @@ def process_donation_receipt(donation_data):
     # using the LANGUAGE_IDS const, we are getting the correct localized version of the email
     # based on the users locality, if there is none, default to English.
     message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[message_data["locale"]], LANGUAGE_IDS["en-US"])
-    print("message_data")
-    print(message_data)
     acoustic_tx.send_mail(
         email,
         message_id,
