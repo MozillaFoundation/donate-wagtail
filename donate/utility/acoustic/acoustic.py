@@ -114,6 +114,7 @@ class AcousticTransact(Silverpop):
         return process_tx_response(response)
 
     def send_mail(self, to, campaign_id, fields=None, bcc=None, save_to_db=False):
+        # If we are testing, do not send emails
         if not hasattr(settings, "IS_TESTING"):
             self._call_xt(transact_xml(to, campaign_id, fields, bcc, save_to_db))
 
