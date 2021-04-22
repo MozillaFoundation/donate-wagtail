@@ -41,11 +41,7 @@ idna==2.9
     #   -c requirements.txt
     #   requests
     #   urllib3
-<<<<<<< HEAD
-importlib-metadata==4.0.0
-=======
 importlib-metadata==3.10.1
->>>>>>> origin/master
     # via
     #   -c requirements.txt
     #   flake8
