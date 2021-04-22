@@ -88,10 +88,11 @@ LANGUAGE_IDS = {
 
 # Acoustic receipt sending
 def process_donation_receipt(donation_data):
+    print(donation_data)
     # Creating new object by looping through mandatory receipt fields from const dictionary,
     # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
-    email = message_data.pop("email")
+    email = message_data.get('email', '')
     # If the donation data did not recieve a payment time, use the current time.
     created = message_data.get("created", int(time.time()))
     # The next 3 lines are formatting the date and time for the email
@@ -145,9 +146,9 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
-    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
-        process_donation_receipt(data)
-    send_to_sqs(data)
+    # if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+    #     process_donation_receipt(data)
+    return send_to_sqs(data)
 
 
 def process_dispute(event):
