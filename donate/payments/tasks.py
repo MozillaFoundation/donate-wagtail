@@ -26,7 +26,8 @@ BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
 STRIPE_WEBHOOK_SECRET = settings.STRIPE_WEBHOOK_SECRET
 stripe.api_key = settings.STRIPE_API_KEY
 
-# The following 4 functions are used in process_donation_receipt to create proper dates and currency amounts
+
+# The following 4 functions are used in "process_donation_receipt" to create proper dates and currency amounts
 def mofo_donation_receipt_datetime(ts):
     # convert unix timestamp to e.g. "Thursday, Feb 11, 2021 at 4:20pm (GMT-08:00)"
     ds = datetime.utcfromtimestamp(float(ts))
@@ -46,7 +47,8 @@ def mofo_donation_receipt_day_of_month(ds):
 def mofo_donation_receipt_number_format(amount):
     return f"{float(amount):.2f}"
 
-# Fields needed for formatting donation receipt
+
+# Fields needed for acoustic API and donation receipt
 DONATION_RECEIPT_FIELDS = [
     "created",
     "currency",
@@ -63,7 +65,7 @@ DONATION_RECEIPT_FIELDS = [
     "project",
 ]
 
-# map of incoming field names -> email field names
+# map of incoming donation data field names -> email/acoustic field names
 DONATION_RECEIPT_FIELDS_MAP = {
     "card_type": "cc_type",
     "last_4": "cc_last_4_digits",
@@ -86,25 +88,32 @@ LANGUAGE_IDS = {
 
 # Acoustic receipt sending
 def process_donation_receipt(donation_data):
-    # filter out any extra data
+    # Creating new object by looping through mandatory receipt fields from const dictionary,
+    # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
     email = message_data.pop("email")
+    # If the donation data did not recieve a payment time, use the current time.
     created = message_data.get("created", int(time.time()))
+    # The next 3 lines are formatting the date and time for the email
     created_dt = mofo_donation_receipt_datetime(created)
     message_data["created"] = mofo_donation_receipt_time_string(created_dt)
     message_data["day_of_month"] = mofo_donation_receipt_day_of_month(created_dt)
     recurring = message_data.get("recurring", False)
     message_data["payment_frequency"] = "Recurring" if recurring else "One-Time"
+    # Getting the amount donated, and formatting it for email
     donation_amount = message_data.get("donation_amount", donation_data['amount'])
     message_data["donation_amount"] = mofo_donation_receipt_number_format(donation_amount)
     message_data["friendly_from_name"] = (
         "MZLA Thunderbird" if message_data["project"] == "thunderbird" else "Mozilla"
     )
 
-    # convert some field names
+    # convert some field names to match Acoustic API by looping through dict
+    # and updating fields that match
     send_data = {
         DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
     }
+    # using the LANGUAGE_IDS const, we are getting the correct localized version of the email
+    # based on the users locality, if there is none, default to English.
     message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[message_data["locale"]], LANGUAGE_IDS["en-US"])
     acoustic_tx.send_mail(
         email,
@@ -137,7 +146,7 @@ def send_newsletter_subscription_to_basket(data):
 
 def send_transaction_to_basket(data):
     if settings.DONATION_RECEIPT_METHOD == 'DONATE':
-            process_donation_receipt(data)
+        process_donation_receipt(data)
     send_to_sqs(data)
 
 
