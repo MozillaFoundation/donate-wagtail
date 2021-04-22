@@ -88,7 +88,7 @@ class BasketTransactionTestCase(TestCase):
     def _test_sqs_payload(self):
         with mock.patch('donate.payments.tasks.send_to_sqs', autospec=True) as mock_send:
             send_transaction_to_basket(self.sample_data)
-        mock_send.assert_called_once_with(self.sample_data)
+        mock_send.assert_called_once_with(self.sample_payload)
 
     def test_send_transaction_to_basket_single(self):
         self._test_sqs_payload()

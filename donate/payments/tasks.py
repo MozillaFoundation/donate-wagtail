@@ -88,11 +88,10 @@ LANGUAGE_IDS = {
 
 # Acoustic receipt sending
 def process_donation_receipt(donation_data):
-    print(donation_data)
     # Creating new object by looping through mandatory receipt fields from const dictionary,
     # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
-    email = message_data.get('email', '')
+    email = message_data.pop("email")
     # If the donation data did not recieve a payment time, use the current time.
     created = message_data.get("created", int(time.time()))
     # The next 3 lines are formatting the date and time for the email
@@ -146,9 +145,30 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
-    # if settings.DONATION_RECEIPT_METHOD == 'DONATE':
-    #     process_donation_receipt(data)
-    return send_to_sqs(data)
+    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+        process_donation_receipt(data)
+    send_to_sqs({
+        'data': {
+            'event_type': 'donation',
+            'last_name': data['last_name'],
+            'first_name': data['first_name'],
+            'campaign_id': data['campaign_id'],
+            'email': data['email'],
+            'donation_amount': data['amount'],
+            'currency': data['currency'],
+            'created': int(time.time()),
+            'recurring': data['payment_frequency'] == constants.FREQUENCY_MONTHLY,
+            'service': data['payment_method'],
+            'transaction_id': data['transaction_id'],
+            'subscription_id': data.get('subscription_id', None),
+            'project': data['project'],
+            'card_type': data.get('card_type', 'Unknown'),
+            'last_4': data.get('last_4', None),
+            'donation_url': data['landing_url'],
+            'locale': data['locale'],
+            'conversion_amount': data.get('settlement_amount', None),
+        }
+    })
 
 
 def process_dispute(event):
@@ -218,7 +238,7 @@ class BraintreeWebhookProcessor:
             }
         else:
             logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
-        send_transaction_to_basket({'data': {
+        send_transaction_to_basket({
             'last_name': donor_details.get('last_name', ''),
             'first_name': donor_details.get('first_name', ''),
             'campaign_id': custom_fields.get('campaign_id', ''),
@@ -235,7 +255,7 @@ class BraintreeWebhookProcessor:
             'landing_url': custom_fields.get('landing_url', ''),
             'locale': custom_fields.get('locale', ''),
             'settlement_amount': last_tx.disbursement_details.settlement_amount,
-        }})
+        })
 
     def subscription_charged_unsuccessfully(self, notification):
         send_to_sqs({
@@ -326,9 +346,7 @@ class StripeWebhookProcessor:
         elif 'glassroomnyc' in metadata:
             project = 'glassroomnyc'
 
-        # TODO: Ask whether or not we send email receipts for these charges?
         send_transaction_to_basket({
-            'data': {
                 'event_type': 'donation',
                 'last_name': subscription.customer.sources.data[0]['name'],
                 'email': subscription.customer.email,
@@ -348,7 +366,7 @@ class StripeWebhookProcessor:
                 'net_amount': net_amount,
                 'transaction_fee': transaction_fee
             }
-        })
+        )
 
         if settings.MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED and 'thunderbird' not in metadata:
             MigrateStripeSubscription().process(charge, subscription)
