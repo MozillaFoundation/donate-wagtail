@@ -76,9 +76,6 @@ env = environ.Env(
     TARGET_DOMAINS=(list, []),
     TRAVIS_LOGS_URL=(str, ''),
     USE_S3=(bool, False),
-    # DONATE_NEWSLETTER_SUBSCRIBE_METHOD should be 'BASKET' or 'SQS'.
-    # We're using SQS by default until we move to sending newsletter data directly to Basket.
-    DONATE_NEWSLETTER_SUBSCRIBE_METHOD=(str, 'BASKET'),
     WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
     WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
     # Mozilla OIDC
