@@ -8,6 +8,10 @@ from . import defaults
 # we rely on it being explicitly set (no default values) so that
 # we error out first.
 env = environ.Env(
+    ACOUSTIC_TX_CLIENT_ID=(str, ''),
+    ACOUSTIC_TX_CLIENT_SECRET=(str, ''),
+    ACOUSTIC_TX_REFRESH_TOKEN=(str, ''),
+    ACOUSTIC_TX_SERVER_NUMBER=(str, ''),
     ALLOWED_HOSTS=(list, '*'),
     AUTO_CLOSE_STRIPE_DISPUTES=(bool, False),
     AWS_ACCESS_KEY_ID=(str, ''),
@@ -46,6 +50,7 @@ env = environ.Env(
     DJANGO_LOG_LEVEL=(str, 'INFO'),
     DJANGO_SECRET_KEY=(str, None),
     DOMAIN_REDIRECT_MIDDLEWARE_ENABLED=(bool, False),
+    DONATION_RECEIPT_METHOD=(str, 'BASKET'),
     ENABLE_THUNDERBIRD_REDIRECT=(bool, False),
     GITHUB_TOKEN=(str, ''),
     HEROKU_PR_NUMBER=(str, ''),

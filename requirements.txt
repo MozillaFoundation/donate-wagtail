@@ -121,12 +121,16 @@ josepy==1.3.0
     # via mozilla-django-oidc
 l18n==2020.6.1
     # via wagtail
+lxml==4.6.2
+    # via -r requirements.in
 mozilla-django-oidc==1.2.3
     # via -r requirements.in
 numpy==1.19.4
     # via
     #   scipy
     #   wagtail-ab-testing
+oauthlib==3.1.0
+    # via requests-oauthlib
 openpyxl==3.0.5
     # via tablib
 pillow==6.2.2
@@ -147,6 +151,8 @@ pyopenssl==19.1.0
     # via
     #   josepy
     #   urllib3
+pysilverpop==0.2.6
+    # via -r requirements.in
 python-dateutil==2.8.1
     # via
     #   botocore
@@ -166,12 +172,16 @@ redis==3.5.1
     #   rq
 git+git://github.com/glasslion/redlock.git@master#egg=redlock
     # via -r requirements.in
+requests-oauthlib==1.3.0
+    # via pysilverpop
 requests==2.24.0
     # via
     #   -r requirements.in
     #   basket-client
     #   braintree
     #   mozilla-django-oidc
+    #   pysilverpop
+    #   requests-oauthlib
     #   stripe
     #   wagtail
 rq==1.2.0
@@ -197,6 +207,7 @@ six==1.14.0
     #   l18n
     #   mozilla-django-oidc
     #   pyopenssl
+    #   pysilverpop
     #   python-dateutil
 smmap==3.0.4
     # via gitdb
