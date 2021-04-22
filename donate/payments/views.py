@@ -3,8 +3,6 @@ from urllib import parse
 from sentry_sdk.integrations.django import ignore_logger
 import requests
 
-import basket
-
 from django.conf import settings
 from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
