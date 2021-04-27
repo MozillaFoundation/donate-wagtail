@@ -9,7 +9,6 @@ from .braintree import Braintree
 
 class Testing(Base, Secure, Redis, OIDC, Database, Braintree, Configuration):
     SECRET_KEY = 'test'
-    IS_TESTING = True
     RECAPTCHA_ENABLED = False
     RECAPTCHA_SITE_KEY = 'test'
     RECAPTCHA_SECRET_KEY = 'test'
