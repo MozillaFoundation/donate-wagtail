@@ -10,8 +10,6 @@ from silverpop.api import Silverpop, SilverpopResponseException
 
 logger = logging.getLogger(__name__)
 XML_HEADER = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-# Checking whether or not we are running tests
-TESTING = settings.TESTING
 
 
 def process_response(resp):
@@ -117,7 +115,7 @@ class AcousticTransact(Silverpop):
 
     def send_mail(self, to, campaign_id, fields=None, bcc=None, save_to_db=False):
         # If we are testing, do not send emails
-        if not TESTING:
+        if not settings.TESTING:
             self._call_xt(transact_xml(to, campaign_id, fields, bcc, save_to_db))
 
 
