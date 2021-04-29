@@ -1,6 +1,6 @@
 import django
 import logging.config
-
+import sys
 from . import defaults
 from .environment import (
     env,
@@ -83,6 +83,9 @@ class Base(object):
     # Pontoon check slack bot
     SLACK_WEBHOOK_PONTOON = env('SLACK_WEBHOOK_PONTOON')
     TRAVIS_LOGS_URL = env('TRAVIS_JOB_WEB_URL', default='')
+
+    # Detect if Django is running normally, or in test mode through "manage.py test"
+    TESTING = 'test' in sys.argv
 
     @property
     def CSRF_TRUSTED_ORIGINS(self):
