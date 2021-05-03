@@ -47,9 +47,11 @@ importlib-metadata==3.10.1
     #   flake8
 ipython-genutils==0.2.0
     # via traitlets
-ipython==7.16.1
+ipython==7.23.0
     # via -r dev-requirements.in
 jedi==0.17.0
+    # via ipython
+matplotlib-inline==0.1.2
     # via ipython
 mccabe==0.6.1
     # via flake8
@@ -90,7 +92,9 @@ six==1.14.0
     #   pyopenssl
     #   traitlets
 traitlets==4.3.3
-    # via ipython
+    # via
+    #   ipython
+    #   matplotlib-inline
 typing-extensions==3.7.4.3
     # via
     #   -c requirements.txt
