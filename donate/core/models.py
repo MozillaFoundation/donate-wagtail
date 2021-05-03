@@ -319,6 +319,5 @@ class ContributorSupportPage(Page):
         ctx.update({
             'orgid': settings.SALESFORCE_ORGID,
             'record_type_id': settings.SALESFORCE_CASE_RECORD_TYPE_ID,
-            'salesforce_form_url': settings.SALESFORCE_FORM_URL,
         })
         return ctx

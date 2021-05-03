@@ -1,6 +1,11 @@
 {% extends "pages/base_page.html" %}
 {% load form_tags static wagtailcore_tags wagtailimages_tags i18n %}
 
+{% block meta_tags %}
+    {{ block.super }}
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+{% endblock %}
+
 {% block content %}
 
 <header class="page-header">
@@ -24,7 +29,7 @@
                     <p class="rich-text">{% trans "We will get back to you soon." %}</p>
                 </div>
             {% else %}
-                <form class="" action="{{ salesforce_form_url }}" method="POST">
+                <form class="" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
                     <p class="rich-text">{% blocktrans trimmed %}
                     If you need help with a contribution to MZLA/Thunderbird, please fill out this form and a Thunderbird donor care representative will get back to you as soon as possible.
                     {% endblocktrans %}</p>
@@ -33,11 +38,11 @@
                     Unfortunately, donor care representatives are unable to offer support or help with Thunderbird technical issues. For technical support, please visit our <a href="{{ support_url }}">support page.</a>
                     {% endblocktrans %}</p>
 
-                    <input type=hidden name="orgid" value="{{ orgid }}">
-                    <input type=hidden name="retURL" value="{{ page.get_full_url }}?submitted=true">
+                    <input type="hidden" name="orgid" value="{{ orgid }}">
+                    <input type="hidden" name="retURL" value="{{ page.get_full_url }}?submitted=true">
 
                     {% block custom_hidden_fields %}
-                        <input type=hidden name="type" value="Donation">
+                        <input type="hidden" name="type" value="Donation">
                     {% endblock %}
 
                     <fieldset class="form-item">
@@ -51,9 +56,9 @@
                     </fieldset>
 
                     <fieldset class="form-item">
-                        <label for="00N0B000006X3fw">{% trans "Language" %}</label>
+                        <label for="00N4x00000O6Pzw">{% trans "Language" %}</label>
                         <div class="form-item__wrapper form-custom-select">
-                            <select id="00N0B000006X3fw" name="00N0B000006X3fw" title="Language">
+                            <select id="00N4x00000O6Pzw" name="00N4x00000O6Pzw" title="Language">
                                 <option value="">--{% trans "None" context "Option in 'Language' dropdown" %}--</option>
                                 <option value="English">{% trans "English" %}</option>
                                 <option value="French">{% trans "French" %}</option>
