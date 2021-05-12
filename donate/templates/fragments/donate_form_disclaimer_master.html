@@ -20,8 +20,8 @@
     </p>
     <p>
         {% block faq_contact %}
-        {% blocktrans with faq_url='/faq' trimmed %}
-            Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="/help/">Contact us</a>.
+        {% blocktrans with faq_url='/faq' help_url='/help/' trimmed %}
+            Problems donating? Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="{{ help_url }}">Contact us</a>.
         {% endblocktrans %}
         {% endblock %}
     </p>
