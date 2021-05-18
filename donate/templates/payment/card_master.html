@@ -74,8 +74,12 @@
                             {% render_form_field form.last_name %}
                             {% render_form_field form.address_line_1 %}
                             <div class="form__group form__group--city-post">
-                                {% render_form_field form.post_code %}
-                                {% render_form_field form.city %}
+                                <div class="post-code-input-container">
+                                    {% render_form_field form.post_code %}
+                                </div>
+                                <div class="city-input-container">
+                                    {% render_form_field form.city %}
+                                </div>
                             </div>
                             {% render_form_field form.country %}
 

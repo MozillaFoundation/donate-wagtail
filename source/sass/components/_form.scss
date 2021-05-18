@@ -44,7 +44,11 @@
           border-left: 0;
         }
       }
+      &--full-width {
+        grid-template-columns: 1fr !important;
+      }
     }
+
     &--additional-info {
       position: relative;
 
