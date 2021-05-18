@@ -530,6 +530,10 @@ ZERO_DECIMAL_CURRENCIES = [
 ]
 
 
+# List of countries and their respective post code formats if applicable.
+# Used in post-code-validation.js to check whether or not we display a post code form item to the user.
+# Source of data can be found here: https://gist.github.com/lkopocinski/bd4494588458f5a8cc8ffbd12a4deefd 
+# NOTE: This list is also found in donate/constants.py, any updates to this list should be made there/vice-versa.
 COUNTRY_POST_CODES = [
    {
       'abbrev':'AF',

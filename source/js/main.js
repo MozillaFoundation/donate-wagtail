@@ -10,7 +10,7 @@ import DonationCurrencyWidth from "./components/donation-currency-width";
 import CopyURL from "./components/copy-url";
 import Accordion from "./components/accordion";
 import otherAmountInputValidation from "./components/validation";
-import postCodeCheck from "./components/post-code-validation";
+import checkForCountrysPostCode from "./components/post-code-validation";
 import "./components/newsletter";
 import fetchEnv from "./components/env";
 
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   for (const copyurl of document.querySelectorAll(CopyURL.selector())) {
     new CopyURL(copyurl);
   }
-  postCodeCheck();
+  checkForCountrysPostCode();
   otherAmountInputValidation();
 });
 
