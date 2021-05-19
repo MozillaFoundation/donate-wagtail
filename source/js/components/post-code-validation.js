@@ -14,10 +14,16 @@ const formAndCityContainer = document.querySelector(".form__group--city-post");
 // The select object that allows users to select their country
 const countrySelector = document.getElementById("id_country");
 
+// Calling the function once to check in case the user refreshes the page,
+// we want the input to remain one column if needed
+checkForCountrysPostCode();
+
 // Event listener for checking whether or not to display the post code field whenever the user selects a new country.
-countrySelector.addEventListener("change", () => {
-  checkForCountrysPostCode();
-});
+function countryPostCodeValidation() {
+  countrySelector.addEventListener("change", (e) => {
+    checkForCountrysPostCode();
+  });
+}
 
 function checkForCountrysPostCode() {
   // The users selected country
@@ -43,9 +49,7 @@ function checkForCountrysPostCode() {
       );
       postCodeInputContainer.classList.remove("hidden");
     }
-  } else {
-    // what should we do if the country is NOT found in the array??
   }
 }
 
-export default checkForCountrysPostCode;
+export default countryPostCodeValidation;
