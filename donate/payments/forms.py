@@ -67,7 +67,7 @@ class PostalCodeMixin():
                                        constants.COUNTRY_POST_CODES
                                        if country_obj["abbrev"] == country)
         # If country uses a post code and the user left it blank, raise a validation error.
-        if 'postal' in country_object_to_check and [postal_code]:
+        if 'postal' in country_object_to_check and postal_code == "":
             raise forms.ValidationError({
                 'post_code': _('This field is required.')
             })

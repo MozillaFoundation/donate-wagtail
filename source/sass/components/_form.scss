@@ -39,9 +39,11 @@
       display: grid;
       grid-template-columns: 0.3fr 0.7fr;
 
-      .form-item:nth-of-type(2) {
-        input {
-          border-left: 0;
+      .city-input-container {
+        .form-item {
+          input {
+            border-left: 0;
+          }
         }
       }
       &--full-width {
