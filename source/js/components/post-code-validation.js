@@ -16,13 +16,16 @@ const countrySelector = document.getElementById("id_country");
 
 // Calling the function once to check in case the user refreshes the page,
 // we want the input to remain one column if needed
-checkForCountrysPostCode();
-
+if (countrySelector) {
+  checkForCountrysPostCode();
+}
 // Event listener for checking whether or not to display the post code field whenever the user selects a new country.
 function countryPostCodeValidation() {
-  countrySelector.addEventListener("change", (e) => {
-    checkForCountrysPostCode();
-  });
+  if (countrySelector) {
+    countrySelector.addEventListener("change", (e) => {
+      checkForCountrysPostCode();
+    });
+  }
 }
 
 function checkForCountrysPostCode() {

@@ -382,7 +382,6 @@ export const countriesAndPostCodes = [
     abbrev: "PF",
     name: "French Polynesia",
     postal: "987[0-9]{2}",
-    range: ["98700", "98790"],
   },
   {
     abbrev: "TF",
@@ -432,13 +431,11 @@ export const countriesAndPostCodes = [
     abbrev: "GP",
     name: "Guadeloupe",
     postal: "971[0-9]{2}",
-    range: ["97100", "97190"],
   },
   {
     abbrev: "GU",
     name: "Guam",
     postal: "\\d{5}(?:[-\\s]\\d{4})?",
-    range: ["96910", "96932"],
   },
   {
     abbrev: "GT",
@@ -448,8 +445,7 @@ export const countriesAndPostCodes = [
   {
     abbrev: "GG",
     name: "Guernsey",
-    postal:
-      "([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "GW",
@@ -473,7 +469,6 @@ export const countriesAndPostCodes = [
     abbrev: "GF",
     name: "Guyana (French)",
     postal: "973[0-9]{2}",
-    range: ["97300", "97390"],
   },
   {
     abbrev: "HT",
@@ -565,8 +560,7 @@ export const countriesAndPostCodes = [
   {
     abbrev: "JE",
     name: "Jersey",
-    postal:
-      "([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "JO",
@@ -644,7 +638,6 @@ export const countriesAndPostCodes = [
     abbrev: "LI",
     name: "Liechtenstein",
     postal: "[0-9]{4}",
-    range: ["9485", "9498"],
   },
   {
     abbrev: "LT",
@@ -697,13 +690,11 @@ export const countriesAndPostCodes = [
     abbrev: "MH",
     name: "Marshall Islands",
     postal: "\\d{5}(?:[-\\s]\\d{4})?",
-    range: ["96960", "96970"],
   },
   {
     abbrev: "MQ",
     name: "Martinique",
     postal: "972[0-9]{2}",
-    range: ["97200", "97290"],
   },
   {
     abbrev: "MR",
@@ -718,7 +709,6 @@ export const countriesAndPostCodes = [
     abbrev: "YT",
     name: "Mayotte",
     postal: "976[0-9]{2}",
-    range: ["97600", "97690"],
   },
   {
     abbrev: "MX",
@@ -754,7 +744,6 @@ export const countriesAndPostCodes = [
     abbrev: "MS",
     name: "Montserrat",
     postal: "MSR [0-9]{4}",
-    range: ["MSR 1110", "MSR 1350"],
   },
   {
     abbrev: "MA",
@@ -793,7 +782,6 @@ export const countriesAndPostCodes = [
     abbrev: "NC",
     name: "New Caledonia",
     postal: "988[0-9]{2}",
-    range: ["96950", "96952"],
   },
   {
     abbrev: "NZ",
@@ -901,7 +889,6 @@ export const countriesAndPostCodes = [
     abbrev: "RE",
     name: "Réunion",
     postal: "974[0-9]{2}",
-    range: ["97400", "97490"],
   },
   {
     abbrev: "RO",
@@ -1016,7 +1003,6 @@ export const countriesAndPostCodes = [
     abbrev: "BL",
     name: "St. Barthélemy",
     postal: "[0-9]{5}",
-    range: ["97100", "97190"],
   },
   {
     abbrev: "VI",
@@ -1185,8 +1171,7 @@ export const countriesAndPostCodes = [
   {
     abbrev: "GB",
     name: "United Kingdom",
-    postal:
-      "([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "UM",
@@ -1230,7 +1215,6 @@ export const countriesAndPostCodes = [
   {
     abbrev: "VI",
     name: "Virgin Islands (US)",
-    range: ["00801", "00851"],
     postal: "\\d{5}(?:[-\\s]\\d{4})?",
   },
   {
