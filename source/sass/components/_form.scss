@@ -49,6 +49,14 @@
 
       &--full-width {
         grid-template-columns: 1fr;
+        .city-input-container {
+          .form-item {
+            input {
+              border: 1px solid #ccc;
+              transition: 0s;
+            }
+          }
+        }
       }
     }
 
