@@ -3,7 +3,6 @@ from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, pgettext_lazy
-from django.core.exceptions import ValidationError
 
 from django_countries.fields import CountryField
 
@@ -48,6 +47,7 @@ class MinimumCurrencyAmountMixin():
                     )}
                 })
 
+
 class PostalCodeMixin():
     """
     Mixin for checking whether or not we should require the postcode
@@ -59,14 +59,18 @@ class PostalCodeMixin():
 
     def clean(self):
         cleaned_data = super().clean()
+        # Grabbing post code and selected county from form data
         postal_code = cleaned_data.get('post_code', '')
         country = cleaned_data.get('country', '')
-        country_object_to_check = next(country_obj for country_obj in constants.COUNTRY_POST_CODES if country_obj["abbrev"] == country )
+        # Getting countries post code information from list in constants.py
+        country_object_to_check = next(country_obj for country_obj in
+                                       constants.COUNTRY_POST_CODES
+                                       if country_obj["abbrev"] == country)
+        # If country uses a post code and the user left it blank, raise a validation error.
         if 'postal' in country_object_to_check and [postal_code]:
             raise forms.ValidationError({
-                'post_code': _(f'This field is required.')
+                'post_code': _('This field is required.')
             })
-
 
 
 class StartCardPaymentForm(MinimumCurrencyAmountMixin, forms.Form):

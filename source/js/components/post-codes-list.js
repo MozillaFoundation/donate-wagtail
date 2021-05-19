@@ -1,8 +1,17 @@
+// List of countries and their respective post code formats if applicable.
+// Used in post-code-validation.js to check whether or not we display a post code form item to the user.
+// Source of data can be found here: https://gist.github.com/lkopocinski/bd4494588458f5a8cc8ffbd12a4deefd
+// NOTE: This list is also found in donate/constants.py, any updates to this list should be made there/vice-versa.
 export const countriesAndPostCodes = [
   {
     abbrev: "AF",
     name: "Afghanistan",
     postal: "[0-9]{4}",
+  },
+  {
+    abbrev: "AX",
+    name: "Aland Islands",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "AL",
@@ -32,6 +41,10 @@ export const countriesAndPostCodes = [
     abbrev: "AI",
     name: "Anguilla",
     postal: "AI-2640",
+  },
+  {
+    abbrev: "AQ",
+    name: "Antarctica",
   },
   {
     abbrev: "AG",
@@ -130,9 +143,18 @@ export const countriesAndPostCodes = [
     name: "Botswana",
   },
   {
+    abbrev: "BV",
+    name: "Bouvet Islands",
+  },
+  {
     abbrev: "BR",
     name: "Brazil",
     postal: "[0-9]{5}-[0-9]{3}",
+  },
+  {
+    abbrev: "IO",
+    name: "British Indian Ocean Territory",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "BN",
@@ -202,6 +224,16 @@ export const countriesAndPostCodes = [
   {
     abbrev: "CN",
     name: "China, People's Republic",
+    postal: "[0-9]{5}",
+  },
+  {
+    abbrev: "CX",
+    name: "Christmas Island",
+    postal: "[0-9]{5}",
+  },
+  {
+    abbrev: "CC",
+    name: "Cocos (Keeling) Islands",
     postal: "[0-9]{5}",
   },
   {
@@ -296,12 +328,21 @@ export const countriesAndPostCodes = [
     postal: "[0-9]{4}",
   },
   {
+    abbrev: "GQ",
+    name: "Equatorial Guinea",
+  },
+  {
     abbrev: "ER",
     name: "Eritrea",
   },
   {
     abbrev: "EE",
     name: "Estonia",
+    postal: "[0-9]{5}",
+  },
+  {
+    abbrev: "SZ",
+    name: "Eswatini",
     postal: "[0-9]{5}",
   },
   {
@@ -334,10 +375,18 @@ export const countriesAndPostCodes = [
     postal: "[0-9]{5}",
   },
   {
+    abbrev: "GF",
+    name: "French Guiana",
+  },
+  {
     abbrev: "PF",
     name: "French Polynesia",
     postal: "987[0-9]{2}",
     range: ["98700", "98790"],
+  },
+  {
+    abbrev: "TF",
+    name: "French Southern Territories",
   },
   {
     abbrev: "GA",
@@ -432,6 +481,11 @@ export const countriesAndPostCodes = [
     postal: "[0-9]{4}",
   },
   {
+    abbrev: "HM",
+    name: "Heard Island and McDonald Islands",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "HN",
     name: "Honduras",
     postal: "[0-9]{5}",
@@ -474,6 +528,11 @@ export const countriesAndPostCodes = [
     abbrev: "IE",
     name: "Ireland, Republic of",
     postal: "(?:^[AC-FHKNPRTV-Y][0-9]{2}|D6W)[ -]?[0-9AC-FHKNPRTV-Y]{4}$",
+  },
+  {
+    abbrev: "IM",
+    name: "Isle of Man",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "FK",
@@ -667,6 +726,11 @@ export const countriesAndPostCodes = [
     postal: "[0-9]{5}",
   },
   {
+    abbrev: "FM",
+    name: "Micronesia (Federated States of)",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "MD",
     name: "Moldova, Republic of",
     postal: "MD-?[0-9]{4}",
@@ -780,6 +844,11 @@ export const countriesAndPostCodes = [
     postal: "\\d{5}(?:[-\\s]\\d{4})?",
   },
   {
+    abbrev: "PS",
+    name: "Palestine, State of",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "PA",
     name: "Panama",
     postal: "[0-9]{4}",
@@ -803,6 +872,11 @@ export const countriesAndPostCodes = [
     abbrev: "PH",
     name: "Philippines",
     postal: "[0-9]{4}",
+  },
+  {
+    abbrev: "PN",
+    name: "Pitcairn",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "PL",
@@ -852,6 +926,11 @@ export const countriesAndPostCodes = [
     abbrev: "WS",
     name: "Samoa",
     postal: "WS[0-9]{4}",
+  },
+  {
+    abbrev: "SM",
+    name: "San Marino",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "ST",
@@ -910,6 +989,16 @@ export const countriesAndPostCodes = [
     postal: "[0-9]{4}",
   },
   {
+    abbrev: "GS",
+    name: "South Georgia and the South Sandwhich Islands",
+    postal: "[0-9]{5}",
+  },
+  {
+    abbrev: "KR",
+    name: "South Korea",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "SS",
     name: "South Sudan",
   },
@@ -963,6 +1052,11 @@ export const countriesAndPostCodes = [
     name: "St. Maarten",
   },
   {
+    abbrev: "PM",
+    name: "St.Pierre and Miquelon",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "VI",
     name: "St. Thomas",
   },
@@ -979,6 +1073,11 @@ export const countriesAndPostCodes = [
   {
     abbrev: "SR",
     name: "Suriname",
+  },
+  {
+    abbrev: "SJ",
+    name: "Svalbard and Jan Mayeb",
+    postal: "[0-9]{5}",
   },
   {
     abbrev: "SZ",
@@ -1010,6 +1109,11 @@ export const countriesAndPostCodes = [
     postal: "[0-9]{3}(-[0-9]{2})?",
   },
   {
+    abbrev: "TJ",
+    name: "Tajikistan",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "TZ",
     name: "Tanzania",
     postal: "[0-9]{5}",
@@ -1022,6 +1126,10 @@ export const countriesAndPostCodes = [
   {
     abbrev: "TG",
     name: "Togo",
+  },
+  {
+    abbrev: "TK",
+    name: "Tokelau",
   },
   {
     abbrev: "TO",
@@ -1081,6 +1189,11 @@ export const countriesAndPostCodes = [
       "([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})",
   },
   {
+    abbrev: "UM",
+    name: "United States Minor Outlying Islands",
+    postal: "[0-9]{5}",
+  },
+  {
     abbrev: "US",
     name: "United States of America",
     postal: "\\d{5}(?:[-\\s]\\d{4})?",
@@ -1119,6 +1232,15 @@ export const countriesAndPostCodes = [
     name: "Virgin Islands (US)",
     range: ["00801", "00851"],
     postal: "\\d{5}(?:[-\\s]\\d{4})?",
+  },
+  {
+    abbrev: "WF",
+    name: "Wallis and Futuna",
+    postal: "[0-9]{5}",
+  },
+  {
+    abbrev: "EH",
+    name: "Western Sahara",
   },
   {
     abbrev: "YE",
