@@ -7,6 +7,7 @@ form-item
 {% if field_type %}form-item--{{ field_type }}{% endif %}
 {% if widget_type %}form-item--{{ widget_type }}{% endif %}
 {% if field.errors %}form-item--errors{% endif %}
+{% if css_classes %} {{css_classes}} {% endif %}
 ">
 
     {% if not widget_type == "checkbox_input" %}

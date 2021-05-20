@@ -1,9 +1,7 @@
 import { countriesAndPostCodes } from "./post-codes-list.js";
 
 // The container for the post-code input field.
-const postCodeInputContainer = document.querySelector(
-  ".post-code-input-container"
-);
+const postCodeInput = document.querySelector(".post-code-input");
 
 // The container that houses both the post code and city inputs.
 const formAndCityContainer = document.querySelector(".form__group--city-post");
@@ -40,12 +38,12 @@ function checkForCountryPostCode() {
       formAndCityContainer.classList.remove(
         "form__group--city-post--full-width"
       );
-      postCodeInputContainer.classList.remove("hidden");
+      postCodeInput.classList.remove("hidden");
     }
     // Hide post code field.
     else {
       formAndCityContainer.classList.add("form__group--city-post--full-width");
-      postCodeInputContainer.classList.add("hidden");
+      postCodeInput.classList.add("hidden");
     }
   }
 }

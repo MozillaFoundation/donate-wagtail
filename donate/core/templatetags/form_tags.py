@@ -16,7 +16,8 @@ def field_type(bound_field):
 
 
 @register.inclusion_tag('forms/form_field.html')
-def render_form_field(field):
+def render_form_field(field, css_classes=False):
     return {
-        'field': field
+        'field': field,
+        'css_classes': css_classes
     }
