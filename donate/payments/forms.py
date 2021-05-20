@@ -59,14 +59,12 @@ class PostalCodeMixin():
 
     def clean(self):
         cleaned_data = super().clean()
-        # Grabbing post code and selected county from form data
         postal_code = cleaned_data.get('post_code', '')
         country = cleaned_data.get('country', '')
         # Getting countries post code information from list in constants.py
         country_object_to_check = next(country_obj for country_obj in
                                        constants.COUNTRY_POST_CODES
                                        if country_obj["abbrev"] == country)
-        # If country uses a post code and the user left it blank, raise a validation error.
         if 'postal' in country_object_to_check and postal_code == "":
             raise forms.ValidationError({
                 'post_code': _('This field is required.')
