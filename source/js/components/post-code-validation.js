@@ -1,5 +1,12 @@
-import { countriesAndPostCodes } from "./post-codes-list.js";
-
+// Importing JSON list of countries and post-code info.
+// This info is also shared with donate/forms.py to check on the backend.
+try {
+  var countriesAndPostCodes = require("./post-codes-list");
+} catch (err) {
+  console.error(
+    "Could not import post-code data. Zip code is required by default."
+  );
+}
 // The container for the post-code input field.
 const postCodeInput = document.querySelector(".post-code-input");
 
@@ -15,7 +22,7 @@ if (countrySelector) {
 }
 // Event listener for checking post-code when user selects new country.
 function countryPostCodeValidation() {
-  if (countrySelector) {
+  if (countrySelector && countriesAndPostCodes) {
     countrySelector.addEventListener("change", (e) => {
       checkForCountryPostCode();
     });

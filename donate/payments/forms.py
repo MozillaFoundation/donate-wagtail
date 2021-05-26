@@ -13,6 +13,15 @@ from donate.recaptcha.fields import ReCaptchaField
 from . import constants
 from .utils import get_currency_info
 
+import json
+
+# # Loading a JSON list of countries and their respective post code formats if applicable,
+# # from the source/js directory.
+try:
+    with open('./source/js/components/post-codes-list.json') as post_code_data:
+        COUNTRY_POST_CODES = json.load(post_code_data)
+except Exception:
+    COUNTRY_POST_CODES = None
 
 # Global maximum amount value of 10 million, not currency-specific, intended
 # only to put a sane upper limit on all payments.
@@ -61,11 +70,15 @@ class PostalCodeMixin():
         cleaned_data = super().clean()
         postal_code = cleaned_data.get('post_code', '')
         country = cleaned_data.get('country', '')
-        # Getting countries post code information from list in constants.py
-        country_object_to_check = next(country_obj for country_obj in
-                                       constants.COUNTRY_POST_CODES
-                                       if country_obj["abbrev"] == country)
-        if 'postal' in country_object_to_check and postal_code == "":
+        # If we cannot import post-code data, default to it being required.
+        if COUNTRY_POST_CODES is None:
+            self.check_post_code(postal_code)
+        # Checking if the country uses post-code by finding it in JSON data.
+        elif 'postal' in next(country_obj for country_obj in COUNTRY_POST_CODES if country_obj["abbrev"] == country):
+            self.check_post_code(postal_code)
+
+    def check_post_code(self, postal_code):
+        if postal_code == "":
             raise forms.ValidationError({
                 'post_code': _('This field is required.')
             })
