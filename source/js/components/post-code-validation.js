@@ -1,58 +1,62 @@
 // Importing JSON list of countries and post-code info.
 // This info is also shared with donate/forms.py to check on the backend.
-try {
-  var countriesAndPostCodes = require("./post-codes-list");
-} catch (err) {
-  console.error(
-    "Could not import post-code data. Zip code is required by default."
-  );
-}
-// The container for the post-code input field.
-const postCodeInput = document.querySelector(".post-code-input");
+import countriesAndPostCodes from "./post-codes-list.json";
 
-// The container that houses both the post code and city inputs.
-const formAndCityContainer = document.querySelector(".form__group--city-post");
+function enableCountryPostCodeValidation() {
+  const countrySelector = document.getElementById("id_country");
 
-// The select object that allows users to select their country.
-const countrySelector = document.getElementById("id_country");
-
-// If you are on the form page, check if users country uses post code.
-if (countrySelector) {
-  checkForCountryPostCode();
-}
-// Event listener for checking post-code when user selects new country.
-function countryPostCodeValidation() {
   if (countrySelector && countriesAndPostCodes) {
+    const postCodeInput = document.querySelector(".post-code-input");
+    const formAndCityContainer = document.querySelector(
+      ".form__group--city-post"
+    );
+
+    // runs once as part of our initialisation:
+    checkForCountryPostCode(
+      countrySelector,
+      postCodeInput,
+      formAndCityContainer
+    );
+
+    // add make sure this also runs every time the country selector gets changed:
     countrySelector.addEventListener("change", (e) => {
-      checkForCountryPostCode();
+      checkForCountryPostCode(
+        countrySelector,
+        postCodeInput,
+        formAndCityContainer
+      );
     });
   }
 }
 
-function checkForCountryPostCode() {
-  // The users selected country.
-  const selectedCountrysName =
-    countrySelector.options[countrySelector.selectedIndex].text;
+function checkForCountryPostCode(
+  countrySelector,
+  postCodeInput,
+  formAndCityContainer
+) {
+  const { options, selectedIndex } = countrySelector;
+  const selectedCountryName = options[selectedIndex].text;
 
   // Finding the country object in the reference array.
   const countryObject = countriesAndPostCodes.find(
-    (country) => country.name === selectedCountrysName
+    (country) => country.name === selectedCountryName
   );
 
   if (countryObject !== undefined) {
     if (countryObject.postal) {
       // Display post code field.
-      formAndCityContainer.classList.remove(
-        "form__group--city-post--full-width"
+      formAndCityContainer.style.setProperty(
+        "grid-template-columns",
+        "0.3fr 0.7fr"
       );
       postCodeInput.classList.remove("hidden");
     }
     // Hide post code field.
     else {
-      formAndCityContainer.classList.add("form__group--city-post--full-width");
+      formAndCityContainer.style.setProperty("grid-template-columns", "auto");
       postCodeInput.classList.add("hidden");
     }
   }
 }
 
-export default countryPostCodeValidation;
+export default enableCountryPostCodeValidation;
