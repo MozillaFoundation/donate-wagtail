@@ -134,7 +134,7 @@ LOGGING = {
             'level': 'ERROR'
         },
         'rq.worker': {
-            'handlers': ['debug'],
+            'handlers': ['rq_console', 'debug'],
             'level': 'DEBUG',
         },
         'donate': {
