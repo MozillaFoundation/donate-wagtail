@@ -6,7 +6,8 @@ function enableCountryPostCodeValidation() {
   const countrySelector = document.getElementById("id_country");
 
   if (countrySelector && countriesAndPostCodes) {
-    const postCodeInput = document.querySelector(".post-code-input");
+    const postCodeContainer = document.querySelector(".post-code-container");
+    const postCodeInput = document.getElementById("id_post_code");
     const formAndCityContainer = document.querySelector(
       ".form__group--city-post"
     );
@@ -14,6 +15,7 @@ function enableCountryPostCodeValidation() {
     // runs once as part of our initialisation:
     checkForCountryPostCode(
       countrySelector,
+      postCodeContainer,
       postCodeInput,
       formAndCityContainer
     );
@@ -22,6 +24,7 @@ function enableCountryPostCodeValidation() {
     countrySelector.addEventListener("change", (e) => {
       checkForCountryPostCode(
         countrySelector,
+        postCodeContainer,
         postCodeInput,
         formAndCityContainer
       );
@@ -31,12 +34,12 @@ function enableCountryPostCodeValidation() {
 
 function checkForCountryPostCode(
   countrySelector,
+  postCodeContainer,
   postCodeInput,
   formAndCityContainer
 ) {
   const { options, selectedIndex } = countrySelector;
   const selectedCountryName = options[selectedIndex].text;
-
   // Finding the country object in the reference array.
   const countryObject = countriesAndPostCodes.find(
     (country) => country.name === selectedCountryName
@@ -49,12 +52,13 @@ function checkForCountryPostCode(
         "grid-template-columns",
         "0.3fr 0.7fr"
       );
-      postCodeInput.classList.remove("hidden");
+      postCodeContainer.classList.remove("hidden");
     }
     // Hide post code field.
     else {
       formAndCityContainer.style.setProperty("grid-template-columns", "auto");
-      postCodeInput.classList.add("hidden");
+      postCodeContainer.classList.add("hidden");
+      postCodeInput.value = "";
     }
   }
 }
