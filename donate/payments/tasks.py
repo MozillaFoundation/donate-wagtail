@@ -88,6 +88,8 @@ LANGUAGE_IDS = {
 
 # Acoustic receipt sending
 def process_donation_receipt(donation_data):
+    print("donation_data")
+    print(donation_data)
     # Creating new object by looping through mandatory receipt fields from const dictionary,
     # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
@@ -98,7 +100,9 @@ def process_donation_receipt(donation_data):
     created_dt = mofo_donation_receipt_datetime(created)
     message_data["created"] = mofo_donation_receipt_time_string(created_dt)
     message_data["day_of_month"] = mofo_donation_receipt_day_of_month(created_dt)
-    recurring = message_data.pop("recurring")
+    recurring = donation_data.get('recurring', False)
+    print("recurring")
+    print(recurring)
     message_data["payment_frequency"] = "Recurring" if recurring else "One-Time"
     # Getting the amount donated, and formatting it for email
     donation_amount = message_data.get("donation_amount", donation_data.get('amount'))
@@ -112,6 +116,8 @@ def process_donation_receipt(donation_data):
     send_data = {
         DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
     }
+    print("send_data")
+    print(send_data)
     # using the LANGUAGE_IDS const, we are getting the correct localized version of the email
     # based on the users locality, if there is none, default to English.
     message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[message_data["locale"]], LANGUAGE_IDS["en-US"])
