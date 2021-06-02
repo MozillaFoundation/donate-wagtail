@@ -13,6 +13,15 @@ from donate.recaptcha.fields import ReCaptchaField
 from . import constants
 from .utils import get_currency_info
 
+import json
+
+# # Loading a JSON list of countries and their respective post code formats if applicable,
+# # from the source/js directory.
+try:
+    with open('./source/js/components/post-codes-list.json') as post_code_data:
+        COUNTRY_POST_CODES = json.load(post_code_data)
+except Exception:
+    COUNTRY_POST_CODES = None
 
 # Global maximum amount value of 10 million, not currency-specific, intended
 # only to put a sane upper limit on all payments.
@@ -48,6 +57,33 @@ class MinimumCurrencyAmountMixin():
                 })
 
 
+class PostalCodeMixin():
+    """
+    Mixin for checking whether or not we should require the postcode
+    for a payment from the donate page.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        postal_code = cleaned_data.get('post_code', '')
+        country = cleaned_data.get('country', '')
+        # If we cannot import post-code data, default to it being required.
+        if COUNTRY_POST_CODES is None:
+            self.check_post_code(postal_code)
+        # Checking if the country uses post-code by finding it in JSON data.
+        elif 'postal' in next(country_obj for country_obj in COUNTRY_POST_CODES if country_obj["abbrev"] == country):
+            self.check_post_code(postal_code)
+
+    def check_post_code(self, postal_code):
+        if postal_code == "":
+            raise forms.ValidationError({
+                'post_code': _('This field is required.')
+            })
+
+
 class StartCardPaymentForm(MinimumCurrencyAmountMixin, forms.Form):
     amount = forms.DecimalField(label=_('Amount'), min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
@@ -74,7 +110,7 @@ class CampaignFormMixin(forms.Form):
     campaign_id = forms.CharField(required=False, widget=forms.HiddenInput)
 
 
-class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
+class BraintreeCardPaymentForm(CampaignFormMixin, PostalCodeMixin, BraintreePaymentForm):
     # max_length on all the fields here is to comply with Braintree validation requirements.
     first_name = forms.CharField(label=_('First name'), max_length=255)
     last_name = forms.CharField(label=_('Last name'), max_length=255)
@@ -85,7 +121,8 @@ class BraintreeCardPaymentForm(CampaignFormMixin, BraintreePaymentForm):
         label=pgettext_lazy(
             "Feel free to replace with “Postal code” or equivalent",
             'ZIP Code'
-        )
+        ),
+        required=False
     )
     country = CountryField(_('Country')).formfield(initial='US')
     device_data = forms.CharField(widget=forms.HiddenInput, required=False)
