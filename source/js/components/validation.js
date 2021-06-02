@@ -14,16 +14,26 @@ const monthlyOtherAmountErrorMessage = document.querySelector(
 
 // Handler for "other amount" inputs
 function otherAmountInputValidation() {
-  oneTimeOtherAmountInput.addEventListener("blur", (e) => {
-    if (document.querySelector(".one-time-donation-amount-radio:checked")) {
-      inputValueCheck(oneTimeOtherAmountInput, oneTimeOtherAmountErrorMessage);
-    }
-  });
-  monthlyOtherAmountInput.addEventListener("blur", (e) => {
-    if (document.querySelector(".monthly-donation-amount-radio:checked")) {
-      inputValueCheck(monthlyOtherAmountInput, monthlyOtherAmountErrorMessage);
-    }
-  });
+  if (oneTimeOtherAmountInput) {
+    oneTimeOtherAmountInput.addEventListener("blur", (e) => {
+      if (document.querySelector(".one-time-donation-amount-radio:checked")) {
+        inputValueCheck(
+          oneTimeOtherAmountInput,
+          oneTimeOtherAmountErrorMessage
+        );
+      }
+    });
+  }
+  if (monthlyOtherAmountInput) {
+    monthlyOtherAmountInput.addEventListener("blur", (e) => {
+      if (document.querySelector(".monthly-donation-amount-radio:checked")) {
+        inputValueCheck(
+          monthlyOtherAmountInput,
+          monthlyOtherAmountErrorMessage
+        );
+      }
+    });
+  }
 }
 
 function inputValueCheck(inputObjectToValidate, messageToUpdate) {
