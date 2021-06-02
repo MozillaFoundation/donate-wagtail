@@ -88,7 +88,6 @@ LANGUAGE_IDS = {
 
 # Acoustic receipt sending
 def process_donation_receipt(donation_data):
-
     # Creating new object by looping through mandatory receipt fields from const dictionary,
     # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
@@ -113,7 +112,6 @@ def process_donation_receipt(donation_data):
     send_data = {
         DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
     }
-
     # using the LANGUAGE_IDS const, we are getting the correct localized version of the email
     # based on the users locality, if there is none, default to English.
     message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[message_data["locale"]], LANGUAGE_IDS["en-US"])
