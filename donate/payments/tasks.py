@@ -238,6 +238,8 @@ class BraintreeWebhookProcessor:
             }
         else:
             logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
+        # Please note that we have 'recurring' set to True so send_transaction_to_basket will
+        # appropriately update the email subject line
         send_transaction_to_basket({
             'last_name': donor_details.get('last_name', ''),
             'first_name': donor_details.get('first_name', ''),
@@ -245,6 +247,7 @@ class BraintreeWebhookProcessor:
             'email': donor_details.get('email', ''),
             'amount': last_tx.amount,
             'currency': last_tx.currency_iso_code.lower(),
+            'recurring': True,
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,
