@@ -98,7 +98,7 @@ def process_donation_receipt(donation_data):
     created_dt = mofo_donation_receipt_datetime(created)
     message_data["created"] = mofo_donation_receipt_time_string(created_dt)
     message_data["day_of_month"] = mofo_donation_receipt_day_of_month(created_dt)
-    recurring = message_data.get("recurring", False)
+    recurring = message_data.pop("recurring")
     message_data["payment_frequency"] = "Recurring" if recurring else "One-Time"
     # Getting the amount donated, and formatting it for email
     donation_amount = message_data.get("donation_amount", donation_data.get('amount'))
