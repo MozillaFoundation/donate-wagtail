@@ -56,7 +56,6 @@ DONATION_RECEIPT_FIELDS = [
     "email",
     "first_name",
     "last_name",
-    "recurring",
     "transaction_id",
     "card_type",
     "last_4",
