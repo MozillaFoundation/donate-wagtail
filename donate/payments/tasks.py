@@ -245,6 +245,7 @@ class BraintreeWebhookProcessor:
             'email': donor_details.get('email', ''),
             'amount': last_tx.amount,
             'currency': last_tx.currency_iso_code.lower(),
+            'recurring': True,
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,
