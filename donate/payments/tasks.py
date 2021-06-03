@@ -1,3 +1,4 @@
+from donate.settings import languages
 import logging
 import time
 from decimal import Decimal
@@ -17,7 +18,6 @@ from .utils import (
     get_plan_id,
     get_merchant_account_id_for_card
 )
-from ..settings.languages import LANGUAGE_IDS
 
 logger = logging.getLogger(__name__)
 
@@ -72,6 +72,8 @@ DONATION_RECEIPT_FIELDS_MAP = {
     "locale": "donation_locale",
     "service": "payment_source",
 }
+
+LANGUAGE_IDS = languages.LANGUAGE_IDS
 
 
 # Acoustic receipt sending
