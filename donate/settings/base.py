@@ -8,7 +8,7 @@ from .environment import (
     root
 )
 
-from .languages import LANGUAGES
+from .languages import LANGUAGES, LANGUAGE_IDS
 
 
 class Base(object):
@@ -16,6 +16,7 @@ class Base(object):
     WAGTAIL_SITE_NAME = 'donate'
     WSGI_APPLICATION = 'donate.wsgi.application'
     LANGUAGE_CODE = 'en-US'
+    DEFAULT_LANGUAGE_ID = LANGUAGE_IDS[LANGUAGE_CODE]
     TIME_ZONE = 'UTC'
     USE_I18N = True
     USE_L10N = True
