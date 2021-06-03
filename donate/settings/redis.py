@@ -19,12 +19,12 @@ class Redis(object):
 
     RQ_QUEUES = {
         'default': {
-            'URL': env('REDIS_URL'),
+            'URL': env('REDIS_QUEUE_URL'),
             'DEFAULT_TIMEOUT': 500
         },
         # Must be a separate queue as it's limited to one item at a time
         'wagtail_localize_pontoon.sync': {
-            'URL': env('REDIS_URL'),
+            'URL': env('REDIS_QUEUE_URL'),
             'DEFAULT_TIMEOUT': 500
         }
     }
