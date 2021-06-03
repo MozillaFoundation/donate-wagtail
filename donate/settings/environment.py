@@ -64,6 +64,7 @@ env = environ.Env(
     RECAPTCHA_SECRET_KEY=(str, ''),
     RECAPTCHA_SITE_KEY=(str, ''),
     REDIS_URL=(str, 'redis://redis:6397/0'),
+    REDIS_QUEUE_URL=(str, 'redis://redis:6397/0'),
     REVIEW_APP=(bool, False),
     SALESFORCE_ORGID=(str, ''),
     SALESFORCE_CASE_RECORD_TYPE_ID=(str, ''),
