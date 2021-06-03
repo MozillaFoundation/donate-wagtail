@@ -1,4 +1,3 @@
-from donate.settings import languages
 import logging
 import time
 from decimal import Decimal
@@ -73,7 +72,7 @@ DONATION_RECEIPT_FIELDS_MAP = {
     "service": "payment_source",
 }
 
-LANGUAGE_IDS = languages.LANGUAGE_IDS
+LANGUAGE_IDS = settings.LANGUAGE_IDS
 
 
 # Acoustic receipt sending

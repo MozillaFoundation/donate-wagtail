@@ -16,6 +16,7 @@ class Base(object):
     WAGTAIL_SITE_NAME = 'donate'
     WSGI_APPLICATION = 'donate.wsgi.application'
     LANGUAGE_CODE = 'en-US'
+    LANGUAGE_IDS = LANGUAGE_IDS
     DEFAULT_LANGUAGE_ID = LANGUAGE_IDS[LANGUAGE_CODE]
     TIME_ZONE = 'UTC'
     USE_I18N = True
