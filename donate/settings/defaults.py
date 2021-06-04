@@ -78,7 +78,6 @@ LOGGING = {
         'debug': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'filters': ['require_debug_true'],
             'formatter': 'verbose'
         },
         'error': {
@@ -87,7 +86,6 @@ LOGGING = {
         },
         'debug-error': {
             'level': 'ERROR',
-            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler'
         },
         'info': {
