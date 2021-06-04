@@ -65,11 +65,6 @@ BRAINTREE_PLANS = {
 
 LOGGING = {
     'version': 1,
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        }
-    },
     'formatters': {
         'verbose': {
             'format': '%(asctime)s [%(levelname)s] %(message)s'
