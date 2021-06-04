@@ -13,7 +13,10 @@ class Redis(object):
                 'SOCKET_TIMEOUT': 120,
                 'SOCKET_CONNECT_TIMEOUT': 30,
                 'COMPRESSOR': 'django_redis.compressors.zlib.ZlibCompressor',
-                'IGNORE_EXCEPTIONS': True
+                'IGNORE_EXCEPTIONS': True,
+                "CONNECTION_POOL_KWARGS": {
+                    "ssl_cert_reqs": None
+                },
             }
         }
     }
@@ -21,11 +24,13 @@ class Redis(object):
     RQ_QUEUES = {
         'default': {
             'URL': REDIS_QUEUE_URL,
-            'DEFAULT_TIMEOUT': 500
+            'DEFAULT_TIMEOUT': 500,
+            'SSL_CERT_REQS': None
         },
         # Must be a separate queue as it's limited to one item at a time
         'wagtail_localize_pontoon.sync': {
             'URL': REDIS_QUEUE_URL,
-            'DEFAULT_TIMEOUT': 500
+            'DEFAULT_TIMEOUT': 500,
+            'SSL_CERT_REQS': None
         }
     }
