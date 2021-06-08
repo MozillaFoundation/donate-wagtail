@@ -6,7 +6,7 @@
   },
   {
      "abbrev":"AX",
-     "name":"Aland Islands",
+     "name":"Åland Islands",
      "postal":"[0-9]{5}"
   },
   {
@@ -127,7 +127,7 @@
   },
   {
      "abbrev":"BQ",
-     "name":"Bonaire"
+     "name":"Bonaire, Sint Eustatius and Saba"
   },
   {
      "abbrev":"BA",
@@ -219,7 +219,7 @@
   },
   {
      "abbrev":"CN",
-     "name":"China, People's Republic",
+     "name":"China",
      "postal":"[0-9]{5}"
   },
   {
@@ -247,7 +247,7 @@
   },
   {
      "abbrev":"CD",
-     "name":"Congo, The Democratic Republic of"
+     "name":"Congo (the Democratic Republic of the)"
   },
   {
      "abbrev":"CK",
@@ -274,7 +274,7 @@
   },
   {
      "abbrev":"CW",
-     "name":"Curacao"
+     "name":"Curaçao"
   },
   {
      "abbrev":"CY",
@@ -348,7 +348,7 @@
   },
   {
      "abbrev":"FK",
-     "name":"Falkland Islands",
+     "name":"Falkland Islands (Malvinas)",
      "postal":"FIQQ 1ZZ"
   },
   {
@@ -459,11 +459,7 @@
   },
   {
      "abbrev":"GY",
-     "name":"Guyana (British)"
-  },
-  {
-     "abbrev":"GF",
-     "name":"Guyana (French)",
+     "name":"Guyana",
      "postal":"973[0-9]{2}"
   },
   {
@@ -517,7 +513,7 @@
   },
   {
      "abbrev":"IE",
-     "name":"Ireland, Republic of",
+     "name":"Ireland",
      "postal":"(?:^[AC-FHKNPRTV-Y][0-9]{2}|D6W)[ -]?[0-9AC-FHKNPRTV-Y]{4}$"
   },
   {
@@ -647,7 +643,7 @@
   },
   {
      "abbrev":"MO",
-     "name":"Macau"
+     "name":"Macao"
   },
   {
      "abbrev":"MK",
@@ -718,7 +714,7 @@
   },
   {
      "abbrev":"MD",
-     "name":"Moldova, Republic of",
+     "name":"Moldova",
      "postal":"MD-?[0-9]{4}"
   },
   {
@@ -973,7 +969,7 @@
   },
   {
      "abbrev":"GS",
-     "name":"South Georgia and the South Sandwhich Islands",
+     "name":"South Georgia and the South Sandwich Islands",
      "postal":"[0-9]{5}"
   },
   {
@@ -997,7 +993,7 @@
   },
   {
      "abbrev":"BL",
-     "name":"St. Barthélemy",
+     "name":"Saint Barthélemy",
      "postal":"[0-9]{5}"
   },
   {
@@ -1011,7 +1007,7 @@
   },
   {
      "abbrev":"SH",
-     "name":"St. Helena",
+     "name":"Saint Helena, Ascension and Tristan da Cunha",
      "postal":"STHL 1ZZ"
   },
   {
@@ -1021,21 +1017,21 @@
   },
   {
      "abbrev":"KN",
-     "name":"St. Kitts and Nevis",
+     "name":"Saint Kitts and Nevis",
      "postal":"[A-Z]{2}[0-9]{4}"
   },
   {
      "abbrev":"LC",
-     "name":"St. Lucia",
+     "name":"Saint Lucia",
      "postal":"[A-Z]{2}[0-9]{2} [0-9]{3}"
   },
   {
      "abbrev":"SX",
-     "name":"St. Maarten"
+     "name":"Saint Martin (French part)"
   },
   {
      "abbrev":"PM",
-     "name":"St.Pierre and Miquelon",
+     "name":"Saint Pierre and Miquelon",
      "postal":"[0-9]{5}"
   },
   {
@@ -1044,7 +1040,7 @@
   },
   {
      "abbrev":"VC",
-     "name":"St. Vincent and the Grenadines",
+     "name":"Saint Vincent and the Grenadines",
      "postal":"VC[0-9]{4}"
   },
   {
@@ -1058,7 +1054,7 @@
   },
   {
      "abbrev":"SJ",
-     "name":"Svalbard and Jan Mayeb",
+     "name":"Svalbard and Jan Mayen",
      "postal":"[0-9]{5}"
   },
   {
@@ -1210,7 +1206,7 @@
   },
   {
      "abbrev":"VI",
-     "name":"Virgin Islands (US)",
+     "name":"Virgin Islands (U.S.)",
      "postal":"\\d{5}(?:[-\\s]\\d{4})?"
   },
   {
