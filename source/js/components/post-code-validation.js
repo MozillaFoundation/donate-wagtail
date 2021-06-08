@@ -40,14 +40,10 @@ function checkForCountryPostCode(
 ) {
   const { options, selectedIndex } = countrySelector;
   const selectedCountryName = options[selectedIndex].text;
-  console.log("selectedCountryName");
-  console.log(selectedCountryName);
   // Finding the country object in the reference array.
   const countryObject = countriesAndPostCodes.find(
     (country) => country.name === selectedCountryName
   );
-  console.log("countryObject");
-  console.log(countryObject);
 
   if (countryObject !== undefined) {
     if (countryObject.postal) {
