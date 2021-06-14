@@ -1,7 +1,6 @@
+import json
 import logging
-from urllib import parse
 from sentry_sdk.integrations.django import ignore_logger
-import requests
 
 from django.conf import settings
 from django.contrib import messages
@@ -13,10 +12,13 @@ from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
 
 from braintree import ErrorCodes
+import mailchimp_marketing as MailchimpMarketing
+from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 from wagtail_ab_testing.models import AbTest
 from wagtail_ab_testing.utils import request_is_trackable
+
 
 from donate.core.utils import queue_ga_event
 from . import constants, gateway
@@ -784,17 +786,30 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         data = form.cleaned_data.copy()
 
-        if settings.POST_DONATE_NEWSLETTER_URL is not None:
-            # This will send the email address to Mailchimp for Thunderbird only.
-            newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
-            data = parse.urlencode({
-                'EMAIL': data['email']
-            }).encode()
-            res = requests.post(newsletter_url, data=data)
-            if not res.ok:
+        if (
+            settings.THUNDERBIRD_MC_API_KEY is not None
+            and settings.THUNDERBIRD_MC_SERVER
+            and settings.THUNDERBIRD_MC_LIST_ID
+        ):
+            client = MailchimpMarketing.Client()
+            client.set_config({
+                "api_key": settings.THUNDERBIRD_MC_API_KEY,
+                "server": settings.THUNDERBIRD_MC_SERVER,
+            })
+            try:
+                client.lists.add_list_member(settings.THUNDERBIRD_MC_LIST_ID, {
+                    "email_address": data['email'],
+                    "status": "subscribed"
+                })
+            except ApiClientError as error:
+                error = json.loads(error.text)
+                if 'title' in error and error['title'] == 'Member Exists':
+                    # If the member exists, proceed as normal.
+                    return super().form_valid(form)
+
                 sentry_logger.error(
-                    'Thunderbird newsletter POST failed',
-                    extra={'status': res.status_code},
+                    'Thunderbird: Subscription to Mailchimp failed',
+                    extra={'status': error['status'], 'error': str(error)},
                     exc_info=True
                 )
 
