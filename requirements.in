@@ -15,6 +15,7 @@ factory-boy
 freezegun
 gunicorn
 lxml==4.6.2
+mailchimp-marketing==3.0.44
 mozilla-django-oidc
 pygit2==1.0.3
 pysilverpop==0.2.6
