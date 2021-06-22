@@ -3,7 +3,7 @@ basket-client==1.0.0
 boto3
 braintree
 dj-database-url
-django==2.2.13
+django==3.1.11
 django-configurations
 django-countries
 django-csp
@@ -15,6 +15,7 @@ factory-boy
 freezegun
 gunicorn
 lxml==4.6.2
+mailchimp-marketing==3.0.44
 mozilla-django-oidc
 pygit2==1.0.3
 pysilverpop==0.2.6
@@ -29,6 +30,6 @@ wagtail==2.11.4
 wagtail-factories
 wagtail-localize
 wagtail-localize-git==0.9.2
-wagtail-ab-testing==0.1.2
+wagtail-ab-testing==0.2.1
 whitenoise
 scout-apm

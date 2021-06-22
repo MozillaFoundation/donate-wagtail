@@ -37,14 +37,18 @@
     }
     &--city-post {
       display: grid;
+
+      // This gets updated to "Auto" in post-code-validation.js
+      // If the form does not require a post code.
       grid-template-columns: 0.3fr 0.7fr;
 
-      .form-item:nth-of-type(2) {
+      .form-item:nth-of-type(1) {
         input {
-          border-left: 0;
+          border-right: 0;
         }
       }
     }
+
     &--additional-info {
       position: relative;
 

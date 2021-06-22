@@ -7,7 +7,9 @@
 anyascii==0.1.7
     # via wagtail
 asgiref==3.3.1
-    # via scout-apm
+    # via
+    #   django
+    #   scout-apm
 babel==2.8.0
     # via -r requirements.in
 basket-client==1.0.0
@@ -24,6 +26,7 @@ braintree==4.1.0
     # via -r requirements.in
 certifi==2020.4.5.1
     # via
+    #   mailchimp-marketing
     #   requests
     #   sentry-sdk
     #   urllib3
@@ -65,7 +68,7 @@ django-taggit==1.2.0
     # via wagtail
 django-treebeard==4.3.1
     # via wagtail
-django==2.2.13
+django==3.1.11
     # via
     #   -r requirements.in
     #   django-csp
@@ -123,6 +126,8 @@ l18n==2020.6.1
     # via wagtail
 lxml==4.6.2
     # via -r requirements.in
+mailchimp-marketing==3.0.44
+    # via -r requirements.in
 mozilla-django-oidc==1.2.3
     # via -r requirements.in
 numpy==1.19.4
@@ -158,6 +163,7 @@ python-dateutil==2.8.1
     #   botocore
     #   faker
     #   freezegun
+    #   mailchimp-marketing
 pytz==2020.1
     # via
     #   babel
@@ -179,6 +185,7 @@ requests==2.24.0
     #   -r requirements.in
     #   basket-client
     #   braintree
+    #   mailchimp-marketing
     #   mozilla-django-oidc
     #   pysilverpop
     #   requests-oauthlib
@@ -205,6 +212,7 @@ six==1.14.0
     #   html5lib
     #   josepy
     #   l18n
+    #   mailchimp-marketing
     #   mozilla-django-oidc
     #   pyopenssl
     #   pysilverpop
@@ -232,12 +240,13 @@ unidecode==1.1.1
 urllib3[secure]==1.25.9
     # via
     #   botocore
+    #   mailchimp-marketing
     #   requests
     #   scout-apm
     #   sentry-sdk
 user-agents==2.2.0
     # via wagtail-ab-testing
-wagtail-ab-testing==0.1.2
+wagtail-ab-testing==0.2.1
     # via -r requirements.in
 wagtail-factories==2.0.0
     # via -r requirements.in

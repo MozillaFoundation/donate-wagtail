@@ -65,11 +65,6 @@ BRAINTREE_PLANS = {
 
 LOGGING = {
     'version': 1,
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        }
-    },
     'formatters': {
         'verbose': {
             'format': '%(asctime)s [%(levelname)s] %(message)s'
@@ -83,7 +78,6 @@ LOGGING = {
         'debug': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'filters': ['require_debug_true'],
             'formatter': 'verbose'
         },
         'error': {
@@ -92,7 +86,6 @@ LOGGING = {
         },
         'debug-error': {
             'level': 'ERROR',
-            'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler'
         },
         'info': {
@@ -134,7 +127,7 @@ LOGGING = {
             'level': 'ERROR'
         },
         'rq.worker': {
-            'handlers': ['debug'],
+            'handlers': ['rq_console', 'debug'],
             'level': 'DEBUG',
         },
         'donate': {

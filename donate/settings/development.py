@@ -14,6 +14,7 @@ from .thunderbird import ThunderbirdOverrides
 class Development(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Configuration):
     DEBUG = env('DEBUG')
     DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
+    SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A1ez"
 
     RECAPTCHA_ENABLED = False
     SECURE_SSL_REDIRECT = False
@@ -42,6 +43,7 @@ class ThunderbirdDevelopment(Development, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Development.INSTALLED_APPS
     FRONTEND = ThunderbirdOverrides.FRONTEND
     ENABLE_THUNDERBIRD_REDIRECT = False
+    SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A2Pl"
     FRAUD_SITE_ID = 'tbird'
 
     @property

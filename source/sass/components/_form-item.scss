@@ -130,4 +130,9 @@
     // override as can't apply modifier class due to form being added
     margin-bottom: 0;
   }
+  // Custom styling for post code field to make it appear required
+  label[for="id_post_code"]::after {
+    content: "*";
+    color: $color--red;
+  }
 }
