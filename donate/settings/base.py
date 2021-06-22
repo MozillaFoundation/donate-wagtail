@@ -96,6 +96,7 @@ class Base(object):
         return self.ALLOWED_HOSTS
 
     INSTALLED_APPS = [
+        'whitenoise.runserver_nostatic',
         'scout_apm.django',
 
         'donate.users',
@@ -142,11 +143,11 @@ class Base(object):
     @property
     def MIDDLEWARE(self):
         return list(filter(None, [
+            'django.middleware.security.SecurityMiddleware',
+            'whitenoise.middleware.WhiteNoiseMiddleware',
             'donate.utility.middleware.TargetDomainRedirectMiddleware'
             if self.DOMAIN_REDIRECT_MIDDLEWARE_ENABLED else None,
             'django.middleware.gzip.GZipMiddleware',
-            'django.middleware.security.SecurityMiddleware',
-            'whitenoise.middleware.WhiteNoiseMiddleware',
             'django.contrib.sessions.middleware.SessionMiddleware',
             'django.middleware.locale.LocaleMiddleware',
             'django.middleware.common.CommonMiddleware',
