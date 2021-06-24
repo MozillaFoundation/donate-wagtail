@@ -96,7 +96,7 @@ def process_donation_receipt(donation_data):
         'MZLA Thunderbird' if message_data['project'] == 'thunderbird' else 'Mozilla'
     )
 
-    # convert some field names to match Acoustic API by looping through dict
+    # convert some field names to match Acoustic API email fields by looping through dict
     # and updating fields that match
     send_data = {
         DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
