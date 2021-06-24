@@ -60,8 +60,8 @@ DONATION_RECEIPT_FIELDS = [
     "card_type",
     "last_4",
     "locale",
-    "service",
     "project",
+    "payment_method"
 ]
 
 # map of incoming donation data field names -> email/acoustic field names
@@ -69,7 +69,7 @@ DONATION_RECEIPT_FIELDS_MAP = {
     "card_type": "cc_type",
     "last_4": "cc_last_4_digits",
     "locale": "donation_locale",
-    "service": "payment_source",
+    "payment_method": "payment_source",
 }
 
 LANGUAGE_IDS = settings.LANGUAGE_IDS
@@ -80,7 +80,8 @@ def process_donation_receipt(donation_data):
     # Creating new object by looping through mandatory receipt fields from const dictionary,
     # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
-    email = message_data.pop('email')
+    email = "daniel@mozillafoundation.org"
+    # email = message_data.pop('email')
     # If the donation data did not recieve a payment time, use the current time.
     created = message_data.get('created', int(time.time()))
     # The next 3 lines are formatting the date and time for the email
