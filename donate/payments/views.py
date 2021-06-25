@@ -309,7 +309,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'merchant_account_id': get_merchant_account_id_for_card(self.currency),
             'payment_method_token': payment_method.token,
             'price': form.cleaned_data['amount'],
-            'first_billing_date': now().date(),
+            'options': {
+                "start_immediately": True
+            }
         })
 
         if result.is_success:
@@ -438,7 +440,9 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 ),
                 'payment_method_token': payment_method.token,
                 'price': form.cleaned_data['amount'],
-                'first_billing_date': now().date(),
+                'options': {
+                    "start_immediately": True
+                }
             })
             send_data_to_basket = False
             if result.is_success:
