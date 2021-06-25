@@ -593,7 +593,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         currency = form.cleaned_data['currency']
 
         # Create a subcription against the payment method
-        start_date = now().date() + relativedelta(months=1)     # Start one month from today
+        start_date = now().date() + relativedelta(months=1)     # Start recurring payment one month from today
         result = gateway.subscription.create({
             'plan_id': get_plan_id(currency),
             'merchant_account_id': get_merchant_account_id_for_card(currency),
@@ -700,7 +700,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             return self.process_braintree_error_result(result, form)
 
         # Create a subscription against the payment method
-        start_date = now().date() + relativedelta(months=1)     # Start one month from today
+        start_date = now().date() + relativedelta(months=1)     # Start recurring payment one month from today
         result = gateway.subscription.create({
             'plan_id': get_plan_id(self.currency),
             'merchant_account_id': get_merchant_account_id_for_paypal(
