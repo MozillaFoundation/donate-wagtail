@@ -60,6 +60,13 @@ function checkForCountryPostCode(
       postCodeContainer.classList.add("hidden");
       postCodeInput.value = "";
     }
+  } else {
+    // (Default Case) If country not found, display post code field.
+    formAndCityContainer.style.setProperty(
+      "grid-template-columns",
+      "0.3fr 0.7fr"
+    );
+    postCodeContainer.classList.remove("hidden");
   }
 }
 
