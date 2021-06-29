@@ -60,8 +60,8 @@ DONATION_RECEIPT_FIELDS = [
     "card_type",
     "last_4",
     "locale",
-    "service",
     "project",
+    "payment_method"
 ]
 
 # map of incoming donation data field names -> email/acoustic field names
@@ -69,7 +69,7 @@ DONATION_RECEIPT_FIELDS_MAP = {
     "card_type": "cc_type",
     "last_4": "cc_last_4_digits",
     "locale": "donation_locale",
-    "service": "payment_source",
+    "payment_method": "payment_source",
 }
 
 LANGUAGE_IDS = settings.LANGUAGE_IDS
@@ -96,7 +96,7 @@ def process_donation_receipt(donation_data):
         'MZLA Thunderbird' if message_data['project'] == 'thunderbird' else 'Mozilla'
     )
 
-    # convert some field names to match Acoustic API by looping through dict
+    # convert some field names to match Acoustic API email fields by looping through dict
     # and updating fields that match
     send_data = {
         DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
