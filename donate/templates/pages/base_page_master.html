@@ -43,10 +43,15 @@
     </nav>
 {% endblock navigation %}
 
+
+
 {% block header %}
     <div class="header">
         <div class="header__container">
 
+            {% comment %}
+
+            {# Hiding Elements instead of deleting for 1491 #}
             <div class="header__menu-toggle">
                 <span class="header__menu-label">{% trans "Menu" %}</span>
                 <button class="burger" data-menu-toggle aria-haspopup="true" aria-label="Menu toggle">
@@ -55,6 +60,7 @@
                     <div class="burger__bar burger__bar--bottom"></div>
                 </button>
             </div>
+            {% endcomment %}
 
             <a class="header__logo-link" href="/">
                 <img class="header__logo header__logo--mobile" src="{% static '_images/mozilla-logo-m.svg' %}" alt="Mozilla">
@@ -68,6 +74,8 @@
 {% block footer %}
 <div class="footer">
     <div class="footer__container layout">
+        {% comment %}
+        {# Hiding Elements instead of deleting for 1491 #}
         <div class="footer__primary-content layout__container">
             {% block footerSignup %}
                 <div class="footer__newsletter newsletter-signup layout__half-col">
@@ -158,6 +166,8 @@
                 </div>
             </div>
         </div>
+        {% endcomment %}
+
         <div class="footer__info layout__container">
             <div class="footer__logo footer__logo--desktop layout__half-col">
                 {% block footer_logo %}
