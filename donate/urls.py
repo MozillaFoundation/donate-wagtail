@@ -10,6 +10,7 @@ from django.views.i18n import JavaScriptCatalog
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from wagtail_ab_testing import urls as ab_testing_urls
 
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
@@ -26,6 +27,7 @@ urlpatterns = [
     path('braintree/webhook/', BraintreeWebhookView.as_view(), name='braintree_webhook'),
     path('stripe/webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
     path('environment.json', EnvVariablesView.as_view()),
+    path('abtesting/', include(ab_testing_urls)),
 ]
 
 if settings.ENABLE_THUNDERBIRD_REDIRECT:
