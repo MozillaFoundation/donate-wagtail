@@ -16,9 +16,6 @@ import mailchimp_marketing as MailchimpMarketing
 from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
-from wagtail_ab_testing.models import AbTest
-from wagtail_ab_testing.utils import request_is_trackable
-
 
 from donate.core.utils import queue_ga_event
 from . import constants, gateway
@@ -832,23 +829,5 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         return super().form_valid(form)
 
 
-class ThankYouView(TransactionRequiredMixin, TemplateView):
+class ThankYouView(TemplateView):
     template_name = 'payment/thank_you.html'
-
-    def get(self, *args, **kwargs):
-        # Check if the user is trackable
-        if request_is_trackable(self.request):
-            for test in AbTest.objects.filter(goal_event='visit-thank-you-page', status=AbTest.STATUS_RUNNING):
-                # Is the user a participant in this test?
-                if f'wagtail-ab-testing_{test.id}_version' not in self.request.session:
-                    continue
-
-                # Has the user already completed the test?
-                if f'wagtail-ab-testing_{test.id}_completed' in self.request.session:
-                    continue
-
-                # Log a conversion
-                test.log_conversion(self.request.session[f'wagtail-ab-testing_{test.id}_version'])
-                self.request.session[f'wagtail-ab-testing_{test.id}_completed'] = 'yes'
-
-        return super().get(*args, **kwargs)
