@@ -62,3 +62,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    {% include "./includes/trigger_ab_testing_thank_you_event.html" %}
+{% endblock %}

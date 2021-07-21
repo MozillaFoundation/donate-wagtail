@@ -1,0 +1,10 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Need to setTimeout to make sure the A/B testing library is loaded
+        setTimeout(function() {
+            if (window.wagtailAbTesting) {
+                window.wagtailAbTesting.triggerEvent('visit-thank-you-page');
+            }
+        }, 1000);
+    });
+</script>

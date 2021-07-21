@@ -30,6 +30,6 @@ wagtail==2.11.4
 wagtail-factories
 wagtail-localize
 wagtail-localize-git==0.9.2
-wagtail-ab-testing==0.3.1
+wagtail-ab-testing==0.4
 whitenoise
 scout-apm
