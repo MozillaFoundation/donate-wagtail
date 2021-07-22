@@ -20,7 +20,9 @@ import json
 try:
     with open('./source/js/components/post-codes-list.json') as post_code_data:
         COUNTRY_POST_CODES = json.load(post_code_data)
-except Exception:
+except Exception as e:
+    print("Exception")
+    print(e)
     COUNTRY_POST_CODES = None
 
 # Global maximum amount value of 10 million, not currency-specific, intended
