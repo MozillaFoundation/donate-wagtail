@@ -20,7 +20,9 @@ import json
 try:
     with open('./source/js/components/post-codes-list.json') as post_code_data:
         COUNTRY_POST_CODES = json.load(post_code_data)
-except Exception:
+except Exception as error:
+    print('ERROR: could not read in post codes list')
+    print(error)
     COUNTRY_POST_CODES = None
 
 # Global maximum amount value of 10 million, not currency-specific, intended
@@ -72,6 +74,7 @@ class PostalCodeMixin():
         country = cleaned_data.get('country', '')
         # If we cannot import post-code data, default to it being required.
         if COUNTRY_POST_CODES is None:
+            print('Error: no postal code data available, defaulting to required(postal_code)')
             self.check_post_code(postal_code)
         # Checking if the country uses post-code by finding it in JSON data.
         elif 'postal' in next(country_obj for country_obj in COUNTRY_POST_CODES if country_obj["abbrev"] == country):
