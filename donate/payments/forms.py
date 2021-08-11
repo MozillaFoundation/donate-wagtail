@@ -18,7 +18,7 @@ import json
 # # Loading a JSON list of countries and their respective post code formats if applicable,
 # # from the source/js directory.
 try:
-    with open('../source/js/components/post-codes-list.json') as post_code_data:
+    with open('/app/source/js/components/post-codes-list.json') as post_code_data:
         COUNTRY_POST_CODES = json.load(post_code_data)
 except Exception as error:
     print('ERROR: could not read in post codes list')
