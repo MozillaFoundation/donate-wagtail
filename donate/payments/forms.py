@@ -15,8 +15,8 @@ from .utils import get_currency_info
 
 import json
 
-# # Loading a JSON list of countries and their respective post code formats if applicable,
-# # from the source/js directory.
+# Loading a JSON list of countries and their respective post code formats if applicable,
+# from the source/js directory.
 try:
     with open('/app/source/js/components/post-codes-list.json') as post_code_data:
         COUNTRY_POST_CODES = json.load(post_code_data)
