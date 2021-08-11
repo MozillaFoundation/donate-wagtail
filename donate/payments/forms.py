@@ -74,7 +74,7 @@ class PostalCodeMixin():
         country = cleaned_data.get('country', '')
         # If we cannot import post-code data, default to it being required.
         if COUNTRY_POST_CODES is None:
-            print('Error: no postal code data available, defaulting to required(postal_code)')
+            print('Error: no postal code data available, defaulting to required(postal_code).')
             self.check_post_code(postal_code)
         # Checking if the country uses post-code by finding it in JSON data.
         elif 'postal' in next(country_obj for country_obj in COUNTRY_POST_CODES if country_obj["abbrev"] == country):
