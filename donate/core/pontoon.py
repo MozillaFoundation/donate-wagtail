@@ -25,6 +25,7 @@ class CustomSyncManager(SyncManager):
         return RedLock("lock:wagtail_localize_pontoon.sync", connection_details=[
             {
                 'url': settings.REDIS_URL,
+                'ssl_cert_reqs': None,
             }
         ])
 
