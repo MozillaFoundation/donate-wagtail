@@ -22,11 +22,15 @@ class CustomSyncManager(SyncManager):
         self.queue = django_rq.get_queue('wagtail_localize_pontoon.sync')
 
     def lock(self):
+        connection_info = {
+            'url': settings.REDIS_URL,
+        }
+
+        if settings.REDIS_URL.startswith("rediss"):
+            connection_info["ssl_cert_reqs"] = None
+
         return RedLock("lock:wagtail_localize_pontoon.sync", connection_details=[
-            {
-                'url': settings.REDIS_URL,
-                'ssl_cert_reqs': None,
-            }
+            connection_info
         ])
 
     def sync(self):
