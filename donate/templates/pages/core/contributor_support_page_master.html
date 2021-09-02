@@ -39,8 +39,8 @@
                             {% endblocktrans %}
                         </p>
                         <p class="rich-text">
-                            {% blocktrans trimmed %}
-                                Unfortunately, donor care representatives are unable to offer support or help with Firefox technical issues.
+                            {% blocktrans with support_url="https://support.mozilla.org/questions/firefox" trimmed %}
+                                Unfortunately, donor care representatives are unable to offer support or help with Firefox technical issues. For technical support, please visit the <a href="{{ support_url }}">Firefox support page</a>.
                             {% endblocktrans %}
                         </p>
                     {% endblock %}
