@@ -15,6 +15,10 @@
     </p>
 {% endblock %}
 
+{% block captcha_settings %}
+<input type="hidden" name="captcha_settings" value='{"keyname":"MZLATBIRD_Regular_ReCaptcha_v2","fallback":"true","orgId":"{{ orgid }}","ts":""}'>
+{% endblock %}
+
 {% block custom_hidden_fields %}
     <input type="hidden" name="type" value="Thunderbird">
 {% endblock %}
