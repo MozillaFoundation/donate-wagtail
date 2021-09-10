@@ -319,5 +319,6 @@ class ContributorSupportPage(Page):
         ctx.update({
             'orgid': settings.SALESFORCE_ORGID,
             'record_type_id': settings.SALESFORCE_CASE_RECORD_TYPE_ID,
+            'help_recaptcha_site_key': settings.RECAPTCHA_SITE_KEY_REGULAR  if settings.RECAPTCHA_ENABLED else None,
         })
         return ctx
