@@ -60,9 +60,9 @@
                         </p>
                     {% endblock %}
 
-                    <input type=hidden name='captcha_settings' value='{"keyname":"Regular_ReCaptcha_v2","fallback":"true","orgId":"00D4x000006qXZA","ts":""}'>
-                    <input type=hidden name="orgid" value="00D4x000006qXZA">
-                    <input type=hidden name="retURL" value="http://">
+                    <input type="hidden" name='captcha_settings' value='{"keyname":"Regular_ReCaptcha_v2","fallback":"true","orgId":"00D4x000006qXZA","ts":""}'>
+                    <input type="hidden" name="orgid" value="00D4x000006qXZA">
+                    <input type="hidden" name="retURL" value="{{ page.get_full_url }}?submitted=true">
 
                     {% block custom_hidden_fields %}
                         <input type="hidden" name="type" value="Donation">
