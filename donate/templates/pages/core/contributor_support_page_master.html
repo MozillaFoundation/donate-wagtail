@@ -6,6 +6,21 @@
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 {% endblock %}
 
+{% block head_addenda %}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function timestamp() {
+            var response = document.getElementById("g-recaptcha-response");
+            if (response == null || response.value.trim() == "") {
+                var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+                elems["ts"] = JSON.stringify(new Date().getTime());
+                document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+            }
+        }
+        setInterval(timestamp, 500);
+    </script>
+{% endblock %}
+
 {% block content %}
 {% wagtail_site as current_site %}
 
@@ -30,7 +45,7 @@
                     <p class="rich-text">{% trans "We will get back to you soon." %}</p>
                 </div>
             {% else %}
-                <form class="" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+                <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
 
                     {% block donate_support_text %}
                         <p class="rich-text">
@@ -45,7 +60,8 @@
                         </p>
                     {% endblock %}
 
-                    <input type="hidden" name="orgid" value="{{ orgid }}">
+                    <input type="hidden" name='captcha_settings' value='{"keyname":"Regular_ReCaptcha_v2","fallback":"true","orgId":"00D4x000006qXZA","ts":""}'>
+                    <input type="hidden" name="orgid" value="00D4x000006qXZA">
                     <input type="hidden" name="retURL" value="{{ page.get_full_url }}?submitted=true">
 
                     {% block custom_hidden_fields %}
@@ -79,18 +95,21 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class="form-item">
-                        <label for="subject">{% trans "Subject" %}</label>
-                        <input id="subject" maxlength="80" name="subject" size="20" type="text">
-                    </fieldset>
+                    <br>
 
                     <fieldset class="form-item">
                         <label for="description">{% trans "Description" %}</label>
                         <textarea name="description"></textarea>
                     </fieldset>
+
                     <div class="privacy-notice">
                         {% blocktrans with privacy_policy="https://www.mozilla.org/privacy/websites/" %}Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href="{{ privacy_policy }}">privacy policy</a> for further information.{% endblocktrans %}
                     </div>
+
+                    <div class="g-recaptcha" data-sitekey="6Le4tFccAAAAABw5UXrYyKNNQz2q_rZlm2DRqnCX"></div>
+
+                    <br>
+
                     <input class="button button--medium button--primary" type="submit" name="submit" value='{% trans "Submit" %}'>
                 </form>
             {% endif %}
