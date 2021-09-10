@@ -12,8 +12,7 @@ class Testing(Base, Secure, Redis, OIDC, Database, Braintree, Configuration):
     RECAPTCHA_ENABLED = False
     RECAPTCHA_SITE_KEY = 'test'
     RECAPTCHA_SECRET_KEY = 'test'
-    RECAPTCHA_SITE_KEY_REGULAR = env('test')
-
+    RECAPTCHA_SITE_KEY_REGULAR = 'test'
 
     BRAINTREE_MERCHANT_ID = 'test'
     BRAINTREE_PRIVATE_KEY = 'test'
