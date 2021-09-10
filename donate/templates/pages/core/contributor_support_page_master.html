@@ -64,9 +64,10 @@
                     <input type="hidden" name="orgid" value="00D4x000006qXZA">
                     <input type="hidden" name="retURL" value="{{ page.get_full_url }}?submitted=true">
 
+                    <input type="hidden" name="recordType" id="recordType" value="{{record_type_id}}">
+
                     {% block custom_hidden_fields %}
-                        <input type="hidden" name="type" value="Donation">
-                        <input type="hidden" name="recordType" id="recordType" value="{{record_type_id}}">
+                    <input type="hidden" name="type" value="Donation">
                     {% endblock %}
 
                     <fieldset class="form-item">
@@ -106,7 +107,7 @@
                         {% blocktrans with privacy_policy="https://www.mozilla.org/privacy/websites/" %}Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href="{{ privacy_policy }}">privacy policy</a> for further information.{% endblocktrans %}
                     </div>
 
-                    <div class="g-recaptcha" data-sitekey="6Le4tFccAAAAABw5UXrYyKNNQz2q_rZlm2DRqnCX"></div>
+                    <div class="g-recaptcha" data-sitekey="{{ help_recaptcha_site_key }}"></div>
 
                     <br>
 
