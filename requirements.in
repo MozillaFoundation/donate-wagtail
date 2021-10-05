@@ -27,9 +27,9 @@ rq==1.2.0
 scout-apm
 sentry-sdk
 stripe
-git+git://github.com/torchbox/wagtail-ab-testing.git@b009492eec8d23f10c168387214bdc00e57227cc#egg=wagtail-ab-testing
+wagtail-ab-testing
 wagtail-factories
-wagtail-localize
+wagtail-localize==1.0rc4
 wagtail-localize-git==0.10.0
 wagtail==2.14.1
 whitenoise

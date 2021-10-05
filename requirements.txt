@@ -253,11 +253,11 @@ wagtail==2.14.1
     #   wagtail-factories
     #   wagtail-localize
     #   wagtail-localize-git
-git+git://github.com/torchbox/wagtail-ab-testing.git@b009492eec8d23f10c168387214bdc00e57227cc#egg=wagtail-ab-testing
+wagtail-ab-testing==0.5
     # via -r requirements.in
 wagtail-factories==2.0.0
     # via -r requirements.in
-wagtail-localize==0.9.5
+wagtail-localize==1.0rc4
     # via
     #   -r requirements.in
     #   wagtail-localize-git
