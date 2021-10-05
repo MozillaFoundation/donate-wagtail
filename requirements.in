@@ -14,6 +14,7 @@ django-storages
 django==3.1.11
 factory-boy
 freezegun
+# Need to install a pre-release in order to get the RedLock.locked() method
 git+git://github.com/glasslion/redlock.git@master#egg=redlock
 gunicorn
 lxml==4.6.2
@@ -27,7 +28,7 @@ rq==1.2.0
 scout-apm
 sentry-sdk
 stripe
-wagtail-ab-testing
+wagtail-ab-testing==0.5
 wagtail-factories
 wagtail-localize==1.0rc4
 wagtail-localize-git==0.10.0
