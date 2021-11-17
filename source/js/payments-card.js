@@ -92,8 +92,6 @@ function setupBraintree() {
           return;
         }
 
-        submitButton.removeAttribute("disabled");
-
         hostedFieldsInstance.on("validityChange", function (event) {
           var field = event.fields[event.emittedBy];
 
@@ -135,16 +133,15 @@ function setupBraintree() {
               }
 
               nonceInput.value = payload.nonce;
-              if (captchaEnabled) {
-                expectRecaptcha(window.grecaptcha.execute);
-              } else {
+              if (!captchaEnabled) {
                 gaEvent({
                   eventCategory: "Signup",
                   eventAction: "Submitted the Form",
                   eventLabel: "Donate",
                 });
-                paymentForm.submit();
               }
+
+              paymentForm.submit();
             });
           } else {
             showErrorMessage(
@@ -166,10 +163,9 @@ function setupBraintree() {
       sitekey: document
         .getElementById("g-recaptcha")
         .getAttribute("data-public-key"),
-      size: "invisible",
       callback: (token) => {
         captchaInput.value = token;
-        paymentForm.submit();
+        submitButton.removeAttribute("disabled");
       },
     });
   });
