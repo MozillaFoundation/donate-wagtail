@@ -13,5 +13,6 @@ class ReCaptchaField(forms.CharField):
         self.required = True
 
     def validate(self, value):
+        super().validate(value)
         if not verify(value):
             raise ValidationError(_("Captcha was invalid. Please try again."))
