@@ -132,6 +132,11 @@
 
                         </div>
 
+                        {% if recaptcha_site_key_checkbox %}
+                        <div id="g-recaptcha" class="donate-form__recaptcha" data-public-key="{{ recaptcha_site_key_checkbox }}"></div>
+                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                        {% endif %}
+
                         <div class="form__section form__section--actions form__section--bottom-margin">
 
                             <button value="donate" class="button button--submit-donation button--large button--full button--primary button--icon" id="payments__payment-submit" disabled>
@@ -172,16 +177,10 @@
         </div>
     </div>
 </div>
-{% if recaptcha_site_key %}
-<div id="g-recaptcha" data-public-key="{{ recaptcha_site_key }}"></div>
-{% endif %}
 {% endblock %}
 
 
 {% block extra_js %}
     {{ braintree_params|json_script:"payments__braintree-params" }}
     <script src="{% static '_js/payments-card.compiled.js' %}"></script>
-    {% if recaptcha_site_key %}
-    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
-    {% endif %}
 {% endblock %}

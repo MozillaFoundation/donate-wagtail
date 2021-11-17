@@ -10,9 +10,14 @@ logger = logging.getLogger(__name__)
 
 
 def verify(token):
+    # this is only used for the (card based) donate form,
+    # as verifying in donate.recaptcha.fields.ReCaptchaField
+
+    secret = settings.RECAPTCHA_SECRET_KEY_CHECKBOX
     try:
         response = requests.post(API_URL, timeout=5, data={
-            'secret': settings.RECAPTCHA_SECRET_KEY, 'response': token
+            'secret': secret,
+            'response': token
         })
         response.raise_for_status()
     except RequestException:
