@@ -136,7 +136,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, PostalCodeMixin, BraintreePaym
     device_data = forms.CharField(widget=forms.HiddenInput, required=False)
 
     if settings.RECAPTCHA_ENABLED:
-        captcha = ReCaptchaField()
+        captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY_CHECKBOX)
 
 
 class BraintreePaypalPaymentForm(MinimumCurrencyAmountMixin, CampaignFormMixin, BraintreePaymentForm):
@@ -144,7 +144,7 @@ class BraintreePaypalPaymentForm(MinimumCurrencyAmountMixin, CampaignFormMixin, 
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
 
     if settings.RECAPTCHA_ENABLED:
-        captcha = ReCaptchaField()
+        captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY)
 
 
 class CurrencyForm(forms.Form):
