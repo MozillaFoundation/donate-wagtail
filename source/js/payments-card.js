@@ -159,15 +159,25 @@ function setupBraintree() {
 
   // Set up recaptcha
   expectRecaptcha(() => {
-    window.grecaptcha.render("g-recaptcha", {
-      sitekey: document
-        .getElementById("g-recaptcha")
-        .getAttribute("data-public-key"),
+    const recaptcha = document.getElementById("g-recaptcha");
+    const isInvisible = recaptcha.classList.contains("invisible-recaptcha");
+    const props = {
+      sitekey: recaptcha.dataset.publicKey,
       callback: (token) => {
         captchaInput.value = token;
         submitButton.removeAttribute("disabled");
       },
-    });
+    };
+
+    if (isInvisible) {
+      props.size = "invisible";
+    }
+
+    grecaptcha.render("g-recaptcha", props);
+
+    if (isInvisible) {
+      grecaptcha.execute();
+    }
   });
 }
 

@@ -133,8 +133,11 @@
                         </div>
 
                         {% if recaptcha_site_key_checkbox %}
-                        <div id="g-recaptcha" class="donate-form__recaptcha" data-public-key="{{ recaptcha_site_key_checkbox }}"></div>
-                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                            <div id="g-recaptcha" class="donate-form__recaptcha checkbox-recaptcha" data-public-key="{{ recaptcha_site_key_checkbox }}"></div>
+                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                        {% elif recaptcha_site_key %}
+                            <div id="g-recaptcha" class="invisible-recaptcha" data-public-key="{{ recaptcha_site_key }}"></div>
+                            <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
                         {% endif %}
 
                         <div class="form__section form__section--actions form__section--bottom-margin">

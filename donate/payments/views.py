@@ -133,14 +133,23 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        recaptcha_site_key_checkbox = settings.RECAPTCHA_SITE_KEY_CHECKBOX
         ctx.update({
             'currency_info': get_currency_info(self.currency),
             'braintree_params': settings.BRAINTREE_PARAMS,
             'payment_frequency': self.payment_frequency,
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
-            'recaptcha_site_key_checkbox': recaptcha_site_key_checkbox if settings.RECAPTCHA_ENABLED else None,
         })
+
+        if settings.ENABLE_RECAPTCHA:
+            if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
+                ctx.update({
+                    'recaptcha_site_key_checkbox': settings.RECAPTCHA_SITE_KEY_CHECKBOX,
+                })
+            else:
+                ctx.update({
+                    'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
+                })
+
         return ctx
 
     def get_address_info(self, form_data):
