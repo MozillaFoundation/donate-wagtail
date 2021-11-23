@@ -18,7 +18,9 @@ from donate.payments import constants
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
 from donate.payments.utils import get_default_currency
 
+from .utils import get_feature_flags
 from .blocks import ContentBlock
+from .feature_flags import FeatureFlags
 
 
 class DonationPage(Page):
@@ -159,6 +161,7 @@ class DonationPage(Page):
         ctx = super().get_context(request)
         values = self.get_initial_values(request)
         ctx.update({
+            'feature_flags': get_feature_flags(),
             'currencies': self.currencies,
             'initial_currency_info': values['currency_info'],
             'initial_frequency': values['frequency'],

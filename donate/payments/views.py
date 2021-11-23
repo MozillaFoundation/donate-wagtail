@@ -17,7 +17,11 @@ from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 
-from donate.core.utils import queue_ga_event
+from donate.core.utils import (
+    queue_ga_event,
+    get_feature_flags,
+)
+
 from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
@@ -27,7 +31,7 @@ from .forms import (
 from .tasks import queue, send_newsletter_subscription_to_basket, send_transaction_to_basket
 from .utils import (
     get_currency_info, get_merchant_account_id_for_card, get_merchant_account_id_for_paypal, get_plan_id,
-    get_suggested_monthly_upgrade, freeze_transaction_details_for_session
+    get_suggested_monthly_upgrade, freeze_transaction_details_for_session,
 )
 
 ignore_logger(__name__)
@@ -133,14 +137,23 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        recaptcha_site_key_checkbox = settings.RECAPTCHA_SITE_KEY_CHECKBOX
+
+        feature_flags = get_feature_flags()
+
         ctx.update({
             'currency_info': get_currency_info(self.currency),
             'braintree_params': settings.BRAINTREE_PARAMS,
             'payment_frequency': self.payment_frequency,
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
-            'recaptcha_site_key_checkbox': recaptcha_site_key_checkbox if settings.RECAPTCHA_ENABLED else None,
+            'feature_flags': feature_flags,
         })
+
+        if feature_flags.enable_recaptcha:
+            ctx.update({
+                'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
+                'recaptcha_site_key_checkbox': settings.RECAPTCHA_SITE_KEY_CHECKBOX,
+            })
+
         return ctx
 
     def get_address_info(self, form_data):

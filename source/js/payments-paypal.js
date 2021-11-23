@@ -60,16 +60,16 @@ function setupBraintree() {
 
   // Set up recaptcha
   expectRecaptcha(() => {
-    window.grecaptcha.render("g-recaptcha", {
-      sitekey: document
-        .getElementById("g-recaptcha")
-        .getAttribute("data-public-key"),
+    const recaptcha = document.getElementById("g-recaptcha");
+    const props = {
+      sitekey: recaptcha.dataset.publicKey,
       size: "invisible",
       callback: (token) => {
         captchaInput.value = token;
         paymentForm.submit();
       },
-    });
+    }
+    grecaptcha.render("g-recaptcha", props);
   });
 }
 
@@ -112,6 +112,10 @@ function setupPaypalOverlays() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  setupBraintree();
-  setupPaypalOverlays();
+  const payPalButtons = document.querySelectorAll(`.payments__button--paypal`)
+
+  if (payPalButtons.length > 0) {
+    setupBraintree();
+    setupPaypalOverlays();
+  }
 });

@@ -1,5 +1,5 @@
 from wagtail.core.models import Page
-
+from donate.core.feature_flags import FeatureFlags
 
 def is_donation_page(page_id):
     from .models import CampaignPage, LandingPage   # Avoid circular import
@@ -17,3 +17,10 @@ def queue_ga_event(request, event_data):
         request.session.modified = True
     else:
         request.session['ga_events'] = [event_data]
+
+
+def get_feature_flags():
+    """
+    There is only a single feature flags objects
+    """
+    return FeatureFlags.objects.first()
