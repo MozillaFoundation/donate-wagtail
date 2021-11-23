@@ -10,6 +10,12 @@ export default function initPaypal(
   flow,
   buttonId
 ) {
+  // DISABLE PAYPAL BUTTON FOR NOW
+  //
+  // FIXME: REENABLE THIS
+  // TODO:  REENABLE THIS
+  return;
+
   var loadingErrorMsg = window.gettext(
     "An error occurred. Please reload the page or try again later."
   );
