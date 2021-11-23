@@ -1,6 +1,7 @@
 from wagtail.core.models import Page
 from donate.core.feature_flags import FeatureFlags
 
+
 def is_donation_page(page_id):
     from .models import CampaignPage, LandingPage   # Avoid circular import
     try:
@@ -23,4 +24,7 @@ def get_feature_flags():
     """
     There is only a single feature flags objects
     """
-    return FeatureFlags.objects.first()
+    try:
+        return FeatureFlags.objects.first()
+    except:
+        return None

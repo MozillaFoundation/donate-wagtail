@@ -68,7 +68,8 @@ function setupBraintree() {
         captchaInput.value = token;
         paymentForm.submit();
       },
-    }
+    };
+
     grecaptcha.render("g-recaptcha", props);
   });
 }
@@ -112,7 +113,7 @@ function setupPaypalOverlays() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const payPalButtons = document.querySelectorAll(`.payments__button--paypal`)
+  const payPalButtons = document.querySelectorAll(`.payments__button--paypal`);
 
   if (payPalButtons.length > 0) {
     setupBraintree();

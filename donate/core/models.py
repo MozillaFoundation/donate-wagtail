@@ -20,7 +20,7 @@ from donate.payments.utils import get_default_currency
 
 from .utils import get_feature_flags
 from .blocks import ContentBlock
-from .feature_flags import FeatureFlags
+from .feature_flags import FeatureFlags  # noqa F401
 
 
 class DonationPage(Page):

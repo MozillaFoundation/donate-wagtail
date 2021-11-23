@@ -159,16 +159,15 @@ function setupBraintree() {
 
   // Set up recaptcha
   expectRecaptcha(() => {
-    const recaptcha = document.getElementById("g-recaptcha")
-    const isInvisible  = recaptcha.classList.contains("invisible-recaptcha");
-
-    const props ={
+    const recaptcha = document.getElementById("g-recaptcha");
+    const isInvisible = recaptcha.classList.contains("invisible-recaptcha");
+    const props = {
       sitekey: recaptcha.dataset.publicKey,
       callback: (token) => {
         captchaInput.value = token;
         submitButton.removeAttribute("disabled");
       },
-    }
+    };
 
     if (isInvisible) {
       props.size = "invisible";

@@ -141,7 +141,7 @@ class BraintreeCardPaymentForm(CampaignFormMixin, PostalCodeMixin, BraintreePaym
 
     feature_flags = get_feature_flags()
 
-    if feature_flags.enable_recaptcha:
+    if feature_flags and feature_flags.enable_recaptcha:
         if feature_flags.use_checkbox_recaptcha:
             captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY_CHECKBOX)
         else:
@@ -154,7 +154,7 @@ class BraintreePaypalPaymentForm(MinimumCurrencyAmountMixin, CampaignFormMixin, 
 
     feature_flags = get_feature_flags()
 
-    if feature_flags.enable_recaptcha:
+    if feature_flags and feature_flags.enable_recaptcha:
         captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY)
 
 

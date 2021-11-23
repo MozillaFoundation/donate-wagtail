@@ -5,7 +5,6 @@ from django.utils.translation.trans_real import accept_language_re
 
 from . import translation   # noqa F401
 
-
 # WARNING: this is not necessarily a good idea, but is the only way to override
 # Django's default behaviour of requiring language codes to be lowercased.
 # We have to modify the core Django method, because we have no way to replace
