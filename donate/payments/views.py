@@ -141,6 +141,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         })
 
         if settings.ENABLE_RECAPTCHA:
+            ctx.update({
+                'enable_recaptcha': True,
+            })
             if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
                 ctx.update({
                     'recaptcha_site_key_checkbox': settings.RECAPTCHA_SITE_KEY_CHECKBOX,
