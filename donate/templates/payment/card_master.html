@@ -132,7 +132,7 @@
 
                         </div>
 
-                        {% if enable_recaptcha %}
+                        {% if use_recaptcha %}
                             {% if recaptcha_site_key_checkbox %}
                                 <div id="g-recaptcha" class="donate-form__recaptcha checkbox-recaptcha" data-public-key="{{ recaptcha_site_key_checkbox }}"></div>
                                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -143,7 +143,7 @@
                         {% endif %}
 
                         <div class="form__section form__section--actions form__section--bottom-margin">
-                            <button value="donate" class="button button--submit-donation button--large button--full button--primary button--icon" id="payments__payment-submit" {% if enable_recaptcha %}disabled{% endif %}>
+                            <button value="donate" class="button button--submit-donation button--large button--full button--primary button--icon" id="payments__payment-submit" {% if use_recaptcha %}disabled{% endif %}>
                                 <svg class="button__icon" width="24" height="24">
                                     <use xlink:href="#padlock"></use>
                                 </svg>

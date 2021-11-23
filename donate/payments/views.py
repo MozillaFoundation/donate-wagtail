@@ -140,8 +140,8 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
         })
 
-        if settings.ENABLE_RECAPTCHA:
-            ctx.update({'enable_recaptcha': True})
+        if settings.USE_RECAPTCHA:
+            ctx.update({'use_recaptcha': True})
 
             if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
                 site_key = settings.RECAPTCHA_SITE_KEY_CHECKBOX
