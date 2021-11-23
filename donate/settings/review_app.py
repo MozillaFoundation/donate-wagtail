@@ -8,7 +8,7 @@ from .thunderbird import ThunderbirdOverrides
 class ReviewApp(Staging, Configuration):
     ALLOWED_HOSTS = [f'{Secure.HEROKU_APP_NAME}.herokuapp.com']
     DEBUG = env('DEBUG')
-    RECAPTCHA_ENABLED = False
+    ENABLE_RECAPTCHA = False
     HEROKU_PR_NUMBER = env('HEROKU_PR_NUMBER')
     HEROKU_BRANCH = env('HEROKU_BRANCH')
 

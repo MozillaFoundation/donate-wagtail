@@ -135,15 +135,18 @@ class BraintreeCardPaymentForm(CampaignFormMixin, PostalCodeMixin, BraintreePaym
     country = CountryField(_('Country')).formfield(initial='US')
     device_data = forms.CharField(widget=forms.HiddenInput, required=False)
 
-    if settings.RECAPTCHA_ENABLED:
-        captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY_CHECKBOX)
+    if settings.ENABLE_RECAPTCHA:
+        if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
+            captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY_CHECKBOX)
+        else:
+            captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY)
 
 
 class BraintreePaypalPaymentForm(MinimumCurrencyAmountMixin, CampaignFormMixin, BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
 
-    if settings.RECAPTCHA_ENABLED:
+    if settings.ENABLE_RECAPTCHA:
         captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY)
 
 

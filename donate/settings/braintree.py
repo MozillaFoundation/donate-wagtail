@@ -11,6 +11,8 @@ class Braintree(object):
     BRAINTREE_PLANS = env('BRAINTREE_PLANS')
     BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO = env('BRAINTREE_MERCHANT_ACCOUNTS_PAYPAL_MICRO')
 
+    ENABLE_PAYPAL = env('ENABLE_PAYPAL')
+
     @property
     def BRAINTREE_PARAMS(self):
         return {
