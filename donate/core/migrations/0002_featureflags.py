@@ -7,7 +7,6 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0062_comment_models_and_pagesubscription'),
         ('core', '0001_squashed_0015_remove_old_wagtail_localize'),
     ]
 
@@ -17,8 +16,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('enable_paypal', models.BooleanField(default=False, verbose_name='Enable the PayPal button on the donate form')),
-                ('enable_recaptcha', models.BooleanField(default=True, verbose_name='Enable recaptcha across the site')),
-                ('use_checkbox_recaptcha', models.BooleanField(default=True, verbose_name='Use a checkbox recaptcha on the CC donate form')),
+                ('enable_recaptcha', models.BooleanField(default=False, verbose_name='Enable recaptcha across the site')),
+                ('use_checkbox_recaptcha', models.BooleanField(default=False, verbose_name='Use a checkbox recaptcha on the CC donate form')),
                 ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.site')),
             ],
             options={

@@ -24,7 +24,4 @@ def get_feature_flags():
     """
     There is only a single feature flags objects
     """
-    try:
-        return FeatureFlags.objects.first()
-    except:
-        return None
+    return FeatureFlags.objects.first()
