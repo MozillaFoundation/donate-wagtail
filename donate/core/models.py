@@ -159,7 +159,7 @@ class DonationPage(Page):
         ctx = super().get_context(request)
         values = self.get_initial_values(request)
         ctx.update({
-            'enable_paypal': settings.ENABLE_PAYPAL,
+            'use_paypal': settings.USE_PAYPAL,
             'currencies': self.currencies,
             'initial_currency_info': values['currency_info'],
             'initial_frequency': values['frequency'],
@@ -173,7 +173,7 @@ class DonationPage(Page):
                 }
             ),
             'currency_form': CurrencyForm(initial={'currency': values['currency']}),
-            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.ENABLE_RECAPTCHA else None,
+            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.USE_RECAPTCHA else None,
         })
         return ctx
 
@@ -320,6 +320,6 @@ class ContributorSupportPage(Page):
         ctx.update({
             'orgid': settings.SALESFORCE_ORGID,
             'record_type_id': settings.SALESFORCE_CASE_RECORD_TYPE_ID,
-            'help_recaptcha_site_key': settings.RECAPTCHA_SITE_KEY_REGULAR if settings.ENABLE_RECAPTCHA else None,
+            'help_recaptcha_site_key': settings.RECAPTCHA_SITE_KEY_REGULAR if settings.USE_RECAPTCHA else None,
         })
         return ctx

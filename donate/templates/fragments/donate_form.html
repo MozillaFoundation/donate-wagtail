@@ -78,7 +78,7 @@
                             </div>
                         </button>
 
-                        {% if enable_paypal %}
+                        {% if use_paypal %}
                         <div id="payments__paypal-button--single" class="payments__button payments__button--paypal">
                             <div id="payments__paypal-button--single--overlay" class="payments__button--paypal--overlay">
                                 {# this overlay captures click events, and only allows them through if the amount is not 0 #}
@@ -149,7 +149,7 @@
                             </div>
                         </button>
 
-                        {% if enable_paypal %}
+                        {% if use_paypal %}
                         <div id="payments__paypal-button--monthly" class="payments__button payments__button--paypal">
                             <div id="payments__paypal-button--monthly--overlay" class="payments__button--paypal--overlay">
                                 {# this overlay captures click events, and only allows them through if the amount is not 0 #}
@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    {% if enable_paypal %}
+    {% if use_paypal %}
         {# Form for submitting payment from Paypal only #}
         <form id="payments__braintree-form" method="post" action="{% url 'payments:paypal' %}" hidden>
             {% csrf_token %}

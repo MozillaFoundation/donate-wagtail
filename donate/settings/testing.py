@@ -9,7 +9,7 @@ from .braintree import Braintree
 
 class Testing(Base, Secure, Redis, OIDC, Database, Braintree, Configuration):
     SECRET_KEY = 'test'
-    ENABLE_RECAPTCHA = False
+    USE_RECAPTCHA = False
     RECAPTCHA_SITE_KEY = 'test'
     RECAPTCHA_SECRET_KEY = 'test'
     RECAPTCHA_SITE_KEY_CHECKBOX = 'test'
