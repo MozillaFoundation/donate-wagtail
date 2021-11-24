@@ -2,7 +2,9 @@ import initPaypal from "./components/paypal";
 import expectRecaptcha from "./components/recaptcha";
 
 function setupBraintree() {
-  var paymentForm = document.getElementById("payments__braintree-form"),
+  var donateForm = document.querySelector(`.layout .donate-form`),
+    donationPending = document.querySelector(".layout .donatation-pending"),
+    paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
     amountInput = document.getElementById("id_amount"),
     frequencyInput = document.getElementById("id_frequency"),
@@ -24,7 +26,7 @@ function setupBraintree() {
     if (captchaEnabled) {
       expectRecaptcha(window.grecaptcha.execute);
     } else {
-      paymentForm.submit();
+      submitForm();
     }
   };
   var getAmountMonthly = () => {
@@ -39,7 +41,7 @@ function setupBraintree() {
     if (captchaEnabled) {
       expectRecaptcha(window.grecaptcha.execute);
     } else {
-      paymentForm.submit();
+      submitForm();
     }
   };
 
@@ -58,6 +60,12 @@ function setupBraintree() {
     "#payments__paypal-button--monthly"
   );
 
+  function submitForm() {
+    donateForm.classList.add("hidden");
+    donationPending.classList.remove("hidden");
+    paymentForm.submit();
+  }
+
   // Set up recaptcha
   expectRecaptcha(() => {
     const recaptcha = document.getElementById("g-recaptcha");
@@ -66,7 +74,7 @@ function setupBraintree() {
       size: "invisible",
       callback: (token) => {
         captchaInput.value = token;
-        paymentForm.submit();
+        submitForm();
       },
     };
 
