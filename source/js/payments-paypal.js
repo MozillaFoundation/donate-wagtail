@@ -26,7 +26,7 @@ function setupBraintree() {
     if (captchaEnabled) {
       expectRecaptcha(window.grecaptcha.execute);
     } else {
-      submitForm()
+      submitForm();
     }
   };
   var getAmountMonthly = () => {
@@ -41,7 +41,7 @@ function setupBraintree() {
     if (captchaEnabled) {
       expectRecaptcha(window.grecaptcha.execute);
     } else {
-      submitForm()
+      submitForm();
     }
   };
 
