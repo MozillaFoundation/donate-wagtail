@@ -4,12 +4,13 @@
 {% block meta_tags %}
     {% wagtail_site as current_site %}
 
+    {# twitter card tags #}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
     <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
-    <meta name="twitter:image" content="{% static '_images/og-image_2x.png' %}">
+    <meta name="twitter:image" content="{% static '_images/og-image.png' %}">
 
-    {# facebook opengraph tags #}
+    {# opengraph tags #}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
     <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
