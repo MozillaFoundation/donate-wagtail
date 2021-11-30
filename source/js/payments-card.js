@@ -177,8 +177,12 @@ function setupBraintree() {
     const props = {
       sitekey: recaptcha.dataset.publicKey,
       callback: (token) => {
-        captchaInput.value = token;
-        submitButton.removeAttribute("disabled");
+        try {
+          captchaInput.value = token;
+          submitButton.removeAttribute("disabled");
+        } catch (err) {
+          console.error(err);
+        }
       },
     };
 
