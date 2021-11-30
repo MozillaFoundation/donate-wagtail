@@ -14,10 +14,12 @@ function setupBraintree() {
     currencySelect = document.getElementById("id_currency-switcher-currency");
 
   var getCurrency = () => currencySelect.value.toUpperCase();
+
   var getAmountSingle = () => {
     var donateForm = document.getElementById("donate-form--single");
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
+
   var onAuthorizeSingle = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountSingle();
@@ -29,10 +31,12 @@ function setupBraintree() {
       submitForm();
     }
   };
+
   var getAmountMonthly = () => {
     var donateForm = document.getElementById("donate-form--monthly");
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
+
   var onAuthorizeMonthly = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountMonthly();
@@ -52,6 +56,7 @@ function setupBraintree() {
     "checkout",
     "#payments__paypal-button--single"
   );
+
   initPaypal(
     getAmountMonthly,
     getCurrency,
@@ -62,7 +67,11 @@ function setupBraintree() {
 
   function submitForm() {
     donateForm.classList.add("hidden");
-    donationPending.classList.remove("hidden");
+    if (donationPending) {
+      donationPending.classList.remove("hidden");
+    } else {
+      console.warn(`payment-pending view missing`);
+    }
     paymentForm.submit();
   }
 
@@ -73,8 +82,12 @@ function setupBraintree() {
       sitekey: recaptcha.dataset.publicKey,
       size: "invisible",
       callback: (token) => {
-        captchaInput.value = token;
-        submitForm();
+        try {
+          captchaInput.value = token;
+          submitForm();
+        } catch (err) {
+          console.error(err);
+        }
       },
     };
 
