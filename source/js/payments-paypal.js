@@ -62,7 +62,11 @@ function setupBraintree() {
 
   function submitForm() {
     donateForm.classList.add("hidden");
-    donationPending.classList.remove("hidden");
+    if (donationPending) {
+      donationPending.classList.remove("hidden");
+    } else {
+      console.warn(`payment-pending view missing`);
+    }
     paymentForm.submit();
   }
 
