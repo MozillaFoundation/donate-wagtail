@@ -7,18 +7,24 @@
 {% endblock %}
 
 {% block head_addenda %}
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-        function timestamp() {
-            var response = document.getElementById("g-recaptcha-response");
-            if (response == null || response.value.trim() == "") {
-                var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
-                elems["ts"] = JSON.stringify(new Date().getTime());
-                document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
-            }
+    <script type="text/javascript">
+    function hookupFormSubmitButton() {
+        try {
+            const recaptcha = document.getElementById("g-recaptcha");
+            console.log(recaptcha);
+            grecaptcha.render(recaptcha, {
+                sitekey: "{{ help_recaptcha_site_key }}",
+                callback: (token) => {
+                    var submitButton = document.querySelector('.support-form input[type="submit"]');
+                    submitButton.removeAttribute("disabled");
+                }
+            });
+        } catch (e) {
+            console.error(e);
         }
-        setInterval(timestamp, 500);
+      };
     </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=hookupFormSubmitButton&render=explicit" async defer></script>
 {% endblock %}
 
 {% block content %}
@@ -58,10 +64,6 @@
                                 Unfortunately, donor care representatives are unable to offer support or help with Firefox technical issues. For technical support, please visit the <a href="{{ support_url }}">Firefox support page</a>.
                             {% endblocktrans %}
                         </p>
-                    {% endblock %}
-
-                    {% block captcha_settings %}
-                    <input type="hidden" name='captcha_settings' value='{"keyname":"Regular_ReCaptcha_v2","fallback":"true","orgId":"{{ orgid }}","ts":""}'>
                     {% endblock %}
 
                     <input type="hidden" name="orgid" value="{{ orgid }}">
@@ -119,11 +121,11 @@
                         {% blocktrans with privacy_policy="https://www.mozilla.org/privacy/websites/" %}Mozilla will only use your submitted information for purposes of communicating with you about your request. See our <a href="{{ privacy_policy }}">privacy policy</a> for further information.{% endblocktrans %}
                     </div>
 
-                    <div class="g-recaptcha" data-sitekey="{{ help_recaptcha_site_key }}"></div>
+                    <div id="g-recaptcha" data-sitekey="{{ help_recaptcha_site_key }}"></div>
 
                     <br>
 
-                    <input class="button button--medium button--primary" type="submit" name="submit" value='{% trans "Submit" %}'>
+                    <input class="button button--medium button--primary" type="submit" name="submit" value='{% trans "Submit" %}' disabled>
                 </form>
             {% endif %}
             </div>
