@@ -28,9 +28,9 @@ rq==1.2.0
 scout-apm
 sentry-sdk
 stripe
-wagtail-ab-testing==0.5
+wagtail-ab-testing==0.6
 wagtail-factories
-wagtail-localize==1.0rc4
-wagtail-localize-git==0.10.0
-wagtail==2.14.1
+wagtail-localize==1.0.1
+wagtail-localize-git==0.11.0
+wagtail==2.15.1
 whitenoise
