@@ -100,6 +100,12 @@
     }
   }
 
+  &__content {
+    display: flex;
+    align-items: center;
+    min-height: 18rem;
+  }
+
   .app--campaign-page & {
     @include media-query(tablet-landscape) {
       position: relative;
