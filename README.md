@@ -43,7 +43,7 @@ More information on how to use Docker for local dev is available in the [Local d
 | ThunderbirdProduction | Production configuration for Thunderbird donation configurations.                                                  |
 | ThunderbirdReviewApp  | Review App configuration for Thunderbird donation configurations.                                                  |
 
-
+To set the Thunderbird settings in local development, simply change your `DJANGO_CONFIGURATION` in your .env file to be one of the choices above (For Thunderbird, use `ThunderbirdDevelopment`)
 
 
 ## Braintree configuration

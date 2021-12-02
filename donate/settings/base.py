@@ -8,7 +8,7 @@ from .environment import (
     root
 )
 
-from .languages import LANGUAGES
+from .languages import LANGUAGES, LANGUAGE_IDS
 
 
 class Base(object):
@@ -16,6 +16,8 @@ class Base(object):
     WAGTAIL_SITE_NAME = 'donate'
     WSGI_APPLICATION = 'donate.wsgi.application'
     LANGUAGE_CODE = 'en-US'
+    LANGUAGE_IDS = LANGUAGE_IDS
+    DEFAULT_LANGUAGE_ID = LANGUAGE_IDS[LANGUAGE_CODE]
     TIME_ZONE = 'UTC'
     USE_I18N = True
     USE_L10N = True
@@ -69,8 +71,10 @@ class Base(object):
     AUTO_CLOSE_STRIPE_DISPUTES = env('AUTO_CLOSE_STRIPE_DISPUTES')
     MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED = env('MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED')
 
-    # Override URL for posting newsletter subscriptions
-    POST_DONATE_NEWSLETTER_URL = env('POST_DONATE_NEWSLETTER_URL')
+    # Thunderbird mailchimp API key
+    THUNDERBIRD_MC_API_KEY = env('THUNDERBIRD_MC_API_KEY')
+    THUNDERBIRD_MC_SERVER = env('THUNDERBIRD_MC_SERVER')
+    THUNDERBIRD_MC_LIST_ID = env('THUNDERBIRD_MC_LIST_ID')
 
     LOCALE_PATHS = [
         app('locale'),
@@ -92,6 +96,7 @@ class Base(object):
         return self.ALLOWED_HOSTS
 
     INSTALLED_APPS = [
+        'whitenoise.runserver_nostatic',
         'scout_apm.django',
 
         'donate.users',
@@ -138,11 +143,11 @@ class Base(object):
     @property
     def MIDDLEWARE(self):
         return list(filter(None, [
+            'django.middleware.security.SecurityMiddleware',
+            'whitenoise.middleware.WhiteNoiseMiddleware',
             'donate.utility.middleware.TargetDomainRedirectMiddleware'
             if self.DOMAIN_REDIRECT_MIDDLEWARE_ENABLED else None,
             'django.middleware.gzip.GZipMiddleware',
-            'django.middleware.security.SecurityMiddleware',
-            'whitenoise.middleware.WhiteNoiseMiddleware',
             'django.contrib.sessions.middleware.SessionMiddleware',
             'django.middleware.locale.LocaleMiddleware',
             'django.middleware.common.CommonMiddleware',

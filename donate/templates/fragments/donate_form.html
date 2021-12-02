@@ -44,7 +44,7 @@
                         <p class='error-message error-message__one-time-other-amount hidden'>
                             {% trans "Invalid amount entered." %}
                         </p>
-                    </div>                   
+                    </div>
                 </div>
                 <input type="hidden" class="one-time-amount__total">
                 <div class="donate-form__actions">
@@ -77,11 +77,14 @@
                                 </svg>
                             </div>
                         </button>
+
+                        {% if use_paypal %}
                         <div id="payments__paypal-button--single" class="payments__button payments__button--paypal">
                             <div id="payments__paypal-button--single--overlay" class="payments__button--paypal--overlay">
                                 {# this overlay captures click events, and only allows them through if the amount is not 0 #}
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
@@ -102,7 +105,7 @@
                         </label>
                     </div>
                     {% endfor %}
-                    <div class="donation-amount--two-col"> 
+                    <div class="donation-amount--two-col">
                         <div class="donation-amount donation-amount--other donation-amount--other--container">
                             <input type="radio" class="donation-amount__radio monthly-donation-amount-radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
                             <label for="monthly-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
@@ -145,11 +148,14 @@
                                 </svg>
                             </div>
                         </button>
+
+                        {% if use_paypal %}
                         <div id="payments__paypal-button--monthly" class="payments__button payments__button--paypal">
                             <div id="payments__paypal-button--monthly--overlay" class="payments__button--paypal--overlay">
                                 {# this overlay captures click events, and only allows them through if the amount is not 0 #}
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
@@ -159,11 +165,13 @@
         </div>
     </div>
 
-    {# Form for submitting payment from Paypal only #}
-    <form id="payments__braintree-form" method="post" action="{% url 'payments:paypal' %}" hidden>
-        {% csrf_token %}
-        {% for field in braintree_form.hidden_fields %}
-            {{ field }}
-        {% endfor %}
-    </form>
+    {% if use_paypal %}
+        {# Form for submitting payment from Paypal only #}
+        <form id="payments__braintree-form" method="post" action="{% url 'payments:paypal' %}" hidden>
+            {% csrf_token %}
+            {% for field in braintree_form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
+        </form>
+    {% endif %}
 </div>

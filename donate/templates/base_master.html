@@ -1,4 +1,4 @@
-{% load analytics_tags static i18n util_tags %}
+{% load analytics_tags static i18n util_tags wagtail_ab_testing_tags %}
 <!doctype html>
 {% get_current_language as LANGUAGE_CODE %}
 {% get_current_language_bidi as LANGUAGE_BIDI %}
@@ -25,6 +25,8 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:700,600,400,300|Zilla+Slab:300,500,700">
         <link rel="stylesheet" href="{% static '_css/main.compiled.css' %}">
+
+        {% block head_addenda %}{% endblock %}
     </head>
 
     <body>
@@ -61,6 +63,7 @@
         {% block script_bundle %}
         <script src="{% url 'javascript-catalog' %}"></script>
         <script src="{% static '_js/main.compiled.js' %}"></script>
+        {% wagtail_ab_testing_script %}
         {% endblock %}
 
         {% render_ga_event_data %}

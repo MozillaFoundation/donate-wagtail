@@ -65,3 +65,16 @@ LANGUAGES = [
     ('zh-CN', 'Chinese (China)'),
     ('zh-TW', 'Chinese (Taiwan)'),
 ]
+
+# Collection of different language email templates,
+# for receipt sending through acoustic in payments/tasks.py.
+LANGUAGE_IDS = {
+    "ja": "1621701",
+    "pl": "1621706",
+    "pt-BR": "1621708",
+    "cs": "1621689",
+    "de": "1621691",
+    "es": "1621695",
+    "fr": "1621697",
+    "en-US": "1621694",
+}
