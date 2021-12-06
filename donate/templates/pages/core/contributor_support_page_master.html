@@ -8,22 +8,10 @@
 
 {% block head_addenda %}
     <script type="text/javascript">
-    var response = document.getElementById("g-recaptcha-response");
-
-    if (response == null || response.value.trim() == "") {
-        var captchaSettings = document.getElementsByName("captcha_settings")[0];
-        var elems = JSON.parse(captchaSettings.value);
-        elems["ts"] = JSON.stringify(new Date().getTime());
-        document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
-    }
-
-    setInterval(timestamp, 500);
-
-
     function hookupFormSubmitButton() {
         try {
             const recaptcha = document.getElementById("g-recaptcha");
-            // Thank you page or form?
+            // Only the form content uses recaptcha
             if (recaptcha) {
                 grecaptcha.render(recaptcha, {
                     sitekey: "{{ help_recaptcha_site_key }}",
@@ -43,7 +31,7 @@
         } catch (e) {
             console.error(e);
         }
-      };
+    };
     </script>
     <script src="https://www.google.com/recaptcha/api.js?onload=hookupFormSubmitButton&render=explicit" async defer></script>
 {% endblock %}
