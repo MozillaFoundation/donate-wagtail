@@ -143,6 +143,7 @@
                     </div>
 
                     {% block captcha_settings %}
+                        {# used for SFNP integration #}
                         <input type="hidden" name='captcha_settings' value='{"keyname":"Regular_ReCaptcha_v2","fallback":"true","orgId":"{{ orgid }}","ts":""}'>
                     {% endblock %}
 
