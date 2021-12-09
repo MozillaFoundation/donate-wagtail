@@ -1,46 +1,46 @@
 @keyframes pulse {
-    0% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-        transform: scale(2);
-    }
-    75% {
-        opacity: 0;
-        transform: scale(1);
-        background: $color--light-blue;
-    }
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(2);
+  }
+  75% {
+    opacity: 0;
+    transform: scale(1);
+    background: $color--light-blue;
+  }
 }
 
 .loading {
-    margin: 1rem 0 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  margin: 1rem 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-    & > div {
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 100%;
-        background: $color--blue;
-        margin: 0 0.75rem;
-        opacity: 0;
-        transition: all 0.5s linear;
-        transform-origin: center center;
-        animation: pulse 3s 0s linear infinite both;
+  & > div {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background: $color--blue;
+    margin: 0 0.75rem;
+    opacity: 0;
+    transition: all 0.5s linear;
+    transform-origin: center center;
+    animation: pulse 3s 0s linear infinite both;
 
-        &:nth-child(1) {
-            margin-left: 0;
-        }
-
-        &:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        &:nth-child(3) {
-            animation-delay: 1s;
-        }
+    &:nth-child(1) {
+      margin-left: 0;
     }
+
+    &:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 1s;
+    }
+  }
 }
