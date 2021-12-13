@@ -21,13 +21,26 @@ function setupBraintree() {
     );
 
   function showErrorMessage(msg) {
-    errorDiv.toggleAttribute("hidden", false);
-    errorDiv.innerHTML = msg;
+    if (errorDiv) {
+      errorDiv.toggleAttribute("hidden", false);
+      errorDiv.textContent = msg;
+    } else {
+      console.error(
+        "error-feedback element appears to be missing from the page. Original error message:",
+        msg
+      );
+    }
   }
 
   function clearErrorMessage() {
-    errorDiv.toggleAttribute("hidden", true);
-    errorDiv.innerHTML = "";
+    if (errorDiv) {
+      errorDiv.toggleAttribute("hidden", true);
+      errorDiv.innerHTML = "";
+    } else {
+      console.error(
+        "error-feedback element appears to be missing from the page."
+      );
+    }
   }
 
   function showFieldError(container) {
@@ -164,8 +177,12 @@ function setupBraintree() {
     const props = {
       sitekey: recaptcha.dataset.publicKey,
       callback: (token) => {
-        captchaInput.value = token;
-        submitButton.removeAttribute("disabled");
+        try {
+          captchaInput.value = token;
+          submitButton.removeAttribute("disabled");
+        } catch (err) {
+          console.error(err);
+        }
       },
     };
 

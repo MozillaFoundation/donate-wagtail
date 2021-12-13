@@ -18,7 +18,7 @@ class BraintreeWebhookView(FormView):
     http_method_names = ['post']
 
     def form_valid(self, form):
-        queue.enqueue(process_webhook, form.cleaned_data)
+        queue.enqueue(process_webhook, form.cleaned_data, description="Handle Braintree webhook")
         return HttpResponse()
 
     def form_invalid(self, form):
