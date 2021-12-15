@@ -21,7 +21,7 @@ lxml==4.6.2
 mailchimp-marketing==3.0.44
 mozilla-django-oidc
 psycopg2-binary
-pygit2==1.0.3
+pygit2==1.7.1
 pysilverpop==0.2.6
 requests
 rq==1.2.0
