@@ -69,7 +69,7 @@ pycparser==2.21
     #   cffi
 pyflakes==2.2.0
     # via flake8
-pygments==2.6.1
+pygments==2.7.4
     # via ipython
 pyopenssl==21.0.0
     # via
