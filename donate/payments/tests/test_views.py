@@ -176,6 +176,14 @@ class CardPaymentViewTestCase(TestCase):
             }
         })
 
+    def test_redirect_on_missing_session_load_flag(self):
+        request = RequestFactory().get('/')
+        view = CardPaymentView()
+        view.request = request
+        response = view.dispatch(request)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], '/')
+
     def test_404_for_invalid_frequency(self):
         request = RequestFactory().get('/')
         setattr(request, 'session', {
