@@ -80,6 +80,10 @@ class BraintreePaymentMixin:
         details = self.set_session_data(result, form, **kwargs)
         if send_data_to_basket:
             queue.enqueue(send_transaction_to_basket, details)
+        # Remove the session value that lets the user "be on the
+        # credit card page" so they can't immediately make a new
+        # donation, but have to go through the landing page again.
+        del self.request.session['may_load_card_page']
         return HttpResponseRedirect(self.get_success_url())
 
     def queue_ga_transaction(self, id, currency, amount, name, category):
@@ -109,6 +113,17 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
     template_name = 'payment/card.html'
 
     def dispatch(self, request, *args, **kwargs):
+        # Send people to the landing page if they didn't click through
+        # using the credit card payment option, but directly loaded
+        # the card page URL.
+        #
+        # Also refuse posts by folks who made a successful donation
+        # and then immediately try to donate again (e.g. if someone
+        # has several tabs queued up and filled in, and then submits
+        # each of them one after the other).
+        if 'may_load_card_page' not in request.session:
+            return HttpResponseRedirect('/')
+
         if kwargs['frequency'] not in constants.FREQUENCIES:
             raise Http404()
         self.payment_frequency = kwargs['frequency']
