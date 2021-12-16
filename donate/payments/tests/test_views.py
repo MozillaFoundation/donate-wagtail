@@ -178,6 +178,9 @@ class CardPaymentViewTestCase(TestCase):
 
     def test_404_for_invalid_frequency(self):
         request = RequestFactory().get('/')
+        setattr(request, 'session', {
+            'may_load_card_page': True
+        })
         view = CardPaymentView()
         view.request = request
         with self.assertRaises(Http404):
