@@ -12,7 +12,7 @@ class RecaptchaFieldTestCase(TestCase):
         with mock.patch('donate.recaptcha.fields.verify', autospec=True) as mock_verify:
             mock_verify.return_value = False
             with self.assertRaises(ValidationError):
-                ReCaptchaField().validate('foo')
+                ReCaptchaField(secret='a-secret').validate('foo')
 
     def test_validation_ok_if_token_valid(self):
         with mock.patch('donate.recaptcha.fields.verify', autospec=True) as mock_verify:
