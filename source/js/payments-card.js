@@ -21,13 +21,26 @@ function setupBraintree() {
     );
 
   function showErrorMessage(msg) {
-    errorDiv.toggleAttribute("hidden", false);
-    errorDiv.innerHTML = msg;
+    if (errorDiv) {
+      errorDiv.toggleAttribute("hidden", false);
+      errorDiv.textContent = msg;
+    } else {
+      console.error(
+        "error-feedback element appears to be missing from the page. Original error message:",
+        msg
+      );
+    }
   }
 
   function clearErrorMessage() {
-    errorDiv.toggleAttribute("hidden", true);
-    errorDiv.innerHTML = "";
+    if (errorDiv) {
+      errorDiv.toggleAttribute("hidden", true);
+      errorDiv.innerHTML = "";
+    } else {
+      console.error(
+        "error-feedback element appears to be missing from the page."
+      );
+    }
   }
 
   function showFieldError(container) {
@@ -92,8 +105,6 @@ function setupBraintree() {
           return;
         }
 
-        submitButton.removeAttribute("disabled");
-
         hostedFieldsInstance.on("validityChange", function (event) {
           var field = event.fields[event.emittedBy];
 
@@ -135,16 +146,15 @@ function setupBraintree() {
               }
 
               nonceInput.value = payload.nonce;
-              if (captchaEnabled) {
-                expectRecaptcha(window.grecaptcha.execute);
-              } else {
+              if (!captchaEnabled) {
                 gaEvent({
                   eventCategory: "Signup",
                   eventAction: "Submitted the Form",
                   eventLabel: "Donate",
                 });
-                paymentForm.submit();
               }
+
+              paymentForm.submit();
             });
           } else {
             showErrorMessage(
@@ -162,16 +172,29 @@ function setupBraintree() {
 
   // Set up recaptcha
   expectRecaptcha(() => {
-    window.grecaptcha.render("g-recaptcha", {
-      sitekey: document
-        .getElementById("g-recaptcha")
-        .getAttribute("data-public-key"),
-      size: "invisible",
+    const recaptcha = document.getElementById("g-recaptcha");
+    const isInvisible = recaptcha.classList.contains("invisible-recaptcha");
+    const props = {
+      sitekey: recaptcha.dataset.publicKey,
       callback: (token) => {
-        captchaInput.value = token;
-        paymentForm.submit();
+        try {
+          captchaInput.value = token;
+          submitButton.removeAttribute("disabled");
+        } catch (err) {
+          console.error(err);
+        }
       },
-    });
+    };
+
+    if (isInvisible) {
+      props.size = "invisible";
+    }
+
+    grecaptcha.render("g-recaptcha", props);
+
+    if (isInvisible) {
+      grecaptcha.execute();
+    }
   });
 }
 

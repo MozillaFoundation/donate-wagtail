@@ -4,12 +4,13 @@ app = environ.Path(__file__) - 2
 
 CSP_DEFAULT_SRC = ("'self'")
 CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", 'www.google-analytics.com',
+                  'www.google.com/recaptcha/api.js', 'https://www.gstatic.com/recaptcha/releases/',
                   'js.braintreegateway.com', 'assets.braintreegateway.com',
                   'www.paypalobjects.com', 'c.paypal.com', 'www.paypal.com')
 CSP_IMG_SRC = ('*', "data:")
 CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com', 'fonts.gstatic.com')
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://fonts.gstatic.com')
-CSP_FRAME_SRC = ("'self'", 'assets.braintreegateway.com', 'c.paypal.com', '*.paypal.com')
+CSP_FRAME_SRC = ("'self'", 'assets.braintreegateway.com', 'c.paypal.com', '*.paypal.com', 'https://www.google.com')
 CSP_CONNECT_SRC = ("'self'", 'api.sandbox.braintreegateway.com',
                    'client-analytics.sandbox.braintreegateway.com', 'api.braintreegateway.com',
                    'client-analytics.braintreegateway.com', '*.braintree-api.com', 'www.paypal.com',

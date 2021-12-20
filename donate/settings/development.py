@@ -16,7 +16,6 @@ class Development(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree
     DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL')
     SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A1ez"
 
-    RECAPTCHA_ENABLED = False
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
