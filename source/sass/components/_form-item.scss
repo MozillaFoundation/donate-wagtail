@@ -107,7 +107,6 @@
     // Used for braintree hosted fields
     height: 60px;
     background-color: $color--white;
-    padding: 15px 20px;
     border: 1px solid $color--border;
     width: 100%;
   }
@@ -134,5 +133,14 @@
   label[for="id_post_code"]::after {
     content: "*";
     color: $color--red;
+  }
+}
+
+#card-number,
+#cvv,
+#expiration-date {
+  iframe {
+    padding-left: 15px;
+    background-color: $color--white;
   }
 }
