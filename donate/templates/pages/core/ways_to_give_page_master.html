@@ -129,7 +129,9 @@
             {% endfor %}
         </ul>
     {% endblock %}
-    {% block cryptocurrencies %}
+
+    <!-- Temporarily commenting out crypto-donation info per request https://github.com/mozilla/donate-wagtail/issues/1608 -->
+    <!-- {% block cryptocurrencies %}
         <h2>{% trans "Cryptocurrencies" %}</h2>
         <p>
             {% blocktrans trimmed %}
@@ -141,7 +143,7 @@
             Learn more about cryptocurrency donations <a href="{{cryptocurrency_wiki}}">here</a>. To donate using cryptocurrency, <a href="{{cryptocurrency_url}}">please visit this link.</a>
             {% endblocktrans %}
         </p>
-    {% endblock %}
+    {% endblock %} -->
 </div>
 
 {% endblock %}
