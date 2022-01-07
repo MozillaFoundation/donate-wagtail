@@ -106,9 +106,12 @@
   &__dummy-placeholder {
     // Used for braintree hosted fields
     height: 60px;
-    background-color: $color--white;
     border: 1px solid $color--border;
     width: 100%;
+    iframe {
+      padding-left: 15px;
+      background-color: $color--white;
+    }
   }
 
   &__input-additional-info {
@@ -136,11 +139,8 @@
   }
 }
 
-#card-number,
-#cvv,
-#expiration-date {
-  iframe {
-    padding-left: 15px;
-    background-color: $color--white;
-  }
-}
+// #card-number,
+// #cvv,
+// #expiration-date {
+
+// }
