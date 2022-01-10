@@ -129,21 +129,23 @@
             {% endfor %}
         </ul>
     {% endblock %}
-
-    <!-- Temporarily commenting out crypto-donation info per request https://github.com/mozilla/donate-wagtail/issues/1608 -->
-    <!-- {% block cryptocurrencies %}
+    {% comment %}
+    Temporarily commenting out crypto-donation info per request https://github.com/mozilla/donate-wagtail/issues/1608
+      {% block cryptocurrencies %}
         <h2>{% trans "Cryptocurrencies" %}</h2>
         <p>
-            {% blocktrans trimmed %}
+          {% blocktrans trimmed %}
             The Mozilla Foundation is a California non-profit corporation exempt from United States federal income taxation under IRC 501(c)(3) and a public charity classified under IRC sections 170(b)(1)(A) and 509(a)(1). Cryptocurrency donations Mozilla receives are considered charitable contributions under U.S. federal tax laws, to be used in its discretion for its charitable purposes. Because the IRS has indicated that it will treat cryptocurrencies as property for U.S. tax purposes (see IRS Notice 2014-21), cryptocurrency donations may be subject to special rules as to the amount of your charitable deduction, the documentation that must be provided to claim a tax deduction, or other matters.
-            {% endblocktrans %}
+          {% endblocktrans %}
         </p>
         <p>
-            {% blocktrans with cryptocurrency_wiki="https://wiki.mozilla.org/Donate_Bitcoin" cryptocurrency_url="https://bitpay.com/100257/donate" trimmed %}
+          {% blocktrans with cryptocurrency_wiki="https://wiki.mozilla.org/Donate_Bitcoin" cryptocurrency_url="https://bitpay.com/100257/donate" trimmed %}
             Learn more about cryptocurrency donations <a href="{{cryptocurrency_wiki}}">here</a>. To donate using cryptocurrency, <a href="{{cryptocurrency_url}}">please visit this link.</a>
-            {% endblocktrans %}
+          {% endblocktrans %}
         </p>
-    {% endblock %} -->
+      {% endblock %}
+    {% endcomment %}
+
 </div>
 
 {% endblock %}
