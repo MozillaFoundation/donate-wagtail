@@ -15,7 +15,7 @@ django==3.1.11
 factory-boy
 freezegun
 # Need to install a pre-release in order to get the RedLock.locked() method
-git+git://github.com/glasslion/redlock.git@master#egg=redlock
+git+https://github.com/glasslion/redlock.git@master#egg=redlock
 gunicorn
 lxml==4.6.2
 mailchimp-marketing==3.0.44
