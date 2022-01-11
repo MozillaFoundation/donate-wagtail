@@ -37,7 +37,6 @@ jobs:
       # Update these for tests on github! 
       ALLOWED_HOSTS: localhost
       CONTENT_TYPE_NO_SNIFF: True
-      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/donate
       DEBUG: False
       DJANGO_SECRET_KEY: secret
@@ -61,4 +60,4 @@ jobs:
       run: |
         flake8 donate/
         coverage run --source './donate' ./manage.py test --settings=donate.settings --configuration=Testing
-        coveralls
+
