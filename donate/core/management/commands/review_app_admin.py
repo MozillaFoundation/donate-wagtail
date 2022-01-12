@@ -5,10 +5,11 @@ Creates an admin account and share the credentials and link to Review App on Sla
 import requests
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-from factory import Faker
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 
+from factory.faker import faker
+generator = faker.Faker()
 
 User = get_user_model()
 
@@ -21,14 +22,13 @@ class Command(BaseCommand):
             User.objects.get(username='admin')
             print('super user already exists')
         except ObjectDoesNotExist:
-            password = Faker(
-                'password',
+            password = generator.password(
                 length=16,
                 special_chars=True,
                 digits=True,
                 upper_case=True,
                 lower_case=True
-            ).generate({})
+            )
             User.objects.create_superuser('admin', 'admin@example.com', password)
 
             pr_number = settings.HEROKU_PR_NUMBER
