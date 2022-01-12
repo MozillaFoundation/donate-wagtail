@@ -106,10 +106,12 @@
   &__dummy-placeholder {
     // Used for braintree hosted fields
     height: 60px;
-    background-color: $color--white;
-    padding: 15px 20px;
     border: 1px solid $color--border;
     width: 100%;
+    iframe {
+      padding-left: 15px;
+      background-color: $color--white;
+    }
   }
 
   &__input-additional-info {
