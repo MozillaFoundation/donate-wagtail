@@ -14,7 +14,7 @@
     <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
     <meta property="og:site_name" content="{% if current_site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
     <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
-    <meta property="og:image" content="{% static '_images/og-image_2x.png' %}">
+    <meta property="og:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static '_images/og-image_2x.png' %}">
 {% endblock meta_tags %}
 
 {% block body_top %}
