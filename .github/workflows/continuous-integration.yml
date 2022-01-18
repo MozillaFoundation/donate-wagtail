@@ -107,8 +107,8 @@ jobs:
     - name: Preroll
       run: |
         npm run build
-        python network-api/manage.py collectstatic --no-input --verbosity 0
-        python network-api/manage.py migrate --no-input
-        python network-api/manage.py load_fake_data
+        python manage.py collectstatic --no-input --verbosity 0
+        python manage.py migrate --no-input
+        python manage.py load_fake_data
     - name: Integration Tests
       run: npm run playwright:ci
