@@ -41,7 +41,7 @@ idna==3.3
     #   -c requirements.txt
     #   requests
     #   urllib3
-ipython==7.16.1
+ipython==7.16.3
     # via -r dev-requirements.in
 ipython-genutils==0.2.0
     # via traitlets
