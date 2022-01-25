@@ -5,6 +5,7 @@ import expectRecaptcha from "./components/recaptcha";
 import gaEvent from "./components/analytics";
 
 function setupBraintree() {
+  console.log("HELLOOOO")
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
     deviceDataInput = document.getElementById("id_device_data"),
@@ -117,13 +118,13 @@ function setupBraintree() {
 
         submitButton.addEventListener("click", function (e) {
           // Trigger browser form validation
+          e.preventDefault();
           if (
             typeof (paymentForm.reportValidity !== "undefined") &&
             !paymentForm.reportValidity()
           ) {
             return false;
           }
-          e.preventDefault();
           var state = hostedFieldsInstance.getState(),
             formValid = Object.keys(state.fields).every(function (key) {
               var isValid = state.fields[key].isValid;
