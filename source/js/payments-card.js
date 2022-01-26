@@ -15,20 +15,22 @@ function setupBraintree() {
       "An error occurred. Please reload the page or try again later."
     ),
     errorDiv = document.getElementById("payments__braintree-errors-card"),
+    yourDetailsFormErrorDiv = document.getElementById(
+      "your-details-form-error"
+    ),
     braintreeErrorClass = "braintree-hosted-fields-invalid",
     braintreeParams = JSON.parse(
       document.getElementById("payments__braintree-params").textContent
     );
 
-    // "Your Details" Fields
-    var requiredFields = {
-      emailInput: document.getElementById("id_email"),
-      firstNameInput: document.getElementById("id_first_name"),
-      lastNameInput: document.getElementById("id_last_name"),
-      addressInput: document.getElementById("id_address_line_1"),
-      postCodeInput: document.getElementById("id_post_code"),
-      cityInput: document.getElementById("id_city"),
-    };
+  var requiredFields = {
+    emailInput: document.getElementById("id_email"),
+    firstNameInput: document.getElementById("id_first_name"),
+    lastNameInput: document.getElementById("id_last_name"),
+    addressInput: document.getElementById("id_address_line_1"),
+    postCodeInput: document.getElementById("id_post_code"),
+    cityInput: document.getElementById("id_city"),
+  };
 
   function showErrorMessage(msg) {
     if (errorDiv) {
@@ -61,12 +63,48 @@ function setupBraintree() {
     container.classList.remove(braintreeErrorClass);
   }
 
-  function showDetailFieldError(field){
+  function showDetailFieldError(field) {
     // If field error is already showing, do not render again
-    if(!field.parentNode.classList.contains('braintree-hosted-fields-invalid')){
-      showFieldError(field.parentNode)
-      field.parentElement.insertAdjacentHTML('afterend', "<div class='form-item__errors'><ul class='errorlist'><li>This field is required.</li></ul></div>")
+    if (!field.parentNode.classList.contains("form-item--errors")) {
+      field.parentNode.classList.add("form-item--errors");
+      document
+        .getElementById(`error-message__` + `${field.name}`)
+        .classList.remove("hidden");
     }
+  }
+
+  function checkYourDetailsFields() {
+    // Looping through required "Your Details" fields, in order to prevent a bad form submit,
+    // which will result in CC data loss.
+
+    var yourDetailsFormValidity = true;
+
+    for (const [fieldKey, inputElement] of Object.entries(requiredFields)) {
+      // Since postcode is not always rendered and needed, we need a special case for it.
+      if (fieldKey == "postCodeInput") {
+        // If Post Code Field is rendered, verify its filled out.
+        if (
+          !inputElement.parentNode.parentNode.classList.contains("hidden") &
+          !inputElement.value
+        ) {
+          showDetailFieldError(inputElement);
+          yourDetailsFormValidity = false;
+        }
+      }
+      // Verify all other fields have values, if not, highlight and show error.
+      else if (!inputElement.value) {
+        showDetailFieldError(inputElement);
+        yourDetailsFormValidity = false;
+      }
+    }
+
+    // If form is not valid, render error message div and scroll into view.
+    if (yourDetailsFormValidity == false) {
+      yourDetailsFormErrorDiv.classList.remove("hidden");
+      yourDetailsFormErrorDiv.scrollIntoView();
+    }
+
+    return yourDetailsFormValidity;
   }
 
   function initHostedFields() {
@@ -137,19 +175,8 @@ function setupBraintree() {
           // Trigger browser form validation
           e.preventDefault();
 
-          // Checking if any required "Your Details" fields are blank to prevent
-          // a bad form, which causes page refresh and empty form.
-          for (const [fieldKey, inputElement] of Object.entries(requiredFields)) {
-            if (fieldKey == 'postCodeInput'){
-              // If Post Code Field is rendered, verify its filled out.
-              if(!inputElement.parentNode.classList.contains('hidden') & !inputElement.value){
-                showDetailFieldError(inputElement)
-              }
-            }
-            // Verify all other fields have values.
-            else if(!inputElement.value){
-              showDetailFieldError(inputElement)
-            }
+          if (!checkYourDetailsFields()) {
+            return false;
           }
 
           if (
