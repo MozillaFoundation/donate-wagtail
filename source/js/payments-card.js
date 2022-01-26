@@ -5,7 +5,6 @@ import expectRecaptcha from "./components/recaptcha";
 import gaEvent from "./components/analytics";
 
 function setupBraintree() {
-  console.log("HELLOOOO")
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
     deviceDataInput = document.getElementById("id_device_data"),
@@ -20,6 +19,16 @@ function setupBraintree() {
     braintreeParams = JSON.parse(
       document.getElementById("payments__braintree-params").textContent
     );
+
+    // "Your Details" Fields
+    var requiredFields = {
+      emailInput: document.getElementById("id_email"),
+      firstNameInput: document.getElementById("id_first_name"),
+      lastNameInput: document.getElementById("id_last_name"),
+      addressInput: document.getElementById("id_address_line_1"),
+      postCodeInput: document.getElementById("id_post_code"),
+      cityInput: document.getElementById("id_city"),
+    };
 
   function showErrorMessage(msg) {
     if (errorDiv) {
@@ -50,6 +59,14 @@ function setupBraintree() {
 
   function clearFieldError(container) {
     container.classList.remove(braintreeErrorClass);
+  }
+
+  function showDetailFieldError(field){
+    // If field error is already showing, do not render again
+    if(!field.parentNode.classList.contains('braintree-hosted-fields-invalid')){
+      showFieldError(field.parentNode)
+      field.parentElement.insertAdjacentHTML('afterend', "<div class='form-item__errors'><ul class='errorlist'><li>This field is required.</li></ul></div>")
+    }
   }
 
   function initHostedFields() {
@@ -119,12 +136,30 @@ function setupBraintree() {
         submitButton.addEventListener("click", function (e) {
           // Trigger browser form validation
           e.preventDefault();
+
+          // Checking if any required "Your Details" fields are blank to prevent
+          // a bad form, which causes page refresh and empty form.
+          for (const [fieldKey, inputElement] of Object.entries(requiredFields)) {
+            if (fieldKey == 'postCodeInput'){
+              // If Post Code Field is rendered, verify its filled out.
+              if(!inputElement.parentNode.classList.contains('hidden') & !inputElement.value){
+                showDetailFieldError(inputElement)
+              }
+            }
+            // Verify all other fields have values.
+            else if(!inputElement.value){
+              showDetailFieldError(inputElement)
+            }
+          }
+
           if (
             typeof (paymentForm.reportValidity !== "undefined") &&
             !paymentForm.reportValidity()
           ) {
             return false;
           }
+
+          // Verifying the 3 brainfield hosted form fields (CC#/Exp/CVV)
           var state = hostedFieldsInstance.getState(),
             formValid = Object.keys(state.fields).every(function (key) {
               var isValid = state.fields[key].isValid;
