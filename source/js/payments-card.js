@@ -73,6 +73,14 @@ function setupBraintree() {
     }
   }
 
+  function removeDetailFieldError(field) {
+      field.parentNode.classList.remove("form-item--errors");
+      document
+        .getElementById(`error-message__` + `${field.name}`)
+        .classList.add("hidden");
+    
+  }
+
   function checkYourDetailsFields() {
     // Looping through required "Your Details" fields, in order to prevent a bad form submit,
     // which will result in CC data loss.
@@ -80,21 +88,21 @@ function setupBraintree() {
     var yourDetailsFormValidity = true;
 
     for (const [fieldKey, inputElement] of Object.entries(requiredFields)) {
+
       // Since postcode is not always rendered and needed, we need a special case for it.
-      if (fieldKey == "postCodeInput") {
-        // If Post Code Field is rendered, verify its filled out.
-        if (
-          !inputElement.parentNode.parentNode.classList.contains("hidden") &
-          !inputElement.value
-        ) {
+      // If postcode's parent div is rendered/required, and the input value is empty:
+      if (fieldKey == "postCodeInput" && !inputElement.parentNode.parentNode.classList.contains("hidden") && !inputElement.value) {
           showDetailFieldError(inputElement);
           yourDetailsFormValidity = false;
-        }
       }
-      // Verify all other fields have values, if not, highlight and show error.
-      else if (!inputElement.value) {
+      // Verify all other input fields have values, if not, highlight and show error.
+      else if (fieldKey != "postCodeInput" && !inputElement.value) {
         showDetailFieldError(inputElement);
         yourDetailsFormValidity = false;
+      }
+      // If input field is showing error but now has value:
+      else if (inputElement.parentNode.classList.contains("form-item--errors")){
+        removeDetailFieldError(inputElement);
       }
     }
 
