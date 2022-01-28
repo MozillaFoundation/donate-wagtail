@@ -7,6 +7,7 @@ import gaEvent from "./components/analytics";
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
+    postCodeInputContainer = document.querySelector('.post-code-container'),
     deviceDataInput = document.getElementById("id_device_data"),
     captchaInput = document.getElementById("id_captcha"),
     captchaEnabled = captchaInput !== null,
@@ -81,6 +82,7 @@ function setupBraintree() {
   }
 
   function checkYourDetailsFields() {
+    console.log(postCodeInputContainer)
     // Looping through required "Your Details" fields, in order to prevent a bad form submit,
     // which will result in CC data loss.
 
@@ -88,10 +90,10 @@ function setupBraintree() {
 
     for (const [fieldKey, inputElement] of Object.entries(requiredFields)) {
       // Since postcode is not always rendered and needed, we need a special case for it.
-      // If postcode's parent div is rendered/required, and the input value is empty:
+      // If postcode's parent div is rendered/required, and the input value is empty, show error:
       if (
         fieldKey == "postCodeInput" &&
-        !inputElement.parentNode.parentNode.classList.contains("hidden") &&
+        !postCodeInputContainer.classList.contains("hidden") &&
         !inputElement.value
       ) {
         showDetailFieldError(inputElement);
