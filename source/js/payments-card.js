@@ -7,7 +7,7 @@ import gaEvent from "./components/analytics";
 function setupBraintree() {
   var paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
-    postCodeInputContainer = document.querySelector('.post-code-container'),
+    postCodeInputContainer = document.querySelector(".post-code-container"),
     deviceDataInput = document.getElementById("id_device_data"),
     captchaInput = document.getElementById("id_captcha"),
     captchaEnabled = captchaInput !== null,
@@ -82,7 +82,6 @@ function setupBraintree() {
   }
 
   function checkYourDetailsFields() {
-    console.log(postCodeInputContainer)
     // Looping through required "Your Details" fields, in order to prevent a bad form submit,
     // which will result in CC data loss.
 
