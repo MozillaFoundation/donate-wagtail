@@ -41,6 +41,9 @@
                             <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                             <input type="number" class="donation-amount__input one-time-amount-other-input" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
                         </div>
+                        <p class='minimum'>
+                            {% trans "Minimum amount is" %} {% get_localized_currency_symbol initial_currency_info.code %}{{ initial_currency_info.minAmount }}
+                        </p>
                         <p class='error-message error-message__one-time-other-amount hidden'>
                             {% trans "Invalid amount entered." %}
                         </p>

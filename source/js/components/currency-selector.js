@@ -47,6 +47,7 @@ class CurrencySelect {
     var oneOffValues = selectedData.presets.single;
     var monthlyValue = selectedData.presets.monthly;
     var minAmount = selectedData.minAmount;
+    var symbol = selectedData.symbol;
     var formatter = new Intl.NumberFormat(this.locale, {
       style: "currency",
       currency: selectedData.code.toUpperCase(),
@@ -57,6 +58,7 @@ class CurrencySelect {
     this.outputOptions(
       oneOffValues,
       minAmount,
+      symbol,
       "one-time-amount",
       formatter,
       this.oneOffContainer
@@ -64,6 +66,7 @@ class CurrencySelect {
     this.outputOptions(
       monthlyValue,
       minAmount,
+      symbol,
       "monthly-amount",
       formatter,
       this.monthlyContainer
@@ -76,7 +79,7 @@ class CurrencySelect {
   }
 
   // Output donation form buttons
-  outputOptions(data, minAmount, type, formatter, container) {
+  outputOptions(data, minAmount, symbol, type, formatter, container) {
     var container = container;
 
     container.innerHTML = data
@@ -96,9 +99,24 @@ class CurrencySelect {
       .join("");
 
     var otherAmountString = window.gettext("Other amount");
+    var minimumOtherAmountString = window.gettext("Minimum amount is");
+    var invalidAmountString = window.gettext("Invalid amount entered.");
     container.insertAdjacentHTML(
       "beforeend",
-      `<div class='donation-amount donation-amount--two-col donation-amount--other'><input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio><label for='${type}-other' class='donation-amount__label' data-currency>$</label><input type='number' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount min="${minAmount}" max="10000000"></div>`
+      `
+      <div class='donation-amount--two-col'>
+        <div class='donation-amount donation-amount--other'>
+          <input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio>
+          <label for='${type}-other' class='donation-amount__label' data-currency>$</label>
+          <input type='number' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount min="${minAmount}" max="10000000">
+        </div>
+        <p class='minimum'>
+          ${minimumOtherAmountString} ${symbol}${minAmount}
+        </p>
+        <p class='error-message error-message__one-time-other-amount hidden'>
+        ${invalidAmountString}
+        </p>
+      </div>`
     );
   }
 
