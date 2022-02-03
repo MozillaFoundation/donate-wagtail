@@ -101,6 +101,8 @@ class CurrencySelect {
     var otherAmountString = window.gettext("Other amount");
     var minimumOtherAmountString = window.gettext("Minimum amount is");
     var invalidAmountString = window.gettext("Invalid amount entered.");
+    var formattedMinimumValue = formatter.format(minAmount);
+
     container.insertAdjacentHTML(
       "beforeend",
       `
@@ -111,7 +113,7 @@ class CurrencySelect {
           <input type='number' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount min="${minAmount}" max="10000000">
         </div>
         <p class='minimum'>
-          ${minimumOtherAmountString} ${symbol}${minAmount}
+          ${minimumOtherAmountString} ${formattedMinimumValue}
         </p>
         <p id='other-${type}-error-message' class='error-message hidden'>
         ${invalidAmountString}
