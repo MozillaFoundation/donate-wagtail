@@ -1,4 +1,5 @@
 import gaEvent from "./analytics";
+import otherAmountInputValidation from "./validation";
 
 class CurrencySelect {
   static selector() {
@@ -81,7 +82,6 @@ class CurrencySelect {
   // Output donation form buttons
   outputOptions(data, minAmount, symbol, type, formatter, container) {
     var container = container;
-
     container.innerHTML = data
       .map((donationValue, index) => {
         var formattedValue = formatter.format(donationValue);
@@ -106,18 +106,19 @@ class CurrencySelect {
       `
       <div class='donation-amount--two-col'>
         <div class='donation-amount donation-amount--other'>
-          <input type='radio' class='donation-amount__radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio>
+          <input type='radio' class='donation-amount__radio ${type}-donation-radio' name='amount' value='other' id='${type}-other' autocomplete='off' data-other-amount-radio>
           <label for='${type}-other' class='donation-amount__label' data-currency>$</label>
           <input type='number' class='donation-amount__input' id='${type}-other-input' placeholder='${otherAmountString}' data-other-amount min="${minAmount}" max="10000000">
         </div>
         <p class='minimum'>
           ${minimumOtherAmountString} ${symbol}${minAmount}
         </p>
-        <p class='error-message error-message__one-time-other-amount hidden'>
+        <p id='other-${type}-error-message' class='error-message hidden'>
         ${invalidAmountString}
         </p>
       </div>`
     );
+    otherAmountInputValidation();
   }
 
   updateCurrency(selectedData, formatter) {
