@@ -90,6 +90,7 @@ env = environ.Env(
     USE_CHECKBOX_RECAPTCHA_FOR_CC=(bool, True),
     WAGTAILLOCALIZE_PONTOON_GIT_CLONE_DIR=(str, ''),
     WAGTAILLOCALIZE_PONTOON_GIT_URL=(str, ''),
+    WAGTAILLOCALIZE_PONTOON_GIT_DEFAULT_BRANCH=(str, ''),
     # Mozilla OIDC
     USE_CONVENTIONAL_AUTH=(bool, True),
     OIDC_RP_CLIENT_ID=(str, None),
