@@ -42,7 +42,8 @@
                             <input type="number" class="donation-amount__input one-time-amount-other-input OG" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
                         </div>
                         <p class='minimum'>
-                            {% trans "Minimum amount is" %} {% get_localized_currency_symbol initial_currency_info.code %}{{ initial_currency_info.minAmount }}
+                            {% format_currency request.LANGUAGE_CODE initial_currency_info.code initial_currency_info.minAmount as minimum_amount %}
+                            {% blocktrans with min_amount=minimum_amount trimmed %}Minimum amount is {{ min_amount }}{% endblocktrans %}
                         </p>
                         <p id='other-one-time-amount-error-message' class='error-message hidden'>
                             {% trans "Invalid amount entered." %}
@@ -116,7 +117,8 @@
                             <input type="number" class="donation-amount__input monthly-amount-other-input" name="monthly-amount-other-input" id="monthly-amount-other-input" min="{{ initial_currency_info.minAmount }}" max="10000000" placeholder="{% trans 'Other amount' %}" data-other-amount="">
                         </div>
                         <p class='minimum'>
-                            {% trans "Minimum amount is" %} {% get_localized_currency_symbol initial_currency_info.code %}{{ initial_currency_info.minAmount }}
+                            {% format_currency request.LANGUAGE_CODE initial_currency_info.code initial_currency_info.minAmount as minimum_amount %}
+                            {% blocktrans with min_amount=minimum_amount trimmed %}Minimum amount is {{ min_amount }}{% endblocktrans %}
                         </p>
                         <p id='other-monthly-amount-error-message' class='error-message hidden'>
                             {% trans "Invalid amount entered." %}
