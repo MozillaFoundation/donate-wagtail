@@ -48,7 +48,6 @@ class CurrencySelect {
     var oneOffValues = selectedData.presets.single;
     var monthlyValue = selectedData.presets.monthly;
     var minAmount = selectedData.minAmount;
-    var symbol = selectedData.symbol;
     var formatter = new Intl.NumberFormat(this.locale, {
       style: "currency",
       currency: selectedData.code.toUpperCase(),
@@ -59,7 +58,6 @@ class CurrencySelect {
     this.outputOptions(
       oneOffValues,
       minAmount,
-      symbol,
       "one-time-amount",
       formatter,
       this.oneOffContainer
@@ -67,7 +65,6 @@ class CurrencySelect {
     this.outputOptions(
       monthlyValue,
       minAmount,
-      symbol,
       "monthly-amount",
       formatter,
       this.monthlyContainer
@@ -80,7 +77,7 @@ class CurrencySelect {
   }
 
   // Output donation form buttons
-  outputOptions(data, minAmount, symbol, type, formatter, container) {
+  outputOptions(data, minAmount, type, formatter, container) {
     var container = container;
     container.innerHTML = data
       .map((donationValue, index) => {
