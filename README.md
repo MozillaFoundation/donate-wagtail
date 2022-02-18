@@ -22,6 +22,8 @@
 
 When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docker-compose down`. If you want a new dev environment, stop your containers and run `inv new_env`.
 
+Secrets necessary to enable several features in a local docker development environment can be found in the 1pass, Engagement Vault, in a Note called "donate-wagtail docker .env file".  Copy the contents of this file and replace the .env file that came with the repo.  Do not distrubute the .env file.  
+
 It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
 
 To run commands with Docker, run `docker-compose run [SERVICE] [COMMAND]`. For example, running the python tests is done by `docker-compose run backend ./dockerpythonvenv/bin/python manage.py test --settings=donate.settings_test`. Since it's pretty long, most cases are covered by Invoke commands.
