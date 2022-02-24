@@ -13,8 +13,11 @@ export default function initPaypal(
   var loadingErrorMsg = window.gettext(
     "An error occurred. Please reload the page or try again later."
   );
-  var generalErrorMsg = window.gettext(
+  var authErrorMsg = window.gettext(
     "There was an error processing your payment. Please try again."
+  );
+  var generalErrorMsg = window.gettext(
+    "Unable to connect to Paypal. Please try again in a few minutes."
   );
   var braintreeParams = JSON.parse(
     document.getElementById("payments__braintree-params").textContent
@@ -82,7 +85,7 @@ export default function initPaypal(
                   payload
                 ) {
                   if (err) {
-                    showErrorMessage(generalErrorMsg);
+                    showErrorMessage(authErrorMsg);
                     return;
                   }
 
