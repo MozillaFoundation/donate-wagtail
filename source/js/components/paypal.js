@@ -17,7 +17,7 @@ export default function initPaypal(
     "There was an error processing your payment. Please try again."
   );
   var generalErrorMsg = window.gettext(
-    "Unable to connect to PayPal. Please try again in a few minutes."
+    "We were unable to establish a connection to PayPal. Please try again in a few minutes."
   );
   var braintreeParams = JSON.parse(
     document.getElementById("payments__braintree-params").textContent
