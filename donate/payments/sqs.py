@@ -41,8 +41,7 @@ def send_to_sqs(payload):
             break
 
         except botocore.exceptions.ClientError as err:
-                # Grabbing more details on why the client could not send the message
-                logger.error('Error Message: {}'.format(err.response['Error']['Message']))
-                time.sleep(5)
-                continue
-
+            # Logging details on why the sqs client could not send the message
+            logger.error('Error Message: {}'.format(err.response['Error']['Message']))
+            time.sleep(5)
+            continue
