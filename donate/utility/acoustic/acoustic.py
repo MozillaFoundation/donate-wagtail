@@ -1,5 +1,5 @@
 import logging
-
+import time
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
@@ -107,10 +107,23 @@ class AcousticTransact(Silverpop):
         super().__init__(client_id, client_secret, refresh_token, server_number)
 
     def _call_xt(self, xml):
+        send_retries = 3
         logger.debug("Request: %s" % xml)
-        response = self.session.post(
-            self.api_xt_endpoint, data=force_bytes(xml), timeout=10,
-        )
+        for n in range(send_retries):
+            try:
+                response = self.session.post(
+                    self.api_xt_endpoint, data=force_bytes(xml), timeout=10,
+                )
+
+                break
+            except ConnectionError:
+                if send_retries != 3:
+                    logger.error("Connection error while sending email receipt. Trying again.")
+                else:
+                    logger.error("Could not send email receipt due to connection error.")
+                time.sleep(5)
+                continue
+
         return process_tx_response(response)
 
     def send_mail(self, to, campaign_id, fields=None, bcc=None, save_to_db=False):
