@@ -29,4 +29,3 @@ def send_to_sqs(payload):
             QueueUrl=settings.BASKET_SQS_QUEUE_URL,
             MessageBody=json.dumps(payload, cls=DjangoJSONEncoder, sort_keys=True),
         )
-
