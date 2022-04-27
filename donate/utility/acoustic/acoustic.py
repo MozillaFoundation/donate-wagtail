@@ -33,6 +33,7 @@ def process_tx_response(resp):
     if errors:
         for e in errors:
             if e.text:
+                logger.error('Error while sending donation receipt: {}'.format(e.text))
                 raise SilverpopResponseException(e.text)
 
     return response
