@@ -1,4 +1,4 @@
-import logging
+mport logging
 import time
 from decimal import Decimal
 
@@ -137,6 +137,8 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
+    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+        process_donation_receipt(data)
     send_to_sqs({
         'data': {
             'event_type': 'donation',
@@ -159,8 +161,6 @@ def send_transaction_to_basket(data):
             'conversion_amount': data.get('settlement_amount', None),
         }
     })
-    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
-        process_donation_receipt(data)
 
 
 def process_dispute(event):
