@@ -1,4 +1,5 @@
 import logging
+import sched
 import time
 from django.conf import settings
 from django.utils.encoding import force_bytes
@@ -10,6 +11,7 @@ from silverpop.api import Silverpop, SilverpopResponseException
 
 logger = logging.getLogger(__name__)
 XML_HEADER = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+schedule = sched.scheduler(time.time, time.sleep)
 
 
 def process_response(resp):
@@ -107,30 +109,39 @@ class AcousticTransact(Silverpop):
         self.api_xt_endpoint = self.api_xt_endpoint % server_number
         super().__init__(client_id, client_secret, refresh_token, server_number)
 
-    def _call_xt(self, xml):
-        send_retries = 3
+    def _call_xt(self, to, campaign_id, fields, bcc, save_to_db):
+        xml = transact_xml(to, campaign_id, fields, bcc, save_to_db)
         logger.debug("Request: %s" % xml)
-        for n in range(send_retries):
-            try:
-                response = self.session.post(
-                    self.api_xt_endpoint, data=force_bytes(xml), timeout=10,
-                )
-
-                break
-            except ConnectionError:
-                if send_retries != 3:
-                    logger.error("Connection error while sending email receipt. Trying again.")
-                else:
-                    logger.error("Could not send email receipt due to connection error.")
-                time.sleep(5)
-                continue
-
+        response = self.session.post(
+            self.api_xt_endpoint, data=force_bytes(xml), timeout=10,
+        )
         return process_tx_response(response)
 
     def send_mail(self, to, campaign_id, fields=None, bcc=None, save_to_db=False):
         # If we are testing, do not send emails
         if not settings.TESTING:
-            self._call_xt(transact_xml(to, campaign_id, fields, bcc, save_to_db))
+            send_retries = 3
+
+            for attempt in range(send_retries):
+
+                if attempt == 0:
+                    # If this is the first try, send the email immediately.
+                    schedule.enter(0, 1, self._call_xt, (to, campaign_id, fields, bcc, save_to_db))
+                else:
+                    # If first try is unsuccessful, wait 10 seconds and try again.
+                    schedule.enter(10, 1, self._call_xt, (to, campaign_id, fields, bcc, save_to_db))
+
+                try:
+                    schedule.run()
+                    break
+
+                except ConnectionError:
+                    if attempt != 2:
+                        logger.error("Error connecting to Acoustic to send email receipt. Trying again.")
+                    else:
+                        logger.error("Could not send email receipt. Unable to connect to Acoustic after 3 retries.")
+
+                    continue
 
 
 acoustic_tx = AcousticTransact(
