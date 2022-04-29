@@ -35,7 +35,7 @@ def process_tx_response(resp):
     if errors:
         for e in errors:
             if e.text:
-                logger.error('Error while sending donation receipt to Acoustic: {}'.format(e.text))
+                logger.error(f'Error while sending donation receipt to Acoustic: {e.text}')
                 raise SilverpopResponseException(e.text)
 
     return response
