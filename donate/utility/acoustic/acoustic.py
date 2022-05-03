@@ -128,20 +128,22 @@ class AcousticTransact(Silverpop):
         schedule_priority = 1
         call_args = (to, campaign_id, fields, bcc, save_to_db)
 
-
         for attempt in range(send_retries):
             if attempt == 0:
                 schedule.enter(send_mail_immediately, schedule_priority, self.attempt_send_mail, call_args)
             else:
                 schedule.enter(send_mail_delay, schedule_priority, self.attempt_send_mail, call_args)
             try:
-                schedule.run(blocking=True)  # explicitly block, just in case the implicit behaviour changes in the future                break
+                # explicitly block, just in case the implicit behaviour changes in the future
+                schedule.run(blocking=True)
                 break
             except ConnectionError:
                 if attempt != 2:
                     logger.error("Error connecting to Acoustic to send email receipt. Trying again.")
                 else:
-                    logger.error(f"Could not send email receipt. Unable to connect to Acoustic {send_retries} retries.")
+                    logger.error(
+                        f"Could not send email receipt. Unable to connect to Acoustic {send_retries} retries."
+                    )
 
                 continue
 
