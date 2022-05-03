@@ -79,7 +79,7 @@ class BraintreePaymentMixin:
     def handle_successful_transaction(self, result, form, send_data_to_basket=True, **kwargs):
         details = self.set_session_data(result, form, **kwargs)
         if send_data_to_basket:
-            send_transaction_to_basket(details)
+            queue.enqueue(send_transaction_to_basket, details)
         return HttpResponseRedirect(self.get_success_url())
 
     def queue_ga_transaction(self, id, currency, amount, name, category):
