@@ -12,6 +12,7 @@ import boto3
 logger = logging.getLogger(__name__)
 schedule = sched.scheduler(time.time, time.sleep)
 
+
 @lru_cache(maxsize=1)
 def sqs_client():
     if all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_REGION]):
@@ -22,11 +23,13 @@ def sqs_client():
             region_name=settings.AWS_REGION
         )
 
+
 def attempt_send_to_sqs(client, payload):
     client.send_message(
         QueueUrl=settings.BASKET_SQS_QUEUE_URL,
         MessageBody=json.dumps(payload, cls=DjangoJSONEncoder, sort_keys=True),
     )
+
 
 def send_to_sqs(payload):
     # If BASKET_SQS_QUEUE_URL is not configured, do nothing (djangorq is logging the payload).
