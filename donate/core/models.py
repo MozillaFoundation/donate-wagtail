@@ -118,13 +118,6 @@ class DonationPage(Page):
         """
         return sorted(initial_currency_info['presets'][initial_frequency])[1]
 
-    def default_other_amount(self, initial_currency_info):
-        """
-        If ?amount = other, return value as minimum possible value.
-        We then check in the template if the 'value' is set to the minimum, and if so, highlight the
-        'other amount' field.
-        """
-        return initial_currency_info['minAmount']
 
     def get_initial_amount(self, request, initial_currency_info, initial_frequency):
         """
@@ -138,7 +131,7 @@ class DonationPage(Page):
         amount = request.GET.get('amount', False)
 
         if amount == 'other':
-            return self.default_other_amount(initial_currency_info)
+            return 'other'
 
         if amount is False or 'e' in amount:
             return self.default_initial_amount(initial_currency_info, initial_frequency)
