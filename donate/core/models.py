@@ -118,7 +118,6 @@ class DonationPage(Page):
         """
         return sorted(initial_currency_info['presets'][initial_frequency])[1]
 
-
     def get_initial_amount(self, request, initial_currency_info, initial_frequency):
         """
         When called with ?amount=..., that value will be preselected if:
