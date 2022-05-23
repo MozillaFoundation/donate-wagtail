@@ -12,10 +12,12 @@
     </div>
     <div class="layout__container">
         <div class="layout__half-col error__container">
-            {% blocktrans %}
-              <p class="error__message">Please disable your VPN and visit <a href="https://www.donate.mozilla.org"> donate.mozilla.org </a> again.</p>
-            {% endblocktrans %}
-          <p class="error__message">
+            <p class="error__message">
+                {% blocktrans with url="https://www.donate.mozilla.org" trimmed %}
+                Please disable your VPN and visit <a href="{{ url }}">donate.mozilla.org</a> again.
+                {% endblocktrans %}
+            </p>
+            <p class="error__message">
               {% trans "We take your privacy very seriously. To minimize fraudulent payments, we’re asking supporters to disable their VPNs when visiting our donate page." %}
             </p>
         </div>
