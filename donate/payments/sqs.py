@@ -1,7 +1,7 @@
 from functools import lru_cache
 import json
 import logging
-import time
+from time import time, sleep
 import sched
 from django.conf import settings
 from django.core.serializers.json import DjangoJSONEncoder
@@ -10,7 +10,7 @@ import botocore
 import boto3
 
 logger = logging.getLogger(__name__)
-schedule = sched.scheduler(time.time, time.sleep)
+schedule = sched.scheduler(time, sleep)
 
 
 @lru_cache(maxsize=1)
