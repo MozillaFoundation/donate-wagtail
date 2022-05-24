@@ -1,6 +1,6 @@
 import logging
 import sched
-import time
+from time import time, sleep
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
@@ -11,7 +11,7 @@ from silverpop.api import Silverpop, SilverpopResponseException
 
 logger = logging.getLogger(__name__)
 XML_HEADER = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-schedule = sched.scheduler(time.time, time.sleep)
+schedule = sched.scheduler(time, sleep)
 
 
 def process_response(resp):
