@@ -36,7 +36,7 @@
                     {% endfor %}
                     <div class="donation-amount--two-col">
                         <div class="donation-amount donation-amount--other">
-                            <input type="radio" class="donation-amount__radio one-time-amount-donation-radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="">
+                            <input type="radio" class="donation-amount__radio one-time-amount-donation-radio" name="amount" value="other" id="one-time-amount-other" autocomplete="off" data-other-amount-radio="" {% if initial_amount == "other" %}checked="checked"{% endif %}>
                             <label for="one-time-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                             <label for="one-time-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                             <input type="number" class="donation-amount__input one-time-amount-other-input OG" id="one-time-amount-other-input" placeholder="{% trans 'Other amount' %}" min="{{ initial_currency_info.minAmount }}" max="10000000" data-other-amount="">
@@ -111,7 +111,7 @@
                     {% endfor %}
                     <div class="donation-amount--two-col">
                         <div class="donation-amount donation-amount--other donation-amount--other--container">
-                            <input type="radio" class="donation-amount__radio monthly-amount-donation-radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="">
+                            <input type="radio" class="donation-amount__radio monthly-amount-donation-radio" name="amount" value="other" id="monthly-amount-other" autocomplete="off" data-other-amount-radio="" {% if initial_amount == "other" %}checked="checked"{% endif %}>
                             <label for="monthly-amount-other" class="donation-amount__label donation-amount-other__label" data-currency="">{% get_localized_currency_symbol initial_currency_info.code %}</label>
                             <label for="monthly-amount-other-input" class="donation-amount__label--hidden">{% trans "Other amount" %}</label>
                             <input type="number" class="donation-amount__input monthly-amount-other-input" name="monthly-amount-other-input" id="monthly-amount-other-input" min="{{ initial_currency_info.minAmount }}" max="10000000" placeholder="{% trans 'Other amount' %}" data-other-amount="">

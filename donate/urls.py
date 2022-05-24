@@ -56,8 +56,9 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     urlpatterns += [
-        # Add views for testing 404 and 500 templates
+        # Add views for testing 403, 404 and 500 templates
         path('test404/', TemplateView.as_view(template_name='404.html')),
+        path('test403/', TemplateView.as_view(template_name='403.html')),
         path('test500/', TemplateView.as_view(template_name='500.html')),
     ]
 
