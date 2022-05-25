@@ -13,8 +13,8 @@
     <div class="layout__container">
         <div class="layout__half-col error__container">
             <p class="error__message">
-                {% blocktrans with url="https://www.donate.mozilla.org" trimmed %}
-                Please disable your VPN and visit <a href="{{ url }}">donate.mozilla.org</a> again.
+                {% blocktrans with url="/" site=request.get_host trimmed %}
+                Please disable your VPN and visit <a href="{{ url }}">{{ site }}</a> again.
                 {% endblocktrans %}
             </p>
             <p class="error__message">
