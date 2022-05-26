@@ -56,7 +56,7 @@ def send_to_sqs(payload):
             break
         except botocore.exceptions.ClientError as err:
             if attempt != 2:
-                logger.error(f"Error when sending data to SQS: {err.response['Error']['Message']}")
+                logger.error(f"Error when sending data to SQS: {err}")
             else:
                 logger.error(f"Could not send data to SQS. Unable to connect after {send_retries} retries.")
 
