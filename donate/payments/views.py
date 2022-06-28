@@ -103,9 +103,7 @@ class BraintreePaymentMixin:
         ])
         queue_ga_event(self.request, ['ecommerce:send'])
 
-    def queue_datalayer_event(
-        self, id, currency, amount, frequency, payment_method="credit card", gift_aid="yes"
-    ):
+    def queue_datalayer_transaction(self, id, currency, amount, frequency, payment_method="credit card"):
         queue_data_layer_event(
             self.request,
             [
@@ -122,7 +120,6 @@ class BraintreePaymentMixin:
                                 "index": 0,
                                 "item_brand": payment_method,
                                 "item_category": "donation",
-                                "item_variant": f"gift aid: {gift_aid}",
                                 "price": str(amount),
                                 "quantity": 1,
                             }
@@ -308,7 +305,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                 name='Card Donation',
                 category='one-time'
             )
-            self.queue_datalayer_event(
+            self.queue_datalayer_transaction(
                 id=result.transaction.id,
                 currency=self.currency,
                 amount=form.cleaned_data['amount'],
@@ -371,7 +368,7 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Monthly',
                 }
             ])
-            self.queue_datalayer_event(
+            self.queue_datalayer_transaction(
                 id=result.subscription.id,
                 currency=self.currency,
                 amount=form.cleaned_data['amount'],
@@ -463,7 +460,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                     name='PayPal Donation',
                     category='one-time'
                 )
-                self.queue_datalayer_event(
+                self.queue_datalayer_transaction(
                     id=result.transaction.id,
                     currency=self.currency,
                     amount=form.cleaned_data['amount'],
@@ -516,7 +513,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                         'eventLabel': 'Monthly',
                     }
                 ])
-                self.queue_datalayer_event(
+                self.queue_datalayer_transaction(
                     id=result.subscription.id,
                     currency=self.currency,
                     amount=form.cleaned_data['amount'],
