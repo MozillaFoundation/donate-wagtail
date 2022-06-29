@@ -1,1 +1,12 @@
 {% if events %}{{ events|json_script:"ga-events" }}{% endif %}
+
+{% if data_layer %}
+  {{ data_layer|json_script:"data_layer" }}
+  <script>
+    const transactionData = JSON.parse(document.querySelector('#data_layer').textContent)[0][0];
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(transactionData);
+  </script>
+{% endif %}
+
+
