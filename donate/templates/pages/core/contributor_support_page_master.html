@@ -69,8 +69,13 @@
                             {% endblocktrans %}
                         </p>
                         <p class="rich-text">
-                            {% blocktrans with support_url="https://support.mozilla.org/questions/firefox" trimmed %}
-                                Unfortunately, donor care representatives are unable to offer support or help with Firefox technical issues. For technical support, please visit the <a href="{{ support_url }}">Firefox support page</a>.
+                            {% blocktrans trimmed %}
+                                Unfortunately, donor care representatives are unable to offer support or help with Firefox technical issues, or changes to or questions about Mozilla VPN subscriptions. Related questions submitted through this form will not be responded to.
+                            {% endblocktrans %}
+                        </p>
+                        <p class="rich-text">
+                            {% blocktrans with firefox_support_url="https://support.mozilla.org/questions/firefox" vpn_support_url="https://support.mozilla.org/products/firefox-private-network-vpn" trimmed %}
+                                For technical support, please visit the <a href="{{ firefox_support_url }}"> Firefox support page </a>. For help with a VPN subscription, please visit the <a href="{{ vpn_support_url }}"> Mozilla VPN Support page </a>.
                             {% endblocktrans %}
                         </p>
                     {% endblock %}
