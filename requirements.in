@@ -17,7 +17,7 @@ freezegun
 # Need to install a pre-release in order to get the RedLock.locked() method
 git+https://github.com/glasslion/redlock.git@master#egg=redlock
 gunicorn
-lxml==4.6.2
+lxml==4.9.1
 mailchimp-marketing==3.0.44
 mozilla-django-oidc
 psycopg2-binary
