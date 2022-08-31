@@ -28,6 +28,7 @@ urlpatterns = [
     path('stripe/webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
     path('environment.json', EnvVariablesView.as_view()),
     path('abtesting/', include(ab_testing_urls)),
+    path('403/', TemplateView.as_view(template_name='403.html')),
 ]
 
 if settings.ENABLE_THUNDERBIRD_REDIRECT:
