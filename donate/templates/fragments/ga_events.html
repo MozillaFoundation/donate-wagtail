@@ -2,7 +2,7 @@
 
 {% if data_layer %}
   {{ data_layer|json_script:"data_layer" }}
-  <script>
+  <script nonce="{{ request.csp_nonce }}">
     const transactionData = JSON.parse(document.querySelector('#data_layer').textContent)[0][0];
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(transactionData);
