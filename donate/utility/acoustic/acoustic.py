@@ -144,7 +144,7 @@ class AcousticTransact(Silverpop):
                     logger.error(
                         f"Could not send email receipt. Unable to connect to Acoustic after {send_retries} retries."
                     )
-                    logger.error(err)
+                    logger.error(f"Error: {err}")
 
                 continue
 
