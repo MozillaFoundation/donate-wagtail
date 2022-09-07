@@ -17,7 +17,7 @@ CSP_CONNECT_SRC = ("'self'", 'api.sandbox.braintreegateway.com',
                    'client-analytics.sandbox.braintreegateway.com', 'api.braintreegateway.com',
                    'client-analytics.braintreegateway.com', '*.braintree-api.com', 'www.paypal.com',
                    'www.google-analytics.com', 'https://www.mozilla.org/en-US/newsletter/',
-                   'https://sentry.prod.mozaws.net', '*.google-analytics.com',
+                   'https://*.sentry.io', '*.google-analytics.com',
                    '*.analytics.google.com', '*.googletagmanager.com')
 CSP_INCLUDE_NONCE_IN = ("script-src",)
 CSP_BASE_URI = CSP_DEFAULT_SRC
