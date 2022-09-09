@@ -69,12 +69,12 @@ LANGUAGES = [
 # Collection of different language email templates,
 # for receipt sending through acoustic in payments/tasks.py.
 LANGUAGE_IDS = {
-    "ja": "1621701",
-    "pl": "1621706",
-    "pt-BR": "1621708",
-    "cs": "1621689",
-    "de": "1621691",
-    "es": "1621695",
-    "fr": "1621697",
+    "ja": "2960734",
+    "pl": "2959660",
+    "pt-BR": "2960746",
+    "cs": "2960691",
+    "de": "2960705",
+    "es": "2960719",
+    "fr": "2960725",
     "en-US": "2959686",
 }
