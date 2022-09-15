@@ -20,7 +20,7 @@ METHODS = (METHOD_CARD, METHOD_PAYPAL)
 CURRENCIES = {
     'usd': {
         'code': 'usd',
-        'minAmount': 2,
+        'minAmount': 10,
         'symbol': '$',
         'paypalFixedFee': {
             'macro': 0.30,
@@ -36,7 +36,7 @@ CURRENCIES = {
         ],
         'presets': {
             'single': [10, 20, 30, 60],
-            'monthly': [5, 10, 15, 20],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'aud': {
@@ -173,7 +173,7 @@ CURRENCIES = {
     },
     'eur': {
         'code': 'eur',
-        'minAmount': 2,
+        'minAmount': 10,
         'symbol': '€',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -189,12 +189,12 @@ CURRENCIES = {
         ],
         'presets': {
             'single': [10, 20, 30, 60],
-            'monthly': [5, 10, 15, 20],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'gbp': {
         'code': 'gbp',
-        'minAmount': 2,
+        'minAmount': 10,
         'symbol': '£',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -211,7 +211,7 @@ CURRENCIES = {
         ],
         'presets': {
             'single': [10, 20, 30, 60],
-            'monthly': [5, 10, 15, 20]
+            'monthly': [10, 15, 20, 25]
         }
     },
     'hkd': {
