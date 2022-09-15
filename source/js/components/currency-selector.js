@@ -96,7 +96,9 @@ class CurrencySelect {
       .join("");
 
     var otherAmountString = window.gettext("Other amount");
-    var minimumOtherAmountString = window.gettext("To combat fraud, Mozilla Foundation has temporarily restricted donations to a minimum of");
+    var minimumOtherAmountString = window.gettext(
+      "To combat fraud, Mozilla Foundation has temporarily restricted donations to a minimum of"
+    );
     var invalidAmountString = window.gettext("Invalid amount entered.");
     var formattedMinimumValue = formatter.format(minAmount);
 
