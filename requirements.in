@@ -11,6 +11,7 @@ django-environ
 django-redis
 django-rq
 django-storages
+django-recaptcha
 django==3.1.14
 factory-boy
 freezegun

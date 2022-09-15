@@ -103,7 +103,6 @@ class Base(object):
         'donate.users',
         'donate.core',
         'donate.payments',
-        'donate.recaptcha',
 
         'wagtail_localize',
         'wagtail_localize.locales',
@@ -129,11 +128,13 @@ class Base(object):
         'storages',
         'django_rq',
         'django_countries',
+        'captcha',
 
         'django.contrib.admin',
         'django.contrib.auth',
         'mozilla_django_oidc',
 
+        'django.forms',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
@@ -165,6 +166,8 @@ class Base(object):
     ROOT_URLCONF = 'donate.urls'
 
     TEMPLATES = defaults.TEMPLATES
+
+    FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
     LANGUAGES = LANGUAGES
     WAGTAIL_CONTENT_LANGUAGES = LANGUAGES

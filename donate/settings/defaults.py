@@ -12,7 +12,8 @@ CSP_IMG_SRC = ('*', "data:")
 CSP_FONT_SRC = ("'self'", 'fonts.googleapis.com', 'fonts.gstatic.com', "data:")
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", 'https://fonts.googleapis.com',
                  'https://fonts.gstatic.com', 'https://tagmanager.google.com')
-CSP_FRAME_SRC = ("'self'", 'assets.braintreegateway.com', 'c.paypal.com', '*.paypal.com', 'https://www.google.com')
+CSP_FRAME_SRC = ("'self'", 'assets.braintreegateway.com', 'c.paypal.com', '*.paypal.com', 'https://www.google.com',
+                 'tst.kaptcha.com')
 CSP_CONNECT_SRC = ("'self'", 'api.sandbox.braintreegateway.com',
                    'client-analytics.sandbox.braintreegateway.com', 'api.braintreegateway.com',
                    'client-analytics.braintreegateway.com', '*.braintree-api.com', 'www.paypal.com',
@@ -156,6 +157,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
+                'donate.utility.context_processors.recaptcha_settings'
             ],
         },
     },

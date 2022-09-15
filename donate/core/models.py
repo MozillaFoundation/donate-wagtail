@@ -176,7 +176,6 @@ class DonationPage(Page):
                 }
             ),
             'currency_form': CurrencyForm(initial={'currency': values['currency']}),
-            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.USE_RECAPTCHA else None,
         })
         return ctx
 

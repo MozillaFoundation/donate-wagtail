@@ -150,6 +150,10 @@ class CardPaymentViewTestCase(TestCase):
             'device_data': '{"some": "data"}'
         }
 
+        patcher = mock.patch('captcha.fields.ReCaptchaField.validate', mock.Mock(return_value=True))
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
         self.request.LANGUAGE_CODE = 'en-US'
@@ -333,6 +337,7 @@ class CardPaymentViewTestCase(TestCase):
         })
 
 
+@mock.patch("captcha.fields.ReCaptchaField.validate", mock.Mock(return_value=True))
 class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
 
     def setUp(self):
@@ -418,6 +423,7 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             'card_type': 'Visa',
             'last_4': '5678',
             'settlement_amount': Decimal(10),
+            'captcha': ''
         })
         self.assertEqual(details, expected_details)
 
@@ -427,6 +433,7 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
         mock_send.assert_called_once()
 
 
+@mock.patch("captcha.fields.ReCaptchaField.validate", mock.Mock(return_value=True))
 class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
 
     def setUp(self):
@@ -520,6 +527,9 @@ class PaypalPaymentViewTestCase(TestCase):
             'project': 'mozillafoundation',
             'campaign_id': '',
         }
+        patcher = mock.patch('captcha.fields.ReCaptchaField.validate', mock.Mock(return_value=True))
+        patcher.start()
+        self.addCleanup(patcher.stop)
 
     def test_transaction_data_submitted_to_braintree(self):
         form = BraintreePaypalPaymentForm(self.form_data)

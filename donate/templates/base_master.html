@@ -32,6 +32,10 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:700,600,400,300|Zilla+Slab:300,500,700">
         <link rel="stylesheet" href="{% static '_css/main.compiled.css' %}">
+        <script src="https://www.google.com/recaptcha/api.js?render={{ RECAPTCHA_PUBLIC_KEY }}" async defer></script>
+        <script>
+            window.RECAPTCHA_PUBLIC_KEY="{{ RECAPTCHA_PUBLIC_KEY }}"
+        </script>
 
         {% block head_addenda %}{% endblock %}
     </head>

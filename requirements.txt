@@ -52,6 +52,7 @@ django==3.1.14
     #   django-configurations
     #   django-csp
     #   django-filter
+    #   django-recaptcha
     #   django-redis
     #   django-rq
     #   django-storages
@@ -75,6 +76,8 @@ django-filter==21.1
     # via wagtail
 django-modelcluster==5.2
     # via wagtail
+django-recaptcha==3.0.0
+    # via -r requirements.in
 django-redis==5.1.0
     # via -r requirements.in
 django-rq==2.5.1

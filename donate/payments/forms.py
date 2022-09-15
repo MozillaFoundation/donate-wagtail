@@ -1,5 +1,4 @@
 from django import forms
-from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, pgettext_lazy
@@ -8,7 +7,9 @@ from django_countries.fields import CountryField
 
 from donate.core.utils import is_donation_page
 from donate.core.templatetags.util_tags import format_currency
-from donate.recaptcha.fields import ReCaptchaField
+
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 
 from . import constants
 from .utils import get_currency_info
@@ -134,20 +135,13 @@ class BraintreeCardPaymentForm(CampaignFormMixin, PostalCodeMixin, BraintreePaym
     )
     country = CountryField(_('Country')).formfield(initial='US')
     device_data = forms.CharField(widget=forms.HiddenInput, required=False)
-
-    if settings.USE_RECAPTCHA:
-        if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
-            captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY_CHECKBOX)
-        else:
-            captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY)
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
 
 class BraintreePaypalPaymentForm(MinimumCurrencyAmountMixin, CampaignFormMixin, BraintreePaymentForm):
     frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput)
-
-    if settings.USE_RECAPTCHA:
-        captcha = ReCaptchaField(secret=settings.RECAPTCHA_SECRET_KEY)
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
 
 class CurrencyForm(forms.Form):

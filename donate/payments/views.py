@@ -166,16 +166,6 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
         })
 
-        if settings.USE_RECAPTCHA:
-            ctx.update({'use_recaptcha': True})
-
-            if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
-                site_key = settings.RECAPTCHA_SITE_KEY_CHECKBOX
-                ctx.update({'recaptcha_site_key_checkbox': site_key})
-            else:
-                site_key = settings.RECAPTCHA_SITE_KEY
-                ctx.update({'recaptcha_site_key': site_key})
-
         return ctx
 
     def get_address_info(self, form_data):

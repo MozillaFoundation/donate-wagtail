@@ -20,13 +20,22 @@ function setupBraintree() {
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
 
+  var captchaCallback = () => {
+    window.grecaptcha
+      .execute(window.RECAPTCHA_PUBLIC_KEY, { action: "donate" })
+      .then((token) => {
+        captchaInput.value = token;
+        submitForm();
+      });
+  };
+
   var onAuthorizeSingle = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountSingle();
     frequencyInput.value = "single";
     currencyInput.value = currencySelect.value;
     if (captchaEnabled) {
-      expectRecaptcha(window.grecaptcha.execute);
+      expectRecaptcha(captchaCallback);
     } else {
       submitForm();
     }
@@ -43,7 +52,7 @@ function setupBraintree() {
     frequencyInput.value = "monthly";
     currencyInput.value = currencySelect.value;
     if (captchaEnabled) {
-      expectRecaptcha(window.grecaptcha.execute);
+      expectRecaptcha(captchaCallback);
     } else {
       submitForm();
     }
@@ -74,25 +83,6 @@ function setupBraintree() {
     }
     paymentForm.submit();
   }
-
-  // Set up recaptcha
-  expectRecaptcha(() => {
-    const recaptcha = document.getElementById("g-recaptcha");
-    const props = {
-      sitekey: recaptcha.dataset.publicKey,
-      size: "invisible",
-      callback: (token) => {
-        try {
-          captchaInput.value = token;
-          submitForm();
-        } catch (err) {
-          console.error(err);
-        }
-      },
-    };
-
-    grecaptcha.render("g-recaptcha", props);
-  });
 }
 
 function toggle(overlay, input) {

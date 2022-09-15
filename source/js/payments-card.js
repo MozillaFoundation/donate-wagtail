@@ -188,6 +188,16 @@ function setupBraintree() {
           // Trigger browser form validation
           e.preventDefault();
 
+          // Set up recaptcha
+          expectRecaptcha(() => {
+            const recaptcha = document.querySelector(".g-recaptcha");
+            window.grecaptcha
+              .execute(recaptcha.dataset.sitekey, { action: "donate" })
+              .then((token) => {
+                recaptcha.value = token;
+              });
+          });
+
           if (!checkYourDetailsFields()) {
             return false;
           }
@@ -245,33 +255,6 @@ function setupBraintree() {
   }
 
   initHostedFields();
-
-  // Set up recaptcha
-  expectRecaptcha(() => {
-    const recaptcha = document.getElementById("g-recaptcha");
-    const isInvisible = recaptcha.classList.contains("invisible-recaptcha");
-    const props = {
-      sitekey: recaptcha.dataset.publicKey,
-      callback: (token) => {
-        try {
-          captchaInput.value = token;
-          submitButton.removeAttribute("disabled");
-        } catch (err) {
-          console.error(err);
-        }
-      },
-    };
-
-    if (isInvisible) {
-      props.size = "invisible";
-    }
-
-    grecaptcha.render("g-recaptcha", props);
-
-    if (isInvisible) {
-      grecaptcha.execute();
-    }
-  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
