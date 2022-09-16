@@ -129,7 +129,7 @@ numpy==1.19.5
     # via
     #   scipy
     #   wagtail-ab-testing
-oauthlib==3.1.1
+oauthlib==3.2.1
     # via requests-oauthlib
 openpyxl==3.0.9
     # via tablib
