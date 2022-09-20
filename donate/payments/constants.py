@@ -41,7 +41,7 @@ CURRENCIES = {
     },
     'aud': {
         'code': 'aud',
-        'minAmount': 3,
+        'minAmount': 10,
         'symbol': '$',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -58,7 +58,7 @@ CURRENCIES = {
         ],
         'presets': {
             'single': [10, 20, 30, 60],
-            'monthly': [5, 10, 15, 20],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'brl': {
@@ -85,7 +85,7 @@ CURRENCIES = {
     },
     'cad': {
         'code': 'cad',
-        'minAmount': 3,
+        'minAmount': 10,
         'symbol': '$',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -102,7 +102,7 @@ CURRENCIES = {
         ],
         'presets': {
             'single': [10, 20, 30, 60],
-            'monthly': [5, 10, 15, 20],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'chf': {
