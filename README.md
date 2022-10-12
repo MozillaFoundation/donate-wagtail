@@ -1,6 +1,6 @@
 # donate-wagtail
 
-[![Build Status](https://travis-ci.org/mozilla/donate-wagtail.svg?branch=master)](https://travis-ci.org/mozilla/donate-wagtail)
+[![Build Status](https://travis-ci.org/mozilla/donate-wagtail.svg?branch=main)](https://travis-ci.org/mozilla/donate-wagtail)
 
 ## Table of contents
 
@@ -203,7 +203,7 @@ The latest UI source strings are regularly exposed to Pontoon by a Localization 
 - Set the `LOCAL_PATH_TO_L10N_REPO` variable in your `.env` file. Use the absolute path to your copy of the `donate-l10n` repository and include the trailing slash. E.g. `LOCAL_PATH_TO_L10N_REPO=/Users/username/Documents/GitHub/donate-l10n/`
 
 ### Exposing latest source strings:
-- Make sure your local repositories of `donate-l10n` and `donate-wagtail` are matching the latest revision from master.
+- Make sure your local repositories of `donate-l10n` and `donate-wagtail` are matching the latest revision from main.
 - Run `inv docker-makemessages` from your `donate-wagtail` repository.
 - Files should have been updated in your `donate-l10n` repository. You can now create a pull-request.
 
