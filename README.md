@@ -70,7 +70,7 @@ There's a webhook endpoint for processing Braintree events. The events it suppor
 
 The endpoint accepts requests on `/braintree/webhook/` and will verify the payload signature to ensure it's a legitimate event. [Documentation for Braintree webhooks can be found here](https://developers.braintreepayments.com/guides/webhooks/overview).
 
-## Basket
+## Basket (test)
 
 [Basket](https://github.com/mozmeao/basket) is a tool run by MoCo to manage newsletter subscriptions and donations. It's listening for messages (JSON) sent to a SQS queue.
 
