@@ -1,4 +1,4 @@
-<script>
+<script nonce="{{ request.csp_nonce }}">
     document.addEventListener('DOMContentLoaded', function () {
         // Try to send an A/B signal to the wagtail A/B testing framework
         (function tryWagtailABEvent(count) {
