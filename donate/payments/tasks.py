@@ -3,12 +3,13 @@ import time
 from decimal import Decimal
 
 from django.conf import settings
-from django.utils.timezone import datetime
+from django.utils.timezone import datetime, timedelta
 
 import django_rq
 import requests
 import stripe
 
+from ..utility.acoustic.acoustic import acoustic_tx
 from . import constants, gateway
 from .sqs import send_to_sqs
 from .utils import (
@@ -24,6 +25,97 @@ queue = django_rq.get_queue('default')
 BASKET_NEWSLETTER_API_PATH = '/news/subscribe/'
 STRIPE_WEBHOOK_SECRET = settings.STRIPE_WEBHOOK_SECRET
 stripe.api_key = settings.STRIPE_API_KEY
+
+
+# The following 4 functions are used in "process_donation_receipt" to create proper dates and currency amounts
+def mofo_donation_receipt_datetime(ts):
+    # convert unix timestamp to e.g. "Thursday, Feb 11, 2021 at 4:20pm (GMT-08:00)"
+    ds = datetime.utcfromtimestamp(float(ts))
+    return ds - timedelta(hours=8)
+
+
+def mofo_donation_receipt_time_string(ds):
+    """Return the date and time formatted as requested by MoFo"""
+    return ds.strftime("%Y-%m-%d %H:%M")
+
+
+def mofo_donation_receipt_day_of_month(ds):
+    """Return the day of the month"""
+    return ds.strftime("%d")
+
+
+def mofo_donation_receipt_number_format(amount):
+    return f"{float(amount):.2f}"
+
+
+# Fields needed for acoustic API and donation receipt
+DONATION_RECEIPT_FIELDS = [
+    "created",
+    "currency",
+    "donation_amount",
+    "email",
+    "first_name",
+    "last_name",
+    "transaction_id",
+    "card_type",
+    "last_4",
+    "locale",
+    "project",
+    "payment_method"
+]
+
+# map of incoming donation data field names -> email/acoustic field names
+DONATION_RECEIPT_FIELDS_MAP = {
+    "card_type": "cc_type",
+    "last_4": "cc_last_4_digits",
+    "locale": "donation_locale",
+    "payment_method": "payment_source",
+}
+
+LANGUAGE_IDS = settings.LANGUAGE_IDS
+
+
+# Acoustic receipt sending
+def process_donation_receipt(donation_data):
+    # Creating new object by looping through mandatory receipt fields from const dictionary,
+    # and updating them to equal the data being received
+    message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
+    email = message_data.pop('email')
+    # If the donation data did not recieve a payment time, use the current time.
+    created = message_data.get('created', int(time.time()))
+    # The next 3 lines are formatting the date and time for the email
+    created_dt = mofo_donation_receipt_datetime(created)
+    message_data['created'] = mofo_donation_receipt_time_string(created_dt)
+    message_data['day_of_month'] = mofo_donation_receipt_day_of_month(created_dt)
+    recurring = donation_data.get('recurring', False)
+    message_data['payment_frequency'] = 'Recurring' if recurring else 'One-Time'
+    # Getting the amount donated, and formatting it for email
+    donation_amount = message_data.get('donation_amount', donation_data.get('amount'))
+    message_data['donation_amount'] = mofo_donation_receipt_number_format(donation_amount)
+    message_data['friendly_from_name'] = (
+        'MZLA Thunderbird' if message_data['project'] == 'thunderbird' else 'Mozilla'
+    )
+
+    # convert some field names to match Acoustic API email fields by looping through dict
+    # and updating fields that match
+    send_data = {
+        DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
+    }
+    # using the LANGUAGE_IDS const in settings/languages.py,
+    # we are getting the correct localized version of the email
+    # based on the users locality, if there is none, default to English.
+    lang_key = message_data.get('locale', settings.LANGUAGE_CODE)
+    message_id = LANGUAGE_IDS.get(lang_key, settings.DEFAULT_LANGUAGE_ID)
+
+    acoustic_tx.send_mail(
+        email,
+        message_id,
+        send_data,
+        # BCC is set to none because if you set it to anything else, you get a
+        # "BCC is not allowed for this campaign" response.
+        bcc=None,
+        save_to_db=True,
+    )
 
 
 def send_newsletter_subscription_to_basket(data):
@@ -67,6 +159,8 @@ def send_transaction_to_basket(data):
             'conversion_amount': data.get('settlement_amount', None),
         }
     })
+    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+        process_donation_receipt(data)
 
 
 def process_dispute(event):
@@ -82,7 +176,6 @@ def process_dispute(event):
 
 
 class BraintreeWebhookProcessor:
-
     def process(self, notification):
         kind = notification.kind
         if kind == 'subscription_charged_successfully':
@@ -137,7 +230,8 @@ class BraintreeWebhookProcessor:
             }
         else:
             logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
-
+        # Please note that we have 'recurring' set to True so send_transaction_to_basket will
+        # appropriately update the email subject line
         send_transaction_to_basket({
             'last_name': donor_details.get('last_name', ''),
             'first_name': donor_details.get('first_name', ''),
@@ -145,6 +239,7 @@ class BraintreeWebhookProcessor:
             'email': donor_details.get('email', ''),
             'amount': last_tx.amount,
             'currency': last_tx.currency_iso_code.lower(),
+            'recurring': True,
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,
@@ -246,8 +341,7 @@ class StripeWebhookProcessor:
         elif 'glassroomnyc' in metadata:
             project = 'glassroomnyc'
 
-        send_to_sqs({
-            'data': {
+        donation_data = {
                 'event_type': 'donation',
                 'last_name': subscription.customer.sources.data[0]['name'],
                 'email': subscription.customer.email,
@@ -267,7 +361,11 @@ class StripeWebhookProcessor:
                 'net_amount': net_amount,
                 'transaction_fee': transaction_fee
             }
-        })
+        send_to_sqs(
+            {'data': donation_data}
+        )
+        if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+            process_donation_receipt(donation_data)
 
         if settings.MIGRATE_STRIPE_SUBSCRIPTIONS_ENABLED and 'thunderbird' not in metadata:
             MigrateStripeSubscription().process(charge, subscription)

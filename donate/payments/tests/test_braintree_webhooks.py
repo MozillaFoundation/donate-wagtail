@@ -17,7 +17,10 @@ class BraintreeWebhookViewTestCase(TestCase):
         with mock.patch('donate.payments.braintree_webhooks.queue') as mock_queue:
             response = BraintreeWebhookView().form_valid(form)
 
-        mock_queue.enqueue.assert_called_once_with(process_webhook, form.cleaned_data)
+        mock_queue.enqueue.assert_called_once_with(
+            process_webhook, form.cleaned_data,
+            description="Handle Braintree webhook"
+        )
         self.assertEqual(response.status_code, 200)
 
     def test_form_invalid_returns_400(self):

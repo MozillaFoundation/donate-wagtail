@@ -43,6 +43,7 @@
             {% endblock %}
         </div>
         <div class="layout__primary-col">
+
             <div class="donate-form">
                 <header class="donate-form__header">
                     <h1 class="donate-form__heading heading heading--primary">{{ page.title }}</h1>
@@ -53,6 +54,24 @@
                 {% include "fragments/messages.html" %}
                 {% include "fragments/donate_form.html" %}
             </div>
+
+            <div class="donatation-pending hidden">
+                <header class="donate-form__header">
+                    <h1 class="donate-form__heading heading heading--primary">
+                        {% trans "Your donation is being processed..." %}
+                    </h1>
+                </header>
+                
+                <div class="donate-form__content donate-form__content--loading">
+                    <div class="loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div>{% trans "One moment while we get all the details right!" %}</div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

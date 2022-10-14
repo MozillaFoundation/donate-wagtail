@@ -30,12 +30,12 @@
 
                 <div class="donation-update" data-amount-actions>
                     <form class="donation-update__container" id="js-update-donation-amount-form" data-currency="{{ currency_info.code }}" data-locale="{% get_locale %}">
-                        <div class="donation-update__form-item form-item">
+                        <div class="donation-update__form-item form-item donation-update__amount-input">
                             <label class="donation-update__label form-item__label" for="donation-update">{% trans "Donation Amount" %}</label>
                             <div class="donation-update__currency-symbol">{% get_localized_currency_symbol currency_info.code %}</div>
                             <input class="donation-update__input form-item__input" id="js-update-donation-value" type="number" name="donation-update" value="{{ form.amount.value }}" step="1" min="{{ currency_info.minAmount }}" max="10000000" required>
                         </div>
-                        <div class="form-item">
+                        <div class="form-item donation-update__confirm-button">
                             <button class="donation-update__action button button--primary button--large" id="js-update-button">{% trans 'Confirm' %}</button>
                         </div>
                     </form>
@@ -55,10 +55,6 @@
                                 {% for error in form.non_field_errors %}
                                 <div class="form__errors">{{ error }}</div>
                                 {% endfor %}
-                            {% elif form.errors %}
-                                <div class="form__errors">
-                                    {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
-                                </div>
                             {% elif gateway_address_errors %}
                                 <div class="form__errors">
                                     <p>{% trans "We were unable to take payment because the payment processor reported an error with your address information:" %}</p>
@@ -67,15 +63,19 @@
                                     {% endfor %}
                                     {% trans "Please correct these errors and try again." %}
                                 </div>
+                            {% else %}
+                                <div id="your-details-form-error" class="form__errors hidden">
+                                    {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
+                                </div>
                             {% endif %}
 
-                            {% render_form_field form.email %}
-                            {% render_form_field form.first_name %}
-                            {% render_form_field form.last_name %}
-                            {% render_form_field form.address_line_1 %}
+                            {% render_form_field form.email front_end_validated=True %}
+                            {% render_form_field form.first_name front_end_validated=True %}
+                            {% render_form_field form.last_name front_end_validated=True %}
+                            {% render_form_field form.address_line_1 front_end_validated=True %}
                             <div class="form__group form__group--city-post">
-                                {% render_form_field form.post_code %}
-                                {% render_form_field form.city %}
+                                {% render_form_field form.post_code css_classes="post-code-container" front_end_validated=True %}
+                                {% render_form_field form.city front_end_validated=True %}
                             </div>
                             {% render_form_field form.country %}
 
@@ -132,9 +132,18 @@
 
                         </div>
 
-                        <div class="form__section form__section--actions form__section--bottom-margin">
+                        {% if use_recaptcha %}
+                            {% if recaptcha_site_key_checkbox %}
+                                <div id="g-recaptcha" class="donate-form__recaptcha checkbox-recaptcha" data-public-key="{{ recaptcha_site_key_checkbox }}"></div>
+                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                            {% elif recaptcha_site_key %}
+                                <div id="g-recaptcha" class="invisible-recaptcha" data-public-key="{{ recaptcha_site_key }}"></div>
+                                <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+                            {% endif %}
+                        {% endif %}
 
-                            <button value="donate" class="button button--submit-donation button--large button--full button--primary button--icon" id="payments__payment-submit" disabled>
+                        <div class="form__section form__section--actions form__section--bottom-margin">
+                            <button value="donate" class="button button--submit-donation button--large button--full button--primary button--icon" id="payments__payment-submit" {% if use_recaptcha %}disabled{% endif %}>
                                 <svg class="button__icon" width="24" height="24">
                                     <use xlink:href="#padlock"></use>
                                 </svg>
@@ -147,7 +156,6 @@
                                     {% endif %}
                                 </div>
                             </button>
-
                         </div>
 
                         <footer class="donate__footer">
@@ -172,16 +180,10 @@
         </div>
     </div>
 </div>
-{% if recaptcha_site_key %}
-<div id="g-recaptcha" data-public-key="{{ recaptcha_site_key }}"></div>
-{% endif %}
 {% endblock %}
 
 
 {% block extra_js %}
     {{ braintree_params|json_script:"payments__braintree-params" }}
     <script src="{% static '_js/payments-card.compiled.js' %}"></script>
-    {% if recaptcha_site_key %}
-    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
-    {% endif %}
 {% endblock %}
