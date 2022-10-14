@@ -4,18 +4,17 @@
 {% block meta_tags %}
     {% wagtail_site as current_site %}
 
+    {# twitter card tags #}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
-    <meta name="twitter:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
-    <meta name="twitter:image" content="{% static '_images/og-image_2x.png' %}">
+    <meta name="twitter:creator" content="@Mozilla" />
 
-    {# facebook opengraph tags #}
+    {# opengraph tags #}
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
     <meta property="og:title" content="{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | {% trans 'Donate to Mozilla' context 'Page title' %}">
     <meta property="og:site_name" content="{% if current_site.site_name %}{% trans 'Donate to Mozilla' context 'Page title' %}{% endif %}">
     <meta property="og:description" content="{% if page.search_description %}{{ page.search_description }}{% else %}{{ page.intro|striptags }}{% endif %}">
-    <meta property="og:image" content="{% static '_images/og-image_2x.png' %}">
+    <meta property="og:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static '_images/og-image_2x.png' %}">
 {% endblock meta_tags %}
 
 {% block body_top %}
@@ -43,10 +42,15 @@
     </nav>
 {% endblock navigation %}
 
+
+
 {% block header %}
     <div class="header">
         <div class="header__container">
 
+            {% comment %}
+
+            {# Hiding Elements instead of deleting for 1491 #}
             <div class="header__menu-toggle">
                 <span class="header__menu-label">{% trans "Menu" %}</span>
                 <button class="burger" data-menu-toggle aria-haspopup="true" aria-label="Menu toggle">
@@ -55,6 +59,7 @@
                     <div class="burger__bar burger__bar--bottom"></div>
                 </button>
             </div>
+            {% endcomment %}
 
             <a class="header__logo-link" href="/">
                 <img class="header__logo header__logo--mobile" src="{% static '_images/mozilla-logo-m.svg' %}" alt="Mozilla">
@@ -68,6 +73,8 @@
 {% block footer %}
 <div class="footer">
     <div class="footer__container layout">
+        {% comment %}
+        {# Hiding Elements instead of deleting for 1491 #}
         <div class="footer__primary-content layout__container">
             {% block footerSignup %}
                 <div class="footer__newsletter newsletter-signup layout__half-col">
@@ -158,6 +165,8 @@
                 </div>
             </div>
         </div>
+        {% endcomment %}
+
         <div class="footer__info layout__container">
             <div class="footer__logo footer__logo--desktop layout__half-col">
                 {% block footer_logo %}
