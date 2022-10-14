@@ -134,6 +134,15 @@ You can test the code using the `inv test` command. This may fail for four reaso
 In case of (1) or (2), you can run `inv npm "run fix"`, which should fix any linting erros for JS(X) and (S)CSS. We do not currently have automated fixing in place for Python errors.
 
 
+### Integration tests
+
+Integration testing is done using [Playwright](https://playwright.dev/), with the integration tests found in ./tests/integration.spec.js
+
+You can run these tests locally by running a one-time `npm run playwright:install` after which you should be able to run `npm run playwright` to run the visual tests.
+
+Note that this is still a work in progress.
+
+
 ### Debugging the code
 
 Ensure you have the official [python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for Visual Studio Code installed. It provides the debugging type required for the run configuration to work.
@@ -159,6 +168,11 @@ Ensure you have the official [python extension](https://marketplace.visualstudio
      executed, the debugger will pause code execution so you can inspect the call stack and
      variables. You can either resume code execution or manage code execution manually by stepping
      into the next pieces of code, or over them.
+
+Note that sometimes, bugs only show when the `DEBUG` environment variable is set to `False`, as this turns off some quality-of-life improvements for local development that are not used on production. In order for the code to work properly with `DEBUG=False`, remember to also run through the production bootstrapping steps:
+
+- Make sure to have run `npm run build` so that the front end gets built without debug affordances
+- Make sure to run `inv migrate collectstatic` as only the official static asset dir will be used by Django when not running in debug mode
 
 ---
 

@@ -80,3 +80,9 @@ h6 {
 small {
   @include font-size(xxs);
 }
+
+.minimum {
+  @include font-size(xxs);
+  color: $color--grey-60;
+  margin-bottom: 0;
+}

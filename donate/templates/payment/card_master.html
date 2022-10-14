@@ -55,10 +55,6 @@
                                 {% for error in form.non_field_errors %}
                                 <div class="form__errors">{{ error }}</div>
                                 {% endfor %}
-                            {% elif form.errors %}
-                                <div class="form__errors">
-                                    {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
-                                </div>
                             {% elif gateway_address_errors %}
                                 <div class="form__errors">
                                     <p>{% trans "We were unable to take payment because the payment processor reported an error with your address information:" %}</p>
@@ -67,15 +63,19 @@
                                     {% endfor %}
                                     {% trans "Please correct these errors and try again." %}
                                 </div>
+                            {% else %}
+                                <div id="your-details-form-error" class="form__errors hidden">
+                                    {% trans "There were some errors with your form. Please amend the fields highlighted below." %}
+                                </div>
                             {% endif %}
 
-                            {% render_form_field form.email %}
-                            {% render_form_field form.first_name %}
-                            {% render_form_field form.last_name %}
-                            {% render_form_field form.address_line_1 %}
+                            {% render_form_field form.email front_end_validated=True %}
+                            {% render_form_field form.first_name front_end_validated=True %}
+                            {% render_form_field form.last_name front_end_validated=True %}
+                            {% render_form_field form.address_line_1 front_end_validated=True %}
                             <div class="form__group form__group--city-post">
-                                {% render_form_field form.post_code css_classes="post-code-container" %}
-                                {% render_form_field form.city %}
+                                {% render_form_field form.post_code css_classes="post-code-container" front_end_validated=True %}
+                                {% render_form_field form.city front_end_validated=True %}
                             </div>
                             {% render_form_field form.country %}
 

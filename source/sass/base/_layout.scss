@@ -39,7 +39,8 @@
       max-width: 100%;
     }
 
-    .app--404 & {
+    .app--404 &,
+    .app--403 & {
       flex-direction: column-reverse;
       max-width: 800px;
 

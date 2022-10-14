@@ -17,7 +17,7 @@ from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 
-from donate.core.utils import queue_ga_event
+from donate.core.utils import queue_ga_event, queue_data_layer_event
 from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
@@ -110,6 +110,32 @@ class BraintreePaymentMixin:
             }
         ])
         queue_ga_event(self.request, ['ecommerce:send'])
+
+    def queue_datalayer_transaction(self, id, currency, amount, frequency, payment_method="credit card"):
+        queue_data_layer_event(
+            self.request,
+            [
+                {
+                    "event": "purchase",
+                    "ecommerce": {
+                        "currency": currency,
+                        "value": str(amount),
+                        "transaction_id": id,
+                        "items": [
+                            {
+                                "item_name": frequency,
+                                "currency": currency,
+                                "index": 0,
+                                "item_brand": payment_method,
+                                "item_category": "donation",
+                                "price": str(amount),
+                                "quantity": 1,
+                            }
+                        ],
+                    },
+                }
+            ],
+        )
 
 
 class CardPaymentView(BraintreePaymentMixin, FormView):
@@ -299,6 +325,13 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                 name='Card Donation',
                 category='one-time'
             )
+            self.queue_datalayer_transaction(
+                id=result.transaction.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                frequency="single donation",
+                payment_method='credit card'
+            )
             queue_ga_event(self.request, ['send', 'event', {
                     'eventCategory': 'Donation',
                     'eventAction': 'Card',
@@ -355,6 +388,13 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Monthly',
                 }
             ])
+            self.queue_datalayer_transaction(
+                id=result.subscription.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                frequency="regular donation",
+                payment_method='credit card'
+            )
             # Bypass self.handle_successful_transaction, as this is not a transaction
             # but a subscription: we won't be posting anything to basket immediately,
             # instead relying on the webhook over in the 'process_webhook' task.
@@ -440,6 +480,13 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                     name='PayPal Donation',
                     category='one-time'
                 )
+                self.queue_datalayer_transaction(
+                    id=result.transaction.id,
+                    currency=self.currency,
+                    amount=form.cleaned_data['amount'],
+                    frequency='single donation',
+                    payment_method='paypal'
+                )
                 queue_ga_event(self.request, ['send', 'event', {
                         'eventCategory': 'Donation',
                         'eventAction': 'PayPal',
@@ -486,6 +533,13 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                         'eventLabel': 'Monthly',
                     }
                 ])
+                self.queue_datalayer_transaction(
+                    id=result.subscription.id,
+                    currency=self.currency,
+                    amount=form.cleaned_data['amount'],
+                    frequency='regular donation',
+                    payment_method='paypal'
+                )
 
         if result.is_success:
             return self.handle_successful_transaction(
