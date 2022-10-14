@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block head_addenda %}
-    <script type="text/javascript">
+    <script nonce="{{request.csp_nonce}}" type="text/javascript">
     function hookupFormSubmitButton() {
         try {
             const recaptcha = document.getElementById("g-recaptcha");
