@@ -13,6 +13,7 @@ from .thunderbird import ThunderbirdOverrides
 
 class Production(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Sentry, Configuration):
     DEBUG = False
+    SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A1ez"
 
     @classmethod
     def pre_setup(cls):
@@ -34,7 +35,7 @@ class ThunderbirdProduction(Production, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Production.INSTALLED_APPS
     FRONTEND = ThunderbirdOverrides.FRONTEND
     ENABLE_THUNDERBIRD_REDIRECT = False
-    SALESFORCE_CASE_RECORD_TYPE_ID = "0124O000000tDBO"
+    SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A2Pl"
     FRAUD_SITE_ID = 'tbird'
 
     @property

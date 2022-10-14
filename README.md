@@ -1,6 +1,6 @@
 # donate-wagtail
 
-[![Build Status](https://travis-ci.org/mozilla/donate-wagtail.svg?branch=master)](https://travis-ci.org/mozilla/donate-wagtail)
+[![Build Status](https://travis-ci.org/mozilla/donate-wagtail.svg?branch=main)](https://travis-ci.org/mozilla/donate-wagtail)
 
 ## Table of contents
 
@@ -21,6 +21,8 @@
 - Run `inv new-env`: it's building docker images, installing dependencies, setting up a populated DB, and configuring your environment variables.
 
 When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docker-compose down`. If you want a new dev environment, stop your containers and run `inv new_env`.
+
+Secrets necessary to enable several features in a local docker development environment can be found in the 1pass, Engagement Vault, in a Note called "donate-wagtail docker .env file".  Copy the contents of this file and replace the .env file that came with the repo.  Do not distrubute the .env file.  
 
 It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
 
@@ -43,7 +45,7 @@ More information on how to use Docker for local dev is available in the [Local d
 | ThunderbirdProduction | Production configuration for Thunderbird donation configurations.                                                  |
 | ThunderbirdReviewApp  | Review App configuration for Thunderbird donation configurations.                                                  |
 
-
+To set the Thunderbird settings in local development, simply change your `DJANGO_CONFIGURATION` in your .env file to be one of the choices above (For Thunderbird, use `ThunderbirdDevelopment`)
 
 
 ## Braintree configuration
@@ -201,7 +203,7 @@ The latest UI source strings are regularly exposed to Pontoon by a Localization 
 - Set the `LOCAL_PATH_TO_L10N_REPO` variable in your `.env` file. Use the absolute path to your copy of the `donate-l10n` repository and include the trailing slash. E.g. `LOCAL_PATH_TO_L10N_REPO=/Users/username/Documents/GitHub/donate-l10n/`
 
 ### Exposing latest source strings:
-- Make sure your local repositories of `donate-l10n` and `donate-wagtail` are matching the latest revision from master.
+- Make sure your local repositories of `donate-l10n` and `donate-wagtail` are matching the latest revision from main.
 - Run `inv docker-makemessages` from your `donate-wagtail` repository.
 - Files should have been updated in your `donate-l10n` repository. You can now create a pull-request.
 

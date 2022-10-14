@@ -56,13 +56,12 @@ DONATION_RECEIPT_FIELDS = [
     "email",
     "first_name",
     "last_name",
-    "recurring",
     "transaction_id",
     "card_type",
     "last_4",
     "locale",
-    "service",
     "project",
+    "payment_method"
 ]
 
 # map of incoming donation data field names -> email/acoustic field names
@@ -70,20 +69,10 @@ DONATION_RECEIPT_FIELDS_MAP = {
     "card_type": "cc_type",
     "last_4": "cc_last_4_digits",
     "locale": "donation_locale",
-    "service": "payment_source",
+    "payment_method": "payment_source",
 }
 
-# These are compared with the donating users locale, to tell the Acoustic API what language to send the email
-LANGUAGE_IDS = {
-    "ja": "1621701",
-    "pl": "1621706",
-    "pt-BR": "1621708",
-    "cs": "1621689",
-    "de": "1621691",
-    "es": "1621695",
-    "fr": "1621697",
-    "en-US": "1621694",
-}
+LANGUAGE_IDS = settings.LANGUAGE_IDS
 
 
 # Acoustic receipt sending
@@ -91,30 +80,33 @@ def process_donation_receipt(donation_data):
     # Creating new object by looping through mandatory receipt fields from const dictionary,
     # and updating them to equal the data being received
     message_data = {k: v for k, v in donation_data.items() if k in DONATION_RECEIPT_FIELDS}
-    email = message_data.pop("email")
+    email = message_data.pop('email')
     # If the donation data did not recieve a payment time, use the current time.
-    created = message_data.get("created", int(time.time()))
+    created = message_data.get('created', int(time.time()))
     # The next 3 lines are formatting the date and time for the email
     created_dt = mofo_donation_receipt_datetime(created)
-    message_data["created"] = mofo_donation_receipt_time_string(created_dt)
-    message_data["day_of_month"] = mofo_donation_receipt_day_of_month(created_dt)
-    recurring = message_data.get("recurring", False)
-    message_data["payment_frequency"] = "Recurring" if recurring else "One-Time"
+    message_data['created'] = mofo_donation_receipt_time_string(created_dt)
+    message_data['day_of_month'] = mofo_donation_receipt_day_of_month(created_dt)
+    recurring = donation_data.get('recurring', False)
+    message_data['payment_frequency'] = 'Recurring' if recurring else 'One-Time'
     # Getting the amount donated, and formatting it for email
-    donation_amount = message_data.get("donation_amount", donation_data.get('amount'))
-    message_data["donation_amount"] = mofo_donation_receipt_number_format(donation_amount)
-    message_data["friendly_from_name"] = (
-        "MZLA Thunderbird" if message_data["project"] == "thunderbird" else "Mozilla"
+    donation_amount = message_data.get('donation_amount', donation_data.get('amount'))
+    message_data['donation_amount'] = mofo_donation_receipt_number_format(donation_amount)
+    message_data['friendly_from_name'] = (
+        'MZLA Thunderbird' if message_data['project'] == 'thunderbird' else 'Mozilla'
     )
 
-    # convert some field names to match Acoustic API by looping through dict
+    # convert some field names to match Acoustic API email fields by looping through dict
     # and updating fields that match
     send_data = {
         DONATION_RECEIPT_FIELDS_MAP.get(k, k): v for k, v in message_data.items()
     }
-    # using the LANGUAGE_IDS const, we are getting the correct localized version of the email
+    # using the LANGUAGE_IDS const in settings/languages.py,
+    # we are getting the correct localized version of the email
     # based on the users locality, if there is none, default to English.
-    message_id = LANGUAGE_IDS.get(LANGUAGE_IDS[message_data["locale"]], LANGUAGE_IDS["en-US"])
+    lang_key = message_data.get('locale', settings.LANGUAGE_CODE)
+    message_id = LANGUAGE_IDS.get(lang_key, settings.DEFAULT_LANGUAGE_ID)
+
     acoustic_tx.send_mail(
         email,
         message_id,
@@ -145,8 +137,6 @@ def send_newsletter_subscription_to_basket(data):
 
 
 def send_transaction_to_basket(data):
-    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
-        process_donation_receipt(data)
     send_to_sqs({
         'data': {
             'event_type': 'donation',
@@ -169,6 +159,8 @@ def send_transaction_to_basket(data):
             'conversion_amount': data.get('settlement_amount', None),
         }
     })
+    if settings.DONATION_RECEIPT_METHOD == 'DONATE':
+        process_donation_receipt(data)
 
 
 def process_dispute(event):
@@ -238,6 +230,8 @@ class BraintreeWebhookProcessor:
             }
         else:
             logger.error(f"Unexpected payment type on subscription webhook: {last_tx.payment_instrument_type}")
+        # Please note that we have 'recurring' set to True so send_transaction_to_basket will
+        # appropriately update the email subject line
         send_transaction_to_basket({
             'last_name': donor_details.get('last_name', ''),
             'first_name': donor_details.get('first_name', ''),
@@ -245,6 +239,7 @@ class BraintreeWebhookProcessor:
             'email': donor_details.get('email', ''),
             'amount': last_tx.amount,
             'currency': last_tx.currency_iso_code.lower(),
+            'recurring': True,
             'payment_frequency': constants.FREQUENCY_MONTHLY,
             'payment_method': constants.METHOD_PAYPAL if is_paypal else constants.METHOD_CARD,
             'transaction_id': last_tx.id,

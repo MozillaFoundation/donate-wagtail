@@ -1,15 +1,17 @@
 import logging
-
+import sched
+from time import time, sleep
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
 from lxml import etree
-from requests import ConnectionError
+from requests import ConnectionError, ReadTimeout
 from silverpop.api import Silverpop, SilverpopResponseException
 
 
 logger = logging.getLogger(__name__)
 XML_HEADER = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+schedule = sched.scheduler(time, sleep)
 
 
 def process_response(resp):
@@ -33,6 +35,7 @@ def process_tx_response(resp):
     if errors:
         for e in errors:
             if e.text:
+                logger.error(f'Error while sending donation receipt to Acoustic: {e.text}')
                 raise SilverpopResponseException(e.text)
 
     return response
@@ -106,7 +109,8 @@ class AcousticTransact(Silverpop):
         self.api_xt_endpoint = self.api_xt_endpoint % server_number
         super().__init__(client_id, client_secret, refresh_token, server_number)
 
-    def _call_xt(self, xml):
+    def attempt_send_mail(self, to, campaign_id, fields, bcc, save_to_db):
+        xml = transact_xml(to, campaign_id, fields, bcc, save_to_db)
         logger.debug("Request: %s" % xml)
         response = self.session.post(
             self.api_xt_endpoint, data=force_bytes(xml), timeout=10,
@@ -115,8 +119,34 @@ class AcousticTransact(Silverpop):
 
     def send_mail(self, to, campaign_id, fields=None, bcc=None, save_to_db=False):
         # If we are testing, do not send emails
-        if not settings.TESTING:
-            self._call_xt(transact_xml(to, campaign_id, fields, bcc, save_to_db))
+        if settings.TESTING:
+            return
+
+        send_retries = 3
+        send_mail_immediately = 0  # seconds
+        send_mail_delay = 10  # seconds
+        schedule_priority = 1
+        call_args = (to, campaign_id, fields, bcc, save_to_db)
+
+        for attempt in range(send_retries):
+            if attempt == 0:
+                schedule.enter(send_mail_immediately, schedule_priority, self.attempt_send_mail, call_args)
+            else:
+                schedule.enter(send_mail_delay, schedule_priority, self.attempt_send_mail, call_args)
+            try:
+                # explicitly block, just in case the implicit behaviour changes in the future
+                schedule.run(blocking=True)
+                break
+            except (ConnectionError, ReadTimeout) as err:
+                if attempt != 2:
+                    logger.error("Error connecting to Acoustic while sending email receipt. Trying again.")
+                else:
+                    logger.error(
+                        f"Could not send email receipt. Unable to connect to Acoustic after {send_retries} retries."
+                    )
+                    logger.error(f"Error: {err}")
+
+                continue
 
 
 acoustic_tx = AcousticTransact(
