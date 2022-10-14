@@ -53,7 +53,12 @@ class DonationPage(Page):
 
     @cached_property
     def currencies(self):
-        return deepcopy(constants.CURRENCIES)
+        currencies = deepcopy(constants.CURRENCIES)
+        # Re-order currency `single` and `monthly` amounts
+        for currency in currencies:
+            currencies[currency]['presets']['single'].sort()
+            currencies[currency]['presets']['monthly'].sort()
+        return currencies
 
     def get_initial_currency(self, request):
         # Query argument takes first preference
@@ -90,9 +95,7 @@ class DonationPage(Page):
                 ]
                 if amount
             ]
-        except InvalidOperation:
-            return initial_currency_info
-        except ValueError:
+        except (InvalidOperation, ValueError):
             return initial_currency_info
 
         if not custom_presets:
@@ -103,9 +106,7 @@ class DonationPage(Page):
 
         sorting = request.GET.get('sort', False)
 
-        if sorting == 'true':
-            custom_presets.sort()
-        elif sorting == 'reverse':
+        if sorting == 'reverse':
             custom_presets.sort(reverse=True)
 
         initial_currency_info['presets'][initial_frequency] = custom_presets[:4]
@@ -127,6 +128,9 @@ class DonationPage(Page):
         If not, the default initial amount is used
         """
         amount = request.GET.get('amount', False)
+
+        if amount == 'other':
+            return 'other'
 
         if amount is False or 'e' in amount:
             return self.default_initial_amount(initial_currency_info, initial_frequency)
@@ -158,6 +162,7 @@ class DonationPage(Page):
         ctx = super().get_context(request)
         values = self.get_initial_values(request)
         ctx.update({
+            'use_paypal': settings.USE_PAYPAL,
             'currencies': self.currencies,
             'initial_currency_info': values['currency_info'],
             'initial_frequency': values['frequency'],
@@ -171,7 +176,7 @@ class DonationPage(Page):
                 }
             ),
             'currency_form': CurrencyForm(initial={'currency': values['currency']}),
-            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.RECAPTCHA_ENABLED else None,
+            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.USE_RECAPTCHA else None,
         })
         return ctx
 
@@ -318,6 +323,6 @@ class ContributorSupportPage(Page):
         ctx.update({
             'orgid': settings.SALESFORCE_ORGID,
             'record_type_id': settings.SALESFORCE_CASE_RECORD_TYPE_ID,
-            'salesforce_form_url': settings.SALESFORCE_FORM_URL,
+            'help_recaptcha_site_key': settings.RECAPTCHA_SITE_KEY_REGULAR if settings.USE_RECAPTCHA else None,
         })
         return ctx

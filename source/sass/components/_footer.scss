@@ -111,7 +111,6 @@
   &__legal-license {
     @include font-size(xxs);
     line-height: 1.5;
-    border-top: 1px solid $color--white;
     padding-top: $gutter;
 
     a {

@@ -20,7 +20,7 @@ METHODS = (METHOD_CARD, METHOD_PAYPAL)
 CURRENCIES = {
     'usd': {
         'code': 'usd',
-        'minAmount': 2,
+        'minAmount': 10,
         'symbol': '$',
         'paypalFixedFee': {
             'macro': 0.30,
@@ -35,13 +35,13 @@ CURRENCIES = {
             {'min': 15, 'value': 3},
         ],
         'presets': {
-            'single': [85, 35, 15, 5],
-            'monthly': [20, 10, 5, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'aud': {
         'code': 'aud',
-        'minAmount': 3,
+        'minAmount': 10,
         'symbol': '$',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -57,8 +57,8 @@ CURRENCIES = {
             {'min': 22, 'value': 4},
         ],
         'presets': {
-            'single': [30, 15, 7, 4],
-            'monthly': [15, 7, 4, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'brl': {
@@ -85,7 +85,7 @@ CURRENCIES = {
     },
     'cad': {
         'code': 'cad',
-        'minAmount': 3,
+        'minAmount': 10,
         'symbol': '$',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -101,8 +101,8 @@ CURRENCIES = {
             {'min': 20, 'value': 4},
         ],
         'presets': {
-            'single': [65, 30, 15, 4],
-            'monthly': [10, 7, 4, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'chf': {
@@ -123,8 +123,8 @@ CURRENCIES = {
             {'min': 15, 'value': 3},
         ],
         'presets': {
-            'single': [20, 10, 5, 3],
-            'monthly': [10, 5, 3, 2]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20],
         }
     },
     'czk': {
@@ -173,7 +173,7 @@ CURRENCIES = {
     },
     'eur': {
         'code': 'eur',
-        'minAmount': 2,
+        'minAmount': 10,
         'symbol': '€',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -188,13 +188,13 @@ CURRENCIES = {
             {'min': 32, 'value': 5},
         ],
         'presets': {
-            'single': [85, 35, 15, 5],
-            'monthly': [20, 10, 5, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [10, 15, 20, 25],
         }
     },
     'gbp': {
         'code': 'gbp',
-        'minAmount': 2,
+        'minAmount': 10,
         'symbol': '£',
         'disabled': ['amex'],
         'paypalFixedFee': {
@@ -210,8 +210,8 @@ CURRENCIES = {
             {'min': 12, 'value': 3},
         ],
         'presets': {
-            'single': [20, 10, 5, 3],
-            'monthly': [10, 5, 3, 2]
+            'single': [10, 20, 30, 60],
+            'monthly': [10, 15, 20, 25]
         }
     },
     'hkd': {
@@ -362,8 +362,8 @@ CURRENCIES = {
             {'min': 23, 'value': 4},
         ],
         'presets': {
-            'single': [40, 20, 10, 4],
-            'monthly': [20, 10, 8, 3]
+            'single': [10, 20, 30, 60],
+            'monthly': [5, 10, 15, 20]
         }
     },
     'pln': {

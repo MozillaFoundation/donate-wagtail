@@ -10,8 +10,7 @@
 {% block buttons %}
     {% trans "I donated to @mozthunderbird today to #freetheinbox. Join me to support communication privacy." as twitter_text context "Used as a tweet" %}
     {% trans "I donated to Thunderbird today" as email_subject context "Email subject line" %}
-    {% get_current_language as LANGUAGE_CODE %}
-    {% with page_link="https://donate.mozilla.org/"|add:LANGUAGE_CODE|add:"/thunderbird/"%}
+    {% with page_link="https://give.thunderbird.net" %}
 
     <a class="button button--outline button--icon" href="https://www.facebook.com/sharer/sharer.php?u={{ page_link }}" title="{% trans 'Share on Facebook' %}">
         <svg class="button__icon button__icon--facebook" width="16" height="16">

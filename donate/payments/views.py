@@ -1,7 +1,6 @@
+import json
 import logging
-from urllib import parse
 from sentry_sdk.integrations.django import ignore_logger
-import requests
 
 from django.conf import settings
 from django.contrib import messages
@@ -13,10 +12,12 @@ from django.utils.translation import gettext as _
 from django.views.generic import FormView, TemplateView
 
 from braintree import ErrorCodes
+import mailchimp_marketing as MailchimpMarketing
+from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 
-from donate.core.utils import queue_ga_event
+from donate.core.utils import queue_ga_event, queue_data_layer_event
 from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
@@ -102,6 +103,32 @@ class BraintreePaymentMixin:
         ])
         queue_ga_event(self.request, ['ecommerce:send'])
 
+    def queue_datalayer_transaction(self, id, currency, amount, frequency, payment_method="credit card"):
+        queue_data_layer_event(
+            self.request,
+            [
+                {
+                    "event": "purchase",
+                    "ecommerce": {
+                        "currency": currency,
+                        "value": str(amount),
+                        "transaction_id": id,
+                        "items": [
+                            {
+                                "item_name": frequency,
+                                "currency": currency,
+                                "index": 0,
+                                "item_brand": payment_method,
+                                "item_category": "donation",
+                                "price": str(amount),
+                                "quantity": 1,
+                            }
+                        ],
+                    },
+                }
+            ],
+        )
+
 
 class CardPaymentView(BraintreePaymentMixin, FormView):
     form_class = BraintreeCardPaymentForm
@@ -137,8 +164,18 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'braintree_params': settings.BRAINTREE_PARAMS,
             'payment_frequency': self.payment_frequency,
             'gateway_address_errors': getattr(self, 'gateway_address_errors', None),
-            'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.RECAPTCHA_ENABLED else None,
         })
+
+        if settings.USE_RECAPTCHA:
+            ctx.update({'use_recaptcha': True})
+
+            if settings.USE_CHECKBOX_RECAPTCHA_FOR_CC:
+                site_key = settings.RECAPTCHA_SITE_KEY_CHECKBOX
+                ctx.update({'recaptcha_site_key_checkbox': site_key})
+            else:
+                site_key = settings.RECAPTCHA_SITE_KEY
+                ctx.update({'recaptcha_site_key': site_key})
+
         return ctx
 
     def get_address_info(self, form_data):
@@ -268,6 +305,13 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                 name='Card Donation',
                 category='one-time'
             )
+            self.queue_datalayer_transaction(
+                id=result.transaction.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                frequency="single donation",
+                payment_method='credit card'
+            )
             queue_ga_event(self.request, ['send', 'event', {
                     'eventCategory': 'Donation',
                     'eventAction': 'Card',
@@ -305,7 +349,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
             'merchant_account_id': get_merchant_account_id_for_card(self.currency),
             'payment_method_token': payment_method.token,
             'price': form.cleaned_data['amount'],
-            'first_billing_date': now().date(),
+            'options': {
+                "start_immediately": True
+            }
         })
 
         if result.is_success:
@@ -322,6 +368,13 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
                     'eventLabel': 'Monthly',
                 }
             ])
+            self.queue_datalayer_transaction(
+                id=result.subscription.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                frequency="regular donation",
+                payment_method='credit card'
+            )
             # Bypass self.handle_successful_transaction, as this is not a transaction
             # but a subscription: we won't be posting anything to basket immediately,
             # instead relying on the webhook over in the 'process_webhook' task.
@@ -407,6 +460,13 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                     name='PayPal Donation',
                     category='one-time'
                 )
+                self.queue_datalayer_transaction(
+                    id=result.transaction.id,
+                    currency=self.currency,
+                    amount=form.cleaned_data['amount'],
+                    frequency='single donation',
+                    payment_method='paypal'
+                )
                 queue_ga_event(self.request, ['send', 'event', {
                         'eventCategory': 'Donation',
                         'eventAction': 'PayPal',
@@ -434,7 +494,9 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                 ),
                 'payment_method_token': payment_method.token,
                 'price': form.cleaned_data['amount'],
-                'first_billing_date': now().date(),
+                'options': {
+                    "start_immediately": True
+                }
             })
             send_data_to_basket = False
             if result.is_success:
@@ -451,6 +513,13 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
                         'eventLabel': 'Monthly',
                     }
                 ])
+                self.queue_datalayer_transaction(
+                    id=result.subscription.id,
+                    currency=self.currency,
+                    amount=form.cleaned_data['amount'],
+                    frequency='regular donation',
+                    payment_method='paypal'
+                )
 
         if result.is_success:
             return self.handle_successful_transaction(
@@ -585,7 +654,7 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
         currency = form.cleaned_data['currency']
 
         # Create a subcription against the payment method
-        start_date = now().date() + relativedelta(months=1)     # Start one month from today
+        start_date = now().date() + relativedelta(months=1)     # Start recurring payment one month from today
         result = gateway.subscription.create({
             'plan_id': get_plan_id(currency),
             'merchant_account_id': get_merchant_account_id_for_card(currency),
@@ -692,7 +761,7 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             return self.process_braintree_error_result(result, form)
 
         # Create a subscription against the payment method
-        start_date = now().date() + relativedelta(months=1)     # Start one month from today
+        start_date = now().date() + relativedelta(months=1)     # Start recurring payment one month from today
         result = gateway.subscription.create({
             'plan_id': get_plan_id(self.currency),
             'merchant_account_id': get_merchant_account_id_for_paypal(
@@ -782,16 +851,30 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
     def form_valid(self, form, send_data_to_basket=True):
         data = form.cleaned_data.copy()
 
-        if settings.POST_DONATE_NEWSLETTER_URL is not None:
-            newsletter_url = settings.POST_DONATE_NEWSLETTER_URL
-            data = parse.urlencode({
-                'EMAIL': data['email']
-            }).encode()
-            res = requests.post(newsletter_url, data=data)
-            if not res.ok:
+        if (
+            settings.THUNDERBIRD_MC_API_KEY is not None
+            and settings.THUNDERBIRD_MC_SERVER
+            and settings.THUNDERBIRD_MC_LIST_ID
+        ):
+            client = MailchimpMarketing.Client()
+            client.set_config({
+                "api_key": settings.THUNDERBIRD_MC_API_KEY,
+                "server": settings.THUNDERBIRD_MC_SERVER,
+            })
+            try:
+                client.lists.add_list_member(settings.THUNDERBIRD_MC_LIST_ID, {
+                    "email_address": data['email'],
+                    "status": "subscribed"
+                })
+            except ApiClientError as error:
+                error = json.loads(error.text)
+                if 'title' in error and error['title'] == 'Member Exists':
+                    # If the member exists, proceed as normal.
+                    return super().form_valid(form)
+
                 sentry_logger.error(
-                    'Thunderbird newsletter POST failed',
-                    extra={'status': res.status_code},
+                    'Thunderbird: Subscription to Mailchimp failed',
+                    extra={'status': error['status'], 'error': str(error)},
                     exc_info=True
                 )
 
@@ -799,6 +882,7 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
             data['source_url'] = self.request.build_absolute_uri()
             data['lang'] = self.request.LANGUAGE_CODE
             queue.enqueue(send_newsletter_subscription_to_basket, data)
+
             queue_ga_event(self.request, ['send', 'event', {
                     'eventCategory': 'Signup',
                     'eventAction': 'Submitted the Form',
@@ -809,5 +893,5 @@ class NewsletterSignupView(TransactionRequiredMixin, FormView):
         return super().form_valid(form)
 
 
-class ThankYouView(TransactionRequiredMixin, TemplateView):
+class ThankYouView(TemplateView):
     template_name = 'payment/thank_you.html'
