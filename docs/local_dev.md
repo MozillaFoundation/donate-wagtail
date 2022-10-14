@@ -169,6 +169,11 @@ Ensure you have the official [python extension](https://marketplace.visualstudio
      variables. You can either resume code execution or manage code execution manually by stepping
      into the next pieces of code, or over them.
 
+Note that sometimes, bugs only show when the `DEBUG` environment variable is set to `False`, as this turns off some quality-of-life improvements for local development that are not used on production. In order for the code to work properly with `DEBUG=False`, remember to also run through the production bootstrapping steps:
+
+- Make sure to have run `npm run build` so that the front end gets built without debug affordances
+- Make sure to run `inv migrate collectstatic` as only the official static asset dir will be used by Django when not running in debug mode
+
 ---
 
 ## Docker vocabulary and overview
