@@ -14,3 +14,8 @@
     margin-bottom: ($gutter * 2);
   }
 }
+
+.error-message {
+  @include font-size(xxs);
+  color: $color--warning;
+}

@@ -2,7 +2,9 @@ import initPaypal from "./components/paypal";
 import expectRecaptcha from "./components/recaptcha";
 
 function setupBraintree() {
-  var paymentForm = document.getElementById("payments__braintree-form"),
+  var donateForm = document.querySelector(`.layout .donate-form`),
+    donationPending = document.querySelector(".layout .donatation-pending"),
+    paymentForm = document.getElementById("payments__braintree-form"),
     nonceInput = document.getElementById("id_braintree_nonce"),
     amountInput = document.getElementById("id_amount"),
     frequencyInput = document.getElementById("id_frequency"),
@@ -12,10 +14,12 @@ function setupBraintree() {
     currencySelect = document.getElementById("id_currency-switcher-currency");
 
   var getCurrency = () => currencySelect.value.toUpperCase();
+
   var getAmountSingle = () => {
     var donateForm = document.getElementById("donate-form--single");
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
+
   var onAuthorizeSingle = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountSingle();
@@ -24,13 +28,15 @@ function setupBraintree() {
     if (captchaEnabled) {
       expectRecaptcha(window.grecaptcha.execute);
     } else {
-      paymentForm.submit();
+      submitForm();
     }
   };
+
   var getAmountMonthly = () => {
     var donateForm = document.getElementById("donate-form--monthly");
     return donateForm.querySelector('input[name="amount"]:checked').value;
   };
+
   var onAuthorizeMonthly = (payload) => {
     nonceInput.value = payload.nonce;
     amountInput.value = getAmountMonthly();
@@ -39,7 +45,7 @@ function setupBraintree() {
     if (captchaEnabled) {
       expectRecaptcha(window.grecaptcha.execute);
     } else {
-      paymentForm.submit();
+      submitForm();
     }
   };
 
@@ -50,6 +56,7 @@ function setupBraintree() {
     "checkout",
     "#payments__paypal-button--single"
   );
+
   initPaypal(
     getAmountMonthly,
     getCurrency,
@@ -58,18 +65,33 @@ function setupBraintree() {
     "#payments__paypal-button--monthly"
   );
 
+  function submitForm() {
+    donateForm.classList.add("hidden");
+    if (donationPending) {
+      donationPending.classList.remove("hidden");
+    } else {
+      console.warn(`payment-pending view missing`);
+    }
+    paymentForm.submit();
+  }
+
   // Set up recaptcha
   expectRecaptcha(() => {
-    window.grecaptcha.render("g-recaptcha", {
-      sitekey: document
-        .getElementById("g-recaptcha")
-        .getAttribute("data-public-key"),
+    const recaptcha = document.getElementById("g-recaptcha");
+    const props = {
+      sitekey: recaptcha.dataset.publicKey,
       size: "invisible",
       callback: (token) => {
-        captchaInput.value = token;
-        paymentForm.submit();
+        try {
+          captchaInput.value = token;
+          submitForm();
+        } catch (err) {
+          console.error(err);
+        }
       },
-    });
+    };
+
+    grecaptcha.render("g-recaptcha", props);
   });
 }
 
@@ -112,6 +134,10 @@ function setupPaypalOverlays() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  setupBraintree();
-  setupPaypalOverlays();
+  const payPalButtons = document.querySelectorAll(`.payments__button--paypal`);
+
+  if (payPalButtons.length > 0) {
+    setupBraintree();
+    setupPaypalOverlays();
+  }
 });

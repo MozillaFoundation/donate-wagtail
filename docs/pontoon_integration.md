@@ -30,7 +30,7 @@ A scheduled task runs every 20 minutes to sync the donate platform with the `moz
 
 The initial sync needs to be run manually:
 
-- **If the content repo is empty:** `touch README.md` and push this file to the master branch of the content repo.
+- **If the content repo is empty:** `touch README.md` and push this file to the main branch of the content repo.
 - run `heroku login`.
 - run `heroku run bash -a donate-wagtail-production`.
 - run `python manage.py sync_languages`: creates `Language` objects for all languages defined in the `LANGUAGES` section of `settings.py`.

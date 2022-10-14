@@ -1,6 +1,24 @@
 {% extends "pages/core/contributor_support_page_master.html" %}
+{% load i18n %}
+
+{% block donate_support_text %}
+    <p class="rich-text">
+        {% blocktrans trimmed %}
+            If you need help with a contribution to MZLA/Thunderbird, please fill out this form and a Thunderbird donor care representative will get back to you as soon as possible.
+        {% endblocktrans %}
+    </p>
+
+    <p class="rich-text">
+        {% blocktrans with support_url="https://support.mozilla.org/products/thunderbird/" trimmed %}
+            Unfortunately, donor care representatives are unable to offer support or help with Thunderbird technical issues. For technical support, please visit our <a href="{{ support_url }}">support page.</a>
+        {% endblocktrans %}
+    </p>
+{% endblock %}
+
+{% block captcha_settings %}
+<input type="hidden" name="captcha_settings" value='{"keyname":"MZLATBIRD_Regular_ReCaptcha_v2","fallback":"true","orgId":"{{ orgid }}","ts":""}'>
+{% endblock %}
 
 {% block custom_hidden_fields %}
-    <input type=hidden name="recordType" id="recordType" value="{{record_type_id}}">
-    <input type=hidden name="type" value="Thunderbird">
+    <input type="hidden" name="type" value="Thunderbird">
 {% endblock %}
