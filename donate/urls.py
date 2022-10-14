@@ -41,6 +41,7 @@ urlpatterns += i18n_patterns(
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
     path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
+    path('403/', TemplateView.as_view(template_name='403.html')),
 
     # set up set language redirect view
     path('i18n/', include('django.conf.urls.i18n')),
@@ -56,8 +57,9 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     urlpatterns += [
-        # Add views for testing 404 and 500 templates
+        # Add views for testing 403, 404 and 500 templates
         path('test404/', TemplateView.as_view(template_name='404.html')),
+        path('test403/', TemplateView.as_view(template_name='403.html')),
         path('test500/', TemplateView.as_view(template_name='500.html')),
     ]
 
