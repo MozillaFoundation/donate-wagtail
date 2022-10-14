@@ -1,4 +1,4 @@
-{% load form_tags %}
+{% load form_tags i18n %}
 
 {% with widget_type=field|widget_type field_type=field|field_type %}
 
@@ -16,10 +16,16 @@ form-item
 
     {% include "forms/_field.html" %}
 
-    {% if field.errors %}
+    {% if front_end_validated %}
+    <div class="form-item__errors hidden" id="error-message__{{ field.name  }}">
+        {% trans "This field is required." %}
+    </div>
+    {% else %}
+        {% if field.errors %}
         <div class="form-item__errors">
             {{ field.errors }}
         </div>
+        {% endif %}
     {% endif %}
 
 </div>
