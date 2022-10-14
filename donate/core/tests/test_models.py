@@ -147,37 +147,37 @@ class CampaignPageTestCase(TestCase):
         )
 
     def test_get_initial_currency_info_as_specified(self):
-        request = RequestFactory().get('/?presets=2,9,5,3')
+        request = RequestFactory().get('/?presets=10,12,15,18')
         self.assertEqual(
             DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
-            [Decimal(2), Decimal(9), Decimal(5), Decimal(3)]
+            [Decimal(10), Decimal(12), Decimal(15), Decimal(18)]
         )
 
     def test_get_initial_currency_info_reverse_sorted(self):
-        request = RequestFactory().get('/?presets=2,9,5,3&sort=reverse')
+        request = RequestFactory().get('/?presets=10,12,15,18&sort=reverse')
         self.assertEqual(
             DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
-            [Decimal(9), Decimal(5), Decimal(3), Decimal(2)]
+            [Decimal(18), Decimal(15), Decimal(12), Decimal(10)]
         )
 
     def test_get_initial_currency_info_ignore_bad_values(self):
-        request = RequestFactory().get('/?presets=-1,0,1,2,3,4,5')
+        request = RequestFactory().get('/?presets=-1,0,1,2,3,4,5,10')
         initial_currency_info = DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single']
         self.assertEqual(len(initial_currency_info), 4)
 
     def test_get_initial_currency_info_at_least_four_choices(self):
-        request = RequestFactory().get('/?presets=5')
+        request = RequestFactory().get('/?presets=10')
         default_single = DonationPage().currencies['usd']['presets']['single']
         self.assertEqual(
             DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
             default_single
         )
-        request = RequestFactory().get('/?presets=5,5')
+        request = RequestFactory().get('/?presets=10,10')
         self.assertEqual(
             DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
             default_single
         )
-        request = RequestFactory().get('/?presets=5,5,5')
+        request = RequestFactory().get('/?presets=10,10,10')
         self.assertEqual(
             DonationPage().get_initial_currency_info(request, 'usd', 'single')['presets']['single'],
             default_single
