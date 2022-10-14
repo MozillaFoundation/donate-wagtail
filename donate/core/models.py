@@ -129,6 +129,9 @@ class DonationPage(Page):
         """
         amount = request.GET.get('amount', False)
 
+        if amount == 'other':
+            return 'other'
+
         if amount is False or 'e' in amount:
             return self.default_initial_amount(initial_currency_info, initial_frequency)
 
