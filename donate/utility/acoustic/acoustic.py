@@ -5,7 +5,7 @@ from django.conf import settings
 from django.utils.encoding import force_bytes
 
 from lxml import etree
-from requests import ConnectionError
+from requests import ConnectionError, ReadTimeout
 from silverpop.api import Silverpop, SilverpopResponseException
 
 
@@ -137,13 +137,14 @@ class AcousticTransact(Silverpop):
                 # explicitly block, just in case the implicit behaviour changes in the future
                 schedule.run(blocking=True)
                 break
-            except ConnectionError:
+            except (ConnectionError, ReadTimeout) as err:
                 if attempt != 2:
-                    logger.error("Error connecting to Acoustic to send email receipt. Trying again.")
+                    logger.error("Error connecting to Acoustic while sending email receipt. Trying again.")
                 else:
                     logger.error(
-                        f"Could not send email receipt. Unable to connect to Acoustic {send_retries} retries."
+                        f"Could not send email receipt. Unable to connect to Acoustic after {send_retries} retries."
                     )
+                    logger.error(f"Error: {err}")
 
                 continue
 
