@@ -1,3 +1,14 @@
+queue_rules:
+  - name: dependabot
+    conditions:
+      - "status-success=continuous-integration/travis-ci/pr"
+      - "status-success=continuous-integration/travis-ci/push"
+
+  - name: ready-to-merge
+    conditions:
+      - "status-success=continuous-integration/travis-ci/pr"
+      - "status-success=continuous-integration/travis-ci/push"
+
 pull_request_rules:
   - name: Automatic merge for dependabot PRs
     conditions:
@@ -6,10 +17,10 @@ pull_request_rules:
       - "status-success=continuous-integration/travis-ci/pr"
       - "status-success=continuous-integration/travis-ci/push"
     actions:
-      merge:
+      queue:
         method: squash
-        strict_method: rebase
-        strict: true
+        name: dependabot
+
   - name: Automatic merge for PRs labelled "ready to merge"
     conditions:
       - "#approved-reviews-by>=1"
@@ -17,7 +28,6 @@ pull_request_rules:
       - "status-success=continuous-integration/travis-ci/push"
       - "label=ready-to-merge"
     actions:
-      merge:
+      queue:
         method: squash
-        strict_method: rebase
-        strict: true
+        name: ready-to-merge

@@ -137,7 +137,7 @@ def new_env(ctx):
 def manage(ctx, command):
     """Shorthand to manage.py. inv docker-manage \"[COMMAND] [ARG]\""""
     with ctx.cd(ROOT):
-        ctx.run(f"docker-compose run --rm backend ./dockerpythonvenv/bin/python manage.py {command}", **PLATFORM_ARG)
+        ctx.run(f"docker-compose run --rm backend ./dockerpythonvenv/bin/python manage.py {command}", **PLATFORM_ARG)  # noqa
 
 
 @task(aliases=["docker_migrate"])
@@ -172,8 +172,8 @@ def npm_install(ctx):
 def makemessages(ctx):
     """Extract all template messages in .po files for localization"""
     ctx.run("./translation-management.sh import")
-    manage(ctx, "makemessages --keep-pot --no-wrap --ignore=dockerpythonvenv/*")
-    manage(ctx, "makemessages -d djangojs --keep-pot --no-wrap --ignore=node_modules --ignore=dockerpythonvenv/*")
+    manage(ctx, "makemessages --all --keep-pot --no-wrap --ignore=dockerpythonvenv/*")
+    manage(ctx, "makemessages -d djangojs --all --keep-pot --no-wrap --ignore=node_modules --ignore=dockerpythonvenv/*")  # noqa
     os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
     os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
     ctx.run("./translation-management.sh export")
@@ -201,7 +201,7 @@ def test(ctx):
 def test_python(ctx):
     """Run python tests"""
     print("* Running flake8")
-    ctx.run("docker-compose run --rm backend ./dockerpythonvenv/bin/python -m flake8 tasks.py donate/", **PLATFORM_ARG)
+    ctx.run("docker-compose run --rm backend ./dockerpythonvenv/bin/python -m flake8 tasks.py donate/", **PLATFORM_ARG)  # noqa
     print("* Running tests")
     manage(ctx, "test --settings=donate.settings --configuration=Testing")
 
@@ -243,6 +243,6 @@ def pip_sync(ctx):
     """Sync your python virtualenv"""
     with ctx.cd(ROOT):
         ctx.run(
-            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-sync requirements.txt dev-requirements.txt",
+            "docker-compose run --rm backend ./dockerpythonvenv/bin/pip-sync requirements.txt dev-requirements.txt",  # noqa
             **PLATFORM_ARG,
         )

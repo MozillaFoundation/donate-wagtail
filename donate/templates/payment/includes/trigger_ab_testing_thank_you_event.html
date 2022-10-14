@@ -1,0 +1,13 @@
+<script nonce="{{ request.csp_nonce }}">
+    document.addEventListener('DOMContentLoaded', function () {
+        // Try to send an A/B signal to the wagtail A/B testing framework
+        (function tryWagtailABEvent(count) {
+            if (count > 5) return;
+            if (window.wagtailAbTesting && window.wagtailAbTesting.triggerEvent) {
+                window.wagtailAbTesting.triggerEvent('visit-thank-you-page');
+            } else {
+                setTimeout(function () { tryWagtailABEvent(count + 1); }, 1000);
+            }
+        })(1);
+    });
+</script>
