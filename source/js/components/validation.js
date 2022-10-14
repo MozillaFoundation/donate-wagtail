@@ -1,22 +1,21 @@
-// constants for "Other Amount" inputs and error messages
-const oneTimeOtherAmountInput = document.querySelector(
-  ".one-time-amount-other-input"
-);
-const monthlyOtherAmountInput = document.querySelector(
-  ".monthly-amount-other-input"
-);
-const oneTimeOtherAmountErrorMessage = document.querySelector(
-  ".error-message__one-time-other-amount"
-);
-const monthlyOtherAmountErrorMessage = document.querySelector(
-  ".error-message__monthly-other-amount"
-);
-
 // Handler for "other amount" inputs
 function otherAmountInputValidation() {
+  // constants for "Other Amount" inputs and error messages
+  var oneTimeOtherAmountInput = document.getElementById(
+      "one-time-amount-other-input"
+    ),
+    monthlyOtherAmountInput = document.getElementById(
+      "monthly-amount-other-input"
+    ),
+    oneTimeOtherAmountErrorMessage = document.getElementById(
+      "other-one-time-amount-error-message"
+    ),
+    monthlyOtherAmountErrorMessage = document.getElementById(
+      "other-monthly-amount-error-message"
+    );
   if (oneTimeOtherAmountInput) {
     oneTimeOtherAmountInput.addEventListener("blur", (e) => {
-      if (document.querySelector(".one-time-donation-amount-radio:checked")) {
+      if (document.querySelector(".one-time-amount-donation-radio:checked")) {
         inputValueCheck(
           oneTimeOtherAmountInput,
           oneTimeOtherAmountErrorMessage
@@ -26,7 +25,7 @@ function otherAmountInputValidation() {
   }
   if (monthlyOtherAmountInput) {
     monthlyOtherAmountInput.addEventListener("blur", (e) => {
-      if (document.querySelector(".monthly-donation-amount-radio:checked")) {
+      if (document.querySelector(".monthly-amount-donation-radio:checked")) {
         inputValueCheck(
           monthlyOtherAmountInput,
           monthlyOtherAmountErrorMessage
