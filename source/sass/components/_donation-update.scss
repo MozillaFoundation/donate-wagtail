@@ -28,19 +28,41 @@
     height: 100%;
     pointer-events: none;
     border-right: 1px solid $color--border;
-    padding: ($gutter * 0.75) ($gutter);
+    padding: ($gutter * 0.8) ($gutter);
     text-align: center;
+    @include media-query(tablet-portrait) {
+      padding: ($gutter * 1.05) ($gutter);
+    }
   }
 
   &__input {
     padding-left: 70px !important; // allow space for currency symbol
+    height: 100%;
   }
 
   &__action {
     width: 100%;
+  }
 
+  &__container {
+    display: block;
+    width: 100%;
     @include media-query(tablet-portrait) {
-      width: auto;
+      display: inline-flex;
+    }
+  }
+
+  &__confirm-button {
+    width: 100%;
+    @include media-query(tablet-portrait) {
+      width: 25%;
+    }
+  }
+  &__amount-input {
+    width: 100%;
+    margin-right: 16px;
+    @include media-query(tablet-portrait) {
+      width: 75%;
     }
   }
 }

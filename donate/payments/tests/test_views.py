@@ -1,4 +1,3 @@
-from datetime import date
 from decimal import Decimal
 from unittest import mock
 
@@ -450,7 +449,9 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
             'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
             'price': 50,
-            'first_billing_date': date(2019, 7, 26),
+            'options': {
+                "start_immediately": True
+            }
         })
 
         self.assertEqual(self.request.session['landing_url'], self.form_data['landing_url'])
@@ -597,7 +598,9 @@ class PaypalPaymentViewTestCase(TestCase):
             'merchant_account_id': 'usd-ac',
             'payment_method_token': 'payment-method-1',
             'price': Decimal(10),
-            'first_billing_date': date(2019, 7, 26),
+            'options': {
+                "start_immediately": True
+            }
         })
 
     def test_failed_customer_creation_calls_form_invalid(self):

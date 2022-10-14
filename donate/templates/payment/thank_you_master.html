@@ -12,8 +12,7 @@
             <h1 class="heading heading--primary heading--bottom-margin">{% trans "Thank you for your generous gift" %}</h1>
 
             {% block thank_you_description %}
-                <p>{% blocktrans %}Your donation will go right to work protecting the web, keeping it open and available to all.{% endblocktrans %} {% blocktrans with email='donate@mozilla.org' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us at <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
-
+                <p>{% blocktrans with url='/help' %}We’ve emailed you a donation receipt; if it’s missing, please check your junk/spam folders, then contact us using <a href="{{ url }}">this form</a>.{% endblocktrans %}</p>
                 <p>{% trans "Lastly, can you multiply your impact by sharing about the important work Mozilla is doing? Thank you again!" %}</p>
             {% endblock %}
 
@@ -62,4 +61,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    {% include "./includes/trigger_ab_testing_thank_you_event.html" %}
 {% endblock %}
