@@ -45,6 +45,7 @@ env = environ.Env(
     CSP_SCRIPT_SRC=(tuple, defaults.CSP_SCRIPT_SRC),
     CSP_STYLE_SRC=(tuple, defaults.CSP_STYLE_SRC),
     CSP_WORKER_SRC=(tuple, defaults.CSP_WORKER_SRC),
+    CSP_INCLUDE_NONCE_IN=(tuple, defaults.CSP_INCLUDE_NONCE_IN),
     DATABASE_URL=(str, 'postgres://donate:mozilla@postgres:5432/donate'),
     DEBUG=(bool, False),
     DJANGO_LOG_LEVEL=(str, 'INFO'),
