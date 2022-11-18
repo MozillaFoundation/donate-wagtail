@@ -17,7 +17,7 @@ from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 
-from donate.core.utils import queue_ga_event, queue_data_layer_event
+from donate.core.utils import queue_ga_event, queue_datalayer_event
 from . import constants, gateway
 from .exceptions import InvalidAddress
 from .forms import (
@@ -104,29 +104,27 @@ class BraintreePaymentMixin:
         queue_ga_event(self.request, ['ecommerce:send'])
 
     def queue_datalayer_transaction(self, id, currency, amount, frequency, payment_method="credit card"):
-        queue_data_layer_event(
+        queue_datalayer_event(
             self.request,
-            [
-                {
-                    "event": "purchase",
-                    "ecommerce": {
-                        "currency": currency,
-                        "value": str(amount),
-                        "transaction_id": id,
-                        "items": [
-                            {
-                                "item_name": frequency,
-                                "currency": currency,
-                                "index": 0,
-                                "item_brand": payment_method,
-                                "item_category": "donation",
-                                "price": str(amount),
-                                "quantity": 1,
-                            }
-                        ],
-                    },
-                }
-            ],
+            {
+                "event": "purchase",
+                "ecommerce": {
+                    "currency": currency,
+                    "value": str(amount),
+                    "transaction_id": id,
+                    "items": [
+                        {
+                            "item_name": frequency,
+                            "currency": currency,
+                            "index": 0,
+                            "item_brand": payment_method,
+                            "item_category": "donation",
+                            "price": str(amount),
+                            "quantity": 1,
+                        }
+                    ],
+                },
+            },
         )
 
 

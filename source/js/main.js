@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeGA(gaIdentifier);
   }
 
+  if (window.dataLayer) {
+    initializeCheckForDataLayerEvents();
+  }
+
   // Initialize Sentry error reporting
 
   fetchEnv((envData) => {
@@ -165,5 +169,14 @@ function initializeGA(trackingId) {
         });
       }
     }
+  }
+}
+
+function initializeCheckForDataLayerEvents() {
+  var dataLayerEventNode = document.getElementById("datalayer-event");
+  if (dataLayerEventNode) {
+    window.dataLayer = window.dataLayer || [];
+    var event = JSON.parse(dataLayerEventNode.textContent);
+    window.dataLayer.push(event);
   }
 }

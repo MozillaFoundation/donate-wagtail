@@ -7,7 +7,7 @@ from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
 from .. import language_code_to_iso_3166, parse_accept_lang_header, to_language
-from ..utils import queue_ga_event
+from ..utils import queue_ga_event, queue_datalayer_event
 
 
 class UtilsTestCase(TestCase):
@@ -38,6 +38,24 @@ class UtilsTestCase(TestCase):
         request.session['ga_events'] = [['send', 'event', 'foo']]
         queue_ga_event(request, ['send', 'event', 'bar'])
         self.assertEqual(request.session['ga_events'], [['send', 'event', 'foo'], ['send', 'event', 'bar']])
+        self.assertTrue(request.session.modified)
+
+    def test_queue_datalayer_event(self):
+        request = RequestFactory().get("/")
+        request.session = self.client.session
+        test_datalayer_event_object = {
+            "item_name": "regular donation",
+            "currency": "GBP",
+            "index": 0,
+            "item_brand": "credit card",
+            "item_category": "donation",
+            "price": 10,
+            "quantity": 1,
+        }
+
+        queue_datalayer_event(request, test_datalayer_event_object)
+
+        self.assertEqual(request.session["datalayer_event"], test_datalayer_event_object)
         self.assertTrue(request.session.modified)
 
 
