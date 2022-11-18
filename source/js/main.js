@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeGA(gaIdentifier);
   }
 
+  // If datalayer is being used, lookout for events.
   if (window.dataLayer) {
     initializeCheckForDataLayerEvents();
   }
@@ -173,10 +174,11 @@ function initializeGA(trackingId) {
 }
 
 function initializeCheckForDataLayerEvents() {
-  var dataLayerEventNode = document.getElementById("datalayer-event");
+  // Check for any events sent to the frontend by the server, and push them.
+  const dataLayerEventNode = document.getElementById("datalayer-event");
   if (dataLayerEventNode) {
     window.dataLayer = window.dataLayer || [];
-    var event = JSON.parse(dataLayerEventNode.textContent);
+    const event = JSON.parse(dataLayerEventNode.textContent);
     window.dataLayer.push(event);
   }
 }
