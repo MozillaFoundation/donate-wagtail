@@ -675,6 +675,13 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
                     'eventLabel': 'Yes',
                 }
             ])
+            self.queue_datalayer_transaction(
+                id=result.subscription.id,
+                currency=currency,
+                amount=form.cleaned_data['amount'],
+                frequency="regular donation - upsell",
+                payment_method='credit card'
+            )
             return self.handle_successful_transaction(result, form, currency=currency, send_data_to_basket=False)
         else:
             logger.error(
@@ -784,6 +791,13 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
                     'eventLabel': 'Yes',
                 }
             ])
+            self.queue_datalayer_transaction(
+                id=result.subscription.id,
+                currency=self.currency,
+                amount=form.cleaned_data['amount'],
+                frequency="regular donation - upsell",
+                payment_method='paypal'
+            )
             return self.handle_successful_transaction(result, form, send_data_to_basket=False)
         else:
             logger.error(
