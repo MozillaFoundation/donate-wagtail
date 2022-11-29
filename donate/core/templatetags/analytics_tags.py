@@ -9,5 +9,5 @@ register = template.Library()
 def render_ga_event_data(context):
     return {
         'events': context['request'].session.pop('ga_events', []),
-        'datalayer_event': context['request'].session.pop('datalayer_event', [])
+        'datalayer_event': context['request'].session.pop('datalayer_event', {})
     }
