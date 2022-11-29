@@ -19,6 +19,6 @@ def queue_ga_event(request, event_data):
         request.session['ga_events'] = [event_data]
 
 
-def queue_data_layer_event(request, event_data):
-    request.session['data_layer'] = [event_data]
+def queue_datalayer_event(request, event_data):
+    request.session['datalayer_event'] = event_data
     request.session.modified = True

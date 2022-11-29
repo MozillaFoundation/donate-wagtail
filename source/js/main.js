@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeGA(gaIdentifier);
   }
 
+  // If datalayer is being used, lookout for events.
+  if (window.dataLayer) {
+    initializeCheckForDataLayerEvents();
+  }
+
   // Initialize Sentry error reporting
 
   fetchEnv((envData) => {
@@ -165,5 +170,15 @@ function initializeGA(trackingId) {
         });
       }
     }
+  }
+}
+
+function initializeCheckForDataLayerEvents() {
+  // Check for any events sent to the frontend by the server, and push them.
+  const dataLayerEventNode = document.getElementById("datalayer-event");
+  if (dataLayerEventNode) {
+    window.dataLayer = window.dataLayer || [];
+    const event = JSON.parse(dataLayerEventNode.textContent);
+    window.dataLayer.push(event);
   }
 }
