@@ -61,13 +61,25 @@ def get_suggested_monthly_upgrade(currency, single_amount):
             return Decimal(tier['value'])
 
 
-def get_min_amount_from_currency(currency, frequency):
-    # get currency info
-    # get min amount from currency info
-    pass
+@lru_cache(maxsize=1000)
+def get_min_amount_for_currency(currency, frequency):
+    """
+    Get minimum amount for a given frequency for a given currency.
+
+    Returns 0 if no minimum amount could be determined.
+
+    """
+    currency_info = get_currency_info(currency=currency)
+    return get_min_amount_from_currency_info(currency_info=currency_info, frequency=frequency)
 
 
 def get_min_amount_from_currency_info(currency_info, frequency):
+    """
+    Get minimum amount for a given frequency from a currency info dict.
+
+    Returns 0 if no minimum amount could be determined.
+
+    """
     min_amount_for_frequency = 0
     try:
         min_amounts = currency_info['minAmount']
