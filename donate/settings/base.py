@@ -203,7 +203,7 @@ class Base(object):
             'code': 'usd',
             'minAmount': {
                 'single': 10,
-                'monthly': 10,
+                'monthly': 5,
             },
             'symbol': '$',
             'paypalFixedFee': {
