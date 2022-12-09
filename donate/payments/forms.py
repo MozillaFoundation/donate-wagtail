@@ -104,6 +104,7 @@ class PostalCodeMixin():
 class StartCardPaymentForm(MinimumCurrencyAmountMixin, forms.Form):
     amount = forms.DecimalField(label=_('Amount'), min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
+    frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
     def clean_source_page_id(self):
@@ -166,6 +167,11 @@ class CurrencyForm(forms.Form):
 
 class UpsellForm(MinimumCurrencyAmountMixin, forms.Form):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput, disabled=True)
+    frequency = forms.ChoiceField(
+        choices=constants.FREQUENCY_CHOICES,
+        widget=forms.HiddenInput,
+        initial=constants.FREQUENCY_MONTHLY,
+    )
     amount = forms.DecimalField(
         label=_('Amount'), min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
         widget=forms.NumberInput(attrs={'step': 'any'})
