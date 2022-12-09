@@ -174,11 +174,16 @@ class UpsellForm(MinimumCurrencyAmountMixin, forms.Form):
         choices=constants.FREQUENCY_CHOICES,
         widget=forms.HiddenInput,
         initial=constants.FREQUENCY_MONTHLY,
+        required=False,
     )
     amount = forms.DecimalField(
         label=_('Amount'), min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
         widget=forms.NumberInput(attrs={'step': 'any'})
     )
+
+    def clean_frequency(self):
+        '''Always use monthly for the frequency.'''
+        return constants.FREQUENCY_MONTHLY
 
 
 class BraintreePaypalUpsellForm(UpsellForm, BraintreePaymentForm):
