@@ -1,0 +1,7 @@
+{% extends "fragments/donate_form.html" %}
+
+{% load i18n %}
+
+{% block minimum_amount_message %}
+    {% blocktrans with min_amount=minimum_amount trimmed %}Minimum amount is {{ min_amount }}{% endblocktrans %}
+{% endblock %}
