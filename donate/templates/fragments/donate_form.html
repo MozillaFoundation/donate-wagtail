@@ -43,7 +43,9 @@
                         </div>
                         <p class='minimum'>
                             {% format_currency request.LANGUAGE_CODE initial_currency_info.code initial_currency_info.minAmount as minimum_amount %}
-                            {% blocktrans with min_amount=minimum_amount trimmed %}To combat fraud, Mozilla Foundation has temporarily restricted donations to a minimum of {{ min_amount }}{% endblocktrans %}
+                            {% block minimum_amount_message %}
+                                {% blocktrans with min_amount=minimum_amount trimmed %}To combat fraud, Mozilla Foundation has temporarily restricted donations to a minimum of {{ min_amount }}{% endblocktrans %}
+                            {% endblock %}
                         </p>
                         <p id='other-one-time-amount-error-message' class='error-message hidden'>
                             {% trans "Invalid amount entered." %}
