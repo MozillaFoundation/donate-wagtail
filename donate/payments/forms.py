@@ -11,7 +11,7 @@ from donate.core.templatetags.util_tags import format_currency
 from donate.recaptcha.fields import ReCaptchaField
 
 from . import constants
-from .utils import get_currency_info, get_min_amount_for_currency
+from . import utils
 
 from ..settings.environment import root
 
@@ -55,16 +55,19 @@ class MinimumCurrencyAmountMixin:
         frequency = self['frequency'].initial
 
         if currency and frequency:
-            min_amount = get_min_amount_for_currency(currency=currency, frequency=frequency)
+            min_amount = utils.get_min_amount_for_currency(currency=currency, frequency=frequency)
             self.fields['amount'].widget.attrs['min'] = min_amount
 
     def clean(self):
         cleaned_data = super().clean()
+
         amount = cleaned_data.get('amount', False)
         currency = cleaned_data.get('currency', False)
-        if amount and currency:
-            currency_info = get_currency_info(currency)
-            min_amount = currency_info['minAmount']
+        frequency = cleaned_data.get('frequency', False)
+
+        if amount and currency and frequency:
+            min_amount = utils.get_min_amount_for_currency(currency=currency, frequency=frequency)
+
             if amount < min_amount:
                 raise forms.ValidationError({
                     'amount': _('Donations must be %(amount)s or more') % {'amount': format_currency(
