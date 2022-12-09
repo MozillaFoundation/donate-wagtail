@@ -33,6 +33,7 @@ class Staging(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree, Se
 class ThunderbirdStaging(Staging, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Staging.INSTALLED_APPS
     FRONTEND = ThunderbirdOverrides.FRONTEND
+    CURRENCIES = ThunderbirdOverrides.CURRENCIES
     ENABLE_THUNDERBIRD_REDIRECT = False
     FRAUD_SITE_ID = 'tbird'
     SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A2Pl"
