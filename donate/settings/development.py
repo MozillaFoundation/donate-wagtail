@@ -41,6 +41,7 @@ class Development(Base, Secure, OIDC, Database, Redis, S3, Salesforce, Braintree
 class ThunderbirdDevelopment(Development, ThunderbirdOverrides, Configuration):
     INSTALLED_APPS = ThunderbirdOverrides.INSTALLED_APPS + Development.INSTALLED_APPS
     FRONTEND = ThunderbirdOverrides.FRONTEND
+    CURRENCIES = ThunderbirdOverrides.CURRENCIES
     ENABLE_THUNDERBIRD_REDIRECT = False
     SALESFORCE_CASE_RECORD_TYPE_ID = "0124x000000A2Pl"
     FRAUD_SITE_ID = 'tbird'
