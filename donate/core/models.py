@@ -15,8 +15,8 @@ from modelcluster.fields import ParentalKey
 from wagtail_localize.fields import SynchronizedField
 
 from donate.payments import constants
+from donate.payments import utils
 from donate.payments.forms import BraintreePaypalPaymentForm, CurrencyForm
-from donate.payments.utils import get_default_currency
 
 from .blocks import ContentBlock
 
@@ -66,7 +66,7 @@ class DonationPage(Page):
             return request.GET['currency']
 
         # Otherwise use the language code determined by Django
-        return get_default_currency(getattr(request, 'LANGUAGE_CODE', ''))
+        return utils.get_default_currency(getattr(request, 'LANGUAGE_CODE', ''))
 
     def serve(self, request, *args, **kwargs):
         response = super().serve(request, *args, **kwargs)
@@ -81,11 +81,14 @@ class DonationPage(Page):
 
     def get_initial_currency_info(self, request, initial_currency, initial_frequency):
         initial_currency_info = self.currencies[initial_currency]
+        min_amount = utils.get_min_amount_from_currency_info(
+            currency_info=initial_currency_info,
+            frequency=initial_frequency,
+        )
 
         # Check if presets have been specified in a query arg
         custom_presets = request.GET.get('presets', '').split(',')
         try:
-            min_amount = initial_currency_info.get('minAmount', 0)
             custom_presets = [
                 amount for amount in
                 [
