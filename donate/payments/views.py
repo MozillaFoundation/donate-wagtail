@@ -138,10 +138,8 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         self.payment_frequency = kwargs['frequency']
 
         # Ensure that the donation amount, currency and source page are legit
-        start_form_data = {
-            'frequency': self.payment_frequency,
-            **request.GET,
-        }
+        start_form_data = request.GET.copy()
+        start_form_data['frequency'] = self.payment_frequency
         start_form = StartCardPaymentForm(data=start_form_data)
         if not start_form.is_valid():
             return HttpResponseRedirect('/')
