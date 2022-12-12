@@ -48,7 +48,7 @@
         <b>{% trans "Receiving Bank (Pay to):" %}</b> Standard Chartered Bank<br>
         <b>{% trans "City & Country/Region:" %}</b> {% trans "Frankfurt, Germany" %}<br>
         <b>{% trans "SWIFT/BIC Code:" %}</b> SCBLDEFX<br>
-        <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB-Mozilla Foundation<br>
+        <b>{% trans "Beneficiary Name (For donations to):" %}</b> SVB-Mozilla Foundation<br>
         <b>{% trans "IBAN:" %}</b> DE67512305000500136802
         {% block tb_memo_eur %}{% endblock %}
     </p>
@@ -62,7 +62,7 @@
         <b>{% trans "City & Country/Region:" %}</b> {% trans "London, United Kingdom" %}<br>
         <b>{% trans "Bank Sort Code:" %}</b> 60-00-04<br>
         <b>{% trans "Account Number (8 digits):" %}</b> 10017496<br>
-        <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB RE Mozilla Foundation
+        <b>{% trans "Beneficiary Name (For donations to):" %}</b> SVB RE Mozilla Foundation
     </p>
     <p>
         <b>{% trans "SWIFT/BIC Code:" %}</b> NWBKGB2L<br>
@@ -74,7 +74,7 @@
     {% block stock_donations %}
     <h2>{% trans "Donation of Stock/Securities:" %}</h2>
     <p>
-        {% blocktrans with name="Jesse Ward" email="jessew@mozillafoundation.org" trimmed %}
+        {% blocktrans with name="Grace Fung" email="grace@mozillafoundation.org" trimmed %}
         The Mozilla Foundation is happy to accept your gift of publicly-traded stocks or bonds through
         our brokerage account at Northern Trust Securities. Please contact Major Gift Officer {{name}}
         at <a href="mailto:{{email}}">{{email}}</a> to initiate the process.
