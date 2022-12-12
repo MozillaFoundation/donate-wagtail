@@ -216,7 +216,7 @@ class Base(object):
                 {'min': 100, 'value': 10},
                 {'min': 70, 'value': 7},
                 {'min': 35, 'value': 5},
-                {'min': 15, 'value': 3},
+                {'min': 15, 'value': 5},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -240,8 +240,8 @@ class Base(object):
                 {'min': 288, 'value': 30},
                 {'min': 144, 'value': 15},
                 {'min': 99, 'value': 10},
-                {'min': 50, 'value': 7},
-                {'min': 22, 'value': 4},
+                {'min': 50, 'value': 10},
+                {'min': 22, 'value': 10},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -289,9 +289,9 @@ class Base(object):
                 {'min': 393, 'value': 40},
                 {'min': 262, 'value': 25},
                 {'min': 131, 'value': 12},
-                {'min': 92, 'value': 9},
-                {'min': 46, 'value': 6},
-                {'min': 20, 'value': 4},
+                {'min': 92, 'value': 10},
+                {'min': 46, 'value': 10},
+                {'min': 20, 'value': 10},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -414,8 +414,8 @@ class Base(object):
                 {'min': 160, 'value': 15},
                 {'min': 80, 'value': 10},
                 {'min': 56, 'value': 5},
-                {'min': 28, 'value': 4},
-                {'min': 12, 'value': 3},
+                {'min': 28, 'value': 5},
+                {'min': 12, 'value': 5},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
