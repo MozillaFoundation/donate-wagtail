@@ -22,7 +22,7 @@
 
 When it's done, run `docker-compose up`, wait for the static files to be built, and go to `0.0.0.0:8000`. When you want to stop, do `^C` to shut down your containers. If they don't stop properly, run `docker-compose down`. If you want a new dev environment, stop your containers and run `inv new_env`.
 
-Secrets necessary to enable several features in a local docker development environment can be found in the 1pass, Engagement Vault, in a Note called "donate-wagtail docker .env file".  Copy the contents of this file and replace the .env file that came with the repo.  Do not distrubute the .env file.  
+Secrets necessary to enable several features in a local docker development environment can be found in the 1pass, Engagement Vault, in a Note called "donate-wagtail docker .env file".  Copy the contents of this file and replace the .env file that came with the repo.  Do not distrubute the .env file.
 
 It's possible to connect your IDE to the python virtual env available inside the backend container (tested with pycharm and vscode). If you run into issues, ping patjouk on slack.
 
@@ -47,7 +47,6 @@ More information on how to use Docker for local dev is available in the [Local d
 
 To set the Thunderbird settings in local development, simply change your `DJANGO_CONFIGURATION` in your .env file to be one of the choices above (For Thunderbird, use `ThunderbirdDevelopment`)
 
-
 ## Braintree configuration
 
 The following environment variables are required to configure payment processing via Braintree:
@@ -59,6 +58,12 @@ The following environment variables are required to configure payment processing
 - `BRAINTREE_PRIVATE_KEY`: Private API key provided by Braintree.
 - `BRAINTREE_TOKENIZATION_KEY`: Tokenization key provided by Braintree.
 - `BRAINTREE_USE_SANDBOX`: Boolean to configure whether or not to use the Braintree sandbox.
+
+To get the payment processing working during local development, check 1Password for an example configuration by searching for "donate-wagtail docker .env file".
+Without the Braintree configuration in place, you won't be able to see the PayPal button on the landing pages.
+
+You can also find example PayPal user credentials in 1Password by searching for "Paypal Sandbox Merchant".
+Use these as the login information during PayPal checkout.
 
 ### Webhook Configuration
 
