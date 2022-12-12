@@ -639,11 +639,6 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
             'currency': self.currency,
         }
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['currency'] = self.currency
-        return kwargs
-
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx['currency_info'] = get_currency_info(self.currency)
