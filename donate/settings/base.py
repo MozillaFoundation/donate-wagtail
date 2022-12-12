@@ -377,7 +377,7 @@ class Base(object):
             'code': 'eur',
             'minAmount': {
                 'single': 10,
-                'monthly': 10,
+                'monthly': 5,
             },
             'symbol': '€',
             'disabled': ['amex'],
@@ -401,7 +401,7 @@ class Base(object):
             'code': 'gbp',
             'minAmount': {
                 'single': 10,
-                'monthly': 10,
+                'monthly': 5,
             },
             'symbol': '£',
             'disabled': ['amex'],
