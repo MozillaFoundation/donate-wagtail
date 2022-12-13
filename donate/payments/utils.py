@@ -1,3 +1,4 @@
+import logging
 from functools import lru_cache
 from decimal import Decimal
 
@@ -10,6 +11,8 @@ from .constants import (
     PAYPAL_ACCOUNT_MICRO,
     ZERO_DECIMAL_CURRENCIES,
 )
+
+logger = logging.getLogger(__name__)
 
 
 def zero_decimal_currency_fix(amount, currency):
@@ -56,6 +59,34 @@ def get_suggested_monthly_upgrade(currency, single_amount):
     for tier in info.get('monthlyUpgrade', []):
         if Decimal(single_amount) >= tier['min']:
             return Decimal(tier['value'])
+
+
+@lru_cache(maxsize=1000)
+def get_min_amount_for_currency(currency, frequency):
+    """
+    Get minimum amount for a given frequency for a given currency.
+
+    Returns 0 if no minimum amount could be determined.
+
+    """
+    currency_info = get_currency_info(currency=currency)
+    return get_min_amount_from_currency_info(currency_info=currency_info, frequency=frequency)
+
+
+def get_min_amount_from_currency_info(currency_info, frequency):
+    """
+    Get minimum amount for a given frequency from a currency info dict.
+
+    Returns 0 if no minimum amount could be determined.
+
+    """
+    min_amount_for_frequency = 0
+    try:
+        min_amounts = currency_info['minAmount']
+        min_amount_for_frequency = min_amounts[frequency]
+    except KeyError:
+        logger.exception(msg='Could not determine min amount for frequency.')
+    return min_amount_for_frequency
 
 
 def paypal_micro_fee(currency, amount):

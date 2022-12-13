@@ -138,7 +138,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         self.payment_frequency = kwargs['frequency']
 
         # Ensure that the donation amount, currency and source page are legit
-        start_form = StartCardPaymentForm(request.GET)
+        start_form_data = request.GET.copy()
+        start_form_data['frequency'] = self.payment_frequency
+        start_form = StartCardPaymentForm(data=start_form_data)
         if not start_form.is_valid():
             return HttpResponseRedirect('/')
 
@@ -636,11 +638,6 @@ class CardUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView):
             'amount': self.suggested_upgrade,
             'currency': self.currency,
         }
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['currency'] = self.currency
-        return kwargs
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)

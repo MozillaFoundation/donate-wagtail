@@ -46,8 +46,9 @@ class CurrencySelect {
   assignValues(selectedData) {
     // Create arrays for monthly and one off based on data
     var oneOffValues = selectedData.presets.single;
+    var oneOffMinAmount = selectedData.minAmount.single;
     var monthlyValue = selectedData.presets.monthly;
-    var minAmount = selectedData.minAmount;
+    var monthlyMinAmount = selectedData.minAmount.monthly;
     var formatter = new Intl.NumberFormat(this.locale, {
       style: "currency",
       currency: selectedData.code.toUpperCase(),
@@ -57,14 +58,14 @@ class CurrencySelect {
     // Create buttons
     this.outputOptions(
       oneOffValues,
-      minAmount,
+      oneOffMinAmount,
       "one-time-amount",
       formatter,
       this.oneOffContainer
     );
     this.outputOptions(
       monthlyValue,
-      minAmount,
+      monthlyMinAmount,
       "monthly-amount",
       formatter,
       this.monthlyContainer

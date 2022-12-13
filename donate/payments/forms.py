@@ -11,7 +11,7 @@ from donate.core.templatetags.util_tags import format_currency
 from donate.recaptcha.fields import ReCaptchaField
 
 from . import constants
-from .utils import get_currency_info
+from . import utils
 
 from ..settings.environment import root
 
@@ -35,27 +35,39 @@ except Exception as error:
 MAX_AMOUNT_VALUE = 10000000
 
 
-class MinimumCurrencyAmountMixin():
+class MinimumCurrencyAmountMixin:
     """
-    Mixin for validating minimum amounts. Expects currency and amount fields
-    to be defined on the form. If a currency is supplied on initialization,
-    then this is used to set a `min` attribute on the amount field.
+    Mixin for validating minimum amounts.
+
+    Expects `currency`, `frequency` and `amount` fields to be defined on the child forms. The fields need to be set on
+    the child because this mixin does not inherit from `forms.Form`. (Why that is the case, I don't know, it's how
+    I found this.)
+
+    If `currency` and `frequency` are supplied on initialization, then this is used to set a `min` attribute on the
+    `amount` field.
+
     """
 
     def __init__(self, *args, **kwargs):
-        currency = kwargs.pop('currency', None)
         super().__init__(*args, **kwargs)
-        if currency:
-            currency_info = get_currency_info(currency)
-            self.fields['amount'].widget.attrs['min'] = currency_info['minAmount']
+
+        currency = self['currency'].initial
+        frequency = self['frequency'].initial
+
+        if currency and frequency:
+            min_amount = utils.get_min_amount_for_currency(currency=currency, frequency=frequency)
+            self.fields['amount'].widget.attrs['min'] = min_amount
 
     def clean(self):
         cleaned_data = super().clean()
+
         amount = cleaned_data.get('amount', False)
         currency = cleaned_data.get('currency', False)
-        if amount and currency:
-            currency_info = get_currency_info(currency)
-            min_amount = currency_info['minAmount']
+        frequency = cleaned_data.get('frequency', False)
+
+        if amount and currency and frequency:
+            min_amount = utils.get_min_amount_for_currency(currency=currency, frequency=frequency)
+
             if amount < min_amount:
                 raise forms.ValidationError({
                     'amount': _('Donations must be %(amount)s or more') % {'amount': format_currency(
@@ -95,6 +107,7 @@ class PostalCodeMixin():
 class StartCardPaymentForm(MinimumCurrencyAmountMixin, forms.Form):
     amount = forms.DecimalField(label=_('Amount'), min_value=0.01, max_value=MAX_AMOUNT_VALUE, decimal_places=2)
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES)
+    frequency = forms.ChoiceField(choices=constants.FREQUENCY_CHOICES, widget=forms.HiddenInput)
     source_page_id = forms.IntegerField(widget=forms.HiddenInput)
 
     def clean_source_page_id(self):
@@ -157,10 +170,20 @@ class CurrencyForm(forms.Form):
 
 class UpsellForm(MinimumCurrencyAmountMixin, forms.Form):
     currency = forms.ChoiceField(choices=constants.CURRENCY_CHOICES, widget=forms.HiddenInput, disabled=True)
+    frequency = forms.ChoiceField(
+        choices=constants.FREQUENCY_CHOICES,
+        widget=forms.HiddenInput,
+        initial=constants.FREQUENCY_MONTHLY,
+        required=False,
+    )
     amount = forms.DecimalField(
         label=_('Amount'), min_value=1, max_value=MAX_AMOUNT_VALUE, decimal_places=2,
         widget=forms.NumberInput(attrs={'step': 'any'})
     )
+
+    def clean_frequency(self):
+        '''Always use monthly for the frequency.'''
+        return constants.FREQUENCY_MONTHLY
 
 
 class BraintreePaypalUpsellForm(UpsellForm, BraintreePaymentForm):

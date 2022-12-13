@@ -201,7 +201,10 @@ class Base(object):
     CURRENCIES = {
         'usd': {
             'code': 'usd',
-            'minAmount': 10,
+            'minAmount': {
+                'single': 10,
+                'monthly': 5,
+            },
             'symbol': '$',
             'paypalFixedFee': {
                 'macro': 0.30,
@@ -213,7 +216,7 @@ class Base(object):
                 {'min': 100, 'value': 10},
                 {'min': 70, 'value': 7},
                 {'min': 35, 'value': 5},
-                {'min': 15, 'value': 3},
+                {'min': 15, 'value': 5},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -222,7 +225,10 @@ class Base(object):
         },
         'aud': {
             'code': 'aud',
-            'minAmount': 10,
+            'minAmount': {
+                'single': 10,
+                'monthly': 10,
+            },
             'symbol': '$',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -234,8 +240,8 @@ class Base(object):
                 {'min': 288, 'value': 30},
                 {'min': 144, 'value': 15},
                 {'min': 99, 'value': 10},
-                {'min': 50, 'value': 7},
-                {'min': 22, 'value': 4},
+                {'min': 50, 'value': 10},
+                {'min': 22, 'value': 10},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -244,7 +250,10 @@ class Base(object):
         },
         'brl': {
             'code': 'brl',
-            'minAmount': 8,
+            'minAmount': {
+                'single': 8,
+                'monthly': 8,
+            },
             'symbol': 'R$',
             'paypalFixedFee': {
                 'macro': 0.60,
@@ -266,7 +275,10 @@ class Base(object):
         },
         'cad': {
             'code': 'cad',
-            'minAmount': 10,
+            'minAmount': {
+                'single': 10,
+                'monthly': 10,
+            },
             'symbol': '$',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -277,9 +289,9 @@ class Base(object):
                 {'min': 393, 'value': 40},
                 {'min': 262, 'value': 25},
                 {'min': 131, 'value': 12},
-                {'min': 92, 'value': 9},
-                {'min': 46, 'value': 6},
-                {'min': 20, 'value': 4},
+                {'min': 92, 'value': 10},
+                {'min': 46, 'value': 10},
+                {'min': 20, 'value': 10},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -288,7 +300,10 @@ class Base(object):
         },
         'chf': {
             'code': 'chf',
-            'minAmount': 2,
+            'minAmount': {
+                'single': 2,
+                'monthly': 2,
+            },
             'symbol': 'Fr.',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -310,7 +325,10 @@ class Base(object):
         },
         'czk': {
             'code': 'czk',
-            'minAmount': 45,
+            'minAmount': {
+                'single': 45,
+                'monthly': 45,
+            },
             'symbol': 'Kč',
             'paypalFixedFee': {
                 'macro': 10.00,
@@ -332,7 +350,10 @@ class Base(object):
         },
         'dkk': {
             'code': 'dkk',
-            'minAmount': 13,
+            'minAmount': {
+                'single': 13,
+                'monthly': 13,
+            },
             'symbol': 'kr',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -354,7 +375,10 @@ class Base(object):
         },
         'eur': {
             'code': 'eur',
-            'minAmount': 10,
+            'minAmount': {
+                'single': 10,
+                'monthly': 5,
+            },
             'symbol': '€',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -375,7 +399,10 @@ class Base(object):
         },
         'gbp': {
             'code': 'gbp',
-            'minAmount': 10,
+            'minAmount': {
+                'single': 10,
+                'monthly': 5,
+            },
             'symbol': '£',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -387,8 +414,8 @@ class Base(object):
                 {'min': 160, 'value': 15},
                 {'min': 80, 'value': 10},
                 {'min': 56, 'value': 5},
-                {'min': 28, 'value': 4},
-                {'min': 12, 'value': 3},
+                {'min': 28, 'value': 5},
+                {'min': 12, 'value': 5},
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
@@ -397,7 +424,10 @@ class Base(object):
         },
         'hkd': {
             'code': 'hkd',
-            'minAmount': 15,
+            'minAmount': {
+                'single': 15,
+                'monthly': 15,
+            },
             'symbol': '$',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -419,7 +449,10 @@ class Base(object):
         },
         'huf': {
             'code': 'huf',
-            'minAmount': 570,
+            'minAmount': {
+                'single': 570,
+                'monthly': 570,
+            },
             'symbol': 'Ft',
             'paypalFixedFee': {
                 'macro': 90,
@@ -442,7 +475,10 @@ class Base(object):
         },
         'inr': {
             'code': 'inr',
-            'minAmount': 145,
+            'minAmount': {
+                'single': 145,
+                'monthly': 145,
+            },
             'symbol': '₹',
             'disabled': ['paypal', 'amex'],
             'monthlyUpgrade': [
@@ -460,7 +496,10 @@ class Base(object):
         },
         'jpy': {
             'code': 'jpy',
-            'minAmount': 230,
+            'minAmount': {
+                'single': 230,
+                'monthly': 230,
+            },
             'symbol': '¥',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -483,7 +522,10 @@ class Base(object):
         },
         'mxn': {
             'code': 'mxn',
-            'minAmount': 40,
+            'minAmount': {
+                'single': 40,
+                'monthly': 40,
+            },
             'symbol': '$',
             'paypalFixedFee': {
                 'macro': 4.00,
@@ -505,7 +547,10 @@ class Base(object):
         },
         'nok': {
             'code': 'nok',
-            'minAmount': 17,
+            'minAmount': {
+                'single': 17,
+                'monthly': 17,
+            },
             'symbol': 'kr',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -527,7 +572,10 @@ class Base(object):
         },
         'nzd': {
             'code': 'nzd',
-            'minAmount': 3,
+            'minAmount': {
+                'single': 3,
+                'monthly': 3,
+            },
             'symbol': '$',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -549,7 +597,10 @@ class Base(object):
         },
         'pln': {
             'code': 'pln',
-            'minAmount': 7,
+            'minAmount': {
+                'single': 7,
+                'monthly': 7,
+            },
             'symbol': 'zł',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -571,7 +622,10 @@ class Base(object):
         },
         'rub': {
             'code': 'rub',
-            'minAmount': 130,
+            'minAmount': {
+                'single': 130,
+                'monthly': 130,
+            },
             'symbol': '₽',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -593,7 +647,10 @@ class Base(object):
         },
         'sek': {
             'code': 'sek',
-            'minAmount': 18,
+            'minAmount': {
+                'single': 18,
+                'monthly': 18,
+            },
             'symbol': 'kr',
             'disabled': ['amex'],
             'paypalFixedFee': {
@@ -615,7 +672,10 @@ class Base(object):
         },
         'twd': {
             'code': 'twd',
-            'minAmount': 62,
+            'minAmount': {
+                'single': 62,
+                'monthly': 62,
+            },
             'symbol': 'NT$',
             'disabled': ['amex'],
             'paypalFixedFee': {

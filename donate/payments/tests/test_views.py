@@ -785,6 +785,7 @@ class CardUpsellViewTestCase(TestCase):
                 'transaction_id': 'subscription-id-1',
                 'payment_method': 'Braintree_Card',
                 'currency': 'usd',
+                'frequency': 'monthly',
                 'payment_frequency': 'monthly',
                 'country': 'US',
                 'first_name': 'Alice',
@@ -907,6 +908,7 @@ class PaypalUpsellViewTestCase(TestCase):
                 'braintree_nonce': 'hello-braintree',
                 'payment_method': 'Braintree_Paypal',
                 'currency': 'usd',
+                'frequency': 'monthly',
                 'payment_frequency': 'monthly',
                 'payment_method_token': 'payment-method-1',
             }

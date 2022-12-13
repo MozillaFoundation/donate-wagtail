@@ -3,9 +3,14 @@ from decimal import Decimal
 from django.test import TestCase, override_settings
 
 from ..utils import (
-    determine_paypal_account, freeze_transaction_details_for_session, get_default_currency,
-    get_merchant_account_id_for_paypal, get_suggested_monthly_upgrade, paypal_macro_fee,
-    paypal_micro_fee
+    determine_paypal_account,
+    freeze_transaction_details_for_session,
+    get_default_currency,
+    get_merchant_account_id_for_paypal,
+    get_min_amount_from_currency_info,
+    get_suggested_monthly_upgrade,
+    paypal_macro_fee,
+    paypal_micro_fee,
 )
 
 
@@ -41,6 +46,46 @@ class UtilsTestCase(TestCase):
     def test_get_suggested_monthly_upgrade_small_single_amount(self):
         self.assertIsNone(get_suggested_monthly_upgrade('usd', Decimal(1)))
         self.assertIsNone(get_suggested_monthly_upgrade('brl', Decimal(1)))
+
+    def test_get_min_amount_from_currency_info_single(self):
+        currency_info = {
+            'minAmount': {
+                'single': 1,
+                'monthly': 2,
+            }
+        }
+
+        result = get_min_amount_from_currency_info(currency_info=currency_info, frequency='single')
+
+        self.assertEqual(result, 1)
+
+    def test_get_min_amount_from_currency_info_monthly(self):
+        currency_info = {
+            'minAmount': {
+                'single': 1,
+                'monthly': 2,
+            }
+        }
+
+        result = get_min_amount_from_currency_info(currency_info=currency_info, frequency='monthly')
+
+        self.assertEqual(result, 2)
+
+    def test_get_min_amount_from_currency_info_missing_frequency(self):
+        currency_info = {
+            'minAmount': {}
+        }
+
+        result = get_min_amount_from_currency_info(currency_info=currency_info, frequency='monthly')
+
+        self.assertEqual(result, 0)
+
+    def test_get_min_amount_from_currency_info_missing_min_amount(self):
+        currency_info = {}
+
+        result = get_min_amount_from_currency_info(currency_info=currency_info, frequency='monthly')
+
+        self.assertEqual(result, 0)
 
     def test_paypal_micro_fee(self):
         self.assertEqual(paypal_micro_fee('usd', Decimal(1)), Decimal('0.11'))
