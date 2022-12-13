@@ -220,7 +220,7 @@ class Base(object):
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
-                'monthly': [10, 15, 20, 25],
+                'monthly': [5, 15, 20, 25],
             }
         },
         'aud': {
@@ -394,7 +394,7 @@ class Base(object):
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
-                'monthly': [10, 15, 20, 25],
+                'monthly': [5, 15, 20, 25],
             }
         },
         'gbp': {
@@ -419,7 +419,7 @@ class Base(object):
             ],
             'presets': {
                 'single': [10, 20, 30, 60],
-                'monthly': [10, 15, 20, 25]
+                'monthly': [5, 15, 20, 25]
             }
         },
         'hkd': {
