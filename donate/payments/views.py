@@ -587,7 +587,7 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
 
     def get_success_url(self):
         enable_upsell_view = FeatureFlags.for_request(self.request).enable_upsell_view
-        
+
         if (self.payment_frequency == constants.FREQUENCY_SINGLE) and enable_upsell_view:
             return reverse('payments:paypal_upsell')
         else:
