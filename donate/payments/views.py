@@ -739,11 +739,6 @@ class PaypalUpsellView(TransactionRequiredMixin, BraintreePaymentMixin, FormView
             'amount': self.suggested_upgrade
         }
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['currency'] = self.currency
-        return kwargs
-
     def form_valid(self, form, send_data_to_basket=True):
         self.currency = form.cleaned_data['currency']
 
