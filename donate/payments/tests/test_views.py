@@ -10,6 +10,9 @@ from braintree import ErrorCodes, ErrorResult
 from freezegun import freeze_time
 from freezegun.api import FakeDate
 
+from wagtail.core.models import Site
+
+from donate.core.feature_flags import FeatureFlags
 from ..forms import (
     BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm,
     BraintreePaypalUpsellForm, UpsellForm
@@ -150,6 +153,8 @@ class CardPaymentViewTestCase(TestCase):
             'device_data': '{"some": "data"}'
         }
 
+        self.test_site = Site.objects.get(is_default_site=True)
+        self.feature_flags = FeatureFlags.objects.create(enable_upsell_view=True, site=self.test_site)
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
         self.request.LANGUAGE_CODE = 'en-US'
@@ -390,10 +395,22 @@ class SingleCardPaymentViewTestCase(CardPaymentViewTestCase):
             }
         ])
 
-    def test_get_success_url(self):
+    def test_get_success_url_with_upsell_view_enabled(self):
+        self.feature_flags.enable_upsell_view = True
+        self.feature_flags.save()
+        self.view.payment_frequency = 'single'
         self.assertEqual(
             self.view.get_success_url(),
             reverse('payments:card_upsell')
+        )
+
+    def test_get_success_url_with_upsell_view_disabled(self):
+        self.feature_flags.enable_upsell_view = False
+        self.feature_flags.save()
+        self.view.payment_frequency = 'single'
+        self.assertEqual(
+            self.view.get_success_url(),
+            reverse('payments:newsletter_signup')
         )
 
     def test_get_transaction_details_for_session(self):
@@ -506,6 +523,8 @@ class MonthlyCardPaymentViewTestCase(CardPaymentViewTestCase):
 class PaypalPaymentViewTestCase(TestCase):
 
     def setUp(self):
+        self.test_site = Site.objects.get(is_default_site=True)
+        self.feature_flags = FeatureFlags.objects.create(enable_upsell_view=True, site=self.test_site)
         self.request = RequestFactory().get('/')
         self.request.session = self.client.session
         self.request.LANGUAGE_CODE = 'en-US'
@@ -647,11 +666,22 @@ class PaypalPaymentViewTestCase(TestCase):
             send_transaction_to_basket(self.view.prepare_session_data(details))
         mock_send.assert_called_once()
 
-    def test_get_success_url_single(self):
+    def test_get_success_url_single_with_upsell_view_enabled(self):
+        self.feature_flags.enable_upsell_view = True
+        self.feature_flags.save()
         self.view.payment_frequency = 'single'
         self.assertEqual(
             self.view.get_success_url(),
             reverse('payments:paypal_upsell')
+        )
+
+    def test_get_success_url_single_with_upsell_view_disabled(self):
+        self.feature_flags.enable_upsell_view = False
+        self.feature_flags.save()
+        self.view.payment_frequency = 'single'
+        self.assertEqual(
+            self.view.get_success_url(),
+            reverse('payments:newsletter_signup')
         )
 
     def test_get_success_url_monthly(self):
