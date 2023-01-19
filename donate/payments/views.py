@@ -17,6 +17,7 @@ from mailchimp_marketing.api_client import ApiClientError
 from dateutil.relativedelta import relativedelta
 from wagtail.core.models import Page
 
+from donate.core.feature_flags import FeatureFlags
 from donate.core.utils import queue_ga_event, queue_datalayer_event
 from . import constants, gateway
 from .exceptions import InvalidAddress
@@ -423,7 +424,9 @@ class CardPaymentView(BraintreePaymentMixin, FormView):
         return details
 
     def get_success_url(self):
-        if self.payment_frequency == constants.FREQUENCY_SINGLE:
+        enable_upsell_view = FeatureFlags.for_request(self.request).enable_upsell_view
+
+        if (self.payment_frequency == constants.FREQUENCY_SINGLE) and enable_upsell_view:
             return reverse('payments:card_upsell')
         else:
             return super().get_success_url()
@@ -583,7 +586,9 @@ class PaypalPaymentView(BraintreePaymentMixin, FormView):
         }
 
     def get_success_url(self):
-        if self.payment_frequency == constants.FREQUENCY_SINGLE:
+        enable_upsell_view = FeatureFlags.for_request(self.request).enable_upsell_view
+
+        if (self.payment_frequency == constants.FREQUENCY_SINGLE) and enable_upsell_view:
             return reverse('payments:paypal_upsell')
         else:
             return super().get_success_url()
