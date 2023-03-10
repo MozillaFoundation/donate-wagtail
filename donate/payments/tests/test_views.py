@@ -1,6 +1,7 @@
 from decimal import Decimal
 from unittest import mock
 
+from django.conf import settings
 from django.http import Http404
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
@@ -13,6 +14,7 @@ from freezegun.api import FakeDate
 from wagtail.core.models import Site
 
 from donate.core.feature_flags import FeatureFlags
+from donate.views import apple_pay_domain_association_view
 from ..forms import (
     BraintreePaymentForm, BraintreeCardPaymentForm, BraintreePaypalPaymentForm,
     BraintreePaypalUpsellForm, UpsellForm
@@ -967,3 +969,33 @@ class NewsletterSignupViewTestCase(TestCase):
         self.assertEqual(view.get_initial(), {
             'email': 'test@example.com',
         })
+
+
+class TestApplePayDomainAssociationView(TestCase):
+    def setUp(self):
+        self.view_url = '/.well-known/apple-developer-merchantid-domain-association'
+        self.factory = RequestFactory()
+
+    def test_view_returns_key(self):
+        """
+        Make sure the view returns the apple pay key when set
+        """
+        settings.APPLE_PAY_DOMAIN_ASSOCIATION_KEY = "test_apple_pay_key"
+        request = self.factory.get(self.view_url)
+
+        response = apple_pay_domain_association_view(request)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content.decode(), "test_apple_pay_key")
+
+    def test_view_with_no_key_set(self):
+        """
+        Make sure the view returns the appropriate error message when no key is set
+        """
+        settings.APPLE_PAY_DOMAIN_ASSOCIATION_KEY = None
+        request = self.factory.get(self.view_url)
+
+        response = apple_pay_domain_association_view(request)
+
+        self.assertEqual(response.status_code, 501)
+        self.assertEqual(response.content.decode(), "Key not found. Please check environment variables.")

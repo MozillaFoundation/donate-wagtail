@@ -15,8 +15,7 @@ from wagtail_ab_testing import urls as ab_testing_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView
-
+from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView, apple_pay_domain_association_view
 # Patterns not subject to i18n
 urlpatterns = [
     path('auth/', include('mozilla_django_oidc.urls')),
@@ -28,6 +27,8 @@ urlpatterns = [
     path('stripe/webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
     path('environment.json', EnvVariablesView.as_view()),
     path('abtesting/', include(ab_testing_urls)),
+    # Apple Pay domain association
+    path(".well-known/apple-developer-merchantid-domain-association", apple_pay_domain_association_view)
 ]
 
 if settings.ENABLE_THUNDERBIRD_REDIRECT:
