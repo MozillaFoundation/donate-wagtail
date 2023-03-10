@@ -2,52 +2,6 @@
 
 {% load i18n %}
 
-
-{% block SEPA %}
-    <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
-    <p>{% trans "We accept contributions in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
-    <p>
-        {% blocktrans trimmed %}
-        Please note that for smaller (under 10 EUR or equivalent) contributions, <strong>and especially for contributions under 5 EUR or equivalent</strong>, we request that you contribute via credit card or PayPal to help reduce our processing fees.
-        {% endblocktrans %}
-    </p>
-    <p>
-        {% blocktrans with address="2 Harrison Street, Suite 175, San Francisco, CA 94105 USA" trimmed %}
-        If your bank requests our physical address, it is {{address}}.
-        {% endblocktrans %}
-    </p>
-{% endblock %}
-
-{% block euros %}
-    <h3>{% trans "Euros:" %}</h3>
-    <p>
-        <b>{% trans "Account Currency:" %}</b> {% trans "Euro (EUR)" %}<br>
-        <b>{% trans "Receiving Bank (Pay to):" %}</b> Standard Chartered Bank<br>
-        <b>{% trans "City & Country/Region:" %}</b> {% trans "Frankfurt, Germany" %}<br>
-        <b>{% trans "SWIFT/BIC Code:" %}</b> SCBLDEFX<br>
-        <b>{% trans "Beneficiary Name (For credit to):" %}</b> SVB - MZLA Technologies Corporation<br>
-        <b>{% trans "IBAN:" %}</b> DE05512305000500215809
-        {% block tb_memo_eur %}<br><b>{% trans "Memo field:" %}</b> Thunderbird{% endblock %}
-    </p>
-{% endblock %}
-
-{% block british_pound %}
-    <h3>{% trans "British Pound Sterling:" %}</h3>
-    <p>
-        <b>{% trans "Account Currency:" %}</b> {% trans "British Pound Sterling (GBP)" %}<br>
-        <b>{% trans "Receiving Bank (Pay to):" %}</b> National Westminster Bank<br>
-        <b>{% trans "City & Country/Region:" %}</b> {% trans "London, United Kingdom" %}<br>
-        <b>{% trans "Bank Sort Code:" %}</b> 60-00-04<br>
-        <b>{% trans "Account Number (8 digits):" %}</b> 10020551<br>
-        <b>{% trans "Beneficiary Name (For credit to):" %}</b> MZLA Technologies Corporation
-    </p>
-    <p>
-        <b>{% trans "SWIFT/BIC Code:" %}</b> NWBKGB2L<br>
-        <b>{% trans "IBAN:" %}</b> GB42NWBK60000410020551
-        {% block tb_memo_gbp %}<br><b>{% trans "Memo field:" %}</b> Thunderbird{% endblock %}
-    </p>
-{% endblock %}
-
 {% block stock_donations %}{% endblock %}
 
 {% block covid_notice %}

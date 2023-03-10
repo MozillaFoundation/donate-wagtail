@@ -18,7 +18,6 @@
                 
                 {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' cryptocurrency_url='https://bitpay.com/100257/donate' trimmed %}
                 Other ways to give: 
-                <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | 
                 <a href="{{ check_url }}">Check</a> |
                 <a href="{{ cryptocurrency_url }}">BitPay (cryptocurrencies)</a>
                 
@@ -26,7 +25,6 @@
             {% endcomment %}
             {% blocktrans with wire_transfer_url='/ways-to-give#wire' check_url='/ways-to-give#check' trimmed %}
               Other ways to give: 
-              <a href="{{ wire_transfer_url }}">SEPA/BACS</a> | 
               <a href="{{ check_url }}">Check</a>
             {% endblocktrans %}
         </b>

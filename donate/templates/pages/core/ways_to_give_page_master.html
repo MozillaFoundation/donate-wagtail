@@ -20,57 +20,6 @@
         {% endblocktrans %}
     </p>
 
-    {% block SEPA %}
-    <h2 id="wire">{% trans "Bank Transfer / SEPA" %}</h2>
-    <p>{% trans "We accept donations in Euros through Single European Payment Area (SEPA) transfer, and British Pounds through BACS transfer." %}</p>
-    <p>
-        {% blocktrans trimmed %}
-        Note that for smaller (under 10 EUR or equivalent) donations, <strong>and especially for donations under 5 EUR or equivalent</strong>, we request that you donate via credit card or PayPal to help reduce Mozilla’s processing fees.
-        {% endblocktrans %}
-    </p>
-    <p>
-        {% blocktrans with instruction_url="https://give.thunderbird.net/ways-to-give/#wire" trimmed %}
-        Please also note that the Mozilla Foundation cannot accept SEPA or BACS transfers for MZLA/Thunderbird. To contribute to MZLA/Thunderbird via SEPA or BACS transfer, please follow <a href="{{instruction_url}}">these instructions</a>.
-        {% endblocktrans %}
-    </p>
-    <p>{% trans "Please remember that donations are deductible for U.S. income tax purposes only." %}</p>
-    <p>
-        {% blocktrans with address="2 Harrison Street, Suite 175, San Francisco, CA 94105 USA" trimmed %}
-        If your bank requests our physical address, it is {{address}}.
-        {% endblocktrans %}
-    </p>
-    {% endblock %}
-
-    {% block euros %}
-    <h3>{% trans "Euros:" %}</h3>
-    <p>
-        <b>{% trans "Account Currency:" %}</b> {% trans "Euro (EUR)" %}<br>
-        <b>{% trans "Receiving Bank (Pay to):" %}</b> Standard Chartered Bank<br>
-        <b>{% trans "City & Country/Region:" %}</b> {% trans "Frankfurt, Germany" %}<br>
-        <b>{% trans "SWIFT/BIC Code:" %}</b> SCBLDEFX<br>
-        <b>{% trans "Beneficiary Name (For donations to):" %}</b> SVB-Mozilla Foundation<br>
-        <b>{% trans "IBAN:" %}</b> DE67512305000500136802
-        {% block tb_memo_eur %}{% endblock %}
-    </p>
-    {% endblock %}
-
-    {% block british_pound %}
-    <h3>{% trans "British Pound Sterling:" %}</h3>
-    <p>
-        <b>{% trans "Account Currency:" %}</b> {% trans "British Pound Sterling (GBP)" %}<br>
-        <b>{% trans "Receiving Bank (Pay to):" %}</b> National Westminster Bank<br>
-        <b>{% trans "City & Country/Region:" %}</b> {% trans "London, United Kingdom" %}<br>
-        <b>{% trans "Bank Sort Code:" %}</b> 60-00-04<br>
-        <b>{% trans "Account Number (8 digits):" %}</b> 10017496<br>
-        <b>{% trans "Beneficiary Name (For donations to):" %}</b> SVB RE Mozilla Foundation
-    </p>
-    <p>
-        <b>{% trans "SWIFT/BIC Code:" %}</b> NWBKGB2L<br>
-        <b>{% trans "IBAN:" %}</b> GB77NWBK60000410017496
-        {% block tb_memo_gbp %}{% endblock %}
-    </p>
-    {% endblock %}
-
     {% block stock_donations %}
     <h2>{% trans "Donation of Stock/Securities:" %}</h2>
     <p>
