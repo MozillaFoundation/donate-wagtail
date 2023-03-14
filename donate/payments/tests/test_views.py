@@ -1,9 +1,8 @@
 from decimal import Decimal
 from unittest import mock
 
-from django.conf import settings
 from django.http import Http404
-from django.test import RequestFactory, TestCase
+from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
 from django.views.generic import FormView
 
@@ -976,26 +975,24 @@ class TestApplePayDomainAssociationView(TestCase):
         self.view_url = '/.well-known/apple-developer-merchantid-domain-association'
         self.factory = RequestFactory()
 
+    @override_settings(APPLE_PAY_DOMAIN_ASSOCIATION_KEY="test_apple_pay_key")
     def test_view_returns_key(self):
         """
         Make sure the view returns the apple pay key when set
         """
-        settings.APPLE_PAY_DOMAIN_ASSOCIATION_KEY = "test_apple_pay_key"
         request = self.factory.get(self.view_url)
 
         response = apple_pay_domain_association_view(request)
 
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content.decode(), "test_apple_pay_key")
+        self.assertContains(response, status_code=200, text="test_apple_pay_key")
 
+    @override_settings(APPLE_PAY_DOMAIN_ASSOCIATION_KEY=None)
     def test_view_with_no_key_set(self):
         """
         Make sure the view returns the appropriate error message when no key is set
         """
-        settings.APPLE_PAY_DOMAIN_ASSOCIATION_KEY = None
         request = self.factory.get(self.view_url)
 
         response = apple_pay_domain_association_view(request)
 
-        self.assertEqual(response.status_code, 501)
-        self.assertEqual(response.content.decode(), "Key not found. Please check environment variables.")
+        self.assertContains(response, status_code=501, text="Key not found. Please check environment variables.")
