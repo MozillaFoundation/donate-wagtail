@@ -13,15 +13,13 @@
                         {% with alt_text=image.alt %}
                             {% image page.hero_image width-1800 as imageDesktop %}
                             {% image page.hero_image width-3600 as imageDesktop_2x %}
-                            <source media="(min-width: 1201px)" srcset="{{ imageDesktop.url }}, {{ imageDesktop_2x.url }} 2x"  alt="{{ alt_text }}">
-
                             {% image page.hero_image width-1200 as imageTablet %}
                             {% image page.hero_image width-2400 as imageTablet_2x %}
-                            <source media="(min-width: 768px)" srcset="{{ imageTablet.url }}, {{ imageTablet_2x.url }} 2x" alt="{{ alt_text }}">
-
                             {% image page.hero_image width-768 as imageMobile %}
                             {% image page.hero_image width-1536 as imageMobile_2x %}
-                            <source srcset="{{ imageMobile.url }}, {{ imageMobile_2x.url }} 2x" alt="{{ alt_text }}">
+                            <source media="(min-width: 1201px)" srcset="{{ imageDesktop.url }}, {{ imageDesktop_2x.url }} 2x" />
+                            <source media="(min-width: 768px)" srcset="{{ imageTablet.url }}, {{ imageTablet_2x.url }} 2x" />
+                            <source srcset="{{ imageMobile.url }}, {{ imageMobile_2x.url }} 2x" />
 
                             <img src="{{ imageDesktop.url }}" class="hero__image-item" srcset="{{ imageMobile.url }} 768w, {{ imageTablet.url }} 1200w, {{ imageDesktop.url }} 1800w" alt="{{ alt_text }}"/>
                         {% endwith %}
@@ -37,11 +35,6 @@
             </div>
         </div>
     </div>
-    <div class="sticky-message" data-waypoint-element>
-        <div class="sticky-message__container">
-            <a href="#anchor-donate" class="sticky-message__action button button--primary button--large">{% trans "DONATE NOW" context "Button" %}</a>
-        </div>
-    </div>
     <div class="layout__container">
         <div class="layout__half-col">
             <div class="introduction column-spacing">
@@ -54,58 +47,12 @@
             </div>
         </div>
         <div class="layout__half-col">
-            <div class="donate-form js-data-waypoint" id="anchor-donate">
-                <!-- <header class="donate-form__header">
-                </header> -->
-                <div class="donate-form__fundraiseup-form">
-                    
-                <a href="#XFJLGDNG" style="display: none"></a>
-</div>
+            <div class="donate-form">
+                {% include "fragments/donate_form_fundraise_up.html" %}
             </div>
         </div>
-
-            <div class="layout__full-col fru">
-
-                <div class="">
-                    <footer class="donate-form__footer">
-                        <p>
-                            {% block donation_information %}
-                            {% blocktrans with stripe_url='https://stripe.com/en-ca/legal/privacy-center' paypal_url='https://www.paypal.com/us/webapps/mpp/ua/privacy-full' privacy_url="https://www.mozilla.org/privacy/websites/" trimmed %}
-                                Mozilla is committed to your privacy; please read our <a href="{{ privacy_url }}">privacy policy here</a>. Your payment details will be processed by <a href="{{ stripe_url }}">Stripe</a>, or <a href="{{ paypal_url }}">PayPal</a>, and a record of your donation will be stored by Mozilla.
-                            {% endblocktrans %}
-                            {% endblock %}
-                        </p>
-                        <p>
-                            {% block other_options %}
-                            <b>
-                                    
-                            {% blocktrans with check_url='/ways-to-give#check' trimmed %}
-                            Other ways to give: 
-                            <a href="{{ check_url }}">Check</a>
-                            {% endblocktrans %}
-                            </b>
-                            {% endblock %}
-                        </p>
-                            {% block faq_contact %}
-                            {% blocktrans with faq_url='/faq' help_url='/help/' trimmed %}
-                            <p>
-    
-                                <b> Question donating? </b> Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions. Still have problems? <a href="{{ help_url }}">Contact us</a>.
-                            </p>
-                            <p>
-                                <b> Need to reach us about your donation? </b> <a href="{{ help_url }}">Contact us</a>.
-                            </p> 
-                            {% endblocktrans %}
-                            {% endblock %}
-                        <p>
-                            {% block contribution_statement %}
-                                {% blocktrans with mozilla_url='https://foundation.mozilla.org/en/who-we-are/'%}Contributions go to the  <a href="{{ mozilla_url }}">Mozilla Foundation</a>, a 501(c)(3) organization based in San Francisco, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.{% endblocktrans %}
-                            {% endblock %}
-                        </p>
-                    </footer>
-                    
-    
-                </div>
+        <div class="layout__full-col">
+            {% include "fragments/donate_form_disclaimer_fundraise_up.html" %}
         </div>
     </div>
 </div>
