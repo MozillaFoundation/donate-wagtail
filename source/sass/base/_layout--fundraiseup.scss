@@ -1,11 +1,44 @@
 // Overrides for FundraiseUp pages (LandingPage and CampaignPage)
 
 .layout.layout__fundraise-up {
+  // Updating the header icon for both pages. 
+  // Desktop size icon should show until mobile breakpoint
+  .header {
+    &__logo-link {
+      @include media-query(tablet-fundraiseup) {
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+      }
+    }
+
+    &__logo {
+      @include media-query(tablet-fundraiseup) {
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+      }
+    }
+
+    &--desktop {
+      display: none;
+      @include media-query(tablet-fundraiseup) {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      display: block;
+      @include media-query(tablet-fundraiseup) {
+        display: none;
+      }
+    }
+  }
+
   // Landing Page specific overrides
   .app--landing-page & {
     .layout {
       &__container {
         flex-wrap: wrap;
+        margin: auto;
         @include media-query(tablet-fundraiseup) {
           flex-direction: row;
         }
@@ -16,18 +49,6 @@
           flex-basis: 50%;
           min-width: 50%;
           max-width: 50%;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-        @include media-query(tablet-landscape) {
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
-      &__full-col {
-        @include media-query(tablet-landscape) {
-          padding-left: 20px;
-          padding-right: 20px;
         }
       }
     }
@@ -41,6 +62,12 @@
 
     .donate-form {
       padding-bottom: 20px;
+      @include media-query(tablet-portrait) {
+        padding-left: 20px;
+      }
+      @include media-query(desktop) {
+        padding-left: 40px;
+      }
       &__header {
         display: none;
         @include media-query(tablet-fundraiseup) {
@@ -143,17 +170,6 @@
         padding: ($gutter * 1.5) ($gutter * 5);
       }
 
-      &__header {
-        @include media-query(tablet-fundraiseup) {
-          padding: 0 0 0 25px;
-        }
-        .heading {
-          font-weight: $weight--normal;
-          @include media-query(tablet-fundraiseup) {
-            font-weight: $weight--light;
-          }
-        }
-      }
       &__fundraiseup-form {
         display: flex;
         flex-direction: column;
@@ -169,6 +185,9 @@
         @include media-query(tablet-landscape) {
           padding-right: 150px;
         }
+      }
+      .heading {
+        padding-bottom: $gutter;
       }
     }
   }
