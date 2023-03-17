@@ -10,17 +10,17 @@
                 {% block featured_image %}
                     <div class="image-feature__container">
                         <picture class="image-feature__image">
-                        {% image page.featured_image fill-290x95 as imageMobile %}
-                        {% image page.featured_image fill-580x190 as imageMobile_2x %}
-                        {% image page.featured_image width-350 as imageTablet %}
-                        {% image page.featured_image width-700 as imageTablet_2x %}
-                        {% image page.featured_image width-690 as imageDesktop %}
-                        {% image page.featured_image width-1380 as imageDesktop_2x %}
-                        <source media="(min-width: 1201px)" srcset="{{ imageDesktop.url }}, {{ imageDesktop_2x.url }} 2x" />
-                        <source media="(min-width: 600px)" srcset="{{ imageTablet.url }}, {{ imageTablet_2x.url }} 2x" />
-                        <source srcset="{{ imageMobile.url }}, {{ imageMobile_2x.url }} 2x" />
+                            {% image page.featured_image fill-290x95 as imageMobile %}
+                            {% image page.featured_image fill-580x190 as imageMobile_2x %}
+                            {% image page.featured_image width-350 as imageTablet %}
+                            {% image page.featured_image width-700 as imageTablet_2x %}
+                            {% image page.featured_image width-690 as imageDesktop %}
+                            {% image page.featured_image width-1380 as imageDesktop_2x %}
+                            <source media="(min-width: 1201px)" srcset="{{ imageDesktop.url }}, {{ imageDesktop_2x.url }} 2x" />
+                            <source media="(min-width: 600px)" srcset="{{ imageTablet.url }}, {{ imageTablet_2x.url }} 2x" />
+                            <source srcset="{{ imageMobile.url }}, {{ imageMobile_2x.url }} 2x" />
 
-                        <img src="{{ imageMobile.url }}" class="image-feature__image"/>
+                            <img src="{{ imageMobile.url }}" class="image-feature__image"/>
                         </picture>
 
                     </div>

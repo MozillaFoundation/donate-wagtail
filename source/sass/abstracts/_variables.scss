@@ -68,12 +68,12 @@ $font-sizes: (
 $breakpoints: (
   "mob-portrait" "(min-width: 320px)",
   "mob-landscape" "(min-width: 480px)",
-  // Smaller tablet breakpoint for when using the FRU form
-   "tablet-fundraiseup" "(min-width: 600px)",
+// Smaller tablet breakpoint for when using the FRU form
+  "tablet-fundraiseup" "(min-width: 600px)",
   "tablet-portrait" "(min-width: 768px)",
   "tablet-landscape" "(min-width: 1024px)",
-  // needed for working with responsive paypal button
-   "paypal-specific" "(min-width: 1090px)",
+// needed for working with responsive paypal button
+  "paypal-specific" "(min-width: 1090px)",
   "desktop" "(min-width: 1280px)",
   "desktop-wide" "(min-width: 2556px)"
 );
