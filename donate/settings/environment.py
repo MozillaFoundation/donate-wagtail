@@ -13,6 +13,7 @@ env = environ.Env(
     ACOUSTIC_TX_REFRESH_TOKEN=(str, ''),
     ACOUSTIC_TX_SERVER_NUMBER=(str, ''),
     ALLOWED_HOSTS=(list, '*'),
+    APPLE_PAY_DOMAIN_ASSOCIATION_KEY=(str, ''),
     AUTO_CLOSE_STRIPE_DISPUTES=(bool, False),
     AWS_ACCESS_KEY_ID=(str, ''),
     AWS_LOCATION=(str, ''),
