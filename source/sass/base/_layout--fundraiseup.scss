@@ -1,8 +1,7 @@
 // Overrides for FundraiseUp pages (LandingPage and CampaignPage)
 
-.layout.layout__fundraise-up {
-  // Updating the header icon for both pages. 
-  // Desktop size icon should show until mobile breakpoint
+// Header/Navbar icon overrides
+.header.header__fundraise-up {
   .header {
     &__logo-link {
       @include media-query(tablet-fundraiseup) {
@@ -16,23 +15,26 @@
         width: $logo-width-desktop;
         height: $logo-height-desktop;
       }
-    }
 
-    &--desktop {
-      display: none;
-      @include media-query(tablet-fundraiseup) {
-        display: block;
-      }
-    }
-
-    &--mobile {
-      display: block;
-      @include media-query(tablet-fundraiseup) {
+      &--desktop {
         display: none;
+        @include media-query(tablet-fundraiseup) {
+          display: block;
+        }
+      }
+
+      &--mobile {
+        display: block;
+        @include media-query(tablet-fundraiseup) {
+          display: none;
+        }
       }
     }
   }
+}
 
+// Page Layout overrides
+.layout.layout__fundraise-up {
   // Landing Page specific overrides
   .app--landing-page & {
     .layout {
