@@ -68,13 +68,11 @@ $font-sizes: (
 $breakpoints: (
   "mob-portrait" "(min-width: 320px)",
   "mob-landscape" "(min-width: 480px)",
-  // Smaller tablet breakpoint for when using the FRU form
-    "tablet-fundraiseup" "(min-width: 600px)",
   "tablet-portrait" "(min-width: 768px)",
   "tablet-landscape" "(min-width: 1024px)",
+  "paypal-specific" "(min-width: 1090px)",
   // needed for working with responsive paypal button
-    "paypal-specific" "(min-width: 1090px)",
-  "desktop" "(min-width: 1280px)",
+    "desktop" "(min-width: 1280px)",
   "desktop-wide" "(min-width: 2556px)"
 );
 
@@ -110,10 +108,3 @@ $gutter: $grid;
 // --------------------------------- Transitions --------------------------------------
 
 $transition: 0.25s ease-out 0s;
-
-// --------------------------------- Header Icon Dimensions --------------------------------------
-
-$logo-width-desktop: 97px;
-$logo-height-desktop: 28px;
-$logo-width-mobile: 28px;
-$logo-height-mobile: 28px;
