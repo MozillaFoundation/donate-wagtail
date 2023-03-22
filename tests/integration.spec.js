@@ -9,23 +9,18 @@ test(`Donate homepage`, async ({ page }, _testInfo) => {
   const logo = await page.locator(`a.header__logo-link`);
   expect(await logo.isVisible()).toBe(true);
 
-
-  // The tests below have been commented out because we are no longer using our 
-  // HTML donate form. Instead, we are using a FundraiseUp form component that is loaded in through javascript. 
-  // See: https://github.com/MozillaFoundation/foundation.mozilla.org/issues/10261
-
-  // // default view is single
-  // const form = await page.locator(`.donate-form--single`);
-  // expect(await form.isVisible()).toBe(true);
+  // default view is single
+  const form = await page.locator(`#donate-form--single`);
+  expect(await form.isVisible()).toBe(true);
 
   // values match expected values - TODO: figure out how we can marry python constants with JS testing
-  // const inputs = await page.locator(
-  //   `#donate-form--single .donation-amount input`
-  // );
-  // const values = [];
-  // const count = await inputs.count();
-  // for (let i = 0; i < count; ++i) {
-  //   values[i] = parseFloat(await inputs.nth(i).inputValue());
-  // }
-  // expect(values).toEqual([10, 20, 30, 60, NaN, NaN]);
+  const inputs = await page.locator(
+    `#donate-form--single .donation-amount input`
+  );
+  const values = [];
+  const count = await inputs.count();
+  for (let i = 0; i < count; ++i) {
+    values[i] = parseFloat(await inputs.nth(i).inputValue());
+  }
+  expect(values).toEqual([10, 20, 30, 60, NaN, NaN]);
 });
