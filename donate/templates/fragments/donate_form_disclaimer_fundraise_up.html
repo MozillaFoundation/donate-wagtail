@@ -14,7 +14,7 @@
 {% block other_options %}
     <p>
         {% blocktrans with check_url='/ways-to-give#check' trimmed %}
-            <b> Other ways to give: <a href="{{ check_url }}"> Check </a> </b>
+            <b>Other ways to give: <a href="{{ check_url }}">Check</a></b>
         {% endblocktrans %}
     </p>
 {% endblock %}
@@ -22,20 +22,20 @@
 {% block faq_contact %}
     <p>
         {% blocktrans with faq_url='/faq' trimmed %}
-            <b> Question donating? </b> Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions.
+            <b>Question donating?</b> Visit our <a href="{{ faq_url }}">FAQ</a> for answers to most common questions.
         {% endblocktrans %}
     </p>
     <p>
         {% blocktrans with help_url='/help/' trimmed %}
-            <b> Need to reach us about your donation? </b> <a href="{{ help_url }}">Contact us</a>.
+            <b>Need to reach us about your donation?</b> <a href="{{ help_url }}">Contact us</a>.
         {% endblocktrans %}
     </p>
 {% endblock %}
 
 {% block contribution_statement %}
     <p> 
-        {% blocktrans with mozilla_url='https://foundation.mozilla.org/en/who-we-are/'%}
-            Contributions go to the  <a href="{{ mozilla_url }}">Mozilla Foundation</a>, a 501(c)(3) organization based in San Francisco, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.
+        {% blocktrans with mozilla_url='https://foundation.mozilla.org/who-we-are/' trimmed %}
+            Contributions go to the <a href="{{ mozilla_url }}">Mozilla Foundation</a>, a 501(c)(3) organization based in San Francisco, California, to be used in its discretion for its charitable purposes. They are tax-deductible in the U.S. to the fullest extent permitted by law.
         {% endblocktrans %}
     </p>
 {% endblock %}
