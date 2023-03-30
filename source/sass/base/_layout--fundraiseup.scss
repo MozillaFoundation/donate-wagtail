@@ -1,0 +1,196 @@
+// Overrides for FundraiseUp pages (LandingPage and CampaignPage)
+
+// Header/Navbar icon overrides
+.header.header__fundraise-up {
+  .header {
+    &__logo-link {
+      @include media-query(tablet-fundraiseup) {
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+      }
+    }
+
+    &__logo {
+      @include media-query(tablet-fundraiseup) {
+        width: $logo-width-desktop;
+        height: $logo-height-desktop;
+      }
+
+      &--desktop {
+        display: none;
+        @include media-query(tablet-fundraiseup) {
+          display: block;
+        }
+      }
+
+      &--mobile {
+        display: block;
+        @include media-query(tablet-fundraiseup) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Page Layout overrides
+.layout.layout__fundraise-up {
+  // Landing Page specific overrides
+  .app--landing-page & {
+    .layout {
+      &__container {
+        flex-wrap: wrap;
+        margin: auto;
+        @include media-query(tablet-fundraiseup) {
+          flex-direction: row;
+        }
+      }
+      &__half-col {
+        @include media-query(tablet-fundraiseup) {
+          padding-top: 50px;
+          flex-basis: 50%;
+          min-width: 50%;
+          max-width: 50%;
+        }
+      }
+    }
+
+    .image-feature {
+      padding-top: 25px;
+      @include media-query(tablet-fundraiseup) {
+        padding-top: unset;
+      }
+    }
+
+    .donate-form {
+      padding-bottom: 20px;
+      @include media-query(tablet-portrait) {
+        padding-left: 20px;
+      }
+      @include media-query(desktop) {
+        padding-left: 40px;
+      }
+      &__header {
+        display: none;
+        @include media-query(tablet-fundraiseup) {
+          padding-left: 25px;
+          display: block;
+        }
+      }
+      &__fundraiseup-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include media-query(tablet-fundraiseup) {
+          align-items: baseline;
+        }
+      }
+    }
+
+    .introduction .heading--mobile {
+      @include media-query(tablet-fundraiseup) {
+        display: none;
+      }
+    }
+  }
+
+  // Campaign Page specific overrides
+  .app--campaign-page & {
+    .layout {
+      &__container {
+        flex-wrap: wrap;
+        margin: auto;
+        @include media-query(tablet-fundraiseup) {
+          flex-direction: row;
+        }
+      }
+      &__half-col {
+        @include media-query(tablet-fundraiseup) {
+          flex-basis: 50%;
+          min-width: 50%;
+          max-width: 50%;
+        }
+      }
+    }
+
+    .hero {
+      &__container {
+        overflow: hidden;
+        max-height: 364px;
+        border-bottom: 0;
+        display: flex;
+        width: 100%;
+      }
+      &__content {
+        padding: 64px $gutter 64px $gutter;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: $site-width--default;
+        margin: auto;
+        @include media-query(tablet-portrait) {
+          padding: 64px;
+        }
+        @include media-query(desktop) {
+          padding: 64px 0 64px 0;
+        }
+      }
+      &__image {
+        background-color: $color--black;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      &__image-item {
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+      &__heading {
+        color: $color--white;
+      }
+      &__description {
+        color: $color--white;
+      }
+    }
+
+    .donate-form {
+      margin-bottom: 50px;
+      @include media-query(tablet-portrait) {
+        position: relative;
+        top: -90px;
+        background-color: $color--white;
+        padding: ($gutter * 1.5) $gutter;
+        margin-bottom: -70px; // make up for top minus value
+      }
+      @include media-query(tablet-landscape) {
+        padding: ($gutter * 1.5) ($gutter * 2);
+      }
+      @include media-query(desktop) {
+        padding: ($gutter * 1.5) ($gutter * 5);
+      }
+
+      &__fundraiseup-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include media-query(tablet-fundraiseup) {
+          align-items: baseline;
+        }
+      }
+    }
+
+    .introduction {
+      &__container {
+        @include media-query(tablet-landscape) {
+          padding-right: 150px;
+        }
+      }
+      .heading {
+        padding-bottom: $gutter;
+      }
+    }
+  }
+}
