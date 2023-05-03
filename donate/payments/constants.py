@@ -1,6 +1,8 @@
 from django.conf import settings
 
 
+DEFAULT_FRU_FORM_ID = '#XFJLGDNG'
+
 FREQUENCY_SINGLE = 'single'
 FREQUENCY_MONTHLY = 'monthly'
 
