@@ -8,6 +8,7 @@ from django.test import TestCase, RequestFactory
 
 from wagtail.core.models import Page
 
+from donate.payments import constants
 from ..factory.core_pages import CampaignPageFactory, LandingPageFactory
 from ..models import CampaignPageDonationAmount, DonationPage
 
@@ -71,6 +72,49 @@ class DonationPageTestCase(TestCase):
             'project': page.project,
             'campaign_id': page.campaign_id,
         })
+
+    def test_get_form_id(self):
+        """
+        Test that the default form ID is used if no form_id URL parameter is provided.
+        """
+        request = RequestFactory().get('/')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        form_id = page.get_fru_form_id(request)
+        self.assertEqual(form_id, constants.DEFAULT_FRU_FORM_ID)
+
+    def test_get_form_id_returns_custom_id(self):
+        """
+        Test that the custom form ID is used and formatted correctly,
+        if a valid form_id URL parameter is provided.
+        """
+        request = RequestFactory().get('/?form_id=ABCDWXYZ')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        form_id = page.get_fru_form_id(request)
+        self.assertEqual(form_id, '#ABCDWXYZ')
+
+    def test_invalid_form_id_returns_default(self):
+        """
+        Test that an invalid form ID attempt will return the default instead.
+        """
+        request = RequestFactory().get('/?form_id=invalid_form_id')
+        site_root = Page.objects.first()
+        page = LandingPageFactory.create(
+            parent=site_root,
+            title='Donate today',
+            slug='landing',
+        )
+        form_id = page.get_fru_form_id(request)
+        self.assertEqual(form_id, constants.DEFAULT_FRU_FORM_ID)
 
 
 class CampaignPageTestCase(TestCase):

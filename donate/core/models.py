@@ -161,6 +161,21 @@ class DonationPage(Page):
             "amount": amount,
         }
 
+    def get_fru_form_id(self, request):
+        """
+        Returns a formatted fundraise up form ID (Ex: #ABCDWXYZ) for use in the template.
+
+        If the page is visited with ?form_id=... in the URL, and the attempted value follows
+        the format of a valid form ID (8 alphabetical characters), use that value.
+
+        If not, use the default form ID.
+        """
+        form_id = request.GET.get('form_id')
+        if form_id and form_id.isalpha() and len(form_id) == 8:
+            return f"#{form_id.upper()}"
+        else:
+            return constants.DEFAULT_FRU_FORM_ID
+
     def get_context(self, request):
         ctx = super().get_context(request)
         values = self.get_initial_values(request)
@@ -179,6 +194,7 @@ class DonationPage(Page):
                 }
             ),
             'currency_form': CurrencyForm(initial={'currency': values['currency']}),
+            'fru_form_id': self.get_fru_form_id(request),
             'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY if settings.USE_RECAPTCHA else None,
         })
         return ctx
