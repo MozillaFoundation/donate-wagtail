@@ -171,7 +171,7 @@ class DonationPage(Page):
         If not, use the default form ID.
         """
         form_id = request.GET.get('form_id')
-        if form_id.isalpha() and len(form_id) == 8:
+        if form_id and form_id.isalpha() and len(form_id) == 8:
             return f"#{form_id.upper()}"
         else:
             return constants.DEFAULT_FRU_FORM_ID
