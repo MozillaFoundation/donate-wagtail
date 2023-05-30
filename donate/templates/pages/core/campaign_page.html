@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="layout__container">
-        <div class="layout__half-col">
+        <div class="layout__half-col main__introduction">
             <div class="introduction column-spacing">
                 <h1 class="heading heading--primary">
                     {% trans "Donate now" context "Header" %}
@@ -46,12 +46,15 @@
                 </div>
             </div>
         </div>
-        <div class="layout__half-col">
+        <div class="layout__half-col main__form">
             <div class="donate-form">
+                <h1 class="heading heading--primary">
+                    {% trans "Donate now" context "Header" %}
+                </h1>
                 {% include "fragments/donate_form_fundraise_up.html" %}
             </div>
         </div>
-        <div class="layout__full-col">
+        <div class="layout__full-col main__disclaimer">
             {% include "fragments/donate_form_disclaimer_fundraise_up.html" %}
         </div>
     </div>

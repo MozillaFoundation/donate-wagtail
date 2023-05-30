@@ -156,6 +156,36 @@
       }
     }
 
+    .main {
+      &__introduction {
+        order: 2;
+        @include media-query(tablet-fundraiseup) {
+          order: 1;
+        }
+        .heading--primary {
+          display: none;
+          @include media-query(tablet-fundraiseup) {
+            display: block;
+          }
+        }
+      }
+      &__form {
+        order: 1;
+        @include media-query(tablet-fundraiseup) {
+          order: 2;
+        }
+        .heading--primary {
+          display: block;
+          @include media-query(tablet-fundraiseup) {
+            display: none;
+          }
+        }
+      }
+      &__disclaimer {
+        order: 3;
+      }
+    }
+
     .donate-form {
       margin-bottom: 50px;
       @include media-query(tablet-portrait) {
