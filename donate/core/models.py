@@ -259,7 +259,7 @@ class CampaignPage(DonationPage):
 
     cta_first = models.BooleanField(
         default=False,
-        help_text="Check this to shift the CTA to the left on desktop and to the top on mobile.",
+        help_text="Check this to shift the CTA to the top on mobile",
     )
 
     settings_panels = Page.settings_panels + [
