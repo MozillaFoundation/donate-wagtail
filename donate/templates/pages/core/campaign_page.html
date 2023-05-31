@@ -45,7 +45,7 @@
         {% endif %}
         <div class="layout__half-col {% if page.cta_first == True %}order__1{% endif %}">
             <div class="introduction column-spacing">
-                {% if page.intro_header != "" %}
+                {% if page.intro_header %}
                     <h2 class="heading heading--primary">
                         {% trans page.intro_header context "Header" %}
                     </h2>
