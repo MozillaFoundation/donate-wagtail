@@ -243,7 +243,6 @@ class CampaignPage(DonationPage):
     )
 
     lead_text = models.CharField(max_length=800)
-    donate_form_header = models.CharField(max_length=50, blank=True, default="")
     intro_header = models.CharField(max_length=200, blank=True, default="Donate now")
     intro = RichTextField()
 
@@ -251,7 +250,6 @@ class CampaignPage(DonationPage):
         FieldPanel('lead_text'),
         FieldPanel('project'),
         ImageChooserPanel('hero_image'),
-        FieldPanel('donate_form_header'),
         FieldPanel('intro_header'),
         FieldPanel('intro'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
