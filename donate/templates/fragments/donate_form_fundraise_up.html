@@ -1,3 +1,12 @@
+{% load static i18n %}
+
+{% if page.donate_form_header != "" %}
+    <h2 class="heading heading--primary">
+        {% if page.donate_form_header != "" %}
+            {% trans page.donate_form_header context "Header" %}
+        {% endif %}
+    </h2>
+{% endif %}
 <div class="donate-form__fundraiseup-form">
     <a href="{{ fru_form_id }}" style="display: none;"></a>
 </div>

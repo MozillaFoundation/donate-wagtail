@@ -180,6 +180,11 @@
           align-items: baseline;
         }
       }
+
+      .heading {
+        padding: 0 30px;
+        text-align: center;
+      }
     }
 
     .introduction {
@@ -192,5 +197,25 @@
         padding-bottom: $gutter;
       }
     }
+
+    .order {
+      &__1 {
+        @include media-query(tablet-fundraiseup) {
+          order: 1;
+        }
+      }
+
+      &__2 {
+        @include media-query(tablet-fundraiseup) {
+          order: 2;
+        }
+      }
+
+      &__3 {
+        @include media-query(tablet-fundraiseup) {
+          order: 3;
+        }
+      }
+  }
   }
 }
