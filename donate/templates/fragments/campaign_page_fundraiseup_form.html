@@ -1,5 +1,10 @@
+{% load static i18n %}
+
 <div class="layout__half-col {{ order }}">
     <div class="donate-form">
+        <h2 class="heading heading--primary donate-form__heading-mobile">
+            {% trans page.intro_header context "Header" %}
+        </h2>
         <div class="donate-form__fundraiseup-form">
             <a href="{{ fru_form_id }}" style="display: none;"></a>
         </div>

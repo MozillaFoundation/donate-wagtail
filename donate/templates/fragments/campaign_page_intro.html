@@ -3,7 +3,7 @@
 <div class="layout__half-col {{ order }}">
     <div class="introduction column-spacing">
         {% if page.intro_header %}
-            <h2 class="heading heading--primary">
+            <h2 class="heading heading--primary {% if page.cta_first == True %}heading-cta-first{% endif %}">
                 {% trans page.intro_header context "Header" %}
             </h2>
         {% endif %}

@@ -11,6 +11,12 @@
     margin-bottom: 0;
   }
 
+  &__heading-mobile{
+    @include media-query(tablet-fundraiseup) {
+      display:none;
+    }
+  }
+
   &__tab-options {
     display: flex;
     flex-direction: row;

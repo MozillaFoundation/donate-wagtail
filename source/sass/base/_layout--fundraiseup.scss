@@ -191,6 +191,13 @@
       .heading {
         padding-bottom: $gutter;
       }
+
+      .heading-cta-first {
+        display: none;
+        @include media-query(tablet-fundraiseup) {
+          display: block;
+        }
+      }
     }
 
     .order {
