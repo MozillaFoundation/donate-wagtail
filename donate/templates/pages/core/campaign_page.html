@@ -37,30 +37,11 @@
     </div>
     <div class="layout__container">
         {% if page.cta_first == True %}
-            <div class="layout__half-col order__2">
-                <div class="donate-form">
-                    {% include "fragments/donate_form_fundraise_up.html" %}
-                </div>
-            </div>
-        {% endif %}
-        <div class="layout__half-col {% if page.cta_first == True %}order__1{% endif %}">
-            <div class="introduction column-spacing">
-                {% if page.intro_header %}
-                    <h2 class="heading heading--primary">
-                        {% trans page.intro_header context "Header" %}
-                    </h2>
-                {% endif %}
-                <div class="introduction__container">
-                    {{ page.intro|richtext }}
-                </div>
-            </div>
-        </div>
-        {% if page.cta_first == False %}
-            <div class="layout__half-col">
-                <div class="donate-form">
-                    {% include "fragments/donate_form_fundraise_up.html" %}
-                </div>
-            </div>
+            {% include "fragments/campaign_page_fundraiseup_form.html" with order="order__2" %}
+            {% include "fragments/campaign_page_intro.html" with order="order__1" %}
+        {% else %}
+            {% include "fragments/campaign_page_intro.html" with order="order__1" %}
+            {% include "fragments/campaign_page_fundraiseup_form.html" with order="order__2" %}
         {% endif %}
         <div class="layout__full-col order__3">
             {% include "fragments/donate_form_disclaimer_fundraise_up.html" %}
