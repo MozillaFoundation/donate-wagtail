@@ -11,6 +11,12 @@
     margin-bottom: 0;
   }
 
+  &__heading-mobile {
+    @include media-query(tablet-fundraiseup) {
+      display: none;
+    }
+  }
+
   &__tab-options {
     display: flex;
     flex-direction: row;
@@ -22,6 +28,7 @@
     grid-gap: ($gutter / 2);
     grid-template-columns: 1fr 1fr;
     margin-bottom: $gutter;
+
     @include media-query(tablet-portrait) {
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: ($gutter);

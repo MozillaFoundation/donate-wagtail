@@ -191,6 +191,33 @@
       .heading {
         padding-bottom: $gutter;
       }
+
+      .heading-cta-first {
+        display: none;
+        @include media-query(tablet-fundraiseup) {
+          display: block;
+        }
+      }
+    }
+
+    .order {
+      &__1 {
+        @include media-query(tablet-fundraiseup) {
+          order: 1;
+        }
+      }
+
+      &__2 {
+        @include media-query(tablet-fundraiseup) {
+          order: 2;
+        }
+      }
+
+      &__3 {
+        @include media-query(tablet-fundraiseup) {
+          order: 3;
+        }
+      }
     }
   }
 }

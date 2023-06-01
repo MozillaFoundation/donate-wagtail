@@ -241,15 +241,28 @@ class CampaignPage(DonationPage):
         models.PROTECT,
         related_name='+',
     )
+
     lead_text = models.CharField(max_length=800)
+    intro_header = models.CharField(max_length=200, blank=True, default="Donate now")
     intro = RichTextField()
 
     content_panels = Page.content_panels + [
+        FieldPanel('lead_text'),
         FieldPanel('project'),
         ImageChooserPanel('hero_image'),
-        FieldPanel('lead_text'),
+        FieldPanel('intro_header'),
         FieldPanel('intro'),
         InlinePanel('donation_amounts', label='Donation amount overrides'),
+    ]
+
+    cta_first = models.BooleanField(
+        default=False,
+        help_text="Check this to shift the CTA to the top on mobile",
+    )
+
+    settings_panels = Page.settings_panels + [
+        FieldPanel('campaign_id'),
+        FieldPanel('cta_first')
     ]
 
     @classmethod

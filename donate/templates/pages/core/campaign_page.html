@@ -36,22 +36,14 @@
         </div>
     </div>
     <div class="layout__container">
-        <div class="layout__half-col">
-            <div class="introduction column-spacing">
-                <h1 class="heading heading--primary">
-                    {% trans "Donate now" context "Header" %}
-                </h1>
-                <div class="introduction__container">
-                    {{ page.intro|richtext }}
-                </div>
-            </div>
-        </div>
-        <div class="layout__half-col">
-            <div class="donate-form">
-                {% include "fragments/donate_form_fundraise_up.html" %}
-            </div>
-        </div>
-        <div class="layout__full-col">
+        {% if page.cta_first == True %}
+            {% include "fragments/campaign_page_fundraiseup_form.html" with order="order__2" %}
+            {% include "fragments/campaign_page_intro.html" with order="order__1" %}
+        {% else %}
+            {% include "fragments/campaign_page_intro.html" with order="order__1" %}
+            {% include "fragments/campaign_page_fundraiseup_form.html" with order="order__2" %}
+        {% endif %}
+        <div class="layout__full-col order__3">
             {% include "fragments/donate_form_disclaimer_fundraise_up.html" %}
         </div>
     </div>
