@@ -13,7 +13,7 @@
 
   &__heading-mobile {
     @include media-query(tablet-fundraiseup) {
-      display:none;
+      display: none;
     }
   }
 
@@ -28,6 +28,7 @@
     grid-gap: ($gutter / 2);
     grid-template-columns: 1fr 1fr;
     margin-bottom: $gutter;
+
     @include media-query(tablet-portrait) {
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: ($gutter);
@@ -39,7 +40,7 @@
     font-weight: bold;
   }
 
-  &__recaptcha > div {
+  &__recaptcha>div {
     margin: auto;
     margin-bottom: ($gutter * 2);
   }
