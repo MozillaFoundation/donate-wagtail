@@ -7,8 +7,6 @@
                 {% trans page.intro_header context "Header" %}
             </h2>
         {% endif %}
-        <div class="donate-form__fundraiseup-form">
-            <a href="{{ fru_form_id }}" style="display: none;"></a>
-        </div>
+        {% include "./donate_form_fundraise_up.html" %}
     </div>
 </div>
