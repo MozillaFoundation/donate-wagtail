@@ -172,8 +172,8 @@ def npm_install(ctx):
 def makemessages(ctx):
     """Extract all template messages in .po files for localization"""
     ctx.run("./translation-management.sh import")
-    manage(ctx, "makemessages --all --keep-pot --no-wrap --ignore=dockerpythonvenv/*")
-    manage(ctx, "makemessages -d djangojs --all --keep-pot --no-wrap --ignore=node_modules --ignore=dockerpythonvenv/*")  # noqa
+    manage(ctx, "makemessages --all --keep-pot --no-wrap --ignore=dockerpythonvenv/* --ignore=donate/thunderbird/*")
+    manage(ctx, "makemessages -d djangojs --all --keep-pot --no-wrap --ignore=node_modules --ignore=dockerpythonvenv/* --ignore=donate/thunderbird/*")  # noqa
     os.replace("donate/locale/django.pot", "donate/locale/templates/LC_MESSAGES/django.pot")
     os.replace("donate/locale/djangojs.pot", "donate/locale/templates/LC_MESSAGES/djangojs.pot")
     ctx.run("./translation-management.sh export")
