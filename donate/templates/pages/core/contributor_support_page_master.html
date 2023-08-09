@@ -49,6 +49,10 @@
     <div class="layout__container">
         <div class="layout__full-col">
             <div class="page-body support-form">
+
+                {% block delayed_response_notice %}
+                {% endblock %}
+    
             {% if 'submitted' in request.GET %}
                 <h1 class="heading heading--primary">
                     {% trans "Thank you for contacting us. A case has been created for your issue and we will be in touch shortly." %}

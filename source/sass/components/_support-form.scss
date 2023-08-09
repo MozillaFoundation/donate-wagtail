@@ -6,6 +6,16 @@
     @include font-size(l);
   }
 
+  .delayed-response-notice {
+    background-color: $color--light-red;
+    padding: 1em 1.5em 0.5em;
+    margin-bottom: 2em;
+
+    p {
+      @include font-size(m);
+    }
+  }
+
   .privacy-notice {
     margin-bottom: 1em;
   }
