@@ -46,22 +46,6 @@
       padding-right: $tablet-landscape-footer-gutter;
       margin-bottom: 0;
     }
-
-    &--desktop {
-      display: none;
-
-      @include media-query(tablet-landscape) {
-        display: block;
-      }
-    }
-
-    &--mobile {
-      display: block;
-
-      @include media-query(tablet-landscape) {
-        display: none;
-      }
-    }
   }
 
   &__logo-image {
