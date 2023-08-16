@@ -62,6 +62,9 @@
             {% else %}
                 <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
 
+                    {% block delayed_response_notice %}
+                    {% endblock %}
+
                     {% block donate_support_text %}
                         <p class="rich-text">
                             {% blocktrans trimmed %}
