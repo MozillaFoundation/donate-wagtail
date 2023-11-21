@@ -13,8 +13,8 @@
 
 {% block other_options %}
     <p>
-        {% blocktrans with check_url='/ways-to-give#check' trimmed %}
-            <b>Other ways to give: <a href="{{ check_url }}">Check</a></b>
+        {% blocktrans with ways_to_give_url='https://foundation.mozilla.org/donate/ways-to-give' trimmed %}
+            <b>Other ways to give: <a href="{{ ways_to_give_url }}">Check, Bank Transfer, Stocks</a></b>
         {% endblocktrans %}
     </p>
 {% endblock %}
