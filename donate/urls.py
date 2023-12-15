@@ -15,7 +15,7 @@ from wagtail_ab_testing import urls as ab_testing_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView, apple_pay_domain_association_view
+from donate.views import EnvVariablesView, ThunderbirdRedirectView, apple_pay_domain_association_view
 
 # Patterns not subject to i18n
 urlpatterns = [
@@ -42,7 +42,9 @@ urlpatterns += i18n_patterns(
     # See https://django-statici18n.readthedocs.io
     path('jsi18n/', cache_page(86400)(JavaScriptCatalog.as_view()), name='javascript-catalog'),
     path('', include(payments_urls)),
-    path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
+    # Ways to give view is commented out as we are now hosting that page on foundation.mozilla.org.
+    # For more info, see: https://github.com/MozillaFoundation/donate-wagtail/issues/1770
+    # path('ways-to-give/', WaysToGiveView.as_view(), name='ways_to_give'),
     path('403/', TemplateView.as_view(template_name='403.html')),
 
     # set up set language redirect view
