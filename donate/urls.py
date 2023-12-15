@@ -15,7 +15,7 @@ from wagtail_ab_testing import urls as ab_testing_urls
 from donate.payments import urls as payments_urls
 from donate.payments.braintree_webhooks import BraintreeWebhookView
 from donate.payments.stripe_webhooks import StripeWebhookView
-from donate.views import EnvVariablesView, ThunderbirdRedirectView, WaysToGiveView, apple_pay_domain_association_view
+from donate.views import EnvVariablesView, ThunderbirdRedirectView, apple_pay_domain_association_view
 
 # Patterns not subject to i18n
 urlpatterns = [
